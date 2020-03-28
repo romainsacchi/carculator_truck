@@ -1,0 +1,10 @@
+pandas
+xarray
+numpy
+pytest
+pytest-cov
+klausen
+xlrd
+pytest
+numexpr
+bw2io

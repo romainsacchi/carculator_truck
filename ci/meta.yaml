@@ -1,0 +1,39 @@
+package:
+  name: carculator_truck
+  version: {{ environ['VERSION'] }}
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  script_env:
+   - VERSION
+   - CONDA_BLD_PATH
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - klausen
+    - pandas
+    - xarray
+    - numpy
+    - python
+    - xarray
+    - xlrd
+    - numexpr
+    - bw2io
+
+test:
+  imports:
+    - carculator_truck
+
+about:
+  home: https://github.com/romainsacchi/carculator_truck
+  license: BSD License
+  summary: 'A parameterized Python model to calculate the energy consumption and life cycle assessment of cars'
+license_family: BSD
