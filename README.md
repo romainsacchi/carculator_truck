@@ -13,10 +13,10 @@
   <a href="https://doi.org/10.5281/zenodo.3582994"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3582994.svg" alt="DOI"></a>
 </p>
 
-Prospective environmental and economic life cycle assessment of public transport and heavy goods vehicles.
+Prospective environmental and economic life cycle assessment of medium and heavy duty vehicles.
 
 A fully parameterized Python model developed by the [Technology Assessment group](https://www.psi.ch/en/ta) of the
-[Paul Scherrer Institut](https://www.psi.ch/en) to perform life cycle assessments (LCA) of trucks and buses.
+[Paul Scherrer Institut](https://www.psi.ch/en) to perform life cycle assessments (LCA) of medium and heavy duty trucks.
 Based on the Life Cycle Assessment tool for passenger vehicles [carculator](https://github.com/romainsacchi/carculator).
 
 See [the documentation](https://carculator_truck.readthedocs.io/en/latest/index.html) for more detail, validation, etc.
