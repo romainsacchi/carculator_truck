@@ -10,7 +10,10 @@ Submodules
 """
 
 _all_ = (
-    "TruckInputParameters"
+    "TruckInputParameters",
+    "fill_xarray_from_input_parameters",
+    "modify_xarray_from_custom_parameters",
+    "TruckModel"
 )
 
 __version__ = (0, 0, 1)
