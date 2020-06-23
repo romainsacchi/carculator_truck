@@ -1,4 +1,5 @@
 from .driving_cycles import get_standard_driving_cycle
+from .gradients import get_gradients
 import numexpr as ne
 import numpy as np
 import xarray
@@ -26,8 +27,7 @@ class EnergyConsumptionModel:
     See for example: http://www.unece.org/fileadmin/DAM/trans/doc/2012/wp29grpe/WLTP-DHC-12-07e.xls
 
     :param cycle: Driving cycle. Pandas Series of second-by-second speeds (km/h) or name (str)
-        of cycle e.g., "WLTC","WLTC 3.1","WLTC 3.2","WLTC 3.3","WLTC 3.4","CADC Urban","CADC Road",
-        "CADC Motorway","CADC Motorway 130","CADC","NEDC".
+        of cycle e.g., "Urban delivery", "Regional delivery", "Long haul".
     :type cycle: pandas.Series
     :param rho_air: Mass per unit volume of air. Set to (1.225 kg/m3) by default.
     :type rho_air: float
@@ -46,7 +46,7 @@ class EnergyConsumptionModel:
 
     """
 
-    def __init__(self, cycle, rho_air=1.204, gradient=None):
+    def __init__(self, cycle, gradient, rho_air=1.204):
         # If a string is passed, the corresponding driving cycle is retrieved
         if isinstance(cycle, str):
             try:
@@ -61,25 +61,22 @@ class EnergyConsumptionModel:
         else:
             raise ("The format of the driving cycle is not valid.")
 
+        if isinstance(gradient, str):
+            try:
+                self.gradient_name = cycle
+                gradient = get_gradients(gradient)
+
+            except KeyError:
+                raise ("The gradient data specified could not be found.")
+        elif isinstance(cycle, np.ndarray):
+            self.gradient_name = "custom"
+            pass
+        else:
+            raise ("The format of the driving cycle is not valid.")
+
         self.cycle = cycle
         self.rho_air = rho_air
 
-        if gradient is not None:
-            try:
-                assert isinstance(gradient, np.ndarray)
-            except AssertionError:
-                raise AssertionError(
-                    "The type of the gradient array is not valid. Required: numpy.ndarray."
-                )
-            try:
-                assert len(gradient) == len(self.cycle)
-            except AssertionError:
-                raise AssertionError(
-                    "The length of the gradient array does not equal the length of the driving cycle."
-                )
-            self.gradient = gradient
-        else:
-            self.gradient = np.zeros_like(cycle)
 
         # Unit conversion km/h to m/s
         self.velocity = (cycle * 1000) / 3600
@@ -168,7 +165,6 @@ class EnergyConsumptionModel:
         """
 
         # Convert to km; velocity is m/s, times 1 second
-        # Distance WLTC 3.2 = 4.75 km
         distance = self.velocity.sum() / 1000
 
         # Total power required at the wheel to meet acceleration requirement,
@@ -196,6 +192,12 @@ class EnergyConsumptionModel:
             "(ones * dm * rr * 9.81) + (v ** 2 * fa * dc * rho_air / 2) + (a * dm) + (dm * 9.81 * sin(g))"
         ))
 
+        #rolling_resistance = ne.evaluate("ones * dm * rr * 9.81") * self.velocity / 1000
+        #air_resistance = ne.evaluate("v ** 2 * fa * dc * rho_air / 2") * self.velocity / 1000
+        #gradient_resistance = ne.evaluate("dm * 9.81 * sin(g)") * self.velocity / 1000
+        #inertia = ne.evaluate("a * dm") * self.velocity / 1000
+        #braking_power = np.where(inertia <0, inertia *-1, 0)
+
         tv = ne.evaluate("total_force * v")
 
         # Can only recuperate when power is less than zero, limited by recuperation efficiency
@@ -204,14 +206,7 @@ class EnergyConsumptionModel:
         recuperated_power = ne.evaluate(
             "where(tv < (-1000 * mp), (-1000 * mp) ,where(tv>0, 0, tv)) * re"
         )
-        # braking_power = pd.w - recuperated_power
 
-        # self.recuperated_power = recuperated_power/distance/1000
-        # self.braking_power = braking_power/distance/1000
-        # self.power_rolling_resistance = pa.r / distance / 1000
-        # self.power_aerodynamic = pa.a / distance / 1000
-        # self.power_kinetic = pa.k / distance / 1000
-        # self.total_power = pa.w / distance / 1000
 
         # t_e = ne.evaluate("where(total_force<0, 0, tv)") #
         # t_e = np.where(total_force<0, 0, tv)
@@ -221,3 +216,5 @@ class EnergyConsumptionModel:
         )
 
         return results
+
+        #return (rolling_resistance, air_resistance, gradient_resistance, braking_power, inertia)

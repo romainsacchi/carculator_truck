@@ -55,9 +55,11 @@ class TruckModel:
         self.mappings = mappings or DEFAULT_MAPPINGS
 
         if cycle is None:
-            self.ecm = EnergyConsumptionModel("WLTC")
-        else:
-            self.ecm = EnergyConsumptionModel(cycle=cycle, gradient=gradient)
+            cycle = "Urban delivery"
+        if gradient is None:
+            gradient="Urban delivery"
+
+        self.ecm = EnergyConsumptionModel(cycle=cycle, gradient=gradient)
 
     def __call__(self, key):
         """
@@ -410,7 +412,7 @@ class TruckModel:
         self["curb mass"] = self["glider base mass"] * (1 - self["lightweighting"])
 
         curb_mass_includes = [
-            "fuel mass",
+            #"fuel mass",
             "charger mass",
             "converter mass",
             "inverter mass",
@@ -420,19 +422,19 @@ class TruckModel:
             # Updates with set_components_mass
             "electric engine mass",
             # Updates with set_components_mass
-            "powertrain mass",
-            "fuel cell stack mass",
-            "fuel cell ancillary BoP mass",
-            "fuel cell essential BoP mass",
-            "battery cell mass",
-            "battery BoP mass",
-            "fuel tank mass",
+            "drivetrain mass",
+            #"fuel cell stack mass",
+            #"fuel cell ancillary BoP mass",
+            #"fuel cell essential BoP mass",
+            #"battery cell mass",
+            #"battery BoP mass",
+            #"fuel tank mass",
         ]
         self["curb mass"] += self[curb_mass_includes].sum(axis=2)
 
         self["total cargo mass"] = (
-            self["average passengers"] * self["average passenger mass"]
-            + self["cargo mass"]
+            (self["average passengers"] * self["average passenger mass"])
+            + (self["maximum theoretical payload"] * self["capacity utilization"])
         )
         self["driving mass"] = self["curb mass"] + self["total cargo mass"]
 
@@ -448,16 +450,21 @@ class TruckModel:
 
     def set_component_masses(self):
         self["combustion engine mass"] = (
-            self["combustion power"] * self["combustion mass per power"]
-            + self["combustion fixed mass"]
+            self["combustion power"] * self["engine mass per power"]
+            + self["engine fixed mass"]
         )
         self["electric engine mass"] = (
-            self["electric power"] * self["electric mass per power"]
-            + self["electric fixed mass"]
+            self["electric power"] * self["emotor mass per power"]
+            + self["emotor fixed mass"]
         )
-        self["powertrain mass"] = (
-            self["power"] * self["powertrain mass per power"]
-            + self["powertrain fixed mass"]
+        self["drivetrain mass"] = (
+            (self["gross weight"]/1000) * self["drivetrain mass per ton of gross weight"]
+            + self["drivetrain fixed mass"]
+        )
+
+        self["inverter mass"] = (
+            self["power"] * self["inverter mass per power"]
+            + self["inverter fix mass"]
         )
 
     def set_electric_utility_factor(self):

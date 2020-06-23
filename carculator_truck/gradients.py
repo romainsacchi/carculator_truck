@@ -3,11 +3,11 @@ import numpy as np
 import sys
 
 
-def get_standard_driving_cycle(name="Urban delivery"):
+def get_gradients(name="Urban delivery"):
 
-    """Get driving cycle data as a Pandas `Series`.
+    """Get gradient data as a Pandas `Series`.
 
-    Driving cycles are given as km/h per second. Sourced from VECTO 3.3.7.
+    Gradients are given as km/h per second. Sourced from VECTO 3.3.7.
 
     :param name: The name of the driving cycle. "Urban delivery" is chosen by default if :param name: left unspecified.
     :type name: str
@@ -31,7 +31,7 @@ def get_standard_driving_cycle(name="Urban delivery"):
     }
 
     try:
-        arr = np.genfromtxt(DATA_DIR / "driving_cycles.csv", delimiter=";")
+        arr = np.genfromtxt(DATA_DIR / "gradients.csv", delimiter=";")
         dc = arr[1:, dict_dc_names[name]]
         dc = dc[~np.isnan(dc)]
         return dc.reshape((-1,6))
