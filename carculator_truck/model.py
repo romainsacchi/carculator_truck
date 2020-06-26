@@ -134,31 +134,42 @@ class TruckModel:
             old_driving_mass = self["driving mass"].sum().values
 
             self.set_car_masses()
-
             self.set_power_parameters()
             self.set_component_masses()
-            self.set_battery_properties()
-            self.set_battery_fuel_cell_replacements()
+            self.set_auxiliaries()
+            self.set_ttw_efficiency()
             self.set_recuperation()
             self.set_fuel_cell_parameters()
+            self.calculate_ttw_energy()
+            self.set_battery_fuel_cell_replacements()
+
             self.set_energy_stored_properties()
 
             diff = (self["driving mass"].sum().values - old_driving_mass) / self[
                 "driving mass"
             ].sum()
 
-        self.set_auxiliaries()
-        self.set_ttw_efficiency()
-        self.calculate_ttw_energy()
-        self.adjust_cost()
-        self.set_range()
+        #self.adjust_cost()
+
         self.set_electric_utility_factor()
         self.set_electricity_consumption()
-        self.set_costs()
-        self.set_hot_emissions()
-        self.set_noise_emissions()
+        #self.set_costs()
+        #self.set_hot_emissions()
+        #self.set_noise_emissions()
         self.create_PHEV()
-        self.drop_hybrid()
+        #self.drop_hybrid()
+
+        if (self["driving mass"] > self["gross mass"]).any() == True:
+                print("The driving mass of the following vehicles exceeds the permissible gross mass. "
+                      "Reduce the target range for those vehicles, reduce the load factor or increase the battery cell energy density to find a solution.")
+                sizes = self.array.where(self.array.sel(parameter="driving mass")>self.array.sel(parameter="gross mass"), drop=True).coords["size"].values.tolist()
+                pt = self.array.where(self.array.sel(parameter="driving mass")>self.array.sel(parameter="gross mass"), drop=True).coords["powertrain"].values.tolist()
+                years = self.array.where(self.array.sel(parameter="driving mass")>self.array.sel(parameter="gross mass"), drop=True).coords["year"].values.tolist()
+                for p in pt:
+                    for s in sizes:
+                        for y in years:
+                            if self.array.sel(powertrain=p, size=s, year=y, parameter="driving mass") > self.array.sel(powertrain=p, size=s, year=y, parameter="gross mass"):
+                                print(p, s, y)
 
     def adjust_cost(self):
         """
@@ -254,8 +265,7 @@ class TruckModel:
         This method calculates the total electricity consumption for BEV and plugin-hybrid vehicles
         :returns: Does not return anything. Modifies ``self.array`` in place.
         """
-
-        for pt in self.electric:
+        for pt in ["BEV", "PHEV-e"]:
             with self(pt) as cpm:
                 cpm["electricity consumption"] = (
                     cpm["TtW energy"] / cpm["battery charge efficiency"]
@@ -269,7 +279,9 @@ class TruckModel:
         """
         aux_energy = self.ecm.aux_energy_per_km(self["auxiliary power demand"])
 
-        for pt in self.pure_combustion:
+        pts = [pt for pt in self.array.powertrain.values if pt !="FCEV"]
+
+        for pt in pts:
             with self(pt) as cpm:
                 aux_energy.loc[{"powertrain": pt}] /= cpm["engine efficiency"]
         for pt in self.fuel_cell:
@@ -286,7 +298,7 @@ class TruckModel:
             ttw_efficiency=self["TtW efficiency"],
             recuperation_efficiency=self["recuperation efficiency"],
             motor_power=self["electric power"],
-        ).sum(axis=-1)
+        ).sum(axis=0)
 
         self.motive_energy = motive_energy
         self["TtW energy"] = aux_energy + motive_energy
@@ -296,50 +308,45 @@ class TruckModel:
         Specific setup for fuel cells, which are mild hybrids.
         Must be called after :meth:`.set_power_parameters`.
         """
-        for pt in self.fuel_cell:
-            with self(pt):
-                self["fuel cell system efficiency"] = (
-                    self["fuel cell stack efficiency"]
-                    / self["fuel cell own consumption"]
-                )
-                self["fuel cell power share"] = self["fuel cell power share"].clip(
-                    min=0, max=1
-                )
-                self["fuel cell power"] = (
-                    self["power"]
-                    * self["fuel cell power share"]
-                    * self["fuel cell own consumption"]
-                )
-                # our basic fuel cell mass is based on a car fuel cell with 800 mW/cm2 and 0.51 kg/kW
-                self["fuel cell stack mass"] = (
-                    0.51
-                    * self["fuel cell power"]
-                    * (800
-                    / self["fuel cell power area density"])
-                )
-                self["fuel cell ancillary BoP mass"] = (
-                    self["fuel cell power"]
-                    * self["fuel cell ancillary BoP mass per power"]
-                )
-                self["fuel cell essential BoP mass"] = (
-                    self["fuel cell power"]
-                    * self["fuel cell essential BoP mass per power"]
-                )
 
-                self["battery power"] = self["fuel cell power"] * (
-                    1 - self["fuel cell power share"]
-                )
-                self["battery cell mass"] = (
-                    self["battery power"] / self["battery cell power density"]
-                )
-                self["battery BoP mass"] = self["battery cell mass"] * (
-                    1 - self["battery cell mass share"]
-                )
+        with self('FCEV'):
+            self["fuel cell system efficiency"] = (
+                self["fuel cell stack efficiency"]
+                / self["fuel cell own consumption"]
+            )
+            self["fuel cell power share"] = self["fuel cell power share"].clip(
+                min=0, max=1
+            )
+            self["fuel cell power"] = (
+                self["power"]
+                * self["fuel cell power share"]
+                * self["fuel cell own consumption"]
+            )
+            # our basic fuel cell mass is based on a car fuel cell with 800 mW/cm2 and 0.51 kg/kW
+            self["fuel cell stack mass"] = (
+                0.51
+                * self["fuel cell power"]
+                * (800
+                / self["fuel cell power area density"])
+            )
+            self["fuel cell ancillary BoP mass"] = (
+                self["fuel cell power"]
+                * self["fuel cell ancillary BoP mass per power"]
+            )
+            self["fuel cell essential BoP mass"] = (
+                self["fuel cell power"]
+                * self["fuel cell essential BoP mass per power"]
+            )
 
-                self["oxidation energy stored"] = self["fuel mass"] * 120 / 3.6  # kWh
-                self["fuel tank mass"] = (
-                    self["oxidation energy stored"] * self["H2 tank mass per energy"]
-                )
+            self["battery power"] = self["fuel cell power"] * (
+                1 - self["fuel cell power share"]
+            )
+            self["battery cell mass"] = (
+                self["battery power"] / self["battery cell power density"]
+            )
+            self["battery BoP mass"] = self["battery cell mass"] * (
+                1 - self["battery cell mass share"]
+            )
 
     def set_auxiliaries(self):
         """
@@ -376,6 +383,8 @@ class TruckModel:
             It is debatable whether this is realistic or not. Car owners may not decide to invest in a new
             battery if the remaining lifetime of the car is only 10000 km. Also, a battery lifetime may be expressed
             in other terms, e.g., charging cycles.
+            Also, if the battery lifetime surpasses the vehicle lifetime, 100% of the burden of the battery production
+            is allocated to the vehicle.
 
         """
         # Here we assume that we can use fractions of a battery/fuel cell
@@ -412,7 +421,7 @@ class TruckModel:
         self["curb mass"] = self["glider base mass"] * (1 - self["lightweighting"])
 
         curb_mass_includes = [
-            #"fuel mass",
+            "fuel mass",
             "charger mass",
             "converter mass",
             "inverter mass",
@@ -423,18 +432,20 @@ class TruckModel:
             "electric engine mass",
             # Updates with set_components_mass
             "drivetrain mass",
-            #"fuel cell stack mass",
-            #"fuel cell ancillary BoP mass",
-            #"fuel cell essential BoP mass",
-            #"battery cell mass",
-            #"battery BoP mass",
-            #"fuel tank mass",
+            "fuel cell stack mass",
+            "fuel cell ancillary BoP mass",
+            "fuel cell essential BoP mass",
+            "battery cell mass",
+            "battery BoP mass",
+            "fuel tank mass",
         ]
         self["curb mass"] += self[curb_mass_includes].sum(axis=2)
 
+        self["available payload"] = self["gross mass"] - self["curb mass"]
+
         self["total cargo mass"] = (
             (self["average passengers"] * self["average passenger mass"])
-            + (self["maximum theoretical payload"] * self["capacity utilization"])
+            + (self["available payload"] * self["capacity utilization"])
         )
         self["driving mass"] = self["curb mass"] + self["total cargo mass"]
 
@@ -458,137 +469,67 @@ class TruckModel:
             + self["emotor fixed mass"]
         )
         self["drivetrain mass"] = (
-            (self["gross weight"]/1000) * self["drivetrain mass per ton of gross weight"]
+            (self["gross mass"]/1000) * self["drivetrain mass per ton of gross weight"]
             + self["drivetrain fixed mass"]
         )
 
         self["inverter mass"] = (
-            self["power"] * self["inverter mass per power"]
+            self["electric power"] * self["inverter mass per power"]
             + self["inverter fix mass"]
         )
 
     def set_electric_utility_factor(self):
+        """
+        From Plötz et al. 2017
+        The electric utility factor is defined by the range
+        :return:
+        """
         with self("PHEV-e") as cpm:
             cpm["electric utility factor"] = (
-                1 - np.exp(-0.01147 * cpm["range"])
+                1 - np.exp(-0.01147 * cpm["target range"])
             ) ** 1.186185
 
     def create_PHEV(self):
         """ PHEV-p/d is the range-weighted average between PHEV-c-p/PHEV-c-d and PHEV-e.
         """
-        self.array.loc[:, "PHEV-d", :, :, :] = (
-            self.array.loc[:, "PHEV-e", :, :, :]
-            * self.array.loc[:, "PHEV-e", "electric utility factor", :, :]
-        ) + (
-            self.array.loc[:, "PHEV-c-d", :, :, :]
-            * (1 - self.array.loc[:, "PHEV-e", "electric utility factor", :, :])
-        )
-        self.array.loc[:, "PHEV-p", :, :, :] = (
-            self.array.loc[:, "PHEV-e", :, :, :]
-            * self.array.loc[:, "PHEV-e", "electric utility factor", :, :]
-        ) + (
-            self.array.loc[:, "PHEV-c-p", :, :, :]
-            * (1 - self.array.loc[:, "PHEV-e", "electric utility factor", :, :])
-        )
 
-    def set_battery_properties(self):
-        pt_list = ["ICEV-p", "HEV-p", "HEV-d", "ICEV-g", "ICEV-d"]
-        self.array.loc[:, pt_list, "battery power"] = self.array.loc[
-            :, pt_list, "electric power"
-        ]
+        self.array.loc[{"powertrain":"PHEV-d"}] = (self.array.loc[{"powertrain":"PHEV-e"}]  * self.array.loc[{"powertrain":"PHEV-e", "parameter":"electric utility factor"}] ) +\
+                                                    (self.array.loc[{"powertrain":"PHEV-c-d"}] * (1 - self.array.loc[{"powertrain":"PHEV-e", "parameter":"electric utility factor"}]))
+        self.array.loc[{"powertrain":"PHEV-p"}] = (self.array.loc[{"powertrain":"PHEV-e"}]  * self.array.loc[{"powertrain":"PHEV-e", "parameter":"electric utility factor"}] ) +\
+                                                    (self.array.loc[{"powertrain":"PHEV-c-p"}] * (1 - self.array.loc[{"powertrain":"PHEV-e", "parameter":"electric utility factor"}]))
 
-        self.array.loc[:, pt_list, "battery cell mass"] = (
-            self.array.loc[:, pt_list, "battery power"]
-            / self.array.loc[:, pt_list, "battery cell power density"]
-        )
-
-        self["battery cell mass share"] = self["battery cell mass share"].clip(
-            min=0, max=1
-        )
-        self.array.loc[:, pt_list, "battery BoP mass", :, :] = self.array.loc[
-            :, pt_list, "battery cell mass",
-        ] * (1 - self.array.loc[:, pt_list, "battery cell mass share", :, :])
-
-        list_pt_el = ["BEV", "PHEV-c-p", "PHEV-c-d", "PHEV-e"]
-        self.array.loc[:, list_pt_el, "battery cell mass"] = (
-            self.array.loc[:, list_pt_el, "energy battery mass"]
-            * self.array.loc[:, list_pt_el, "battery cell mass share"]
-        )
-
-        self.array.loc[:, list_pt_el, "battery BoP mass"] = self.array.loc[
-            :, list_pt_el, "energy battery mass"
-        ] * (1 - self.array.loc[:, list_pt_el, "battery cell mass share"])
-
-    def set_range(self):
-
-        list_pt = [
-            "ICEV-p",
-            "HEV-p",
-            "HEV-d",
-            "PHEV-c-p",
-            "PHEV-c-d",
-            "ICEV-d",
-            "ICEV-g",
-            "FCEV",
-        ]
-        fuel_mass = self.array.loc[:, list_pt, "fuel mass"]
-        lhv = self.array.loc[:, list_pt, "LHV fuel MJ per kg"]
-
-        energy_stored = self.array.loc[:, ["BEV", "PHEV-e"], "electric energy stored"]
-        battery_DoD = self.array.loc[:, ["BEV", "PHEV-e"], "battery DoD"]
-
-        TtW_el = self.array.loc[:, ["BEV", "PHEV-e"], "TtW energy"]
-        TtW = self.array.loc[:, list_pt, "TtW energy"]
-
-        self.array.loc[:, list_pt, "range"] = ne.evaluate(
-            "(fuel_mass * lhv * 1000) / TtW"
-        )
-        self.array.loc[:, ["BEV", "PHEV-e"], "range"] = ne.evaluate(
-            "(energy_stored * battery_DoD * 3.6 * 1000) / TtW_el"
-        )
 
     def set_energy_stored_properties(self):
-
-        list_combustion = ["ICEV-p", "HEV-p", "HEV-d", "PHEV-c-p", "PHEV-c-d", "ICEV-d"]
-        self.array.loc[:, list_combustion, "oxidation energy stored"] = (
-            self.array.loc[:, list_combustion, "fuel mass"]
-            * self.array.loc[:, list_combustion, "LHV fuel MJ per kg"]
-            / 3.6
-        )
-        self.array.loc[:, list_combustion, "fuel tank mass"] = (
-            self.array.loc[:, list_combustion, "oxidation energy stored"]
-            * self.array.loc[:, list_combustion, "fuel tank mass per energy"]
-        )
-
-        self.array.loc[:, "ICEV-g", "oxidation energy stored"] = (
-            self.array.loc[:, "ICEV-g", "fuel mass"]
-            * self.array.loc[:, "ICEV-g", "LHV fuel MJ per kg"]
-            / 3.6
-        )
-
-        self.array.loc[:, "ICEV-g", "fuel tank mass"] = (
-            self.array.loc[:, "ICEV-g", "oxidation energy stored"]
-            * self.array.loc[:, "ICEV-g", "CNG tank mass slope"]
-            + self.array.loc[:, "ICEV-g", "CNG tank mass intercept"]
-        )
-
-        for pt in self.battery:
+        """
+        First, fuel mass is defined. It is dependent on the range required.
+        Then batteries are sized, depending on the range required and the energy consumption.
+        :return:
+        """
+        for pt in ["ICEV-p", "ICEV-d", "HEV-p", "HEV-d", "PHEV-c-p", "PHEV-c-d"]:
             with self(pt) as cpm:
-                cpm["electric energy stored"] = (
-                    cpm["battery cell mass"] * cpm["battery cell energy density"]
-                )
+                cpm["fuel mass"] = (cpm["target range"] * (cpm["TtW energy"] / 1000)) / cpm["LHV fuel MJ per kg"]
+                cpm["oxidation energy stored"] = (cpm["fuel mass"] * cpm["LHV fuel MJ per kg"]) / 3.6
+                cpm["fuel tank mass"] = cpm["oxidation energy stored"] * cpm["fuel tank mass per energy"]
 
-        for pt in self.electric_hybrid:
+        with self('ICEV-g') as cpm:
+            cpm["fuel mass"] = (cpm["target range"] * (cpm["TtW energy"] / 1000)) / cpm["LHV fuel MJ per kg"]
+            cpm["oxidation energy stored"] = (cpm["fuel mass"] * cpm["LHV fuel MJ per kg"]) / 3.6
+            cpm["fuel tank mass"] = (cpm["oxidation energy stored"] * cpm["CNG tank mass slope"]) + cpm["CNG tank mass intercept"]
+
+        for pt in ["ICEV-p", "HEV-p", "HEV-d", "ICEV-g", "ICEV-d", "PHEV-c-p", "PHEV-c-d"]:
             with self(pt) as cpm:
-                cpm["electric energy stored"] = (
-                    cpm["battery cell mass"] * cpm["battery cell energy density"]
-                )
-                cpm["fuel tank mass"] = (
-                    cpm["fuel mass"]
-                    * cpm["LHV fuel MJ per kg"]
-                    / 3.6
-                    * cpm["fuel tank mass per energy"]
-                )
+                cpm["battery power"] = cpm["electric power"]
+                cpm["battery cell mass"] = cpm["battery power"] / cpm["battery cell power density"]
+                cpm["battery cell mass share"] = cpm["battery cell mass share"].clip(min=0, max=1)
+                cpm["battery BoP mass"] = cpm["battery cell mass"] * (1 - cpm["battery cell mass share"])
+
+        for pt in ['BEV', 'PHEV-e']:
+            with self(pt) as cpm:
+                cpm["electric energy stored"] = (cpm["target range"] * (cpm["TtW energy"] / 1000)) / 3.6
+                cpm["battery cell mass"] = cpm["electric energy stored"] / cpm["battery cell energy density"]
+                cpm["energy battery mass"] = cpm["battery cell mass"] / cpm["battery cell mass share"]
+                cpm["battery BoP mass"] = cpm["energy battery mass"] - cpm["battery cell mass"]
+
 
         # kWh electricity/kg battery cell
         self["battery cell production energy electricity share"] = self[
@@ -634,9 +575,9 @@ class TruckModel:
         self["energy cost"] = self["energy cost per kWh"] * self["TtW energy"] / 3600
 
         # For battery, need to divide cost of electricity in battery by efficiency of charging
-        for pt in self.battery:
-            with self(pt):
-                self["energy cost"] /= self["battery charge efficiency"]
+        for pt in ["BEV", "PHEV-e"]:
+            with self(pt) as cpm:
+                cpm["energy cost"] /= cpm["battery charge efficiency"]
 
         self["component replacement cost"] = (
             self["energy battery cost"] * self["battery lifetime replacements"]
@@ -706,7 +647,7 @@ class TruckModel:
 
     def set_ttw_efficiency(self):
         _ = lambda array: np.where(array == 0, 1, array)
-        # TODO> check if battery charge efficiency should be added
+
         self["TtW efficiency"] = (
             _(self["battery discharge efficiency"])
             * _(self["fuel cell system efficiency"])

@@ -108,7 +108,6 @@
   "noise, octave 1, night time, rural",
   "noise, octave 4, evening time, urban",
   "Hydrocarbons direct emissions, suburban",
-  "range",
   "noise, octave 2, day time, suburban",
   "noise, octave 4, evening time, rural",
   "noise, octave 3, evening time, suburban",
@@ -153,5 +152,8 @@
   "noise, octave 1, day time, urban",
   "noise, octave 8, day time, rural",
   "Lead direct emissions, suburban",
-  "internal noise"
+  "internal noise",
+  "available payload",
+  "energy battery mass",
+  "fuel mass"
 ]

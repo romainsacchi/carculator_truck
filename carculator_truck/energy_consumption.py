@@ -63,23 +63,24 @@ class EnergyConsumptionModel:
 
         if isinstance(gradient, str):
             try:
-                self.gradient_name = cycle
+                self.gradient_name = gradient
                 gradient = get_gradients(gradient)
 
             except KeyError:
                 raise ("The gradient data specified could not be found.")
-        elif isinstance(cycle, np.ndarray):
+        elif isinstance(gradient, np.ndarray):
             self.gradient_name = "custom"
             pass
         else:
             raise ("The format of the driving cycle is not valid.")
 
-        self.cycle = cycle
+        self.cycle = cycle.reshape(-1,1,1,6)
+        self.gradient = gradient.reshape(-1,1,1,6)
+
         self.rho_air = rho_air
 
-
         # Unit conversion km/h to m/s
-        self.velocity = (cycle * 1000) / 3600
+        self.velocity = (self.cycle * 1000) / 3600
 
         # Model acceleration as difference in velocity between time steps (1 second)
         # Zero at first value
@@ -101,16 +102,20 @@ class EnergyConsumptionModel:
         :rtype: float
 
         """
+
+        distance = self.velocity.sum(axis=0)[0][0]
         # Provide energy in kJ / km (1 J = 1 Ws)
         auxiliary_energy = (
-            aux_power  # Watt
-            * self.velocity.size  # Number of seconds -> Ws -> J
-            / self.velocity.sum()  # m/s * 1s = m -> J/m
+            aux_power.T  # Watt
+            * self.velocity.shape[0]  # Number of seconds -> Ws -> J
+            / distance  # m/s * 1s = m -> J/m
             * 1000  # m / km
             / 1000  # 1 / (J / kJ)
         )
 
-        return auxiliary_energy / efficiency
+
+
+        return (auxiliary_energy / efficiency).T
 
     def motive_energy_per_km(
         self,
@@ -165,56 +170,37 @@ class EnergyConsumptionModel:
         """
 
         # Convert to km; velocity is m/s, times 1 second
-        distance = self.velocity.sum() / 1000
+        distance = self.velocity.sum(axis=0)[0][0] / 1000
 
-        # Total power required at the wheel to meet acceleration requirement,
-        # and overcome air and rolling resistance.
-        # This number is generally positive (power is needed), but can be negative
-        # if the vehicle is decelerating.
-        # Power is in watts (kg m2 / s3)
-
-        # We opt for simpler variable names to be accepted by `numexpr`
         ones = np.ones_like(self.velocity)
-        dm = _(driving_mass)
-        rr = _(rr_coef)
-        fa = _(frontal_area)
-        dc = _(drag_coef)
-        v = self.velocity
-        a = self.acceleration
-        g = self.gradient
-        rho_air = self.rho_air
-        ttw_eff = _(ttw_efficiency)
-        mp = _(motor_power)
-        re = _(recuperation_efficiency)
 
-        # rolling resistance + air resistance + kinetic energy + gradient resistance
-        total_force = np.float16(ne.evaluate(
-            "(ones * dm * rr * 9.81) + (v ** 2 * fa * dc * rho_air / 2) + (a * dm) + (dm * 9.81 * sin(g))"
-        ))
+        # Resistance from the tire rolling: rolling resistance coefficient * driving mass * 9.81
+        rolling_resistance = (driving_mass * rr_coef * 9.81).T * ones
+        # Resistance from the drag: frontal area * drag coefficient * air density * 1/2 * velocity^2
+        air_resistance = (frontal_area * drag_coef * self.rho_air / 2).T * np.power(self.velocity, 2)
+        # Resistance from road gradient: driving mass * 9.81 * sin(gradient)
+        gradient_resistance = (driving_mass * 9.81).T * np.sin(self.gradient)
+        # Inertia: driving mass * acceleration
+        inertia = self.acceleration * driving_mass.values.T
+        # Braking loss: when inertia is negative
+        braking_loss = np.where(inertia <0, inertia *-1, 0)
 
-        #rolling_resistance = ne.evaluate("ones * dm * rr * 9.81") * self.velocity / 1000
-        #air_resistance = ne.evaluate("v ** 2 * fa * dc * rho_air / 2") * self.velocity / 1000
-        #gradient_resistance = ne.evaluate("dm * 9.81 * sin(g)") * self.velocity / 1000
-        #inertia = ne.evaluate("a * dm") * self.velocity / 1000
-        #braking_power = np.where(inertia <0, inertia *-1, 0)
+        total_resistance = rolling_resistance + air_resistance + gradient_resistance + inertia + braking_loss
 
-        tv = ne.evaluate("total_force * v")
+        # Power required: total resistance * velocity
+        total_power = total_resistance * self.velocity
 
-        # Can only recuperate when power is less than zero, limited by recuperation efficiency
-        # Motor power in kW, other power in watts
+        # Recuperation of the braking power within the limit of the electric engine power
+        recuperated_power = (braking_loss * recuperation_efficiency.values.T) * self.velocity
+        recuperated_power = np.clip(recuperated_power, 0, motor_power.values.T*1000)
 
-        recuperated_power = ne.evaluate(
-            "where(tv < (-1000 * mp), (-1000 * mp) ,where(tv>0, 0, tv)) * re"
-        )
+        # Subtract recuperated power from total power, if any
+        total_power -= recuperated_power
+        # Total power per driving cycle to total power per km
+        total_power /= distance
+        # From power required at the wheels to power required by the engine
+        total_power /= ttw_efficiency.values.T
+        # From joules to kilojoules
+        total_power /= 1000
 
-
-        # t_e = ne.evaluate("where(total_force<0, 0, tv)") #
-        # t_e = np.where(total_force<0, 0, tv)
-
-        results = ne.evaluate(
-            "((where(total_force<0, 0, tv) / (distance * 1000)) + (recuperated_power / distance / 1000))/ ttw_eff"
-        )
-
-        return results
-
-        #return (rolling_resistance, air_resistance, gradient_resistance, braking_power, inertia)
+        return np.clip(total_power, 0, None)
