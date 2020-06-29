@@ -2,7 +2,7 @@ from .driving_cycles import get_standard_driving_cycle
 from .gradients import get_gradients
 import numexpr as ne
 import numpy as np
-import xarray
+import xarray as xr
 
 
 def _(o):
@@ -126,6 +126,7 @@ class EnergyConsumptionModel:
         ttw_efficiency,
         recuperation_efficiency=0,
         motor_power=0,
+        debug_mode=False
     ):
         """
         Calculate energy used and recuperated for a given vehicle per km driven.
@@ -185,22 +186,46 @@ class EnergyConsumptionModel:
         # Braking loss: when inertia is negative
         braking_loss = np.where(inertia <0, inertia *-1, 0)
 
-        total_resistance = rolling_resistance + air_resistance + gradient_resistance + inertia + braking_loss
+        total_resistance = rolling_resistance + air_resistance + gradient_resistance + inertia
 
-        # Power required: total resistance * velocity
-        total_power = total_resistance * self.velocity
+        if debug_mode==False:
 
-        # Recuperation of the braking power within the limit of the electric engine power
-        recuperated_power = (braking_loss * recuperation_efficiency.values.T) * self.velocity
-        recuperated_power = np.clip(recuperated_power, 0, motor_power.values.T*1000)
+            # Power required: total resistance * velocity
+            total_power = total_resistance * self.velocity
+            total_power = np.clip(total_power, 0, None)
+            # Recuperation of the braking power within the limit of the electric engine power
+            recuperated_power = (braking_loss * recuperation_efficiency.values.T) * self.velocity
+            recuperated_power = np.clip(recuperated_power, 0, motor_power.values.T*1000)
 
-        # Subtract recuperated power from total power, if any
-        total_power -= recuperated_power
-        # Total power per driving cycle to total power per km
-        total_power /= distance
-        # From power required at the wheels to power required by the engine
-        total_power /= ttw_efficiency.values.T
-        # From joules to kilojoules
-        total_power /= 1000
+            # Subtract recuperated power from total power, if any
+            total_power -= recuperated_power
+            # Total power per driving cycle to total power per km
+            total_power /= distance
+            # From power required at the wheels to power required by the engine
+            total_power /= ttw_efficiency.values.T
+            # From joules to kilojoules
+            total_power /= 1000
 
-        return np.clip(total_power, 0, None)
+            return total_power
+
+        else:
+            rolling_resistance *= (self.velocity )
+            air_resistance *= (self.velocity )
+            gradient_resistance *= (self.velocity )
+            inertia *= (self.velocity )
+            braking_loss *= (self.velocity )
+            total_power = total_resistance * (self.velocity)
+            total_power = np.clip(total_power, 0, None)
+
+            energy = total_power / ttw_efficiency.values.T
+
+            energy /= 1000
+
+            return (xr.DataArray(rolling_resistance.values, dims=["values", "year", "powertrain", "size"]),
+                    xr.DataArray(air_resistance.values, dims=["values", "year", "powertrain", "size"]),
+                    xr.DataArray(gradient_resistance.values, dims=["values", "year", "powertrain", "size"]),
+                    xr.DataArray(inertia, dims=["values", "year", "powertrain", "size"]),
+                    xr.DataArray(braking_loss, dims=["values", "year", "powertrain", "size"]),
+                    xr.DataArray(total_power.values, dims=["values", "year", "powertrain", "size"]),
+                    xr.DataArray(energy.values, dims=["values", "year", "powertrain", "size"]))
+

@@ -49,15 +49,14 @@ class TruckModel:
 
     """
 
-    def __init__(self, array, mappings=None, cycle=None, gradient=None):
+    def __init__(self, array, mappings=None, cycle=None):
 
         self.array = array
         self.mappings = mappings or DEFAULT_MAPPINGS
 
         if cycle is None:
             cycle = "Urban delivery"
-        if gradient is None:
-            gradient="Urban delivery"
+        gradient = cycle
 
         self.ecm = EnergyConsumptionModel(cycle=cycle, gradient=gradient)
 
