@@ -155,5 +155,8 @@
   "internal noise",
   "available payload",
   "energy battery mass",
-  "fuel mass"
+  "fuel mass",
+  "Nitrogen dioxide direct emissions, urban",
+  "Nitrogen dioxide direct emissions, suburban",
+  "Nitrogen dioxide direct emissions, rural"
 ]
