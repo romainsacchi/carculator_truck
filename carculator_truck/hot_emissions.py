@@ -34,7 +34,7 @@ class HotEmissionsModel:
                 "urban stop": -1
             },
             "Long haul": {"rural start": 0, "rural stop": -1},
-            "Regional delivery": {"rural start": 0, "rural stop": 250,
+            "Regional delivery": {"urban start": 0, "urban stop": 250,
                           "suburban start":251, "suburban stop":750,
                           "rural start":751, "rural stop":-1}
         }
@@ -45,7 +45,7 @@ class HotEmissionsModel:
         ef = pd.read_excel(fp)
         return ef.groupby(["powertrain", "euro_class", "size", "component"]).sum().to_xarray()
 
-    def get_emissions_per_powertrain(self, powertrain_type, euro_classes):
+    def get_emissions_per_powertrain(self, powertrain_type, euro_classes, debug_mode=False):
         """
         Calculate hot pollutants emissions given a powertrain type (i.e., diesel, CNG) and a EURO pollution class, per air sub-compartment
         (i.e., urban, suburban and rural).
@@ -62,7 +62,9 @@ class HotEmissionsModel:
         """
 
         arr = self.em.sel(powertrain=powertrain_type,
-                          euro_class=euro_classes)
+                          euro_class=euro_classes,
+                          size=["18t", "26t", "3.5t", "40t", "60t", "7.5t"],
+                          component=["HC","CO","NOx","PM","NO2","CH4","NMHC","Pb","SO2","N2O","NH3","Benzene"])
 
         cycle = self.cycle.reshape(-1, 1, 1, 6)
 
@@ -72,10 +74,6 @@ class HotEmissionsModel:
         intercept = arr["intercept"].values.transpose((2,0,1))
 
         em_arr = a + b + c + intercept
-
-        print(em_arr.shape)
-
-
 
         if powertrain_type not in ("diesel", "CNG"):
             raise TypeError("The powertrain type is not valid.")
@@ -88,13 +86,12 @@ class HotEmissionsModel:
         # If the driving cycle selected is instead specified by the user (passed directly as an array), we used
         # speed levels to compartmentalize emissions.
 
-
-        distance = self.cycle.sum() / 3600
+        distance = self.cycle.sum(axis=0) / 3600
 
         if "urban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["urban start"]
             stop = self.cycle_environment[self.cycle_name]["urban stop"]
-            dist_urban = self.cycle[start:stop].sum() / 3600
+            dist_urban = self.cycle[start:stop].sum(axis=0) / 3600
             urban = np.mean(em_arr[start:stop, :], axis=0) * (dist_urban / distance)
             urban /= 1000  # going from grams to kg
 
@@ -104,7 +101,7 @@ class HotEmissionsModel:
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
             stop = self.cycle_environment[self.cycle_name]["suburban stop"]
-            dist_suburban = self.cycle[start:stop].sum() / 3600
+            dist_suburban = self.cycle[start:stop].sum(axis=0) / 3600
             suburban = np.mean(em_arr[start:stop, :], axis=0) * (
                 dist_suburban / distance
             )
@@ -116,27 +113,21 @@ class HotEmissionsModel:
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
             stop = self.cycle_environment[self.cycle_name]["rural stop"]
-            dist_rural = self.cycle[start:stop].sum() / 3600
+            dist_rural = self.cycle[start:stop].sum(axis=0) / 3600
             rural = np.mean(em_arr[start:stop, :], axis=0) * (dist_rural / distance)
             rural /= 1000  # going from grams to kg
 
         else:
             rural = np.zeros((12, len(euro_classes), 6))
 
-        print(urban.shape)
-        print(suburban.shape)
-        print(rural.shape)
-        print(np.vstack(
-                (urban, suburban, rural)
-            ).shape)
+        res = np.vstack(
+            (urban, suburban, rural)
+        ).transpose(2,0,1)
 
-        if len(euro_classes)>1:
-            return np.vstack(
-                (urban, suburban, rural)
-            ).reshape(len(euro_classes), 1, 36, 6, 1)
+        if debug_mode==True:
+            return (urban, suburban, rural)
 
+        if len(euro_classes) > 1:
+            return res.reshape(6, 1, 36, len(euro_classes), 1)
         else:
-            return np.vstack(
-                (urban, suburban, rural)
-            ).reshape(len(euro_classes), 36, 6, 1)
-
+            return res.reshape(6, 36, len(euro_classes), 1)

@@ -9,21 +9,18 @@ import xarray as xr
 DEFAULT_MAPPINGS = {
     "electric": {"BEV", "PHEV-e"},
     "combustion": {
-        
-        
         "HEV-d",
-        
         "ICEV-g",
         "ICEV-d",
         "PHEV-c-d",
     },
-    "combustion_wo_cng": {  "HEV-d",  "ICEV-d", "PHEV-c-d"},
+    "combustion_wo_cng": {"HEV-d",  "ICEV-d", "PHEV-c-d"},
     "pure_combustion": { "ICEV-g", "ICEV-d"},
     "petrol": {  "PHEV-c-p"},
     "cng": {"ICEV-g"},
     "fuel_cell": {"FCEV"},
-    "hybrid": { "PHEV-e", "PHEV-c-d"},
-    "combustion_hybrid": { "PHEV-c-d"},
+    "hybrid": {"PHEV-e", "PHEV-c-d"},
+    "combustion_hybrid": {"PHEV-c-d"},
     "electric_hybrid": {"PHEV-e"},
     "diesel": {"ICEV-d", "PHEV-c-d", "HEV-d"},
     "battery": {"BEV"},
@@ -148,15 +145,15 @@ class TruckModel:
                 "driving mass"
             ].sum()
 
-        #self.adjust_cost()
+        self.adjust_cost()
 
         self.set_electric_utility_factor()
         self.set_electricity_consumption()
-        #self.set_costs()
+        self.set_costs()
         self.set_hot_emissions()
-        #self.set_noise_emissions()
+        self.set_noise_emissions()
         self.create_PHEV()
-        #self.drop_hybrid()
+        self.drop_hybrid()
 
         if (self["driving mass"] > self["gross mass"]).any() == True:
                 print("The driving mass of the following vehicles exceeds the permissible gross mass. "
@@ -253,7 +250,6 @@ class TruckModel:
                 "PHEV-d",
                 "FCEV",
                 "BEV",
-                
                 "HEV-d",
             ]
         )
@@ -345,6 +341,8 @@ class TruckModel:
             self["battery BoP mass"] = self["battery cell mass"] * (
                 1 - self["battery cell mass share"]
             )
+
+
 
     def set_auxiliaries(self):
         """
@@ -494,7 +492,6 @@ class TruckModel:
         self.array.loc[{"powertrain":"PHEV-d"}] = (self.array.loc[{"powertrain":"PHEV-e"}]  * self.array.loc[{"powertrain":"PHEV-e", "parameter":"electric utility factor"}] ) +\
                                                     (self.array.loc[{"powertrain":"PHEV-c-d"}] * (1 - self.array.loc[{"powertrain":"PHEV-e", "parameter":"electric utility factor"}]))
 
-
     def set_energy_stored_properties(self):
         """
         First, fuel mass is defined. It is dependent on the range required.
@@ -512,7 +509,7 @@ class TruckModel:
             cpm["oxidation energy stored"] = (cpm["fuel mass"] * cpm["LHV fuel MJ per kg"]) / 3.6
             cpm["fuel tank mass"] = (cpm["oxidation energy stored"] * cpm["CNG tank mass slope"]) + cpm["CNG tank mass intercept"]
 
-        for pt in [  "HEV-d", "ICEV-g", "ICEV-d",  "PHEV-c-d"]:
+        for pt in ["HEV-d", "ICEV-g", "ICEV-d",  "PHEV-c-d"]:
             with self(pt) as cpm:
                 cpm["battery power"] = cpm["electric power"]
                 cpm["battery cell mass"] = cpm["battery power"] / cpm["battery cell power density"]
@@ -526,6 +523,12 @@ class TruckModel:
                 cpm["energy battery mass"] = cpm["battery cell mass"] / cpm["battery cell mass share"]
                 cpm["battery BoP mass"] = cpm["energy battery mass"] - cpm["battery cell mass"]
 
+        with self("FCEV") as cpm:
+            cpm["fuel mass"] = (cpm["target range"] * (cpm["TtW energy"] / 1000)) / cpm["LHV fuel MJ per kg"]
+            cpm["oxidation energy stored"] = cpm["fuel mass"] * 120 / 3.6  # kWh
+            cpm["fuel tank mass"] = (
+                    cpm["oxidation energy stored"] * cpm["fuel tank mass per energy"]
+            )
 
         # kWh electricity/kg battery cell
         self["battery cell production energy electricity share"] = self[
@@ -662,40 +665,40 @@ class TruckModel:
 
         list_direct_emissions = [
             "Hydrocarbons direct emissions, urban",
-            "Hydrocarbons direct emissions, suburban",
-            "Hydrocarbons direct emissions, rural",
             "Carbon monoxide direct emissions, urban",
-            "Carbon monoxide direct emissions, suburban",
-            "Carbon monoxide direct emissions, rural",
             "Nitrogen oxides direct emissions, urban",
-            "Nitrogen oxides direct emissions, suburban",
-            "Nitrogen oxides direct emissions, rural",
             "Particulate matters direct emissions, urban",
-            "Particulate matters direct emissions, suburban",
-            "Particulate matters direct emissions, rural",
             "Nitrogen dioxide direct emissions, urban",
-            "Nitrogen dioxide direct emissions, suburban",
-            "Nitrogen dioxide direct emissions, rural",
             "Methane direct emissions, urban",
-            "Methane direct emissions, suburban",
-            "Methane direct emissions, rural",
             "NMVOC direct emissions, urban",
-            "NMVOC direct emissions, suburban",
-            "NMVOC direct emissions, rural",
             "Lead direct emissions, urban",
-            "Lead direct emissions, suburban",
-            "Lead direct emissions, rural",
             "Sulfur dioxide direct emissions, urban",
-            "Sulfur dioxide direct emissions, suburban",
-            "Sulfur dioxide direct emissions, rural",
             "Dinitrogen oxide direct emissions, urban",
-            "Dinitrogen oxide direct emissions, suburban",
-            "Dinitrogen oxide direct emissions, rural",
             "Ammonia direct emissions, urban",
-            "Ammonia direct emissions, suburban",
-            "Ammonia direct emissions, rural",
             "Benzene direct emissions, urban",
+            "Hydrocarbons direct emissions, suburban",
+            "Carbon monoxide direct emissions, suburban",
+            "Nitrogen oxides direct emissions, suburban",
+            "Particulate matters direct emissions, suburban",
+            "Nitrogen dioxide direct emissions, suburban",
+            "Methane direct emissions, suburban",
+            "NMVOC direct emissions, suburban",
+            "Lead direct emissions, suburban",
+            "Sulfur dioxide direct emissions, suburban",
+            "Dinitrogen oxide direct emissions, suburban",
+            "Ammonia direct emissions, suburban",
             "Benzene direct emissions, suburban",
+            "Hydrocarbons direct emissions, rural",
+            "Carbon monoxide direct emissions, rural",
+            "Nitrogen oxides direct emissions, rural",
+            "Particulate matters direct emissions, rural",
+            "Nitrogen dioxide direct emissions, rural",
+            "Methane direct emissions, rural",
+            "NMVOC direct emissions, rural",
+            "Lead direct emissions, rural",
+            "Sulfur dioxide direct emissions, rural",
+            "Dinitrogen oxide direct emissions, rural",
+            "Ammonia direct emissions, rural",
             "Benzene direct emissions, rural",
         ]
 
@@ -710,10 +713,6 @@ class TruckModel:
             if y >= 2012:
                 l_y.append(6)
 
-
-        print("-1 ", self.array.loc[dict(powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
-                            parameter=list_direct_emissions)].shape)
-
         self.array.loc[dict(powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
                             parameter=list_direct_emissions)] = hem.get_emissions_per_powertrain("diesel", euro_classes=l_y)
 
@@ -722,9 +721,6 @@ class TruckModel:
                             parameter=list_direct_emissions)] *= self.array.loc[dict(powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
                             parameter="emission factor")]
 
-        print("1 ", self.array.loc[dict(powertrain="ICEV-g",
-                            parameter=list_direct_emissions)].shape)
-        print("2 ",hem.get_emissions_per_powertrain("CNG",euro_classes=[6]).shape)
         # For CNG vehicles, we only have Euro cass 6 emission factors
         self.array.loc[dict(powertrain="ICEV-g",
                             parameter=list_direct_emissions)] = hem.get_emissions_per_powertrain("CNG",
@@ -735,7 +731,6 @@ class TruckModel:
                             parameter=list_direct_emissions)] *= self.array.loc[
             dict(powertrain="ICEV-g",
                  parameter="emission factor")]
-
 
     def set_noise_emissions(self):
         """
@@ -778,17 +773,42 @@ class TruckModel:
         ]
 
         self.array.loc[
-            :, list(self.combustion), list_noise_emissions, :, :
-        ] = nem.get_sound_power_per_compartment("combustion").reshape((24, 1, 1))
+            dict(powertrain=[
+                        "ICEV-g",
+                        "ICEV-d",
+                        "PHEV-c-d",
+            ],
+                 parameter=list_noise_emissions,
+                 size=["3.5t", "7.5t", "18t", "26t"])] = nem.get_sound_power_per_compartment("combustion", "medium")
+
         self.array.loc[
-            :, list(self.electric), list_noise_emissions, :, :
-        ] = nem.get_sound_power_per_compartment("electric").reshape((24, 1, 1))
+            dict(powertrain=[
+                        "ICEV-g",
+                        "ICEV-d",
+                        "PHEV-c-d",
+            ],
+                 parameter=list_noise_emissions,
+                 size=["40t", "60t"])] = nem.get_sound_power_per_compartment("combustion","heavy")
         self.array.loc[
-            :, list(self.fuel_cell), list_noise_emissions, :, :
-        ] = nem.get_sound_power_per_compartment("electric").reshape((24, 1, 1))
+            dict(powertrain=["BEV", "FCEV", "PHEV-e"],
+                 parameter=list_noise_emissions,
+                 size=["3.5t", "7.5t", "18t", "26t"])] = nem.get_sound_power_per_compartment("electric",
+                                                                                             "medium")
         self.array.loc[
-            :, [ "HEV-d"], list_noise_emissions, :, :
-        ] = nem.get_sound_power_per_compartment("hybrid").reshape((24, 1, 1))
+            dict(powertrain=["BEV", "FCEV", "PHEV-e"],
+                 parameter=list_noise_emissions,
+                 size=["40t", "60t"])] = nem.get_sound_power_per_compartment("electric", "heavy")
+
+        self.array.loc[
+            dict(powertrain=["HEV-d"],
+                 parameter=list_noise_emissions,
+                 size=["3.5t", "7.5t", "18t", "26t"])] = nem.get_sound_power_per_compartment("hybrid",
+                                                                                             "medium")
+
+        self.array.loc[
+            dict(powertrain=["HEV-d"],
+                 parameter=list_noise_emissions,
+                 size=["40t", "60t"])] = nem.get_sound_power_per_compartment("hybrid", "heavy")
 
     def calculate_cost_impacts(self, sensitivity=False, scope=None):
         """

@@ -29301,7 +29301,7 @@
         "minimum": 200,
         "maximum": 450
     },
-    "984-2000-energy storage battery cost per kWh": {
+    "984-2000-energy battery cost per kWh": {
         "amount": 225,
         "category": "Costs",
         "powertrain": [
@@ -29319,7 +29319,7 @@
         ],
         "type": "all",
         "year": 2000,
-        "name": "energy storage battery cost per kWh",
+        "name": "energy battery cost per kWh",
         "unit": "\u20ac/kWh",
         "importance": "",
         "source": "",
@@ -29331,7 +29331,7 @@
         "minimum": 180,
         "maximum": 270
     },
-    "985-2010-energy storage battery cost per kWh": {
+    "985-2010-energy battery cost per kWh": {
         "amount": 225,
         "category": "Costs",
         "powertrain": [
@@ -29349,7 +29349,7 @@
         ],
         "type": "all",
         "year": 2010,
-        "name": "energy storage battery cost per kWh",
+        "name": "energy battery cost per kWh",
         "unit": "\u20ac/kWh",
         "importance": "",
         "source": "",
@@ -29361,7 +29361,7 @@
         "minimum": 180,
         "maximum": 270
     },
-    "986-2020-energy storage battery cost per kWh": {
+    "986-2020-energy battery cost per kWh": {
         "amount": 225,
         "category": "Costs",
         "powertrain": [
@@ -29379,7 +29379,7 @@
         ],
         "type": "all",
         "year": 2020,
-        "name": "energy storage battery cost per kWh",
+        "name": "energy battery cost per kWh",
         "unit": "\u20ac/kWh",
         "importance": "",
         "source": "",
@@ -29391,7 +29391,7 @@
         "minimum": 180,
         "maximum": 270
     },
-    "987-2030-energy storage battery cost per kWh": {
+    "987-2030-energy battery cost per kWh": {
         "amount": 225,
         "category": "Costs",
         "powertrain": [
@@ -29409,7 +29409,7 @@
         ],
         "type": "all",
         "year": 2030,
-        "name": "energy storage battery cost per kWh",
+        "name": "energy battery cost per kWh",
         "unit": "\u20ac/kWh",
         "importance": "",
         "source": "",
@@ -29421,7 +29421,7 @@
         "minimum": 180,
         "maximum": 270
     },
-    "988-2040-energy storage battery cost per kWh": {
+    "988-2040-energy battery cost per kWh": {
         "amount": 90,
         "category": "Costs",
         "powertrain": [
@@ -29439,7 +29439,7 @@
         ],
         "type": "all",
         "year": 2040,
-        "name": "energy storage battery cost per kWh",
+        "name": "energy battery cost per kWh",
         "unit": "\u20ac/kWh",
         "importance": "",
         "source": "",
