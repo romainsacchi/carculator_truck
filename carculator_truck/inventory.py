@@ -2134,7 +2134,7 @@ class InventoryCalculation:
         ] = (
             (array[self.array_inputs["glider base mass"], :])
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2150,22 +2150,69 @@ class InventoryCalculation:
                 * array[self.array_inputs["glider base mass"], :]
             )
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
+
+        index_16t = [
+                        self.inputs[i]
+                        for i in self.inputs
+                        if any(x in i[0] for x in ("3.5t", "7.5t", "18t"))
+                    ]
+        index_arr_16t = self.get_index_vehicle_from_array(["3.5t", "7.5t", "18t"])
+        index_28t = [
+                        self.inputs[i]
+                        for i in self.inputs
+                        if "26t" in i[0]
+                    ]
+        index_arr_28t = self.get_index_vehicle_from_array(["28t"])
+        index_40t = [
+                        self.inputs[i]
+                        for i in self.inputs
+                        if any(x in i[0] for x in ("40t", "60t"))
+                    ]
+        index_arr_40t = self.get_index_vehicle_from_array(["40t", "60t"])
+
+        print(index_16t)
+        print(index_arr_16t)
+        self.A[
+            :,
+            self.inputs[
+                (
+                    "maintenance, lorry 16 metric ton",
+                    "CH",
+                    "unit",
+                    "maintenance, lorry 16 metric ton",
+                )
+            ],
+            index_16t
+        ] = (1 / array[self.array_inputs["lifetime kilometers"], index_arr_16t]) / (array[self.array_inputs["total cargo mass"], index_arr_16t] / 1000) * -1
 
         self.A[
             :,
             self.inputs[
                 (
-                    "maintenance, passenger car",
-                    "RER",
+                    "maintenance, lorry 28 metric ton",
+                    "CH",
                     "unit",
-                    "passenger car maintenance",
+                    "maintenance, lorry 28 metric ton",
                 )
             ],
-            -self.number_of_cars :,
-        ] = (array[self.array_inputs["curb mass"], :] / 1240 / 150000 / array[self.array_inputs["total cargo mass"], :] * -1)
+            index_28t
+        ] = 1 / array[self.array_inputs["lifetime kilometers"], index_arr_28t] / (array[self.array_inputs["total cargo mass"], index_arr_28t] / 1000) * -1
+
+        self.A[
+            :,
+            self.inputs[
+                (
+                    "maintenance, lorry 40 metric ton",
+                    "CH",
+                    "unit",
+                    "maintenance, lorry 40 metric ton",
+                )
+            ],
+            index_40t
+        ] = 1 / array[self.array_inputs["lifetime kilometers"], index_arr_40t] / (array[self.array_inputs["total cargo mass"], index_arr_40t] / 1000) * -1
 
         # Glider EoL
         self.A[
@@ -2183,7 +2230,7 @@ class InventoryCalculation:
             array[self.array_inputs["curb mass"], :]
             * (1 - array[self.array_inputs["combustion power share"], :])
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2202,7 +2249,7 @@ class InventoryCalculation:
             array[self.array_inputs["curb mass"], :]
             * array[self.array_inputs["combustion power share"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2221,7 +2268,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["charger mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2239,7 +2286,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["converter mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2257,7 +2304,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["electric engine mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2275,7 +2322,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["inverter mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2293,7 +2340,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["power distribution unit mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2324,7 +2371,7 @@ class InventoryCalculation:
         ] = (
             array[[self.array_inputs[l] for l in l_elec_pt], :].sum(axis=0)
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
         )
 
         self.A[
@@ -2349,7 +2396,7 @@ class InventoryCalculation:
                 ].sum(axis=0)
             )
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2360,7 +2407,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["fuel cell ancillary BoP mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2371,7 +2418,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["fuel cell essential BoP mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2382,7 +2429,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["fuel cell stack mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2426,7 +2473,7 @@ class InventoryCalculation:
                 * (1 + array[self.array_inputs["battery lifetime replacements"], :])
             )
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2443,7 +2490,7 @@ class InventoryCalculation:
                 * (1 + array[self.array_inputs["fuel cell lifetime replacements"], :])
             )
             / array[self.array_inputs["lifetime kilometers"], :]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         )
 
@@ -2522,7 +2569,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["fuel tank mass"], :, index]
             / array[self.array_inputs["lifetime kilometers"], :, index]
-            / array[self.array_inputs["total cargo mass"], :, index]
+            / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
             * -1
         ).T
 
@@ -2541,7 +2588,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["fuel tank mass"], :, index]
             / array[self.array_inputs["lifetime kilometers"], :, index]
-            / array[self.array_inputs["total cargo mass"], :, index]
+            / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
             * -1
         ).T
 
@@ -2580,7 +2627,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["fuel tank mass"], :, index]
             / array[self.array_inputs["lifetime kilometers"], :, index]
-            / array[self.array_inputs["total cargo mass"], :, index]
+            / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
             * -1
         ).T
 
@@ -2639,7 +2686,7 @@ class InventoryCalculation:
                     )
                 ] = (
                     array[self.array_inputs["electricity consumption"], :, index]
-                    / array[self.array_inputs["total cargo mass"], :, index] * -1
+                    / (array[self.array_inputs["total cargo mass"], :, index] / 1000) * -1
                 ).T.reshape(
                     self.iterations, 1, -1
                 )
@@ -2700,7 +2747,7 @@ class InventoryCalculation:
                 ] = (
                     array[self.array_inputs["fuel mass"], :, ind_array]
                     / array[self.array_inputs["target range"], :, ind_array]
-                    / array[self.array_inputs["total cargo mass"], :, ind_array]
+                    / (array[self.array_inputs["total cargo mass"], :, ind_array] / 1000)
                     * -1
                 ).T
 
@@ -2759,7 +2806,7 @@ class InventoryCalculation:
                 ] = (
                     (array[self.array_inputs["fuel mass"], :, ind_array])
                     / array[self.array_inputs["target range"], :, ind_array]
-                    / array[self.array_inputs["total cargo mass"], :, ind_array]
+                    / (array[self.array_inputs["total cargo mass"], :, ind_array] / 1000)
                     * -1
                 ).T
 
@@ -2788,7 +2835,7 @@ class InventoryCalculation:
                         )
                     )
                     / array[self.array_inputs["target range"], :, ind_array]
-                    / array[self.array_inputs["total cargo mass"], :, ind_array]
+                    / (array[self.array_inputs["total cargo mass"], :, ind_array] / 1000)
                     * -1
                 ).T
 
@@ -2850,7 +2897,7 @@ class InventoryCalculation:
                 ] = (
                     (array[self.array_inputs["fuel mass"], :, ind_array])
                     / array[self.array_inputs["target range"], :, ind_array]
-                    / array[self.array_inputs["total cargo mass"], :, ind_array]
+                    / (array[self.array_inputs["total cargo mass"], :, ind_array] / 1000)
                     * -1
                 ).T
 
@@ -2879,7 +2926,153 @@ class InventoryCalculation:
                         )
                     )
                     / array[self.array_inputs["target range"], :, ind_array]
-                    / array[self.array_inputs["total cargo mass"], :, ind_array]
+                    / (array[self.array_inputs["total cargo mass"], :, ind_array] / 1000)
+                    * -1
+                ).T
+
+                # Heavy metals emissions from conventional diesel
+                # Emission factors from Spielmann et al., Transport Services Data v.2 (2007)
+                # Cadmium, 0.01 mg/kg diesel
+                self.A[
+                    :,
+                    self.inputs[("Cadmium", ("air","urban air close to ground"), "kilogram")],
+                    ind_A,
+                ] = (
+                    (
+                         (
+                            array[self.array_inputs["fuel mass"], :, ind_array]
+                            * share
+                        ) * 1e-8
+                    )
+                    / array[self.array_inputs["range"], :, ind_array]
+                    * -1
+                ).T
+
+                # Copper, 1.7 mg/kg diesel
+                self.A[
+                    :,
+                    self.inputs[("Copper", ("air","urban air close to ground"), "kilogram")],
+                    ind_A,
+                ] = (
+                    (
+                         (
+                            array[self.array_inputs["fuel mass"], :, ind_array]
+                            * share
+                        ) * 1.7e-6
+                    )
+                    / array[self.array_inputs["range"], :, ind_array]
+                    * -1
+                ).T
+
+                # Chromium, 0.05 mg/kg diesel
+                self.A[
+                    :,
+                    self.inputs[("Chromium", ("air","urban air close to ground"), "kilogram")],
+                    ind_A,
+                ] = (
+                    (
+                         (
+                            array[self.array_inputs["fuel mass"], :, ind_array]
+                            * share
+                        ) * 5.0e-8
+                    )
+                    / array[self.array_inputs["range"], :, ind_array]
+                    * -1
+                ).T
+
+                # Nickel, 0.07 mg/kg diesel
+                self.A[
+                    :,
+                    self.inputs[("Nickel", ("air","urban air close to ground"), "kilogram")],
+                    ind_A,
+                ] = (
+                    (
+                         (
+                            array[self.array_inputs["fuel mass"], :, ind_array]
+                            * share
+                        ) * 7.0e-8
+                    )
+                    / array[self.array_inputs["range"], :, ind_array]
+                    * -1
+                ).T
+
+                # Selenium, 0.01 mg/kg diesel
+                self.A[
+                    :,
+                    self.inputs[("Selenium", ("air","urban air close to ground"), "kilogram")],
+                    ind_A,
+                ] = (
+                    (
+                         (
+                            array[self.array_inputs["fuel mass"], :, ind_array]
+                            * share
+                        ) * 1.0e-8
+                    )
+                    / array[self.array_inputs["range"], :, ind_array]
+                    * -1
+                ).T
+
+                # Zinc, 1 mg/kg diesel
+                self.A[
+                    :,
+                    self.inputs[("Zinc", ("air","urban air close to ground"), "kilogram")],
+                    ind_A,
+                ] = (
+                    (
+                         (
+                            array[self.array_inputs["fuel mass"], :, ind_array]
+                            * share
+                        ) * 1.0e-6
+                    )
+                    / array[self.array_inputs["range"], :, ind_array]
+                    * -1
+                ).T
+
+                # Lead, 1.1e-7 mg/kg diesel
+                # self.A[
+                #     :,
+                #     self.inputs[("Lead", ("air", "urban air close to ground"), "kilogram")],
+                #     ind_A,
+                # ] = (
+                #     (
+                #          (
+                #             array[self.array_inputs["fuel mass"], :, ind_array]
+                #             * share
+                #         ) * 1.1e-13
+                #     )
+                #     / array[self.array_inputs["range"], :, ind_array]
+                #     * -1
+                # ).T
+
+                # Mercury, 0.00002 mg/kg diesel
+                # self.A[
+                #     :,
+                #     self.inputs[("Mercury", ("air", "urban air close to ground"), "kilogram")],
+                #     ind_A,
+                # ] = (
+                #     (
+                #          (
+                #             array[self.array_inputs["fuel mass"], :, ind_array]
+                #             * share
+                #         ) * 2.0e-11
+                #     )
+                #     / array[self.array_inputs["range"], :, ind_array]
+                #     * -1
+                # ).T
+
+                # Chromium VI, 0.0001 mg/kg diesel
+                self.A[
+                    :,
+                    self.inputs[("Chromium VI", ("air", "urban air close to ground"), "kilogram")],
+                    ind_A,
+                ] = (
+                    (
+                         (
+                            array[self.array_inputs["fuel mass"], :, ind_array]
+                            * share
+                        ) * 1.0e-10
+                    )
+                    / array[self.array_inputs["range"], :, ind_array]
                     * -1
                 ).T
 
@@ -2888,49 +3081,55 @@ class InventoryCalculation:
             :,
             self.inputs[
                 (
-                    "market for road wear emissions, passenger car",
-                    "GLO",
+                    "treatment of road wear emissions, lorry",
+                    "RER",
                     "kilogram",
-                    "road wear emissions, passenger car",
+                    "road wear emissions, lorry",
                 )
             ],
             -self.number_of_cars :,
-        ] = (array[self.array_inputs["driving mass"], :] * 1e-08
-             / array[self.array_inputs["total cargo mass"], :])
+        ] = (array[self.array_inputs["driving mass"], :] * 7e-09
+             / (array[self.array_inputs["total cargo mass"], :] / 1000))
         self.A[
             :,
             self.inputs[
                 (
-                    "market for tyre wear emissions, passenger car",
-                    "GLO",
+                    "treatment of tyre wear emissions, passenger car",
+                    "RER",
                     "kilogram",
                     "tyre wear emissions, passenger car",
                 )
             ],
             -self.number_of_cars :,
-        ] = (array[self.array_inputs["driving mass"], :] * 6e-08
-             / array[self.array_inputs["total cargo mass"], :])
+        ] = (array[self.array_inputs["driving mass"], :] * 8.055e-8
+             / (array[self.array_inputs["total cargo mass"], :] / 1000))
         self.A[
             :,
             self.inputs[
                 (
-                    "market for brake wear emissions, passenger car",
-                    "GLO",
+                    "treatment of brake wear emissions, lorry",
+                    "RER",
                     "kilogram",
-                    "brake wear emissions, passenger car",
+                    "brake wear emissions, lorry",
                 )
             ],
             -self.number_of_cars :,
-        ] = (array[self.array_inputs["driving mass"], :] * 5e-09
-             / array[self.array_inputs["total cargo mass"], :])
+        ] = (array[self.array_inputs["driving mass"], :] * 8.13e-9
+             / (array[self.array_inputs["total cargo mass"], :] / 1000))
 
         # Infrastructure
         self.A[
             :,
             self.inputs[("market for road", "GLO", "meter-year", "road")],
             -self.number_of_cars :,
-        ] = (5.37e-7 * array[self.array_inputs["driving mass"], :]
-             / array[self.array_inputs["total cargo mass"], :] * -1)
+        ] = 5.37e-4 * -1
+
+        # Infrastructure maintenance
+        self.A[
+            :,
+            self.inputs[("market for road maintenance", "RER", "meter-year", "road maintenance")],
+            -self.number_of_cars :,
+        ] = (1.29e-3 / (array[self.array_inputs["total cargo mass"], :] / 1000) * -1)
 
         # Exhaust emissions
         # Non-fuel based emissions
@@ -2941,9 +3140,49 @@ class InventoryCalculation:
                     for x in self.index_emissions
                 ]
             ]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         ).transpose([1, 0, 2])
+
+        # End-of-life disposal and treatment
+        self.A[
+            :,
+            self.inputs[
+                (
+                    "treatment of used lorry, 16 metric ton",
+                    "CH",
+                    "unit",
+                    "used lorry, 16 metric ton",
+                )
+            ],
+            index_16t
+        ] = -1
+
+        self.A[
+            :,
+            self.inputs[
+                (
+                    "treatment of used lorry, 28 metric ton",
+                    "CH",
+                    "unit",
+                    "used lorry, 28 metric ton",
+                )
+            ],
+            index_28t
+        ] = -1
+
+        self.A[
+            :,
+            self.inputs[
+                (
+                    "treatment of used lorry, 40 metric ton",
+                    "CH",
+                    "unit",
+                    "used lorry, 40 metric ton",
+                )
+            ],
+            index_40t
+        ] = -1
 
         # Noise emissions
         self.A[:, self.index_noise, -self.number_of_cars :] = (
@@ -2953,7 +3192,7 @@ class InventoryCalculation:
                     for x in self.index_noise
                 ]
             ]
-            / array[self.array_inputs["total cargo mass"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         ).transpose([1, 0, 2])
         print("*********************************************************************")
