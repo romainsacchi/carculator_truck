@@ -29,23 +29,31 @@ class HotEmissionsModel:
         self.cycle_name = cycle_name
 
         self.cycle_environment = {
-            "Urban delivery": {
-                "urban start": 0,
-                "urban stop": -1
-            },
+            "Urban delivery": {"urban start": 0, "urban stop": -1},
             "Long haul": {"rural start": 0, "rural stop": -1},
-            "Regional delivery": {"urban start": 0, "urban stop": 250,
-                          "suburban start":251, "suburban stop":750,
-                          "rural start":751, "rural stop":-1}
+            "Regional delivery": {
+                "urban start": 0,
+                "urban stop": 250,
+                "suburban start": 251,
+                "suburban stop": 750,
+                "rural start": 751,
+                "rural stop": -1,
+            },
         }
         self.em = self.get_emission_factors()
 
     def get_emission_factors(self):
         fp = DATA_DIR / "HEM_factors_trucks.xlsx"
         ef = pd.read_excel(fp)
-        return ef.groupby(["powertrain", "euro_class", "size", "component"]).sum().to_xarray()
+        return (
+            ef.groupby(["powertrain", "euro_class", "size", "component"])
+            .sum()
+            .to_xarray()
+        )
 
-    def get_emissions_per_powertrain(self, powertrain_type, euro_classes, debug_mode=False):
+    def get_emissions_per_powertrain(
+        self, powertrain_type, euro_classes, debug_mode=False
+    ):
         """
         Calculate hot pollutants emissions given a powertrain type (i.e., diesel, CNG) and a EURO pollution class, per air sub-compartment
         (i.e., urban, suburban and rural).
@@ -61,22 +69,40 @@ class HotEmissionsModel:
         :rtype: numpy.array
         """
 
-        arr = self.em.sel(powertrain=powertrain_type,
-                          euro_class=euro_classes,
-                          size=["18t", "26t", "3.5t", "40t", "60t", "7.5t"],
-                          component=["HC","CO","NOx","PM","NO2","CH4","NMHC","Pb","SO2","N2O","NH3","Benzene"])
+        arr = self.em.sel(
+            powertrain=powertrain_type,
+            euro_class=euro_classes,
+            size=["18t", "26t", "3.5t", "40t", "60t", "7.5t"],
+            component=[
+                "HC",
+                "CO",
+                "NOx",
+                "PM",
+                "NO2",
+                "CH4",
+                "NMHC",
+                "Pb",
+                "SO2",
+                "N2O",
+                "NH3",
+                "Benzene",
+            ],
+        ).transpose()
 
         cycle = self.cycle.reshape(-1, 1, 1, 6)
 
-        a = np.power(arr["a"].values, 3).transpose((2,0,1)) * cycle
-        b = np.power(arr["b"].values, 2).transpose((2,0,1)) * cycle
-        c = arr["c"].values.transpose((2,0,1)) * cycle
-        intercept = arr["intercept"].values.transpose((2,0,1))
+        a = arr["a"].values * cycle ** 3
+        b = arr["b"].values * cycle ** 2
+        c = arr["c"].values * cycle
+        intercept = arr["intercept"].values
 
         em_arr = a + b + c + intercept
 
         if powertrain_type not in ("diesel", "CNG"):
             raise TypeError("The powertrain type is not valid.")
+
+        if debug_mode == True:
+            return em_arr
 
         # In case the fit produces negative numbers
         em_arr[em_arr < 0] = 0
@@ -96,7 +122,7 @@ class HotEmissionsModel:
             urban /= 1000  # going from grams to kg
 
         else:
-            urban = np.zeros((12, len(euro_classes), 6))
+            urban = np.zeros((12, 6, 6))
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -108,7 +134,7 @@ class HotEmissionsModel:
             suburban /= 1000  # going from grams to kg
 
         else:
-            suburban = np.zeros((12, len(euro_classes), 6))
+            suburban = np.zeros((12, 6, 6))
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -118,16 +144,15 @@ class HotEmissionsModel:
             rural /= 1000  # going from grams to kg
 
         else:
-            rural = np.zeros((12, len(euro_classes), 6))
+            rural = np.zeros((12, 6, 6))
 
-        res = np.vstack(
-            (urban, suburban, rural)
-        ).transpose(2,0,1)
+        res = np.vstack((urban, suburban, rural)).transpose((1, 0, 2))
 
-        if debug_mode==True:
+        if debug_mode == True:
             return (urban, suburban, rural)
 
-        if len(euro_classes) > 1:
-            return res.reshape(6, 1, 36, len(euro_classes), 1)
+        if powertrain_type=="diesel":
+            return res[:, np.newaxis, :, :, np.newaxis]
         else:
-            return res.reshape(6, 36, len(euro_classes), 1)
+            return res[..., np.newaxis]
+
