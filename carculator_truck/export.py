@@ -116,7 +116,6 @@ class ExportInventory:
             ),
 
         }
-
         self.map_ecoinvent_remind= {
             (
                 "biogas upgrading - sewage sludge - amine scrubbing - best",
@@ -131,8 +130,13 @@ class ExportInventory:
             ),
 
         }
-
         self.map_36_to_35 = {
+            ("market for water, completely softened", "RER", "kilogram", "water, completely softened"): (
+                "market for water, completely softened, from decarbonised water, at user",
+                "GLO",
+                "kilogram",
+                "water, completely softened, from decarbonised water, at user",
+            ),
             ("market for nylon 6", "RoW", "kilogram", "nylon 6"): (
                 "market for nylon 6",
                 "GLO",
@@ -206,6 +210,12 @@ class ExportInventory:
                 "kilogram",
                 "water, deionised, from tap water, at user",
             ),
+            ("water production, deionised", "Europe without Switzerland", "kilogram", "water, deionised"): (
+                "market for water, deionised, from tap water, at user",
+                "CH",
+                "kilogram",
+                "water, deionised, from tap water, at user",
+            ),
             (
                 "market for styrene butadiene rubber (SBR)",
                 "RER",
@@ -246,15 +256,49 @@ class ExportInventory:
                 "kilogram",
                 "water, ultrapure",
             ),
+            ("market for water, ultrapure", "RER", "kilogram", "water, ultrapure"): (
+                "market for water, ultrapure",
+                "GLO",
+                "kilogram",
+                "water, ultrapure",
+            ),
             ("market for concrete block", "DE", "kilogram", "concrete block"): (
                 "market for concrete block",
                 "GLO",
                 "kilogram",
                 "concrete block",
             ),
+            ("market for road maintenance", "RER", "meter-year", "road maintenance"): (
+                "market for road maintenance",
+                "GLO",
+                "meter-year",
+                "road maintenance",
+            ),
         }
-
         self.map_36_to_uvek = self.load_mapping_36_to_uvek()
+        self.tags = self.load_tags()
+
+    def load_tags(self):
+        """Loads dictionary of tags for further use in BW2"""
+
+        filename = "tags.csv"
+        filepath = DATA_DIR / filename
+        if not filepath.is_file():
+            raise FileNotFoundError(
+                "The dictionary of tags could not be found."
+            )
+        with open(filepath) as f:
+            csv_list = [
+                [val.strip() for val in r.split(";")] for r in f.readlines()
+            ]
+        data = csv_list
+
+        dict_tags = {}
+        for row in data:
+            name, tag = row
+            dict_tags[name] = tag
+
+        return dict_tags
 
     def load_mapping_36_to_uvek(self):
         """Load mapping dictionary between ecoinvent 3.6 and UVEK"""
@@ -279,7 +323,6 @@ class ExportInventory:
 
         return dict_uvek
 
-
     def write_lci(self, presamples, ecoinvent_compatibility, ecoinvent_version):
         """
         Return the inventory as a dictionary
@@ -294,7 +337,7 @@ class ExportInventory:
         """
 
         # List of activities that are already part of the REMIND-ecoinvent database.
-        # They should not appear in the exported inventories, otherwise they will be duplicate
+        # They should not appear in the exported inventories, otherwise they will be duplicates
         activities_to_be_removed = [
             "algae cultivation | algae broth production",
             "algae harvesting| dry algae production",
@@ -316,7 +359,6 @@ class ExportInventory:
             "Biodiesel from algae",
             "Maize cultivation, drying and storage {RER} | Maize production Europe | Alloc Rec, U",
             "Fischer Tropsch reactor and upgrading plant, construction",
-            #"Methanol Synthesis",
             "Walls and foundations, for hydrogen refuelling station",
             "container, with pipes and fittings, for diaphragm compressor",
             "RWGS tank construction",
@@ -329,18 +371,12 @@ class ExportInventory:
             "Hydrogen, gaseous, 700 bar, from SMR NG w/o CCS, at H2 fuelling station",
             "transformer and rectifier unit, for electrolyzer",
             "PEM electrolyzer, ACDC Converter",
-            #"Hydrogen, gaseous, 25 bar, from electrolysis",
             "carbon dioxide, captured from atmosphere",
             "PEM electrolyzer, Balance of Plant",
-            #"Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station",
             "Sabatier reaction methanation unit",
-            #"Diesel production, synthetic, Fischer Tropsch process",
-            #"Gasoline production, synthetic, from methanol",
-            #"Syngas, RWGS, Production",
             "PEM electrolyzer, Stack",
             "hot water tank, carbon dioxide capture process",
             "cooling unit, carbon dioxide capture process",
-            #"Methane production, synthetic, from electrochemical methanation",
             "diaphragm compressor module, high pressure",
             "carbon dioxide capture system",
             "Hydrogen dispenser, for gaseous hydrogen",
@@ -349,13 +385,34 @@ class ExportInventory:
             "Disposal, hydrogen fuelling station",
             "production of 2 wt-% potassium iodide solution",
             "production of nickle-based catalyst for methanation",
-            #"Methanol distillation",
             "wiring and tubing, carbon dioxide capture process",
             "control panel, carbon dioxide capture process",
             "adsorption and desorption unit, carbon dioxide capture process",
             "Buffer tank",
             "frequency converter, for diaphragm compressor",
-            'Hydrogen, gaseous, 30 bar, from hard coal gasification and reforming, at coal gasification plant'
+            'Hydrogen, gaseous, 30 bar, from hard coal gasification and reforming, at coal gasification plant',
+            'Methanol distillation',
+            'CO2 storage/at H2 production plant, pre, pipeline 200km, storage 1000m',
+            'Syngas, RWGS, Production',
+            'softwood forestry, mixed species, sustainable forest management, CF = -1',
+            'hardwood forestry, mixed species, sustainable forest management, CF = -1',
+            'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass with CCS, at gasification plant',
+            'market for wood chips, wet, measured as dry mass, CF = -1',
+            'Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station',
+            'Hydrogen, gaseous, 25 bar, from electrolysis',
+            'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at H2 fuelling station',
+            'SMR BM, HT+LT, + CCS (MDEA), 98 (average), digestate incineration, 26 bar',
+            'Hydrogen, gaseous, 700 bar, from SMR of biogas, at H2 fuelling station',
+            'SMR NG + CCS (MDEA), 98 (average), 25 bar',
+            'SMR BM, HT+LT, with digestate incineration, 26 bar',
+            'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at H2 fuelling station',
+            'Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at H2 fuelling station',
+            'Hydrogen, gaseous, 700 bar, from SMR NG w CCS, at H2 fuelling station',
+            'SMR NG + CCS (MDEA), 98 (average), 700 bar',
+            'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass, at gasification plant',
+            'Methanol Synthesis',
+            'Diesel production, synthetic, Fischer Tropsch process',
+            'Gasoline production, synthetic, from methanol'
         ]
 
         uvek_activities_to_remove = [
@@ -365,6 +422,10 @@ class ExportInventory:
             "market for molybdenum trioxide",
             "market for nickel sulfate",
             "market for soda ash, light, crystalline, heptahydrate",
+        ]
+
+        ei35_activities_to_remove = [
+            "latex production"
         ]
 
         uvek_multiplication_factors = {
@@ -418,12 +479,6 @@ class ExportInventory:
                         tuple_input, tuple_input
                     )
 
-                #if (ecoinvent_compatibility == False
-                #    and tuple_output[0].startswith("fuel supply")
-                #    and tuple_input[0].startswith("electricity market")):
-                #    continue
-
-
                 if ecoinvent_compatibility == True:
 
                     tuple_output = self.map_remind_ecoinvent.get(
@@ -437,6 +492,12 @@ class ExportInventory:
                         tuple_output = self.map_36_to_35.get(tuple_output, tuple_output)
                         tuple_input = self.map_36_to_35.get(tuple_input, tuple_input)
 
+                        if tuple_output[0] in ei35_activities_to_remove:
+                            continue
+
+                        if tuple_input[0] in ei35_activities_to_remove:
+                            continue
+
                     if ecoinvent_version == "uvek":
 
                         tuple_output = self.map_36_to_uvek.get(tuple_output, tuple_output)
@@ -446,7 +507,6 @@ class ExportInventory:
                         else:
                             tuple_input = self.map_36_to_uvek.get(tuple_input, tuple_input)
 
-                        #print(tuple_input[0])
                         if tuple_input[0] in uvek_multiplication_factors:
                             mult_factor = uvek_multiplication_factors[tuple_input[0]]
 
@@ -484,6 +544,13 @@ class ExportInventory:
                     #    amount = np.median(self.array[:, row, col])
                     #    uncertainty = self.best_fit_distribution(self.array[:, row, col] * -1)
 
+                # Look for a tag, if any
+                tag = [self.tags[t] for t in list(self.tags.keys()) if t in tuple_input[0]]
+                if len(tag)>0:
+                    tag = tag[0]
+                else:
+                    tag = "other"
+
                 # If reference product
                 if tuple_output == tuple_input:
                     list_exc.append(
@@ -498,6 +565,7 @@ class ExportInventory:
                         }
                     )
                     list_exc[-1].update(uncertainty)
+
                 # If not, if input is technosphere exchange
                 elif len(tuple_input) > 3:
                     list_exc.append(
@@ -509,9 +577,11 @@ class ExportInventory:
                             "type": "technosphere",
                             "location": tuple_input[1],
                             "reference product": tuple_input[3],
+                            "tag":tag
                         }
                     )
                     list_exc[-1].update(uncertainty)
+
                 # If not, then input is biosphere exchange
                 else:
                     list_exc.append(
@@ -522,10 +592,20 @@ class ExportInventory:
                             "unit": tuple_input[2],
                             "type": "biosphere",
                             "categories": tuple_input[1],
+                            "tag":tag
                         }
                     )
                     list_exc[-1].update(uncertainty)
+
             else:
+
+                # Look for a tag, if any
+                tag = [self.tags[t] for t in list(self.tags.keys()) if t in tuple_output[0]]
+                if len(tag)>0:
+                    tag = tag[0]
+                else:
+                    tag = "other"
+
                 list_act.append(
                     {
                         "production amount": 1,
@@ -537,6 +617,7 @@ class ExportInventory:
                         "reference product": tuple_output[3],
                         "type": "process",
                         "code": str(uuid.uuid1()),
+                        "tag":tag
                     }
                 )
         if presamples:
@@ -619,6 +700,7 @@ class ExportInventory:
                                 "categories",
                                 "type",
                                 "reference product",
+                                "tag"
                             ],
                         )
                     )
@@ -634,6 +716,7 @@ class ExportInventory:
                                 "::".join(e.get("categories", ())),
                                 e["type"],
                                 e.get("reference product"),
+                                e.get("tag", "other")
                             ]
                         )
                 else:
