@@ -1,10 +1,10 @@
 split;category;search by;search for
-components;direct - non-exhaust;name;market for tyre wear emissions, passenger car
-components;direct - non-exhaust;name;market for road wear emissions, passenger car
-components;direct - non-exhaust;name;market for brake wear emissions, passenger car
+components;direct - non-exhaust;name;treatment of road wear
+components;direct - non-exhaust;name;treatment of brake wear
+components;direct - non-exhaust;name;treatment of tyre wear
 components;energy chain;name;fuel supply
 components;energy chain;name;electricity supply
-components;maintenance;name;maintenance, passenger car
+components;maintenance;name;maintenance, lorry
 components;glider;name;market for glider
 components;glider;name;glider lightweighting
 components;EoL;name;used lorry
@@ -24,3 +24,4 @@ components;energy storage;name;glass fibre reinforced plastic production
 components;energy storage;name;fuel tank, compressed hydrogen gas, 700bar
 components;energy storage;name;electricity market for energy storage production
 components;road;name;road
+components;road;name;road maintenance

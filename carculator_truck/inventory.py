@@ -1864,9 +1864,16 @@ class InventoryCalculation:
     def find_fuel_shares(self, fuel_type):
 
         default_fuels = {
-            "diesel": {"primary": "diesel", "secondary": "biodiesel - cooking oil"},
-            "cng": {"primary": "cng", "secondary": "biogas"},
-            "hydrogen": {"primary": "electrolysis", "secondary": "smr - natural gas"},
+            "diesel": {"primary": "diesel",
+                       "secondary": "biodiesel - cooking oil",
+                       "all": ["diesel", "biodiesel - cooking oil", "biodiesel - algae", "synthetic diesel"]},
+            "cng": {"primary": "cng",
+                    "secondary": "biogas",
+                    "all": ['cng', 'biogas', 'syngas']},
+            "hydrogen": {"primary": "electrolysis",
+                         "secondary": "smr - natural gas",
+                         "all":["electrolysis", "smr - natural gas","smr - natural gas with CCS","smr - biogas",
+                                "smr - biogas with CCS","coal gasification","wood gasification","wood gasification with CCS"]},
         }
 
         if "fuel blend" in self.background_configuration:
@@ -1876,11 +1883,18 @@ class InventoryCalculation:
                 ]["type"]
 
                 try:
+                    # See of a secondary fuel type has been specified
                     secondary = self.background_configuration["fuel blend"][fuel_type][
                         "secondary fuel"
                     ]["type"]
                 except:
-                    secondary = default_fuels[fuel_type]["secondary"]
+                    # A secondary fuel has not been specified, set one by default
+                    # Check first if the default fuel is not similar to the primary fuel
+                    if default_fuels[fuel_type]["secondary"] != primary:
+                        secondary = default_fuels[fuel_type]["secondary"]
+                    else:
+                        secondary = [f for f in default_fuels[fuel_type]["all"]
+                                     if f!= primary][0]
 
                 primary_share = self.background_configuration["fuel blend"][fuel_type][
                     "primary fuel"
