@@ -81,7 +81,6 @@ class HotEmissionsModel:
                 "NO2",
                 "CH4",
                 "NMHC",
-                "Pb",
                 "SO2",
                 "N2O",
                 "NH3",
@@ -122,7 +121,7 @@ class HotEmissionsModel:
             urban /= 1000  # going from grams to kg
 
         else:
-            urban = np.zeros((12, 6, 6))
+            urban = np.zeros((11, 6, 6))
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -134,7 +133,7 @@ class HotEmissionsModel:
             suburban /= 1000  # going from grams to kg
 
         else:
-            suburban = np.zeros((12, 6, 6))
+            suburban = np.zeros((11, 6, 6))
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -144,7 +143,7 @@ class HotEmissionsModel:
             rural /= 1000  # going from grams to kg
 
         else:
-            rural = np.zeros((12, 6, 6))
+            rural = np.zeros((11, 6, 6))
 
         res = np.vstack((urban, suburban, rural)).transpose((1, 0, 2))
 

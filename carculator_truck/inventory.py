@@ -54,16 +54,6 @@ class InventoryCalculation:
                             'share': [0.1, 0.2, 0.3, 0.4]
                             }
                         },
-                 'petrol':{
-                        'primary fuel':{
-                            'type':'petrol',
-                            'share':[0.9, 0.8, 0.7, 0.6]
-                            },
-                        'secondary fuel':{
-                            'type':'bioethanol - wheat straw',
-                            'share': [0.1, 0.2, 0.3, 0.4]
-                            }
-                        },
                 'hydrogen':{
                         'primary fuel':{'type':'electrolysis', 'share':[1, 0, 0, 0]},
                         'secondary fuel':{'type':'smr - natural gas', 'share':[0, 1, 1, 1]}
@@ -103,7 +93,7 @@ class InventoryCalculation:
     If none is given, the electricity mix corresponding to the country specified in `country` will be selected.
     If no country is specified, Europe applies.
 
-    The `primary` and `secondary` fuel keys contain an array with shares of alternative petrol fuel for each year, to create a custom blend.
+    The `primary` and `secondary` fuel keys contain an array with shares of alternative fuel for each year, to create a custom blend.
     If none is provided, a blend provided by the Integrated Assessment model REMIND is used, which will depend on the REMIND energy scenario selected.
 
     Here is a list of available fuel pathways:
@@ -133,14 +123,6 @@ class InventoryCalculation:
     biodiesel - cooking oil
     synthetic diesel
 
-    Petrol technologies
-    -------------------
-    petrol
-    bioethanol - wheat straw
-    bioethanol - maize starch
-    bioethanol - sugarbeet
-    bioethanol - forest residues
-    synthetic gasoline
 
     :ivar array: array from the CarModel class
     :vartype array: CarModel.array
@@ -267,11 +249,6 @@ class InventoryCalculation:
                 "kilogram",
             ): "Methane direct emissions, rural",
             (
-                "Lead",
-                ("air", "non-urban air or from high stacks"),
-                "kilogram",
-            ): "Lead direct emissions, suburban",
-            (
                 "Ammonia",
                 ("air", "non-urban air or from high stacks"),
                 "kilogram",
@@ -372,11 +349,6 @@ class InventoryCalculation:
                 "kilogram",
             ): "Carbon monoxide direct emissions, suburban",
             (
-                "Lead",
-                ("air", "urban air close to ground"),
-                "kilogram",
-            ): "Lead direct emissions, urban",
-            (
                 "Particulates, < 2.5 um",
                 ("air", "low population density, long-term"),
                 "kilogram",
@@ -396,11 +368,6 @@ class InventoryCalculation:
                 ("air", "non-urban air or from high stacks"),
                 "kilogram",
             ): "Nitrogen oxides direct emissions, suburban",
-            (
-                "Lead",
-                ("air", "low population density, long-term"),
-                "kilogram",
-            ): "Lead direct emissions, rural",
             (
                 "Benzene",
                 ("air", "urban air close to ground"),
@@ -950,7 +917,7 @@ class InventoryCalculation:
                     )
                 ] = maximum
 
-            if {"BEV", "PHEV-p", "PHEV-d"}.intersection(set(self.scope["powertrain"])):
+            if {"BEV", "PHEV-d"}.intersection(set(self.scope["powertrain"])):
                 maximum += 1
                 self.inputs[
                     (
@@ -1035,6 +1002,8 @@ class InventoryCalculation:
                             "transport, freight, " + euro_class,
                         )
                     ] = maximum
+
+                    print(self.inputs)
 
     def get_A_matrix(self):
         """
@@ -1895,7 +1864,6 @@ class InventoryCalculation:
     def find_fuel_shares(self, fuel_type):
 
         default_fuels = {
-            "petrol": {"primary": "petrol", "secondary": "bioethanol - wheat straw"},
             "diesel": {"primary": "diesel", "secondary": "biodiesel - cooking oil"},
             "cng": {"primary": "cng", "secondary": "biogas"},
             "hydrogen": {"primary": "electrolysis", "secondary": "smr - natural gas"},
@@ -1980,12 +1948,6 @@ class InventoryCalculation:
         """
 
         fuels_lhv = {
-            "petrol": 42.4,
-            "bioethanol - wheat straw": 26.8,
-            "bioethanol - maize starch": 26.8,
-            "bioethanol - sugarbeet": 26.8,
-            "bioethanol - forest residues": 26.8,
-            "synthetic gasoline": 42.4,
             "diesel": 42.8,
             "biodiesel - cooking oil": 31.7,
             "biodiesel - algae": 31.7,
@@ -1996,12 +1958,6 @@ class InventoryCalculation:
         }
 
         fuels_CO2 = {
-            "petrol": 3.18,
-            "bioethanol - wheat straw": 1.91,
-            "bioethanol - maize starch": 1.91,
-            "bioethanol - sugarbeet": 1.91,
-            "bioethanol - forest residues": 1.91,
-            "synthetic gasoline": 3.18,
             "diesel": 3.14,
             "biodiesel - cooking oil": 2.85,
             "biodiesel - algae": 2.85,
@@ -2010,29 +1966,6 @@ class InventoryCalculation:
             "biogas": 2.65,
             "syngas": 2.65
         }
-
-        if {"ICEV-p", "HEV-p", "PHEV-p"}.intersection(set(self.scope["powertrain"])):
-            fuel_type = "petrol"
-            primary, secondary, primary_share, secondary_share = self.find_fuel_shares(
-                fuel_type
-            )
-            self.create_fuel_markets(
-                fuel_type, primary, secondary, primary_share, secondary_share
-            )
-            self.fuel_blends[fuel_type] = {
-                "primary": {
-                    "type": primary,
-                    "share": primary_share,
-                    "lhv": fuels_lhv[primary],
-                    "CO2": fuels_CO2[primary],
-                },
-                "secondary": {
-                    "type": secondary,
-                    "share": secondary_share,
-                    "lhv": fuels_lhv[secondary],
-                    "CO2": fuels_CO2[secondary],
-                },
-            }
 
         if {"ICEV-d", "HEV-d", "PHEV-d"}.intersection(set(self.scope["powertrain"])):
             fuel_type = "diesel"
@@ -3032,7 +2965,7 @@ class InventoryCalculation:
                     * -1
                 ).T
 
-                # Fuel-based CO2 emission from alternative petrol
+                # Fuel-based CO2 emission from alternative cng
                 # The share of non-fossil gas in the blend is retrieved
                 # As well as the CO2 emission factor of the fuel
 
@@ -3163,7 +3096,7 @@ class InventoryCalculation:
                 share_non_fossil = 0
                 CO2_non_fossil = 0
 
-                # Fuel-based CO2 emission from alternative petrol
+                # Fuel-based CO2 emission from alternative diesel
                 # The share of non-fossil fuel in the blend is retrieved
                 # As well as the CO2 emission factor of the fuel
                 if self.fuel_blends["diesel"]["primary"]["type"] != "diesel":
