@@ -4,6 +4,7 @@ from .noise_emissions import NoiseEmissionsModel
 import numexpr as ne
 import numpy as np
 import xarray as xr
+from prettytable import PrettyTable
 
 
 DEFAULT_MAPPINGS = {
@@ -49,6 +50,24 @@ class TruckModel:
         if cycle is None:
             cycle = "Urban delivery"
         gradient = cycle
+
+        target_ranges={
+            'Urban delivery':150,
+            'Regional delivery':400,
+            'Long haul':800
+        }
+
+        self["target range"] = target_ranges[cycle]
+
+        print("{} driving cycle is selected. Vehicles will be designed to achieve a minimal range of {} km.".format(cycle, target_ranges[cycle]))
+
+        print('')
+        print("Capacity utilization assumed (share of available payload used)")
+        t = PrettyTable([''] + array.coords["size"].values.tolist())
+        for pt in array.coords["powertrain"].values:
+            for y in array.coords["year"].values:
+                t.add_row([pt + ", " + str(y)] + array.sel(parameter="capacity utilization", powertrain=pt, year=y, value=0).values.tolist())
+        print(t)
 
         self.ecm = EnergyConsumptionModel(cycle=cycle, gradient=gradient)
 
@@ -136,6 +155,8 @@ class TruckModel:
 
             self.set_energy_stored_properties()
 
+            self.set_car_masses()
+
             diff = (self["driving mass"].sum().values - old_driving_mass) / self[
                 "driving mass"
             ].sum()
@@ -148,7 +169,15 @@ class TruckModel:
         self.set_hot_emissions()
         self.set_noise_emissions()
         self.create_PHEV()
-        self.drop_hybrid()
+        #self.drop_hybrid()
+
+        print('')
+        print("Payload (in tons)")
+        t = PrettyTable([''] + self.array.coords["size"].values.tolist())
+        for pt in self.array.coords["powertrain"].values:
+            for y in self.array.coords["year"].values:
+                t.add_row([pt + ", " + str(y)] + [np.round(v, 1) if v>0 else "-" for v in (self.array.sel(parameter="total cargo mass", powertrain=pt, year=y, value=0)/1000).values.tolist()])
+        print(t)
 
         if (self["driving mass"] > self["gross mass"]).any() == True:
             print(
@@ -421,7 +450,21 @@ class TruckModel:
 
         """
 
-        self["curb mass"] = self["glider base mass"] * (1 - self["lightweighting"])
+        # Base components, common to all powertrains
+        base_components = [
+            "glider base mass",
+            "suspension mass",
+            "braking system mass",
+            "wheels and tires mass",
+            "cabin mass",
+            "electrical system mass",
+            "other components mass",
+            "transmission mass"
+            ]
+
+        #self[base_components] *= (1 - self["lightweighting"])
+
+        self["curb mass"] = self[base_components].sum(axis=2) * (1 - self["lightweighting"])
 
         curb_mass_includes = [
             "fuel mass",
@@ -434,7 +477,7 @@ class TruckModel:
             # Updates with set_components_mass
             "electric engine mass",
             # Updates with set_components_mass
-            "drivetrain mass",
+            "exhaust system mass",
             "fuel cell stack mass",
             "fuel cell ancillary BoP mass",
             "fuel cell essential BoP mass",
@@ -470,9 +513,9 @@ class TruckModel:
             self["electric power"] * self["emotor mass per power"]
             + self["emotor fixed mass"]
         )
-        self["drivetrain mass"] = (self["gross mass"] / 1000) * self[
-            "drivetrain mass per ton of gross weight"
-        ] + self["drivetrain fixed mass"]
+        self["transmission mass"] = (self["gross mass"] / 1000) * self[
+            "transmission mass per ton of gross weight"
+        ] + self["transmission fixed mass"]
 
         self["inverter mass"] = (
             self["electric power"] * self["inverter mass per power"]
@@ -481,7 +524,7 @@ class TruckModel:
 
     def set_electric_utility_factor(self):
         """
-        From Plötz et al. 2017
+        From Plotz et al. 2017
         The electric utility factor is defined by the range
         :return:
         """
@@ -523,8 +566,10 @@ class TruckModel:
                 cpm["oxidation energy stored"] = (
                     cpm["fuel mass"] * cpm["LHV fuel MJ per kg"]
                 ) / 3.6
+
+                # From Wolff et al. 2020, Sustainability, DOI: 10.3390/su12135396.
                 cpm["fuel tank mass"] = (
-                    cpm["oxidation energy stored"] * cpm["fuel tank mass per energy"]
+                    17.159 * np.log(cpm["fuel mass"] * (1/0.832)) - 54.98
                 )
 
         with self("ICEV-g") as cpm:

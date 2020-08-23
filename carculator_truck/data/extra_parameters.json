@@ -121,7 +121,7 @@
   "noise, octave 5, night time, suburban",
   "noise, octave 6, day time, suburban",
   "noise, octave 5, evening time, suburban",
-  "drivetrain mass",
+  "transmission mass",
   "inverter mass",
   "noise, octave 4, evening time, suburban",
   "battery cell mass",
@@ -158,5 +158,6 @@
   "fuel mass",
   "Nitrogen dioxide direct emissions, urban",
   "Nitrogen dioxide direct emissions, suburban",
-  "Nitrogen dioxide direct emissions, rural"
+  "Nitrogen dioxide direct emissions, rural",
+  "target range"
 ]

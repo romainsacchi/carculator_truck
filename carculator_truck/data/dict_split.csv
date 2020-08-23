@@ -25,3 +25,19 @@ components;energy storage;name;fuel tank, compressed hydrogen gas, 700bar
 components;energy storage;name;electricity market for energy storage production
 components;road;name;road
 components;road;name;road maintenance
+components;glider;name;other components
+components;maintenance;name;maintenance, lorry
+components;powertrain;name;gearbox
+components;powertrain;name;power electronics
+components;EoL;name;treatment of used lorry
+components;glider;name;frame, blanks and saddle, for lorry
+components;glider;name;suspension, for lorry
+components;glider;name;cabin, for lorry
+components;powertrain;name;retarder, for lorry
+components;powertrain;name;transmission, for lorry
+components;glider;name;tires and wheels, for lorry
+components;energy storage;name;lead acid
+components;energy storage;name;fuel tank, for diesel vehicle
+components;powertrain;name;exhaust system, for lorry
+components;powertrain;name;internal combustion engine, for lorry
+components;powertrain;name;transmission, for lorry
