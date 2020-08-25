@@ -1,6 +1,7 @@
 from .energy_consumption import EnergyConsumptionModel
 from .hot_emissions import HotEmissionsModel
 from .noise_emissions import NoiseEmissionsModel
+from .background_systems import BackgroundSystemModel
 import numexpr as ne
 import numpy as np
 import xarray as xr
@@ -42,10 +43,14 @@ class TruckModel:
 
     """
 
-    def __init__(self, array, mappings=None, cycle=None):
+    def __init__(self, array, mappings=None, cycle=None, country=None, fuel_blend=None):
 
         self.array = array
         self.mappings = mappings or DEFAULT_MAPPINGS
+        self.bs = BackgroundSystemModel()
+
+        self.country = country or "RER"
+        self.fuel_blend = self.define_fuel_blends(fuel_blend)
 
         if cycle is None:
             cycle = "Urban delivery"
@@ -66,7 +71,10 @@ class TruckModel:
         t = PrettyTable([''] + array.coords["size"].values.tolist())
         for pt in array.coords["powertrain"].values:
             for y in array.coords["year"].values:
-                t.add_row([pt + ", " + str(y)] + array.sel(parameter="capacity utilization", powertrain=pt, year=y, value=0).values.tolist())
+                t.add_row([pt + ", " + str(y)] + array.sel(parameter="capacity utilization",
+                                                           powertrain=pt,
+                                                           year=y,
+                                                           value=0).values.tolist())
         print(t)
 
         self.ecm = EnergyConsumptionModel(cycle=cycle, gradient=gradient)
@@ -140,8 +148,9 @@ class TruckModel:
 
         diff = 1.0
 
-        while diff > 0.01:
-            old_driving_mass = self["driving mass"].sum().values
+        while abs(diff) > .001:
+
+            old_payload = self["available payload"].sum().values
 
             self.set_car_masses()
             self.set_power_parameters()
@@ -152,14 +161,15 @@ class TruckModel:
             self.set_fuel_cell_parameters()
             self.calculate_ttw_energy()
             self.set_battery_fuel_cell_replacements()
-
             self.set_energy_stored_properties()
-
             self.set_car_masses()
 
-            diff = (self["driving mass"].sum().values - old_driving_mass) / self[
-                "driving mass"
+            diff = (self["available payload"].sum().values - old_payload) / self[
+                "available payload"
             ].sum()
+
+            print(diff.values)
+            #print(self["energy battery mass"].sum().values)
 
         self.adjust_cost()
 
@@ -169,14 +179,16 @@ class TruckModel:
         self.set_hot_emissions()
         self.set_noise_emissions()
         self.create_PHEV()
-        #self.drop_hybrid()
+        self.drop_hybrid()
 
         print('')
         print("Payload (in tons)")
         t = PrettyTable([''] + self.array.coords["size"].values.tolist())
         for pt in self.array.coords["powertrain"].values:
             for y in self.array.coords["year"].values:
-                t.add_row([pt + ", " + str(y)] + [np.round(v, 1) if v>0 else "-" for v in (self.array.sel(parameter="total cargo mass", powertrain=pt, year=y, value=0)/1000).values.tolist()])
+                t.add_row([pt + ", " + str(y)] + [np.round(v, 1)
+                                                  if v>0.1
+                                                  else "-" for v in (self.array.sel(parameter="total cargo mass", powertrain=pt, year=y, value=0)/1000).values.tolist()])
         print(t)
 
         if (self["driving mass"] > self["gross mass"]).any() == True:
@@ -220,6 +232,8 @@ class TruckModel:
                             powertrain=p, size=s, year=y, parameter="gross mass"
                         ):
                             print(p, s, y)
+                            #self.array.loc[dict(powertrain=p, size=s, year=y, parameter=["total cargo mass"])] = 1e20
+                            #self.array.loc[dict(powertrain=p, size=s, year=y, parameter=["driving mass"])] = 1e-20
 
     def adjust_cost(self):
         """
@@ -462,8 +476,6 @@ class TruckModel:
             "transmission mass"
             ]
 
-        #self[base_components] *= (1 - self["lightweighting"])
-
         self["curb mass"] = self[base_components].sum(axis=2) * (1 - self["lightweighting"])
 
         curb_mass_includes = [
@@ -487,11 +499,13 @@ class TruckModel:
         ]
         self["curb mass"] += self[curb_mass_includes].sum(axis=2)
 
-        self["available payload"] = self["gross mass"] - self["curb mass"]
+        self["available payload"] = np.clip(self["gross mass"] - (self["curb mass"] + (self["average passengers"] * self["average passenger mass"])), 0, None)
+
 
         self["total cargo mass"] = (
             self["average passengers"] * self["average passenger mass"]
         ) + (self["available payload"] * self["capacity utilization"])
+
         self["driving mass"] = self["curb mass"] + self["total cargo mass"]
 
     def set_power_parameters(self):
@@ -558,30 +572,45 @@ class TruckModel:
         Then batteries are sized, depending on the range required and the energy consumption.
         :return:
         """
-        for pt in ["ICEV-d", "HEV-d", "PHEV-c-d"]:
+        d_map_fuel = {
+            "ICEV-d":"diesel",
+            "HEV-d":"diesel",
+            "PHEV-c-d":"diesel",
+            "ICEV-g":"cng",
+            "FCEV":"hydrogen"
+        }
+
+        for pt in ["ICEV-d", "HEV-d", "PHEV-c-d", "ICEV-g"]:
+
             with self(pt) as cpm:
+
+                # calculate the average LHV based on fuel blend
+                fuel_type = d_map_fuel[pt]
+                primary_fuel_share = self.fuel_blend[fuel_type]["primary"]["share"]
+                primary_fuel_lhv = self.fuel_blend[fuel_type]["primary"]["lhv"]
+                secondary_fuel_share = self.fuel_blend[fuel_type]["secondary"]["share"]
+                secondary_fuel_lhv = self.fuel_blend[fuel_type]["secondary"]["lhv"]
+
+                blend_lhv = (np.array(primary_fuel_share) * primary_fuel_lhv) + (np.array(secondary_fuel_share) * secondary_fuel_lhv)
+
                 cpm["fuel mass"] = (
                     cpm["target range"] * (cpm["TtW energy"] / 1000)
-                ) / cpm["LHV fuel MJ per kg"]
+                ) / blend_lhv.reshape(-1, 1)
+
                 cpm["oxidation energy stored"] = (
-                    cpm["fuel mass"] * cpm["LHV fuel MJ per kg"]
+                    cpm["fuel mass"] * blend_lhv.reshape(-1, 1)
                 ) / 3.6
 
-                # From Wolff et al. 2020, Sustainability, DOI: 10.3390/su12135396.
-                cpm["fuel tank mass"] = (
-                    17.159 * np.log(cpm["fuel mass"] * (1/0.832)) - 54.98
-                )
+                if pt == "ICEV-g":
+                    cpm["fuel tank mass"] = (
+                        cpm["oxidation energy stored"] * cpm["CNG tank mass slope"]
+                    ) + cpm["CNG tank mass intercept"]
+                else:
+                    # From Wolff et al. 2020, Sustainability, DOI: 10.3390/su12135396.
+                    cpm["fuel tank mass"] = (
+                        17.159 * np.log(cpm["fuel mass"] * (1/0.832)) - 54.98
+                    )
 
-        with self("ICEV-g") as cpm:
-            cpm["fuel mass"] = (cpm["target range"] * (cpm["TtW energy"] / 1000)) / cpm[
-                "LHV fuel MJ per kg"
-            ]
-            cpm["oxidation energy stored"] = (
-                cpm["fuel mass"] * cpm["LHV fuel MJ per kg"]
-            ) / 3.6
-            cpm["fuel tank mass"] = (
-                cpm["oxidation energy stored"] * cpm["CNG tank mass slope"]
-            ) + cpm["CNG tank mass intercept"]
 
         for pt in ["HEV-d", "ICEV-g", "ICEV-d", "PHEV-c-d"]:
             with self(pt) as cpm:
@@ -604,9 +633,11 @@ class TruckModel:
                 cpm["battery cell mass"] = (
                     cpm["electric energy stored"] / cpm["battery cell energy density"]
                 )
+
                 cpm["energy battery mass"] = (
                     cpm["battery cell mass"] / cpm["battery cell mass share"]
                 )
+
                 cpm["battery BoP mass"] = (
                     cpm["energy battery mass"] - cpm["battery cell mass"]
                 )
@@ -992,3 +1023,137 @@ class TruckModel:
             return response
         else:
             return response / response.sel(value="reference")
+
+    def get_share_biofuel(self):
+        region = self.bs.region_map[self.country]["RegionCode"]
+        scenario = "SSP2-Base"
+
+        share_biofuel = (
+            self.bs.biofuel.sel(
+                region=region, value=0, fuel_type="Biomass fuel", scenario=scenario,
+            )
+            .interp(year=self.array.coords["year"].values, kwargs={"fill_value": "extrapolate"})
+            .values
+        )
+        return share_biofuel
+
+    def find_fuel_shares(self, fuel_blend, fuel_type):
+
+        default_fuels = {
+            "diesel": {"primary": "diesel",
+                       "secondary": "biodiesel - cooking oil",
+                       "all": ["diesel", "biodiesel - cooking oil", "biodiesel - algae", "synthetic diesel"]},
+            "cng": {"primary": "cng",
+                    "secondary": "biogas",
+                    "all": ['cng', 'biogas', 'syngas']},
+            "hydrogen": {"primary": "electrolysis",
+                         "secondary": "smr - natural gas",
+                         "all":["electrolysis", "smr - natural gas","smr - natural gas with CCS","smr - biogas",
+                                "smr - biogas with CCS","coal gasification","wood gasification","wood gasification with CCS"]},
+        }
+
+        if fuel_type in fuel_blend:
+            primary = fuel_blend[fuel_type][
+                "primary"
+            ]["type"]
+
+            try:
+                # See of a secondary fuel type has been specified
+                secondary = fuel_blend[fuel_type][
+                    "secondary fuel"
+                ]["type"]
+            except:
+                # A secondary fuel has not been specified, set one by default
+                # Check first if the default fuel is not similar to the primary fuel
+                if default_fuels[fuel_type]["secondary"] != primary:
+                    secondary = default_fuels[fuel_type]["secondary"]
+                else:
+                    secondary = [f for f in default_fuels[fuel_type]["all"]
+                                 if f!= primary][0]
+
+            primary_share = fuel_blend[fuel_type][
+                "primary"
+            ]["share"]
+            secondary_share = 1 - np.array(primary_share)
+
+        else:
+            primary = default_fuels[fuel_type]["primary"]
+            secondary = default_fuels[fuel_type]["secondary"]
+            secondary_share = self.get_share_biofuel()
+            primary_share = 1 - np.array(secondary_share)
+
+
+        return (primary, secondary, primary_share, secondary_share)
+
+    def define_fuel_blends(self, fuel_blend=None):
+        """
+        This function defines fuel blends from what is passed in `fuel_blend`.
+        It populates a dictionary `self.fuel_blends` that contains the respective shares, lower heating values
+        and CO2 emission factors of the fuels used.
+        :return:
+        """
+
+        fuels_lhv = {
+            "diesel": 42.8,
+            "biodiesel - cooking oil": 31.7,
+            "biodiesel - algae": 31.7,
+            "synthetic diesel": 43.3,
+            "cng": 55.5,
+            "biogas": 55.5,
+            "syngas": 55.5,
+            "electrolysis": 120,
+            "smr - natural gas": 120,
+            "smr - natural gas with CCS": 120,
+            "smr - biogas": 120,
+            "smr - biogas with CCS": 120,
+            "coal gasification": 120,
+            "wood gasification": 120,
+            "wood gasification with CCS": 120
+        }
+
+        fuels_CO2 = {
+            "diesel": 3.14,
+            "biodiesel - cooking oil": 2.85,
+            "biodiesel - algae": 2.85,
+            "synthetic diesel": 3.16,
+            "cng": 2.65,
+            "biogas": 2.65,
+            "syngas": 2.65,
+            "electrolysis": 0,
+            "smr - natural gas": 0,
+            "smr - natural gas with CCS": 0,
+            "smr - biogas": 0,
+            "smr - biogas with CCS": 0,
+            "coal gasification": 0,
+            "wood gasification": 0,
+            "wood gasification with CCS": 0
+        }
+
+        if fuel_blend is None:
+            fuel_blend = dict()
+
+        fuel_types = ["diesel", "cng", "hydrogen"]
+
+        for fuel_type in fuel_types:
+            primary, secondary, primary_share, secondary_share = self.find_fuel_shares(
+                fuel_blend, fuel_type
+            )
+
+            fuel_blend[fuel_type] = {
+                "primary": {
+                    "type": primary,
+                    "share": primary_share,
+                    "lhv": fuels_lhv[primary],
+                    "CO2": fuels_CO2[primary],
+                },
+                "secondary": {
+                    "type": secondary,
+                    "share": secondary_share,
+                    "lhv": fuels_lhv[secondary],
+                    "CO2": fuels_CO2[secondary],
+                },
+            }
+
+        return fuel_blend
+
+
