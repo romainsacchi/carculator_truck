@@ -27,6 +27,7 @@ requirements:
     - xlrd
     - numexpr
     - bw2io
+    - prettytable
 
 test:
   imports:
