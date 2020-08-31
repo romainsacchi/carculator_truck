@@ -36,7 +36,7 @@ class InventoryCalculation:
               'fuel blend':{
                   'cng':{ #specify fuel bland for compressed gas
                         'primary fuel':{
-                            'type':'biogas',
+                            'type':'biogas - sewage sludge',
                             'share':[0.9, 0.8, 0.7, 0.6] # shares per year. Must total 1 for each year.
                             },
                         'secondary fuel':{
@@ -101,19 +101,26 @@ class InventoryCalculation:
 
     Hydrogen technologies
     --------------------
-    electrolysis
-    smr - natural gas
-    smr - natural gas with CCS
-    smr - biogas
-    smr - biogas with CCS
-    coal gasification
-    wood gasification
-    wood gasification with CCS
+    "electrolysis"
+    "smr - natural gas"
+    "smr - natural gas with CCS"
+    "smr - biogas"
+    "smr - biogas with CCS"
+    "coal gasification"
+    "wood gasification"
+    "wood gasification with CCS"
+    "wood gasification with EF"
+    "wood gasification with EF with CCS"
+    "atr - natural gas"
+    "atr - natural gas with CCS"
+    "atr - biogas"
+    "atr - biogas with CCS"
 
     Natural gas technologies
     ------------------------
     cng
-    biogas
+    biogas - sewage sludge
+    biogas - biowaste
     syngas
 
     Diesel technologies
@@ -1856,25 +1863,25 @@ class InventoryCalculation:
                     "Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station",
                     "RER",
                     "kilogram",
-                    "Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station",
+                    "Hydrogen, gaseous, 700 bar",
                 ),
                 "additional electricity": 58,
             },
             "smr - natural gas": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from SMR NG w/o CCS, at H2 fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from SMR of NG, at H2 fuelling station",
                     "RER",
                     "kilogram",
-                    "Hydrogen, gaseous, 700 bar, from SMR NG w/o CCS, at H2 fuelling station",
+                    "Hydrogen, gaseous, 700 bar",
                 ),
                 "additional electricity": 0,
             },
             "smr - natural gas with CCS": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from SMR NG w CCS, at H2 fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from SMR of NG, with CCS, at H2 fuelling station",
                     "RER",
                     "kilogram",
-                    "Hydrogen, gaseous, 700 bar, from SMR NG w CCS, at H2 fuelling station",
+                    "Hydrogen, gaseous, 700 bar",
                 ),
                 "additional electricity": 0,
             },
@@ -1883,7 +1890,7 @@ class InventoryCalculation:
                     "Hydrogen, gaseous, 700 bar, from SMR of biogas, at H2 fuelling station",
                     "RER",
                     "kilogram",
-                    "Hydrogen, gaseous, 700 bar, from SMR of biogas, at H2 fuelling station",
+                    "Hydrogen, gaseous, 700 bar",
                 ),
                 "additional electricity": 0,
             },
@@ -1892,7 +1899,7 @@ class InventoryCalculation:
                     "Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at H2 fuelling station",
                     "RER",
                     "kilogram",
-                    "Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at H2 fuelling station",
+                    "Hydrogen, gaseous, 700 bar",
                 ),
                 "additional electricity": 0,
             },
@@ -1901,7 +1908,7 @@ class InventoryCalculation:
                     "Hydrogen, gaseous, 700 bar, from coal gasification, at H2 fuelling station",
                     "RER",
                     "kilogram",
-                    "Hydrogen, gaseous, 700 bar, from coal gasification, at H2 fuelling station",
+                    "Hydrogen, gaseous, 700 bar",
                 ),
                 "additional electricity": 0,
             },
@@ -1923,6 +1930,60 @@ class InventoryCalculation:
                 ),
                 "additional electricity": 0,
             },
+            "wood gasification with EF": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
+                    "CH",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                ),
+                "additional electricity": 0,
+            },
+            "wood gasification with EF with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
+                    "CH",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                ),
+                "additional electricity": 0,
+            },
+            "atr - natural gas": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, ATR of NG, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                ),
+                "additional electricity": 0,
+            },
+            "atr - natural gas with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, ATR of NG, with CCS, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                ),
+                "additional electricity": 0,
+            },
+            "atr - biogas": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from ATR of biogas, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                ),
+                "additional electricity": 0,
+            },
+            "atr - biogas with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from ATR of biogas with CCS, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                ),
+                "additional electricity": 0,
+            },
             "cng": {
                 "name": (
                     "market for natural gas, from high pressure network (1-5 bar), at service station",
@@ -1932,13 +1993,21 @@ class InventoryCalculation:
                 ),
                 "additional electricity": 0,
             },
-            "biogas": {
+            "biogas - sewage sludge": {
                 "name": (
                     "biogas upgrading - sewage sludge - amine scrubbing - best",
                     "CH",
                     "kilogram",
                     "biogas upgrading - sewage sludge - amine scrubbing - best",
                 ),
+                "additional electricity": 0,
+            },
+            "biogas - biowaste": {
+                "name": (
+                'biomethane from biogas upgrading - biowaste - amine scrubbing, best - with biogenic carbon uptake, lower bound C sequestration, digestate incineration',
+                'CH',
+                'cubic meter',
+                'biomethane'),
                 "additional electricity": 0,
             },
             "syngas": {
@@ -1995,56 +2064,67 @@ class InventoryCalculation:
             "electricity": "electricity supply for electric vehicles, ",
         }
 
+        d_map_fuel_pt = {
+            "diesel": ["ICEV-d", "HEV-d", "PHEV-d"],
+            "cng": ["ICEV-g"],
+            "hydrogen": ["FCEV"]
+        }
+
         for fuel_type in self.fuel_blends:
-            primary = self.fuel_blends[fuel_type]["primary"]["type"]
-            secondary = self.fuel_blends[fuel_type]["secondary"]["type"]
-            primary_share = self.fuel_blends[fuel_type]["primary"]["share"]
-            secondary_share = self.fuel_blends[fuel_type]["secondary"]["share"]
 
-            for y in self.scope["year"]:
-                dataset_name = d_dataset_name[fuel_type] + str(y)
-                fuel_market_index = [
-                    self.inputs[i] for i in self.inputs if i[0] == dataset_name
-                ][0]
-                primary_fuel_activity_index = self.inputs[d_fuels[primary]["name"]]
-                secondary_fuel_activity_index = self.inputs[d_fuels[secondary]["name"]]
-                self.A[:, primary_fuel_activity_index, fuel_market_index] = (
-                    -1 * primary_share[self.scope["year"].index(y)]
-                )
-                self.A[:, secondary_fuel_activity_index, fuel_market_index] = (
-                    -1 * secondary_share[self.scope["year"].index(y)]
-                )
+            if any({x}.intersection(set(self.scope["powertrain"]))
+                for x in d_map_fuel_pt[fuel_type]):
 
-                additional_electricity = (
-                    d_fuels[primary]["additional electricity"]
-                    * primary_share[self.scope["year"].index(y)]
-                ) + (
-                    d_fuels[secondary]["additional electricity"]
-                    * secondary_share[self.scope["year"].index(y)]
-                )
+                primary = self.fuel_blends[fuel_type]["primary"]["type"]
+                secondary = self.fuel_blends[fuel_type]["secondary"]["type"]
+                primary_share = self.fuel_blends[fuel_type]["primary"]["share"]
+                secondary_share = self.fuel_blends[fuel_type]["secondary"]["share"]
 
-                if additional_electricity > 0:
-                    electricity_mix_index = [
-                        self.inputs[i]
-                        for i in self.inputs
-                        if i[0] == "electricity market for fuel preparation, " + str(y)
+                for y in self.scope["year"]:
+                    dataset_name = d_dataset_name[fuel_type] + str(y)
+                    print(dataset_name)
+                    fuel_market_index = [
+                        self.inputs[i] for i in self.inputs if i[0] == dataset_name
                     ][0]
-                    self.A[:, electricity_mix_index, fuel_market_index] = (
-                        -1 * additional_electricity
+                    primary_fuel_activity_index = self.inputs[d_fuels[primary]["name"]]
+                    secondary_fuel_activity_index = self.inputs[d_fuels[secondary]["name"]]
+                    self.A[:, primary_fuel_activity_index, fuel_market_index] = (
+                        -1 * primary_share[self.scope["year"].index(y)]
+                    )
+                    self.A[:, secondary_fuel_activity_index, fuel_market_index] = (
+                        -1 * secondary_share[self.scope["year"].index(y)]
                     )
 
-        fuel_type = "electricity"
-        for y in self.scope["year"]:
-            dataset_name = d_dataset_name[fuel_type] + str(y)
-            electricity_market_index = [
-                self.inputs[i] for i in self.inputs if i[0] == dataset_name
-            ][0]
-            electricity_mix_index = [
-                self.inputs[i]
-                for i in self.inputs
-                if i[0] == "electricity market for fuel preparation, " + str(y)
-            ][0]
-            self.A[:, electricity_mix_index, electricity_market_index] = -1
+                    additional_electricity = (
+                        d_fuels[primary]["additional electricity"]
+                        * primary_share[self.scope["year"].index(y)]
+                    ) + (
+                        d_fuels[secondary]["additional electricity"]
+                        * secondary_share[self.scope["year"].index(y)]
+                    )
+
+                    if additional_electricity > 0:
+                        electricity_mix_index = [
+                            self.inputs[i]
+                            for i in self.inputs
+                            if i[0] == "electricity market for fuel preparation, " + str(y)
+                        ][0]
+                        self.A[:, electricity_mix_index, fuel_market_index] = (
+                            -1 * additional_electricity
+                        )
+        if any(pt in self.scope["powertrain"] for pt in ["BEV", "PHEV-d"]):
+            fuel_type = "electricity"
+            for y in self.scope["year"]:
+                dataset_name = d_dataset_name[fuel_type] + str(y)
+                electricity_market_index = [
+                    self.inputs[i] for i in self.inputs if i[0] == dataset_name
+                ][0]
+                electricity_mix_index = [
+                    self.inputs[i]
+                    for i in self.inputs
+                    if i[0] == "electricity market for fuel preparation, " + str(y)
+                ][0]
+                self.A[:, electricity_mix_index, electricity_market_index] = -1
 
     def set_inputs_in_A_matrix(self, array):
         """

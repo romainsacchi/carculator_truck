@@ -46,7 +46,7 @@ class EnergyConsumptionModel:
 
     """
 
-    def __init__(self, cycle, gradient, rho_air=1.204):
+    def __init__(self, cycle, rho_air=1.204):
         # If a string is passed, the corresponding driving cycle is retrieved
         if isinstance(cycle, str):
             try:
@@ -61,21 +61,11 @@ class EnergyConsumptionModel:
         else:
             raise ("The format of the driving cycle is not valid.")
 
-        if isinstance(gradient, str):
-            try:
-                self.gradient_name = gradient
-                gradient = get_gradients(gradient)
 
-            except KeyError:
-                raise ("The gradient data specified could not be found.")
-        elif isinstance(gradient, np.ndarray):
-            self.gradient_name = "custom"
-            pass
-        else:
-            raise ("The format of the driving cycle is not valid.")
+        self.gradient_name = self.cycle_name
+        self.gradient = get_gradients(self.gradient_name).reshape(-1,1,1,6)
 
         self.cycle = cycle.reshape(-1,1,1,6)
-        self.gradient = gradient.reshape(-1,1,1,6)
 
         self.rho_air = rho_air
 

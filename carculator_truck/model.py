@@ -51,10 +51,7 @@ class TruckModel:
 
         self.country = country or "RER"
         self.fuel_blend = self.define_fuel_blends(fuel_blend)
-
-        if cycle is None:
-            cycle = "Urban delivery"
-        gradient = cycle
+        self.cycle = cycle or "Urban delivery"
 
         target_ranges={
             'Urban delivery':150,
@@ -62,7 +59,7 @@ class TruckModel:
             'Long haul':800
         }
 
-        self["target range"] = target_ranges[cycle]
+        self["target range"] = target_ranges[self.cycle]
 
         print("{} driving cycle is selected. Vehicles will be designed to achieve a minimal range of {} km.".format(cycle, target_ranges[cycle]))
 
@@ -77,7 +74,7 @@ class TruckModel:
                                                            value=0).values.tolist())
         print(t)
 
-        self.ecm = EnergyConsumptionModel(cycle=cycle, gradient=gradient)
+        self.ecm = EnergyConsumptionModel(cycle=cycle)
 
     def __call__(self, key):
         """
@@ -136,11 +133,14 @@ class TruckModel:
         This method runs a series of other methods to obtain the tank-to-wheel energy requirement, efficiency
         of the car, costs, etc.
 
-        :meth:`set_component_masses()`, :meth:`set_car_masses()` and :meth:`set_power_parameters()` are interdependent.
+        :meth:`set_component_masses()`, :meth:`set_car_masses()` and :meth:`set_power_parameters()` and
+         :meth:`set_energy_stored_properties` relate to one another.
         `powertrain_mass` depends on `power`, `curb_mass` is affected by changes in `powertrain_mass`,
-        `combustion engine mass` and `electric engine mass`, and `power` is a function of `curb_mass`.
-        The current solution is to loop through the methods until the increment in driving mass is
-        inferior to 0.1%.
+        `combustion engine mass`, `electric engine mass`. `energy battery mass` is influenced by the `curb mass` but also
+        by the `target range` the truck has. `power` is also varying with `curb_mass`.
+
+        The current solution is to loop through the methods until the change in payload between two iterations is
+        inferior to 0.1%. It is then assumed that the trucks are correctly sized.
 
         :returns: Does not return anything. Modifies ``self.array`` in place.
 
@@ -168,9 +168,6 @@ class TruckModel:
                 "available payload"
             ].sum()
 
-            print(diff.values)
-            #print(self["energy battery mass"].sum().values)
-
         self.adjust_cost()
 
         self.set_electric_utility_factor()
@@ -193,8 +190,8 @@ class TruckModel:
 
         if (self["driving mass"] > self["gross mass"]).any() == True:
             print(
-                "The driving mass of the following vehicles exceeds the permissible gross mass. "
-                "Reduce the target range for those vehicles, reduce the load factor or increase the battery cell energy density to find a solution."
+                "The driving mass of the following vehicles exceeds the permissible gross mass. ")
+            print("Reduce the target range for those vehicles, or the load factor, or increase the battery cell energy density to find a solution."
             )
             sizes = (
                 self.array.where(
@@ -232,8 +229,7 @@ class TruckModel:
                             powertrain=p, size=s, year=y, parameter="gross mass"
                         ):
                             print(p, s, y)
-                            #self.array.loc[dict(powertrain=p, size=s, year=y, parameter=["total cargo mass"])] = 1e20
-                            #self.array.loc[dict(powertrain=p, size=s, year=y, parameter=["driving mass"])] = 1e-20
+
 
     def adjust_cost(self):
         """
@@ -333,7 +329,13 @@ class TruckModel:
 
         for pt in pts:
             with self(pt) as cpm:
-                aux_energy.loc[{"powertrain": pt}] /= cpm["engine efficiency"]
+                if self.cycle == "Urban delivery":
+                    aux_energy.loc[{"powertrain": pt}] /= cpm["engine efficiency, empty, urban delivery"]
+                if self.cycle == "Regional delivery":
+                    aux_energy.loc[{"powertrain": pt}] /= cpm["engine efficiency, empty, regional delivery"]
+                if self.cycle == "Long haul":
+                    aux_energy.loc[{"powertrain": pt}] /= cpm["engine efficiency, empty, long haul"]
+
         for pt in self.fuel_cell:
             with self(pt) as cpm:
                 aux_energy.loc[{"powertrain": pt}] /= cpm["fuel cell system efficiency"]
@@ -414,8 +416,19 @@ class TruckModel:
         )
 
     def set_recuperation(self):
+
+        if self.cycle == "Urban delivery":
+            drivetrain_eff = self["drivetrain efficiency, empty, urban delivery"]
+
+        if self.cycle == "Regional delivery":
+            drivetrain_eff = self["drivetrain efficiency, empty, regional delivery"]
+
+        if self.cycle == "Long haul":
+            drivetrain_eff = self["drivetrain efficiency, empty, long haul"]
+
+
         self["recuperation efficiency"] = (
-            self["drivetrain efficiency"] * self["battery charge efficiency"]
+            drivetrain_eff * self["battery charge efficiency"]
         )
 
     def set_battery_fuel_cell_replacements(self):
@@ -423,12 +436,13 @@ class TruckModel:
         This methods calculates the fraction of the replacement battery needed to match the vehicle lifetime.
 
         .. note::
-            if ``car lifetime`` = 200000 (km) and ``battery lifetime`` = 190000 (km) then ``replacement battery`` = 0.05
+            if ``lifetime kilometers`` = 1000000 (km) and ``battery lifetime`` = 800000 (km) then ``replacement battery``=0.05
 
         .. note::
-            It is debatable whether this is realistic or not. Car owners may not decide to invest in a new
-            battery if the remaining lifetime of the car is only 10000 km. Also, a battery lifetime may be expressed
+            It is debatable whether this is realistic or not. Truck owners may not decide to invest in a new
+            battery if the remaining lifetime of the truck is only 200000 km. Also, a battery lifetime may be expressed
             in other terms, e.g., charging cycles.
+
             Also, if the battery lifetime surpasses the vehicle lifetime, 100% of the burden of the battery production
             is allocated to the vehicle.
 
@@ -499,7 +513,8 @@ class TruckModel:
         ]
         self["curb mass"] += self[curb_mass_includes].sum(axis=2)
 
-        self["available payload"] = np.clip(self["gross mass"] - (self["curb mass"] + (self["average passengers"] * self["average passenger mass"])), 0, None)
+        self["available payload"] = np.clip(self["gross mass"] - (self["curb mass"] +
+                                                                  (self["average passengers"] * self["average passenger mass"])), 0, None)
 
 
         self["total cargo mass"] = (
@@ -766,13 +781,49 @@ class TruckModel:
         )
 
     def set_ttw_efficiency(self):
+        """
+        The efficiency of the engine and drivetrain is calibrated after VECTO simulations.
+        Efficiencies of both components vary depending on the torque and rpm required at the wheels.
+        Torque and rpm required are calculated after a complex model in VECTO, where several factors,
+        such as the driving factor and the load factor, are important. For that reason, efficiencies here
+        are defined according to the driving cycle, and the load factor.
+        :return:
+        """
+
         _ = lambda array: np.where(array == 0, 1, array)
+
+        if self.cycle == "Urban delivery":
+            engine_eff_empty = self["engine efficiency, empty, urban delivery"]
+            engine_eff_full = self["engine efficiency, full, urban delivery"]
+
+            engine_eff = (self["capacity utilization"] * engine_eff_full) +\
+                         ((1- self["capacity utilization"]) * engine_eff_empty)
+            drivetrain_eff = self["drivetrain efficiency, empty, urban delivery"]
+
+        if self.cycle == "Regional delivery":
+            engine_eff_empty = self["engine efficiency, empty, regional delivery"]
+            engine_eff_full = self["engine efficiency, full, regional delivery"]
+
+            engine_eff = (self["capacity utilization"] * engine_eff_full) + \
+                         ((1 - self["capacity utilization"]) * engine_eff_empty)
+
+            drivetrain_eff = self["drivetrain efficiency, empty, regional delivery"]
+
+        if self.cycle == "Long haul":
+            engine_eff_empty = self["engine efficiency, empty, long haul"]
+            engine_eff_full = self["engine efficiency, full, long haul"]
+
+            engine_eff = (self["capacity utilization"] * engine_eff_full) + \
+                         ((1 - self["capacity utilization"]) * engine_eff_empty)
+
+            drivetrain_eff = self["drivetrain efficiency, empty, long haul"]
+
 
         self["TtW efficiency"] = (
             _(self["battery discharge efficiency"])
             * _(self["fuel cell system efficiency"])
-            * self["drivetrain efficiency"]
-            * self["engine efficiency"]
+            * drivetrain_eff
+            * engine_eff
         )
 
     def set_hot_emissions(self):
@@ -859,6 +910,11 @@ class TruckModel:
         self.array.loc[
             dict(powertrain="ICEV-g", parameter=list_direct_emissions)
         ] *= self.array.loc[dict(powertrain="ICEV-g", parameter="emission factor")]
+
+        # Emissions are scaled to the combustion power share
+        self.array.loc[:, :, list_direct_emissions, :] *= self.array.loc[
+                                                          :, :, "combustion power share", :
+                                                          ]
 
     def set_noise_emissions(self):
         """
@@ -1044,12 +1100,13 @@ class TruckModel:
                        "secondary": "biodiesel - cooking oil",
                        "all": ["diesel", "biodiesel - cooking oil", "biodiesel - algae", "synthetic diesel"]},
             "cng": {"primary": "cng",
-                    "secondary": "biogas",
-                    "all": ['cng', 'biogas', 'syngas']},
+                    "secondary": "biogas - sewage sludge",
+                    "all": ['cng', 'biogas - sewage sludge', 'syngas', 'biogas - biowaste']},
             "hydrogen": {"primary": "electrolysis",
                          "secondary": "smr - natural gas",
                          "all":["electrolysis", "smr - natural gas","smr - natural gas with CCS","smr - biogas",
-                                "smr - biogas with CCS","coal gasification","wood gasification","wood gasification with CCS"]},
+                                "smr - biogas with CCS","coal gasification",
+                                "wood gasification","wood gasification with CCS"]},
         }
 
         if fuel_type in fuel_blend:
@@ -1065,6 +1122,7 @@ class TruckModel:
             except:
                 # A secondary fuel has not been specified, set one by default
                 # Check first if the default fuel is not similar to the primary fuel
+
                 if default_fuels[fuel_type]["secondary"] != primary:
                     secondary = default_fuels[fuel_type]["secondary"]
                 else:
@@ -1099,16 +1157,23 @@ class TruckModel:
             "biodiesel - algae": 31.7,
             "synthetic diesel": 43.3,
             "cng": 55.5,
-            "biogas": 55.5,
+            "biogas - sewage sludge": 55.5,
+            "biogas - biowaste": 55.5*.657,
             "syngas": 55.5,
             "electrolysis": 120,
             "smr - natural gas": 120,
             "smr - natural gas with CCS": 120,
             "smr - biogas": 120,
             "smr - biogas with CCS": 120,
+            "atr - natural gas": 120,
+            "atr - natural gas with CCS": 120,
+            "atr - biogas": 120,
+            "atr - biogas with CCS": 120,
             "coal gasification": 120,
             "wood gasification": 120,
-            "wood gasification with CCS": 120
+            "wood gasification with CCS": 120,
+            "wood gasification with EF": 120,
+            "wood gasification with EF with CCS": 120
         }
 
         fuels_CO2 = {
@@ -1117,16 +1182,23 @@ class TruckModel:
             "biodiesel - algae": 2.85,
             "synthetic diesel": 3.16,
             "cng": 2.65,
-            "biogas": 2.65,
+            "biogas - sewage sludge": 2.65,
+            "biogas - biowaste": 2.65,
             "syngas": 2.65,
             "electrolysis": 0,
             "smr - natural gas": 0,
             "smr - natural gas with CCS": 0,
             "smr - biogas": 0,
             "smr - biogas with CCS": 0,
+            "atr - natural gas": 0,
+            "atr - natural gas with CCS": 0,
+            "atr - biogas": 0,
+            "atr - biogas with CCS": 0,
             "coal gasification": 0,
             "wood gasification": 0,
-            "wood gasification with CCS": 0
+            "wood gasification with CCS": 0,
+            "wood gasification with EF": 0,
+            "wood gasification with EF with CCS": 0
         }
 
         if fuel_blend is None:
