@@ -3357,12 +3357,13 @@ class InventoryCalculation:
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
         )
 
-        # Infrastructure
+        # Infrastructure: 5.37e-4 per gross tkm
         self.A[
             :,
             self.inputs[("market for road", "GLO", "meter-year", "road")],
-            -self.number_of_cars :,
-        ] = (5.37e-4 * -1)
+            -self.number_of_cars:,
+        ] = ((array[self.array_inputs["driving mass"], :] / 1000) * 5.37e-4 /
+             (array[self.array_inputs["total cargo mass"], :] / 1000)) *-1
 
         # Infrastructure maintenance
         self.A[
