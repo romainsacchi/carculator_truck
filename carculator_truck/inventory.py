@@ -2082,7 +2082,6 @@ class InventoryCalculation:
 
                 for y in self.scope["year"]:
                     dataset_name = d_dataset_name[fuel_type] + str(y)
-                    print(dataset_name)
                     fuel_market_index = [
                         self.inputs[i] for i in self.inputs if i[0] == dataset_name
                     ][0]

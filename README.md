@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://badge.fury.io/py/carculator_truck" target="_blank"><img src="https://badge.fury.io/py/carculator_truck.svg"></a>
+  <a href="https://badge.fury.io/py/carculator-truck" target="_blank"><img src="https://badge.fury.io/py/carculator-truck.svg"></a>
   <a href="https://travis-ci.org/romainsacchi/carculator_truck" target="_blank"><img src="https://travis-ci.org/romainsacchi/carculator_truck.svg?branch=master"></a>
   <a href="https://ci.appveyor.com/project/romainsacchi/carculator_truck" target="_blank"><img src="https://ci.appveyor.com/api/projects/status/github/romainsacchi/carculator_truck?svg=true"></a>
   <a href="https://coveralls.io/github/romainsacchi/carculator_truck" target="_blank"><img src="https://coveralls.io/repos/github/romainsacchi/carculator_truck/badge.svg"></a>
