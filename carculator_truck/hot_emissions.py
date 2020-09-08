@@ -28,6 +28,8 @@ class HotEmissionsModel:
         self.cycle = cycle
         self.cycle_name = cycle_name
 
+        # We determine which sections of the driving cycle correspond to an urban, suburban and rural environment
+        # This is to compartmentalize emissions
         self.cycle_environment = {
             "Urban delivery": {"urban start": 0, "urban stop": -1},
             "Long haul": {"rural start": 0, "rural stop": -1},
@@ -43,6 +45,9 @@ class HotEmissionsModel:
         self.em = self.get_emission_factors()
 
     def get_emission_factors(self):
+        """ Emissions factors extracted for trucks from HBEFA 4.1
+            deatiled by size, powertrain and EURO class for each substance.
+        """
         fp = DATA_DIR / "HEM_factors_trucks.xlsx"
         ef = pd.read_excel(fp)
         return (
@@ -55,11 +60,10 @@ class HotEmissionsModel:
         self, powertrain_type, euro_classes, debug_mode=False
     ):
         """
-        Calculate hot pollutants emissions given a powertrain type (i.e., diesel, CNG) and a EURO pollution class, per air sub-compartment
-        (i.e., urban, suburban and rural).
+        Calculate hot pollutants emissions given a powertrain type (i.e., diesel, CNG) and a EURO pollution class,
+        per air sub-compartment (i.e., urban, suburban and rural).
 
         The emission sums are further divided into `air compartments`: urban, suburban and rural.
-
 
         :param powertrain_type: "diesel", or "CNG"
         :type powertrain_type: str
@@ -90,6 +94,11 @@ class HotEmissionsModel:
 
         cycle = self.cycle.reshape(-1, 1, 1, 6)
 
+        # Emissions for each second of the driving cycle equal:
+        # a * speed**3 + b * speed**2 + c * speed + d
+        # with a, b, c, d being coefficients given by fitting HBEFA 4.1 data
+        # the fitting of emissions function of speed level is described in the notebook
+        # `HBEFA trucks.ipynb` in the folder `dev`.
         a = arr["a"].values * cycle ** 3
         b = arr["b"].values * cycle ** 2
         c = arr["c"].values * cycle
@@ -103,7 +112,7 @@ class HotEmissionsModel:
         if debug_mode == True:
             return em_arr
 
-        # In case the fit produces negative numbers
+        # In case the fit produces negative numbers (it should not, though)
         em_arr[em_arr < 0] = 0
 
         # If the driving cycle selected is one of the driving cycles for which carculator has specifications,

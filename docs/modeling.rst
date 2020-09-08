@@ -1,30 +1,28 @@
 Modeling and assumptions
 ========================
 
-The modeling of passenger vehicles in the past, present and future is complex and relies on many assumptions.
-With **carculator** and **carculator online**, we wish to be transparent about those: assumptions and modeling approaches should ideally be easily
-critiqued and modified.
+The modeling of medium and heavy goods vehicles in the past, present and future is complex and relies on many assumptions.
+With **carculator_truck**, we wish to be transparent about those: assumptions and modeling approaches should ideally be easily
+criticized and modified if need be.
 
 We try here to give a comprehensive list of assumptions and modeling choices, and describe how, as a user, you
 can change those.
 
-Parameters' names are indicated ``verbatim`` and are to be used in **carculator**. The can also be accessed and modified
-via its online graphical user interface **carculator online**,  via the search bar in the *Car Parameters* section.
+Parameters' names are indicated ``verbatim`` and are to be used in **carculator_truck**.
 
 Vehicle sizing
 **************
-**carculator** models vehicles along four dimensions:
+**carculator_truck** models vehicles along four dimensions:
 
 * their powertrain (e.g., gasoline-run internal combustion engine, battery electric vehicle, etc.),
-* their size (e.g., mini, medium, large, etc.),
-* their year of production (2000, 2010, 2017 and 2040)
+* their size (e.g., 3.5t, 7.5t, 18t, etc.),
+* their year of production (2000, 2010, 2020, 2030, 2040 and 2050)
 * and a parameter dimension (i.e., input and calculated parameters).
 
-When **carculator** sizes the vehicles for the different powertrains, sizes and years, it starts with the
-input parameter's value for the ``glider base mass``, which is essentially an initial guess for the mass of the vehicle's
-glider without anything on it.
-
-Then it adds the following components and their associated mass:
+When **carculator_truck** sizes the vehicles for the different powertrains, sizes and years, it starts with bringing
+together a few components common to all powertrains, that is: `glider base mass`, `suspension mass`, `braking system mass`,
+`wheels and tires mass`, `cabin mass`, `electrical system mass`, `other components mass`, `transmission mass`. Then, it adds
+energy storage components, such as:
 
 * ``fuel mass``: mass of the fuel in the fuel tank (only applicable to vehicles using liquid or gaseous fuels),
 * ``fuel tank mass``: mass of the fuel tank (empty),
@@ -41,33 +39,27 @@ Then it adds the following components and their associated mass:
 * ``battery cell mass``: mass of the battery cells. Two types of batteries are distinguished: power and energy batteries,
 * ``battery BoP mass``: mass of the Balance of Plant of the battery.
 
+This constitutes the `curb mass` of the vehicle.
 
-Adding the mass of the glider to the mass of these components constitutes a first attempt at guessing the ``curb mass`` of
-the vehicle, that is its mass in working order, but without passengers and cargo.
-The ``driving mass`` of the vehicle is then obtained by summing the ``curb mass`` to the mass of the passengers
-(``average passengers`` x ``average passenger mass``) and cargo transported (``cargo mass``).
+The difference between the `curb mass` and the allowed maximum gross weight of the vehicle is the `maximum available payload`.
+Hence, a truck with a `curb mass` of 15 tons and an authorized gross weight of 40 tons has a `maximum available payload` of 25 tons.
 
-A second step consists into calculating the mass of the combustion and electric engine, based on the following relations:
+However, not all the `maximum available payload` is used. This depends on the parameter `capacity utilization`, whch is the ratio
+between actual cargo mass and `maximum available payload`. `capacity utilization` * `maximum available payload` gives the
+`total cargo mass`.
 
-    power demand (``power``) [kW] = ``power-to-mass ratio`` [kW/kg] x ``curb mass`` [kg]
+The sum of `curb mass` and `total cargo mass` gives the `driving mass`.
 
-    electrical power demand (``electric power``) [kW] = power demand (``power``) [kW] x (1 - ``combustion power share`` [%])
+The mass of the energy storage compponents (e.g., batteries) depends:
+* on the range the vehicle is required to drive on a single fueling/charging, called `target range`.
+* and on the consumption of the vehicle per km, called `TtW energy`.
 
-    ``electric engine mass`` [kW] = (``electric power`` [kW] x ``electric mass per power`` [kg/kW]) + ``electric fixed mass`` [kg]
-
-    combustion power demand (``combustion power``) [kW] = ``power`` [kW] x ``combustion power share`` [%]
-
-    ``combustion engine mass`` [kW] = (``combustion power`` [kW] x ``combustion mass per power`` [kg/kW]) + ``combustion fixed mass`` [kg]
+The parameter `TtW energy`, which is the tank-to-wheel energy consumption over 1 km, depends itself on the `driving mass`
+of the vehicle. Hence, both `driving mass` and `TtW energy` need to be solved. This is done so iteratively, until the
+value for `driving mass` does not change by more than 0.1% form one iteration to the other.
 
 
-As well as for the mass of the powertrain:
-
-    ``powertrain mass`` [kg] = (``power`` [kW] x ``powertrain mass per power`` [kg/kW]) + ``powertrain fixed mass`` [kg]
-
-With the mass of these new components recalculated (``electric engine mass``, ``combustion engine mass`` and ``powertrain mass``),
-the curb mass of the vehicle is calculated once again. This iterative process stops when the curb mass of the vehicle
-stabilizes (i.e., when recalculating the mass of the engine and powertrain does not lead to a change in the new curb
-mass of more than one percent).
+Then it adds the following components and their associated mass:
 
 .. image:: https://github.com/romainsacchi/carculator/raw/master/docs/mass_module.png
     :width: 900

@@ -55,16 +55,21 @@ class EnergyConsumptionModel:
 
             except KeyError:
                 raise ("The driving cycle specified could not be found.")
+
+        # if an array is passed instead, then it is used directly
         elif isinstance(cycle, np.ndarray):
             self.cycle_name = "custom"
             pass
+
+        # if not, it's a problem
         else:
             raise ("The format of the driving cycle is not valid.")
 
 
         self.gradient_name = self.cycle_name
+        # retrieve road gradients (in degress) for each second of the driving cycle selected
         self.gradient = get_gradients(self.gradient_name).reshape(-1,1,1,6)
-
+        # reshape the driving cycle
         self.cycle = cycle.reshape(-1,1,1,6)
 
         self.rho_air = rho_air
@@ -102,8 +107,6 @@ class EnergyConsumptionModel:
             * 1000  # m / km
             / 1000  # 1 / (J / kJ)
         )
-
-
 
         return (auxiliary_energy / efficiency).T
 
@@ -198,6 +201,9 @@ class EnergyConsumptionModel:
 
             return total_power
 
+        # if `debug_mode` == True, returns instead
+        # the power to overcome rolling resistance, air resistance, gradient resistance,
+        # inertia and braking resistance, as well as the total power and the energy to overcome it.
         else:
             rolling_resistance *= (self.velocity )
             air_resistance *= (self.velocity )
