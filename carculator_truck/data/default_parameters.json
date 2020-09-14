@@ -19548,7 +19548,7 @@
         "maximum": 0.93
     },
     "654-2000-engine efficiency, empty, urban delivery": {
-        "amount": 0.21208749999999996,
+        "amount": 0.243675,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19569,12 +19569,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.21208749999999996,
+        "loc": 0.243675,
         "minimum": 0.297825,
         "maximum": 0.351975
     },
     "655-2010-engine efficiency, empty, urban delivery": {
-        "amount": 0.22324999999999998,
+        "amount": 0.2565,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19595,12 +19595,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.22324999999999998,
+        "loc": 0.2565,
         "minimum": 0.3135,
         "maximum": 0.3705
     },
     "656-2020-engine efficiency, empty, urban delivery": {
-        "amount": 0.235,
+        "amount": 0.27,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19621,12 +19621,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.235,
+        "loc": 0.27,
         "minimum": 0.33,
         "maximum": 0.39
     },
     "657-2030-engine efficiency, empty, urban delivery": {
-        "amount": 0.23265,
+        "amount": 0.26730000000000004,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19647,12 +19647,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.23265,
+        "loc": 0.26730000000000004,
         "minimum": 0.3267,
         "maximum": 0.3861
     },
     "658-2040-engine efficiency, empty, urban delivery": {
-        "amount": 0.2303235,
+        "amount": 0.26462700000000006,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19673,12 +19673,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.2303235,
+        "loc": 0.26462700000000006,
         "minimum": 0.32343299999999997,
         "maximum": 0.382239
     },
     "659-2050-engine efficiency, empty, urban delivery": {
-        "amount": 0.22802026499999997,
+        "amount": 0.26198073000000005,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19699,12 +19699,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.22802026499999997,
+        "loc": 0.26198073000000005,
         "minimum": 0.32019866999999996,
         "maximum": 0.37841661
     },
     "660-2000-engine efficiency, empty, urban delivery": {
-        "amount": 0.24818749999999998,
+        "amount": 0.279775,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19725,12 +19725,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.24818749999999998,
+        "loc": 0.279775,
         "minimum": 0.32489999999999997,
         "maximum": 0.361
     },
     "661-2010-engine efficiency, empty, urban delivery": {
-        "amount": 0.26125,
+        "amount": 0.2945,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19751,12 +19751,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.26125,
+        "loc": 0.2945,
         "minimum": 0.34199999999999997,
         "maximum": 0.38
     },
     "662-2020-engine efficiency, empty, urban delivery": {
-        "amount": 0.275,
+        "amount": 0.31,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19777,12 +19777,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.275,
+        "loc": 0.31,
         "minimum": 0.36,
         "maximum": 0.4
     },
     "663-2030-engine efficiency, empty, urban delivery": {
-        "amount": 0.27225,
+        "amount": 0.3069,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19803,12 +19803,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.27225,
+        "loc": 0.3069,
         "minimum": 0.3564,
         "maximum": 0.396
     },
     "664-2040-engine efficiency, empty, urban delivery": {
-        "amount": 0.2695275,
+        "amount": 0.303831,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19829,12 +19829,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.2695275,
+        "loc": 0.303831,
         "minimum": 0.352836,
         "maximum": 0.39204
     },
     "665-2050-engine efficiency, empty, urban delivery": {
-        "amount": 0.266832225,
+        "amount": 0.30079269000000003,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19855,12 +19855,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.266832225,
+        "loc": 0.30079269000000003,
         "minimum": 0.34930764,
         "maximum": 0.3881196
     },
     "666-2000-engine efficiency, empty, urban delivery": {
-        "amount": 0.31587499999999996,
+        "amount": 0.34295,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -19872,6 +19872,318 @@
             "18t"
         ],
         "type": "rigid, 2 axles, box body",
+        "year": 2000,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.34295,
+        "minimum": 0.361,
+        "maximum": 0.37904999999999994
+    },
+    "667-2010-engine efficiency, empty, urban delivery": {
+        "amount": 0.361,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2010,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.361,
+        "minimum": 0.38,
+        "maximum": 0.39899999999999997
+    },
+    "668-2020-engine efficiency, empty, urban delivery": {
+        "amount": 0.38,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2020,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.38,
+        "minimum": 0.4,
+        "maximum": 0.42
+    },
+    "669-2030-engine efficiency, empty, urban delivery": {
+        "amount": 0.3762,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2030,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3762,
+        "minimum": 0.396,
+        "maximum": 0.4158
+    },
+    "670-2040-engine efficiency, empty, urban delivery": {
+        "amount": 0.372438,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2040,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.372438,
+        "minimum": 0.39204,
+        "maximum": 0.411642
+    },
+    "671-2050-engine efficiency, empty, urban delivery": {
+        "amount": 0.36871361999999996,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2050,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.36871361999999996,
+        "minimum": 0.3881196,
+        "maximum": 0.40752558
+    },
+    "672-2000-engine efficiency, empty, urban delivery": {
+        "amount": 0.351975,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2000,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.351975,
+        "minimum": 0.361,
+        "maximum": 0.37904999999999994
+    },
+    "673-2010-engine efficiency, empty, urban delivery": {
+        "amount": 0.3705,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2010,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3705,
+        "minimum": 0.38,
+        "maximum": 0.39899999999999997
+    },
+    "674-2020-engine efficiency, empty, urban delivery": {
+        "amount": 0.39,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2020,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.39,
+        "minimum": 0.4,
+        "maximum": 0.42
+    },
+    "675-2030-engine efficiency, empty, urban delivery": {
+        "amount": 0.3861,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2030,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3861,
+        "minimum": 0.396,
+        "maximum": 0.4158
+    },
+    "676-2040-engine efficiency, empty, urban delivery": {
+        "amount": 0.382239,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2040,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.382239,
+        "minimum": 0.39204,
+        "maximum": 0.411642
+    },
+    "677-2050-engine efficiency, empty, urban delivery": {
+        "amount": 0.37841661,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2050,
+        "name": "engine efficiency, empty, urban delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.37841661,
+        "minimum": 0.3881196,
+        "maximum": 0.40752558
+    },
+    "678-2000-engine efficiency, empty, urban delivery": {
+        "amount": 0.31587499999999996,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
         "year": 2000,
         "name": "engine efficiency, empty, urban delivery",
         "unit": "unitless",
@@ -19882,10 +20194,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.31587499999999996,
-        "minimum": 0.361,
-        "maximum": 0.37904999999999994
+        "minimum": 0.37002499999999994,
+        "maximum": 0.38807499999999995
     },
-    "667-2010-engine efficiency, empty, urban delivery": {
+    "679-2010-engine efficiency, empty, urban delivery": {
         "amount": 0.33249999999999996,
         "category": "Powertrain",
         "powertrain": [
@@ -19895,9 +20207,9 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "40t"
         ],
-        "type": "rigid, 2 axles, box body",
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
         "year": 2010,
         "name": "engine efficiency, empty, urban delivery",
         "unit": "unitless",
@@ -19908,10 +20220,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.33249999999999996,
-        "minimum": 0.38,
-        "maximum": 0.39899999999999997
+        "minimum": 0.38949999999999996,
+        "maximum": 0.4085
     },
-    "668-2020-engine efficiency, empty, urban delivery": {
+    "680-2020-engine efficiency, empty, urban delivery": {
         "amount": 0.35,
         "category": "Powertrain",
         "powertrain": [
@@ -19921,9 +20233,9 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "40t"
         ],
-        "type": "rigid, 2 axles, box body",
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
         "year": 2020,
         "name": "engine efficiency, empty, urban delivery",
         "unit": "unitless",
@@ -19934,10 +20246,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.35,
-        "minimum": 0.4,
-        "maximum": 0.42
+        "minimum": 0.41,
+        "maximum": 0.43
     },
-    "669-2030-engine efficiency, empty, urban delivery": {
+    "681-2030-engine efficiency, empty, urban delivery": {
         "amount": 0.3465,
         "category": "Powertrain",
         "powertrain": [
@@ -19947,9 +20259,9 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "40t"
         ],
-        "type": "rigid, 2 axles, box body",
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
         "year": 2030,
         "name": "engine efficiency, empty, urban delivery",
         "unit": "unitless",
@@ -19960,10 +20272,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.3465,
-        "minimum": 0.396,
-        "maximum": 0.4158
+        "minimum": 0.4059,
+        "maximum": 0.42569999999999997
     },
-    "670-2040-engine efficiency, empty, urban delivery": {
+    "682-2040-engine efficiency, empty, urban delivery": {
         "amount": 0.343035,
         "category": "Powertrain",
         "powertrain": [
@@ -19973,9 +20285,9 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "40t"
         ],
-        "type": "rigid, 2 axles, box body",
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
         "year": 2040,
         "name": "engine efficiency, empty, urban delivery",
         "unit": "unitless",
@@ -19986,10 +20298,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.343035,
-        "minimum": 0.39204,
-        "maximum": 0.411642
+        "minimum": 0.401841,
+        "maximum": 0.42144299999999996
     },
-    "671-2050-engine efficiency, empty, urban delivery": {
+    "683-2050-engine efficiency, empty, urban delivery": {
         "amount": 0.33960464999999995,
         "category": "Powertrain",
         "powertrain": [
@@ -19999,9 +20311,9 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "40t"
         ],
-        "type": "rigid, 2 axles, box body",
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
         "year": 2050,
         "name": "engine efficiency, empty, urban delivery",
         "unit": "unitless",
@@ -20012,323 +20324,11 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.33960464999999995,
-        "minimum": 0.3881196,
-        "maximum": 0.40752558
-    },
-    "672-2000-engine efficiency, empty, urban delivery": {
-        "amount": 0.32489999999999997,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2000,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.32489999999999997,
-        "minimum": 0.361,
-        "maximum": 0.37904999999999994
-    },
-    "673-2010-engine efficiency, empty, urban delivery": {
-        "amount": 0.34199999999999997,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2010,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.34199999999999997,
-        "minimum": 0.38,
-        "maximum": 0.39899999999999997
-    },
-    "674-2020-engine efficiency, empty, urban delivery": {
-        "amount": 0.36,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2020,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.36,
-        "minimum": 0.4,
-        "maximum": 0.42
-    },
-    "675-2030-engine efficiency, empty, urban delivery": {
-        "amount": 0.3564,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2030,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3564,
-        "minimum": 0.396,
-        "maximum": 0.4158
-    },
-    "676-2040-engine efficiency, empty, urban delivery": {
-        "amount": 0.352836,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2040,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.352836,
-        "minimum": 0.39204,
-        "maximum": 0.411642
-    },
-    "677-2050-engine efficiency, empty, urban delivery": {
-        "amount": 0.34930764,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2050,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.34930764,
-        "minimum": 0.3881196,
-        "maximum": 0.40752558
-    },
-    "678-2000-engine efficiency, empty, urban delivery": {
-        "amount": 0.2915075,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2000,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.2915075,
-        "minimum": 0.37002499999999994,
-        "maximum": 0.38807499999999995
-    },
-    "679-2010-engine efficiency, empty, urban delivery": {
-        "amount": 0.30685,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2010,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.30685,
-        "minimum": 0.38949999999999996,
-        "maximum": 0.4085
-    },
-    "680-2020-engine efficiency, empty, urban delivery": {
-        "amount": 0.323,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2020,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.323,
-        "minimum": 0.41,
-        "maximum": 0.43
-    },
-    "681-2030-engine efficiency, empty, urban delivery": {
-        "amount": 0.31977,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2030,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.31977,
-        "minimum": 0.4059,
-        "maximum": 0.42569999999999997
-    },
-    "682-2040-engine efficiency, empty, urban delivery": {
-        "amount": 0.3165723,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2040,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3165723,
-        "minimum": 0.401841,
-        "maximum": 0.42144299999999996
-    },
-    "683-2050-engine efficiency, empty, urban delivery": {
-        "amount": 0.31340657699999996,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2050,
-        "name": "engine efficiency, empty, urban delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.31340657699999996,
         "minimum": 0.39782259,
         "maximum": 0.41722856999999997
     },
     "684-2000-engine efficiency, empty, urban delivery": {
-        "amount": 0.32670499999999997,
+        "amount": 0.351975,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20349,12 +20349,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.32670499999999997,
+        "loc": 0.351975,
         "minimum": 0.37904999999999994,
         "maximum": 0.41667
     },
     "685-2010-engine efficiency, empty, urban delivery": {
-        "amount": 0.3439,
+        "amount": 0.3705,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20375,12 +20375,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3439,
+        "loc": 0.3705,
         "minimum": 0.39899999999999997,
         "maximum": 0.4386
     },
     "686-2020-engine efficiency, empty, urban delivery": {
-        "amount": 0.362,
+        "amount": 0.39,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20401,12 +20401,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.362,
+        "loc": 0.39,
         "minimum": 0.42,
         "maximum": 0.43
     },
     "687-2030-engine efficiency, empty, urban delivery": {
-        "amount": 0.35838,
+        "amount": 0.3861,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20427,12 +20427,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35838,
+        "loc": 0.3861,
         "minimum": 0.4158,
         "maximum": 0.42569999999999997
     },
     "688-2040-engine efficiency, empty, urban delivery": {
-        "amount": 0.35479619999999995,
+        "amount": 0.382239,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20453,12 +20453,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35479619999999995,
+        "loc": 0.382239,
         "minimum": 0.411642,
         "maximum": 0.42144299999999996
     },
     "689-2050-engine efficiency, empty, urban delivery": {
-        "amount": 0.35124823799999993,
+        "amount": 0.37841661,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20479,7 +20479,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35124823799999993,
+        "loc": 0.37841661,
         "minimum": 0.40752558,
         "maximum": 0.41722856999999997
     },
@@ -20664,7 +20664,7 @@
         "maximum": 0.93
     },
     "696-2000-engine efficiency, full, urban delivery": {
-        "amount": 0.24818749999999998,
+        "amount": 0.279775,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20685,12 +20685,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.24818749999999998,
+        "loc": 0.279775,
         "minimum": 0.297825,
         "maximum": 0.351975
     },
     "697-2010-engine efficiency, full, urban delivery": {
-        "amount": 0.26125,
+        "amount": 0.2945,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20711,12 +20711,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.26125,
+        "loc": 0.2945,
         "minimum": 0.3135,
         "maximum": 0.3705
     },
     "698-2020-engine efficiency, full, urban delivery": {
-        "amount": 0.275,
+        "amount": 0.31,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20737,12 +20737,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.275,
+        "loc": 0.31,
         "minimum": 0.33,
         "maximum": 0.39
     },
     "699-2030-engine efficiency, full, urban delivery": {
-        "amount": 0.27225,
+        "amount": 0.3069,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20763,12 +20763,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.27225,
+        "loc": 0.3069,
         "minimum": 0.3267,
         "maximum": 0.3861
     },
     "700-2040-engine efficiency, full, urban delivery": {
-        "amount": 0.2695275,
+        "amount": 0.303831,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20789,12 +20789,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.2695275,
+        "loc": 0.303831,
         "minimum": 0.32343299999999997,
         "maximum": 0.382239
     },
     "701-2050-engine efficiency, full, urban delivery": {
-        "amount": 0.266832225,
+        "amount": 0.30079269000000003,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20815,12 +20815,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.266832225,
+        "loc": 0.30079269000000003,
         "minimum": 0.32019866999999996,
         "maximum": 0.37841661
     },
     "702-2000-engine efficiency, full, urban delivery": {
-        "amount": 0.30685,
+        "amount": 0.33392499999999997,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20841,12 +20841,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.30685,
+        "loc": 0.33392499999999997,
         "minimum": 0.32489999999999997,
         "maximum": 0.361
     },
     "703-2010-engine efficiency, full, urban delivery": {
-        "amount": 0.323,
+        "amount": 0.3515,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20867,12 +20867,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.323,
+        "loc": 0.3515,
         "minimum": 0.34199999999999997,
         "maximum": 0.38
     },
     "704-2020-engine efficiency, full, urban delivery": {
-        "amount": 0.34,
+        "amount": 0.37,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20893,12 +20893,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.34,
+        "loc": 0.37,
         "minimum": 0.36,
         "maximum": 0.4
     },
     "705-2030-engine efficiency, full, urban delivery": {
-        "amount": 0.3366,
+        "amount": 0.3663,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20919,12 +20919,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3366,
+        "loc": 0.3663,
         "minimum": 0.3564,
         "maximum": 0.396
     },
     "706-2040-engine efficiency, full, urban delivery": {
-        "amount": 0.33323400000000003,
+        "amount": 0.362637,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20945,12 +20945,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.33323400000000003,
+        "loc": 0.362637,
         "minimum": 0.352836,
         "maximum": 0.39204
     },
     "707-2050-engine efficiency, full, urban delivery": {
-        "amount": 0.32990166000000004,
+        "amount": 0.35901063,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20971,12 +20971,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.32990166000000004,
+        "loc": 0.35901063,
         "minimum": 0.34930764,
         "maximum": 0.3881196
     },
     "708-2000-engine efficiency, full, urban delivery": {
-        "amount": 0.37904999999999994,
+        "amount": 0.40612499999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -20997,12 +20997,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.37904999999999994,
+        "loc": 0.40612499999999996,
         "minimum": 0.361,
         "maximum": 0.37904999999999994
     },
     "709-2010-engine efficiency, full, urban delivery": {
-        "amount": 0.39899999999999997,
+        "amount": 0.4275,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21023,12 +21023,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.39899999999999997,
+        "loc": 0.4275,
         "minimum": 0.38,
         "maximum": 0.39899999999999997
     },
     "710-2020-engine efficiency, full, urban delivery": {
-        "amount": 0.42,
+        "amount": 0.45,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21049,12 +21049,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.42,
+        "loc": 0.45,
         "minimum": 0.4,
         "maximum": 0.42
     },
     "711-2030-engine efficiency, full, urban delivery": {
-        "amount": 0.4158,
+        "amount": 0.4455,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21075,12 +21075,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4158,
+        "loc": 0.4455,
         "minimum": 0.396,
         "maximum": 0.4158
     },
     "712-2040-engine efficiency, full, urban delivery": {
-        "amount": 0.411642,
+        "amount": 0.441045,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21101,12 +21101,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.411642,
+        "loc": 0.441045,
         "minimum": 0.39204,
         "maximum": 0.411642
     },
     "713-2050-engine efficiency, full, urban delivery": {
-        "amount": 0.40752558,
+        "amount": 0.43663455,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21127,12 +21127,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.40752558,
+        "loc": 0.43663455,
         "minimum": 0.3881196,
         "maximum": 0.40752558
     },
     "714-2000-engine efficiency, full, urban delivery": {
-        "amount": 0.3835625,
+        "amount": 0.41514999999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21153,12 +21153,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3835625,
+        "loc": 0.41514999999999996,
         "minimum": 0.361,
         "maximum": 0.37904999999999994
     },
     "715-2010-engine efficiency, full, urban delivery": {
-        "amount": 0.40375,
+        "amount": 0.437,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21179,12 +21179,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.40375,
+        "loc": 0.437,
         "minimum": 0.38,
         "maximum": 0.39899999999999997
     },
     "716-2020-engine efficiency, full, urban delivery": {
-        "amount": 0.425,
+        "amount": 0.46,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21205,12 +21205,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.425,
+        "loc": 0.46,
         "minimum": 0.4,
         "maximum": 0.42
     },
     "717-2030-engine efficiency, full, urban delivery": {
-        "amount": 0.42075,
+        "amount": 0.4554,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21231,12 +21231,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.42075,
+        "loc": 0.4554,
         "minimum": 0.396,
         "maximum": 0.4158
     },
     "718-2040-engine efficiency, full, urban delivery": {
-        "amount": 0.4165425,
+        "amount": 0.450846,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21257,12 +21257,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4165425,
+        "loc": 0.450846,
         "minimum": 0.39204,
         "maximum": 0.411642
     },
     "719-2050-engine efficiency, full, urban delivery": {
-        "amount": 0.412377075,
+        "amount": 0.44633754000000003,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21283,12 +21283,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.412377075,
+        "loc": 0.44633754000000003,
         "minimum": 0.3881196,
         "maximum": 0.40752558
     },
     "720-2000-engine efficiency, full, urban delivery": {
-        "amount": 0.3673174999999999,
+        "amount": 0.39709999999999995,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21309,12 +21309,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3673174999999999,
+        "loc": 0.39709999999999995,
         "minimum": 0.37002499999999994,
         "maximum": 0.38807499999999995
     },
     "721-2010-engine efficiency, full, urban delivery": {
-        "amount": 0.38664999999999994,
+        "amount": 0.418,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21335,12 +21335,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.38664999999999994,
+        "loc": 0.418,
         "minimum": 0.38949999999999996,
         "maximum": 0.4085
     },
     "722-2020-engine efficiency, full, urban delivery": {
-        "amount": 0.407,
+        "amount": 0.44,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21361,12 +21361,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.407,
+        "loc": 0.44,
         "minimum": 0.41,
         "maximum": 0.43
     },
     "723-2030-engine efficiency, full, urban delivery": {
-        "amount": 0.40292999999999995,
+        "amount": 0.4356,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21387,12 +21387,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.40292999999999995,
+        "loc": 0.4356,
         "minimum": 0.4059,
         "maximum": 0.42569999999999997
     },
     "724-2040-engine efficiency, full, urban delivery": {
-        "amount": 0.39890069999999994,
+        "amount": 0.43124399999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21413,12 +21413,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.39890069999999994,
+        "loc": 0.43124399999999996,
         "minimum": 0.401841,
         "maximum": 0.42144299999999996
     },
     "725-2050-engine efficiency, full, urban delivery": {
-        "amount": 0.39491169299999995,
+        "amount": 0.42693155999999993,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21439,12 +21439,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.39491169299999995,
+        "loc": 0.42693155999999993,
         "minimum": 0.39782259,
         "maximum": 0.41722856999999997
     },
     "726-2000-engine efficiency, full, urban delivery": {
-        "amount": 0.3998075,
+        "amount": 0.40612499999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21465,12 +21465,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3998075,
+        "loc": 0.40612499999999996,
         "minimum": 0.37904999999999994,
         "maximum": 0.41667
     },
     "727-2010-engine efficiency, full, urban delivery": {
-        "amount": 0.42085,
+        "amount": 0.4275,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21491,12 +21491,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.42085,
+        "loc": 0.4275,
         "minimum": 0.39899999999999997,
         "maximum": 0.4386
     },
     "728-2020-engine efficiency, full, urban delivery": {
-        "amount": 0.443,
+        "amount": 0.45,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21517,12 +21517,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.443,
+        "loc": 0.45,
         "minimum": 0.42,
         "maximum": 0.43
     },
     "729-2030-engine efficiency, full, urban delivery": {
-        "amount": 0.43857,
+        "amount": 0.4455,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21543,12 +21543,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.43857,
+        "loc": 0.4455,
         "minimum": 0.4158,
         "maximum": 0.42569999999999997
     },
     "730-2040-engine efficiency, full, urban delivery": {
-        "amount": 0.4341843,
+        "amount": 0.441045,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21569,12 +21569,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4341843,
+        "loc": 0.441045,
         "minimum": 0.411642,
         "maximum": 0.42144299999999996
     },
     "731-2050-engine efficiency, full, urban delivery": {
-        "amount": 0.429842457,
+        "amount": 0.43663455,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -21595,7 +21595,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.429842457,
+        "loc": 0.43663455,
         "minimum": 0.40752558,
         "maximum": 0.41722856999999997
     },
@@ -23940,7 +23940,7 @@
         "maximum": 0.93
     },
     "810-2000-engine efficiency, empty, regional delivery": {
-        "amount": 0.279775,
+        "amount": 0.30685,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -23961,12 +23961,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.279775,
+        "loc": 0.30685,
         "minimum": 0.297825,
         "maximum": 0.351975
     },
     "811-2010-engine efficiency, empty, regional delivery": {
-        "amount": 0.2945,
+        "amount": 0.323,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -23987,12 +23987,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.2945,
+        "loc": 0.323,
         "minimum": 0.3135,
         "maximum": 0.3705
     },
     "812-2020-engine efficiency, empty, regional delivery": {
-        "amount": 0.31,
+        "amount": 0.34,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24013,12 +24013,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.31,
+        "loc": 0.34,
         "minimum": 0.33,
         "maximum": 0.39
     },
     "813-2030-engine efficiency, empty, regional delivery": {
-        "amount": 0.3069,
+        "amount": 0.3366,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24039,12 +24039,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3069,
+        "loc": 0.3366,
         "minimum": 0.3267,
         "maximum": 0.3861
     },
     "814-2040-engine efficiency, empty, regional delivery": {
-        "amount": 0.303831,
+        "amount": 0.33323400000000003,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24065,12 +24065,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.303831,
+        "loc": 0.33323400000000003,
         "minimum": 0.32343299999999997,
         "maximum": 0.382239
     },
     "815-2050-engine efficiency, empty, regional delivery": {
-        "amount": 0.30079269000000003,
+        "amount": 0.32990166000000004,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24091,167 +24091,11 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.30079269000000003,
+        "loc": 0.32990166000000004,
         "minimum": 0.32019866999999996,
         "maximum": 0.37841661
     },
     "816-2000-engine efficiency, empty, regional delivery": {
-        "amount": 0.29963,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2000,
-        "name": "engine efficiency, empty, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.29963,
-        "minimum": 0.32489999999999997,
-        "maximum": 0.361
-    },
-    "817-2010-engine efficiency, empty, regional delivery": {
-        "amount": 0.3154,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2010,
-        "name": "engine efficiency, empty, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3154,
-        "minimum": 0.34199999999999997,
-        "maximum": 0.38
-    },
-    "818-2020-engine efficiency, empty, regional delivery": {
-        "amount": 0.332,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2020,
-        "name": "engine efficiency, empty, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.332,
-        "minimum": 0.36,
-        "maximum": 0.4
-    },
-    "819-2030-engine efficiency, empty, regional delivery": {
-        "amount": 0.32868,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2030,
-        "name": "engine efficiency, empty, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.32868,
-        "minimum": 0.3564,
-        "maximum": 0.396
-    },
-    "820-2040-engine efficiency, empty, regional delivery": {
-        "amount": 0.32539320000000005,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2040,
-        "name": "engine efficiency, empty, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.32539320000000005,
-        "minimum": 0.352836,
-        "maximum": 0.39204
-    },
-    "821-2050-engine efficiency, empty, regional delivery": {
-        "amount": 0.32213926800000003,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2050,
-        "name": "engine efficiency, empty, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.32213926800000003,
-        "minimum": 0.34930764,
-        "maximum": 0.3881196
-    },
-    "822-2000-engine efficiency, empty, regional delivery": {
         "amount": 0.32489999999999997,
         "category": "Powertrain",
         "powertrain": [
@@ -24261,7 +24105,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "7.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2000,
@@ -24274,10 +24118,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.32489999999999997,
-        "minimum": 0.361,
-        "maximum": 0.37904999999999994
+        "minimum": 0.32489999999999997,
+        "maximum": 0.361
     },
-    "823-2010-engine efficiency, empty, regional delivery": {
+    "817-2010-engine efficiency, empty, regional delivery": {
         "amount": 0.34199999999999997,
         "category": "Powertrain",
         "powertrain": [
@@ -24287,7 +24131,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "7.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2010,
@@ -24300,10 +24144,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.34199999999999997,
-        "minimum": 0.38,
-        "maximum": 0.39899999999999997
+        "minimum": 0.34199999999999997,
+        "maximum": 0.38
     },
-    "824-2020-engine efficiency, empty, regional delivery": {
+    "818-2020-engine efficiency, empty, regional delivery": {
         "amount": 0.36,
         "category": "Powertrain",
         "powertrain": [
@@ -24313,7 +24157,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "7.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2020,
@@ -24326,10 +24170,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.36,
-        "minimum": 0.4,
-        "maximum": 0.42
+        "minimum": 0.36,
+        "maximum": 0.4
     },
-    "825-2030-engine efficiency, empty, regional delivery": {
+    "819-2030-engine efficiency, empty, regional delivery": {
         "amount": 0.3564,
         "category": "Powertrain",
         "powertrain": [
@@ -24339,7 +24183,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "7.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2030,
@@ -24352,10 +24196,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.3564,
-        "minimum": 0.396,
-        "maximum": 0.4158
+        "minimum": 0.3564,
+        "maximum": 0.396
     },
-    "826-2040-engine efficiency, empty, regional delivery": {
+    "820-2040-engine efficiency, empty, regional delivery": {
         "amount": 0.352836,
         "category": "Powertrain",
         "powertrain": [
@@ -24365,7 +24209,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "18t"
+            "7.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2040,
@@ -24378,11 +24222,167 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.352836,
+        "minimum": 0.352836,
+        "maximum": 0.39204
+    },
+    "821-2050-engine efficiency, empty, regional delivery": {
+        "amount": 0.34930764,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2050,
+        "name": "engine efficiency, empty, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.34930764,
+        "minimum": 0.34930764,
+        "maximum": 0.3881196
+    },
+    "822-2000-engine efficiency, empty, regional delivery": {
+        "amount": 0.351975,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2000,
+        "name": "engine efficiency, empty, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.351975,
+        "minimum": 0.361,
+        "maximum": 0.37904999999999994
+    },
+    "823-2010-engine efficiency, empty, regional delivery": {
+        "amount": 0.3705,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2010,
+        "name": "engine efficiency, empty, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3705,
+        "minimum": 0.38,
+        "maximum": 0.39899999999999997
+    },
+    "824-2020-engine efficiency, empty, regional delivery": {
+        "amount": 0.39,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2020,
+        "name": "engine efficiency, empty, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.39,
+        "minimum": 0.4,
+        "maximum": 0.42
+    },
+    "825-2030-engine efficiency, empty, regional delivery": {
+        "amount": 0.3861,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2030,
+        "name": "engine efficiency, empty, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3861,
+        "minimum": 0.396,
+        "maximum": 0.4158
+    },
+    "826-2040-engine efficiency, empty, regional delivery": {
+        "amount": 0.382239,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2040,
+        "name": "engine efficiency, empty, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.382239,
         "minimum": 0.39204,
         "maximum": 0.411642
     },
     "827-2050-engine efficiency, empty, regional delivery": {
-        "amount": 0.34930764,
+        "amount": 0.37841661,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24403,12 +24403,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.34930764,
+        "loc": 0.37841661,
         "minimum": 0.3881196,
         "maximum": 0.40752558
     },
     "828-2000-engine efficiency, empty, regional delivery": {
-        "amount": 0.3456575,
+        "amount": 0.37002499999999994,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24429,12 +24429,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3456575,
+        "loc": 0.37002499999999994,
         "minimum": 0.361,
         "maximum": 0.37904999999999994
     },
     "829-2010-engine efficiency, empty, regional delivery": {
-        "amount": 0.36385,
+        "amount": 0.38949999999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24455,12 +24455,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.36385,
+        "loc": 0.38949999999999996,
         "minimum": 0.38,
         "maximum": 0.39899999999999997
     },
     "830-2020-engine efficiency, empty, regional delivery": {
-        "amount": 0.383,
+        "amount": 0.41,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24481,12 +24481,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.383,
+        "loc": 0.41,
         "minimum": 0.4,
         "maximum": 0.42
     },
     "831-2030-engine efficiency, empty, regional delivery": {
-        "amount": 0.37917,
+        "amount": 0.4059,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24507,12 +24507,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.37917,
+        "loc": 0.4059,
         "minimum": 0.396,
         "maximum": 0.4158
     },
     "832-2040-engine efficiency, empty, regional delivery": {
-        "amount": 0.3753783,
+        "amount": 0.401841,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24533,12 +24533,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3753783,
+        "loc": 0.401841,
         "minimum": 0.39204,
         "maximum": 0.411642
     },
     "833-2050-engine efficiency, empty, regional delivery": {
-        "amount": 0.371624517,
+        "amount": 0.39782259,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24559,12 +24559,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.371624517,
+        "loc": 0.39782259,
         "minimum": 0.3881196,
         "maximum": 0.40752558
     },
     "834-2000-engine efficiency, empty, regional delivery": {
-        "amount": 0.31948499999999996,
+        "amount": 0.34295,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24585,12 +24585,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.31948499999999996,
+        "loc": 0.34295,
         "minimum": 0.37002499999999994,
         "maximum": 0.38807499999999995
     },
     "835-2010-engine efficiency, empty, regional delivery": {
-        "amount": 0.3363,
+        "amount": 0.361,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24611,12 +24611,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3363,
+        "loc": 0.361,
         "minimum": 0.38949999999999996,
         "maximum": 0.4085
     },
     "836-2020-engine efficiency, empty, regional delivery": {
-        "amount": 0.354,
+        "amount": 0.38,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24637,12 +24637,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.354,
+        "loc": 0.38,
         "minimum": 0.41,
         "maximum": 0.43
     },
     "837-2030-engine efficiency, empty, regional delivery": {
-        "amount": 0.35046,
+        "amount": 0.3762,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24663,12 +24663,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35046,
+        "loc": 0.3762,
         "minimum": 0.4059,
         "maximum": 0.42569999999999997
     },
     "838-2040-engine efficiency, empty, regional delivery": {
-        "amount": 0.34695539999999997,
+        "amount": 0.372438,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24689,12 +24689,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.34695539999999997,
+        "loc": 0.372438,
         "minimum": 0.401841,
         "maximum": 0.42144299999999996
     },
     "839-2050-engine efficiency, empty, regional delivery": {
-        "amount": 0.343485846,
+        "amount": 0.36871361999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24715,12 +24715,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.343485846,
+        "loc": 0.36871361999999996,
         "minimum": 0.39782259,
         "maximum": 0.41722856999999997
     },
     "840-2000-engine efficiency, empty, regional delivery": {
-        "amount": 0.351975,
+        "amount": 0.37904999999999994,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24741,12 +24741,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.351975,
+        "loc": 0.37904999999999994,
         "minimum": 0.37904999999999994,
         "maximum": 0.41667
     },
     "841-2010-engine efficiency, empty, regional delivery": {
-        "amount": 0.3705,
+        "amount": 0.39899999999999997,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24767,12 +24767,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3705,
+        "loc": 0.39899999999999997,
         "minimum": 0.39899999999999997,
         "maximum": 0.4386
     },
     "842-2020-engine efficiency, empty, regional delivery": {
-        "amount": 0.39,
+        "amount": 0.42,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24793,12 +24793,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.39,
+        "loc": 0.42,
         "minimum": 0.42,
         "maximum": 0.43
     },
     "843-2030-engine efficiency, empty, regional delivery": {
-        "amount": 0.3861,
+        "amount": 0.4158,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24819,12 +24819,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3861,
+        "loc": 0.4158,
         "minimum": 0.4158,
         "maximum": 0.42569999999999997
     },
     "844-2040-engine efficiency, empty, regional delivery": {
-        "amount": 0.382239,
+        "amount": 0.411642,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24845,12 +24845,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.382239,
+        "loc": 0.411642,
         "minimum": 0.411642,
         "maximum": 0.42144299999999996
     },
     "845-2050-engine efficiency, empty, regional delivery": {
-        "amount": 0.37841661,
+        "amount": 0.40752558,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -24871,7 +24871,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.37841661,
+        "loc": 0.40752558,
         "minimum": 0.40752558,
         "maximum": 0.41722856999999997
     },
@@ -25056,162 +25056,6 @@
         "maximum": 0.93
     },
     "852-2000-engine efficiency, full, regional delivery": {
-        "amount": 0.297825,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2000,
-        "name": "engine efficiency, full, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.297825,
-        "minimum": 0.297825,
-        "maximum": 0.351975
-    },
-    "853-2010-engine efficiency, full, regional delivery": {
-        "amount": 0.3135,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2010,
-        "name": "engine efficiency, full, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3135,
-        "minimum": 0.3135,
-        "maximum": 0.3705
-    },
-    "854-2020-engine efficiency, full, regional delivery": {
-        "amount": 0.33,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2020,
-        "name": "engine efficiency, full, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.33,
-        "minimum": 0.33,
-        "maximum": 0.39
-    },
-    "855-2030-engine efficiency, full, regional delivery": {
-        "amount": 0.3267,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2030,
-        "name": "engine efficiency, full, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3267,
-        "minimum": 0.3267,
-        "maximum": 0.3861
-    },
-    "856-2040-engine efficiency, full, regional delivery": {
-        "amount": 0.32343299999999997,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2040,
-        "name": "engine efficiency, full, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.32343299999999997,
-        "minimum": 0.32343299999999997,
-        "maximum": 0.382239
-    },
-    "857-2050-engine efficiency, full, regional delivery": {
-        "amount": 0.32019866999999996,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2050,
-        "name": "engine efficiency, full, regional delivery",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.32019866999999996,
-        "minimum": 0.32019866999999996,
-        "maximum": 0.37841661
-    },
-    "858-2000-engine efficiency, full, regional delivery": {
         "amount": 0.32489999999999997,
         "category": "Powertrain",
         "powertrain": [
@@ -25221,7 +25065,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "7.5t"
+            "3.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2000,
@@ -25234,10 +25078,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.32489999999999997,
-        "minimum": 0.32489999999999997,
-        "maximum": 0.361
+        "minimum": 0.297825,
+        "maximum": 0.351975
     },
-    "859-2010-engine efficiency, full, regional delivery": {
+    "853-2010-engine efficiency, full, regional delivery": {
         "amount": 0.34199999999999997,
         "category": "Powertrain",
         "powertrain": [
@@ -25247,7 +25091,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "7.5t"
+            "3.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2010,
@@ -25260,10 +25104,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.34199999999999997,
-        "minimum": 0.34199999999999997,
-        "maximum": 0.38
+        "minimum": 0.3135,
+        "maximum": 0.3705
     },
-    "860-2020-engine efficiency, full, regional delivery": {
+    "854-2020-engine efficiency, full, regional delivery": {
         "amount": 0.36,
         "category": "Powertrain",
         "powertrain": [
@@ -25273,7 +25117,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "7.5t"
+            "3.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2020,
@@ -25286,10 +25130,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.36,
-        "minimum": 0.36,
-        "maximum": 0.4
+        "minimum": 0.33,
+        "maximum": 0.39
     },
-    "861-2030-engine efficiency, full, regional delivery": {
+    "855-2030-engine efficiency, full, regional delivery": {
         "amount": 0.3564,
         "category": "Powertrain",
         "powertrain": [
@@ -25299,7 +25143,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "7.5t"
+            "3.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2030,
@@ -25312,10 +25156,10 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.3564,
-        "minimum": 0.3564,
-        "maximum": 0.396
+        "minimum": 0.3267,
+        "maximum": 0.3861
     },
-    "862-2040-engine efficiency, full, regional delivery": {
+    "856-2040-engine efficiency, full, regional delivery": {
         "amount": 0.352836,
         "category": "Powertrain",
         "powertrain": [
@@ -25325,7 +25169,7 @@
             "HEV-d"
         ],
         "sizes": [
-            "7.5t"
+            "3.5t"
         ],
         "type": "rigid, 2 axles, box body",
         "year": 2040,
@@ -25338,11 +25182,167 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.352836,
+        "minimum": 0.32343299999999997,
+        "maximum": 0.382239
+    },
+    "857-2050-engine efficiency, full, regional delivery": {
+        "amount": 0.34930764,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2050,
+        "name": "engine efficiency, full, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.34930764,
+        "minimum": 0.32019866999999996,
+        "maximum": 0.37841661
+    },
+    "858-2000-engine efficiency, full, regional delivery": {
+        "amount": 0.351975,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2000,
+        "name": "engine efficiency, full, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.351975,
+        "minimum": 0.32489999999999997,
+        "maximum": 0.361
+    },
+    "859-2010-engine efficiency, full, regional delivery": {
+        "amount": 0.3705,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2010,
+        "name": "engine efficiency, full, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3705,
+        "minimum": 0.34199999999999997,
+        "maximum": 0.38
+    },
+    "860-2020-engine efficiency, full, regional delivery": {
+        "amount": 0.39,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2020,
+        "name": "engine efficiency, full, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.39,
+        "minimum": 0.36,
+        "maximum": 0.4
+    },
+    "861-2030-engine efficiency, full, regional delivery": {
+        "amount": 0.3861,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2030,
+        "name": "engine efficiency, full, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3861,
+        "minimum": 0.3564,
+        "maximum": 0.396
+    },
+    "862-2040-engine efficiency, full, regional delivery": {
+        "amount": 0.382239,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2040,
+        "name": "engine efficiency, full, regional delivery",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.382239,
         "minimum": 0.352836,
         "maximum": 0.39204
     },
     "863-2050-engine efficiency, full, regional delivery": {
-        "amount": 0.34930764,
+        "amount": 0.37841661,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25363,12 +25363,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.34930764,
+        "loc": 0.37841661,
         "minimum": 0.34930764,
         "maximum": 0.3881196
     },
     "864-2000-engine efficiency, full, regional delivery": {
-        "amount": 0.3835625,
+        "amount": 0.4241749999999999,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25389,12 +25389,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3835625,
+        "loc": 0.4241749999999999,
         "minimum": 0.361,
         "maximum": 0.37904999999999994
     },
     "865-2010-engine efficiency, full, regional delivery": {
-        "amount": 0.40375,
+        "amount": 0.44649999999999995,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25415,12 +25415,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.40375,
+        "loc": 0.44649999999999995,
         "minimum": 0.38,
         "maximum": 0.39899999999999997
     },
     "866-2020-engine efficiency, full, regional delivery": {
-        "amount": 0.425,
+        "amount": 0.47,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25441,12 +25441,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.425,
+        "loc": 0.47,
         "minimum": 0.4,
         "maximum": 0.42
     },
     "867-2030-engine efficiency, full, regional delivery": {
-        "amount": 0.42075,
+        "amount": 0.4653,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25467,12 +25467,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.42075,
+        "loc": 0.4653,
         "minimum": 0.396,
         "maximum": 0.4158
     },
     "868-2040-engine efficiency, full, regional delivery": {
-        "amount": 0.4165425,
+        "amount": 0.460647,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25493,12 +25493,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4165425,
+        "loc": 0.460647,
         "minimum": 0.39204,
         "maximum": 0.411642
     },
     "869-2050-engine efficiency, full, regional delivery": {
-        "amount": 0.412377075,
+        "amount": 0.45604052999999994,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25519,12 +25519,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.412377075,
+        "loc": 0.45604052999999994,
         "minimum": 0.3881196,
         "maximum": 0.40752558
     },
     "870-2000-engine efficiency, full, regional delivery": {
-        "amount": 0.4160525,
+        "amount": 0.4422249999999999,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25545,12 +25545,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4160525,
+        "loc": 0.4422249999999999,
         "minimum": 0.361,
         "maximum": 0.37904999999999994
     },
     "871-2010-engine efficiency, full, regional delivery": {
-        "amount": 0.43795,
+        "amount": 0.46549999999999997,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25571,12 +25571,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.43795,
+        "loc": 0.46549999999999997,
         "minimum": 0.38,
         "maximum": 0.39899999999999997
     },
     "872-2020-engine efficiency, full, regional delivery": {
-        "amount": 0.461,
+        "amount": 0.49,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25597,12 +25597,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.461,
+        "loc": 0.49,
         "minimum": 0.4,
         "maximum": 0.42
     },
     "873-2030-engine efficiency, full, regional delivery": {
-        "amount": 0.45639,
+        "amount": 0.4851,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25623,12 +25623,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.45639,
+        "loc": 0.4851,
         "minimum": 0.396,
         "maximum": 0.4158
     },
     "874-2040-engine efficiency, full, regional delivery": {
-        "amount": 0.4518261,
+        "amount": 0.480249,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25649,12 +25649,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4518261,
+        "loc": 0.480249,
         "minimum": 0.39204,
         "maximum": 0.411642
     },
     "875-2050-engine efficiency, full, regional delivery": {
-        "amount": 0.447307839,
+        "amount": 0.47544651,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25675,12 +25675,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.447307839,
+        "loc": 0.47544651,
         "minimum": 0.3881196,
         "maximum": 0.40752558
     },
     "876-2000-engine efficiency, full, regional delivery": {
-        "amount": 0.37904999999999994,
+        "amount": 0.40612499999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25701,12 +25701,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.37904999999999994,
+        "loc": 0.40612499999999996,
         "minimum": 0.37002499999999994,
         "maximum": 0.38807499999999995
     },
     "877-2010-engine efficiency, full, regional delivery": {
-        "amount": 0.39899999999999997,
+        "amount": 0.4275,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25727,12 +25727,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.39899999999999997,
+        "loc": 0.4275,
         "minimum": 0.38949999999999996,
         "maximum": 0.4085
     },
     "878-2020-engine efficiency, full, regional delivery": {
-        "amount": 0.42,
+        "amount": 0.45,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25753,12 +25753,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.42,
+        "loc": 0.45,
         "minimum": 0.41,
         "maximum": 0.43
     },
     "879-2030-engine efficiency, full, regional delivery": {
-        "amount": 0.4158,
+        "amount": 0.4455,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25779,12 +25779,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4158,
+        "loc": 0.4455,
         "minimum": 0.4059,
         "maximum": 0.42569999999999997
     },
     "880-2040-engine efficiency, full, regional delivery": {
-        "amount": 0.411642,
+        "amount": 0.441045,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25805,12 +25805,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.411642,
+        "loc": 0.441045,
         "minimum": 0.401841,
         "maximum": 0.42144299999999996
     },
     "881-2050-engine efficiency, full, regional delivery": {
-        "amount": 0.40752558,
+        "amount": 0.43663455,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25831,12 +25831,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.40752558,
+        "loc": 0.43663455,
         "minimum": 0.39782259,
         "maximum": 0.41722856999999997
     },
     "882-2000-engine efficiency, full, regional delivery": {
-        "amount": 0.43049249999999994,
+        "amount": 0.460275,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25857,12 +25857,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.43049249999999994,
+        "loc": 0.460275,
         "minimum": 0.37904999999999994,
         "maximum": 0.41667
     },
     "883-2010-engine efficiency, full, regional delivery": {
-        "amount": 0.45314999999999994,
+        "amount": 0.4845,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25883,12 +25883,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.45314999999999994,
+        "loc": 0.4845,
         "minimum": 0.39899999999999997,
         "maximum": 0.4386
     },
     "884-2020-engine efficiency, full, regional delivery": {
-        "amount": 0.477,
+        "amount": 0.51,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25909,12 +25909,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.477,
+        "loc": 0.51,
         "minimum": 0.42,
         "maximum": 0.43
     },
     "885-2030-engine efficiency, full, regional delivery": {
-        "amount": 0.47223,
+        "amount": 0.5049,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25935,12 +25935,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.47223,
+        "loc": 0.5049,
         "minimum": 0.4158,
         "maximum": 0.42569999999999997
     },
     "886-2040-engine efficiency, full, regional delivery": {
-        "amount": 0.46750769999999997,
+        "amount": 0.499851,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25961,12 +25961,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.46750769999999997,
+        "loc": 0.499851,
         "minimum": 0.411642,
         "maximum": 0.42144299999999996
     },
     "887-2050-engine efficiency, full, regional delivery": {
-        "amount": 0.46283262299999994,
+        "amount": 0.49485249,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -25987,7 +25987,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.46283262299999994,
+        "loc": 0.49485249,
         "minimum": 0.40752558,
         "maximum": 0.41722856999999997
     },
@@ -28332,7 +28332,7 @@
         "maximum": 0.93
     },
     "966-2000-engine efficiency, empty, long haul": {
-        "amount": 0.3023375,
+        "amount": 0.33392499999999997,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -28353,12 +28353,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3023375,
+        "loc": 0.33392499999999997,
         "minimum": 0.297825,
         "maximum": 0.351975
     },
     "967-2010-engine efficiency, empty, long haul": {
-        "amount": 0.31825,
+        "amount": 0.3515,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -28379,12 +28379,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.31825,
+        "loc": 0.3515,
         "minimum": 0.3135,
         "maximum": 0.3705
     },
     "968-2020-engine efficiency, empty, long haul": {
-        "amount": 0.335,
+        "amount": 0.37,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -28405,12 +28405,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.335,
+        "loc": 0.37,
         "minimum": 0.33,
         "maximum": 0.39
     },
     "969-2030-engine efficiency, empty, long haul": {
-        "amount": 0.33165,
+        "amount": 0.3663,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -28431,12 +28431,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.33165,
+        "loc": 0.3663,
         "minimum": 0.3267,
         "maximum": 0.3861
     },
     "970-2040-engine efficiency, empty, long haul": {
-        "amount": 0.3283335,
+        "amount": 0.362637,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -28457,12 +28457,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3283335,
+        "loc": 0.362637,
         "minimum": 0.32343299999999997,
         "maximum": 0.382239
     },
     "971-2050-engine efficiency, empty, long haul": {
-        "amount": 0.325050165,
+        "amount": 0.35901063,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -28483,12 +28483,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.325050165,
+        "loc": 0.35901063,
         "minimum": 0.32019866999999996,
         "maximum": 0.37841661
     },
     "972-2000-engine efficiency, empty, long haul": {
-        "amount": 0.31587499999999996,
+        "amount": 0.34295,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -28509,609 +28509,11 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.31587499999999996,
+        "loc": 0.34295,
         "minimum": 0.32489999999999997,
         "maximum": 0.361
     },
     "973-2010-engine efficiency, empty, long haul": {
-        "amount": 0.33249999999999996,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2010,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.33249999999999996,
-        "minimum": 0.34199999999999997,
-        "maximum": 0.38
-    },
-    "974-2020-engine efficiency, empty, long haul": {
-        "amount": 0.35,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2020,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.35,
-        "minimum": 0.36,
-        "maximum": 0.4
-    },
-    "975-2030-engine efficiency, empty, long haul": {
-        "amount": 0.3465,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2030,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3465,
-        "minimum": 0.3564,
-        "maximum": 0.396
-    },
-    "976-2040-engine efficiency, empty, long haul": {
-        "amount": 0.343035,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2040,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.343035,
-        "minimum": 0.352836,
-        "maximum": 0.39204
-    },
-    "977-2050-engine efficiency, empty, long haul": {
-        "amount": 0.33960464999999995,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2050,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.33960464999999995,
-        "minimum": 0.34930764,
-        "maximum": 0.3881196
-    },
-    "978-2000-engine efficiency, empty, long haul": {
-        "amount": 0.33392499999999997,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2000,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.33392499999999997,
-        "minimum": 0.361,
-        "maximum": 0.37904999999999994
-    },
-    "979-2010-engine efficiency, empty, long haul": {
-        "amount": 0.3515,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2010,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3515,
-        "minimum": 0.38,
-        "maximum": 0.39899999999999997
-    },
-    "980-2020-engine efficiency, empty, long haul": {
-        "amount": 0.37,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2020,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.37,
-        "minimum": 0.4,
-        "maximum": 0.42
-    },
-    "981-2030-engine efficiency, empty, long haul": {
-        "amount": 0.3663,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2030,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3663,
-        "minimum": 0.396,
-        "maximum": 0.4158
-    },
-    "982-2040-engine efficiency, empty, long haul": {
-        "amount": 0.362637,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2040,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.362637,
-        "minimum": 0.39204,
-        "maximum": 0.411642
-    },
-    "983-2050-engine efficiency, empty, long haul": {
-        "amount": 0.35901063,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "type": "rigid, 2 axles, box body",
-        "year": 2050,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.35901063,
-        "minimum": 0.3881196,
-        "maximum": 0.40752558
-    },
-    "984-2000-engine efficiency, empty, long haul": {
-        "amount": 0.3925875,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2000,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3925875,
-        "minimum": 0.361,
-        "maximum": 0.37904999999999994
-    },
-    "985-2010-engine efficiency, empty, long haul": {
-        "amount": 0.41325,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2010,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.41325,
-        "minimum": 0.38,
-        "maximum": 0.39899999999999997
-    },
-    "986-2020-engine efficiency, empty, long haul": {
-        "amount": 0.435,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2020,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.435,
-        "minimum": 0.4,
-        "maximum": 0.42
-    },
-    "987-2030-engine efficiency, empty, long haul": {
-        "amount": 0.43065,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2030,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.43065,
-        "minimum": 0.396,
-        "maximum": 0.4158
-    },
-    "988-2040-engine efficiency, empty, long haul": {
-        "amount": 0.4263435,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2040,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.4263435,
-        "minimum": 0.39204,
-        "maximum": 0.411642
-    },
-    "989-2050-engine efficiency, empty, long haul": {
-        "amount": 0.422080065,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "type": "rigid, 3 axles, box body",
-        "year": 2050,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.422080065,
-        "minimum": 0.3881196,
-        "maximum": 0.40752558
-    },
-    "990-2000-engine efficiency, empty, long haul": {
-        "amount": 0.33392499999999997,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2000,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.33392499999999997,
-        "minimum": 0.37002499999999994,
-        "maximum": 0.38807499999999995
-    },
-    "991-2010-engine efficiency, empty, long haul": {
-        "amount": 0.3515,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2010,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3515,
-        "minimum": 0.38949999999999996,
-        "maximum": 0.4085
-    },
-    "992-2020-engine efficiency, empty, long haul": {
-        "amount": 0.37,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2020,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.37,
-        "minimum": 0.41,
-        "maximum": 0.43
-    },
-    "993-2030-engine efficiency, empty, long haul": {
-        "amount": 0.3663,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2030,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3663,
-        "minimum": 0.4059,
-        "maximum": 0.42569999999999997
-    },
-    "994-2040-engine efficiency, empty, long haul": {
-        "amount": 0.362637,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2040,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.362637,
-        "minimum": 0.401841,
-        "maximum": 0.42144299999999996
-    },
-    "995-2050-engine efficiency, empty, long haul": {
-        "amount": 0.35901063,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g",
-            "PHEV-c-d",
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "type": "semi-trailer, 2+4 axles, curtain-sider",
-        "year": 2050,
-        "name": "engine efficiency, empty, long haul",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
-        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.35901063,
-        "minimum": 0.39782259,
-        "maximum": 0.41722856999999997
-    },
-    "996-2000-engine efficiency, empty, long haul": {
         "amount": 0.361,
         "category": "Powertrain",
         "powertrain": [
@@ -29121,9 +28523,139 @@
             "HEV-d"
         ],
         "sizes": [
-            "60t"
+            "7.5t"
         ],
-        "type": "semi-trailer + trailer, 2+4+2 axles, curtain-sider",
+        "type": "rigid, 2 axles, box body",
+        "year": 2010,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.361,
+        "minimum": 0.34199999999999997,
+        "maximum": 0.38
+    },
+    "974-2020-engine efficiency, empty, long haul": {
+        "amount": 0.38,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2020,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.38,
+        "minimum": 0.36,
+        "maximum": 0.4
+    },
+    "975-2030-engine efficiency, empty, long haul": {
+        "amount": 0.3762,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2030,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3762,
+        "minimum": 0.3564,
+        "maximum": 0.396
+    },
+    "976-2040-engine efficiency, empty, long haul": {
+        "amount": 0.372438,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2040,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.372438,
+        "minimum": 0.352836,
+        "maximum": 0.39204
+    },
+    "977-2050-engine efficiency, empty, long haul": {
+        "amount": 0.36871361999999996,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2050,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.36871361999999996,
+        "minimum": 0.34930764,
+        "maximum": 0.3881196
+    },
+    "978-2000-engine efficiency, empty, long haul": {
+        "amount": 0.361,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
         "year": 2000,
         "name": "engine efficiency, empty, long haul",
         "unit": "unitless",
@@ -29134,11 +28666,479 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.361,
+        "minimum": 0.361,
+        "maximum": 0.37904999999999994
+    },
+    "979-2010-engine efficiency, empty, long haul": {
+        "amount": 0.38,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2010,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.38,
+        "minimum": 0.38,
+        "maximum": 0.39899999999999997
+    },
+    "980-2020-engine efficiency, empty, long haul": {
+        "amount": 0.4,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2020,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.4,
+        "minimum": 0.4,
+        "maximum": 0.42
+    },
+    "981-2030-engine efficiency, empty, long haul": {
+        "amount": 0.396,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2030,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.396,
+        "minimum": 0.396,
+        "maximum": 0.4158
+    },
+    "982-2040-engine efficiency, empty, long haul": {
+        "amount": 0.39204,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2040,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.39204,
+        "minimum": 0.39204,
+        "maximum": 0.411642
+    },
+    "983-2050-engine efficiency, empty, long haul": {
+        "amount": 0.3881196,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "type": "rigid, 2 axles, box body",
+        "year": 2050,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3881196,
+        "minimum": 0.3881196,
+        "maximum": 0.40752558
+    },
+    "984-2000-engine efficiency, empty, long haul": {
+        "amount": 0.4241749999999999,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2000,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.4241749999999999,
+        "minimum": 0.361,
+        "maximum": 0.37904999999999994
+    },
+    "985-2010-engine efficiency, empty, long haul": {
+        "amount": 0.44649999999999995,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2010,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.44649999999999995,
+        "minimum": 0.38,
+        "maximum": 0.39899999999999997
+    },
+    "986-2020-engine efficiency, empty, long haul": {
+        "amount": 0.47,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2020,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.47,
+        "minimum": 0.4,
+        "maximum": 0.42
+    },
+    "987-2030-engine efficiency, empty, long haul": {
+        "amount": 0.4653,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2030,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.4653,
+        "minimum": 0.396,
+        "maximum": 0.4158
+    },
+    "988-2040-engine efficiency, empty, long haul": {
+        "amount": 0.460647,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2040,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.460647,
+        "minimum": 0.39204,
+        "maximum": 0.411642
+    },
+    "989-2050-engine efficiency, empty, long haul": {
+        "amount": 0.45604052999999994,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "type": "rigid, 3 axles, box body",
+        "year": 2050,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.45604052999999994,
+        "minimum": 0.3881196,
+        "maximum": 0.40752558
+    },
+    "990-2000-engine efficiency, empty, long haul": {
+        "amount": 0.361,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
+        "year": 2000,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.361,
+        "minimum": 0.37002499999999994,
+        "maximum": 0.38807499999999995
+    },
+    "991-2010-engine efficiency, empty, long haul": {
+        "amount": 0.38,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
+        "year": 2010,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.38,
+        "minimum": 0.38949999999999996,
+        "maximum": 0.4085
+    },
+    "992-2020-engine efficiency, empty, long haul": {
+        "amount": 0.4,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
+        "year": 2020,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.4,
+        "minimum": 0.41,
+        "maximum": 0.43
+    },
+    "993-2030-engine efficiency, empty, long haul": {
+        "amount": 0.396,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
+        "year": 2030,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.396,
+        "minimum": 0.4059,
+        "maximum": 0.42569999999999997
+    },
+    "994-2040-engine efficiency, empty, long haul": {
+        "amount": 0.39204,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
+        "year": 2040,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.39204,
+        "minimum": 0.401841,
+        "maximum": 0.42144299999999996
+    },
+    "995-2050-engine efficiency, empty, long haul": {
+        "amount": 0.3881196,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "type": "semi-trailer, 2+4 axles, curtain-sider",
+        "year": 2050,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.3881196,
+        "minimum": 0.39782259,
+        "maximum": 0.41722856999999997
+    },
+    "996-2000-engine efficiency, empty, long haul": {
+        "amount": 0.38807499999999995,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "60t"
+        ],
+        "type": "semi-trailer + trailer, 2+4+2 axles, curtain-sider",
+        "year": 2000,
+        "name": "engine efficiency, empty, long haul",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "VECTO 3.3.7 for efficiencies.\nPast efficiency factors relative to current efficiency from Weller, K., PhD thesis, 2020.",
+        "comment": "2020 efficiencies calculated from simulation.\nPast efficiencies are 2020 efficiciencies * corr. Factor approx. 1%/10 years.\nPace of future efficiencies assumed similar to past efficiencies.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.38807499999999995,
         "minimum": 0.37904999999999994,
         "maximum": 0.41667
     },
     "997-2010-engine efficiency, empty, long haul": {
-        "amount": 0.38,
+        "amount": 0.4085,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29159,12 +29159,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.38,
+        "loc": 0.4085,
         "minimum": 0.39899999999999997,
         "maximum": 0.4386
     },
     "998-2020-engine efficiency, empty, long haul": {
-        "amount": 0.4,
+        "amount": 0.43,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29185,12 +29185,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4,
+        "loc": 0.43,
         "minimum": 0.42,
         "maximum": 0.43
     },
     "999-2030-engine efficiency, empty, long haul": {
-        "amount": 0.396,
+        "amount": 0.42569999999999997,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29211,12 +29211,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.396,
+        "loc": 0.42569999999999997,
         "minimum": 0.4158,
         "maximum": 0.42569999999999997
     },
     "1000-2040-engine efficiency, empty, long haul": {
-        "amount": 0.39204,
+        "amount": 0.42144299999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29237,12 +29237,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.39204,
+        "loc": 0.42144299999999996,
         "minimum": 0.411642,
         "maximum": 0.42144299999999996
     },
     "1001-2050-engine efficiency, empty, long haul": {
-        "amount": 0.3881196,
+        "amount": 0.41722856999999997,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29263,7 +29263,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3881196,
+        "loc": 0.41722856999999997,
         "minimum": 0.40752558,
         "maximum": 0.41722856999999997
     },
@@ -29448,7 +29448,7 @@
         "maximum": 0.93
     },
     "1008-2000-engine efficiency, full, long haul": {
-        "amount": 0.31406999999999996,
+        "amount": 0.34295,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29469,12 +29469,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.31406999999999996,
+        "loc": 0.34295,
         "minimum": 0.297825,
         "maximum": 0.351975
     },
     "1009-2010-engine efficiency, full, long haul": {
-        "amount": 0.33059999999999995,
+        "amount": 0.361,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29495,12 +29495,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.33059999999999995,
+        "loc": 0.361,
         "minimum": 0.3135,
         "maximum": 0.3705
     },
     "1010-2020-engine efficiency, full, long haul": {
-        "amount": 0.348,
+        "amount": 0.38,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29521,12 +29521,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.348,
+        "loc": 0.38,
         "minimum": 0.33,
         "maximum": 0.39
     },
     "1011-2030-engine efficiency, full, long haul": {
-        "amount": 0.34452,
+        "amount": 0.3762,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29547,12 +29547,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.34452,
+        "loc": 0.3762,
         "minimum": 0.3267,
         "maximum": 0.3861
     },
     "1012-2040-engine efficiency, full, long haul": {
-        "amount": 0.3410748,
+        "amount": 0.372438,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29573,12 +29573,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3410748,
+        "loc": 0.372438,
         "minimum": 0.32343299999999997,
         "maximum": 0.382239
     },
     "1013-2050-engine efficiency, full, long haul": {
-        "amount": 0.337664052,
+        "amount": 0.36871361999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29599,12 +29599,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.337664052,
+        "loc": 0.36871361999999996,
         "minimum": 0.32019866999999996,
         "maximum": 0.37841661
     },
     "1014-2000-engine efficiency, full, long haul": {
-        "amount": 0.33843749999999995,
+        "amount": 0.37002499999999994,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29625,12 +29625,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.33843749999999995,
+        "loc": 0.37002499999999994,
         "minimum": 0.32489999999999997,
         "maximum": 0.361
     },
     "1015-2010-engine efficiency, full, long haul": {
-        "amount": 0.35624999999999996,
+        "amount": 0.38949999999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29651,12 +29651,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35624999999999996,
+        "loc": 0.38949999999999996,
         "minimum": 0.34199999999999997,
         "maximum": 0.38
     },
     "1016-2020-engine efficiency, full, long haul": {
-        "amount": 0.375,
+        "amount": 0.41,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29677,12 +29677,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.375,
+        "loc": 0.41,
         "minimum": 0.36,
         "maximum": 0.4
     },
     "1017-2030-engine efficiency, full, long haul": {
-        "amount": 0.37124999999999997,
+        "amount": 0.4059,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29703,12 +29703,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.37124999999999997,
+        "loc": 0.4059,
         "minimum": 0.3564,
         "maximum": 0.396
     },
     "1018-2040-engine efficiency, full, long haul": {
-        "amount": 0.36753749999999996,
+        "amount": 0.401841,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29729,12 +29729,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.36753749999999996,
+        "loc": 0.401841,
         "minimum": 0.352836,
         "maximum": 0.39204
     },
     "1019-2050-engine efficiency, full, long haul": {
-        "amount": 0.363862125,
+        "amount": 0.39782259,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29755,12 +29755,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.363862125,
+        "loc": 0.39782259,
         "minimum": 0.34930764,
         "maximum": 0.3881196
     },
     "1020-2000-engine efficiency, full, long haul": {
-        "amount": 0.37453749999999997,
+        "amount": 0.40612499999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29781,12 +29781,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.37453749999999997,
+        "loc": 0.40612499999999996,
         "minimum": 0.361,
         "maximum": 0.37904999999999994
     },
     "1021-2010-engine efficiency, full, long haul": {
-        "amount": 0.39425,
+        "amount": 0.4275,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29807,12 +29807,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.39425,
+        "loc": 0.4275,
         "minimum": 0.38,
         "maximum": 0.39899999999999997
     },
     "1022-2020-engine efficiency, full, long haul": {
-        "amount": 0.415,
+        "amount": 0.45,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29833,12 +29833,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.415,
+        "loc": 0.45,
         "minimum": 0.4,
         "maximum": 0.42
     },
     "1023-2030-engine efficiency, full, long haul": {
-        "amount": 0.41085,
+        "amount": 0.4455,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29859,12 +29859,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.41085,
+        "loc": 0.4455,
         "minimum": 0.396,
         "maximum": 0.4158
     },
     "1024-2040-engine efficiency, full, long haul": {
-        "amount": 0.4067415,
+        "amount": 0.441045,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29885,12 +29885,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4067415,
+        "loc": 0.441045,
         "minimum": 0.39204,
         "maximum": 0.411642
     },
     "1025-2050-engine efficiency, full, long haul": {
-        "amount": 0.40267408499999996,
+        "amount": 0.43663455,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29911,12 +29911,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.40267408499999996,
+        "loc": 0.43663455,
         "minimum": 0.3881196,
         "maximum": 0.40752558
     },
     "1026-2000-engine efficiency, full, long haul": {
-        "amount": 0.47832499999999994,
+        "amount": 0.5054,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29937,12 +29937,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.47832499999999994,
+        "loc": 0.5054,
         "minimum": 0.361,
         "maximum": 0.37904999999999994
     },
     "1027-2010-engine efficiency, full, long haul": {
-        "amount": 0.5035,
+        "amount": 0.532,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29963,12 +29963,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.5035,
+        "loc": 0.532,
         "minimum": 0.38,
         "maximum": 0.39899999999999997
     },
     "1028-2020-engine efficiency, full, long haul": {
-        "amount": 0.53,
+        "amount": 0.56,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -29989,12 +29989,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.53,
+        "loc": 0.56,
         "minimum": 0.4,
         "maximum": 0.42
     },
     "1029-2030-engine efficiency, full, long haul": {
-        "amount": 0.5247,
+        "amount": 0.5544,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30015,12 +30015,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.5247,
+        "loc": 0.5544,
         "minimum": 0.396,
         "maximum": 0.4158
     },
     "1030-2040-engine efficiency, full, long haul": {
-        "amount": 0.519453,
+        "amount": 0.548856,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30041,12 +30041,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.519453,
+        "loc": 0.548856,
         "minimum": 0.39204,
         "maximum": 0.411642
     },
     "1031-2050-engine efficiency, full, long haul": {
-        "amount": 0.51425847,
+        "amount": 0.54336744,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30067,12 +30067,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.51425847,
+        "loc": 0.54336744,
         "minimum": 0.3881196,
         "maximum": 0.40752558
     },
     "1032-2000-engine efficiency, full, long haul": {
-        "amount": 0.38626999999999995,
+        "amount": 0.41514999999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30093,12 +30093,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.38626999999999995,
+        "loc": 0.41514999999999996,
         "minimum": 0.37002499999999994,
         "maximum": 0.38807499999999995
     },
     "1033-2010-engine efficiency, full, long haul": {
-        "amount": 0.40659999999999996,
+        "amount": 0.437,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30119,12 +30119,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.40659999999999996,
+        "loc": 0.437,
         "minimum": 0.38949999999999996,
         "maximum": 0.4085
     },
     "1034-2020-engine efficiency, full, long haul": {
-        "amount": 0.428,
+        "amount": 0.46,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30145,12 +30145,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.428,
+        "loc": 0.46,
         "minimum": 0.41,
         "maximum": 0.43
     },
     "1035-2030-engine efficiency, full, long haul": {
-        "amount": 0.42372,
+        "amount": 0.4554,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30171,12 +30171,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.42372,
+        "loc": 0.4554,
         "minimum": 0.4059,
         "maximum": 0.42569999999999997
     },
     "1036-2040-engine efficiency, full, long haul": {
-        "amount": 0.4194828,
+        "amount": 0.450846,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30197,12 +30197,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4194828,
+        "loc": 0.450846,
         "minimum": 0.401841,
         "maximum": 0.42144299999999996
     },
     "1037-2050-engine efficiency, full, long haul": {
-        "amount": 0.415287972,
+        "amount": 0.44633754000000003,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30223,12 +30223,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.415287972,
+        "loc": 0.44633754000000003,
         "minimum": 0.39782259,
         "maximum": 0.41722856999999997
     },
     "1038-2000-engine efficiency, full, long haul": {
-        "amount": 0.4088325,
+        "amount": 0.4331999999999999,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30249,12 +30249,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4088325,
+        "loc": 0.4331999999999999,
         "minimum": 0.37904999999999994,
         "maximum": 0.41667
     },
     "1039-2010-engine efficiency, full, long haul": {
-        "amount": 0.43035,
+        "amount": 0.45599999999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30275,12 +30275,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.43035,
+        "loc": 0.45599999999999996,
         "minimum": 0.39899999999999997,
         "maximum": 0.4386
     },
     "1040-2020-engine efficiency, full, long haul": {
-        "amount": 0.453,
+        "amount": 0.48,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30301,12 +30301,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.453,
+        "loc": 0.48,
         "minimum": 0.42,
         "maximum": 0.43
     },
     "1041-2030-engine efficiency, full, long haul": {
-        "amount": 0.44847000000000004,
+        "amount": 0.47519999999999996,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30327,12 +30327,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.44847000000000004,
+        "loc": 0.47519999999999996,
         "minimum": 0.4158,
         "maximum": 0.42569999999999997
     },
     "1042-2040-engine efficiency, full, long haul": {
-        "amount": 0.4439853,
+        "amount": 0.470448,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30353,12 +30353,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.4439853,
+        "loc": 0.470448,
         "minimum": 0.411642,
         "maximum": 0.42144299999999996
     },
     "1043-2050-engine efficiency, full, long haul": {
-        "amount": 0.43954544700000003,
+        "amount": 0.46574351999999997,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -30379,7 +30379,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.43954544700000003,
+        "loc": 0.46574351999999997,
         "minimum": 0.40752558,
         "maximum": 0.41722856999999997
     },
