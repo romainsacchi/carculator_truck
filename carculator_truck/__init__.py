@@ -20,6 +20,7 @@ _all_ = (
     "HotEmissionsModel"
 )
 
+# library version
 __version__ = (0, 0, 3)
 
 from pathlib import Path

@@ -1,11 +1,11 @@
-from .truck_input_parameters import TruckInputParameters as c_i_p
+from .truck_input_parameters import TruckInputParameters as t_i_p
 import numpy as np
 import pandas as pd
 import stats_arrays as sa
 import xarray as xr
 
 
-def fill_xarray_from_input_parameters(cip, sensitivity=False):
+def fill_xarray_from_input_parameters(tip, sensitivity=False):
 
     """Create an `xarray` labeled array from the sampled input parameters.
 
@@ -16,95 +16,100 @@ def fill_xarray_from_input_parameters(cip, sensitivity=False):
     (http://xarray.pydata.org/en/stable/).
 
 
-    :param cip: Instance of the :class:`CarInputParameters` class in :mod:`car_input_parameters`.
+    :param tip: Instance of the :class:`TruckInputParameters` class in :mod:`truck_input_parameters`.
     :returns: `tuple`, `xarray.DataArray`
     - tuple (`size_dict`, `powertrain_dict`, `parameter_dict`, `year_dict`)
     - array
 
     Dimensions of `array`:
 
-        0. Vehicle size, e.g. "small", "medium". str.
-        1. Powertrain, e.g. "ICE-p", "BEV". str.
+        0. Vehicle size, e.g. "3.5t", "7.5t", etc. str.
+        1. Powertrain, e.g. "ICE-d", "BEV". str.
         2. Year. int.
         3. Samples.
 
     """
 
-    # Check whether the argument passed is a cip object
-    if not isinstance(cip, c_i_p):
+    # Check whether the argument passed is an instance of :class:`TruckInputParameters`
+    if not isinstance(tip, t_i_p):
         raise TypeError(
-            "The argument passed is not an object of the CarInputParameter class"
+            "The argument passed is not an object of the TruckInputParameter class"
         )
+    # if the purpose is not to do a sensitivity analysis
+    # the dimension `value` of the array is as large as the number of iterations to perform
+    # that is, 1 in `static` mode, or several in `stochastic` mode.
     if sensitivity == False:
         array = xr.DataArray(
             np.zeros(
                 (
-                    len(cip.sizes),
-                    len(cip.powertrains),
-                    len(cip.parameters),
-                    len(cip.years),
-                    cip.iterations or 1,
+                    len(tip.sizes),
+                    len(tip.powertrains),
+                    len(tip.parameters),
+                    len(tip.years),
+                    tip.iterations or 1,
                 )
             ),
             coords=[
-                cip.sizes,
-                cip.powertrains,
-                cip.parameters,
-                cip.years,
-                np.arange(cip.iterations or 1),
+                tip.sizes,
+                tip.powertrains,
+                tip.parameters,
+                tip.years,
+                np.arange(tip.iterations or 1),
             ],
             dims=["size", "powertrain", "parameter", "year", "value"],
         )
+    # if the purpose is ot do a sensitivity analysis
+    # then the length of the dimensions `value` equals the number of parameters
     else:
         params = ["reference"]
-        params.extend([a for a in cip.input_parameters])
+        params.extend([a for a in tip.input_parameters])
         array = xr.DataArray(
             np.zeros(
                 (
-                    len(cip.sizes),
-                    len(cip.powertrains),
-                    len(cip.parameters),
-                    len(cip.years),
+                    len(tip.sizes),
+                    len(tip.powertrains),
+                    len(tip.parameters),
+                    len(tip.years),
                     len(params),
                 )
             ),
-            coords=[cip.sizes, cip.powertrains, cip.parameters, cip.years, params,],
+            coords=[tip.sizes, tip.powertrains, tip.parameters, tip.years, params,],
             dims=["size", "powertrain", "parameter", "year", "value"],
         )
 
-    size_dict = {k: i for i, k in enumerate(cip.sizes)}
-    powertrain_dict = {k: i for i, k in enumerate(cip.powertrains)}
-    year_dict = {k: i for i, k in enumerate(cip.years)}
-    parameter_dict = {k: i for i, k in enumerate(cip.parameters)}
+    size_dict = {k: i for i, k in enumerate(tip.sizes)}
+    powertrain_dict = {k: i for i, k in enumerate(tip.powertrains)}
+    year_dict = {k: i for i, k in enumerate(tip.years)}
+    parameter_dict = {k: i for i, k in enumerate(tip.parameters)}
 
     if sensitivity == False:
-        for param in cip:
+        for param in tip:
             #try:
             array.loc[
                 dict(
-                    powertrain=cip.metadata[param]["powertrain"],
-                    size=cip.metadata[param]["sizes"],
-                    year=cip.metadata[param]["year"],
-                    parameter=cip.metadata[param]["name"],
+                    powertrain=tip.metadata[param]["powertrain"],
+                    size=tip.metadata[param]["sizes"],
+                    year=tip.metadata[param]["year"],
+                    parameter=tip.metadata[param]["name"],
                 )
-            ] = cip.values[param]
-            #except:
-            #    print(cip.metadata[param])
-            #    print(cip.values[param])
+            ] = tip.values[param]
+
     else:
-        for param in cip.input_parameters:
-            names = [n for n in cip.metadata if cip.metadata[n]['name'] == param]
+        # if `sensitivity` == True, the values of each parameter is
+        # incremented by 10% when `value` == `parameter`
+        for param in tip.input_parameters:
+            names = [n for n in tip.metadata if tip.metadata[n]['name'] == param]
 
             for name in names:
-                vals = [cip.values[name] for _ in range(0, len(cip.input_parameters) + 1)]
-                vals[cip.input_parameters.index(param) + 1] *= 1.1
+                vals = [tip.values[name] for _ in range(0, len(tip.input_parameters) + 1)]
+                vals[tip.input_parameters.index(param) + 1] *= 1.1
 
                 array.loc[
                     dict(
-                        powertrain=cip.metadata[name]["powertrain"],
-                        size=cip.metadata[name]["sizes"],
-                        year=cip.metadata[name]["year"],
-                        parameter=cip.metadata[name]["name"],
+                        powertrain=tip.metadata[name]["powertrain"],
+                        size=tip.metadata[name]["sizes"],
+                        year=tip.metadata[name]["year"],
+                        parameter=tip.metadata[name]["name"],
                     )
                 ] = vals
 
@@ -153,11 +158,28 @@ def modify_xarray_from_custom_parameters(fp, array):
 
             }
 
+    Or:
+
+    .. code-block:: python
+
+            {
+                ('Driving',
+                ('3.5t','7.5t'),
+                ('ICEV-d','FCEV'),
+                'lifetime kilometers',
+                'none'): {
+                    (2018, 'loc'): 150000, (2040, 'loc'): 150000
+                    }
+
+            }
+
     :param fp: File path of workbook with new values or dictionary.
     :type fp: str or dict
 
     """
 
+    # If a string is passed, then it is a file path to an Excel file
+    # if not, then it is directly the dictionary
     if isinstance(fp, str):
         try:
             d = pd.read_excel(
@@ -174,6 +196,7 @@ def modify_xarray_from_custom_parameters(fp, array):
         print("The format passed as parameter is not valid.")
         raise
 
+    # Parameters for these categories are ignored and cannot be modified here.
     FORBIDDEN_KEYS = ["Driving cycle", "Background", "Functional unit"]
 
     for k in d:
@@ -195,16 +218,20 @@ def modify_xarray_from_custom_parameters(fp, array):
                     )
                     continue
 
-
+            # if a sequence of sizes is passed
             if not isinstance(k[2], str):
                 sizes = [s.strip() for s in k[2] if s]
                 sizes = [s for s in sizes if s]
                 sizes = list(sizes)
+            # of if it concerns all sizes
             elif k[2] == "all":
                 sizes = array.coords["size"].values
+            # of if one size is passed, as a string
             else:
                 if k[2] in array.coords["size"].values:
                     sizes = [k[2]]
+
+                # if the size class is not among the available size classes
                 else:
                     print(
                     "{} is not a recognized size category. It will be skipped.".format(
@@ -212,15 +239,16 @@ def modify_xarray_from_custom_parameters(fp, array):
                         )
                     )
                     continue
-
             param = k[3]
 
+            # if `parameter` is not among the existing parameters
             if not param in array.coords["parameter"].values:
                 print(
                     "{} is not a recognized parameter. It will be skipped.".format(
                         param
                     )
                 )
+                # we skip it and inform the user
                 continue
 
             val = d[k]

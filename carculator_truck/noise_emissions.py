@@ -45,7 +45,7 @@ def pn(cycle, powertrain_type, category):
 
 class NoiseEmissionsModel:
     """
-    Calculate propulsion and rolling noise emissions for combustion, hybrid and electric vehicles, based on CNOSSOS model.
+    Calculate propulsion and rolling noise emissions for combustion, hybrid and electric trucks, based on CNOSSOS model.
 
     :param cycle: Driving cycle. Pandas Series of second-by-second speeds (km/h) or name (str)
         of cycle e.g., "WLTC","WLTC 3.1","WLTC 3.2","WLTC 3.3","WLTC 3.4","CADC Urban","CADC Road",
@@ -119,6 +119,8 @@ class NoiseEmissionsModel:
 
         Also, for electric cars, a warning signal of 56 dB is added when the car drives at 20 km/h or lower.
 
+        Although we deal here with trucks, we reuse the coefficeint for electric cars
+
         :param category: "medium" or "heavy" duty vehicles.
         :type category: str.
         :returns: A numpy array with propulsion noise (dB) for all 8 octaves, per second of driving cycle
@@ -152,6 +154,9 @@ class NoiseEmissionsModel:
 
             if powertrain_type == "electric":
                 # For electric cars, we add correction factors
+                # We also do so for trucks, as these are correction factors, not absolute values
+                #TODO: find better correction factors for trucks
+
                 # We also add a 56 dB loud sound signal when the speed is below 20 km/h.
                 correction = np.array((0, 1.7, 4.2, 15, 15, 15, 13.8, 0)).reshape(
                     (-1, 1)
@@ -188,11 +193,6 @@ class NoiseEmissionsModel:
         """
         Calculate sound energy (in J/s) over the driving cycle duration from sound power (in dB).
         The sound energy sums are further divided into `geographical compartments`: urban, suburban and rural.
-
-            * *urban*: from 0 to 50 km/k
-            * *suburban*: from 51 km/h to 80 km/h
-            * *rural*: above 80 km/h
-
 
         :return: Sound energy (in Joules) per km driven, per geographical compartment.
         :rtype: numpy.array

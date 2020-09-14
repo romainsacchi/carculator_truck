@@ -22,8 +22,13 @@ def get_standard_driving_cycle(name="Urban delivery"):
         and velocity (in km/h) as values.
     :rtype: panda.Series
 
-
     """
+
+    # definition of columns to select in the CSV file
+    # each column corresponds to a size class
+    # since the driving cycle is simulated for each size class
+    # for example, a heavier truck will take more time to reach the target speed
+    # because of higher inertia resistance
     dict_dc_names = {
         "Urban delivery": [1, 4, 7, 10, 13, 16],
         "Regional delivery": [2, 5, 8, 11, 14, 17],
@@ -32,6 +37,7 @@ def get_standard_driving_cycle(name="Urban delivery"):
 
     try:
         arr = np.genfromtxt(DATA_DIR / "driving_cycles.csv", delimiter=";")
+        # we skip the headers
         dc = arr[1:, dict_dc_names[name]]
         dc = dc[~np.isnan(dc)]
         return dc.reshape((-1,6))

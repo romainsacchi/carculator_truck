@@ -18,11 +18,11 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = 'carculator-truck'
-copyright = '2019, Paul Scherrer Institut'
+copyright = '2020, Paul Scherrer Institut'
 author = 'Romain Sacchi, Christian Bauer'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.2'
+release = '0.0.3'
 
 
 # -- General configuration ---------------------------------------------------
