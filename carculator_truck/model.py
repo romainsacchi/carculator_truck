@@ -882,6 +882,12 @@ class TruckModel:
             if y >= 2012:
                 l_y.append(6)
 
+        print(self.array.loc[
+            dict(
+                powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
+                parameter=list_direct_emissions,
+            )
+        ].shape)
         self.array.loc[
             dict(
                 powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],

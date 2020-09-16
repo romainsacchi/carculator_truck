@@ -396,8 +396,6 @@ class ExportInventory:
             'hardwood forestry, mixed species, sustainable forest management, CF = -1',
             'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass with CCS, at gasification plant',
             'market for wood chips, wet, measured as dry mass, CF = -1',
-            'Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station',
-            'Hydrogen, gaseous, 25 bar, from electrolysis',
             'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at H2 fuelling station',
             'SMR BM, HT+LT, + CCS (MDEA), 98 (average), digestate incineration, 26 bar',
             'Hydrogen, gaseous, 700 bar, from SMR of biogas, at H2 fuelling station',
@@ -438,7 +436,12 @@ class ExportInventory:
             'Biodiesel from palm oil',
             'Hydrogen, gaseous, 700 bar, from SMR of NG, at H2 fuelling station',
             'treatment of biowaste by anaerobic digestion, with biogenic carbon uptake, lower bound C sequestration, digestate incineration',
-            'Crude Palm Oil extraction from FFBs {RER} |oil mill|'
+            'Crude Palm Oil extraction from FFBs {RER} |oil mill|',
+            'Hydrogen, gaseous, 25 bar, from electrolysis',
+            'Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station',
+            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station',
+            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station',
+            'Hydrogen, gaseous, 700 bar, from coal gasification, at H2 fuelling station'
         ]
 
         uvek_activities_to_remove = [

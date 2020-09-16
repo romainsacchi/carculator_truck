@@ -90,7 +90,7 @@ class HotEmissionsModel:
                 "NH3",
                 "Benzene",
             ],
-        ).transpose()
+        ).transpose("component", "euro_class", "size")
 
         cycle = self.cycle.reshape(-1, 1, 1, 6)
 
@@ -115,6 +115,7 @@ class HotEmissionsModel:
         # In case the fit produces negative numbers (it should not, though)
         em_arr[em_arr < 0] = 0
 
+
         # If the driving cycle selected is one of the driving cycles for which carculator has specifications,
         # we use the driving cycle "official" road section types to compartmentalize emissions.
         # If the driving cycle selected is instead specified by the user (passed directly as an array), we used
@@ -130,7 +131,7 @@ class HotEmissionsModel:
             urban /= 1000  # going from grams to kg
 
         else:
-            urban = np.zeros((11, 6, 6))
+            urban = np.zeros((11, em_arr.shape[2], 6))
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -142,7 +143,7 @@ class HotEmissionsModel:
             suburban /= 1000  # going from grams to kg
 
         else:
-            suburban = np.zeros((11, 6, 6))
+            suburban = np.zeros((11, em_arr.shape[2], 6))
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -152,9 +153,9 @@ class HotEmissionsModel:
             rural /= 1000  # going from grams to kg
 
         else:
-            rural = np.zeros((11, 6, 6))
+            rural = np.zeros((11, em_arr.shape[2], 6))
 
-        res = np.vstack((urban, suburban, rural)).transpose((1, 0, 2))
+        res = np.vstack((urban, suburban, rural)).transpose((2, 0, 1))
 
         if debug_mode == True:
             return (urban, suburban, rural)
