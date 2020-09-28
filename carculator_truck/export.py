@@ -14,6 +14,61 @@ import csv
 from . import DATA_DIR, __version__
 
 
+def load_mapping_36_to_uvek():
+    """Load mapping dictionary between ecoinvent 3.6 and UVEK"""
+
+    # Load the matching dictionary between ecoinvent and Simapro biosphere flows
+    filename = "uvek_mapping.csv"
+    filepath = DATA_DIR / filename
+    if not filepath.is_file():
+        raise FileNotFoundError(
+            "The dictionary of activities flows match between ecoinvent 3.6 and UVEK could not be found."
+        )
+    with open(filepath) as f:
+        csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
+    (_, _, *header), *data = csv_list
+
+    dict_uvek = {}
+    for row in data:
+        (
+            name,
+            ref_prod,
+            unit,
+            location,
+            uvek_name,
+            uvek_ref_prod,
+            uvek_unit,
+            uvek_loc,
+        ) = row
+        dict_uvek[(name, ref_prod, unit, location)] = (
+            uvek_name,
+            uvek_ref_prod,
+            uvek_unit,
+            uvek_loc,
+        )
+
+    return dict_uvek
+
+
+def load_tags():
+    """Loads dictionary of tags for further use in BW2"""
+
+    filename = "tags.csv"
+    filepath = DATA_DIR / filename
+    if not filepath.is_file():
+        raise FileNotFoundError("The dictionary of tags could not be found.")
+    with open(filepath) as f:
+        csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
+    data = csv_list
+
+    dict_tags = {}
+    for row in data:
+        name, tag = row
+        dict_tags[name] = tag
+
+    return dict_tags
+
+
 class ExportInventory:
     """
     Export the inventory to various formats
@@ -114,9 +169,8 @@ class ExportInventory:
                 "kilowatt hour",
                 "electricity, low voltage",
             ),
-
         }
-        self.map_ecoinvent_remind= {
+        self.map_ecoinvent_remind = {
             (
                 "biogas upgrading - sewage sludge - amine scrubbing - best",
                 "CH",
@@ -128,10 +182,14 @@ class ExportInventory:
                 "kilogram",
                 "biogas upgrading - sewage sludge - amine scrubbing - best",
             ),
-
         }
         self.map_36_to_35 = {
-            ("market for water, completely softened", "RER", "kilogram", "water, completely softened"): (
+            (
+                "market for water, completely softened",
+                "RER",
+                "kilogram",
+                "water, completely softened",
+            ): (
                 "market for water, completely softened, from decarbonised water, at user",
                 "GLO",
                 "kilogram",
@@ -210,7 +268,12 @@ class ExportInventory:
                 "kilogram",
                 "water, deionised, from tap water, at user",
             ),
-            ("water production, deionised", "Europe without Switzerland", "kilogram", "water, deionised"): (
+            (
+                "water production, deionised",
+                "Europe without Switzerland",
+                "kilogram",
+                "water, deionised",
+            ): (
                 "market for water, deionised, from tap water, at user",
                 "CH",
                 "kilogram",
@@ -275,53 +338,8 @@ class ExportInventory:
                 "road maintenance",
             ),
         }
-        self.map_36_to_uvek = self.load_mapping_36_to_uvek()
-        self.tags = self.load_tags()
-
-    def load_tags(self):
-        """Loads dictionary of tags for further use in BW2"""
-
-        filename = "tags.csv"
-        filepath = DATA_DIR / filename
-        if not filepath.is_file():
-            raise FileNotFoundError(
-                "The dictionary of tags could not be found."
-            )
-        with open(filepath) as f:
-            csv_list = [
-                [val.strip() for val in r.split(";")] for r in f.readlines()
-            ]
-        data = csv_list
-
-        dict_tags = {}
-        for row in data:
-            name, tag = row
-            dict_tags[name] = tag
-
-        return dict_tags
-
-    def load_mapping_36_to_uvek(self):
-        """Load mapping dictionary between ecoinvent 3.6 and UVEK"""
-
-        # Load the matching dictionary between ecoinvent and Simapro biosphere flows
-        filename = "uvek_mapping.csv"
-        filepath = DATA_DIR / filename
-        if not filepath.is_file():
-            raise FileNotFoundError(
-                "The dictionary of activities flows match between ecoinvent 3.6 and UVEK could not be found."
-            )
-        with open(filepath) as f:
-            csv_list = [
-                [val.strip() for val in r.split(";")] for r in f.readlines()
-            ]
-        (_, _, *header), *data = csv_list
-
-        dict_uvek = {}
-        for row in data:
-            name, ref_prod, unit, location, uvek_name, uvek_ref_prod, uvek_unit, uvek_loc = row
-            dict_uvek[(name, ref_prod, unit, location)] = (uvek_name, uvek_ref_prod, uvek_unit, uvek_loc)
-
-        return dict_uvek
+        self.map_36_to_uvek = load_mapping_36_to_uvek()
+        self.tags = load_tags()
 
     def write_lci(self, presamples, ecoinvent_compatibility, ecoinvent_version):
         """
@@ -388,60 +406,60 @@ class ExportInventory:
             "adsorption and desorption unit, carbon dioxide capture process",
             "Buffer tank",
             "frequency converter, for diaphragm compressor",
-            'Hydrogen, gaseous, 30 bar, from hard coal gasification and reforming, at coal gasification plant',
-            'Methanol distillation',
-            'CO2 storage/at H2 production plant, pre, pipeline 200km, storage 1000m',
-            'Syngas, RWGS, Production',
-            'softwood forestry, mixed species, sustainable forest management, CF = -1',
-            'hardwood forestry, mixed species, sustainable forest management, CF = -1',
-            'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass with CCS, at gasification plant',
-            'market for wood chips, wet, measured as dry mass, CF = -1',
-            'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at H2 fuelling station',
-            'SMR BM, HT+LT, + CCS (MDEA), 98 (average), digestate incineration, 26 bar',
-            'Hydrogen, gaseous, 700 bar, from SMR of biogas, at H2 fuelling station',
-            'SMR NG + CCS (MDEA), 98 (average), 25 bar',
-            'SMR BM, HT+LT, with digestate incineration, 26 bar',
-            'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at H2 fuelling station',
-            'Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at H2 fuelling station',
-            'SMR NG + CCS (MDEA), 98 (average), 700 bar',
-            'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass, at gasification plant',
-            'Methanol Synthesis',
-            'Diesel production, synthetic, Fischer Tropsch process',
-            'Gasoline production, synthetic, from methanol',
-            'Crude vegetable oil | oil mill: extraction of vegetable oil from rapeseed | Alloc Rec, U',
-            'biomethane from biogas upgrading - biowaste - amine scrubbing, best - with biogenic carbon uptake, lower bound C sequestration, digestate incineration',
-            'Plant oil from crude oil | refining of vegetable oil from oil palm|',
-            'ATR BM, with digestate incineration, 25 bar',
-            'Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at gasification plant',
-            'Ethanol from wheat grains',
-            'Wheat grain cultivation, drying and storage {RER} | wheat grain production Europe | Alloc Rec, U',
-            'Hydrogen, gaseous, 700 bar, ATR of NG, with CCS, at H2 fuelling station',
-            'ATR BM + CCS (MDEA), 98 (average), with digestate incineration, 25 bar',
-            'SMR NG, 25 bar',
-            'Plant oil production | refining of crude vegetable oil from rapeseed| Alloc Rec, U',
-            'ethanol without biogas',
-            'Biodiesel from rapeseed oil',
-            'Hydrogen, gaseous, 700 bar, ATR of NG, at H2 fuelling station',
-            'Waste Cooking Oil',
-            'Carbon monoxide, from RWGS',
-            'Oil Palm Tree Cultivation {RER} | Fresh Fruit Bunches (FFBs) production | Alloc Rec, U',
-            'ATR NG, 25 bar',
-            'Rapeseed cultivation {RER} | rapeseed production Europe | Alloc Rec, U',
-            'Hydrogen, gaseous, 700 bar, from ATR of biogas with CCS, at H2 fuelling station',
-            'Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at gasification plant',
-            'SMR NG, 700 bar',
-            'Hydrogen, gaseous, 700 bar, from SMR of NG, with CCS, at H2 fuelling station',
-            'ATR NG + CCS (MDEA), 98 (average), 25 bar',
-            'Hydrogen, gaseous, 700 bar, from ATR of biogas, at H2 fuelling station',
-            'Biodiesel from palm oil',
-            'Hydrogen, gaseous, 700 bar, from SMR of NG, at H2 fuelling station',
-            'treatment of biowaste by anaerobic digestion, with biogenic carbon uptake, lower bound C sequestration, digestate incineration',
-            'Crude Palm Oil extraction from FFBs {RER} |oil mill|',
-            'Hydrogen, gaseous, 25 bar, from electrolysis',
-            'Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station',
-            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station',
-            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station',
-            'Hydrogen, gaseous, 700 bar, from coal gasification, at H2 fuelling station'
+            "Hydrogen, gaseous, 30 bar, from hard coal gasification and reforming, at coal gasification plant",
+            "Methanol distillation",
+            "CO2 storage/at H2 production plant, pre, pipeline 200km, storage 1000m",
+            "Syngas, RWGS, Production",
+            "softwood forestry, mixed species, sustainable forest management, CF = -1",
+            "hardwood forestry, mixed species, sustainable forest management, CF = -1",
+            "Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass with CCS, at gasification plant",
+            "market for wood chips, wet, measured as dry mass, CF = -1",
+            "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at H2 fuelling station",
+            "SMR BM, HT+LT, + CCS (MDEA), 98 (average), digestate incineration, 26 bar",
+            "Hydrogen, gaseous, 700 bar, from SMR of biogas, at H2 fuelling station",
+            "SMR NG + CCS (MDEA), 98 (average), 25 bar",
+            "SMR BM, HT+LT, with digestate incineration, 26 bar",
+            "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at H2 fuelling station",
+            "Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at H2 fuelling station",
+            "SMR NG + CCS (MDEA), 98 (average), 700 bar",
+            "Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass, at gasification plant",
+            "Methanol Synthesis",
+            "Diesel production, synthetic, Fischer Tropsch process",
+            "Gasoline production, synthetic, from methanol",
+            "Crude vegetable oil | oil mill: extraction of vegetable oil from rapeseed | Alloc Rec, U",
+            "biomethane from biogas upgrading - biowaste - amine scrubbing, best - with biogenic carbon uptake, lower bound C sequestration, digestate incineration",
+            "Plant oil from crude oil | refining of vegetable oil from oil palm|",
+            "ATR BM, with digestate incineration, 25 bar",
+            "Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at gasification plant",
+            "Ethanol from wheat grains",
+            "Wheat grain cultivation, drying and storage {RER} | wheat grain production Europe | Alloc Rec, U",
+            "Hydrogen, gaseous, 700 bar, ATR of NG, with CCS, at H2 fuelling station",
+            "ATR BM + CCS (MDEA), 98 (average), with digestate incineration, 25 bar",
+            "SMR NG, 25 bar",
+            "Plant oil production | refining of crude vegetable oil from rapeseed| Alloc Rec, U",
+            "ethanol without biogas",
+            "Biodiesel from rapeseed oil",
+            "Hydrogen, gaseous, 700 bar, ATR of NG, at H2 fuelling station",
+            "Waste Cooking Oil",
+            "Carbon monoxide, from RWGS",
+            "Oil Palm Tree Cultivation {RER} | Fresh Fruit Bunches (FFBs) production | Alloc Rec, U",
+            "ATR NG, 25 bar",
+            "Rapeseed cultivation {RER} | rapeseed production Europe | Alloc Rec, U",
+            "Hydrogen, gaseous, 700 bar, from ATR of biogas with CCS, at H2 fuelling station",
+            "Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at gasification plant",
+            "SMR NG, 700 bar",
+            "Hydrogen, gaseous, 700 bar, from SMR of NG, with CCS, at H2 fuelling station",
+            "ATR NG + CCS (MDEA), 98 (average), 25 bar",
+            "Hydrogen, gaseous, 700 bar, from ATR of biogas, at H2 fuelling station",
+            "Biodiesel from palm oil",
+            "Hydrogen, gaseous, 700 bar, from SMR of NG, at H2 fuelling station",
+            "treatment of biowaste by anaerobic digestion, with biogenic carbon uptake, lower bound C sequestration, digestate incineration",
+            "Crude Palm Oil extraction from FFBs {RER} |oil mill|",
+            "Hydrogen, gaseous, 25 bar, from electrolysis",
+            "Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station",
+            "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
+            "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
+            "Hydrogen, gaseous, 700 bar, from coal gasification, at H2 fuelling station",
         ]
 
         uvek_activities_to_remove = [
@@ -453,14 +471,13 @@ class ExportInventory:
             "market for soda ash, light, crystalline, heptahydrate",
         ]
 
-        ei35_activities_to_remove = [
-            "latex production"
-        ]
+        ei35_activities_to_remove = ["latex production"]
 
         uvek_multiplication_factors = {
-            "Steam, for chemical processes, at plant": 1/2.257, # 2.257 MJ/kg steam @ ambient pressure
+            "Steam, for chemical processes, at plant": 1
+            / 2.257,  # 2.257 MJ/kg steam @ ambient pressure
             "Natural gas, from high pressure network (1-5 bar), at service station": 0.842,
-            "Disposal, passenger car": 1/1600
+            "Disposal, passenger car": 1 / 1600,
         }
 
         list_act = []
@@ -500,7 +517,7 @@ class ExportInventory:
                 ):
                     break
 
-                if ecoinvent_compatibility == False:
+                if not ecoinvent_compatibility:
                     tuple_output = self.map_ecoinvent_remind.get(
                         tuple_output, tuple_output
                     )
@@ -508,7 +525,7 @@ class ExportInventory:
                         tuple_input, tuple_input
                     )
 
-                if ecoinvent_compatibility == True:
+                if ecoinvent_compatibility:
 
                     tuple_output = self.map_remind_ecoinvent.get(
                         tuple_output, tuple_output
@@ -529,12 +546,16 @@ class ExportInventory:
 
                     if ecoinvent_version == "uvek":
 
-                        tuple_output = self.map_36_to_uvek.get(tuple_output, tuple_output)
+                        tuple_output = self.map_36_to_uvek.get(
+                            tuple_output, tuple_output
+                        )
 
                         if tuple_input[0] in uvek_activities_to_remove:
                             continue
                         else:
-                            tuple_input = self.map_36_to_uvek.get(tuple_input, tuple_input)
+                            tuple_input = self.map_36_to_uvek.get(
+                                tuple_input, tuple_input
+                            )
 
                         if tuple_input[0] in uvek_multiplication_factors:
                             mult_factor = uvek_multiplication_factors[tuple_input[0]]
@@ -548,13 +569,13 @@ class ExportInventory:
                     np.isclose(self.array[:, row, col], self.array[0, row, col])
                 ):
                     # Several values, but all the same, so no uncertainty
-                    amount = self.array[0, row, col]  * mult_factor
+                    amount = self.array[0, row, col] * mult_factor
                     uncertainty = [("uncertainty type", 1)]
                 else:
                     # Uncertainty
-                    if presamples == True:
+                    if presamples:
                         # Generate pre-sampled values
-                        amount = np.median(self.array[:, row, col])  * mult_factor
+                        amount = np.median(self.array[:, row, col]) * mult_factor
                         uncertainty = [("uncertainty type", 1)]
                         if len(tuple_input) > 3:
                             type_exc = "technosphere"
@@ -574,8 +595,10 @@ class ExportInventory:
                     #    uncertainty = self.best_fit_distribution(self.array[:, row, col] * -1)
 
                 # Look for a tag, if any
-                tag = [self.tags[t] for t in list(self.tags.keys()) if t in tuple_input[0]]
-                if len(tag)>0:
+                tag = [
+                    self.tags[t] for t in list(self.tags.keys()) if t in tuple_input[0]
+                ]
+                if len(tag) > 0:
                     tag = tag[0]
                 else:
                     tag = "other"
@@ -606,7 +629,7 @@ class ExportInventory:
                             "type": "technosphere",
                             "location": tuple_input[1],
                             "reference product": tuple_input[3],
-                            "tag":tag
+                            "tag": tag,
                         }
                     )
                     list_exc[-1].update(uncertainty)
@@ -621,7 +644,7 @@ class ExportInventory:
                             "unit": tuple_input[2],
                             "type": "biosphere",
                             "categories": tuple_input[1],
-                            "tag":tag
+                            "tag": tag,
                         }
                     )
                     list_exc[-1].update(uncertainty)
@@ -629,8 +652,10 @@ class ExportInventory:
             else:
 
                 # Look for a tag, if any
-                tag = [self.tags[t] for t in list(self.tags.keys()) if t in tuple_output[0]]
-                if len(tag)>0:
+                tag = [
+                    self.tags[t] for t in list(self.tags.keys()) if t in tuple_output[0]
+                ]
+                if len(tag) > 0:
                     tag = tag[0]
                 else:
                     tag = "other"
@@ -646,11 +671,11 @@ class ExportInventory:
                         "reference product": tuple_output[3],
                         "type": "process",
                         "code": str(uuid.uuid1()),
-                        "tag":tag
+                        "tag": tag,
                     }
                 )
         if presamples:
-            return (list_act, presamples_matrix)
+            return list_act, presamples_matrix
         else:
             return list_act
 
@@ -660,11 +685,12 @@ class ExportInventory:
         ecoinvent_compatibility,
         ecoinvent_version,
         software_compatibility,
-        filename=None
+        filename=None,
     ):
         """
         Export an Excel file that can be consumed by the software defined in `software_compatibility`.
 
+        :param filename:
         :param directory: str. path to export the file to.
         :param ecoinvent_compatibility: bool. If True, the inventory is compatible with ecoinvent. If False, the inventory is compatible with REMIND-ecoinvent.
         :param ecoinvent_version: str. "3.5", "3.6" or "uvek"
@@ -675,24 +701,27 @@ class ExportInventory:
 
         if software_compatibility == "brightway2":
             if filename is None:
-                safe_name = safe_filename(
-                    "carculator_truck_inventory_export_{}_brightway2".format(
+                safe_name = (
+                    safe_filename(
+                        "carculator_truck_inventory_export_{}_brightway2".format(
+                            str(datetime.date.today())
+                        ),
+                        False,
+                    )
+                    + ".xlsx"
+                )
+            else:
+                safe_name = safe_filename(filename, False,) + ".xlsx"
+        else:
+            safe_name = (
+                safe_filename(
+                    "carculator_truck_inventory_export_{}_simapro".format(
                         str(datetime.date.today())
                     ),
                     False,
-                ) + ".xlsx"
-            else:
-                safe_name = safe_filename(
-                    filename,
-                    False,
-                ) + ".xlsx"
-        else:
-            safe_name = safe_filename(
-                "carculator_truck_inventory_export_{}_simapro".format(
-                    str(datetime.date.today())
-                ),
-                False,
-            ) + ".csv"
+                )
+                + ".csv"
+            )
 
         if directory is None:
             filepath_export = safe_name
@@ -729,7 +758,7 @@ class ExportInventory:
                                 "categories",
                                 "type",
                                 "reference product",
-                                "tag"
+                                "tag",
                             ],
                         )
                     )
@@ -745,7 +774,7 @@ class ExportInventory:
                                 "::".join(e.get("categories", ())),
                                 e["type"],
                                 e.get("reference product"),
-                                e.get("tag", "other")
+                                e.get("tag", "other"),
                             ]
                         )
                 else:
@@ -1097,13 +1126,13 @@ class ExportInventory:
         :return: LCIImporter object to be imported in a Brightway2 project
         :rtype: bw2io.base_lci.LCIImporter
         """
-        if presamples == True:
+        if presamples:
             data, array = self.write_lci(
                 presamples, ecoinvent_compatibility, ecoinvent_version
             )
             i = bw2io.importers.base_lci.LCIImporter(self.db_name)
             i.data = data
-            return (i, array)
+            return i, array
         else:
             data = self.write_lci(
                 presamples, ecoinvent_compatibility, ecoinvent_version
@@ -1167,6 +1196,7 @@ class ExportInventory:
                     try:
                         if ax:
                             pd.Series(pdf, x).plot(ax=ax)
+                        # noinspection PyStatementEffect
                         end
                     except Exception:
                         pass

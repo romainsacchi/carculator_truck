@@ -27,14 +27,14 @@ def get_gradients(name="Urban delivery"):
     dict_dc_names = {
         "Urban delivery": [1, 4, 7, 10, 13, 16],
         "Regional delivery": [2, 5, 8, 11, 14, 17],
-        "Long haul": [3, 6, 9, 12, 15, 18]
+        "Long haul": [3, 6, 9, 12, 15, 18],
     }
 
     try:
         arr = np.genfromtxt(DATA_DIR / "gradients.csv", delimiter=";")
         dc = arr[1:, dict_dc_names[name]]
         dc = dc[~np.isnan(dc)]
-        return dc.reshape((-1,6))
+        return dc.reshape((-1, 6))
 
     except KeyError:
         print("The specified driving cycle could not be found.")

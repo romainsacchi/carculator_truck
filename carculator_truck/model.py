@@ -43,7 +43,15 @@ class TruckModel:
 
     """
 
-    def __init__(self, array, mappings=None, cycle=None, country=None, fuel_blend=None):
+    def __init__(
+        self,
+        array,
+        mappings=None,
+        cycle="Urban delivery",
+        country=None,
+        fuel_blend=None,
+        energy_target={2025: 0.85, 2030: 0.7},
+    ):
 
         self.array = array
         self.mappings = mappings or DEFAULT_MAPPINGS
@@ -51,27 +59,41 @@ class TruckModel:
 
         self.country = country or "RER"
         self.fuel_blend = self.define_fuel_blends(fuel_blend)
-        self.cycle = cycle or "Urban delivery"
+        self.cycle = cycle
 
-        target_ranges={
-            'Urban delivery':150,
-            'Regional delivery':400,
-            'Long haul':800
+        self.energy_target = energy_target
+
+        target_ranges = {
+            "Urban delivery": 150,
+            "Regional delivery": 400,
+            "Long haul": 800,
         }
 
         self["target range"] = target_ranges[self.cycle]
 
-        print("{} driving cycle is selected. Vehicles will be designed to achieve a minimal range of {} km.".format(cycle, target_ranges[cycle]))
+        print(
+            "{} driving cycle is selected. Vehicles will be designed to achieve a minimal range of {} km.".format(
+                cycle, target_ranges[cycle]
+            )
+        )
 
-        print('')
+        print("")
         print("Capacity utilization assumed (share of available payload used)")
-        t = PrettyTable([''] + array.coords["size"].values.tolist())
+        t = PrettyTable([""] + array.coords["size"].values.tolist())
         for pt in array.coords["powertrain"].values:
             for y in array.coords["year"].values:
-                t.add_row([pt + ", " + str(y)] + array.sel(parameter="capacity utilization",
-                                                           powertrain=pt,
-                                                           year=y,
-                                                           value=0).values.tolist())
+                t.add_row(
+                    [pt + ", " + str(y)]
+                    + [
+                        np.round(i, 2)
+                        for i in array.sel(
+                            parameter="capacity utilization", powertrain=pt, year=y
+                        )
+                        .mean(dim="value")
+                        .values.tolist()
+                    ]
+                )
+
         print(t)
 
         self.ecm = EnergyConsumptionModel(cycle=cycle)
@@ -147,8 +169,9 @@ class TruckModel:
         """
 
         diff = 1.0
+        arr = np.array([])
 
-        while abs(diff) > .001:
+        while abs(diff) > 0.001 or np.std(arr[-5:]) > 0.3:
 
             old_payload = self["available payload"].sum().values
 
@@ -162,6 +185,12 @@ class TruckModel:
             self.calculate_ttw_energy()
             self.set_battery_fuel_cell_replacements()
             self.set_energy_stored_properties()
+
+            # if there are vehicles after 2020, we need to ensure CO2 standards compliance
+            # return an array with non-compliant vehicles
+            non_compliant_vehicles = self.adjust_combustion_power_share()
+            arr = np.append(arr, non_compliant_vehicles.sum())
+
             self.set_car_masses()
 
             diff = (self["available payload"].sum().values - old_payload) / self[
@@ -169,7 +198,6 @@ class TruckModel:
             ].sum()
 
         self.adjust_cost()
-
         self.set_electric_utility_factor()
         self.set_electricity_consumption()
         self.set_costs()
@@ -178,58 +206,106 @@ class TruckModel:
         self.create_PHEV()
         self.drop_hybrid()
 
-        print('')
+        print("")
         print("Payload (in tons)")
-        t = PrettyTable([''] + self.array.coords["size"].values.tolist())
+        print("Vehicles for which the payload is not specified have either: ")
+        print(
+            "1. a driving mass superior to the permissible gross weight. Possible solutions include: reducing the "
+            "range autonomy for those vehicles, reducing the load factor, increasing the battery cell energy density."
+        )
+        print(
+            "2. an energy efficiency too low to comply with the energy target specified. Possible solutions include: "
+            "changing the energy reduction targets specified, increasing the engine efficiency."
+        )
+
+        self.array.loc[
+            dict(
+                powertrain=["ICEV-d", "ICEV-g"],
+                parameter="total cargo mass",
+                year=[y for y in self.array.year.values if y >= 2020],
+            )
+        ] *= np.clip((1 - non_compliant_vehicles), 0.001, 1)
+
+        t = PrettyTable([""] + self.array.coords["size"].values.tolist())
         for pt in self.array.coords["powertrain"].values:
             for y in self.array.coords["year"].values:
-                t.add_row([pt + ", " + str(y)] + [np.round(v, 1)
-                                                  if v>0.1
-                                                  else "-" for v in (self.array.sel(parameter="total cargo mass", powertrain=pt, year=y, value=0)/1000).values.tolist()])
+                t.add_row(
+                    [pt + ", " + str(y)]
+                    + [
+                        np.round(np.mean(v), 1) if np.mean(v) > 0.1 else "-"
+                        for v in (
+                            self.array.sel(
+                                parameter="total cargo mass", powertrain=pt, year=y
+                            )
+                            / 1000
+                        ).values.tolist()
+                    ]
+                )
         print(t)
 
-        if (self["driving mass"] > self["gross mass"]).any() == True:
-            print(
-                "The driving mass of the following vehicles exceeds the permissible gross mass. ")
-            print("Reduce the target range for those vehicles, or the load factor, or increase the battery cell energy density to find a solution."
-            )
-            sizes = (
-                self.array.where(
-                    self.array.sel(parameter="driving mass")
-                    > self.array.sel(parameter="gross mass"),
-                    drop=True,
-                )
-                .coords["size"]
-                .values.tolist()
-            )
-            pt = (
-                self.array.where(
-                    self.array.sel(parameter="driving mass")
-                    > self.array.sel(parameter="gross mass"),
-                    drop=True,
-                )
-                .coords["powertrain"]
-                .values.tolist()
-            )
-            years = (
-                self.array.where(
-                    self.array.sel(parameter="driving mass")
-                    > self.array.sel(parameter="gross mass"),
-                    drop=True,
-                )
-                .coords["year"]
-                .values.tolist()
-            )
-            for p in pt:
-                for s in sizes:
-                    for y in years:
-                        if self.array.sel(
-                            powertrain=p, size=s, year=y, parameter="driving mass"
-                        ) > self.array.sel(
-                            powertrain=p, size=s, year=y, parameter="gross mass"
-                        ):
-                            print(p, s, y)
+    def adjust_combustion_power_share(self):
+        """
+        If the exhaust CO2 emissions exceed the targets defined in `self.emission_target`,
+        compared to 2020, we decrement the power supply share of the combustion engine.
 
+        :returns: `is_compliant`, whether all vehicles are compliant or not.
+        """
+
+        list_target_years = [2020] + list(self.energy_target.keys())
+        list_target_vals = [1] + list(self.energy_target.values())
+        # years under target
+        actual_years = [y for y in self.array.year.values if y >= 2020]
+
+        if len(actual_years) > 0:
+
+            fc = (
+                self.array.loc[:, ["ICEV-d", "ICEV-g"], "fuel mass", :]
+                / self.array.loc[:, ["ICEV-d", "ICEV-g"], "target range", :]
+            ).interp(year=list_target_years, kwargs={"fill_value": "extrapolate"})
+
+            fc[:, :, :, :] = (
+                fc[:, :, 0, :].values * np.array(list_target_vals).reshape(-1, 1, 1, 1)
+            ).transpose(1, 2, 0, 3)
+
+            years_after_last_target = [
+                y for y in actual_years if y > list_target_years[-1]
+            ]
+
+            fc = fc.interp(year=actual_years, kwargs={"fill_value": "extrapolate"})
+
+            if len(years_after_last_target) > 0:
+                fc.loc[dict(year=years_after_last_target)] = fc.loc[
+                    dict(year=list_target_years[-1])
+                ].values[:, :, None, :]
+
+            arr = (
+                fc.values
+                < (
+                    self.array.loc[:, ["ICEV-d", "ICEV-g"], "fuel mass", actual_years]
+                    / self.array.loc[
+                        :, ["ICEV-d", "ICEV-g"], "target range", actual_years
+                    ]
+                ).values
+            )
+
+            if arr.sum() > 0:
+                new_shares = self.array.loc[
+                    dict(
+                        powertrain=["ICEV-d", "ICEV-g"],
+                        parameter="combustion power share",
+                        year=actual_years,
+                    )
+                ] - (arr * 0.02)
+                self.array.loc[
+                    dict(
+                        powertrain=["ICEV-d", "ICEV-g"],
+                        parameter="combustion power share",
+                        year=actual_years,
+                    )
+                ] = np.clip(new_shares, 0.6, 1)
+            return arr
+        else:
+            return np.array([])
 
     def adjust_cost(self):
         """
@@ -330,11 +406,17 @@ class TruckModel:
         for pt in pts:
             with self(pt) as cpm:
                 if self.cycle == "Urban delivery":
-                    aux_energy.loc[{"powertrain": pt}] /= cpm["engine efficiency, empty, urban delivery"]
+                    aux_energy.loc[{"powertrain": pt}] /= cpm[
+                        "engine efficiency, empty, urban delivery"
+                    ]
                 if self.cycle == "Regional delivery":
-                    aux_energy.loc[{"powertrain": pt}] /= cpm["engine efficiency, empty, regional delivery"]
+                    aux_energy.loc[{"powertrain": pt}] /= cpm[
+                        "engine efficiency, empty, regional delivery"
+                    ]
                 if self.cycle == "Long haul":
-                    aux_energy.loc[{"powertrain": pt}] /= cpm["engine efficiency, empty, long haul"]
+                    aux_energy.loc[{"powertrain": pt}] /= cpm[
+                        "engine efficiency, empty, long haul"
+                    ]
 
         for pt in self.fuel_cell:
             with self(pt) as cpm:
@@ -352,8 +434,9 @@ class TruckModel:
             motor_power=self["electric power"],
         ).sum(axis=0)
 
-        self.motive_energy = motive_energy
-        self["TtW energy"] = aux_energy + motive_energy
+        # noinspection PyAttributeOutsideInit
+        self.motive_energy = motive_energy.T
+        self["TtW energy"] = aux_energy + motive_energy.T
 
     def set_fuel_cell_parameters(self):
         """
@@ -426,7 +509,6 @@ class TruckModel:
         if self.cycle == "Long haul":
             drivetrain_eff = self["drivetrain efficiency, empty, long haul"]
 
-
         self["recuperation efficiency"] = (
             drivetrain_eff * self["battery charge efficiency"]
         )
@@ -487,10 +569,12 @@ class TruckModel:
             "cabin mass",
             "electrical system mass",
             "other components mass",
-            "transmission mass"
-            ]
+            "transmission mass",
+        ]
 
-        self["curb mass"] = self[base_components].sum(axis=2) * (1 - self["lightweighting"])
+        self["curb mass"] = self[base_components].sum(axis=2) * (
+            1 - self["lightweighting"]
+        )
 
         curb_mass_includes = [
             "fuel mass",
@@ -513,9 +597,15 @@ class TruckModel:
         ]
         self["curb mass"] += self[curb_mass_includes].sum(axis=2)
 
-        self["available payload"] = np.clip(self["gross mass"] - (self["curb mass"] +
-                                                                  (self["average passengers"] * self["average passenger mass"])), 0, None)
-
+        self["available payload"] = np.clip(
+            self["gross mass"]
+            - (
+                self["curb mass"]
+                + (self["average passengers"] * self["average passenger mass"])
+            ),
+            0,
+            None,
+        )
 
         self["total cargo mass"] = (
             self["average passengers"] * self["average passenger mass"]
@@ -588,11 +678,11 @@ class TruckModel:
         :return:
         """
         d_map_fuel = {
-            "ICEV-d":"diesel",
-            "HEV-d":"diesel",
-            "PHEV-c-d":"diesel",
-            "ICEV-g":"cng",
-            "FCEV":"hydrogen"
+            "ICEV-d": "diesel",
+            "HEV-d": "diesel",
+            "PHEV-c-d": "diesel",
+            "ICEV-g": "cng",
+            "FCEV": "hydrogen",
         }
 
         for pt in ["ICEV-d", "HEV-d", "PHEV-c-d", "ICEV-g"]:
@@ -606,7 +696,9 @@ class TruckModel:
                 secondary_fuel_share = self.fuel_blend[fuel_type]["secondary"]["share"]
                 secondary_fuel_lhv = self.fuel_blend[fuel_type]["secondary"]["lhv"]
 
-                blend_lhv = (np.array(primary_fuel_share) * primary_fuel_lhv) + (np.array(secondary_fuel_share) * secondary_fuel_lhv)
+                blend_lhv = (np.array(primary_fuel_share) * primary_fuel_lhv) + (
+                    np.array(secondary_fuel_share) * secondary_fuel_lhv
+                )
 
                 cpm["fuel mass"] = (
                     cpm["target range"] * (cpm["TtW energy"] / 1000)
@@ -623,9 +715,8 @@ class TruckModel:
                 else:
                     # From Wolff et al. 2020, Sustainability, DOI: 10.3390/su12135396.
                     cpm["fuel tank mass"] = (
-                        17.159 * np.log(cpm["fuel mass"] * (1/0.832)) - 54.98
+                        17.159 * np.log(cpm["fuel mass"] * (1 / 0.832)) - 54.98
                     )
-
 
         for pt in ["HEV-d", "ICEV-g", "ICEV-d", "PHEV-c-d"]:
             with self(pt) as cpm:
@@ -782,11 +873,12 @@ class TruckModel:
 
     def set_ttw_efficiency(self):
         """
-        The efficiency of the engine and drivetrain is calibrated after VECTO simulations.
+        The efficiency of the engine and drivetrain is calibrated after VECTO simulations for current vehicles (2020).
         Efficiencies of both components vary depending on the torque and rpm required at the wheels.
         Torque and rpm required are calculated after a complex model in VECTO, where several factors,
         such as the driving factor and the load factor, are important. For that reason, efficiencies here
-        are defined according to the driving cycle, and the load factor.
+        are defined according to the driving cycle, and the load factor. Also, the engine efficiency of hybrid
+        drivetrains are the product of the efficiency of the combustion engine and the electric motor.
         :return:
         """
 
@@ -796,16 +888,48 @@ class TruckModel:
             engine_eff_empty = self["engine efficiency, empty, urban delivery"]
             engine_eff_full = self["engine efficiency, full, urban delivery"]
 
-            engine_eff = (self["capacity utilization"] * engine_eff_full) +\
-                         ((1- self["capacity utilization"]) * engine_eff_empty)
+            engine_eff = (self["capacity utilization"] * engine_eff_full) + (
+                (1 - self["capacity utilization"]) * engine_eff_empty
+            )
+
+            engine_eff_empty_elec = self.array.sel(
+                powertrain="BEV", parameter="engine efficiency, empty, urban delivery"
+            )
+            engine_eff_full_elec = self.array.sel(
+                powertrain="BEV", parameter="engine efficiency, full, urban delivery"
+            )
+
+            elec_engine_eff = (self["capacity utilization"] * engine_eff_empty_elec) + (
+                (1 - self["capacity utilization"]) * engine_eff_full_elec
+            )
+
+            engine_eff *= self["combustion power share"]
+            engine_eff += (1 - self["combustion power share"]) * elec_engine_eff
+
             drivetrain_eff = self["drivetrain efficiency, empty, urban delivery"]
 
         if self.cycle == "Regional delivery":
             engine_eff_empty = self["engine efficiency, empty, regional delivery"]
             engine_eff_full = self["engine efficiency, full, regional delivery"]
 
-            engine_eff = (self["capacity utilization"] * engine_eff_full) + \
-                         ((1 - self["capacity utilization"]) * engine_eff_empty)
+            engine_eff = (self["capacity utilization"] * engine_eff_full) + (
+                (1 - self["capacity utilization"]) * engine_eff_empty
+            )
+
+            engine_eff_empty_elec = self.array.sel(
+                powertrain="BEV",
+                parameter="engine efficiency, empty, regional delivery",
+            )
+            engine_eff_full_elec = self.array.sel(
+                powertrain="BEV", parameter="engine efficiency, full, regional delivery"
+            )
+
+            elec_engine_eff = (self["capacity utilization"] * engine_eff_empty_elec) + (
+                (1 - self["capacity utilization"]) * engine_eff_full_elec
+            )
+
+            engine_eff *= self["combustion power share"]
+            engine_eff += (1 - self["combustion power share"]) * elec_engine_eff
 
             drivetrain_eff = self["drivetrain efficiency, empty, regional delivery"]
 
@@ -813,11 +937,25 @@ class TruckModel:
             engine_eff_empty = self["engine efficiency, empty, long haul"]
             engine_eff_full = self["engine efficiency, full, long haul"]
 
-            engine_eff = (self["capacity utilization"] * engine_eff_full) + \
-                         ((1 - self["capacity utilization"]) * engine_eff_empty)
+            engine_eff = (self["capacity utilization"] * engine_eff_full) + (
+                (1 - self["capacity utilization"]) * engine_eff_empty
+            )
+
+            engine_eff_empty_elec = self.array.sel(
+                powertrain="BEV", parameter="engine efficiency, empty, long haul"
+            )
+            engine_eff_full_elec = self.array.sel(
+                powertrain="BEV", parameter="engine efficiency, full, long haul"
+            )
+
+            elec_engine_eff = (self["capacity utilization"] * engine_eff_empty_elec) + (
+                (1 - self["capacity utilization"]) * engine_eff_full_elec
+            )
+
+            engine_eff *= self["combustion power share"]
+            engine_eff += (1 - self["combustion power share"]) * elec_engine_eff
 
             drivetrain_eff = self["drivetrain efficiency, empty, long haul"]
-
 
         self["TtW efficiency"] = (
             _(self["battery discharge efficiency"])
@@ -882,12 +1020,6 @@ class TruckModel:
             if y >= 2012:
                 l_y.append(6)
 
-        print(self.array.loc[
-            dict(
-                powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
-                parameter=list_direct_emissions,
-            )
-        ].shape)
         self.array.loc[
             dict(
                 powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
@@ -919,8 +1051,8 @@ class TruckModel:
 
         # Emissions are scaled to the combustion power share
         self.array.loc[:, :, list_direct_emissions, :] *= self.array.loc[
-                                                          :, :, "combustion power share", :
-                                                          ]
+            :, :, "combustion power share", :
+        ]
 
     def set_noise_emissions(self):
         """
@@ -1023,10 +1155,9 @@ class TruckModel:
         """
 
         if scope is None:
-            scope = {}
-            scope["size"] = self.array.coords["size"].values.tolist()
-            scope["powertrain"] = self.array.coords["powertrain"].values.tolist()
-            scope["year"] = self.array.coords["year"].values.tolist()
+            scope = {"size": self.array.coords["size"].values.tolist(),
+                     "powertrain": self.array.coords["powertrain"].values.tolist(),
+                     "year": self.array.coords["year"].values.tolist()}
         else:
             scope["size"] = scope.get("size", self.array.coords["size"].values.tolist())
             scope["powertrain"] = scope.get(
@@ -1094,7 +1225,10 @@ class TruckModel:
             self.bs.biofuel.sel(
                 region=region, value=0, fuel_type="Biomass fuel", scenario=scenario,
             )
-            .interp(year=self.array.coords["year"].values, kwargs={"fill_value": "extrapolate"})
+            .interp(
+                year=self.array.coords["year"].values,
+                kwargs={"fill_value": "extrapolate"},
+            )
             .values
         )
         return share_biofuel
@@ -1102,29 +1236,43 @@ class TruckModel:
     def find_fuel_shares(self, fuel_blend, fuel_type):
 
         default_fuels = {
-            "diesel": {"primary": "diesel",
-                       "secondary": "biodiesel - cooking oil",
-                       "all": ["diesel", "biodiesel - cooking oil", "biodiesel - algae", "synthetic diesel"]},
-            "cng": {"primary": "cng",
-                    "secondary": "biogas - sewage sludge",
-                    "all": ['cng', 'biogas - sewage sludge', 'syngas', 'biogas - biowaste']},
-            "hydrogen": {"primary": "electrolysis",
-                         "secondary": "smr - natural gas",
-                         "all":["electrolysis", "smr - natural gas","smr - natural gas with CCS","smr - biogas",
-                                "smr - biogas with CCS","coal gasification",
-                                "wood gasification","wood gasification with CCS"]},
+            "diesel": {
+                "primary": "diesel",
+                "secondary": "biodiesel - cooking oil",
+                "all": [
+                    "diesel",
+                    "biodiesel - cooking oil",
+                    "biodiesel - algae",
+                    "synthetic diesel",
+                ],
+            },
+            "cng": {
+                "primary": "cng",
+                "secondary": "biogas - sewage sludge",
+                "all": ["cng", "biogas - sewage sludge", "syngas", "biogas - biowaste"],
+            },
+            "hydrogen": {
+                "primary": "electrolysis",
+                "secondary": "smr - natural gas",
+                "all": [
+                    "electrolysis",
+                    "smr - natural gas",
+                    "smr - natural gas with CCS",
+                    "smr - biogas",
+                    "smr - biogas with CCS",
+                    "coal gasification",
+                    "wood gasification",
+                    "wood gasification with CCS",
+                ],
+            },
         }
 
         if fuel_type in fuel_blend:
-            primary = fuel_blend[fuel_type][
-                "primary"
-            ]["type"]
+            primary = fuel_blend[fuel_type]["primary"]["type"]
 
             try:
                 # See of a secondary fuel type has been specified
-                secondary = fuel_blend[fuel_type][
-                    "secondary fuel"
-                ]["type"]
+                secondary = fuel_blend[fuel_type]["secondary fuel"]["type"]
             except:
                 # A secondary fuel has not been specified, set one by default
                 # Check first if the default fuel is not similar to the primary fuel
@@ -1132,12 +1280,11 @@ class TruckModel:
                 if default_fuels[fuel_type]["secondary"] != primary:
                     secondary = default_fuels[fuel_type]["secondary"]
                 else:
-                    secondary = [f for f in default_fuels[fuel_type]["all"]
-                                 if f!= primary][0]
+                    secondary = [
+                        f for f in default_fuels[fuel_type]["all"] if f != primary
+                    ][0]
 
-            primary_share = fuel_blend[fuel_type][
-                "primary"
-            ]["share"]
+            primary_share = fuel_blend[fuel_type]["primary"]["share"]
             secondary_share = 1 - np.array(primary_share)
 
         else:
@@ -1146,8 +1293,7 @@ class TruckModel:
             secondary_share = self.get_share_biofuel()
             primary_share = 1 - np.array(secondary_share)
 
-
-        return (primary, secondary, primary_share, secondary_share)
+        return primary, secondary, primary_share, secondary_share
 
     def define_fuel_blends(self, fuel_blend=None):
         """
@@ -1164,7 +1310,7 @@ class TruckModel:
             "synthetic diesel": 43.3,
             "cng": 55.5,
             "biogas - sewage sludge": 55.5,
-            "biogas - biowaste": 55.5*.657,
+            "biogas - biowaste": 55.5,
             "syngas": 55.5,
             "electrolysis": 120,
             "smr - natural gas": 120,
@@ -1179,7 +1325,7 @@ class TruckModel:
             "wood gasification": 120,
             "wood gasification with CCS": 120,
             "wood gasification with EF": 120,
-            "wood gasification with EF with CCS": 120
+            "wood gasification with EF with CCS": 120,
         }
 
         fuels_CO2 = {
@@ -1204,7 +1350,7 @@ class TruckModel:
             "wood gasification": 0,
             "wood gasification with CCS": 0,
             "wood gasification with EF": 0,
-            "wood gasification with EF with CCS": 0
+            "wood gasification with EF with CCS": 0,
         }
 
         if fuel_blend is None:
@@ -1233,5 +1379,3 @@ class TruckModel:
             }
 
         return fuel_blend
-
-

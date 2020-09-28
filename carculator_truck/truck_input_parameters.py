@@ -73,9 +73,7 @@ class TruckInputParameters(NamedParameters):
         )
 
         # keep a list of input parameters, for sensitivity purpose
-        self.input_parameters = sorted(
-            {o["name"] for o in parameters.values()})
-
+        self.input_parameters = sorted({o["name"] for o in parameters.values()})
 
         self.years = sorted({o["year"] for o in parameters.values()})
         self.add_truck_parameters(parameters)

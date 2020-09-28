@@ -12,6 +12,19 @@ def _(o):
         return o
 
 
+def get_emission_factors():
+    """ Emissions factors extracted for trucks from HBEFA 4.1
+        deatiled by size, powertrain and EURO class for each substance.
+    """
+    fp = DATA_DIR / "HEM_factors_trucks.xlsx"
+    ef = pd.read_excel(fp)
+    return (
+        ef.groupby(["powertrain", "euro_class", "size", "component"])
+        .sum()
+        .to_xarray()
+    )
+
+
 class HotEmissionsModel:
     """
     Calculate hot pollutants emissions based on HBEFA 4.1 data, function of speed (given by the driving cycle)
@@ -42,19 +55,7 @@ class HotEmissionsModel:
                 "rural stop": -1,
             },
         }
-        self.em = self.get_emission_factors()
-
-    def get_emission_factors(self):
-        """ Emissions factors extracted for trucks from HBEFA 4.1
-            deatiled by size, powertrain and EURO class for each substance.
-        """
-        fp = DATA_DIR / "HEM_factors_trucks.xlsx"
-        ef = pd.read_excel(fp)
-        return (
-            ef.groupby(["powertrain", "euro_class", "size", "component"])
-            .sum()
-            .to_xarray()
-        )
+        self.em = get_emission_factors()
 
     def get_emissions_per_powertrain(
         self, powertrain_type, euro_classes, debug_mode=False
@@ -65,10 +66,10 @@ class HotEmissionsModel:
 
         The emission sums are further divided into `air compartments`: urban, suburban and rural.
 
+        :param euro_classes:
+        :param debug_mode:
         :param powertrain_type: "diesel", or "CNG"
         :type powertrain_type: str
-        :param euro_class: list of integers, corresponding to the EURO pollution class
-        :type euro_class: list
         :return: Pollutants emission per km driven, per air compartment.
         :rtype: numpy.array
         """
@@ -109,12 +110,11 @@ class HotEmissionsModel:
         if powertrain_type not in ("diesel", "CNG"):
             raise TypeError("The powertrain type is not valid.")
 
-        if debug_mode == True:
+        if debug_mode:
             return em_arr
 
         # In case the fit produces negative numbers (it should not, though)
         em_arr[em_arr < 0] = 0
-
 
         # If the driving cycle selected is one of the driving cycles for which carculator has specifications,
         # we use the driving cycle "official" road section types to compartmentalize emissions.
@@ -157,11 +157,10 @@ class HotEmissionsModel:
 
         res = np.vstack((urban, suburban, rural)).transpose((2, 0, 1))
 
-        if debug_mode == True:
-            return (urban, suburban, rural)
+        if debug_mode:
+            return urban, suburban, rural
 
-        if powertrain_type=="diesel":
+        if powertrain_type == "diesel":
             return res[:, np.newaxis, :, :, np.newaxis]
         else:
             return res[..., np.newaxis]
-

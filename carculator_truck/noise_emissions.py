@@ -13,7 +13,9 @@ def pn(cycle, powertrain_type, category):
             constants = np.array(
                 (101, 96.5, 98.8, 96.8, 98.6, 95.2, 88.8, 82.7)
             ).reshape((-1, 1))
-            coefficients = np.array((-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)).reshape((-1, 1))
+            coefficients = np.array((-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)).reshape(
+                (-1, 1)
+            )
 
         if category == "heavy":
             array = np.tile((cycle - 70) / 70, 8).reshape((8, -1))
@@ -59,14 +61,17 @@ class NoiseEmissionsModel:
         self.cycle = cycle
         self.cycle_name = cycle_name
         self.cycle_environment = {
-            "Urban delivery": {
-                "urban start": 0
-            },
+            "Urban delivery": {"urban start": 0},
             "Long haul": {"rural start": 0},
-            "Regional delivery": {"urban start": 0, "urban stop": 250,
-                                  "suburban start": 251, "suburban stop": 750,
-                                  "rural start": 751}
+            "Regional delivery": {
+                "urban start": 0,
+                "urban stop": 250,
+                "suburban start": 251,
+                "suburban stop": 750,
+                "rural start": 751,
+            },
         }
+
     def rolling_noise(self, category):
         """Calculate noise from rolling friction.
         Model from CNOSSOS-EU project
@@ -87,24 +92,24 @@ class NoiseEmissionsModel:
                 np.log10(cycle / 70, out=np.zeros_like(cycle), where=(cycle != 0)), 8
             ).reshape((8, -1))
 
-            constants = np.array((84, 88.7, 91.5, 96.7, 97.4, 90.9, 83.8, 80.5)).reshape(
-                (-1, 1)
-            )
-            coefficients = np.array((30, 35.8, 32.6, 23.8, 30.1, 36.2, 38.3, 40.1)).reshape(
-                (-1, 1)
-            )
+            constants = np.array(
+                (84, 88.7, 91.5, 96.7, 97.4, 90.9, 83.8, 80.5)
+            ).reshape((-1, 1))
+            coefficients = np.array(
+                (30, 35.8, 32.6, 23.8, 30.1, 36.2, 38.3, 40.1)
+            ).reshape((-1, 1))
 
         if category == "heavy":
             cycle = cycle[:, 4:]
             array = np.tile(
                 np.log10(cycle / 70, out=np.zeros_like(cycle), where=(cycle != 0)), 8
             ).reshape((8, -1))
-            constants = np.array((87, 91.7, 94.1, 100.7, 100.8, 94.3, 87.1, 82.5)).reshape(
-                (-1, 1)
-            )
-            coefficients = np.array((30, 33.5, 31.3, 25.4, 31.8, 37.1, 38.6, 40.6)).reshape(
-                (-1, 1)
-            )
+            constants = np.array(
+                (87, 91.7, 94.1, 100.7, 100.8, 94.3, 87.1, 82.5)
+            ).reshape((-1, 1))
+            coefficients = np.array(
+                (30, 33.5, 31.3, 25.4, 31.8, 37.1, 38.6, 40.6)
+            ).reshape((-1, 1))
         array = array * coefficients + constants
 
         return array
@@ -121,6 +126,7 @@ class NoiseEmissionsModel:
 
         Although we deal here with trucks, we reuse the coefficeint for electric cars
 
+        :param powertrain_type:
         :param category: "medium" or "heavy" duty vehicles.
         :type category: str.
         :returns: A numpy array with propulsion noise (dB) for all 8 octaves, per second of driving cycle
@@ -140,7 +146,9 @@ class NoiseEmissionsModel:
                 constants = np.array(
                     (101, 96.5, 98.8, 96.8, 98.6, 95.2, 88.8, 82.7)
                 ).reshape((-1, 1))
-                coefficients = np.array((-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)).reshape((-1, 1))
+                coefficients = np.array(
+                    (-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)
+                ).reshape((-1, 1))
 
             if category == "heavy":
                 cycle = cycle[:, 4:]
@@ -155,7 +163,7 @@ class NoiseEmissionsModel:
             if powertrain_type == "electric":
                 # For electric cars, we add correction factors
                 # We also do so for trucks, as these are correction factors, not absolute values
-                #TODO: find better correction factors for trucks
+                # TODO: find better correction factors for trucks
 
                 # We also add a 56 dB loud sound signal when the speed is below 20 km/h.
                 correction = np.array((0, 1.7, 4.2, 15, 15, 15, 13.8, 0)).reshape(
@@ -166,7 +174,6 @@ class NoiseEmissionsModel:
                 # Warming signal for electric cars of 56 dB at 20 km/h or lower
                 array[:, cycle.reshape(-1) < 20] = 56
 
-
         else:
             if category == "medium":
                 cycle = cycle[:, :4]
@@ -176,7 +183,9 @@ class NoiseEmissionsModel:
                 electric_mask = cycle < 30
 
                 array = pn(cycle, "combustion", category)
-                array[:, electric_mask.reshape(-1)] = electric[:, electric_mask.reshape(-1)]
+                array[:, electric_mask.reshape(-1)] = electric[
+                    :, electric_mask.reshape(-1)
+                ]
             else:
                 cycle = cycle[:, 4:]
                 # For non plugin-hybrids, apply electric engine noise coefficient up to 30 km/h
@@ -185,7 +194,9 @@ class NoiseEmissionsModel:
                 electric_mask = cycle < 30
 
                 array = pn(cycle, "combustion", category)
-                array[:, electric_mask.reshape(-1)] = electric[:, electric_mask.reshape(-1)]
+                array[:, electric_mask.reshape(-1)] = electric[
+                    :, electric_mask.reshape(-1)
+                ]
 
         return array
 
@@ -205,14 +216,17 @@ class NoiseEmissionsModel:
         if category == "medium":
             rolling = self.rolling_noise(category).reshape(8, 4, -1)
             # propulsion noise, in dB, for each second of the driving cycle
-            propulsion = self.propulsion_noise(powertrain_type, category).reshape(8, 4, -1)
+            propulsion = self.propulsion_noise(powertrain_type, category).reshape(
+                8, 4, -1
+            )
             c = self.cycle.reshape(-1, 6)[:, :4].T
         if category == "heavy":
             rolling = self.rolling_noise(category).reshape(8, 2, -1)
             # propulsion noise, in dB, for each second of the driving cycle
-            propulsion = self.propulsion_noise(powertrain_type, category).reshape(8, 2, -1)
+            propulsion = self.propulsion_noise(powertrain_type, category).reshape(
+                8, 2, -1
+            )
             c = self.cycle.reshape(-1, 6)[:, 4:].T
-
 
         # sum of rolling and propulsion noise sources
         total_noise = ne.evaluate(
@@ -232,31 +246,37 @@ class NoiseEmissionsModel:
 
             if "urban start" in self.cycle_environment[self.cycle_name]:
                 start = self.cycle_environment[self.cycle_name]["urban start"]
-                stop = self.cycle_environment[self.cycle_name].get("urban stop", c.shape[-1])
-                urban = np.sum(sound_power[:,:, start:stop], axis=2) / distance
+                stop = self.cycle_environment[self.cycle_name].get(
+                    "urban stop", c.shape[-1]
+                )
+                urban = np.sum(sound_power[:, :, start:stop], axis=2) / distance
 
             else:
                 urban = np.zeros((8, c.shape[0]))
 
             if "suburban start" in self.cycle_environment[self.cycle_name]:
                 start = self.cycle_environment[self.cycle_name]["suburban start"]
-                stop = self.cycle_environment[self.cycle_name].get("suburban stop", c.shape[-1])
-                suburban = np.sum(sound_power[:,:, start:stop], axis=2) / distance
+                stop = self.cycle_environment[self.cycle_name].get(
+                    "suburban stop", c.shape[-1]
+                )
+                suburban = np.sum(sound_power[:, :, start:stop], axis=2) / distance
 
             else:
                 suburban = np.zeros((8, c.shape[0]))
 
             if "rural start" in self.cycle_environment[self.cycle_name]:
                 start = self.cycle_environment[self.cycle_name]["rural start"]
-                stop = self.cycle_environment[self.cycle_name].get("rural stop", c.shape[-1])
-                rural = np.sum(sound_power[:,:, start:stop], axis=2) / distance
+                stop = self.cycle_environment[self.cycle_name].get(
+                    "rural stop", c.shape[-1]
+                )
+                rural = np.sum(sound_power[:, :, start:stop], axis=2) / distance
 
             else:
                 rural = np.zeros((8, c.shape[0]))
 
         else:
             distance = c.sum(axis=0) / 3600
-                       
+
             # sum sound power over duration (J/s * s --> J) and divide by distance (--> J / km) and further
             # divide into compartments
             urban = ne.evaluate("sum(where(c <= 50, sound_power, 0), 1)") / distance

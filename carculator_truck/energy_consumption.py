@@ -54,7 +54,7 @@ class EnergyConsumptionModel:
                 cycle = get_standard_driving_cycle(cycle)
 
             except KeyError:
-                raise ("The driving cycle specified could not be found.")
+                raise "The driving cycle specified could not be found."
 
         # if an array is passed instead, then it is used directly
         elif isinstance(cycle, np.ndarray):
@@ -63,19 +63,19 @@ class EnergyConsumptionModel:
 
         # if not, it's a problem
         else:
-            raise ("The format of the driving cycle is not valid.")
-
+            raise "The format of the driving cycle is not valid."
 
         self.gradient_name = self.cycle_name
-        # retrieve road gradients (in degress) for each second of the driving cycle selected
-        self.gradient = get_gradients(self.gradient_name).reshape(-1,1,1,6)
+        # retrieve road gradients (in degrees) for each second of the driving cycle selected
+        self.gradient = get_gradients(self.gradient_name).reshape(-1, 1, 1, 1, 6)
         # reshape the driving cycle
-        self.cycle = cycle.reshape(-1,1,1,6)
+        self.cycle = cycle.reshape(-1, 1, 1, 6)
 
         self.rho_air = rho_air
 
         # Unit conversion km/h to m/s
         self.velocity = (self.cycle * 1000) / 3600
+        self.velocity = self.velocity[:, None, :, :, :]
 
         # Model acceleration as difference in velocity between time steps (1 second)
         # Zero at first value
@@ -119,11 +119,12 @@ class EnergyConsumptionModel:
         ttw_efficiency,
         recuperation_efficiency=0,
         motor_power=0,
-        debug_mode=False
+        debug_mode=False,
     ):
         """
         Calculate energy used and recuperated for a given vehicle per km driven.
 
+        :param debug_mode:
         :param driving_mass: Mass of vehicle (kg)
         :type driving_mass: int
         :param rr_coef: Rolling resistance coefficient (dimensionless, between 0.0 and 1.0)
@@ -169,26 +170,34 @@ class EnergyConsumptionModel:
         ones = np.ones_like(self.velocity)
 
         # Resistance from the tire rolling: rolling resistance coefficient * driving mass * 9.81
-        rolling_resistance = (driving_mass * rr_coef * 9.81).T * ones
+        rolling_resistance = (driving_mass * rr_coef * 9.81).T.values * ones
         # Resistance from the drag: frontal area * drag coefficient * air density * 1/2 * velocity^2
-        air_resistance = (frontal_area * drag_coef * self.rho_air / 2).T * np.power(self.velocity, 2)
+        air_resistance = (
+            frontal_area * drag_coef * self.rho_air / 2
+        ).T.values * np.power(self.velocity, 2)
         # Resistance from road gradient: driving mass * 9.81 * sin(gradient)
-        gradient_resistance = (driving_mass * 9.81).T * np.sin(self.gradient)
+        gradient_resistance = (driving_mass * 9.81).T.values * np.sin(self.gradient)
         # Inertia: driving mass * acceleration
         inertia = self.acceleration * driving_mass.values.T
         # Braking loss: when inertia is negative
-        braking_loss = np.where(inertia <0, inertia *-1, 0)
+        braking_loss = np.where(inertia < 0, inertia * -1, 0)
 
-        total_resistance = rolling_resistance + air_resistance + gradient_resistance + inertia
+        total_resistance = (
+            rolling_resistance + air_resistance + gradient_resistance + inertia
+        )
 
-        if debug_mode==False:
+        if not debug_mode:
 
             # Power required: total resistance * velocity
             total_power = total_resistance * self.velocity
             total_power = np.clip(total_power, 0, None)
             # Recuperation of the braking power within the limit of the electric engine power
-            recuperated_power = (braking_loss * recuperation_efficiency.values.T) * self.velocity
-            recuperated_power = np.clip(recuperated_power, 0, motor_power.values.T*1000)
+            recuperated_power = (
+                braking_loss * recuperation_efficiency.values.T
+            ) * self.velocity
+            recuperated_power = np.clip(
+                recuperated_power, 0, motor_power.values.T * 1000
+            )
 
             # Subtract recuperated power from total power, if any
             total_power -= recuperated_power
@@ -205,23 +214,38 @@ class EnergyConsumptionModel:
         # the power to overcome rolling resistance, air resistance, gradient resistance,
         # inertia and braking resistance, as well as the total power and the energy to overcome it.
         else:
-            rolling_resistance *= (self.velocity )
-            air_resistance *= (self.velocity )
-            gradient_resistance *= (self.velocity )
-            inertia *= (self.velocity )
-            braking_loss *= (self.velocity )
-            total_power = total_resistance * (self.velocity)
+            rolling_resistance *= self.velocity
+            air_resistance *= self.velocity
+            gradient_resistance *= self.velocity
+            inertia *= self.velocity
+            braking_loss *= self.velocity
+            total_power = total_resistance * self.velocity
             total_power = np.clip(total_power, 0, None)
 
             energy = total_power / ttw_efficiency.values.T
 
             energy /= 1000
 
-            return (xr.DataArray(rolling_resistance.values, dims=["values", "year", "powertrain", "size"]),
-                    xr.DataArray(air_resistance.values, dims=["values", "year", "powertrain", "size"]),
-                    xr.DataArray(gradient_resistance.values, dims=["values", "year", "powertrain", "size"]),
-                    xr.DataArray(inertia, dims=["values", "year", "powertrain", "size"]),
-                    xr.DataArray(braking_loss, dims=["values", "year", "powertrain", "size"]),
-                    xr.DataArray(total_power.values, dims=["values", "year", "powertrain", "size"]),
-                    xr.DataArray(energy.values, dims=["values", "year", "powertrain", "size"]))
-
+            return (
+                xr.DataArray(
+                    rolling_resistance.values,
+                    dims=["values", "year", "powertrain", "size"],
+                ),
+                xr.DataArray(
+                    air_resistance.values, dims=["values", "year", "powertrain", "size"]
+                ),
+                xr.DataArray(
+                    gradient_resistance.values,
+                    dims=["values", "year", "powertrain", "size"],
+                ),
+                xr.DataArray(inertia, dims=["values", "year", "powertrain", "size"]),
+                xr.DataArray(
+                    braking_loss, dims=["values", "year", "powertrain", "size"]
+                ),
+                xr.DataArray(
+                    total_power.values, dims=["values", "year", "powertrain", "size"]
+                ),
+                xr.DataArray(
+                    energy.values, dims=["values", "year", "powertrain", "size"]
+                ),
+            )

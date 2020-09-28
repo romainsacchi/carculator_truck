@@ -6,7 +6,6 @@ import xarray as xr
 
 
 def fill_xarray_from_input_parameters(tip, sensitivity=False):
-
     """Create an `xarray` labeled array from the sampled input parameters.
 
 
@@ -16,6 +15,7 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
     (http://xarray.pydata.org/en/stable/).
 
 
+    :param sensitivity:
     :param tip: Instance of the :class:`TruckInputParameters` class in :mod:`truck_input_parameters`.
     :returns: `tuple`, `xarray.DataArray`
     - tuple (`size_dict`, `powertrain_dict`, `parameter_dict`, `year_dict`)
@@ -38,7 +38,7 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
     # if the purpose is not to do a sensitivity analysis
     # the dimension `value` of the array is as large as the number of iterations to perform
     # that is, 1 in `static` mode, or several in `stochastic` mode.
-    if sensitivity == False:
+    if not sensitivity:
         array = xr.DataArray(
             np.zeros(
                 (
@@ -57,7 +57,7 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
                 np.arange(tip.iterations or 1),
             ],
             dims=["size", "powertrain", "parameter", "year", "value"],
-        )
+        ).astype("float32")
     # if the purpose is ot do a sensitivity analysis
     # then the length of the dimensions `value` equals the number of parameters
     else:
@@ -73,18 +73,18 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
                     len(params),
                 )
             ),
-            coords=[tip.sizes, tip.powertrains, tip.parameters, tip.years, params,],
+            coords=[tip.sizes, tip.powertrains, tip.parameters, tip.years, params, ],
             dims=["size", "powertrain", "parameter", "year", "value"],
-        )
+        ).astype("float32")
 
     size_dict = {k: i for i, k in enumerate(tip.sizes)}
     powertrain_dict = {k: i for i, k in enumerate(tip.powertrains)}
     year_dict = {k: i for i, k in enumerate(tip.years)}
     parameter_dict = {k: i for i, k in enumerate(tip.parameters)}
 
-    if sensitivity == False:
+    if not sensitivity:
         for param in tip:
-            #try:
+            # try:
             array.loc[
                 dict(
                     powertrain=tip.metadata[param]["powertrain"],
@@ -98,10 +98,12 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
         # if `sensitivity` == True, the values of each parameter is
         # incremented by 10% when `value` == `parameter`
         for param in tip.input_parameters:
-            names = [n for n in tip.metadata if tip.metadata[n]['name'] == param]
+            names = [n for n in tip.metadata if tip.metadata[n]["name"] == param]
 
             for name in names:
-                vals = [tip.values[name] for _ in range(0, len(tip.input_parameters) + 1)]
+                vals = [
+                    tip.values[name] for _ in range(0, len(tip.input_parameters) + 1)
+                ]
                 vals[tip.input_parameters.index(param) + 1] *= 1.1
 
                 array.loc[
@@ -114,6 +116,7 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
                 ] = vals
 
     return (size_dict, powertrain_dict, parameter_dict, year_dict), array
+
 
 def modify_xarray_from_custom_parameters(fp, array):
     """
@@ -173,6 +176,7 @@ def modify_xarray_from_custom_parameters(fp, array):
 
             }
 
+    :param array:
     :param fp: File path of workbook with new values or dictionary.
     :type fp: str or dict
 
@@ -212,8 +216,8 @@ def modify_xarray_from_custom_parameters(fp, array):
                     pt = [k[1]]
                 else:
                     print(
-                    "{} is not a recognized powertrain. It will be skipped.".format(
-                        k[1]
+                        "{} is not a recognized powertrain. It will be skipped.".format(
+                            k[1]
                         )
                     )
                     continue
@@ -234,8 +238,8 @@ def modify_xarray_from_custom_parameters(fp, array):
                 # if the size class is not among the available size classes
                 else:
                     print(
-                    "{} is not a recognized size category. It will be skipped.".format(
-                        k[2]
+                        "{} is not a recognized size category. It will be skipped.".format(
+                            k[2]
                         )
                     )
                     continue
@@ -295,9 +299,9 @@ def modify_xarray_from_custom_parameters(fp, array):
 
                         if distr == 5:
                             if (
-                                np.isnan(val[(y, "loc")])
-                                or np.isnan(val[(y, "minimum")])
-                                or np.isnan(val[(y, "maximum")])
+                                    np.isnan(val[(y, "loc")])
+                                    or np.isnan(val[(y, "minimum")])
+                                    or np.isnan(val[(y, "maximum")])
                             ):
                                 print(
                                     "One or more parameters for the triangular distribution is/are missing for {} in {}.\n The parameter is skipped and default value applies".format(
@@ -329,7 +333,7 @@ def modify_xarray_from_custom_parameters(fp, array):
                         # Uniform
                         if distr == 4:
                             if np.isnan(val[(y, "minimum")]) or np.isnan(
-                                val[(y, "maximum")]
+                                    val[(y, "maximum")]
                             ):
                                 print(
                                     "One or more parameters for the uniform distribution is/are missing for {} in {}.\n The parameter is skipped and default value applies".format(
@@ -395,9 +399,9 @@ def modify_xarray_from_custom_parameters(fp, array):
 
                         if distr == 5:
                             if (
-                                np.isnan(val[(y, "loc")])
-                                or np.isnan(val[(y, "minimum")])
-                                or np.isnan(val[(y, "maximum")])
+                                    np.isnan(val[(y, "loc")])
+                                    or np.isnan(val[(y, "minimum")])
+                                    or np.isnan(val[(y, "maximum")])
                             ):
                                 print(
                                     "One or more parameters for the triangular distribution is/are missing for {} in {}.\n The parameter is skipped and default value applies".format(
@@ -429,7 +433,7 @@ def modify_xarray_from_custom_parameters(fp, array):
                         # Uniform
                         if distr == 4:
                             if np.isnan(val[(y, "minimum")]) or np.isnan(
-                                val[(y, "maximum")]
+                                    val[(y, "maximum")]
                             ):
                                 print(
                                     "One or more parameters for the uniform distribution is/are missing for {} in {}.\n The parameter is skipped and default value applies".format(
