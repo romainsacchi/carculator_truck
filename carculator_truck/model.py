@@ -218,13 +218,15 @@ class TruckModel:
             "changing the energy reduction targets specified, increasing the engine efficiency."
         )
 
-        self.array.loc[
-            dict(
-                powertrain=["ICEV-d", "ICEV-g"],
-                parameter="total cargo mass",
-                year=[y for y in self.array.year.values if y >= 2020],
-            )
-        ] *= np.clip((1 - non_compliant_vehicles), 0.001, 1)
+        # If the number of remaining non-compliant vehicles is not zero, then
+        if arr[-1]>0:
+            self.array.loc[
+                dict(
+                    powertrain=["ICEV-d", "ICEV-g"],
+                    parameter=["total cargo mass", "available payload"],
+                    year=[y for y in self.array.year.values if y > 2020],
+                )
+            ] *= np.clip((1 - non_compliant_vehicles[:, None,...]), 0.0001, 1)
 
         t = PrettyTable([""] + self.array.coords["size"].values.tolist())
         for pt in self.array.coords["powertrain"].values:
@@ -254,7 +256,7 @@ class TruckModel:
         list_target_years = [2020] + list(self.energy_target.keys())
         list_target_vals = [1] + list(self.energy_target.values())
         # years under target
-        actual_years = [y for y in self.array.year.values if y >= 2020]
+        actual_years = [y for y in self.array.year.values if y > 2020]
 
         if len(actual_years) > 0:
 
@@ -434,8 +436,6 @@ class TruckModel:
             motor_power=self["electric power"],
         ).sum(axis=0)
 
-        # noinspection PyAttributeOutsideInit
-        self.motive_energy = motive_energy.T
         self["TtW energy"] = aux_energy + motive_energy.T
 
     def set_fuel_cell_parameters(self):
@@ -607,11 +607,9 @@ class TruckModel:
             None,
         )
 
-        self["total cargo mass"] = (
-            self["average passengers"] * self["average passenger mass"]
-        ) + (self["available payload"] * self["capacity utilization"])
+        self["total cargo mass"] = (self["available payload"] * self["capacity utilization"])
 
-        self["driving mass"] = self["curb mass"] + self["total cargo mass"]
+        self["driving mass"] = self["curb mass"] + self["total cargo mass"] + (self["average passengers"] * self["average passenger mass"])
 
     def set_power_parameters(self):
         """Set electric and combustion motor powers based on input parameter ``power to mass ratio``."""

@@ -1423,6 +1423,12 @@ class InventoryCalculation:
 
         if "custom electricity mix" in self.background_configuration:
             # If a special electricity mix is specified, we use it
+            if not np.allclose(
+                np.sum(self.background_configuration["custom electricity mix"], axis=1),
+                [1] * len(self.scope["year"])
+                ):
+                raise ValueError("The custom electricity mixes are not valid")
+
             mix = self.background_configuration["custom electricity mix"]
         else:
             use_year = [
