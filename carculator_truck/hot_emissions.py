@@ -86,7 +86,6 @@ class HotEmissionsModel:
                 "NO2",
                 "CH4",
                 "NMHC",
-                "SO2",
                 "N2O",
                 "NH3",
                 "Benzene",
@@ -105,7 +104,27 @@ class HotEmissionsModel:
         c = arr["c"].values * cycle
         intercept = arr["intercept"].values
 
-        em_arr = a + b + c + intercept
+        # The receiving array should contians 14 substances, not 10
+        arr_shape = list(a.shape)
+        arr_shape[1] = 14
+        em_arr = np.zeros(tuple(arr_shape))
+
+        em_arr[:, :10] = a + b + c + intercept
+
+        # Toluene, Xylene, Formaldehyde and Acetaldehyde defined as
+        # fractions of NMVOC emissions
+
+        # Toluene
+        em_arr[:, 10] = em_arr[:, 6] * 0.001
+        # Xylene
+        em_arr[:, 11] = em_arr[:, 6] * 0.0088
+        # Formaldehyde
+        em_arr[:, 12] = em_arr[:, 6] * 0.084
+        # Acetaldehyde
+        em_arr[:, 13] = em_arr[:, 6] * 0.0457
+
+        # remaining NMVOC
+        em_arr[:, 6] *= (1 - .1395)
 
         if powertrain_type not in ("diesel", "CNG"):
             raise TypeError("The powertrain type is not valid.")
@@ -131,7 +150,7 @@ class HotEmissionsModel:
             urban /= 1000  # going from grams to kg
 
         else:
-            urban = np.zeros((11, em_arr.shape[2], 6))
+            urban = np.zeros((14, em_arr.shape[2], 6))
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -143,7 +162,7 @@ class HotEmissionsModel:
             suburban /= 1000  # going from grams to kg
 
         else:
-            suburban = np.zeros((11, em_arr.shape[2], 6))
+            suburban = np.zeros((14, em_arr.shape[2], 6))
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -153,7 +172,7 @@ class HotEmissionsModel:
             rural /= 1000  # going from grams to kg
 
         else:
-            rural = np.zeros((11, em_arr.shape[2], 6))
+            rural = np.zeros((14, em_arr.shape[2], 6))
 
         res = np.vstack((urban, suburban, rural)).transpose((2, 0, 1))
 

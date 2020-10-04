@@ -228,24 +228,24 @@ class EnergyConsumptionModel:
 
             return (
                 xr.DataArray(
-                    rolling_resistance.values,
+                    np.squeeze(rolling_resistance),
                     dims=["values", "year", "powertrain", "size"],
                 ),
                 xr.DataArray(
-                    air_resistance.values, dims=["values", "year", "powertrain", "size"]
+                    np.squeeze(air_resistance), dims=["values", "year", "powertrain", "size"]
                 ),
                 xr.DataArray(
-                    gradient_resistance.values,
+                    np.squeeze(gradient_resistance),
                     dims=["values", "year", "powertrain", "size"],
                 ),
-                xr.DataArray(inertia, dims=["values", "year", "powertrain", "size"]),
+                xr.DataArray(np.squeeze(inertia), dims=["values", "year", "powertrain", "size"]),
                 xr.DataArray(
-                    braking_loss, dims=["values", "year", "powertrain", "size"]
+                    np.squeeze(braking_loss), dims=["values", "year", "powertrain", "size"]
                 ),
                 xr.DataArray(
-                    total_power.values, dims=["values", "year", "powertrain", "size"]
+                    np.squeeze(total_power), dims=["values", "year", "powertrain", "size"]
                 ),
                 xr.DataArray(
-                    energy.values, dims=["values", "year", "powertrain", "size"]
+                    np.squeeze(energy), dims=["values", "year", "powertrain", "size"]
                 ),
             )

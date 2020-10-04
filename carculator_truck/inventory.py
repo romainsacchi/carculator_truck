@@ -281,6 +281,11 @@ class InventoryCalculation:
             if any(ele in i[0] for ele in ["ICEV-d", "PHEV-d", "HEV-d"])
         ]
         self.index_diesel = [self.inputs[i] for i in self.inputs if "ICEV-d" in i[0]]
+        self.index_all_diesel = [
+            self.inputs[i]
+            for i in self.inputs
+            if any(ele in i[0] for ele in ["ICEV-d", "HEV-d", "PHEV-d"])
+        ]
 
         self.index_hybrid = [
             self.inputs[i] for i in self.inputs if any(ele in i[0] for ele in ["HEV-d"])
@@ -311,11 +316,6 @@ class InventoryCalculation:
                 ("air", "urban air close to ground"),
                 "kilogram",
             ): "NMVOC direct emissions, urban",
-            (
-                "PAH, polycyclic aromatic hydrocarbons",
-                ("air", "urban air close to ground"),
-                "kilogram",
-            ): "Hydrocarbons direct emissions, urban",
             (
                 "Dinitrogen monoxide",
                 ("air", "low population density, long-term"),
@@ -362,11 +362,6 @@ class InventoryCalculation:
                 "kilogram",
             ): "Ammonia direct emissions, rural",
             (
-                "Sulfur dioxide",
-                ("air", "low population density, long-term"),
-                "kilogram",
-            ): "Sulfur dioxide direct emissions, rural",
-            (
                 "NMVOC, non-methane volatile organic compounds, unspecified origin",
                 ("air", "low population density, long-term"),
                 "kilogram",
@@ -376,11 +371,6 @@ class InventoryCalculation:
                 ("air", "urban air close to ground"),
                 "kilogram",
             ): "Particulate matters direct emissions, urban",
-            (
-                "Sulfur dioxide",
-                ("air", "urban air close to ground"),
-                "kilogram",
-            ): "Sulfur dioxide direct emissions, urban",
             (
                 "Dinitrogen monoxide",
                 ("air", "non-urban air or from high stacks"),
@@ -407,11 +397,6 @@ class InventoryCalculation:
                 "kilogram",
             ): "Particulate matters direct emissions, rural",
             (
-                "Sulfur dioxide",
-                ("air", "non-urban air or from high stacks"),
-                "kilogram",
-            ): "Sulfur dioxide direct emissions, suburban",
-            (
                 "Benzene",
                 ("air", "low population density, long-term"),
                 "kilogram",
@@ -426,16 +411,6 @@ class InventoryCalculation:
                 ("air", "urban air close to ground"),
                 "kilogram",
             ): "Benzene direct emissions, urban",
-            (
-                "PAH, polycyclic aromatic hydrocarbons",
-                ("air", "low population density, long-term"),
-                "kilogram",
-            ): "Hydrocarbons direct emissions, rural",
-            (
-                "PAH, polycyclic aromatic hydrocarbons",
-                ("air", "non-urban air or from high stacks"),
-                "kilogram",
-            ): "Hydrocarbons direct emissions, suburban",
             (
                 "Dinitrogen monoxide",
                 ("air", "urban air close to ground"),
@@ -456,6 +431,66 @@ class InventoryCalculation:
                 ("air", "low population density, long-term"),
                 "kilogram",
             ): "Nitrogen dioxide direct emissions, rural",
+            (
+                "Toluene",
+                ("air", "urban air close to ground"),
+                "kilogram",
+            ): "Toluene direct emissions, urban",
+            (
+                "Toluene",
+                ("air", "non-urban air or from high stacks"),
+                "kilogram",
+            ): "Toluene direct emissions, suburban",
+            (
+                "Toluene",
+                ("air", "low population density, long-term"),
+                "kilogram",
+            ): "Toluene direct emissions, rural",
+            (
+                "Xylene",
+                ("air", "urban air close to ground"),
+                "kilogram",
+            ): "Xylene direct emissions, urban",
+            (
+                "Xylene",
+                ("air", "non-urban air or from high stacks"),
+                "kilogram",
+            ): "Xylene direct emissions, suburban",
+            (
+                "Xylene",
+                ("air", "low population density, long-term"),
+                "kilogram",
+            ): "Xylene direct emissions, rural",
+            (
+                "Formaldehyde",
+                ("air", "urban air close to ground"),
+                "kilogram",
+            ): "Formaldehyde direct emissions, urban",
+            (
+                "Formaldehyde",
+                ("air", "non-urban air or from high stacks"),
+                "kilogram",
+            ): "Formaldehyde direct emissions, suburban",
+            (
+                "Formaldehyde",
+                ("air", "low population density, long-term"),
+                "kilogram",
+            ): "Formaldehyde direct emissions, rural",
+            (
+                "Acetaldehyde",
+                ("air", "urban air close to ground"),
+                "kilogram",
+            ): "Acetaldehyde direct emissions, urban",
+            (
+                "Acetaldehyde",
+                ("air", "non-urban air or from high stacks"),
+                "kilogram",
+            ): "Acetaldehyde direct emissions, suburban",
+            (
+                "Acetaldehyde",
+                ("air", "low population density, long-term"),
+                "kilogram",
+            ): "Acetaldehyde direct emissions, rural",
         }
 
         self.index_emissions = [
@@ -861,6 +896,7 @@ class InventoryCalculation:
 
         # Fill in the A matrix with car parameters
         self.set_inputs_in_A_matrix(self.array.values)
+        self.A = np.nan_to_num(self.A)
 
         # Collect indices of activities contributing to the first level
         arr = self.A[0, : -self.number_of_cars, -self.number_of_cars :].sum(axis=1)
@@ -925,8 +961,8 @@ class InventoryCalculation:
                     )
                 )
             results /= results.sel(parameter="reference")
-        return results.astype("float32")
-        # return results.astype("float32")*self.compliant_vehicles.values[:,:,:, None, :]
+
+        return results.astype("float32")*self.compliant_vehicles.values[:,:,:, None, :]
 
     def add_additional_activities(self):
         # Add as many rows and columns as cars to consider
@@ -1538,32 +1574,18 @@ class InventoryCalculation:
             # If losses for the country are not found, assume EU average
             losses_to_low = float(self.bs.losses["RER"]["LV"])
 
-        for y in self.scope["year"]:
-
-            co2_intensity_tech = 0
-            category_name = (
+        category_name = (
                 "climate change"
                 if self.method == "recipe"
                 else "climate change - climate change total"
             )
 
-            if self.method == "midpoint":
-                if self.scenario == "static":
-                    co2_intensity_tech = (
-                        self.B.sel(
-                            category=category_name,
-                            year=2020,
-                            activity=list(self.elec_map.values()),
-                        ).values
-                        * losses_to_low
-                    ) * 1000
-                else:
-                    co2_intensity_tech = (
+        co2_intensity_tech = (
                         self.B.sel(
                             category=category_name,
                             activity=list(self.elec_map.values()),
                         )
-                        .interp(year=y, kwargs={"fill_value": "extrapolate"})
+                        .interp(year=self.scope["year"], kwargs={"fill_value": "extrapolate"})
                         .values
                         * losses_to_low
                     ) * 1000
@@ -2040,6 +2062,13 @@ class InventoryCalculation:
                     "Methane, synthetic",
                 ),
                 "additional electricity": 58 * 0.50779661,
+            },
+            "lpg": {
+                "name": ('market for liquefied petroleum gas',
+                          'Europe without Switzerland',
+                          'kilogram',
+                          'liquefied petroleum gas'),
+                "additional electricity": 0,
             },
             "diesel": {
                 "name": (
@@ -2928,7 +2957,7 @@ class InventoryCalculation:
                 + str(
                     int(
                         np.sum(
-                            co2_intensity_tech * self.mix[self.scope["year"].index(y)]
+                            co2_intensity_tech[self.scope["year"].index(y)] * self.mix[self.scope["year"].index(y)]
                         )
                     )
                 )
@@ -3074,6 +3103,7 @@ class InventoryCalculation:
                     x for x in self.get_index_vehicle_from_array(y) if x in index
                 ]
 
+                # Includes pump-to-tank gas leakage, as a fraction of gas input
                 self.A[
                     :,
                     [
@@ -3088,7 +3118,8 @@ class InventoryCalculation:
                     / (
                         array[self.array_inputs["total cargo mass"], :, ind_array]
                         / 1000
-                    )
+                    ) *
+                    (1 + array[self.array_inputs["CNG pump-to-tank leakage"], :, ind_array])
                     * -1
                 ).T
 

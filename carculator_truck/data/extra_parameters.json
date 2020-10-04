@@ -159,5 +159,17 @@
   "Nitrogen dioxide direct emissions, urban",
   "Nitrogen dioxide direct emissions, suburban",
   "Nitrogen dioxide direct emissions, rural",
-  "target range"
+  "target range",
+  "Toluene direct emissions, urban",
+  "Toluene direct emissions, suburban",
+  "Toluene direct emissions, rural",
+  "Xylene direct emissions, urban",
+  "Xylene direct emissions, suburban",
+  "Xylene direct emissions, rural",
+  "Formaldehyde direct emissions, urban",
+  "Formaldehyde direct emissions, suburban",
+  "Formaldehyde direct emissions, rural",
+  "Acetaldehyde direct emissions, urban",
+  "Acetaldehyde direct emissions, suburban",
+  "Acetaldehyde direct emissions, rural"
 ]

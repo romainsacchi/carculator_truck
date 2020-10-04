@@ -43,3 +43,7 @@ def test_electricity_mix():
 # GHG emissions of 7.5t trucks must be superior to that of 40t trucks
 
 # GHG intensity of EU electricity in 2020 must be between 300 and 400 g/kWh
+
+# GHG intensity of 1 kWh of solar PV must be between 50 and 100 g
+
+# GHG intensity of 1 ton-km from FCEV truck mus tbe between X and Y

@@ -20,6 +20,10 @@ Based on the Life Cycle Assessment tool for passenger vehicles [carculator](http
 
 See [the documentation](https://carculator_truck.readthedocs.io/en/latest/index.html) for more detail, validation, etc.
 
+## How to use it?
+
+See the notebook with [examples](https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb).
+
 ## Support
 
 Do not hesitate to contact the development team at [carculator@psi.ch](mailto:carculator@psi.ch).

@@ -226,7 +226,7 @@ class TruckModel:
                     parameter=["total cargo mass", "available payload"],
                     year=[y for y in self.array.year.values if y > 2020],
                 )
-            ] *= np.clip((1 - non_compliant_vehicles[:, None,...]), 0.0001, 1)
+            ] *= np.clip((1 - non_compliant_vehicles[:, None,...]), 0.001, 1)
 
         t = PrettyTable([""] + self.array.coords["size"].values.tolist())
         for pt in self.array.coords["powertrain"].values:
@@ -603,7 +603,7 @@ class TruckModel:
                 self["curb mass"]
                 + (self["average passengers"] * self["average passenger mass"])
             ),
-            0,
+            1,
             None,
         )
 
@@ -979,10 +979,14 @@ class TruckModel:
             "Nitrogen dioxide direct emissions, urban",
             "Methane direct emissions, urban",
             "NMVOC direct emissions, urban",
-            "Sulfur dioxide direct emissions, urban",
             "Dinitrogen oxide direct emissions, urban",
             "Ammonia direct emissions, urban",
             "Benzene direct emissions, urban",
+            "Toluene direct emissions, urban",
+            "Xylene direct emissions, urban",
+            "Formaldehyde direct emissions, urban",
+            "Acetaldehyde direct emissions, urban",
+
             "Hydrocarbons direct emissions, suburban",
             "Carbon monoxide direct emissions, suburban",
             "Nitrogen oxides direct emissions, suburban",
@@ -990,10 +994,14 @@ class TruckModel:
             "Nitrogen dioxide direct emissions, suburban",
             "Methane direct emissions, suburban",
             "NMVOC direct emissions, suburban",
-            "Sulfur dioxide direct emissions, suburban",
             "Dinitrogen oxide direct emissions, suburban",
             "Ammonia direct emissions, suburban",
             "Benzene direct emissions, suburban",
+            "Toluene direct emissions, suburban",
+            "Xylene direct emissions, suburban",
+            "Formaldehyde direct emissions, suburban",
+            "Acetaldehyde direct emissions, suburban",
+
             "Hydrocarbons direct emissions, rural",
             "Carbon monoxide direct emissions, rural",
             "Nitrogen oxides direct emissions, rural",
@@ -1001,10 +1009,13 @@ class TruckModel:
             "Nitrogen dioxide direct emissions, rural",
             "Methane direct emissions, rural",
             "NMVOC direct emissions, rural",
-            "Sulfur dioxide direct emissions, rural",
             "Dinitrogen oxide direct emissions, rural",
             "Ammonia direct emissions, rural",
             "Benzene direct emissions, rural",
+            "Toluene direct emissions, rural",
+            "Xylene direct emissions, rural",
+            "Formaldehyde direct emissions, rural",
+            "Acetaldehyde direct emissions, rural",
         ]
 
         l_y = []
@@ -1300,13 +1311,14 @@ class TruckModel:
         and CO2 emission factors of the fuels used.
         :return:
         """
-
+        # MJ/kg
         fuels_lhv = {
             "diesel": 42.8,
             "biodiesel - cooking oil": 31.7,
             "biodiesel - algae": 31.7,
             "synthetic diesel": 43.3,
             "cng": 55.5,
+            "lpg": 49.3,
             "biogas - sewage sludge": 55.5,
             "biogas - biowaste": 55.5,
             "syngas": 55.5,
@@ -1332,6 +1344,7 @@ class TruckModel:
             "biodiesel - algae": 2.85,
             "synthetic diesel": 3.16,
             "cng": 2.65,
+            "lpg":3.01,
             "biogas - sewage sludge": 2.65,
             "biogas - biowaste": 2.65,
             "syngas": 2.65,
