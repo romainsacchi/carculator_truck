@@ -838,6 +838,11 @@ class InventoryCalculation:
             ]
         )
         d["direct - exhaust"].append(
+            self.inputs[
+                ("Methane, fossil", ("air",), "kilogram")
+            ]
+        )
+        d["direct - exhaust"].append(
             self.inputs[("Cadmium", ("air", "urban air close to ground"), "kilogram")]
         )
         d["direct - exhaust"].append(
@@ -3120,6 +3125,28 @@ class InventoryCalculation:
                         / 1000
                     ) *
                     (1 + array[self.array_inputs["CNG pump-to-tank leakage"], :, ind_array])
+                    * -1
+                ).T
+
+                # Gas leakage emission as methane
+                self.A[
+                    :,
+                    self.inputs[
+                        (
+                            "Methane, fossil",
+                            ("air",),
+                            "kilogram",
+                        )
+                    ],
+                    ind_A,
+                ] = (
+                    (array[self.array_inputs["fuel mass"], :, ind_array])
+                    / array[self.array_inputs["target range"], :, ind_array]
+                    / (
+                        array[self.array_inputs["total cargo mass"], :, ind_array]
+                        / 1000
+                    ) *
+                    array[self.array_inputs["CNG pump-to-tank leakage"], :, ind_array]
                     * -1
                 ).T
 
