@@ -2,6 +2,7 @@ from .driving_cycles import get_standard_driving_cycle
 from .gradients import get_gradients
 import numexpr as ne
 import numpy as np
+np.seterr(divide='ignore', invalid='ignore')
 import xarray as xr
 
 
@@ -199,16 +200,23 @@ class EnergyConsumptionModel:
                 recuperated_power, 0, motor_power.values.T * 1000
             )
 
+            electric_contribution = np.true_divide(recuperated_power, (recuperated_power + total_power),
+                           where=(recuperated_power != 0) | ((recuperated_power + total_power) != 0))
+
+
             # Subtract recuperated power from total power, if any
             total_power -= recuperated_power
             # Total power per driving cycle to total power per km
             total_power /= distance
+
             # From power required at the wheels to power required by the engine
+
             total_power /= ttw_efficiency.values.T
+
             # From joules to kilojoules
             total_power /= 1000
 
-            return total_power
+            return total_power, electric_contribution
 
         # if `debug_mode` == True, returns instead
         # the power to overcome rolling resistance, air resistance, gradient resistance,
@@ -219,6 +227,14 @@ class EnergyConsumptionModel:
             gradient_resistance *= self.velocity
             inertia *= self.velocity
             braking_loss *= self.velocity
+
+            recuperated_power = (
+                                        braking_loss * recuperation_efficiency.values.T
+                                )
+            recuperated_power = np.clip(
+                recuperated_power, 0, motor_power.values.T * 1000
+            )
+
             total_power = total_resistance * self.velocity
             total_power = np.clip(total_power, 0, None)
 
@@ -241,6 +257,9 @@ class EnergyConsumptionModel:
                 xr.DataArray(np.squeeze(inertia), dims=["values", "year", "powertrain", "size"]),
                 xr.DataArray(
                     np.squeeze(braking_loss), dims=["values", "year", "powertrain", "size"]
+                ),
+                xr.DataArray(
+                    np.squeeze(recuperated_power), dims=["values", "year", "powertrain", "size"]
                 ),
                 xr.DataArray(
                     np.squeeze(total_power), dims=["values", "year", "powertrain", "size"]

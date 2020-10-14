@@ -5,7 +5,7 @@ from .background_systems import BackgroundSystemModel
 from .export import ExportInventory
 from inspect import currentframe, getframeinfo
 from pathlib import Path
-from scipy import linalg
+from scipy import linalg, sparse
 import csv
 import itertools
 import numexpr as ne
@@ -726,10 +726,10 @@ class InventoryCalculation:
                 "energy chain",
                 "maintenance",
                 "glider",
-                "EoL",
                 "powertrain",
                 "energy storage",
                 "road",
+                "EoL",
             ]
 
         dict_impact_cat = list(self.impact_categories.keys())
@@ -922,7 +922,7 @@ class InventoryCalculation:
             for a in ind:
                 f[:] = 0
                 f[a] = 1
-                X = np.float32(linalg.solve(self.A[0], f.T))
+                X = np.float32(sparse.linalg.spsolve(self.A[0], f.T))
                 C = X * B
                 new_arr[a, :, self.scope["year"].index(y)] = C.sum(axis=1)
 
@@ -1471,6 +1471,7 @@ class InventoryCalculation:
                 raise ValueError("The custom electricity mixes are not valid")
 
             mix = self.background_configuration["custom electricity mix"]
+
         else:
             use_year = [
                 int(i)
@@ -2890,10 +2891,10 @@ class InventoryCalculation:
             :,
             self.inputs[
                 (
-                    "glass fibre reinforced plastic production, polyamide, injection moulded",
+                    "Fuel tank, compressed hydrogen gas, 700bar, with aluminium liner",
                     "RER",
                     "kilogram",
-                    "glass fibre reinforced plastic, polyamide, injection moulded",
+                    "Hydrogen tank",
                 )
             ],
             self.index_cng,
