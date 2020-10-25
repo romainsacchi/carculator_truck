@@ -298,3 +298,28 @@ yarding and processing, mobile cable yarder on truck;energy chain
 yarding, mobile cable yarder on trailer;energy chain
 yarding, sled yarder;energy chain
 Zinc;direct - exhaust
+treatment of road wear;direct - non-exhaust
+treatment of brake wear;direct - non-exhaust
+treatment of tyre wear;direct - non-exhaust
+fuel supply;energy chain
+electricity supply;energy chain
+maintenance, lorry;maintenance
+market for glider;glider
+other components;glider
+frame, blanks and saddle, for lorry;glider
+suspension, for lorry;glider
+cabin, for lorry;glider
+tires and wheels, for lorry;glider
+electric motor;powertrain
+power distribution unit;powertrain
+gearbox;powertrain
+power electronics;powertrain
+retarder, for lorry;powertrain
+transmission, for lorry;powertrain
+exhaust system, for lorry;powertrain
+internal combustion engine, for lorry;powertrain
+battery cell;energy storage
+polyethylene production, high density;energy storage
+lead acid;energy storage
+fuel tank, for diesel vehicle;energy storage
+treatment of used lorry;EoL
