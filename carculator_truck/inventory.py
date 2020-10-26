@@ -3866,4 +3866,34 @@ class InventoryCalculation:
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
         ).transpose([1, 0, 2])
+
+        # Emissions of air conditioner refrigerant r134a
+        # Leakage assumed to amount to 53g according to
+        # https://ec.europa.eu/clima/sites/clima/files/eccp/docs/leakage_rates_final_report_en.pdf
+
+        self.A[
+            :,
+            self.inputs[
+                (
+                    "Ethane, 1,1,1,2-tetrafluoro-, HFC-134a",
+                    ("air",),
+                    "kilogram"
+                )
+            ],
+            -self.number_of_cars:
+        ] = .053 / self.array.values[self.array_inputs["kilometers per year"]] * -1
+
+        self.A[
+            :,
+            self.inputs[
+                (
+                    "market for refrigerant R134a",
+                    "GLO",
+                    "kilogram",
+                    "refrigerant R134a"
+                )
+            ],
+            -self.number_of_cars:
+        ] = .053 / self.array.values[self.array_inputs["kilometers per year"]] * -1
+
         print("*********************************************************************")
