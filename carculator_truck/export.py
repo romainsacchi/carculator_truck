@@ -49,6 +49,76 @@ def load_mapping_36_to_uvek():
 
     return dict_uvek
 
+def load_mapping_37_to_36():
+    """Load mapping dictionary between ecoinvent 3.7 and 3.6"""
+
+    # Load the matching dictionary
+    filename = "ei37_to_ei36.csv"
+    filepath = DATA_DIR / filename
+    if not filepath.is_file():
+        raise FileNotFoundError(
+            "The dictionary of activities flows match between ecoinvent 3.7 and 3.6 could not be found."
+        )
+    with open(filepath) as f:
+        csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
+    (_, _, *header), *data = csv_list
+
+    dict_ei36 = {}
+    for row in data:
+        (
+            name,
+            location,
+            unit,
+            ref_prod,
+            name_36,
+            location_36,
+            unit_36,
+            ref_prod_36,
+        ) = row
+        dict_ei36[(name, location, unit, ref_prod)] = (
+            name_36,
+            location_36,
+            unit_36,
+            ref_prod_36,
+        )
+
+    return dict_ei36
+
+def load_mapping_37_to_35():
+    """Load mapping dictionary between ecoinvent 3.7 and 3.5"""
+
+    # Load the matching dictionary
+    filename = "ei37_to_ei35.csv"
+    filepath = DATA_DIR / filename
+    if not filepath.is_file():
+        raise FileNotFoundError(
+            "The dictionary of activities flows match between ecoinvent 3.7 and 3.5 could not be found."
+        )
+    with open(filepath) as f:
+        csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
+    (_, _, *header), *data = csv_list
+
+    dict_ei35 = {}
+    for row in data:
+        (
+            name,
+            location,
+            unit,
+            ref_prod,
+            name_35,
+            location_35,
+            unit_35,
+            ref_prod_35,
+        ) = row
+        dict_ei35[(name, location, unit, ref_prod)] = (
+            name_35,
+            location_35,
+            unit_35,
+            ref_prod_35,
+        )
+
+    return dict_ei35
+
 
 def load_tags():
     """Loads dictionary of tags for further use in BW2"""
@@ -183,163 +253,11 @@ class ExportInventory:
                 "biogas upgrading - sewage sludge - amine scrubbing - best",
             ),
         }
-        self.map_36_to_35 = {
-            (
-                "market for water, completely softened",
-                "RER",
-                "kilogram",
-                "water, completely softened",
-            ): (
-                "market for water, completely softened, from decarbonised water, at user",
-                "GLO",
-                "kilogram",
-                "water, completely softened, from decarbonised water, at user",
-            ),
-            ("market for nylon 6", "RoW", "kilogram", "nylon 6"): (
-                "market for nylon 6",
-                "GLO",
-                "kilogram",
-                "nylon 6",
-            ),
-            (
-                "market for aluminium oxide, metallurgical",
-                "IAI Area, EU27 & EFTA",
-                "kilogram",
-                "aluminium oxide, metallurgical",
-            ): ("market for aluminium oxide", "GLO", "kilogram", "aluminium oxide"),
-            (
-                "market for flat glass, coated",
-                "RER",
-                "kilogram",
-                "flat glass, coated",
-            ): (
-                "market for flat glass, coated",
-                "GLO",
-                "kilogram",
-                "flat glass, coated",
-            ),
-            (
-                "market for water, decarbonised",
-                "RoW",
-                "kilogram",
-                "water, decarbonised",
-            ): (
-                "market for water, decarbonised, at user",
-                "GLO",
-                "kilogram",
-                "water, decarbonised, at user",
-            ),
-            (
-                "market for water, decarbonised",
-                "DE",
-                "kilogram",
-                "water, decarbonised",
-            ): (
-                "market for water, decarbonised, at user",
-                "GLO",
-                "kilogram",
-                "water, decarbonised, at user",
-            ),
-            (
-                "market for transport, freight, sea, tanker for petroleum",
-                "GLO",
-                "ton kilometer",
-                "transport, freight, sea, tanker for petroleum",
-            ): (
-                "market for transport, freight, sea, transoceanic tanker",
-                "GLO",
-                "ton kilometer",
-                "transport, freight, sea, transoceanic tanker",
-            ),
-            (
-                "market for transport, freight, sea, tanker for liquid goods other than petroleum and liquefied natural gas",
-                "GLO",
-                "ton kilometer",
-                "transport, freight, sea, tanker for liquid goods other than petroleum and liquefied natural gas",
-            ): (
-                "market for transport, freight, sea, transoceanic tanker",
-                "GLO",
-                "ton kilometer",
-                "transport, freight, sea, transoceanic tanker",
-            ),
-            ("market for water, deionised", "CH", "kilogram", "water, deionised"): (
-                "market for water, deionised, from tap water, at user",
-                "CH",
-                "kilogram",
-                "water, deionised, from tap water, at user",
-            ),
-            (
-                "water production, deionised",
-                "Europe without Switzerland",
-                "kilogram",
-                "water, deionised",
-            ): (
-                "market for water, deionised, from tap water, at user",
-                "CH",
-                "kilogram",
-                "water, deionised, from tap water, at user",
-            ),
-            (
-                "market for styrene butadiene rubber (SBR)",
-                "RER",
-                "kilogram",
-                "styrene butadiene rubber (SBR)",
-            ): ("latex production", "RER", "kilogram", "latex"),
-            (
-                "market for water, deionised",
-                "Europe without Switzerland",
-                "kilogram",
-                "water, deionised",
-            ): (
-                "market for water, deionised, from tap water, at user",
-                "Europe without Switzerland",
-                "kilogram",
-                "water, deionised, from tap water, at user",
-            ),
-            ("market for water, deionised", "RoW", "kilogram", "water, deionised",): (
-                "market for water, deionised, from tap water, at user",
-                "RoW",
-                "kilogram",
-                "water, deionised, from tap water, at user",
-            ),
-            (
-                "market for flat glass, uncoated",
-                "RER",
-                "kilogram",
-                "flat glass, uncoated",
-            ): (
-                "market for flat glass, uncoated",
-                "GLO",
-                "kilogram",
-                "flat glass, uncoated",
-            ),
-            ("market for water, ultrapure", "RoW", "kilogram", "water, ultrapure"): (
-                "market for water, ultrapure",
-                "GLO",
-                "kilogram",
-                "water, ultrapure",
-            ),
-            ("market for water, ultrapure", "RER", "kilogram", "water, ultrapure"): (
-                "market for water, ultrapure",
-                "GLO",
-                "kilogram",
-                "water, ultrapure",
-            ),
-            ("market for concrete block", "DE", "kilogram", "concrete block"): (
-                "market for concrete block",
-                "GLO",
-                "kilogram",
-                "concrete block",
-            ),
-            ("market for road maintenance", "RER", "meter-year", "road maintenance"): (
-                "market for road maintenance",
-                "GLO",
-                "meter-year",
-                "road maintenance",
-            ),
-        }
+        self.map_37_to_36 = load_mapping_37_to_36()
+        self.map_37_to_35 = load_mapping_37_to_35()
         self.map_36_to_uvek = load_mapping_36_to_uvek()
         self.tags = load_tags()
+
 
     def write_lci(self, presamples, ecoinvent_compatibility, ecoinvent_version):
         """
@@ -460,6 +378,15 @@ class ExportInventory:
             "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
             "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
             "Hydrogen, gaseous, 700 bar, from coal gasification, at H2 fuelling station",
+            'softwood forestry, pine, sustainable forest management_CF = -1',
+            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling plant',
+            'softwood forestry, spruce, sustainable forest management_CF = -1',
+            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling plant',
+            'softwood forestry, spruce, sustainable forest management_CF = -1',
+            'hardwood forestry, birch, sustainable forest management_CF = -1',
+            'hardwood forestry, beech, sustainable forest management_CF = -1',
+            'softwood forestry, pine, sustainable forest management_CF = -1',
+            'hardwood forestry, oak, sustainable forest management_CF = -1'
         ]
 
         uvek_activities_to_remove = [
@@ -476,7 +403,7 @@ class ExportInventory:
         uvek_multiplication_factors = {
             "Steam, for chemical processes, at plant": 1
             / 2.257,  # 2.257 MJ/kg steam @ ambient pressure
-            "Natural gas, from high pressure network (1-5 bar), at service station": 0.842,
+            "Natural gas, high pressure, vehicle grade": 0.842,
             "Disposal, passenger car": 1 / 1600,
         }
 
@@ -512,7 +439,7 @@ class ExportInventory:
 
                 # If ecoinvent_compatibility==False and the activity name is part of the list
                 if (
-                    ecoinvent_compatibility == False
+                    not ecoinvent_compatibility
                     and tuple_output[0] in activities_to_be_removed
                 ):
                     break
@@ -534,9 +461,13 @@ class ExportInventory:
                         tuple_input, tuple_input
                     )
 
+                    if ecoinvent_version == "3.6":
+                        tuple_output = self.map_37_to_36.get(tuple_output, tuple_output)
+                        tuple_input = self.map_37_to_36.get(tuple_input, tuple_input)
+
                     if ecoinvent_version == "3.5":
-                        tuple_output = self.map_36_to_35.get(tuple_output, tuple_output)
-                        tuple_input = self.map_36_to_35.get(tuple_input, tuple_input)
+                        tuple_output = self.map_37_to_35.get(tuple_output, tuple_output)
+                        tuple_input = self.map_37_to_35.get(tuple_input, tuple_input)
 
                         if tuple_output[0] in ei35_activities_to_remove:
                             continue

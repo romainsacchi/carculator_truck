@@ -199,7 +199,7 @@ class InventoryCalculation:
                 "size": tm.array.coords["size"].values.tolist(),
                 "powertrain": tm.array.coords["powertrain"].values.tolist(),
                 "year": tm.array.coords["year"].values.tolist(),
-                "fu": {"unit": "vkm", "quantity": 1},
+                "fu": {"unit": "tkm", "quantity": 1},
             }
         else:
             scope["size"] = scope.get("size", tm.array.coords["size"].values.tolist())
@@ -1047,13 +1047,13 @@ class InventoryCalculation:
         arr = self.A[0, : -self.number_of_cars, ind_trucks].sum(axis=0)
         ind = np.nonzero(arr)[0]
 
+
         if self.scenario != "static":
             B = self.B.interp(
                 year=self.scope["year"], kwargs={"fill_value": "extrapolate"}
             ).values
         else:
             B = self.B[0].values
-
 
         for a in ind:
             f[:] = 0
@@ -1101,7 +1101,7 @@ class InventoryCalculation:
                 ),
             )
 
-        return results.astype("float32") * self.compliant_vehicles
+        return results.astype("float32") * load_factor * self.compliant_vehicles
 
     def add_additional_activities(self):
         # Add as many rows and columns as cars to consider
@@ -1475,7 +1475,7 @@ class InventoryCalculation:
             if not isinstance(items_to_look_for_also, list):
                 items_to_look_for_also = [items_to_look_for_also]
 
-        list_vehicles = self.array.desired.values.tolist()
+        list_vehicles = self.array.desired.values
 
         if method == "or":
             return [
@@ -1802,12 +1802,33 @@ class InventoryCalculation:
             else "climate change - climate change total"
         )
 
-        co2_intensity_tech = (
-            self.B.sel(category=category_name, activity=list(self.elec_map.values()),)
-            .interp(year=self.scope["year"], kwargs={"fill_value": "extrapolate"})
-            .values
-            * losses_to_low
-        ) * 1000
+        if self.method_type != "endpoint":
+            if self.scenario != "static":
+                year = self.scope["year"]
+                co2_intensity_tech = (
+                    self.B.sel(
+                        category=category_name, activity=list(self.elec_map.values()),
+                    )
+                    .interp(year=year, kwargs={"fill_value": "extrapolate"})
+                    .values
+                    * losses_to_low
+                ) * 1000
+            else:
+                year = 2020
+                co2_intensity_tech = np.resize(
+                    (
+                        self.B.sel(
+                            category=category_name,
+                            activity=list(self.elec_map.values()),
+                            year=year,
+                        ).values
+                        * losses_to_low
+                        * 1000
+                    ),
+                    (len(self.scope["year"]), 15),
+                )
+        else:
+            co2_intensity_tech = np.zeroes((len(self.scope["year"]), 15))
 
         sum_renew = [
             np.sum([self.mix[x][i] for i in [0, 3, 4, 5, 8]])
@@ -2226,10 +2247,10 @@ class InventoryCalculation:
             },
             "cng": {
                 "name": (
-                    "market for natural gas, from high pressure network (1-5 bar), at service station",
+                    "market for natural gas, high pressure, vehicle grade",
                     "GLO",
                     "kilogram",
-                    "natural gas, from high pressure network (1-5 bar), at service station",
+                    "natural gas, high pressure, vehicle grade",
                 ),
                 "additional electricity": 0,
             },
@@ -2332,7 +2353,9 @@ class InventoryCalculation:
                 primary_share = self.fuel_blends[fuel_type]["primary"]["share"]
                 secondary_share = self.fuel_blends[fuel_type]["secondary"]["share"]
 
+
                 for y, year in enumerate(self.scope["year"]):
+
                     dataset_name = d_dataset_name[fuel_type] + str(year)
                     fuel_market_index = [
                         self.inputs[i] for i in self.inputs if i[0] == dataset_name
@@ -2366,19 +2389,20 @@ class InventoryCalculation:
                             -1 * additional_electricity
                         )
 
-                    if any(pt in self.scope["powertrain"] for pt in ["BEV", "PHEV-d"]):
-                        fuel_type = "electricity"
-                        dataset_name = d_dataset_name[fuel_type] + str(year)
-                        electricity_market_index = [
-                            self.inputs[i] for i in self.inputs if i[0] == dataset_name
-                        ][0]
-                        electricity_mix_index = [
-                            self.inputs[i]
-                            for i in self.inputs
-                            if i[0]
-                            == "electricity market for fuel preparation, " + str(year)
-                        ][0]
-                        self.A[:, electricity_mix_index, electricity_market_index] = -1
+        if any(pt in self.scope["powertrain"] for pt in ["BEV", "PHEV-d"]):
+            for year in self.scope["year"]:
+                fuel_type = "electricity"
+                dataset_name = d_dataset_name[fuel_type] + str(year)
+                electricity_market_index = [
+                    self.inputs[i] for i in self.inputs if i[0] == dataset_name
+                ][0]
+                electricity_mix_index = [
+                    self.inputs[i]
+                    for i in self.inputs
+                    if i[0]
+                    == "electricity market for fuel preparation, " + str(year)
+                ][0]
+                self.A[:, electricity_mix_index, electricity_market_index] = -1
 
     def set_inputs_in_A_matrix(self, array):
         """
@@ -3874,26 +3898,17 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[
-                (
-                    "Ethane, 1,1,1,2-tetrafluoro-, HFC-134a",
-                    ("air",),
-                    "kilogram"
-                )
+                ("Ethane, 1,1,1,2-tetrafluoro-, HFC-134a", ("air",), "kilogram")
             ],
-            -self.number_of_cars:
-        ] = .053 / self.array.values[self.array_inputs["kilometers per year"]] * -1
+            -self.number_of_cars :,
+        ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
 
         self.A[
             :,
             self.inputs[
-                (
-                    "market for refrigerant R134a",
-                    "GLO",
-                    "kilogram",
-                    "refrigerant R134a"
-                )
+                ("market for refrigerant R134a", "GLO", "kilogram", "refrigerant R134a")
             ],
-            -self.number_of_cars:
-        ] = .053 / self.array.values[self.array_inputs["kilometers per year"]] * -1
+            -self.number_of_cars :,
+        ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
 
         print("*********************************************************************")
