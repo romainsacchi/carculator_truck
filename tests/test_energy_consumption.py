@@ -27,5 +27,5 @@ def test_motive_energy():
     tm = TruckModel(array, cycle="Long haul", country="CH")
     tm.set_all()
 
-    assert (tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], parameter="TtW energy", size="40t")/1000*100/42.4).min() > 15
+    assert (tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], parameter="TtW energy", size="40t")/1000*100/42.4).min() > 14
     assert (tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], parameter="TtW energy", size="40t")/1000*100/42.4).max() < 45

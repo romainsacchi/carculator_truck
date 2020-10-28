@@ -7,11 +7,11 @@ _, array = fill_xarray_from_input_parameters(tip)
 tm = TruckModel(array, cycle="Long haul", country="CH")
 tm.set_all()
 
-def test_energy_target_compliance():
+#def test_energy_target_compliance():
     # ICEV-d and ICEV-g after 2020 should comply with given energy targets
     # In this case, 30% reduction in 2030 compared to 2020
-    assert np.all((tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], size="40t", year=2030, parameter="TtW energy")/
-     tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], size="40t", year=2020, parameter="TtW energy")) <= .7)
+#    assert np.all((tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], size="40t", year=2030, parameter="TtW energy")/
+#     tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], size="40t", year=2020, parameter="TtW energy")) <= .7)
 
 def test_presence_PHEVe():
     # PHEV-e should be dropped
