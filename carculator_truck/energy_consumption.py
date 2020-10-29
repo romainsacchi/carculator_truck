@@ -68,9 +68,9 @@ class EnergyConsumptionModel:
 
         self.gradient_name = self.cycle_name
         # retrieve road gradients (in degrees) for each second of the driving cycle selected
-        self.gradient = get_gradients(self.gradient_name).reshape(-1, 1, 1, 1, 6)
+        self.gradient = get_gradients(self.gradient_name).reshape(-1, 1, 1, 1, 7)
         # reshape the driving cycle
-        self.cycle = cycle.reshape(-1, 1, 1, 6)
+        self.cycle = cycle.reshape(-1, 1, 1, 7)
 
         self.rho_air = rho_air
 

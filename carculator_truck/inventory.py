@@ -260,7 +260,7 @@ class InventoryCalculation:
             size=self.scope["size"],
         )
 
-        self.compliant_vehicles = array.sel(parameter="total cargo mass") > 100
+        self.compliant_vehicles = array.sel(parameter="total cargo mass") > 600
 
         self.array = array.stack(desired=["size", "powertrain", "year"])
 
@@ -1212,7 +1212,7 @@ class InventoryCalculation:
                             + euro_class
                         )
 
-                    if s in ("40t", "60t"):
+                    if s in ("32t", "40t", "60t"):
                         name = (
                             "Heavy duty truck, "
                             + pt
@@ -2640,8 +2640,12 @@ class InventoryCalculation:
             if any(x in i[0] for x in ("3.5t", "7.5t", "18t"))
         ]
         index_arr_16t = self.get_index_vehicle_from_array(["3.5t", "7.5t", "18t"])
-        index_28t = [self.inputs[i] for i in self.inputs if "26t" in i[0]]
-        index_arr_28t = self.get_index_vehicle_from_array("26t")
+        index_28t = [
+            self.inputs[i]
+            for i in self.inputs
+            if any(x in i[0] for x in ("26t", "32t"))
+        ]
+        index_arr_28t = self.get_index_vehicle_from_array(["26t", "32t"])
 
         index_40t = [
             self.inputs[i]

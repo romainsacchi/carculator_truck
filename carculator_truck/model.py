@@ -1183,7 +1183,7 @@ class TruckModel:
             dict(
                 powertrain=["ICEV-g", "ICEV-d", "PHEV-c-d",],
                 parameter=list_noise_emissions,
-                size=["40t", "60t"],
+                size=["32t", "40t", "60t"],
             )
         ] = nem.get_sound_power_per_compartment("combustion", "heavy")
         self.array.loc[
@@ -1197,7 +1197,7 @@ class TruckModel:
             dict(
                 powertrain=["BEV", "FCEV", "PHEV-e"],
                 parameter=list_noise_emissions,
-                size=["40t", "60t"],
+                size=["32t", "40t", "60t"],
             )
         ] = nem.get_sound_power_per_compartment("electric", "heavy")
 
@@ -1213,7 +1213,7 @@ class TruckModel:
             dict(
                 powertrain=["HEV-d"],
                 parameter=list_noise_emissions,
-                size=["40t", "60t"],
+                size=["32t", "40t", "60t"],
             )
         ] = nem.get_sound_power_per_compartment("hybrid", "heavy")
 

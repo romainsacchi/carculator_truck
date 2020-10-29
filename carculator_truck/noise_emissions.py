@@ -84,7 +84,7 @@ class NoiseEmissionsModel:
         :rtype: numpy.array
 
         """
-        cycle = self.cycle.reshape(-1, 6)
+        cycle = self.cycle.reshape(-1, 7)
 
         if category == "medium":
             cycle = cycle[:, :4]
@@ -134,7 +134,7 @@ class NoiseEmissionsModel:
 
         """
 
-        cycle = self.cycle.reshape(-1, 6)
+        cycle = self.cycle.reshape(-1, 7)
 
         # Noise sources are calculated for speeds above 20 km/h.
         if powertrain_type in ("combustion", "electric"):
@@ -219,14 +219,14 @@ class NoiseEmissionsModel:
             propulsion = self.propulsion_noise(powertrain_type, category).reshape(
                 8, 4, -1
             )
-            c = self.cycle.reshape(-1, 6)[:, :4].T
+            c = self.cycle.reshape(-1, 7)[:, :4].T
         if category == "heavy":
-            rolling = self.rolling_noise(category).reshape(8, 2, -1)
+            rolling = self.rolling_noise(category).reshape(8, 3, -1)
             # propulsion noise, in dB, for each second of the driving cycle
             propulsion = self.propulsion_noise(powertrain_type, category).reshape(
-                8, 2, -1
+                8, 3, -1
             )
-            c = self.cycle.reshape(-1, 6)[:, 4:].T
+            c = self.cycle.reshape(-1, 7)[:, 4:].T
 
         # sum of rolling and propulsion noise sources
         total_noise = ne.evaluate(

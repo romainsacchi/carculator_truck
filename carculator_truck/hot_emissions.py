@@ -77,7 +77,7 @@ class HotEmissionsModel:
         arr = self.em.sel(
             powertrain=powertrain_type,
             euro_class=euro_classes,
-            size=["18t", "26t", "3.5t", "40t", "60t", "7.5t"],
+            size=["18t", "26t", "3.5t", "32t", "40t", "60t", "7.5t"],
             component=[
                 "HC",
                 "CO",
@@ -92,7 +92,7 @@ class HotEmissionsModel:
             ],
         ).transpose("component", "euro_class", "size")
 
-        cycle = self.cycle.reshape(-1, 1, 1, 6)
+        cycle = self.cycle.reshape(-1, 1, 1, 7)
 
         # Emissions for each second of the driving cycle equal:
         # a * speed**3 + b * speed**2 + c * speed + d
@@ -150,7 +150,7 @@ class HotEmissionsModel:
             urban /= 1000  # going from grams to kg
 
         else:
-            urban = np.zeros((14, em_arr.shape[2], 6))
+            urban = np.zeros((14, em_arr.shape[2], 7))
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -162,7 +162,7 @@ class HotEmissionsModel:
             suburban /= 1000  # going from grams to kg
 
         else:
-            suburban = np.zeros((14, em_arr.shape[2], 6))
+            suburban = np.zeros((14, em_arr.shape[2], 7))
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -172,7 +172,7 @@ class HotEmissionsModel:
             rural /= 1000  # going from grams to kg
 
         else:
-            rural = np.zeros((14, em_arr.shape[2], 6))
+            rural = np.zeros((14, em_arr.shape[2], 7))
 
         res = np.vstack((urban, suburban, rural)).transpose((2, 0, 1))
 
