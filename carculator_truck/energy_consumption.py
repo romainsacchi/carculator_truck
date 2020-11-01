@@ -99,17 +99,19 @@ class EnergyConsumptionModel:
 
         """
 
-        distance = self.velocity.sum(axis=0)[0][0]
+        distance = self.velocity.sum(axis=0)
+        velocity = np.squeeze(self.velocity, axis=1)
+
         # Provide energy in kJ / km (1 J = 1 Ws)
         auxiliary_energy = (
-            aux_power.T  # Watt
-            * self.velocity.shape[0]  # Number of seconds -> Ws -> J
+            aux_power.T.values  # Watt
+            * self.velocity  # Number of seconds -> Ws -> J
             / distance  # m/s * 1s = m -> J/m
             * 1000  # m / km
             / 1000  # 1 / (J / kJ)
         )
 
-        return (auxiliary_energy / efficiency).T
+        return (auxiliary_energy / efficiency)
 
     def motive_energy_per_km(
         self,

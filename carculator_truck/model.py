@@ -172,6 +172,7 @@ class TruckModel:
         arr = np.array([])
 
         self["is_compliant"] = True
+        self["is_available"] = True
 
         while abs(diff) > 0.001 or np.std(arr[-5:]) > 0.2:
 
@@ -211,19 +212,27 @@ class TruckModel:
         print("")
         print("Payload (in tons)")
         print("'-' BEV with driving mass superior to the permissible gross weight.")
-        print("'x' ICEV that do not comply wih energy reduction target."
+        print("'x' ICEV that do not comply wih energy reduction target.")
+        print("'/' vehicles not available for the specified year."
         )
 
         # If the number of remaining non-compliant vehicles is not zero, then
-
         self.array.loc[
             dict(
                 powertrain=["ICEV-d", "ICEV-g"],
-                parameter=["is_compliant"],
+                parameter="is_compliant",
                 year=[y for y in self.array.year.values if y > 2020],
-                value=0
             )
-        ] = non_compliant_vehicles.transpose(0,1,3,2)
+        ] = non_compliant_vehicles
+
+        # Indicate vehicles not available before 2020
+        self.array.loc[
+            dict(
+                powertrain=["BEV", "FCEV"],
+                parameter="is_available",
+                year=[y for y in self.array.year.values if y < 2020],
+            )
+        ] = 0
 
         t = PrettyTable([""] + self.array.coords["size"].values.tolist())
 
@@ -246,6 +255,11 @@ class TruckModel:
                 vals = np.where(self.array.sel(
                                 parameter="is_compliant", powertrain=pt, year=y, value=0
                             ).values, vals, "x")
+
+                # indicate vehicles that do not comply with energy target
+                vals = np.where(self.array.sel(
+                    parameter="is_available", powertrain=pt, year=y, value=0
+                ).values, vals, "/")
 
                 t.add_row(
                     row + vals.tolist()
@@ -339,8 +353,10 @@ class TruckModel:
         else:
             if "reference" in self.array.value.values:
                 cost_factor = np.ones((n_iterations, 1))
+                cost_factor_fcev = np.full((n_iterations, 1), 5)
             else:
                 cost_factor = np.random.triangular(0.7, 1, 1.3, (n_iterations, 1))
+                cost_factor_fcev = np.random.triangular(3, 5, 6, (n_iterations, 1))
 
         # Correction of hydrogen tank cost, per kg
         self.array.loc[:, ["FCEV"], "fuel tank cost per kg", :, :] = np.reshape(
@@ -413,30 +429,49 @@ class TruckModel:
         as to move the car. The sum is stored under the parameter label "TtW energy" in :attr:`self.array`.
 
         """
-        aux_energy = self.ecm.aux_energy_per_km(self["auxiliary power demand"])
+        self.energy = xr.DataArray(
 
-        pts = [pt for pt in self.array.powertrain.values if pt != "FCEV"]
+            np.zeros(
+                (
+                    len(self.array.coords["size"]),
+                    len(self.array.coords["powertrain"]),
+                    2,
+                    len(self.array.coords["year"]),
+                    len(self.array.coords["value"]),
+                    self.ecm.cycle.shape[0],
+                )),
+                coords=[
+                    self.array.coords["size"],
+                    self.array.coords["powertrain"],
+                    ["auxiliary energy", "motive energy"],
+                    self.array.coords["year"],
+                    self.array.coords["value"],
+                    np.arange(self.ecm.cycle.shape[0]),
+            ],
+            dims=["size", "powertrain", "parameter", "year", "value", "second"],
+        )
 
-        for pt in pts:
-            with self(pt) as cpm:
-                if self.cycle == "Urban delivery":
-                    aux_energy.loc[{"powertrain": pt}] /= cpm[
-                        "engine efficiency, empty, urban delivery"
-                    ]
-                if self.cycle == "Regional delivery":
-                    aux_energy.loc[{"powertrain": pt}] /= cpm[
-                        "engine efficiency, empty, regional delivery"
-                    ]
-                if self.cycle == "Long haul":
-                    aux_energy.loc[{"powertrain": pt}] /= cpm[
-                        "engine efficiency, empty, long haul"
-                    ]
+        self.energy.loc[dict(parameter="auxiliary energy")] = self.ecm.aux_energy_per_km(self["auxiliary power demand"]).T
 
-        for pt in self.fuel_cell:
-            with self(pt) as cpm:
-                aux_energy.loc[{"powertrain": pt}] /= cpm["fuel cell system efficiency"]
+        if self.cycle == "Urban delivery":
+            param = "engine efficiency, empty, urban delivery"
+        if self.cycle == "Regional delivery":
+            param = "engine efficiency, empty, regional delivery"
+        if self.cycle == "Long haul":
+            param = "engine efficiency, empty, long haul"
 
-        self["auxiliary energy"] = aux_energy
+        self.energy.loc[dict(parameter="auxiliary energy",
+                        powertrain=[pt for pt in self.energy.coords["powertrain"].values if "FCEV" not in pt])]\
+            /= self.array.sel(parameter=param,
+                              powertrain=[pt for pt in self.array.coords["powertrain"].values
+                                          if "FCEV" not in pt]).values[..., None]
+
+        self.energy.loc[dict(parameter="auxiliary energy",
+                        powertrain="FCEV")] \
+            /= self.array.sel(parameter="fuel cell system efficiency",
+                              powertrain="FCEV").values[..., None]
+
+        self["auxiliary energy"] = self.energy.sel(parameter="auxiliary energy").sum(dim="second")
 
         motive_energy, electric_contrib = self.ecm.motive_energy_per_km(
             driving_mass=self["driving mass"],
@@ -447,11 +482,11 @@ class TruckModel:
             recuperation_efficiency=self["recuperation efficiency"],
             motor_power=self["electric power"],
         )
-        motive_energy = motive_energy.sum(axis=0)
 
-        self["electric motor contribution"] = electric_contrib.mean(axis=0).T * (self["combustion power share"] > 0)
+        self.energy.loc[dict(parameter="motive energy")] = motive_energy.T
 
-        self["TtW energy"] = aux_energy + motive_energy.T
+        self["TtW energy"] = self.energy.sum(dim=["parameter", "second"])
+
 
     def set_fuel_cell_parameters(self):
         """
@@ -1037,7 +1072,7 @@ class TruckModel:
         return emissions per substance per second of driving cycle.
         :return: Does not return anything. Modifies ``self.array`` in place.
         """
-        hem = HotEmissionsModel(self.ecm.cycle, self.ecm.cycle_name)
+        hem = HotEmissionsModel(self.ecm.cycle_name, self.ecm.cycle)
 
         list_direct_emissions = [
             "Hydrocarbons direct emissions, urban",
@@ -1102,34 +1137,19 @@ class TruckModel:
                 powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
                 parameter=list_direct_emissions,
             )
-        ] = hem.get_emissions_per_powertrain("diesel", euro_classes=l_y)
+        ] = hem.get_emissions_per_powertrain(powertrain_type="diesel",
+                                             euro_classes=l_y,
+                                             energy_consumption=self.energy.sel(powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"]).sum(dim="parameter"))
 
-        # Applies an emission factor, useful for sensitivity purpose
-        self.array.loc[
-            dict(
-                powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
-                parameter=list_direct_emissions,
-            )
-        ] *= self.array.loc[
-            dict(
-                powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"], parameter="emission factor"
-            )
-        ]
 
         # For CNG vehicles
+
         self.array.loc[
             dict(powertrain="ICEV-g", parameter=list_direct_emissions)
-        ] = hem.get_emissions_per_powertrain("CNG", euro_classes=l_y)
+        ] = np.squeeze(hem.get_emissions_per_powertrain("cng", euro_classes=l_y,
+                                             energy_consumption=self.energy.sel(
+                                             powertrain=["ICEV-g"]).sum(dim="parameter")), axis=1)
 
-        # Applies an emission factor, useful for sensitivity purpose
-        self.array.loc[
-            dict(powertrain="ICEV-g", parameter=list_direct_emissions)
-        ] *= self.array.loc[dict(powertrain="ICEV-g", parameter="emission factor")]
-
-        # Emissions are scaled to the combustion power share
-        self.array.loc[:, :, list_direct_emissions, :] *= self.array.loc[
-            :, :, "combustion power share", :
-        ]
 
     def set_noise_emissions(self):
         """

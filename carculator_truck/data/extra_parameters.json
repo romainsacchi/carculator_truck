@@ -178,5 +178,6 @@
   "insurance cost",
   "toll cost",
   "adblue cost",
-  "is_compliant"
+  "is_compliant",
+  "is_available"
 ]

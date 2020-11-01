@@ -66,10 +66,10 @@ class InventoryCalculation:
                         'powertrain':['BEV', 'FCEV', 'ICEV-p'],
                     }
         bc = {'country':'CH', # considers electricity network losses for Switzerland
-              'custom electricity mix' : [[1,0,0,0,0,0,0,0,0,0], # in this case, 100% hydropower for the first year
-                                          [0,1,0,0,0,0,0,0,0,0],
-                                          [0,0,1,0,0,0,0,0,0,0],
-                                          [0,0,0,1,0,0,0,0,0,0],
+              'custom electricity mix' : [[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                                          [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                                          [0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+                                          [0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
                                          ], # in this case, 100% nuclear for the second year
               'fuel blend':{
                   'cng':{ #specify fuel bland for compressed gas
@@ -127,6 +127,11 @@ class InventoryCalculation:
         - [7]: oil
         - [8]: geothermal
         - [9]: waste incineration
+        - [10]: biogas with CCS
+        - [11]: biomass with CCS
+        - [12]: coal with CCS
+        - [13]: natural gas with CCS
+        - [14]: wood with CCS
 
     If none is given, the electricity mix corresponding to the country specified in `country` will be selected.
     If no country is specified, Europe applies.
@@ -260,7 +265,9 @@ class InventoryCalculation:
             size=self.scope["size"],
         )
 
-        self.compliant_vehicles = array.sel(parameter="total cargo mass") > 600
+        self.compliant_vehicles = ((array.sel(parameter="total cargo mass") > 500)*1)\
+                                  * (array.sel(parameter="is_available")*1)
+
 
         self.array = array.stack(desired=["size", "powertrain", "year"])
 
