@@ -50,7 +50,7 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
                 )
             ),
             coords=[
-                tip.sizes,
+                ['3.5t', '7.5t', '18t', '26t',  '32t', '40t', '60t', ],
                 tip.powertrains,
                 tip.parameters,
                 tip.years,

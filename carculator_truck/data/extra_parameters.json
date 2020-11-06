@@ -179,5 +179,8 @@
   "toll cost",
   "adblue cost",
   "is_compliant",
-  "is_available"
+  "is_available",
+  "tire wear emissions",
+  "brake wear emissions",
+  "road wear emissions"
 ]

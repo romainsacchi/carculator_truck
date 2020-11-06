@@ -3765,8 +3765,7 @@ class InventoryCalculation:
             ],
             -self.number_of_cars :,
         ] = (
-            array[self.array_inputs["driving mass"], :]
-            * 7e-09
+            array[self.array_inputs["tire wear emissions"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
         )
         self.A[
@@ -3781,10 +3780,14 @@ class InventoryCalculation:
             ],
             -self.number_of_cars :,
         ] = (
-            array[self.array_inputs["driving mass"], :]
-            * 8.055e-8
+            array[self.array_inputs["tire wear emissions"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
         )
+
+        # Brake wear emissions
+        # BEVs only emit 10% of what a combustion engine vehicle emits according to
+        # https://www.nrel.gov/docs/fy17osti/67209.pdf
+
         self.A[
             :,
             self.inputs[
@@ -3797,10 +3800,29 @@ class InventoryCalculation:
             ],
             -self.number_of_cars :,
         ] = (
-            array[self.array_inputs["driving mass"], :]
-            * 8.13e-9
+            array[self.array_inputs["brake wear emissions"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
         )
+
+        ind_A = [
+            self.inputs[i]
+            for i in self.inputs
+            if "duty" in i[0]
+               and any(x in i[0] for x in ["BEV", "FCEV", "HEV-d", "PHEV-d"])
+        ]
+
+        self.A[
+        :,
+        self.inputs[
+            (
+                "treatment of brake wear emissions, lorry",
+                "RER",
+                "kilogram",
+                "brake wear emissions, lorry",
+            )
+        ],
+        ind_A
+        ] *= .1
 
         # Infrastructure: 5.37e-4 per gross tkm
         self.A[

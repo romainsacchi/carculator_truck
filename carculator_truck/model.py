@@ -2,6 +2,7 @@ from .energy_consumption import EnergyConsumptionModel
 from .hot_emissions import HotEmissionsModel
 from .noise_emissions import NoiseEmissionsModel
 from .background_systems import BackgroundSystemModel
+from .particulates_emissions import ParticulatesEmissionsModel
 import numexpr as ne
 import numpy as np
 import xarray as xr
@@ -182,8 +183,6 @@ class TruckModel:
             self.set_power_parameters()
             self.set_component_masses()
             self.set_auxiliaries()
-            self.set_ttw_efficiency()
-            self.set_recuperation()
             self.set_fuel_cell_parameters()
             self.calculate_ttw_energy()
             self.set_battery_fuel_cell_replacements()
@@ -205,6 +204,7 @@ class TruckModel:
         self.set_electricity_consumption()
         self.set_costs()
         self.set_hot_emissions()
+        self.set_particulates_emission()
         self.set_noise_emissions()
         self.create_PHEV()
         self.drop_hybrid()
@@ -213,22 +213,22 @@ class TruckModel:
         print("Payload (in tons)")
         print("'-' BEV with driving mass superior to the permissible gross weight.")
         print("'x' ICEV that do not comply wih energy reduction target.")
-        print("'/' vehicles not available for the specified year."
-        )
+        print("'/' vehicles not available for the specified year.")
 
         # If the number of remaining non-compliant vehicles is not zero, then
-        self.array.loc[
-            dict(
-                powertrain=["ICEV-d", "ICEV-g"],
-                parameter="is_compliant",
-                year=[y for y in self.array.year.values if y > 2020],
-            )
-        ] = non_compliant_vehicles
+        if np.sum(non_compliant_vehicles)>0:
+            self.array.loc[
+                dict(
+                    powertrain=["ICEV-d", "ICEV-g"],
+                    parameter="is_compliant",
+                    year=[y for y in self.array.year.values if y > 2020],
+                )
+            ] = non_compliant_vehicles
 
         # Indicate vehicles not available before 2020
         self.array.loc[
             dict(
-                powertrain=["BEV", "FCEV"],
+                powertrain=["BEV", "FCEV", "PHEV-d", "HEV-d"],
                 parameter="is_available",
                 year=[y for y in self.array.year.values if y < 2020],
             )
@@ -242,7 +242,8 @@ class TruckModel:
                 row = [pt + ", " + str(y)]
 
                 # indicate vehicles with no cargo as a result of curb mass being too large
-                vals = np.asarray([
+                vals = np.asarray(
+                    [
                         np.round(np.mean(v), 1) if np.mean(v) > 0.1 else "-"
                         for v in (
                             self.array.sel(
@@ -250,20 +251,27 @@ class TruckModel:
                             )
                             / 1000
                         ).values.tolist()
-                    ])
-                # indicate vehicles that do not comply with energy target
-                vals = np.where(self.array.sel(
-                                parameter="is_compliant", powertrain=pt, year=y, value=0
-                            ).values, vals, "x")
-
-                # indicate vehicles that do not comply with energy target
-                vals = np.where(self.array.sel(
-                    parameter="is_available", powertrain=pt, year=y, value=0
-                ).values, vals, "/")
-
-                t.add_row(
-                    row + vals.tolist()
+                    ]
                 )
+                # indicate vehicles that do not comply with energy target
+                vals = np.where(
+                    self.array.sel(
+                        parameter="is_compliant", powertrain=pt, year=y, value=0
+                    ).values,
+                    vals,
+                    "x",
+                )
+
+                # indicate vehicles that do not comply with energy target
+                vals = np.where(
+                    self.array.sel(
+                        parameter="is_available", powertrain=pt, year=y, value=0
+                    ).values,
+                    vals,
+                    "/",
+                )
+
+                t.add_row(row + vals.tolist())
         print(t)
 
     def adjust_combustion_power_share(self):
@@ -325,7 +333,7 @@ class TruckModel:
                         parameter="combustion power share",
                         year=actual_years,
                     )
-                ] = np.clip(new_shares, 0.6, 1)
+                ] = np.clip(new_shares, 0.7, 1)
             return arr
         else:
             return np.array([])
@@ -430,63 +438,167 @@ class TruckModel:
 
         """
         self.energy = xr.DataArray(
-
             np.zeros(
                 (
                     len(self.array.coords["size"]),
                     len(self.array.coords["powertrain"]),
-                    2,
+                    8,
                     len(self.array.coords["year"]),
                     len(self.array.coords["value"]),
                     self.ecm.cycle.shape[0],
-                )),
-                coords=[
-                    self.array.coords["size"],
-                    self.array.coords["powertrain"],
-                    ["auxiliary energy", "motive energy"],
-                    self.array.coords["year"],
-                    self.array.coords["value"],
-                    np.arange(self.ecm.cycle.shape[0]),
+                )
+            ).astype("float32"),
+            coords=[
+                self.array.coords["size"],
+                self.array.coords["powertrain"],
+                [
+                    "auxiliary energy",
+                    "motive energy",
+                    "motive energy at wheels",
+                    "recuperated energy",
+                    "recuperated energy at wheels",
+                    "transmission efficiency",
+                    "engine efficiency",
+                    "power load",
+                ],
+                self.array.coords["year"],
+                self.array.coords["value"],
+                np.arange(self.ecm.cycle.shape[0]),
             ],
             dims=["size", "powertrain", "parameter", "year", "value", "second"],
         )
 
-        self.energy.loc[dict(parameter="auxiliary energy")] = self.ecm.aux_energy_per_km(self["auxiliary power demand"]).T
-
-        if self.cycle == "Urban delivery":
-            param = "engine efficiency, empty, urban delivery"
-        if self.cycle == "Regional delivery":
-            param = "engine efficiency, empty, regional delivery"
-        if self.cycle == "Long haul":
-            param = "engine efficiency, empty, long haul"
-
-        self.energy.loc[dict(parameter="auxiliary energy",
-                        powertrain=[pt for pt in self.energy.coords["powertrain"].values if "FCEV" not in pt])]\
-            /= self.array.sel(parameter=param,
-                              powertrain=[pt for pt in self.array.coords["powertrain"].values
-                                          if "FCEV" not in pt]).values[..., None]
-
-        self.energy.loc[dict(parameter="auxiliary energy",
-                        powertrain="FCEV")] \
-            /= self.array.sel(parameter="fuel cell system efficiency",
-                              powertrain="FCEV").values[..., None]
-
-        self["auxiliary energy"] = self.energy.sel(parameter="auxiliary energy").sum(dim="second")
-
-        motive_energy, electric_contrib = self.ecm.motive_energy_per_km(
+        motive_power, recuperated_power, distance = self.ecm.motive_energy_per_km(
             driving_mass=self["driving mass"],
             rr_coef=self["rolling resistance coefficient"],
             drag_coef=self["aerodynamic drag coefficient"],
             frontal_area=self["frontal area"],
-            ttw_efficiency=self["TtW efficiency"],
             recuperation_efficiency=self["recuperation efficiency"],
             motor_power=self["electric power"],
         )
 
-        self.energy.loc[dict(parameter="motive energy")] = motive_energy.T
+        self.energy.loc[dict(parameter="auxiliary energy")] = (self["auxiliary power demand"].values[..., None]/1000)
 
-        self["TtW energy"] = self.energy.sum(dim=["parameter", "second"])
+        self.energy.loc[dict(parameter="motive energy at wheels")] = np.clip(motive_power.T,
+                                                                   0,
+                                                                   self["power"].values[..., None])
 
+        self.energy.loc[dict(parameter="recuperated energy at wheels")] = np.clip(recuperated_power.T,
+                                                                   0,
+                                                                   self["electric power"].values[..., None])
+
+        self.energy.loc[dict(parameter="power load")] = (
+            (motive_power.T + recuperated_power.T) / self["combustion power"].values[..., None]
+        )
+
+        self.energy.loc[
+            dict(parameter="power load", powertrain=["BEV", "FCEV", "PHEV-e"])
+        ] = (
+            (motive_power.T[:, [0, 1, -1], ...] + recuperated_power.T[:, [0, 1, -1], ...])
+            / self.array.sel(
+                parameter="electric power", powertrain=["BEV", "FCEV", "PHEV-e"]
+            ).values[..., None]
+        )
+
+        self.energy.loc[dict(parameter="power load")] = np.clip(
+            self.energy.loc[dict(parameter="power load")], 0, 1
+        )
+
+        self.energy.loc[dict(parameter="transmission efficiency")] = np.clip(np.interp(
+            self.energy.loc[dict(parameter="power load")],
+            [0, 0.025, .05, .1, .2, .3, .4, .5, .6, .7, .8, .9],
+            [0, 0.6, .75, .85, .88, .91, .91, .91, .91, .91, .91, .91]
+        ), .2, 1)
+
+        self.energy.loc[
+                 dict(
+                     parameter="engine efficiency",
+                     powertrain=["ICEV-d", "HEV-d", "PHEV-c-d", "ICEV-g"],
+                 )] = np.clip(np.interp(
+            self.energy.loc[dict(parameter="power load",
+                                 powertrain=["ICEV-d", "HEV-d", "PHEV-c-d", "ICEV-g"])],
+            [0, 0.025, .05, .1, .2, .3, .4, .5, .6, .7, .8, .9],
+            [0, 0.2, .25, .32, .385, .41, .42, .42, .42, .42, .42, .42]
+        ), .2, 1)
+
+        # Correction for CNG trucks
+        self.energy.loc[dict(parameter="engine efficiency", powertrain="ICEV-g")] *= (
+            1
+            - self.array.sel(
+                parameter="CNG engine efficiency correction factor", powertrain="ICEV-g"
+            )
+        )
+
+        # Correction for electric motors
+        self.energy.loc[
+            dict(parameter="engine efficiency", powertrain=["BEV", "PHEV-e"])
+        ] = (
+            self.array.sel(parameter="engine efficiency", powertrain=["BEV", "PHEV-e"])
+            * self.array.sel(
+                parameter="battery discharge efficiency", powertrain=["BEV", "PHEV-e"]
+            )
+        ).expand_dims(
+            dim="x", axis=-1
+        )
+
+        # Correction for fuel cell stack efficiency
+        self.energy.loc[
+            dict(parameter="engine efficiency", powertrain=["FCEV"])
+        ] = self.array.sel(
+            parameter="fuel cell system efficiency", powertrain=["FCEV"]
+        ).expand_dims(
+            dim="x", axis=-1
+        )
+
+        self.energy.loc[dict(parameter="motive energy")] = (
+            self.energy.loc[dict(parameter="motive energy at wheels")] /
+            self.energy.loc[dict(parameter="transmission efficiency")]
+        )
+
+        self.energy.loc[dict(parameter="motive energy")] = np.clip(
+            self.energy.loc[dict(parameter="motive energy")],
+            1,
+            self["power"].values[..., None]
+        )
+
+        self.energy.loc[dict(parameter="motive energy")] /= self.energy.loc[dict(parameter="engine efficiency")]
+
+        self.energy.loc[dict(parameter="recuperated energy")] = np.clip(
+            (
+            self.energy.loc[dict(parameter="recuperated energy at wheels")] *
+            (
+                    self.energy.loc[dict(parameter="transmission efficiency")]
+                    * self.array.loc[dict(parameter="battery charge efficiency")]
+                    * self.array.loc[dict(parameter="battery discharge efficiency")]
+                    * self.array.loc[dict(parameter="engine efficiency")]
+             )
+            ),
+            0,
+            self["electric power"].values[..., None]
+        )
+
+        self.energy = self.energy.fillna(0)
+        self.energy *= np.isfinite(self.energy)
+
+        self["TtW energy"] = (
+            (self.energy.sel(parameter="motive energy").sum(dim="second")
+             + self.energy.sel(parameter="auxiliary energy").sum(dim="second")
+             - self.energy.sel(parameter="recuperated energy").sum(dim="second")).T / distance
+        ).T
+
+        trans_eff = self.energy.loc[dict(parameter="transmission efficiency")].values
+        trans_eff[trans_eff == 0] = np.nan
+        trans_eff = np.nanmean(trans_eff, axis=-1)
+
+        engine_eff = self.energy.loc[dict(parameter="engine efficiency")].values
+        engine_eff[engine_eff == 0] = np.nan
+        engine_eff = np.nanmean(engine_eff, axis=-1)
+
+        self["TtW efficiency"] = (trans_eff * engine_eff)
+
+        self["auxiliary energy"] = (
+            self.energy.sel(parameter="auxiliary energy").sum(dim="second").T / distance
+        ).T
 
     def set_fuel_cell_parameters(self):
         """
@@ -549,21 +661,6 @@ class TruckModel:
             + self["cooling thermal demand"] * self["cooling energy consumption"]
         )
 
-    def set_recuperation(self):
-
-        if self.cycle == "Urban delivery":
-            drivetrain_eff = self["drivetrain efficiency, empty, urban delivery"]
-
-        if self.cycle == "Regional delivery":
-            drivetrain_eff = self["drivetrain efficiency, empty, regional delivery"]
-
-        if self.cycle == "Long haul":
-            drivetrain_eff = self["drivetrain efficiency, empty, long haul"]
-
-        self["recuperation efficiency"] = (
-            drivetrain_eff * self["battery charge efficiency"]
-        )
-
     def set_battery_fuel_cell_replacements(self):
         """
         This methods calculates the fraction of the replacement battery needed to match the vehicle lifetime.
@@ -584,12 +681,14 @@ class TruckModel:
 
         self["battery lifetime replacements"] = finite(
             np.ceil(
-            np.clip(
-                (self["lifetime kilometers"] / self["battery lifetime kilometers"]) - 1,
-                0,
-                None,
+                np.clip(
+                    (self["lifetime kilometers"] / self["battery lifetime kilometers"])
+                    - 1,
+                    0,
+                    None,
+                )
             )
-        ))
+        )
 
         # The number of fuel cell replacements is based on the average distance driven
         # with a set of fuel cells given their lifetime expressed in hours of use.
@@ -599,12 +698,19 @@ class TruckModel:
         with self("FCEV") as pt:
             pt["fuel cell lifetime replacements"] = np.ceil(
                 np.clip(
-                    (pt["lifetime kilometers"] / (
-                        pt.ecm.cycle.sum(axis=0) /
-                        pt.ecm.cycle.shape[0] *
-                        pt["fuel cell lifetime hours"].T)) - 1,
+                    (
+                        pt["lifetime kilometers"]
+                        / (
+                            pt.ecm.cycle.sum(axis=0)
+                            / pt.ecm.cycle.shape[0]
+                            * pt["fuel cell lifetime hours"].T
+                        )
+                    )
+                    - 1,
                     0,
-                    5))
+                    5,
+                )
+            )
 
     def set_car_masses(self):
         """
@@ -666,14 +772,22 @@ class TruckModel:
             None,
         )
 
-        self["total cargo mass"] = (self["available payload"] * self["capacity utilization"])
+        self["total cargo mass"] = (
+            self["available payload"] * self["capacity utilization"]
+        )
 
-        self["driving mass"] = self["curb mass"] + self["total cargo mass"] + (self["average passengers"] * self["average passenger mass"])
+        self["driving mass"] = (
+            self["curb mass"]
+            + self["total cargo mass"]
+            + (self["average passengers"] * self["average passenger mass"])
+        )
 
     def set_power_parameters(self):
         """Set electric and combustion motor powers based on input parameter ``power to mass ratio``."""
         # Convert from W/kg to kW
-        self["power"] = np.clip(self["power to mass ratio"] * self["curb mass"] / 1000, 0, 700)
+        self["power"] = np.clip(
+            self["power to mass ratio"] * self["curb mass"] / 1000, 0, 700
+        )
         self["combustion power share"] = self["combustion power share"].clip(
             min=0, max=1
         )
@@ -685,9 +799,9 @@ class TruckModel:
             self["combustion power"] * self["engine mass per power"]
             + self["engine fixed mass"]
         )
-        self["electric engine mass"] = np.clip((
-            24.56 * np.exp(.0078 * self["electric power"])
-        ), 0, 600)
+        self["electric engine mass"] = np.clip(
+            (24.56 * np.exp(0.0078 * self["electric power"])), 0, 600
+        )
 
         self["transmission mass"] = (self["gross mass"] / 1000) * self[
             "transmission mass per ton of gross weight"
@@ -767,7 +881,11 @@ class TruckModel:
 
                 if pt == "ICEV-g":
                     # Based on manufacturer data
-                    cpm["fuel tank mass"] = (0.018 * np.power(cpm["fuel mass"], 2)) + (0.6011 * cpm["fuel mass"]) + 52.235
+                    cpm["fuel tank mass"] = (
+                        (0.018 * np.power(cpm["fuel mass"], 2))
+                        + (0.6011 * cpm["fuel mass"])
+                        + 52.235
+                    )
 
                 else:
                     # From Wolff et al. 2020, Sustainability, DOI: 10.3390/su12135396.
@@ -794,8 +912,10 @@ class TruckModel:
         for pt in ["BEV", "PHEV-e"]:
             with self(pt) as cpm:
                 cpm["electric energy stored"] = (
-                    cpm["target range"] * (cpm["TtW energy"] / 1000)
-                ) / cpm["battery DoD"] / 3.6
+                    (cpm["target range"] * (cpm["TtW energy"] / 1000))
+                    / cpm["battery DoD"]
+                    / 3.6
+                )
 
                 cpm["battery cell mass"] = (
                     cpm["electric energy stored"] / cpm["battery cell energy density"]
@@ -816,9 +936,10 @@ class TruckModel:
             cpm["oxidation energy stored"] = cpm["fuel mass"] * 120 / 3.6  # kWh
 
             cpm["fuel tank mass"] = (
-                (-.1916 * np.power(cpm["fuel mass"], 2)) + (14.586 * cpm["fuel mass"]) + 10.805
+                (-0.1916 * np.power(cpm["fuel mass"], 2))
+                + (14.586 * cpm["fuel mass"])
+                + 10.805
             )
-
 
         # kWh electricity/kg battery cell
         self["battery cell production energy electricity share"] = self[
@@ -844,12 +965,14 @@ class TruckModel:
             "cabin mass",
         ]
 
-        self["glider cost"] = np.clip((
-                (38747 * np.log(self[glider_components].sum(dim="parameter"))) - 252194
-        ), 33500, 110000)
+        self["glider cost"] = np.clip(
+            ((38747 * np.log(self[glider_components].sum(dim="parameter"))) - 252194),
+            33500,
+            110000,
+        )
 
         # Discount glider cost for 40t and 60t trucks because of the added trailer mass
-        self.array.loc[dict(parameter="glider cost", size=["40t", "60t"])] *= .7
+        self.array.loc[dict(parameter="glider cost", size=["40t", "60t"])] *= 0.7
 
         self["lightweighting cost"] = (
             self["glider base mass"]
@@ -860,11 +983,10 @@ class TruckModel:
             self["electric powertrain cost per kW"] * self["electric power"]
         )
         self["combustion powertrain cost"] = (
-            (self["combustion power"] * self["combustion powertrain cost per kW"])
+            self["combustion power"] * self["combustion powertrain cost per kW"]
         )
 
-
-        self["fuel cell cost"] = (self["fuel cell power"] * self["fuel cell cost per kW"])
+        self["fuel cell cost"] = self["fuel cell power"] * self["fuel cell cost per kW"]
 
         self["power battery cost"] = (
             self["battery power"] * self["power battery cost per kW"]
@@ -876,7 +998,12 @@ class TruckModel:
         )
         self["fuel tank cost"] = self["fuel tank cost per kg"] * self["fuel mass"]
         # Per ton-km
-        self["energy cost"] = self["energy cost per kWh"] * self["TtW energy"] / 3600 / (self["total cargo mass"] / 1000)
+        self["energy cost"] = (
+            self["energy cost per kWh"]
+            * self["TtW energy"]
+            / 3600
+            / (self["total cargo mass"] / 1000)
+        )
 
         # For battery, need to divide cost of electricity in battery by efficiency of charging
         for pt in ["BEV", "PHEV-e"]:
@@ -926,36 +1053,32 @@ class TruckModel:
 
         # per ton-km
         self["amortised purchase cost"] = (
-            self["purchase cost"] * amortisation_factor / (self["total cargo mass"] / 1000) / self["kilometers per year"]
+            self["purchase cost"]
+            * amortisation_factor
+            / (self["total cargo mass"] / 1000)
+            / self["kilometers per year"]
         )
 
-
-
         # per km
-        self["adblue cost"] = (self["adblue cost per kg"] * 0.06 * self["fuel mass"]) / self["target range"]
+        self["adblue cost"] = (
+            self["adblue cost per kg"] * 0.06 * self["fuel mass"]
+        ) / self["target range"]
         self["maintenance cost"] = self["maintenance cost per km"]
         self["maintenance cost"] += self["adblue cost"]
-        self["maintenance cost"] /= (self["total cargo mass"] / 1000)
+        self["maintenance cost"] /= self["total cargo mass"] / 1000
 
         self["insurance cost"] = (
-            self["insurance cost per year"] / (self["total cargo mass"] / 1000) / self["kilometers per year"]
+            self["insurance cost per year"]
+            / (self["total cargo mass"] / 1000)
+            / self["kilometers per year"]
         )
 
         self["toll cost"] = self["toll cost per km"] / (self["total cargo mass"] / 1000)
-
 
         # simple assumption that component replacement occurs at half of life.
         km_per_year = self["kilometers per year"]
         com_repl_cost = self["component replacement cost"]
         cargo = self["total cargo mass"] / 1000
-
-        #self["amortised component replacement cost"] = ((self["component replacement cost"] *
-        #                                                (np.power(1 - self["interest rate"],
-        #                                                          self["lifetime kilometers"]/2))
-        #                                                ) * amortisation_factor)\
-        #                                               / self["kilometers per year"]\
-        #                                               / (self["total cargo mass"] / 1000)
-
 
         self["amortised component replacement cost"] = ne.evaluate(
             "(com_repl_cost * ((1 - i) ** lifetime / 2) * amortisation_factor) / km_per_year / cargo"
@@ -970,99 +1093,44 @@ class TruckModel:
             + self["amortised component replacement cost"]
         )
 
-    def set_ttw_efficiency(self):
+    def set_particulates_emission(self):
         """
-        The efficiency of the engine and drivetrain is calibrated after VECTO simulations for current vehicles (2020).
-        Efficiencies of both components vary depending on the torque and rpm required at the wheels.
-        Torque and rpm required are calculated after a complex model in VECTO, where several factors,
-        such as the driving factor and the load factor, are important. For that reason, efficiencies here
-        are defined according to the driving cycle, and the load factor. Also, the engine efficiency of hybrid
-        drivetrains are the product of the efficiency of the combustion engine and the electric motor.
-        :return:
+        Calculate the emission of particulates according to
+        https://www.eea.europa.eu/ds_resolveuid/6USNA27I4D
+
+        for:
+
+        - brake wear
+        - tire wear
+        - road wera
+
+        Tier-2 method considers:
+
+        - number of axles
+        - capacity utilization rate
+        - speed
+
         """
 
-        _ = lambda array: np.where(array == 0, 1, array)
+        list_param = [
+            "tire wear emissions",
+            "brake wear emissions",
+            "road wear emissions",
+        ]
 
+        pem = ParticulatesEmissionsModel(
+            cycle_name=self.ecm.cycle_name,
+            cycle=self.ecm.cycle,
+            number_axles=self["number of axles"],
+            load_factor=self["capacity utilization"],
+        )
 
+        res = pem.get_abrasion_emissions()
+        self[list_param] = res.transpose(4, 3, 0, 2, 1)
 
-        if self.cycle == "Urban delivery":
-            engine_eff_empty = self["engine efficiency, empty, urban delivery"]
-            engine_eff_full = self["engine efficiency, full, urban delivery"]
-
-            engine_eff = (self["capacity utilization"] * engine_eff_full) + (
-                (1 - self["capacity utilization"]) * engine_eff_empty
-            )
-
-            engine_eff_empty_elec = self.array.sel(
-                powertrain="BEV", parameter="engine efficiency, empty, urban delivery"
-            )
-            engine_eff_full_elec = self.array.sel(
-                powertrain="BEV", parameter="engine efficiency, full, urban delivery"
-            )
-
-            elec_engine_eff = (self["capacity utilization"] * engine_eff_empty_elec) + (
-                (1 - self["capacity utilization"]) * engine_eff_full_elec
-            )
-
-            engine_eff *= (1 - self["electric motor contribution"])
-            engine_eff += self["electric motor contribution"] * elec_engine_eff
-
-            drivetrain_eff = self["drivetrain efficiency, empty, urban delivery"]
-
-        if self.cycle == "Regional delivery":
-            engine_eff_empty = self["engine efficiency, empty, regional delivery"]
-            engine_eff_full = self["engine efficiency, full, regional delivery"]
-
-            engine_eff = (self["capacity utilization"] * engine_eff_full) + (
-                (1 - self["capacity utilization"]) * engine_eff_empty
-            )
-
-            engine_eff_empty_elec = self.array.sel(
-                powertrain="BEV",
-                parameter="engine efficiency, empty, regional delivery",
-            )
-            engine_eff_full_elec = self.array.sel(
-                powertrain="BEV", parameter="engine efficiency, full, regional delivery"
-            )
-
-            elec_engine_eff = (self["capacity utilization"] * engine_eff_empty_elec) + (
-                (1 - self["capacity utilization"]) * engine_eff_full_elec
-            )
-
-            engine_eff *= (1 - self["electric motor contribution"])
-            engine_eff += self["electric motor contribution"] * elec_engine_eff
-
-            drivetrain_eff = self["drivetrain efficiency, empty, regional delivery"]
-
-        if self.cycle == "Long haul":
-            engine_eff_empty = self["engine efficiency, empty, long haul"]
-            engine_eff_full = self["engine efficiency, full, long haul"]
-
-            engine_eff = (self["capacity utilization"] * engine_eff_full) + (
-                (1 - self["capacity utilization"]) * engine_eff_empty
-            )
-
-            engine_eff_empty_elec = self.array.sel(
-                powertrain="BEV", parameter="engine efficiency, empty, long haul"
-            )
-            engine_eff_full_elec = self.array.sel(
-                powertrain="BEV", parameter="engine efficiency, full, long haul"
-            )
-
-            elec_engine_eff = (self["capacity utilization"] * engine_eff_empty_elec) + (
-                (1 - self["capacity utilization"]) * engine_eff_full_elec
-            )
-
-            engine_eff *= (1 - self["electric motor contribution"])
-            engine_eff += self["electric motor contribution"] * elec_engine_eff
-
-            drivetrain_eff = self["drivetrain efficiency, empty, long haul"]
-
-        self["TtW efficiency"] = (
-            _(self["battery discharge efficiency"])
-            * _(self["fuel cell system efficiency"])
-            * drivetrain_eff
-            * engine_eff
+        # Superseed values for 3.5t and 7.5t trucks
+        self.array.loc[dict(size=["3.5t", "7.5t"], parameter=list_param)] = (
+            np.array([0.0169, 0.0117, 0.015])[None, :, None, None] / 1000
         )
 
     def set_hot_emissions(self):
@@ -1089,7 +1157,6 @@ class TruckModel:
             "Xylene direct emissions, urban",
             "Formaldehyde direct emissions, urban",
             "Acetaldehyde direct emissions, urban",
-
             "Hydrocarbons direct emissions, suburban",
             "Carbon monoxide direct emissions, suburban",
             "Nitrogen oxides direct emissions, suburban",
@@ -1104,7 +1171,6 @@ class TruckModel:
             "Xylene direct emissions, suburban",
             "Formaldehyde direct emissions, suburban",
             "Acetaldehyde direct emissions, suburban",
-
             "Hydrocarbons direct emissions, rural",
             "Carbon monoxide direct emissions, rural",
             "Nitrogen oxides direct emissions, rural",
@@ -1137,19 +1203,28 @@ class TruckModel:
                 powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
                 parameter=list_direct_emissions,
             )
-        ] = hem.get_emissions_per_powertrain(powertrain_type="diesel",
-                                             euro_classes=l_y,
-                                             energy_consumption=self.energy.sel(powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"]).sum(dim="parameter"))
-
+        ] = hem.get_emissions_per_powertrain(
+            powertrain_type="diesel",
+            euro_classes=l_y,
+            energy_consumption=self.energy.sel(
+                powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"]
+            ).sum(dim="parameter"),
+        )
 
         # For CNG vehicles
 
         self.array.loc[
             dict(powertrain="ICEV-g", parameter=list_direct_emissions)
-        ] = np.squeeze(hem.get_emissions_per_powertrain("cng", euro_classes=l_y,
-                                             energy_consumption=self.energy.sel(
-                                             powertrain=["ICEV-g"]).sum(dim="parameter")), axis=1)
-
+        ] = np.squeeze(
+            hem.get_emissions_per_powertrain(
+                "cng",
+                euro_classes=l_y,
+                energy_consumption=self.energy.sel(powertrain=["ICEV-g"]).sum(
+                    dim="parameter"
+                ),
+            ),
+            axis=1,
+        )
 
     def set_noise_emissions(self):
         """
@@ -1252,9 +1327,11 @@ class TruckModel:
         """
 
         if scope is None:
-            scope = {"size": self.array.coords["size"].values.tolist(),
-                     "powertrain": self.array.coords["powertrain"].values.tolist(),
-                     "year": self.array.coords["year"].values.tolist()}
+            scope = {
+                "size": self.array.coords["size"].values.tolist(),
+                "powertrain": self.array.coords["powertrain"].values.tolist(),
+                "year": self.array.coords["year"].values.tolist(),
+            }
         else:
             scope["size"] = scope.get("size", self.array.coords["size"].values.tolist())
             scope["powertrain"] = scope.get(
@@ -1292,13 +1369,7 @@ class TruckModel:
             dims=["size", "powertrain", "cost_type", "year", "value"],
         )
 
-        response.loc[
-            :,
-            :,
-            list_cost_cat,
-            :,
-            :,
-        ] = self.array.sel(
+        response.loc[:, :, list_cost_cat, :, :,] = self.array.sel(
             powertrain=scope["powertrain"],
             size=scope["size"],
             year=scope["year"],
@@ -1436,7 +1507,7 @@ class TruckModel:
             "biodiesel - algae": 2.85,
             "synthetic diesel": 3.16,
             "cng": 2.65,
-            "lpg":3.01,
+            "lpg": 3.01,
             "biogas - sewage sludge": 2.65,
             "biogas - biowaste": 2.65,
             "syngas": 2.65,

@@ -93,6 +93,7 @@ class HotEmissionsModel:
         ).transpose("component", "euro_class", "variable")
 
         self.cycle = self.cycle.reshape(-1, 1, 1, 7)
+        distance = np.squeeze(self.cycle.sum(axis=0)) / 3600
 
         # Emissions for each second of the driving cycle equal:
         # a * energy consumption + b
@@ -102,7 +103,7 @@ class HotEmissionsModel:
         a = arr.sel(variable="a").values[:, None, None, :, None, None] * energy_consumption.values
         b = arr.sel(variable="b").values[:, None, None, :, None, None]
 
-        # The receiving array should contians 14 substances, not 10
+        # The receiving array should contain 14 substances, not 10
         arr_shape = list(a.shape)
         arr_shape[0] = 14
         em_arr = np.zeros(tuple(arr_shape))
@@ -138,9 +139,9 @@ class HotEmissionsModel:
         if "urban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["urban start"]
             stop = self.cycle_environment[self.cycle_name]["urban stop"]
-            dist_urban = self.cycle[start:stop].sum(axis=0) / 3600
             urban = np.sum(em_arr[..., start:stop], axis=-1)
             urban /= 1000  # going from grams to kg
+            urban /= distance[:, None, None, None]
 
         else:
             urban = np.zeros((14, 7, em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
@@ -148,9 +149,9 @@ class HotEmissionsModel:
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
             stop = self.cycle_environment[self.cycle_name]["suburban stop"]
-            dist_suburban = self.cycle[start:stop].sum(axis=0) / 3600
             suburban = np.sum(em_arr[..., start:stop], axis=-1)
             suburban /= 1000  # going from grams to kg
+            suburban /= distance[:, None, None, None]
 
         else:
             suburban = np.zeros((14, 7, em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
@@ -158,9 +159,9 @@ class HotEmissionsModel:
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
             stop = self.cycle_environment[self.cycle_name]["rural stop"]
-            dist_rural = self.cycle[start:stop].sum(axis=0) / 3600
             rural = np.sum(em_arr[..., start:stop], axis=-1)
             rural /= 1000  # going from grams to kg
+            rural /= distance[:, None, None, None]
 
         else:
 
