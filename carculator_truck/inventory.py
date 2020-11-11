@@ -732,6 +732,12 @@ class InventoryCalculation:
                 "kilowatt hour",
                 "electricity, for reuse in municipal waste incineration only",
             ),
+            "Biogas CCS": (
+                "electricity production, at power plant/biogas, post, pipeline 200km, storage 1000m",
+                "RER",
+                "kilowatt hour",
+                "electricity, high voltage",
+            ),
             "Biomass CCS": (
                 "electricity production, at BIGCC power plant 450MW, pre, pipeline 200km, storage 1000m",
                 "RER",
@@ -746,12 +752,6 @@ class InventoryCalculation:
             ),
             "Gas CCS": (
                 "electricity production, at power plant/natural gas, post, pipeline 200km, storage 1000m",
-                "RER",
-                "kilowatt hour",
-                "electricity, high voltage",
-            ),
-            "Biogas CCS": (
-                "electricity production, at power plant/biogas, post, pipeline 200km, storage 1000m",
                 "RER",
                 "kilowatt hour",
                 "electricity, high voltage",
@@ -2876,9 +2876,12 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[("Ancillary BoP", "GLO", "kilogram", "Ancillary BoP")],
-            -self.number_of_cars :,
+            -self.number_of_cars:,
         ] = (
             array[self.array_inputs["fuel cell ancillary BoP mass"], :]
+            * (1 + array[
+                        self.array_inputs["fuel cell lifetime replacements"]]
+               )
             / array[self.array_inputs["lifetime kilometers"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
@@ -2890,6 +2893,9 @@ class InventoryCalculation:
             -self.number_of_cars :,
         ] = (
             array[self.array_inputs["fuel cell essential BoP mass"], :]
+            * (1 + array[
+                self.array_inputs["fuel cell lifetime replacements"]]
+            )
             / array[self.array_inputs["lifetime kilometers"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
@@ -2901,6 +2907,10 @@ class InventoryCalculation:
             -self.number_of_cars :,
         ] = (
             array[self.array_inputs["fuel cell stack mass"], :]
+            * (1 + array[
+                        self.array_inputs["fuel cell lifetime replacements"]]
+               )
+            / 0.51
             / array[self.array_inputs["lifetime kilometers"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
@@ -2974,7 +2984,7 @@ class InventoryCalculation:
                 * (
                     1
                     + array[
-                        self.array_inputs["fuel cell lifetime replacements"], :, index
+                        self.array_inputs["battery lifetime replacements"], :, index
                     ]
                 )
             )
@@ -3404,11 +3414,14 @@ class InventoryCalculation:
 
                 if self.fuel_blends["cng"]["primary"]["type"] != "cng":
                     share_non_fossil += self.fuel_blends["cng"]["primary"]["share"][y]
-                    CO2_non_fossil = self.fuel_blends["cng"]["primary"]["CO2"]
+                    CO2_non_fossil = share_non_fossil * self.fuel_blends["cng"]["primary"]["CO2"]
 
                 if self.fuel_blends["cng"]["secondary"]["type"] != "cng":
-                    share_non_fossil += self.fuel_blends["cng"]["secondary"]["share"][y]
-                    CO2_non_fossil = self.fuel_blends["cng"]["secondary"]["CO2"]
+                    share_non_fossil += self.fuel_blends["cng"]["secondary"][
+                        "share"
+                    ][y]
+                    CO2_non_fossil += self.fuel_blends["cng"]["secondary"][
+                                          "share"][y] * self.fuel_blends["cng"]["secondary"]["CO2"]
 
                 self.A[
                     :,
@@ -3576,16 +3589,15 @@ class InventoryCalculation:
                 # The share of non-fossil fuel in the blend is retrieved
                 # As well as the CO2 emission factor of the fuel
                 if self.fuel_blends["diesel"]["primary"]["type"] != "diesel":
-                    share_non_fossil += self.fuel_blends["diesel"]["primary"]["share"][
-                        y
-                    ]
-                    CO2_non_fossil = self.fuel_blends["diesel"]["primary"]["CO2"]
+                    share_non_fossil += self.fuel_blends["diesel"]["primary"]["share"][y]
+                    CO2_non_fossil = share_non_fossil * self.fuel_blends["diesel"]["primary"]["CO2"]
 
                 if self.fuel_blends["diesel"]["secondary"]["type"] != "diesel":
                     share_non_fossil += self.fuel_blends["diesel"]["secondary"][
                         "share"
                     ][y]
-                    CO2_non_fossil = self.fuel_blends["diesel"]["secondary"]["CO2"]
+                    CO2_non_fossil += self.fuel_blends["diesel"]["secondary"][
+                        "share"][y] * self.fuel_blends["diesel"]["secondary"]["CO2"]
 
                 self.A[
                     :,

@@ -175,7 +175,9 @@ class TruckModel:
         self["is_compliant"] = True
         self["is_available"] = True
 
-        while abs(diff) > 0.001 or np.std(arr[-5:]) > 0.2:
+        print("Finding solutions for trucks...")
+
+        while abs(diff) > 0.001 or np.std(arr[-10:]) > 0.05 or len(arr) < 7:
 
             old_payload = self["available payload"].sum().values
 
@@ -212,18 +214,19 @@ class TruckModel:
         print("")
         print("Payload (in tons)")
         print("'-' BEV with driving mass superior to the permissible gross weight.")
-        print("'x' ICEV that do not comply wih energy reduction target.")
+        print("'*' ICEV that do not comply wih energy reduction target.")
         print("'/' vehicles not available for the specified year.")
 
         # If the number of remaining non-compliant vehicles is not zero, then
-        if np.sum(non_compliant_vehicles)>0:
+        if len([y for y in self.array.year.values if y > 2020]) > 0:
+
             self.array.loc[
                 dict(
                     powertrain=["ICEV-d", "ICEV-g"],
                     parameter="is_compliant",
                     year=[y for y in self.array.year.values if y > 2020],
                 )
-            ] = non_compliant_vehicles
+            ] = np.logical_not(non_compliant_vehicles).astype(int)
 
         # Indicate vehicles not available before 2020
         self.array.loc[
@@ -259,10 +262,10 @@ class TruckModel:
                         parameter="is_compliant", powertrain=pt, year=y, value=0
                     ).values,
                     vals,
-                    "x",
+                    [str(v) + "*" for v in vals],
                 )
 
-                # indicate vehicles that do not comply with energy target
+                # indicate vehicles that are not commercially available
                 vals = np.where(
                     self.array.sel(
                         parameter="is_available", powertrain=pt, year=y, value=0
@@ -333,7 +336,7 @@ class TruckModel:
                         parameter="combustion power share",
                         year=actual_years,
                     )
-                ] = np.clip(new_shares, 0.7, 1)
+                ] = np.clip(new_shares, 0.6, 1)
             return arr
         else:
             return np.array([])
@@ -570,7 +573,6 @@ class TruckModel:
                     self.energy.loc[dict(parameter="transmission efficiency")]
                     * self.array.loc[dict(parameter="battery charge efficiency")]
                     * self.array.loc[dict(parameter="battery discharge efficiency")]
-                    * self.array.loc[dict(parameter="engine efficiency")]
              )
             ),
             0,
@@ -586,15 +588,15 @@ class TruckModel:
              - self.energy.sel(parameter="recuperated energy").sum(dim="second")).T / distance
         ).T
 
-        trans_eff = self.energy.loc[dict(parameter="transmission efficiency")].values
-        trans_eff[trans_eff == 0] = np.nan
-        trans_eff = np.nanmean(trans_eff, axis=-1)
+        self["TtW efficiency"] = (
+                 (
+                         (self.energy.sel(parameter="motive energy at wheels").sum(dim="second")
+                          + self.energy.sel(parameter="auxiliary energy").sum(dim="second")
+                          #- self.energy.sel(parameter="recuperated energy at wheels").sum(dim="second")
+                          ).T / distance
+                 ).T
 
-        engine_eff = self.energy.loc[dict(parameter="engine efficiency")].values
-        engine_eff[engine_eff == 0] = np.nan
-        engine_eff = np.nanmean(engine_eff, axis=-1)
-
-        self["TtW efficiency"] = (trans_eff * engine_eff)
+             ) / self["TtW energy"]
 
         self["auxiliary energy"] = (
             self.energy.sel(parameter="auxiliary energy").sum(dim="second").T / distance
@@ -1207,19 +1209,22 @@ class TruckModel:
             powertrain_type="diesel",
             euro_classes=l_y,
             energy_consumption=self.energy.sel(
-                powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"]
+                powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
+                parameter=["motive energy", "auxiliary energy"]
             ).sum(dim="parameter"),
         )
 
         # For CNG vehicles
-
         self.array.loc[
             dict(powertrain="ICEV-g", parameter=list_direct_emissions)
         ] = np.squeeze(
             hem.get_emissions_per_powertrain(
                 "cng",
                 euro_classes=l_y,
-                energy_consumption=self.energy.sel(powertrain=["ICEV-g"]).sum(
+                energy_consumption=self.energy.sel(
+                    powertrain=["ICEV-g"],
+                    parameter=["motive energy", "auxiliary energy"]
+                ).sum(
                     dim="parameter"
                 ),
             ),
@@ -1390,7 +1395,12 @@ class TruckModel:
             return response / response.sel(value="reference")
 
     def get_share_biofuel(self):
-        region = self.bs.region_map[self.country]["RegionCode"]
+
+        try:
+            region = self.bs.region_map[self.country]["RegionCode"]
+        except KeyError:
+            print("No biofuel share could be found for {}. Hence, EU average is used.".format(self.country))
+            region = "EUR"
         scenario = "SSP2-Base"
 
         share_biofuel = (
