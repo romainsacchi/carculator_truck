@@ -10,13 +10,6 @@ def test_acceleration():
     assert (ecm.velocity[..., 0]/1000*3600).mean() < 80
 
 
-def test_aux_power():
-    ecm = EnergyConsumptionModel("Long haul")
-    # With an aux power demand of 5kW, the energy consumption for all vehicles
-    # must be on average above 260 kJ
-    assert ecm.aux_energy_per_km(np.array([5000])).mean() > 260
-
-
 def test_motive_energy():
     # 40t diesel and gas trucks must have a fuel consumption comprised between
     # 15 L/100km and 35 L/km

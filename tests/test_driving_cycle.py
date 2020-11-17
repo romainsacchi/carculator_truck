@@ -29,4 +29,4 @@ def test_shape_dc_array():
     # Driving cycle array should be of shape (number of seconds, number of size classes)
     cycle = get_standard_driving_cycle("Long haul")
 
-    assert cycle.shape == (5825, 6)
+    assert cycle.shape == (5825, 7)

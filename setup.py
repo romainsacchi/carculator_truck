@@ -29,7 +29,7 @@ setup(
     name="carculator_truck",
     version="0.0.7",
     packages=packages,
-    author="Romain Sacchi <romain.sacchi@psi.ch>, Chris Mutel <christopher.mutel@psi.ch>",
+    author="Romain Sacchi <romain.sacchi@psi.ch>",
     license=open("LICENSE").read(),
     package_data={"carculator_truck": package_files(os.path.join("carculator_truck", "data"))},
     install_requires=[
