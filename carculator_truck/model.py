@@ -488,7 +488,7 @@ class TruckModel:
 
         self.energy.loc[dict(parameter="recuperated energy at wheels")] = np.clip(recuperated_power.T,
                                                                    0,
-                                                                   self["electric power"].values[..., None])
+                                                                   self["electric power"].values[..., None]) * -1
 
         self.energy.loc[dict(parameter="power load")] = (
             (motive_power.T + recuperated_power.T) / self["combustion power"].values[..., None]
@@ -575,24 +575,23 @@ class TruckModel:
                     * self.array.loc[dict(parameter="battery discharge efficiency")]
              )
             ),
-            0,
-            self["electric power"].values[..., None]
+            self["electric power"].values[..., None] * -1,
+            0
         )
 
         self.energy = self.energy.fillna(0)
         self.energy *= np.isfinite(self.energy)
 
         self["TtW energy"] = (
-            (self.energy.sel(parameter="motive energy").sum(dim="second")
-             + self.energy.sel(parameter="auxiliary energy").sum(dim="second")
-             - self.energy.sel(parameter="recuperated energy").sum(dim="second")).T / distance
+            self.energy.sel(parameter=["motive energy", "auxiliary energy", "recuperated energy"])\
+                .sum(dim=["second", "parameter"]).T
+             / distance
         ).T
 
         self["TtW efficiency"] = (
                  (
                          (self.energy.sel(parameter="motive energy at wheels").sum(dim="second")
                           + self.energy.sel(parameter="auxiliary energy").sum(dim="second")
-                          #- self.energy.sel(parameter="recuperated energy at wheels").sum(dim="second")
                           ).T / distance
                  ).T
 
@@ -1210,7 +1209,7 @@ class TruckModel:
             euro_classes=l_y,
             energy_consumption=self.energy.sel(
                 powertrain=["ICEV-d", "PHEV-c-d", "HEV-d"],
-                parameter=["motive energy", "auxiliary energy"]
+                parameter=["motive energy", "auxiliary energy", "recuperated energy"]
             ).sum(dim="parameter"),
         )
 
@@ -1223,7 +1222,7 @@ class TruckModel:
                 euro_classes=l_y,
                 energy_consumption=self.energy.sel(
                     powertrain=["ICEV-g"],
-                    parameter=["motive energy", "auxiliary energy"]
+                    parameter=["motive energy", "auxiliary energy", "recuperated energy"]
                 ).sum(
                     dim="parameter"
                 ),
