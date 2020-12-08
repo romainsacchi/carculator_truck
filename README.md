@@ -31,7 +31,7 @@ You may find a preprint version <a href="https://www.psi.ch/en/ta/preprint" targ
 (Fischer-Tropsch-based synthetic diesel, synhtetic methane)</li>
 <li>different years: from 2000 to 2050. Technological progress at the vehicle level but also in the rest of the world energy
 system (e.g., power generation) is accounted for, using energy scenario-specific IAM-coupled ecoinvent databases produced by 
-<a href="https://github.com/romainsacchi/rmnd_lca" target="_blank">rmnd_lca</a>.</li>
+<a href="https://github.com/romainsacchi/rmnd-lca" target="_blank">rmnd_lca</a>.</li>
 </ul>
 
 <p align="center">
