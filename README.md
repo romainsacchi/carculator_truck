@@ -20,27 +20,43 @@ Based on the Life Cycle Assessment tool for passenger vehicles [carculator](http
 
 See [the documentation](https://carculator_truck.readthedocs.io/en/latest/index.html) for more detail, validation, etc.
 
+The model has been the subject of a submission to the journal <i>Environmental Science and Technology</i>.
+You may find a preprint version <a href="https://www.psi.ch/en/ta/preprint" target="_blank">here<a/>.
+
+<i>carculator_truck</i> allows to model vehicles across:
+<ul>
+<li>different conventional and alternative powertrains: diesel, compressed natural gas, hybrid-diesel, plugin hybrid, electric, fuel cell</li>
+<li>different gross weight cateogries: 3.5t, 7.5t, 18t, 26t, 32t, 40t and 60t</li>
+<li>different fuel pathways: conventional fuels, bio-based fuels (biodiesel, biomethane), synthetic fuels
+(Fischer-Tropsch-based synthetic diesel, synhtetic methane)</li>
+<li>different years: from 2000 to 2050. Technological progress at the vehicle level but also in the rest of the world energy
+system (e.g., power generation) is accounted for, using energy scenario-specific IAM-coupled ecoinvent databases produced by 
+<a href="https://github.com/romainsacchi/rmnd_lca" target="_blank">rmnd_lca</a>.</li>
+</ul>
+
 <p align="center">
     The energy model of <i>carculator_truck</i> considers the vehicle aerodynamics, the road gradient and other factors.
-    It also considers varying efficiencies of the transmission and engine at various load points.
-  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/energy_model.png">
+    It also considers varying efficiencies of the transmission and engine at various load points for each second
+    of the driving cycle.
+  <img style="height:100px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/energy_model.png">
 </p>
 
 <p align="center">
-    The energy model and the calculated tank-to-wheel energy consumption is validated against the simulation software VECTO.
-  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/vecto_validation.png">
+    The energy model and the calculated tank-to-wheel energy consumption is validated against the simulation software
+    <a href="https://ec.europa.eu/clima/policies/transport/vehicles/vecto_en" target="_blank">VECTO</a>.
+  <img style="height:100px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/vecto_validation.png">
 </p>
 
 <p align="center">
     Benefits of hybrid powertrains are fully conidered: the possibility to recuperate braking energy as well as efficiency gains from engine
     downsizing is accounted for.
-  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/hybrid_efficiency.png">
+  <img style="height:100px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/hybrid_efficiency.png">
 </p>
 
 <p align="center">
-    Global warming potential impacts per ton-km for a 40-t truck, across different powertrian technologies, in an urban
-    environment.
-  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/urban_gwp.png">
+    Global warming potential impacts per ton-km for a 40-t truck, across different powertrain technologies,
+    using an urban driving cycle.
+  <img style="height:100px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/urban_gwp.png">
 </p>
 
 ## How to use it?
