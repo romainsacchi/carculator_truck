@@ -20,6 +20,29 @@ Based on the Life Cycle Assessment tool for passenger vehicles [carculator](http
 
 See [the documentation](https://carculator_truck.readthedocs.io/en/latest/index.html) for more detail, validation, etc.
 
+<p align="center">
+    The energy model of <i>carculator_truck</i> considers the vehicle aerodynamics, the road gradient and other factors.
+    It also considers varying efficiencies of the transmission and engine at various load points.
+  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/energy_model.png">
+</p>
+
+<p align="center">
+    The energy model and the calculated tank-to-wheel energy consumption is validated against the simulation software VECTO.
+  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/vecto_validation.png">
+</p>
+
+<p align="center">
+    Benefits of hybrid powertrains are fully conidered: the possibility to recuperate braking energy as well as efficiency gains from engine
+    downsizing is accounted for.
+  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/hybrid_efficiency.png">
+</p>
+
+<p align="center">
+    Global warming potential impacts per ton-km for a 40-t truck, across different powertrian technologies, in an urban
+    environment.
+  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/urban_gwp.png">
+</p>
+
 ## How to use it?
 
 See the notebook with [examples](https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb).
