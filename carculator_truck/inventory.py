@@ -1360,7 +1360,7 @@ class InventoryCalculation:
                     str(REMIND_FILES_DIR)
                     + "/*recipe_endpoint*{}*.csv".format(self.scenario)
                 )
-                B = np.zeros((len(list_file_names), 3, len(self.inputs)))
+                B = np.zeros((len(list_file_names), 4, len(self.inputs)))
 
         else:
             list_file_names = glob.glob(
@@ -1835,7 +1835,7 @@ class InventoryCalculation:
                     (len(self.scope["year"]), 15),
                 )
         else:
-            co2_intensity_tech = np.zeroes((len(self.scope["year"]), 15))
+            co2_intensity_tech = np.zeros((len(self.scope["year"]), 15))
 
         sum_renew = [
             np.sum([self.mix[x][i] for i in [0, 3, 4, 5, 8]])
