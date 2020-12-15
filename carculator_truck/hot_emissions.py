@@ -16,7 +16,7 @@ def get_emission_factors():
     """ Emissions factors extracted for trucks from HBEFA 4.1
         deatiled by size, powertrain and EURO class for each substance.
     """
-    fp = DATA_DIR / "hbefa_factors_vs_fc.xlsx"
+    fp = DATA_DIR / "hbefa_factors_vs_fc.xls"
     ef = pd.read_excel(fp)
     return (
         ef.groupby(["powertrain", "euro_class", "component"])
