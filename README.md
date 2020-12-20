@@ -23,6 +23,20 @@ See [the documentation](https://carculator_truck.readthedocs.io/en/latest/index.
 The model has been the subject of a submission to the journal <i>Environmental Science and Technology</i>.
 You may find a preprint version <a href="https://www.psi.ch/en/ta/preprint" target="_blank">here<a/>.
 
+
+## How to install?
+
+For the latest version, using conda::
+
+    conda install -c romainsacchi carculator_truck
+    
+or for a stable release, from Pypi::
+
+    pip install carculator_truck
+    
+    
+## What does it do?
+
 <i>carculator_truck</i> allows to model vehicles across:
 <ul>
 <li>different conventional and alternative powertrains: diesel, compressed natural gas, hybrid-diesel, plugin hybrid, electric, fuel cell</li>
@@ -59,17 +73,6 @@ system (e.g., power generation) is accounted for, using energy scenario-specific
   <img style="height:100px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/urban_gwp.png">
 </p>
 
-## How to install?
-
-For the latest version, using conda::
-
-    conda install -c romainsacchi carculator_truck
-    
-or for a stable release, from Pypi::
-
-    pip install carculator_truck
-    
-    
 ## How to use it?
 
 See the notebook with [examples](https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb).
