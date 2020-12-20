@@ -72,14 +72,22 @@ Once your environment created, you should activate it::
 
 And install the ``carculator_truck`` library in your new environment via Conda::
 
-    pip install carculator_truck
+    conda install -c romainsacchi carculator_truck
 
 This will install the package and the required dependencies.
+
+Or a stable release from Pypi::
+
+    pip install carculator_truck
 
 How to update this package?
 ---------------------------
 
 Within the conda environment, type::
+
+    conda update carculator_truck
+
+Or from Pypi using pip::
 
     pip install carculator_truck --upgrade
 
