@@ -15,7 +15,12 @@ before_install:
   https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
   bash miniconda.sh -b -p $HOME/miniconda; export PATH="$HOME/miniconda/bin:$PATH";
   hash -r; conda config --set always_yes yes --set changeps1 no; conda config --append
-  channels conda-forge; conda config --append channels cmutel; conda update conda;
+  channels conda-forge;
+  conda config --append channels cmutel;
+  conda config --append channels haasad;
+  conda config --append channels konstantinstadler;
+  conda update conda;
+  conda config --set channel_priority strict;
   conda info -a; echo $(python --version);
   fi
 install:

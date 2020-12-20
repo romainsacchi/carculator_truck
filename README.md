@@ -59,6 +59,17 @@ system (e.g., power generation) is accounted for, using energy scenario-specific
   <img style="height:100px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/urban_gwp.png">
 </p>
 
+## How to install?
+
+For the latest version, using conda::
+
+    conda install -c romainsacchi carculator_truck
+    
+or for a stable release, from Pypi::
+
+    pip install carculator_truck
+    
+    
 ## How to use it?
 
 See the notebook with [examples](https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb).
