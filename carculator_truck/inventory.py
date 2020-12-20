@@ -11,6 +11,7 @@ import itertools
 import numexpr as ne
 import numpy as np
 import xarray as xr
+from .geomap import Geomap
 
 REMIND_FILES_DIR = DATA_DIR / "IAM"
 
@@ -232,6 +233,7 @@ class InventoryCalculation:
 
         self.scope = scope
         self.scenario = scenario
+        self.geo = Geomap()
 
         # Check if a fleet composition is specified
         if "fleet" in self.scope["fu"]:
@@ -918,6 +920,58 @@ class InventoryCalculation:
             )
 
         return response
+
+    def get_sulfur_content(self, location, fuel, year):
+        """
+        Return the sulfur content in the fuel.
+        If a region is passed, the average sulfur content over
+        the countries the region contains is returned.
+        :param location: str. A country or region ISO code
+        :param fuel: str. "diesel" or "gasoline
+        :return: float. Sulfur content in ppm.
+        """
+
+        if location in self.bs.sulfur.country.values:
+            sulfur_concentration = (
+                self.bs.sulfur.sel(
+                    country=location, year=year, fuel=fuel
+                )
+                    .sum()
+                    .values
+            )
+        else:
+            # If the geography is in fact a region,
+            # we need to calculate hte average sulfur content
+            # across the region
+
+            list_countries = self.geo.iam_to_ecoinvent_location(self.country)
+            list_countries = [c for c in list_countries
+                              if c in self.bs.sulfur.country.values]
+            if len(list_countries) > 1:
+
+                sulfur_concentration = (
+                    self.bs.sulfur.sel(
+                        country=list_countries,
+                        year=year,
+                        fuel=fuel,
+                    )
+                        .mean()
+                        .values
+                )
+            else:
+
+                # if we do not have the sulfur concentration for the required country, we pick Europe
+                print(
+                    "The sulfur content for {} fuel in {} could not be found. European average sulfur content is used instead.".format(
+                        fuel, location
+                    )
+                )
+                sulfur_concentration = (
+                    self.bs.sulfur.sel(country="RER", year=year, fuel=fuel)
+                        .sum()
+                        .values
+                )
+        return sulfur_concentration
 
     def get_split_indices(self):
         """
@@ -3542,26 +3596,8 @@ class InventoryCalculation:
 
                 # Fuel-based SO2 emissions
                 # Sulfur concentration value for a given country, a given year, as concentration ratio
-                if self.country in self.bs.sulfur.country.values:
-                    sulfur_concentration = (
-                        self.bs.sulfur.sel(
-                            country=self.country, year=year, fuel="diesel"
-                        )
-                        .sum()
-                        .values
-                    )
-                else:
-                    # if we do not have the sulfur concentration for the required country, we pick Europe
-                    print(
-                        "The sulfur content for diesel fuel in {} could not be found. European average sulfur content is used instead.".format(
-                            self.country
-                        )
-                    )
-                    sulfur_concentration = (
-                        self.bs.sulfur.sel(country="RER", year=year, fuel="diesel")
-                        .sum()
-                        .values
-                    )
+
+                sulfur_concentration = self.get_sulfur_content(self.country, "diesel", year)
 
                 self.A[
                     :, self.inputs[("Sulfur dioxide", ("air",), "kilogram")], ind_A,

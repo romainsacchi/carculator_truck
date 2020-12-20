@@ -190,10 +190,14 @@ class TruckModel:
             self.set_battery_fuel_cell_replacements()
             self.set_energy_stored_properties()
 
-            # if there are vehicles after 2020, we need to ensure CO2 standards compliance
-            # return an array with non-compliant vehicles
-            non_compliant_vehicles = self.adjust_combustion_power_share()
-            arr = np.append(arr, non_compliant_vehicles.sum())
+            if len(self.array.year.values)>1:
+                # if there are vehicles after 2020, we need to ensure CO2 standards compliance
+                # return an array with non-compliant vehicles
+                non_compliant_vehicles = self.adjust_combustion_power_share()
+                arr = np.append(arr, non_compliant_vehicles.sum())
+            else:
+                arr = np.append(arr, [0])
+                non_compliant_vehicles = 0
 
             self.set_car_masses()
 

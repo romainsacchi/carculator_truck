@@ -17,7 +17,10 @@ _all_ = (
     "get_standard_driving_cycle",
     "EnergyConsumptionModel",
     "get_gradients",
-    "HotEmissionsModel"
+    "HotEmissionsModel",
+    "create_fleet_composition_from_REMIND_file",
+    "extract_electricity_mix_from_IAM_file",
+    "extract_biofuel_shares_from_IAM"
 )
 
 # library version
@@ -38,6 +41,8 @@ from .energy_consumption import EnergyConsumptionModel
 from .model import TruckModel
 from .hot_emissions import HotEmissionsModel
 from .inventory import InventoryCalculation
+from .utils import (create_fleet_composition_from_REMIND_file, extract_electricity_mix_from_IAM_file,
+                    extract_biofuel_shares_from_IAM)
 
 
 
