@@ -27,7 +27,7 @@ def package_files(directory):
 
 setup(
     name="carculator_truck",
-    version="0.0.7",
+    version="0.0.8",
     packages=packages,
     author="Romain Sacchi <romain.sacchi@psi.ch>",
     license=open("LICENSE").read(),
@@ -44,7 +44,8 @@ setup(
         "numexpr",
         "bw2io",
         "prettytable",
-        "wurst"
+        "wurst",
+        "pycountry"
     ],
     url="https://github.com/romainsacchi/carculator_truck",
     description="Prospective environmental and economic life cycle assessment of public transport and heavy goods vehicles",
