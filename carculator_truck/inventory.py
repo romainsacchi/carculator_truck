@@ -325,6 +325,7 @@ class InventoryCalculation:
         self.mix = self.define_electricity_mix_for_fuel_prep()
 
         self.fuel_blends = tm.fuel_blend
+        self.fuel_dictionary = self.create_fuel_dictionary()
         self.create_fuel_markets()
 
         self.index_cng = [self.inputs[i] for i in self.inputs if "ICEV-g" in i[0]]
@@ -1600,6 +1601,16 @@ class InventoryCalculation:
         self.create_electricity_market_for_battery_production()
 
         self.set_inputs_in_A_matrix(self.array.values)
+
+        # if the inventories are meant to link to `premise` databases
+        # we need to remove the additional electricity input
+        # in the fuel market datasets
+        if not ecoinvent_compatibility:
+            fuel_markets = [self.inputs[a] for a in self.inputs if "fuel market for" in a[0]]
+            electricity_inputs = [self.inputs[a] for a in self.inputs if "electricity market for" in a[0]]
+            self.A[np.ix_(range(self.A.shape[0], electricity_inputs, fuel_markets))] = 0
+
+
         if presamples:
             lci, array = ExportInventory(
                 self.A, self.rev_inputs, db_name=db_name
@@ -1653,6 +1664,14 @@ class InventoryCalculation:
         self.create_electricity_market_for_battery_production()
 
         self.set_inputs_in_A_matrix(self.array.values)
+
+        # if the inventories are meant to link to `premise` databases
+        # we need to remove the additional electricity input
+        # in the fuel market datasets
+        if not ecoinvent_compatibility:
+            fuel_markets = [self.inputs[a] for a in self.inputs if "fuel market for" in a[0]]
+            electricity_inputs = [self.inputs[a] for a in self.inputs if "electricity market for" in a[0]]
+            self.A[np.ix_(range(self.A.shape[0], electricity_inputs, fuel_markets))] = 0
 
         if presamples:
             lci, array = ExportInventory(
@@ -1709,6 +1728,15 @@ class InventoryCalculation:
         self.create_electricity_market_for_battery_production()
 
         self.set_inputs_in_A_matrix(self.array.values)
+
+        # if the inventories are meant to link to `premise` databases
+        # we need to remove the additional electricity input
+        # in the fuel market datasets
+        if not ecoinvent_compatibility:
+            fuel_markets = [self.inputs[a] for a in self.inputs if "fuel market for" in a[0]]
+            electricity_inputs = [self.inputs[a] for a in self.inputs if "electricity market for" in a[0]]
+            self.A[np.ix_(range(self.A.shape[0], electricity_inputs, fuel_markets))] = 0
+
         fp = ExportInventory(
             self.A, self.rev_inputs, db_name=filename or "carculator db"
         ).write_lci_to_excel(
@@ -2007,42 +2035,46 @@ class InventoryCalculation:
         :return:
         """
 
-        battery_tech = self.background_configuration["energy storage"]["electric"][
-            "type"
-        ]
         battery_origin = self.background_configuration["energy storage"]["electric"][
             "origin"
         ]
 
-        try:
-            losses_to_low = float(self.bs.losses[battery_origin]["LV"])
-        except KeyError:
-            losses_to_low = float(self.bs.losses["CN"]["LV"])
+        if battery_origin != "custom electricity mix":
 
-        mix_battery_manufacturing = (
-            self.bs.electricity_mix.sel(
-                country=battery_origin,
-                variable=[
-                    "Hydro",
-                    "Nuclear",
-                    "Gas",
-                    "Solar",
-                    "Wind",
-                    "Biomass",
-                    "Coal",
-                    "Oil",
-                    "Geothermal",
-                    "Waste",
-                    "Biogas CCS",
-                    "Biomass CCS",
-                    "Coal CCS",
-                    "Gas CCS",
-                    "Wood CCS",
-                ],
+            try:
+                losses_to_low = float(self.bs.losses[battery_origin]["LV"])
+            except KeyError:
+                losses_to_low = float(self.bs.losses["CN"]["LV"])
+
+            mix_battery_manufacturing = (
+                self.bs.electricity_mix.sel(
+                    country=battery_origin,
+                    variable=[
+                        "Hydro",
+                        "Nuclear",
+                        "Gas",
+                        "Solar",
+                        "Wind",
+                        "Biomass",
+                        "Coal",
+                        "Oil",
+                        "Geothermal",
+                        "Waste",
+                        "Biogas CCS",
+                        "Biomass CCS",
+                        "Coal CCS",
+                        "Gas CCS",
+                        "Wood CCS",
+                    ],
+                )
+                .interp(year=self.scope["year"], kwargs={"fill_value": "extrapolate"})
+                .values
             )
-            .interp(year=self.scope["year"], kwargs={"fill_value": "extrapolate"})
-            .values
-        )
+
+        else:
+            # electricity mix for battery manufacturing same as `custom electricity mix`
+            mix_battery_manufacturing = self.mix
+            losses_to_low = 1.1
 
         # Fill the electricity markets for battery production
         for y, year in enumerate(self.scope["year"]):
@@ -2143,251 +2175,7 @@ class InventoryCalculation:
         :return:
         """
 
-        d_fuels = {
-            "electrolysis": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 58,
-            },
-            "smr - natural gas": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from SMR of NG, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "smr - natural gas with CCS": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from SMR of NG, with CCS, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "smr - biogas": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from SMR of biogas, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "smr - biogas with CCS": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "coal gasification": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from coal gasification, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "wood gasification": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "wood gasification with CCS": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "wood gasification with EF": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling plant",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "wood gasification with EF with CCS": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling plant",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "wood gasification (Swiss forest)": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at H2 fuelling station",
-                    "CH",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "wood gasification with CCS (Swiss forest)": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at H2 fuelling station",
-                    "CH",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "wood gasification with EF (Swiss forest)": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
-                    "CH",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "wood gasification with EF with CCS (Swiss forest)": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
-                    "CH",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "atr - natural gas": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, ATR of NG, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "atr - natural gas with CCS": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, ATR of NG, with CCS, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "atr - biogas": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from ATR of biogas, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "atr - biogas with CCS": {
-                "name": (
-                    "Hydrogen, gaseous, 700 bar, from ATR of biogas with CCS, at H2 fuelling station",
-                    "RER",
-                    "kilogram",
-                    "Hydrogen, gaseous, 700 bar",
-                ),
-                "additional electricity": 0,
-            },
-            "cng": {
-                "name": (
-                    "market for natural gas, high pressure, vehicle grade",
-                    "GLO",
-                    "kilogram",
-                    "natural gas, high pressure, vehicle grade",
-                ),
-                "additional electricity": 0,
-            },
-            "biogas - sewage sludge": {
-                "name": (
-                    "biogas upgrading - sewage sludge - amine scrubbing - best",
-                    "CH",
-                    "kilogram",
-                    "biogas upgrading - sewage sludge - amine scrubbing - best",
-                ),
-                "additional electricity": 0,
-            },
-            "biogas - biowaste": {
-                "name": (
-                    "biomethane from biogas upgrading - biowaste - amine scrubbing",
-                    "CH",
-                    "kilogram",
-                    "biomethane",
-                ),
-                "additional electricity": 0,
-            },
-            "syngas": {
-                "name": (
-                    "Methane production, synthetic, from electrochemical methanation",
-                    "RER",
-                    "kilogram",
-                    "Methane, synthetic",
-                ),
-                "additional electricity": 58 * 0.50779661,
-            },
-            "lpg": {
-                "name": (
-                    "market for liquefied petroleum gas",
-                    "Europe without Switzerland",
-                    "kilogram",
-                    "liquefied petroleum gas",
-                ),
-                "additional electricity": 0,
-            },
-            "diesel": {
-                "name": (
-                    "market for diesel",
-                    "Europe without Switzerland",
-                    "kilogram",
-                    "diesel",
-                ),
-                "additional electricity": 0,
-            },
-            "biodiesel - algae": {
-                "name": (
-                    "Biodiesel from algae",
-                    "RER",
-                    "kilogram",
-                    "Biodiesel from algae",
-                ),
-                "additional electricity": 0,
-            },
-            "biodiesel - cooking oil": {
-                "name": (
-                    "Biodiesel from cooking oil",
-                    "RER",
-                    "kilogram",
-                    "Biodiesel from cooking oil",
-                ),
-                "additional electricity": 0,
-            },
-            "synthetic diesel": {
-                "name": (
-                    "Diesel production, synthetic, Fischer Tropsch process",
-                    "RER",
-                    "kilogram",
-                    "Diesel, synthetic",
-                ),
-                "additional electricity": 58 * 0.2875,
-            },
-        }
+
 
         d_dataset_name = {
             "diesel": "fuel supply for diesel vehicles, ",
@@ -2421,9 +2209,9 @@ class InventoryCalculation:
                     fuel_market_index = [
                         self.inputs[i] for i in self.inputs if i[0] == dataset_name
                     ][0]
-                    primary_fuel_activity_index = self.inputs[d_fuels[primary]["name"]]
+                    primary_fuel_activity_index = self.inputs[self.fuel_dictionary[primary]["name"]]
                     secondary_fuel_activity_index = self.inputs[
-                        d_fuels[secondary]["name"]
+                        self.fuel_dictionary[secondary]["name"]
                     ]
                     self.A[:, primary_fuel_activity_index, fuel_market_index] = (
                         -1 * primary_share[y]
@@ -2433,9 +2221,9 @@ class InventoryCalculation:
                     )
 
                     additional_electricity = (
-                        d_fuels[primary]["additional electricity"] * primary_share[y]
+                        self.fuel_dictionary[primary]["additional electricity"] * primary_share[y]
                     ) + (
-                        d_fuels[secondary]["additional electricity"]
+                        self.fuel_dictionary[secondary]["additional electricity"]
                         * secondary_share[y]
                     )
 
@@ -2464,6 +2252,293 @@ class InventoryCalculation:
                     == "electricity market for fuel preparation, " + str(year)
                 ][0]
                 self.A[:, electricity_mix_index, electricity_market_index] = -1
+
+    def find_inputs(self, value_in, value_out, find_input_by="name", zero_out_input=False):
+        """
+        Finds the exchange inputs to a specified functional unit
+        :param find_input_by: can be 'name' or 'unit'
+        :param value_in: value to look for
+        :param value_out: functional unit output
+        :return: indices of all inputs to FU, indices of inputs of intereste
+        :rtype: tuple
+        """
+
+        if isinstance(value_out, str):
+            value_out = [value_out]
+
+        index_output = [self.inputs[i] for val in value_out for i in self.inputs
+                        if val.lower() in i[0].lower()]
+
+        f = np.float32(np.zeros((np.shape(self.A)[1])))
+
+        f[index_output] = 1
+
+        X = np.float32(sparse.linalg.spsolve(self.A[0], f.T))
+
+        ind_inputs = np.nonzero(X)[0]
+
+        if find_input_by == "name":
+            ins = [i for i in ind_inputs
+                    if value_in.lower() in self.rev_inputs[i][0].lower()]
+
+        if find_input_by == "unit":
+            ins = [i for i in ind_inputs
+                    if value_in.lower() in self.rev_inputs[i][2].lower()]
+
+        outs = [i for i in ind_inputs
+                if i not in ins]
+
+        sum_supplied = X[ins].sum()
+
+        if zero_out_input:
+            # zero out initial inputs
+            self.A[np.ix_(np.arange(0, self.A.shape[0]), ins, outs)] *= 0
+        else:
+            return sum_supplied
+
+    def create_fuel_dictionary(self):
+
+        d_fuels = {
+            "electrolysis": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from electrolysis, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "smr - natural gas": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from SMR of NG, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "smr - natural gas with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from SMR of NG, with CCS, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "smr - biogas": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from SMR of biogas, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "smr - biogas with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "coal gasification": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from coal gasification, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "wood gasification": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "wood gasification with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "wood gasification with EF": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling plant",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "wood gasification with EF with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling plant",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "wood gasification (Swiss forest)": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at H2 fuelling station",
+                    "CH",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "wood gasification with CCS (Swiss forest)": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at H2 fuelling station",
+                    "CH",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "wood gasification with EF (Swiss forest)": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
+                    "CH",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "wood gasification with EF with CCS (Swiss forest)": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
+                    "CH",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "atr - natural gas": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, ATR of NG, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "atr - natural gas with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, ATR of NG, with CCS, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "atr - biogas": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from ATR of biogas, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "atr - biogas with CCS": {
+                "name": (
+                    "Hydrogen, gaseous, 700 bar, from ATR of biogas with CCS, at H2 fuelling station",
+                    "RER",
+                    "kilogram",
+                    "Hydrogen, gaseous, 700 bar",
+                )
+            },
+            "cng": {
+                "name": (
+                    "market for natural gas, high pressure, vehicle grade",
+                    "GLO",
+                    "kilogram",
+                    "natural gas, high pressure, vehicle grade",
+                )
+            },
+            "biogas - sewage sludge": {
+                "name": (
+                    "biogas upgrading - sewage sludge - amine scrubbing - best",
+                    "CH",
+                    "kilogram",
+                    "biogas upgrading - sewage sludge - amine scrubbing - best",
+                )
+            },
+            "biogas - biowaste": {
+                "name": (
+                    "biomethane from biogas upgrading - biowaste - amine scrubbing",
+                    "CH",
+                    "kilogram",
+                    "biomethane",
+                )
+            },
+            "syngas": {
+                "name": (
+                    "Methane production, synthetic, from electrochemical methanation",
+                    "RER",
+                    "kilogram",
+                    "Methane, synthetic",
+                )
+            },
+            "lpg": {
+                "name": (
+                    "market for liquefied petroleum gas",
+                    "Europe without Switzerland",
+                    "kilogram",
+                    "liquefied petroleum gas",
+                )
+            },
+            "diesel": {
+                "name": (
+                    "market for diesel",
+                    "Europe without Switzerland",
+                    "kilogram",
+                    "diesel",
+                )
+            },
+            "biodiesel - algae": {
+                "name": (
+                    "Biodiesel from algae",
+                    "RER",
+                    "kilogram",
+                    "Biodiesel from algae",
+                )
+            },
+            "biodiesel - cooking oil": {
+                "name": (
+                    "Biodiesel from cooking oil",
+                    "RER",
+                    "kilogram",
+                    "Biodiesel from cooking oil",
+                )
+            },
+            "synthetic diesel": {
+                "name": (
+                    "Diesel production, synthetic, Fischer Tropsch process",
+                    "RER",
+                    "kilogram",
+                    "Diesel, synthetic",
+                )
+            },
+        }
+
+        for d in d_fuels:
+            if any(i in d_fuels[d]["name"][0].lower() for i in ("synthetic", "hydrogen", "ethanol",
+                                                                "biodiesel")):
+                d_fuels[d]["additional electricity"] = self.find_inputs(
+                    "kilowatt hour",
+                    d_fuels[d]["name"][0],
+                    "unit"
+                )
+            else:
+                d_fuels[d]["additional electricity"] = 0
+
+        for d in d_fuels:
+            if any(i in d_fuels[d]["name"][0].lower() for i in ("synthetic", "hydrogen", "bio")):
+                self.find_inputs(
+                    "kilowatt hour",
+                    d_fuels[d]["name"][0],
+                    "unit", zero_out_input=True
+                )
+
+
+        return d_fuels
+
 
     def set_inputs_in_A_matrix(self, array):
         """
