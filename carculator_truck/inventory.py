@@ -328,6 +328,15 @@ class InventoryCalculation:
         self.fuel_dictionary = self.create_fuel_dictionary()
         self.create_fuel_markets()
 
+        if "direct air capture" in self.background_configuration:
+            if "heat source" in self.background_configuration["direct air capture"]:
+                heat_source = self.background_configuration["direct air capture"][
+                    "heat source"
+                ]
+
+                if heat_source != "waste heat":
+                    self.select_heat_supplier(heat_source)
+
         self.index_cng = [self.inputs[i] for i in self.inputs if "ICEV-g" in i[0]]
         self.index_combustion_wo_cng = [
             self.inputs[i]
@@ -2539,7 +2548,6 @@ class InventoryCalculation:
 
         return d_fuels
 
-
     def set_inputs_in_A_matrix(self, array):
         """
         Fill-in the A matrix. Does not return anything. Modifies in place.
@@ -4068,3 +4076,56 @@ class InventoryCalculation:
         ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
 
         print("*********************************************************************")
+
+    def select_heat_supplier(self, heat_supplier):
+        """
+        The heat supply is an important aspect of direct air capture.
+        Here, we can change the supplier of heat.
+        :param heat_supplier: by default "waste heat". Must be one of "waste heat", "biomass heat",
+        "natural gas heat", "market heat".
+        :type heat_supplier: str
+        :return:
+        """
+
+        d_heat_suppliers = {
+            "waste heat": (
+                "heat, from municipal waste incineration to generic market for heat district or industrial, other than natural gas",
+                "CH",
+                "megajoule",
+                "heat, district or industrial, other than natural gas",
+            ),
+            "biomass heat": (
+                "heat production, hardwood chips from forest, at furnace 1000kW, state-of-the-art 2014",
+                "CH",
+                "megajoule",
+                "heat, district or industrial, other than natural gas",
+            ),
+            "natural gas heat": (
+                "market group for heat, central or small-scale, natural gas",
+                "RER",
+                "megajoule",
+                "heat, central or small-scale, natural gas",
+            ),
+            "market heat": (
+                "market for heat, from steam, in chemical industry",
+                "RER",
+                "megajoule",
+                "heat, from steam, in chemical industry",
+            ),
+        }
+
+        air_capture = self.inputs[('carbon dioxide, captured from atmosphere',
+                      'RER',
+                      'kilogram',
+                      'carbon dioxide, captured from the atmosphere')]
+
+        all_inds = [self.inputs[i] for i in list(d_heat_suppliers.values())]
+
+        heat_amount = self.A[np.ix_(range(self.A.shape[0]), all_inds, [air_capture])].sum()
+
+        # zero out the heat input
+        self.A[np.ix_(range(self.A.shape[0]), all_inds, [air_capture])] = 0
+
+        # find index of the new supplier and set the amount
+        ind = self.inputs[d_heat_suppliers[heat_supplier]]
+        self.A[np.ix_(range(self.A.shape[0]), [ind], [air_capture])] = heat_amount
