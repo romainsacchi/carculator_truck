@@ -4119,13 +4119,25 @@ class InventoryCalculation:
                       'kilogram',
                       'carbon dioxide, captured from the atmosphere')]
 
+        methanol_distillation = self.inputs[("Methanol distillation",
+                                             "RER",
+                                             "kilogram",
+                                             "Purified methanol")]
+
         all_inds = [self.inputs[i] for i in list(d_heat_suppliers.values())]
 
+        # DAC
         heat_amount = self.A[np.ix_(range(self.A.shape[0]), all_inds, [air_capture])].sum()
-
         # zero out the heat input
         self.A[np.ix_(range(self.A.shape[0]), all_inds, [air_capture])] = 0
-
         # find index of the new supplier and set the amount
         ind = self.inputs[d_heat_suppliers[heat_supplier]]
         self.A[np.ix_(range(self.A.shape[0]), [ind], [air_capture])] = heat_amount
+
+        # Methanol distillation
+        heat_amount = self.A[np.ix_(range(self.A.shape[0]), all_inds, [methanol_distillation])].sum()
+        # zero out the heat input
+        self.A[np.ix_(range(self.A.shape[0]), all_inds, [methanol_distillation])] = 0
+        # find index of the new supplier and set the amount
+        ind = self.inputs[d_heat_suppliers[heat_supplier]]
+        self.A[np.ix_(range(self.A.shape[0]), [ind], [methanol_distillation])] = heat_amount
