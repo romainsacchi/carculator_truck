@@ -473,7 +473,6 @@ class ExportInventory:
             presamples_matrix = []
 
         # List of coordinates for non-zero values
-        print(self.array.shape)
         non_zeroes = np.nonzero(self.array[0, :, :])
 
         # List of coordinates where activities present more than once (to filter out "empty" activities, that is,
@@ -1044,7 +1043,7 @@ class ExportInventory:
                             writer.writerow([name])
 
                         if item == "Generator":
-                            writer.writerow(["carculator " + str(__version__)])
+                            writer.writerow(["carculator_truck " + str(__version__)])
 
                         if item == "Geography":
                             writer.writerow([a["location"]])
@@ -1251,7 +1250,7 @@ class ExportInventory:
                                     if ecoinvent_version == "uvek":
                                         if not any(i.lower() in e["name"].lower()
                                                    for i in ("waste", "emissions", "treatment", "scrap",
-                                                             "used powertrain", "disposal")) \
+                                                             "used powertrain", "disposal", "used passenger car")) \
                                                 or any(i in e["name"]
                                                        for i in ["from municipal waste incineration",
                                                                  "aluminium scrap, new",
@@ -1399,6 +1398,7 @@ class ExportInventory:
                                                               "treatment",
                                                               "scrap",
                                                               "used powertrain",
+                                                              "used passenger car",
                                                               "municipal solid waste",
                                                               "disposal")
                                                     )\

@@ -173,6 +173,7 @@ class InventoryCalculation:
     biodiesel - algae
     biodiesel - cooking oil
     synthetic diesel
+    synthetic diesel - energy allocation
 
 
     :ivar array: array from the CarModel class
@@ -2741,12 +2742,20 @@ class InventoryCalculation:
             },
             "synthetic diesel": {
                 "name": (
-                    "Diesel production, synthetic, Fischer Tropsch process",
+                    "Diesel production, synthetic, Fischer Tropsch process, economic allocation",
                     "RER",
                     "kilogram",
                     "Diesel, synthetic",
                 )
             },
+            "synthetic diesel - energy allocation": {
+                "name": (
+                    "Diesel production, synthetic, Fischer Tropsch process, energy allocation",
+                    "RER",
+                    "kilogram",
+                    "Diesel, synthetic",
+                )
+            }
         }
 
         for d in d_fuels:
