@@ -960,7 +960,8 @@ class InventoryCalculation:
             list_countries = self.geo.iam_to_ecoinvent_location(self.country)
             list_countries = [c for c in list_countries
                               if c in self.bs.sulfur.country.values]
-            if len(list_countries) > 1:
+
+            if len(list_countries) > 0:
 
                 sulfur_concentration = (
                     self.bs.sulfur.sel(

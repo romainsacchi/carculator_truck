@@ -120,6 +120,7 @@ class ExportInventory:
     def __init__(self, array, indices, db_name="carculator export"):
         self.array = array
         self.indices = indices
+        self.rename_vehicles()
         self.db_name = db_name
         self.references = load_references()
         # See https://docs.brightwaylca.org/intro.html#uncertainty-type
@@ -244,6 +245,24 @@ class ExportInventory:
         self.map_36_to_uvek = self.load_mapping_36_to_uvek()
         self.map_36_to_uvek_for_simapro = self.load_mapping_36_to_uvek_for_simapro()
         self.tags = self.load_tags()
+
+    def rename_vehicles(self):
+
+        d_names = {
+            "ICEV-d": "diesel",
+            "ICEV-g": "compressed gas",
+            "HEV-d": "diesel hybrid",
+            "PHEV-d": "plugin diesel hybrid",
+            "BEV": "battery electric",
+            "FCEV": "fuel cell electric",
+        }
+
+        for k, value in self.indices.items():
+            for key in d_names:
+                if key in value[0]:
+                    new_val = list(value)
+                    new_val[0] = new_val[0].replace(key, d_names[key])
+                    self.indices[k] = tuple(new_val)
 
     def load_tags(self):
         """Loads dictionary of tags for further use in BW2"""
@@ -1432,7 +1451,7 @@ class ExportInventory:
                                                     [
                                                         name + "| Cut-off, U",
                                                         simapro_units[e["unit"]],
-                                                        "{:.3E}".format(e["amount"]),
+                                                        "{:.3E}".format(e["amount"] * -1),
                                                         "undefined",
                                                         0,
                                                         0,
@@ -1539,7 +1558,7 @@ class ExportInventory:
 
         return filepath_export
 
-    def write_lci_to_bw(self, presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities):
+    def write_lci_to_bw(self, presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities=None):
         """
         Return a LCIImporter object with the inventory as `data` attribute.
 
