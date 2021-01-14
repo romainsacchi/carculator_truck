@@ -1372,7 +1372,7 @@ class InventoryCalculation:
                     self.inputs[
                         (
                             name,
-                            self.background_configuration["country"],
+                            self.country,
                             "unit",
                             ref + euro_class,
                         )
@@ -1775,6 +1775,7 @@ class InventoryCalculation:
         ecoinvent_version="3.7",
         db_name="carculator db",
         create_vehicle_datasets=True,
+        forbidden_activities=None,
     ):
         """
         Export the inventory as a `brightway2` bw2io.importers.base_lci.LCIImporter object
@@ -1852,7 +1853,7 @@ class InventoryCalculation:
         if not ecoinvent_compatibility:
             fuel_markets = [self.inputs[a] for a in self.inputs if "fuel market for" in a[0]]
             electricity_inputs = [self.inputs[a] for a in self.inputs if "electricity market for" in a[0]]
-            self.A[np.ix_(range(self.A.shape[0], electricity_inputs, fuel_markets))] = 0
+            self.A[np.ix_(range(self.A.shape[0]), electricity_inputs, fuel_markets)] = 0
 
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
@@ -1860,12 +1861,12 @@ class InventoryCalculation:
         if presamples:
             lci, array = ExportInventory(
                 self.A, self.rev_inputs, db_name=db_name
-            ).write_lci_to_bw(presamples, ecoinvent_compatibility, ecoinvent_version)
+            ).write_lci_to_bw(presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities)
             return lci, array
         else:
             lci = ExportInventory(
                 self.A, self.rev_inputs, db_name=db_name
-            ).write_lci_to_bw(presamples, ecoinvent_compatibility, ecoinvent_version)
+            ).write_lci_to_bw(presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities)
             return lci
 
     def export_lci_to_excel(
@@ -1876,6 +1877,8 @@ class InventoryCalculation:
         software_compatibility="brightway2",
         filename=None,
         create_vehicle_datasets=True,
+        forbidden_activities=None,
+        export_format="file"
     ):
         """
         Export the inventory as an Excel file (if the destination software is Brightway2) or a CSV file (if the destination software is Simapro) file.
@@ -1966,7 +1969,7 @@ class InventoryCalculation:
         if not ecoinvent_compatibility:
             fuel_markets = [self.inputs[a] for a in self.inputs if "fuel market for" in a[0]]
             electricity_inputs = [self.inputs[a] for a in self.inputs if "electricity market for" in a[0]]
-            self.A[np.ix_(range(self.A.shape[0], electricity_inputs, fuel_markets))] = 0
+            self.A[np.ix_(range(self.A.shape[0]), electricity_inputs, fuel_markets)] = 0
 
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
@@ -1979,6 +1982,8 @@ class InventoryCalculation:
             ecoinvent_version,
             software_compatibility,
             filename,
+            forbidden_activities,
+            export_format
         )
         return fp
 
