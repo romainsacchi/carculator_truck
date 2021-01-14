@@ -60,7 +60,7 @@ def load_references():
         raise FileNotFoundError(
             "The dictionary of references could not be found."
         )
-    with open(filepath) as f:
+    with open(filepath, encoding='latin1') as f:
         csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
     header, *data = csv_list
 
@@ -691,10 +691,10 @@ class ExportInventory:
 
     def write_lci_to_excel(
         self,
-        directory,
         ecoinvent_compatibility,
         ecoinvent_version,
         software_compatibility,
+        directory=None,
         filename=None,
         forbidden_activities=None,
         export_format="file"
