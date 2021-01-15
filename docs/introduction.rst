@@ -15,16 +15,18 @@ Romain Sacchi, Christian Bauer
 
 At the moment, the tool has a focus on the transport of dry goods.
 
-More specifically, ``carculator_truck`` generates `Brightway2 <https://brightwaylca.org/>`_ inventories, but also
-directly provides characterized results against several midpoint and endpoint indicators from the impact assessment method:
+More specifically, ``carculator_truck`` generates `Brightway2 <https://brightwaylca.org/>`_ and
+`SimaPro <https://www.simapro.com/>`_ compatible inventories, but also directly provides characterized results against
+several midpoint and endpoint indicators from the impact assessment method:
 * ReCiPe 2008 (mid- and endpoint)
 * and ILCD 2.0 2018 (only midpoint)
 
 as well as life cycle cost indicators.
 
 ``carculator_truck`` differentiates itself from other truck LCA models as it uses time- and energy-scenario-differentiated
-background inventories for the future, resulting from the coupling between the `ecoinvent 3.6 database <https://ecoinvent.org>`_
-and the scenario outputs of PIK's integrated assessment model `REMIND <https://www.pik-potsdam.de/research/transformation-pathways/models/remind/remind>`_.
+background inventories for the future, resulting from the coupling between the `ecoinvent database <https://ecoinvent.org>`_
+and the scenario outputs of PIK's integrated assessment model `REMIND <https://www.pik-potsdam.de/research/transformation-pathways/models/remind/remind>`_,
+using the `premise <https://github.com/romainsacchi/premise>`_ library.
 This allows to perform prospective study while consider future expected changes in regard to the production of electricity,
 cement, steel, heat, etc.
 
@@ -53,7 +55,7 @@ Finally, beside being more flexible and transparent, ``carculator_truck`` provid
 * possibility to override any or all of the 200+ default input vehicle parameters (e.g., load factor, drag coefficient) but also calculated parameters (e.g., driving mass).
 * hot pollutants emissions as a function of the driving cycle, using `HBEFA <https://www.hbefa.net/e/index.html>`_ 4.1 data, further divided between rural, suburban and urban areas
 * noise emissions, based on `CNOSSOS-EU <https://ec.europa.eu/jrc/en/publication/reference-reports/common-noise-assessment-methods-europe-cnossos-eu>`_ models for noise emissions and `Noise footprint from personal land‐based mobility by Cucurachi, et al (2019) <https://onlinelibrary.wiley.com/doi/full/10.1111/jiec.12837>`_ for inventory modelling and mid- and endpoint characterization of noise emissions, function of driving cycle and further divided between rural, suburban and urban areas
-* export of inventories as an Excel file, to be used with Brightway2 or Simapro (in progress), including uncertainty information. This requires the user to have `ecoinvent 3.6 cutoff` installed on the LCA software the car inventories are exported to.
+* export of inventories as an Excel file, to be used with Brightway2 or Simapro 9, including uncertainty information. This requires the user to have `ecoinvent 3.6 cutoff` installed on the LCA software the car inventories are exported to.
 * export inventories directly into Brightway2, as a LCIImporter object to be registered. Additionally, when run in stochastic mode, it is possible to export arrays of pre-sampled values using the `presamples <https://pypi.org/project/presamples/>`_ library to be used together with the Monte Carlo function of Brightway2.
 * development of an online graphical user interface (in progress): `carculator online <https://carculator.psi.ch>`_
 
@@ -108,7 +110,7 @@ Retrospective and Prospective analyses
 
 By default, the tool produces results across thea year 2000, 2010, 2020, 2030, 2040 and 2050.
 It does so by adjusting efficiencies at the vehicle level, but also by adjusting certain aspects of the background inventories.
-The latter is done by linking the vehicles' inventories to energy scenario-specific ecoinvent databases produced by ``rmnd-lca``.
+The latter is done by linking the vehicles' inventories to energy scenario-specific ecoinvent databases produced by ``premise``.
 
 Export of inventories
 *********************
@@ -123,5 +125,5 @@ Among the formats available, ``carculator_truck`` can export inventories as:
 
 The inventories cna be made compatible for:
 * ecoinvent 3.5 and 3.6, cut-off
-* REMIND-ecoinvent produced with ``rmnd-lca``
+* REMIND-ecoinvent produced with ``premise``
 * UVEK-ecoinvent 2.2 database

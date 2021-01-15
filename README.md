@@ -45,7 +45,9 @@ or for a stable release, from Pypi::
 (Fischer-Tropsch-based synthetic diesel, synhtetic methane)</li>
 <li>different years: from 2000 to 2050. Technological progress at the vehicle level but also in the rest of the world energy
 system (e.g., power generation) is accounted for, using energy scenario-specific IAM-coupled ecoinvent databases produced by 
-<a href="https://github.com/romainsacchi/rmnd-lca" target="_blank">rmnd_lca</a>.</li>
+<a href="https://github.com/romainsacchi/premise" target="_blank">premise</a>.</li>
+<li>Inventories can be imported into <a href="https://brightway.dev/" target="_blank">Brightway2</a> and
+<a href="https://www.simapro.com/" target="_blank">SimaPro 9.x.</a>.</li>
 </ul>
 
 <p align="center">
