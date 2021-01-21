@@ -2778,7 +2778,7 @@ class InventoryCalculation:
                     "Biodiesel, from algae, at fuelling station",
                     "RER",
                     "kilogram",
-                    "Bbiodiesel, vehicle grade",
+                    "biodiesel, vehicle grade",
                 )
             },
             "biodiesel - cooking oil": {
