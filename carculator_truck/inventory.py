@@ -268,6 +268,29 @@ class InventoryCalculation:
             size=self.scope["size"],
         )
 
+        # store some important specs for inventory documentation
+        self.specs = tm.array.sel(
+            parameter=[
+                "combustion power",
+                "electric power",
+                'combustion power share',
+                "lifetime kilometers",
+                "kilometers per year",
+                "target range",
+                "TtW efficiency",
+                "TtW energy",
+                'fuel cell system efficiency',
+                'electric energy stored',
+                'oxidation energy stored',
+                "energy battery mass",
+                'available payload',
+                'total cargo mass',
+                'capacity utilization',
+                "curb mass",
+                "driving mass",
+            ]
+        )
+
         self.target_range = int(tm.array.sel(parameter="target range", value=0).mean().values)
 
         self.compliant_vehicles = ((array.sel(parameter="total cargo mass") > 500)*1)\
@@ -940,7 +963,7 @@ class InventoryCalculation:
         If a region is passed, the average sulfur content over
         the countries the region contains is returned.
         :param location: str. A country or region ISO code
-        :param fuel: str. "diesel" or "gasoline
+        :param fuel: str. "diesel" or "gasoline"
         :return: float. Sulfur content in ppm.
         """
 
@@ -957,7 +980,7 @@ class InventoryCalculation:
             # we need to calculate hte average sulfur content
             # across the region
 
-            list_countries = self.geo.iam_to_ecoinvent_location(self.country)
+            list_countries = self.geo.iam_to_ecoinvent_location(location)
             list_countries = [c for c in list_countries
                               if c in self.bs.sulfur.country.values]
 
@@ -1492,13 +1515,19 @@ class InventoryCalculation:
                     str(REMIND_FILES_DIR)
                     + "/*recipe_midpoint*{}*.csv".format(self.scenario)
                 )
+                list_file_names = sorted(list_file_names)
                 B = np.zeros((len(list_file_names), 21, len(self.inputs)))
-            else:
+            elif self.method_type == "endpoint":
                 list_file_names = glob.glob(
                     str(REMIND_FILES_DIR)
                     + "/*recipe_endpoint*{}*.csv".format(self.scenario)
                 )
+                list_file_names = sorted(list_file_names)
                 B = np.zeros((len(list_file_names), 4, len(self.inputs)))
+            else:
+                raise TypeError(
+                    "The LCIA method type should be either 'midpoint' or 'endpoint'."
+                )
 
         else:
             list_file_names = glob.glob(
@@ -1760,11 +1789,17 @@ class InventoryCalculation:
         if presamples:
             lci, array = ExportInventory(
                 self.A, self.rev_inputs, db_name=db_name
-            ).write_lci(presamples, ecoinvent_compatibility, ecoinvent_version)
+            ).write_lci(presamples=presamples,
+                        ecoinvent_compatibility=ecoinvent_compatibility,
+                        ecoinvent_version=ecoinvent_version,
+                        vehicle_specs=self.specs)
             return lci, array
         else:
             lci = ExportInventory(self.A, self.rev_inputs, db_name=db_name).write_lci(
-                presamples, ecoinvent_compatibility, ecoinvent_version
+                presamples=presamples,
+                ecoinvent_compatibility=ecoinvent_compatibility,
+                ecoinvent_version=ecoinvent_version,
+                vehicle_specs=self.specs
             )
             return lci
 
@@ -1983,7 +2018,8 @@ class InventoryCalculation:
             software_compatibility=software_compatibility,
             filename=filename,
             forbidden_activities=forbidden_activities,
-            export_format=export_format
+            export_format=export_format,
+            vehicle_specs=self.specs
         )
         return fp
 
@@ -2002,7 +2038,15 @@ class InventoryCalculation:
             ):
                 raise ValueError("The custom electricity mixes are not valid")
 
+
+
             mix = self.background_configuration["custom electricity mix"]
+
+            if np.shape(mix)[0] != len(self.scope["year"]):
+                raise ValueError("The number of electricity mixes ({}) must match with the "
+                                 "number of years ({}).".format(
+                    np.shape(mix)[0], len(self.scope["year"])
+                ))
 
         else:
             use_year = [
@@ -2284,6 +2328,13 @@ class InventoryCalculation:
                 losses_to_low = float(self.bs.losses[battery_origin]["LV"])
             except KeyError:
                 losses_to_low = float(self.bs.losses["CN"]["LV"])
+
+            if battery_origin not in self.bs.electricity_mix.country.values:
+                print(
+                    "The electricity mix for {} could not be found. Average Chinese electricity mix is used for "
+                    "battery manufacture instead.".format(self.country)
+                )
+                battery_origin = "CN"
 
             mix_battery_manufacturing = (
                 self.bs.electricity_mix.sel(
@@ -2692,10 +2743,10 @@ class InventoryCalculation:
             },
             "biogas - sewage sludge": {
                 "name": (
-                    "biogas upgrading - sewage sludge - amine scrubbing - best",
-                    "CH",
+                    "Biomethane, gaseous, 5 bar, from sewage sludge fermentation, at fuelling station",
+                    "RER",
                     "kilogram",
-                    "biogas upgrading - sewage sludge - amine scrubbing - best",
+                    "biomethane, high pressure",
                 )
             },
             "biogas - biowaste": {
@@ -2708,60 +2759,69 @@ class InventoryCalculation:
             },
             "syngas": {
                 "name": (
-                    "Methane production, synthetic, from electrochemical methanation",
+                    "Methane, synthetic, gaseous, 5 bar, from electrochemical methanation, at fuelling station",
                     "RER",
                     "kilogram",
-                    "Methane, synthetic",
-                )
-            },
-            "lpg": {
-                "name": (
-                    "market for liquefied petroleum gas",
-                    "Europe without Switzerland",
-                    "kilogram",
-                    "liquefied petroleum gas",
+                    "methane, high pressure",
                 )
             },
             "diesel": {
                 "name": (
-                    "market for diesel",
-                    "Europe without Switzerland",
+                    "market group for diesel, low-sulfur",
+                    "RER",
                     "kilogram",
-                    "diesel",
+                    "diesel, low-sulfur",
                 )
             },
             "biodiesel - algae": {
                 "name": (
-                    "Biodiesel from algae",
+                    "Biodiesel, from algae, at fuelling station",
                     "RER",
                     "kilogram",
-                    "Biodiesel from algae",
+                    "Bbiodiesel, vehicle grade",
                 )
             },
             "biodiesel - cooking oil": {
                 "name": (
-                    "Biodiesel from cooking oil",
+                    "Biodiesel, from used cooking oil, at fuelling station",
                     "RER",
                     "kilogram",
-                    "Biodiesel from cooking oil",
+                    "biodiesel, vehicle grade",
+                )
+            },
+            "biodiesel - rapeseed oil": {
+                "name": (
+                    "Biodiesel, from rapeseed oil, at fuelling station",
+                    "RER",
+                    "kilogram",
+                    "biodiesel, vehicle grade",
+                )
+            },
+            "biodiesel - palm oil": {
+                "name": (
+                    "Biodiesel, from palm oil, at fuelling station",
+                    "RER",
+                    "kilogram",
+                    "biodiesel, vehicle grade",
                 )
             },
             "synthetic diesel": {
                 "name": (
-                    "Diesel production, synthetic, Fischer Tropsch process, economic allocation",
+                    "Diesel, synthetic, from electrolysis-based hydrogen, economic allocation, at fuelling station",
                     "RER",
                     "kilogram",
-                    "Diesel, synthetic",
+                    "diesel, synthetic, vehicle grade",
                 )
             },
             "synthetic diesel - energy allocation": {
                 "name": (
-                    "Diesel production, synthetic, Fischer Tropsch process, energy allocation",
+                    "Diesel, synthetic, from electrolysis-based hydrogen, energy allocation, at fuelling station",
                     "RER",
                     "kilogram",
-                    "Diesel, synthetic",
+                    "diesel, synthetic, vehicle grade",
                 )
-            }
+            },
+
         }
 
         for d in d_fuels:

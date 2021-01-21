@@ -333,7 +333,7 @@ class ExportInventory:
 
         return dict_uvek
 
-    def write_lci(self, presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities=None):
+    def write_lci(self, presamples, ecoinvent_compatibility, ecoinvent_version, vehicle_specs, forbidden_activities=None):
         """
         Return the inventory as a dictionary
         If if there several values for one exchange, uncertainty information is generated.
@@ -469,7 +469,13 @@ class ExportInventory:
             'ATR NG, 25 bar',
             'Fixed bed reactor for RWGS',
             'Hydrogen dispenser, for gaseous hydrogen',
-            'biogas upgrading - sewage sludge - amine scrubbing - best'
+            'biogas upgrading - sewage sludge - amine scrubbing - best',
+            'electricity production, at power plant/hard coal, post, pipeline 200km, storage 1000m',
+            'electricity production, at power plant/biogas, post, pipeline 200km, storage 1000m',
+            'electricity production, at wood burning power plant 20 MW, truck 25km, post, pipeline 200km, storage 1000m',
+            'electricity production, at power plant/natural gas, post, pipeline 200km, storage 1000m',
+            'electricity production, at BIGCC power plant 450MW, pre, pipeline 200km, storage 1000m'
+
         ]
 
         if isinstance(forbidden_activities, list):
@@ -589,10 +595,6 @@ class ExportInventory:
                                 type_exc,
                             )
                         )
-                    # else:
-                    #    # Generate uncertainty distribution parameters
-                    #    amount = np.median(self.array[:, row, col])
-                    #    uncertainty = self.best_fit_distribution(self.array[:, row, col] * -1)
 
                 # Look for a tag, if any
                 tag = [self.tags[t] for t in list(self.tags.keys()) if t in tuple_input[0]]
@@ -660,13 +662,95 @@ class ExportInventory:
                 description = self.references[tuple_output[0]]["description"]
                 special_remark = self.references[tuple_output[0]]["special remark"]
             else:
-                key = [k for k in self.references.keys() if k in tuple_output[0].lower()][0]
-                source = self.references[key]["source"]
-                description = self.references[key]["description"]
-                special_remark = self.references[key]["special remark"]
+                try:
+                    key = [k for k in self.references.keys() if k.lower() in tuple_output[0].lower()][0]
+                    source = self.references[key]["source"]
+                    description = self.references[key]["description"]
+                    special_remark = self.references[key]["special remark"]
+                except:
+                    print(tuple_output[0])
 
             if ecoinvent_compatibility or ecoinvent_compatibility == False and tuple_output[
                 0] not in activities_to_be_removed:
+
+                string = ""
+                if any(i in tuple_output[0].lower() for i in ("heavy duty", "medium duty")):
+
+                    d_pwt = {
+                        "diesel": "ICEV-d",
+                        "compressed gas": "ICEV-g",
+                        "diesel hybrid": "HEV-d",
+                        "plugin diesel hybrid": "PHEV-d",
+                        "battery electric": "BEV",
+                        "fuel cell electric": "FCEV"
+                    }
+
+                    d_units = {
+                        "lifetime kilometers": "[km]",
+                        "kilometers per year": "[km/year]",
+                        "target range": "[km]",
+                        "TtW efficiency": "[%]",
+                        "TtW energy": "[kj/km]",
+                        'electric energy stored': "[kWh]",
+                        'oxidation energy stored': "[kWh]",
+                        'combustion power share': "[%]",
+                        "combustion power": "[kW]",
+                        "electric power": "[kW]",
+                        'available payload': "[kg]",
+                        'total cargo mass': "[kg]",
+                        'capacity utilization': "[%]",
+                        "curb mass": "[kg]",
+                        "driving mass": "[kg]",
+                        "energy battery mass": "[kg]",
+                        'fuel cell system efficiency': "[%]",
+
+                    }
+
+                    d_names = {
+                        "lifetime kilometers": "Km over lifetime",
+                        "kilometers per year": "Yearly mileage",
+                        "target range": "Autonomy on a full tank/battery",
+                        "TtW efficiency": "Tank-to-wheel efficiency",
+                        "TtW energy": "Tank-to-wheel energy consumption",
+                        'electric energy stored': "Battery capacity",
+                        'oxidation energy stored': "Fuel tank capacity",
+                        'combustion power share': "Power share from combustion engine",
+                        "combustion power": "Combustion engine power",
+                        "electric power": "Electric motor power",
+                        'available payload': "Available payload",
+                        'total cargo mass': "Payload",
+                        'capacity utilization': "Load factor",
+                        "curb mass": "Curb mass (excl. driver and cargo)",
+                        "driving mass": "Driving mass (incl. driver and cargo)",
+                        "energy battery mass": "Mass of battery",
+                        'fuel cell system efficiency': "Fuel cell system efficiency",
+                    }
+
+
+                    l = [t.strip() for t in tuple_output[0].split(",")]
+
+                    if len(l) == 7:
+                        _, _, pwt, size, year, _, _ = [t.strip() for t in tuple_output[0].split(",")]
+                    else:
+                        _, pwt, size, year, _, _ = [t.strip() for t in tuple_output[0].split(",")]
+
+                    size = size.split(" ")[0]
+                    pwt = d_pwt[pwt]
+
+                    for p in vehicle_specs.parameter.values:
+
+                        val = vehicle_specs.sel(powertrain=pwt, size=size, year=int(year), value=0, parameter=p).values
+
+                        if val != 0:
+
+                            if p in ("TtW efficiency", 'combustion power share',
+                                     'capacity utilization', 'fuel cell system efficiency'):
+                                val = int(val * 100)
+                            else:
+                                val = int(val)
+
+                            string += d_names[p] + ": " + str(val) + " " + d_units[p] + ". "
+
                 list_act.append(
                     {
                         "production amount": 1,
@@ -682,6 +766,7 @@ class ExportInventory:
                         "source": source,
                         "description": description,
                         "special remark": special_remark,
+                        "comment": string
                     }
                 )
         if presamples:
@@ -694,10 +779,11 @@ class ExportInventory:
         ecoinvent_compatibility,
         ecoinvent_version,
         software_compatibility,
+        vehicle_specs,
         directory=None,
         filename=None,
         forbidden_activities=None,
-        export_format="file"
+        export_format="file",
     ):
         """
         Export an Excel file that can be consumed by the software defined in `software_compatibility`.
@@ -738,7 +824,10 @@ class ExportInventory:
                 os.makedirs(directory)
             filepath_export = os.path.join(directory, safe_name)
 
-        list_act = self.write_lci(False, ecoinvent_compatibility, ecoinvent_version, forbidden_activities)
+        list_act = self.write_lci(False, ecoinvent_compatibility=ecoinvent_compatibility,
+                                  ecoinvent_version=ecoinvent_version,
+                                  forbidden_activities=forbidden_activities,
+                                  vehicle_specs=vehicle_specs)
 
         if software_compatibility == "brightway2":
             data = self.format_data_for_lci_for_bw2(list_act)
@@ -876,6 +965,7 @@ class ExportInventory:
                         ("source", k["source"]),
                         ("description", k["description"]),
                         ("special remark", k["special remark"]),
+                        ("comment", k["comment"]),
                         ["Exchanges"],
                         [
                             "name",
@@ -956,7 +1046,6 @@ class ExportInventory:
             "Generator",
             "Literature references",
             "External documents",
-            "Comment",
             "Collection method",
             "Data treatment",
             "Verification",
@@ -1067,7 +1156,12 @@ class ExportInventory:
 
                 if item == "Comment":
 
-                    string = "Originally published in: "
+                    if a["comment"] !="":
+                        string = a["comment"]
+                    else:
+                        string = ""
+
+                    string += "Originally published in: "
                     string += source
 
                     if description != "":

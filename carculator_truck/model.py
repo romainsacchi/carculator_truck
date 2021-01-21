@@ -1428,6 +1428,8 @@ class TruckModel:
                     "diesel",
                     "biodiesel - cooking oil",
                     "biodiesel - algae",
+                    "biodiesel - palm oil",
+                    "biodiesel - rapeseed oil",
                     "synthetic diesel",
                 ],
             },
@@ -1491,6 +1493,8 @@ class TruckModel:
         fuels_lhv = {
             "diesel": 42.8,
             "biodiesel - cooking oil": 31.7,
+            "biodiesel - palm oil": 31.7,
+            "biodiesel - rapeseed oil": 31.7,
             "biodiesel - algae": 31.7,
             "synthetic diesel": 43.3,
             "synthetic diesel - energy allocation": 43.3,
@@ -1510,15 +1514,21 @@ class TruckModel:
             "atr - biogas with CCS": 120,
             "coal gasification": 120,
             "wood gasification": 120,
+            "wood gasification (Swiss forest)": 120,
             "wood gasification with CCS": 120,
+            "wood gasification with CCS (Swiss forest)": 120,
             "wood gasification with EF": 120,
+            "wood gasification with EF (Swiss forest)": 120,
             "wood gasification with EF with CCS": 120,
+            "wood gasification with EF with CCS (Swiss forest)": 120,
         }
 
         fuels_CO2 = {
             "diesel": 3.14,
             "biodiesel - cooking oil": 2.85,
             "biodiesel - algae": 2.85,
+            "biodiesel - palm oil": 2.85,
+            "biodiesel - rapeseed oil": 2.85,
             "synthetic diesel": 3.16,
             "synthetic diesel - energy allocation": 3.16,
             "cng": 2.65,
@@ -1537,9 +1547,13 @@ class TruckModel:
             "atr - biogas with CCS": 0,
             "coal gasification": 0,
             "wood gasification": 0,
+            "wood gasification (Swiss forest)": 0,
             "wood gasification with CCS": 0,
+            "wood gasification with CCS (Swiss forest)": 0,
             "wood gasification with EF": 0,
+            "wood gasification with EF (Swiss forest)": 0,
             "wood gasification with EF with CCS": 0,
+            "wood gasification with EF with CCS (Swiss forest)": 0,
         }
 
         if fuel_blend is None:
