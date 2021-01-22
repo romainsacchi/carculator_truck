@@ -1667,7 +1667,7 @@ class ExportInventory:
 
         return rows
 
-    def write_lci_to_bw(self, presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities):
+    def write_lci_to_bw(self, presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities, vehicle_specs):
         """
         Return a LCIImporter object with the inventory as `data` attribute.
 
@@ -1676,14 +1676,22 @@ class ExportInventory:
         """
         if presamples == True:
             data, array = self.write_lci(
-                presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities
+                presamples=presamples,
+                ecoinvent_compatibility=ecoinvent_compatibility,
+                ecoinvent_version=ecoinvent_version,
+                forbidden_activities=forbidden_activities,
+                vehicle_specs=vehicle_specs
             )
             i = bw2io.importers.base_lci.LCIImporter(self.db_name)
             i.data = data
             return (i, array)
         else:
             data = self.write_lci(
-                presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities
+                presamples=presamples,
+                ecoinvent_compatibility=ecoinvent_compatibility,
+                ecoinvent_version=ecoinvent_version,
+                forbidden_activities=forbidden_activities,
+                vehicle_specs=vehicle_specs
             )
             i = bw2io.importers.base_lci.LCIImporter(self.db_name)
             i.data = data

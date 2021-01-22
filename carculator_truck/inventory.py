@@ -1787,7 +1787,7 @@ class InventoryCalculation:
         if not ecoinvent_compatibility:
             fuel_markets = [self.inputs[a] for a in self.inputs if "fuel market for" in a[0]]
             electricity_inputs = [self.inputs[a] for a in self.inputs if "electricity market for" in a[0]]
-            self.A[np.ix_(range(self.A.shape[0], electricity_inputs, fuel_markets))] = 0
+            self.A[np.ix_(range(self.A.shape[0]), electricity_inputs, fuel_markets)] = 0
 
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
