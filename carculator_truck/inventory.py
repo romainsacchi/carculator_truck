@@ -967,6 +967,13 @@ class InventoryCalculation:
         :return: float. Sulfur content in ppm.
         """
 
+        try:
+            int(year)
+        except ValueError:
+            raise ValueError(
+                "The year for which to fetch sulfur concentration values is not valid."
+            )
+
         if location in self.bs.sulfur.country.values:
             sulfur_concentration = (
                 self.bs.sulfur.sel(
@@ -1896,12 +1903,24 @@ class InventoryCalculation:
         if presamples:
             lci, array = ExportInventory(
                 self.A, self.rev_inputs, db_name=db_name
-            ).write_lci_to_bw(presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities)
+            ).write_lci_to_bw(
+                presamples=presamples,
+              ecoinvent_compatibility=ecoinvent_compatibility,
+              ecoinvent_version=ecoinvent_version,
+              forbidden_activities=forbidden_activities,
+              vehicle_specs=self.specs
+                              )
             return lci, array
         else:
             lci = ExportInventory(
                 self.A, self.rev_inputs, db_name=db_name
-            ).write_lci_to_bw(presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities)
+            ).write_lci_to_bw(
+                presamples=presamples,
+              ecoinvent_compatibility=ecoinvent_compatibility,
+              ecoinvent_version=ecoinvent_version,
+              forbidden_activities=forbidden_activities,
+              vehicle_specs=self.specs
+                                )
             return lci
 
     def export_lci_to_excel(

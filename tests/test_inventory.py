@@ -108,12 +108,12 @@ def test_fuel_blend():
             "atr - biogas",
             "biogas - biowaste",
         ),
-        #(
+        (
 
-         #   "synthetic diesel",
-         #   "wood gasification with EF with CCS (Swiss forest)",
-         #   "syngas",
-        #),
+            "synthetic diesel",
+            "wood gasification with EF with CCS (Swiss forest)",
+            "syngas",
+        ),
         ]:
         fb = {
                     "diesel": {
@@ -181,35 +181,35 @@ def test_IAM_regions():
             },
         )
         ic.calculate_impacts()
-#
-#
+
+
 def test_endpoint():
-#
+
     """Test if the correct impact categories are considered"""
     ic = InventoryCalculation(tm, method="recipe", method_type="endpoint")
     results = ic.calculate_impacts()
     assert "human health" in [i.lower() for i in results.impact_category.values]
     assert len(results.impact_category.values) == 4
-#
+
     """Test if it errors properly if an incorrect method type is give"""
     with pytest.raises(TypeError) as wrapped_error:
         InventoryCalculation(tm, method="recipe", method_type="endpint")
     assert wrapped_error.type == TypeError
-#
-#
+
+
 def test_sulfur_concentration():
     ic = InventoryCalculation(tm, method="recipe", method_type="endpoint")
     ic.get_sulfur_content("RER", "diesel", 2000)
     ic.get_sulfur_content("foo", "diesel", 2000)
-#
+
     with pytest.raises(ValueError) as wrapped_error:
         ic.get_sulfur_content("FR", "diesel", "jku")
     assert wrapped_error.type == ValueError
-#
-#
+
+
 def test_custom_electricity_mix():
     """Test if a wrong number of electricity mixes throws an error"""
-#
+
     bc = {
         "custom electricity mix": [
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -217,13 +217,13 @@ def test_custom_electricity_mix():
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
     }
-#
+
     with pytest.raises(ValueError) as wrapped_error:
         InventoryCalculation(
             tm, method="recipe", method_type="endpoint", background_configuration=bc
         )
     assert wrapped_error.type == ValueError
-#
+
     """ Test if a sum of share superior to 1 throws an error """
 
     bc = {
@@ -233,32 +233,28 @@ def test_custom_electricity_mix():
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
     }
-#
+
     with pytest.raises(ValueError) as wrapped_error:
         InventoryCalculation(
             tm, method="recipe", method_type="endpoint", background_configuration=bc
         )
     assert wrapped_error.type == ValueError
-#
-# #
-# # def test_export_to_bw():
-# #     """ Test that inventories export successfully"""
-# #     ic = InventoryCalculation(
-# #         tm, method="recipe", method_type="endpoint"
-# #     )
-# #
-# #     for a in (True, False):
-# #         for b in ("3.5", "3.6", "3.7", "uvek"):
-# #             for c in (True, False):
-# #
-# #                 ic.export_lci(
-# #                     ecoinvent_compatibility=a,
-# #                     ecoinvent_version=b,
-# #                     create_vehicle_datasets=c,
-# #                 )
-# #
-# #
-# # def test_export_to_excel():
+
+def test_export_to_bw():
+    """ Test that inventories export successfully"""
+    ic = InventoryCalculation(
+        tm, method="recipe", method_type="endpoint"
+    )
+    for a in (True, False):
+        for b in ("3.5", "3.6", "3.7", "uvek"):
+            for c in (True, False):
+                ic.export_lci(
+                    ecoinvent_compatibility=a,
+                    ecoinvent_version=b,
+                    create_vehicle_datasets=c,
+                )
+
+#def test_export_to_excel():
 # #     """ Test that inventories export successfully to Excel/CSV"""
 # #     ic = InventoryCalculation(
 # #         tm, method="recipe", method_type="endpoint"
