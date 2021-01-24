@@ -293,8 +293,12 @@ class InventoryCalculation:
 
         self.target_range = int(tm.array.sel(parameter="target range", value=0).mean().values)
 
-        self.compliant_vehicles = ((array.sel(parameter="total cargo mass") > 500)*1)\
-                                  * (array.sel(parameter="is_available")*1)
+        if self.scope["fu"]["unit"] == "vkm":
+            self.compliant_vehicles = array.sel(parameter="is_available")*1
+
+        else:
+            self.compliant_vehicles = ((array.sel(parameter="total cargo mass") > 500)*1)\
+                                      * (array.sel(parameter="is_available")*1)
 
 
         self.array = array.stack(desired=["size", "powertrain", "year"])
