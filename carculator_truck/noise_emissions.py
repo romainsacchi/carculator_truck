@@ -56,9 +56,8 @@ class NoiseEmissionsModel:
 
     """
 
-    def __init__(self, cycle, cycle_name):
+    def __init__(self, cycle_name):
 
-        self.cycle = cycle
         self.cycle_name = cycle_name
         self.cycle_environment = {
             "Urban delivery": {"urban start": 0},
@@ -72,7 +71,7 @@ class NoiseEmissionsModel:
             },
         }
 
-    def rolling_noise(self, category):
+    def rolling_noise(self, category, cycle):
         """Calculate noise from rolling friction.
         Model from CNOSSOS-EU project
         (http://publications.jrc.ec.europa.eu/repository/bitstream/JRC72550/cnossos-eu%20jrc%20reference%20report_final_on%20line%20version_10%20august%202012.pdf)
@@ -84,7 +83,6 @@ class NoiseEmissionsModel:
         :rtype: numpy.array
 
         """
-        cycle = self.cycle.reshape(-1, 7)
 
         if category == "medium":
             cycle = cycle[:, :4]
@@ -114,7 +112,7 @@ class NoiseEmissionsModel:
 
         return array
 
-    def propulsion_noise(self, powertrain_type, category):
+    def propulsion_noise(self, powertrain_type, category, cycle):
         """Calculate noise from propulsion engine and gearbox.
         Model from CNOSSOS-EU project
         (http://publications.jrc.ec.europa.eu/repository/bitstream/JRC72550/cnossos-eu%20jrc%20reference%20report_final_on%20line%20version_10%20august%202012.pdf)
@@ -133,8 +131,6 @@ class NoiseEmissionsModel:
         :rtype: numpy.array
 
         """
-
-        cycle = self.cycle.reshape(-1, 7)
 
         # Noise sources are calculated for speeds above 20 km/h.
         if powertrain_type in ("combustion", "electric"):
@@ -200,7 +196,7 @@ class NoiseEmissionsModel:
 
         return array
 
-    def get_sound_power_per_compartment(self, powertrain_type, category):
+    def get_sound_power_per_compartment(self, powertrain_type, category, cycle):
         """
         Calculate sound energy (in J/s) over the driving cycle duration from sound power (in dB).
         The sound energy sums are further divided into `geographical compartments`: urban, suburban and rural.
@@ -214,19 +210,19 @@ class NoiseEmissionsModel:
 
         # rolling noise, in dB, for each second of the driving cycle
         if category == "medium":
-            rolling = self.rolling_noise(category).reshape(8, 4, -1)
+            rolling = self.rolling_noise(category, cycle).reshape(8, cycle.shape[-1], -1)
             # propulsion noise, in dB, for each second of the driving cycle
-            propulsion = self.propulsion_noise(powertrain_type, category).reshape(
-                8, 4, -1
+            propulsion = self.propulsion_noise(powertrain_type, category, cycle).reshape(
+                8, cycle.shape[-1], -1
             )
-            c = self.cycle.reshape(-1, 7)[:, :4].T
+            c = cycle.T
         if category == "heavy":
-            rolling = self.rolling_noise(category).reshape(8, 3, -1)
+            rolling = self.rolling_noise(category, cycle).reshape(8, cycle.shape[-1], -1)
             # propulsion noise, in dB, for each second of the driving cycle
-            propulsion = self.propulsion_noise(powertrain_type, category).reshape(
-                8, 3, -1
+            propulsion = self.propulsion_noise(powertrain_type, category, cycle).reshape(
+                8, cycle.shape[-1], -1
             )
-            c = self.cycle.reshape(-1, 7)[:, 4:].T
+            c = cycle.T
 
         # sum of rolling and propulsion noise sources
         total_noise = ne.evaluate(

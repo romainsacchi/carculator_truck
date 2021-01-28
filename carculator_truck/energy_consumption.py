@@ -47,12 +47,12 @@ class EnergyConsumptionModel:
 
     """
 
-    def __init__(self, cycle, rho_air=1.204):
+    def __init__(self, cycle, size=["3.5t", "7.5t", "18t", "26t", "32t", "40t", "60t"], rho_air=1.204):
         # If a string is passed, the corresponding driving cycle is retrieved
         if isinstance(cycle, str):
             try:
                 self.cycle_name = cycle
-                cycle = get_standard_driving_cycle(cycle)
+                cycle = get_standard_driving_cycle(cycle, size=size)
 
             except KeyError:
                 raise "The driving cycle specified could not be found."
@@ -68,9 +68,9 @@ class EnergyConsumptionModel:
 
         self.gradient_name = self.cycle_name
         # retrieve road gradients (in degrees) for each second of the driving cycle selected
-        self.gradient = get_gradients(self.gradient_name).reshape(-1, 1, 1, 1, 7)
+        self.gradient = get_gradients(self.gradient_name, size=size).reshape(-1, 1, 1, 1, len(size))
         # reshape the driving cycle
-        self.cycle = cycle.reshape(-1, 1, 1, 7)
+        self.cycle = cycle.reshape(-1, 1, 1, len(size))
 
         self.rho_air = rho_air
 

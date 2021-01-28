@@ -92,8 +92,10 @@ class HotEmissionsModel:
             ],
         ).transpose("component", "euro_class", "variable")
 
-        self.cycle = self.cycle.reshape(-1, 1, 1, 7)
         distance = np.squeeze(self.cycle.sum(axis=0)) / 3600
+
+        if isinstance(distance, np.float):
+            distance = np.array(distance).reshape(1, 1)
 
         # Emissions for each second of the driving cycle equal:
         # a * energy consumption + b
@@ -144,7 +146,7 @@ class HotEmissionsModel:
             urban /= distance[:, None, None, None]
 
         else:
-            urban = np.zeros((14, 7, em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            urban = np.zeros((14, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -154,7 +156,7 @@ class HotEmissionsModel:
             suburban /= distance[:, None, None, None]
 
         else:
-            suburban = np.zeros((14, 7, em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            suburban = np.zeros((14, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -165,7 +167,7 @@ class HotEmissionsModel:
 
         else:
 
-            rural = np.zeros((14, 7, em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            rural = np.zeros((14, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         res = np.vstack((urban, suburban, rural))
 

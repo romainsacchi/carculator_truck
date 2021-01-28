@@ -5,7 +5,7 @@ import stats_arrays as sa
 import xarray as xr
 
 
-def fill_xarray_from_input_parameters(tip, sensitivity=False):
+def fill_xarray_from_input_parameters(tip, sensitivity=False, scope=None):
     """Create an `xarray` labeled array from the sampled input parameters.
 
 
@@ -35,25 +35,74 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
         raise TypeError(
             "The argument passed is not an object of the TruckInputParameter class"
         )
+
+    if scope is None:
+        scope = {
+            "size": tip.sizes,
+            "powertrain": tip.powertrains,
+            "year": tip.years
+        }
+    else:
+        if "size" not in scope:
+            scope["size"] = tip.sizes
+        if "powertrain" not in scope:
+            scope["powertrain"] = tip.powertrains
+        if "year" not in scope:
+            scope["year"] = tip.years
+
+    # Make sure to include PHEV-e and PHEV-c-d if
+    # PHEV-d is listed
+
+    if "PHEV-d" in scope["powertrain"]:
+        for pt in ["PHEV-e", "PHEV-c-d"]:
+            if pt not in scope["powertrain"]:
+                scope["powertrain"].append(pt)
+
+
+    if any(s for s in scope["size"] if s not in tip.sizes):
+        raise ValueError(
+            "One of the size types is not valid."
+        )
+
+    if any(y for y in scope["year"] if y not in tip.years):
+        raise ValueError(
+            "One of the years defined is not valid."
+        )
+
+    if any(pt for pt in scope["powertrain"] if pt not in tip.powertrains):
+        raise ValueError(
+            "One of the powertrain types is not valid."
+        )
+
     # if the purpose is not to do a sensitivity analysis
     # the dimension `value` of the array is as large as the number of iterations to perform
     # that is, 1 in `static` mode, or several in `stochastic` mode.
+
+    d = {"3.5t": 1,
+         "7.5t": 2,
+         "18t": 3,
+         "26t": 4,
+         "32t": 5,
+         "40t": 6,
+         "60t": 7,
+         }
+
     if not sensitivity:
         array = xr.DataArray(
             np.zeros(
                 (
-                    len(tip.sizes),
-                    len(tip.powertrains),
+                    len(scope["size"]),
+                    len(scope["powertrain"]),
                     len(tip.parameters),
-                    len(tip.years),
+                    len(scope["year"]),
                     tip.iterations or 1,
                 )
             ),
             coords=[
-                ['3.5t', '7.5t', '18t', '26t',  '32t', '40t', '60t', ],
-                tip.powertrains,
+                sorted(scope["size"], key=lambda x: d[x]),
+                scope["powertrain"],
                 tip.parameters,
-                tip.years,
+                scope["year"],
                 np.arange(tip.iterations or 1),
             ],
             dims=["size", "powertrain", "parameter", "year", "value"],
@@ -66,10 +115,10 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
         array = xr.DataArray(
             np.zeros(
                 (
-                    len(tip.sizes),
-                    len(tip.powertrains),
+                    len(scope["size"]),
+                    len(scope["powertrain"]),
                     len(tip.parameters),
-                    len(tip.years),
+                    len(scope["year"]),
                     len(params),
                 )
             ),
@@ -77,40 +126,66 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False):
             dims=["size", "powertrain", "parameter", "year", "value"],
         ).astype("float32")
 
-    size_dict = {k: i for i, k in enumerate(tip.sizes)}
-    powertrain_dict = {k: i for i, k in enumerate(tip.powertrains)}
-    year_dict = {k: i for i, k in enumerate(tip.years)}
+    size_dict = {k: i for i, k in enumerate(scope["size"])}
+    powertrain_dict = {k: i for i, k in enumerate(scope["powertrain"])}
+    year_dict = {k: i for i, k in enumerate(scope["year"])}
     parameter_dict = {k: i for i, k in enumerate(tip.parameters)}
 
     if not sensitivity:
+
         for param in tip:
-            # try:
-            array.loc[
-                dict(
-                    powertrain=tip.metadata[param]["powertrain"],
-                    size=tip.metadata[param]["sizes"],
-                    year=tip.metadata[param]["year"],
-                    parameter=tip.metadata[param]["name"],
-                )
-            ] = tip.values[param]
+
+            pwt = set(tip.metadata[param]["powertrain"]) if isinstance(tip.metadata[param]["powertrain"], list) \
+                else set([tip.metadata[param]["powertrain"]])
+
+            size = set(tip.metadata[param]["sizes"]) if isinstance(tip.metadata[param]["sizes"], list) \
+                else set([tip.metadata[param]["sizes"]])
+
+            year = set(tip.metadata[param]["year"]) if isinstance(tip.metadata[param]["year"], list) \
+                else set([tip.metadata[param]["year"]])
+
+            if pwt.intersection(scope["powertrain"]) \
+                    and size.intersection(scope["size"]) \
+                    and year.intersection(scope["year"]):
+                array.loc[
+                    dict(
+                        powertrain=[p for p in pwt
+                                    if p in scope["powertrain"]],
+                        size=[s for s in size
+                              if s in scope["size"]],
+                        year=[y for y in year
+                              if y in scope["year"]],
+                        parameter=tip.metadata[param]["name"],
+                    )
+                ] = tip.values[param]
 
     else:
         # if `sensitivity` == True, the values of each parameter is
         # incremented by 10% when `value` == `parameter`
         for param in tip.input_parameters:
-            names = [n for n in tip.metadata if tip.metadata[n]["name"] == param]
+            names = [n for n in tip.metadata if tip.metadata[n]['name'] == param]
+
+            pwt = set(tip.metadata[param]["powertrain"]) if isinstance(tip.metadata[param]["powertrain"], list) \
+                else set([tip.metadata[param]["powertrain"]])
+
+            size = set(tip.metadata[param]["sizes"]) if isinstance(tip.metadata[param]["sizes"], list) \
+                else set([tip.metadata[param]["sizes"]])
+
+            year = set(tip.metadata[param]["year"]) if isinstance(tip.metadata[param]["year"], list) \
+                else set([tip.metadata[param]["year"]])
 
             for name in names:
-                vals = [
-                    tip.values[name] for _ in range(0, len(tip.input_parameters) + 1)
-                ]
+                vals = [tip.values[name] for _ in range(0, len(tip.input_parameters) + 1)]
                 vals[tip.input_parameters.index(param) + 1] *= 1.1
 
                 array.loc[
                     dict(
-                        powertrain=tip.metadata[name]["powertrain"],
-                        size=tip.metadata[name]["sizes"],
-                        year=tip.metadata[name]["year"],
+                        powertrain=[p for p in pwt
+                                    if p in scope["powertrain"]],
+                        size=[s for s in size
+                              if s in scope["size"]],
+                        year=[y for y in year
+                              if y in scope["year"]],
                         parameter=tip.metadata[name]["name"],
                     )
                 ] = vals
