@@ -4364,6 +4364,20 @@ class InventoryCalculation:
             / (array[self.array_inputs["total cargo mass"], :, index_arr_40t] / 1000)
         ).T
 
+        # Battery EoL
+        self.A[
+        :,
+        self.inputs[
+            ("market for used Li-ion battery", "GLO", "kilogram", "used Li-ion battery")
+        ],
+        -self.number_of_cars:,
+        ] = (array[self.array_inputs["energy battery mass"], :]
+            / array[self.array_inputs["lifetime kilometers"]]
+             / (array[self.array_inputs["total cargo mass"]
+                ] / 1000)).T
+
+
+
         # Noise emissions
         self.A[:, self.index_noise, -self.number_of_cars :] = (
             array[
@@ -5767,7 +5781,14 @@ class InventoryCalculation:
             * -1
         ).transpose([1, 0, 2])
 
-
+        # Battery EoL
+        self.A[
+        :,
+        self.inputs[
+            ("market for used Li-ion battery", "GLO", "kilogram", "used Li-ion battery")
+        ],
+        -self.number_of_cars:,
+        ] = (array[self.array_inputs["energy battery mass"], :]).transpose([1, 0, 2])
 
         # Noise emissions
         self.A[
