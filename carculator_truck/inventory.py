@@ -4374,7 +4374,7 @@ class InventoryCalculation:
         ] = (array[self.array_inputs["energy battery mass"], :]
             / array[self.array_inputs["lifetime kilometers"]]
              / (array[self.array_inputs["total cargo mass"]
-                ] / 1000)).T
+                ] / 1000))
 
 
 
