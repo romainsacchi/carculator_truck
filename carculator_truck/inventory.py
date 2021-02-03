@@ -5788,7 +5788,7 @@ class InventoryCalculation:
             ("market for used Li-ion battery", "GLO", "kilogram", "used Li-ion battery")
         ],
         -self.number_of_cars:,
-        ] = (array[self.array_inputs["energy battery mass"], :]).transpose([1, 0, 2])
+        ] = array[self.array_inputs["energy battery mass"], :]
 
         # Noise emissions
         self.A[
