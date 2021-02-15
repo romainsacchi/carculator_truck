@@ -1436,7 +1436,7 @@ class InventoryCalculation:
         new_A[0 : np.shape(initial_A)[0], 0 : np.shape(initial_A)[0]] = initial_A
 
         # Resize the matrix to fit the number of iterations in `array`
-        new_A = np.resize(new_A, (self.array.shape[1], new_A.shape[0], new_A.shape[1]))
+        new_A = np.resize(new_A.astype("float32"), (self.array.shape[1], new_A.shape[0], new_A.shape[1]))
         return new_A
 
     def build_fleet_vehicles(self):
@@ -2662,7 +2662,7 @@ class InventoryCalculation:
             },
             "wood gasification": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from heatpipe reformer gasification of woody biomass, at fuelling station",
                     "RER",
                     "kilogram",
                     "Hydrogen, gaseous, 700 bar",
@@ -2670,7 +2670,7 @@ class InventoryCalculation:
             },
             "wood gasification with CCS": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from heatpipe reformer gasification of woody biomass with CCS, at fuelling station",
                     "RER",
                     "kilogram",
                     "Hydrogen, gaseous, 700 bar",
@@ -2678,7 +2678,7 @@ class InventoryCalculation:
             },
             "wood gasification with EF": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in entrained flow gasifier, at fuelling station",
                     "RER",
                     "kilogram",
                     "Hydrogen, gaseous, 700 bar",
@@ -2686,7 +2686,7 @@ class InventoryCalculation:
             },
             "wood gasification with EF with CCS": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in entrained flow gasifier, with CCS, at fuelling station",
                     "RER",
                     "kilogram",
                     "Hydrogen, gaseous, 700 bar",
@@ -2694,7 +2694,7 @@ class InventoryCalculation:
             },
             "wood gasification (Swiss forest)": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from heatpipe reformer gasification of woody biomass, at fuelling station",
                     "CH",
                     "kilogram",
                     "Hydrogen, gaseous, 700 bar",
@@ -2702,7 +2702,7 @@ class InventoryCalculation:
             },
             "wood gasification with CCS (Swiss forest)": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from heatpipe reformer gasification of woody biomass with CCS, at fuelling station",
                     "CH",
                     "kilogram",
                     "Hydrogen, gaseous, 700 bar",
@@ -2710,7 +2710,7 @@ class InventoryCalculation:
             },
             "wood gasification with EF (Swiss forest)": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in entrained flow gasifier, at fuelling station",
                     "CH",
                     "kilogram",
                     "Hydrogen, gaseous, 700 bar",
@@ -2718,7 +2718,7 @@ class InventoryCalculation:
             },
             "wood gasification with EF with CCS (Swiss forest)": {
                 "name": (
-                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
+                    "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in entrained flow gasifier, with CCS, at fuelling station",
                     "CH",
                     "kilogram",
                     "Hydrogen, gaseous, 700 bar",
