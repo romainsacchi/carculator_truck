@@ -75,6 +75,9 @@ class HotEmissionsModel:
         :rtype: numpy.array
         """
 
+        if powertrain_type not in ("diesel", "cng"):
+            raise TypeError("The powertrain type is not valid.")
+
         arr = self.em.sel(
             powertrain=powertrain_type,
             euro_class=euro_classes,
@@ -105,30 +108,66 @@ class HotEmissionsModel:
         a = arr.sel(variable="a").values[:, None, None, :, None, None] * energy_consumption.values
         b = arr.sel(variable="b").values[:, None, None, :, None, None]
 
-        # The receiving array should contain 14 substances, not 10
+        # The receiving array should contain 40 substances, not 10
         arr_shape = list(a.shape)
-        arr_shape[0] = 14
+        arr_shape[0] = 40
         em_arr = np.zeros(tuple(arr_shape))
 
         em_arr[:10] = a + b
 
-        # Toluene, Xylene, Formaldehyde and Acetaldehyde defined as
-        # fractions of NMVOC emissions
+        # Ethane, Propane, Butane, Pentane, Hexane, Cyclohexane, Heptane
+        # Ethene, Propene, 1-Pentene, Toluene, m-Xylene, o-Xylene
+        # Formaldehyde, Acetaldehyde, Benzaldehyde, Acetone
+        # Methyl ethyl ketone, Acrolein, Styrene
+        # which are calculated as fractions of NMVOC emissions
 
-        # Toluene
-        em_arr[10] = em_arr[6] * 0.001
-        # Xylene
-        em_arr[11] = em_arr[6] * 0.0088
-        # Formaldehyde
-        em_arr[12] = em_arr[6] * 0.084
-        # Acetaldehyde
-        em_arr[13] = em_arr[6] * 0.0457
+        ratios_NMHC = np.array([
+            3.00E-04,
+            1.00E-03,
+            1.50E-03,
+            6.00E-04,
+            0.00E+00,
+            0.00E+00,
+            3.00E-03,
+            0.00E+00,
+            0.00E+00,
+            0.00E+00,
+            1.00E-04,
+            9.80E-03,
+            4.00E-03,
+            8.40E-02,
+            4.57E-02,
+            1.37E-02,
+            0.00E+00,
+            0.00E+00,
+            1.77E-02,
+            5.60E-03
+        ])
+
+
+        em_arr[10:30] = (em_arr[6] * ratios_NMHC.reshape(1, 1, 1, -1, 1)).transpose(3, 0, 1, 2, 4)[:, :, :, :, None, :]
 
         # remaining NMVOC
-        em_arr[6] *= (1 - .1395)
+        em_arr[6] *= (1 - np.sum(ratios_NMHC))
 
-        if powertrain_type not in ("diesel", "cng"):
-            raise TypeError("The powertrain type is not valid.")
+        if powertrain_type == "diesel":
+            # We also add heavy metals if diesel
+            # which are initially defined per kg of fuel consumed
+            # here converted to kg emitted/kj
+            heavy_metals = np.array([
+                1.83E-09,
+                2.34E-12,
+                2.34E-12,
+                4.07E-08,
+                4.95E-10,
+                2.06E-10,
+                7.01E-10,
+                1.40E-12,
+                1.24E-10,
+                2.03E-10
+            ])
+
+            em_arr[30:] = heavy_metals.reshape(-1, 1, 1, 1, 1, 1) * energy_consumption.values
 
         # In case the fit produces negative numbers (it should not, though)
         em_arr[em_arr < 0] = 0
@@ -146,7 +185,7 @@ class HotEmissionsModel:
             urban /= distance[:, None, None, None]
 
         else:
-            urban = np.zeros((14, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            urban = np.zeros((40, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -156,7 +195,7 @@ class HotEmissionsModel:
             suburban /= distance[:, None, None, None]
 
         else:
-            suburban = np.zeros((14, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            suburban = np.zeros((40, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -167,7 +206,7 @@ class HotEmissionsModel:
 
         else:
 
-            rural = np.zeros((14, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            rural = np.zeros((40, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         res = np.vstack((urban, suburban, rural))
 

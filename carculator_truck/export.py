@@ -763,24 +763,49 @@ class ExportInventory:
                     if len(l) == 7:
                         _, _, pwt, size, year, _, _ = [t.strip() for t in tuple_output[0].split(",")]
                     else:
-                        _, pwt, size, year, _, _ = [t.strip() for t in tuple_output[0].split(",")]
+                        items = [t.strip() for t in tuple_output[0].split(",")]
+                        if items[2] == "fleet average":
 
-                    size = size.split(" ")[0]
-                    pwt = d_pwt[pwt]
+                            if items[3] == "all powertrains":
+                                size = None
+                                pwt = None
 
-                    for p in vehicle_specs.parameter.values:
-
-                        val = vehicle_specs.sel(powertrain=pwt, size=size, year=int(year), value=0, parameter=p).values
-
-                        if val != 0:
-
-                            if p in ("TtW efficiency", 'combustion power share',
-                                     'capacity utilization', 'fuel cell system efficiency'):
-                                val = int(val * 100)
                             else:
-                                val = int(val)
 
-                            string += d_names[p] + ": " + str(val) + " " + d_units[p] + ". "
+                                _, _, _, pwt, year = [t.strip() for t in tuple_output[0].split(",")]
+                                size = None
+                        else:
+                            _, pwt, size, year, _, _ = [t.strip() for t in tuple_output[0].split(",")]
+
+                    if not size is None:
+
+                        size = size.split(" ")[0]
+                        pwt = d_pwt[pwt]
+
+                        if not vehicle_specs is None:
+
+                            for p in vehicle_specs.parameter.values:
+
+                                val = vehicle_specs.sel(powertrain=pwt, size=size, year=int(year), value=0, parameter=p).values
+
+                                if val != 0:
+
+                                    if p in ("TtW efficiency", 'combustion power share',
+                                             'capacity utilization', 'fuel cell system efficiency'):
+                                        val = int(val * 100)
+                                    else:
+                                        val = int(val)
+
+                                    string += d_names[p] + ": " + str(val) + " " + d_units[p] + ". "
+
+                    else:
+
+                        if not pwt is None:
+                            pwt = d_pwt[pwt]
+                            string = f"Fleet average {pwt} vehicle in {year}, all sizes considered."
+
+                        else:
+                            string = "Fleet average vehicle, all sizes and powertrains considered."
 
                 # Added transport distances if the inventory
                 # is meant for the UVEK database
@@ -1441,10 +1466,15 @@ class ExportInventory:
                             if ei_version in ("3.5", "3.6"):
                                 if not any(i.lower() in e["name"].lower()
                                            for i in ("waste", "emissions", "treatment", "scrap",
-                                                     "used powertrain", "disposal")) \
+                                                     "used powertrain", "disposal", "rainwater", "sludge")
+                                           ) \
                                         or any(i in e["name"]
                                                for i in ["from municipal waste incineration",
-                                                         ]):
+                                                            "municipal solid waste, incineration",
+                                                            "Biomethane", "biogas upgrading",
+                                                         "anaerobic digestion, with biogenic carbon uptake"
+                                                         ] if e["unit"] in ["kilowatt hour", "megajoule", "kilogram",
+                                                                            "cubic meter"]):
 
                                     if ei_version == "3.6":
                                         (e["name"], e["location"], e["unit"],
@@ -1503,21 +1533,26 @@ class ExportInventory:
                                 if not any(i.lower() in e["name"].lower()
                                            for i in ("waste", "emissions", "treatment", "scrap",
                                                      "used powertrain", "disposal", "used passenger car",
-                                                     "used electric passenger car")) \
+                                                     "used electric passenger car", "rainwater")) \
                                         or any(i in e["name"]
                                                for i in ["from municipal waste incineration",
                                                          "aluminium scrap, new",
                                                          "brake wear emissions",
                                                          "tyre wear emissions",
                                                          "road wear emissions",
-                                                         "used powertrain from electric passenger car"
-                                                         ]):
+                                                         "used powertrain from electric passenger car",
+                                                         "anaerobic digestion, with biogenic carbon uptake"
+                                                         ])\
+                                        or ("municipal solid waste, incineration" in e["name"] and e["unit"]=="kilowatt hour"):
 
                                     if e["name"] not in [i["name"] for i in data]:
 
-                                        name = self.map_36_to_uvek_for_simapro[
-                                            e["name"], e["location"], e["unit"], e["reference product"]
-                                        ]
+                                        try:
+                                            name = self.map_36_to_uvek_for_simapro[
+                                                e["name"], e["location"], e["unit"], e["reference product"]
+                                            ]
+                                        except:
+                                            print(e["name"], e["location"], e["unit"], e["reference product"])
 
                                     else:
                                         name = e["name"] + "/" + e["location"] + " U"
@@ -1587,20 +1622,37 @@ class ExportInventory:
                         if (
                                 e["type"] == "biosphere"
                                 and e["categories"][0] == "air"
-                        ):
+                        ) or e["name"] in ["Carbon dioxide, from soil or biomass stock",
+                                           "Carbon dioxide, to soil or biomass stock"]:
                             if e["name"] not in simapro_biosphere_flows_to_remove:
-                                rows.append(
-                                    [
-                                        dict_bio.get(e["name"], e["name"]),
-                                        "",
-                                        simapro_units[e["unit"]],
-                                        "{:.3E}".format(e["amount"]),
-                                        "undefined",
-                                        0,
-                                        0,
-                                        0,
-                                    ]
-                                )
+
+                                if e["name"] in ["Carbon dioxide, to soil or biomass stock"]:
+                                    rows.append(
+                                        [
+                                            dict_bio.get(e["name"], e["name"]),
+                                            "",
+                                            simapro_units[e["unit"]],
+                                            "{:.3E}".format(e["amount"] * -1),
+                                            "undefined",
+                                            0,
+                                            0,
+                                            0,
+                                        ]
+                                    )
+
+                                else:
+                                    rows.append(
+                                        [
+                                            dict_bio.get(e["name"], e["name"]),
+                                            "",
+                                            simapro_units[e["unit"]],
+                                            "{:.3E}".format(e["amount"]),
+                                            "undefined",
+                                            0,
+                                            0,
+                                            0,
+                                        ]
+                                    )
 
                 if item == "Emissions to water":
                     for e in a["exchanges"]:
@@ -1608,10 +1660,13 @@ class ExportInventory:
                                 e["type"] == "biosphere"
                                 and e["categories"][0] == "water"
                         ):
+
                             if e["name"] not in simapro_biosphere_flows_to_remove:
                                 if e["name"].lower() == "water":
                                     e["unit"] = "kilogram"
                                     e["amount"] /= 1000
+
+
 
 
                                 rows.append(
@@ -1632,7 +1687,10 @@ class ExportInventory:
                         if (
                                 e["type"] == "biosphere"
                                 and e["categories"][0] == "soil"
-                        ):
+                        ) and e["name"] not in ["Carbon dioxide, from soil or biomass stock",
+                                                "Carbon dioxide, to soil or biomass stock"]:
+
+
                             if e["name"] not in simapro_biosphere_flows_to_remove:
                                 rows.append(
                                     [
@@ -1666,14 +1724,17 @@ class ExportInventory:
                                                  "used passenger car",
                                                  "used electric passenger car",
                                                  "municipal solid waste",
-                                                 "disposal")
+                                                 "disposal",
+                                                 "rainwater mineral oil",
+                                                 "sludge")
                                        ) \
                                         and not any(i.lower() in e["name"].lower()
                                                     for i in ("anaerobic",
                                                               "cooking",
                                                               "heat",
-                                                              "manual dismantling"
-                                                              )):
+                                                              "manual dismantling",
+                                                              ))\
+                                        and e["unit"] not in ["kilowatt hour", "megajoule"]:
                                     is_waste = True
 
                             # Yes, it is a waste treatment activity
@@ -1741,9 +1802,12 @@ class ExportInventory:
 
                                         if e["name"] not in [i["name"] for i in data]:
 
-                                            name = self.map_36_to_uvek_for_simapro[
-                                                e["name"], e["location"], e["unit"], e["reference product"]
-                                            ]
+                                            try:
+                                                name = self.map_36_to_uvek_for_simapro[
+                                                    e["name"], e["location"], e["unit"], e["reference product"]
+                                                ]
+                                            except:
+                                                print(e["name"], e["location"], e["unit"], e["reference product"])
 
 
                                         else:
