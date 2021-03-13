@@ -295,7 +295,7 @@ def create_fleet_composition_from_IAM_file(
     """
 
     # Read the fleet composition CSV file
-    df = pd.read_csv(fp, delimiter=";")
+    df = pd.read_csv(fp, delimiter=",")
     df = df.fillna(0)
     df = df[["year","vintage_year","IAM_region","powertrain","size","vintage_demand_tkm"]]
 

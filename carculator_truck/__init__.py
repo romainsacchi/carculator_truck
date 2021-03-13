@@ -24,7 +24,7 @@ _all_ = (
 )
 
 # library version
-__version__ = (0, 1, 3)
+__version__ = (0, 1, 4)
 
 from pathlib import Path
 
