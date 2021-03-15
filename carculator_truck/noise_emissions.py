@@ -85,7 +85,6 @@ class NoiseEmissionsModel:
         """
 
         if category == "medium":
-            cycle = cycle[:, :4]
             array = np.tile(
                 np.log10(cycle / 70, out=np.zeros_like(cycle), where=(cycle != 0)), 8
             ).reshape((8, -1))
@@ -97,8 +96,7 @@ class NoiseEmissionsModel:
                 (30, 35.8, 32.6, 23.8, 30.1, 36.2, 38.3, 40.1)
             ).reshape((-1, 1))
 
-        if category == "heavy":
-            cycle = cycle[:, 4:]
+        else:
             array = np.tile(
                 np.log10(cycle / 70, out=np.zeros_like(cycle), where=(cycle != 0)), 8
             ).reshape((8, -1))
@@ -136,7 +134,6 @@ class NoiseEmissionsModel:
         if powertrain_type in ("combustion", "electric"):
 
             if category == "medium":
-                cycle = cycle[:, :4]
                 array = np.tile((cycle - 70) / 70, 8).reshape((8, -1))
 
                 constants = np.array(
@@ -147,7 +144,6 @@ class NoiseEmissionsModel:
                 ).reshape((-1, 1))
 
             if category == "heavy":
-                cycle = cycle[:, 4:]
                 array = np.tile((cycle - 70) / 70, 8).reshape((8, -1))
                 constants = np.array(
                     (104.4, 100.6, 101.7, 101, 100.1, 95.9, 91.3, 85.3)
@@ -216,18 +212,21 @@ class NoiseEmissionsModel:
                 8, cycle.shape[-1], -1
             )
             c = cycle.T
-        if category == "heavy":
+        elif category == "heavy":
             rolling = self.rolling_noise(category, cycle).reshape(8, cycle.shape[-1], -1)
             # propulsion noise, in dB, for each second of the driving cycle
             propulsion = self.propulsion_noise(powertrain_type, category, cycle).reshape(
                 8, cycle.shape[-1], -1
             )
             c = cycle.T
+        else:
+            raise TypeError("The category type is not valid.")
 
         # sum of rolling and propulsion noise sources
         total_noise = ne.evaluate(
             "where(c != 0, 10 * log10((10 ** (rolling / 10)) + (10 ** (propulsion / 10))), 0)"
         )
+
 
         # convert dBs to Watts (or J/s)
         sound_power = ne.evaluate("(10 ** -12) * (10 ** (total_noise / 10))")

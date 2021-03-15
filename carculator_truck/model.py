@@ -1460,7 +1460,11 @@ class TruckModel:
                     parameter=list_noise_emissions,
                     size=l_size_heavy,
                 )
-            ] = nem.get_sound_power_per_compartment("combustion", "heavy", cycle)
+            ] = nem.get_sound_power_per_compartment(
+                powertrain_type="combustion",
+                category="heavy",
+                cycle=cycle
+            )
 
         if len(l_pwt_electric) > 0 and len(l_size_medium) > 0:
             cycle = get_standard_driving_cycle(self.cycle, size=l_size_medium)
