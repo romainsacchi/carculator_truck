@@ -693,13 +693,10 @@ class ExportInventory:
                 description = self.references[tuple_output[0]]["description"]
                 special_remark = self.references[tuple_output[0]]["special remark"]
             else:
-                try:
-                    key = [k for k in self.references.keys() if k.lower() in tuple_output[0].lower()][0]
-                    source = self.references[key]["source"]
-                    description = self.references[key]["description"]
-                    special_remark = self.references[key]["special remark"]
-                except:
-                    print(tuple_output[0])
+                key = [k for k in self.references.keys() if k.lower() in tuple_output[0].lower()][0]
+                source = self.references[key]["source"]
+                description = self.references[key]["description"]
+                special_remark = self.references[key]["special remark"]
 
             if ecoinvent_compatibility or ecoinvent_compatibility == False and tuple_output[
                 0] not in activities_to_be_removed:
@@ -757,27 +754,21 @@ class ExportInventory:
                         'fuel cell system efficiency': "Fuel cell system efficiency",
                     }
 
-
                     l = [t.strip() for t in tuple_output[0].split(",")]
 
                     if len(l) == 7:
-                        _, _, pwt, size, year, _, _ = [t.strip() for t in tuple_output[0].split(",")]
+                        _, _, pwt, size, year, _, _ = l
                     else:
-                        items = [t.strip() for t in tuple_output[0].split(",")]
-                        if items[2] == "fleet average":
-
-                            if items[3] == "all powertrains":
-                                size = None
-                                pwt = None
-
-                            else:
-
-                                _, _, _, pwt, year = [t.strip() for t in tuple_output[0].split(",")]
-                                size = None
+                        if l[2] == "fleet average":
+                            _, _, _, pwt, year = [t.strip() for t in tuple_output[0].split(",")]
+                            size = None
+                        elif l[3] == "fleet average":
+                            _, _, size, _, _, year = l
+                            pwt = None
                         else:
                             _, pwt, size, year, _, _ = [t.strip() for t in tuple_output[0].split(",")]
 
-                    if not size is None:
+                    if size is not None and pwt is not None:
 
                         size = size.split(" ")[0]
                         pwt = d_pwt[pwt]
@@ -800,12 +791,12 @@ class ExportInventory:
 
                     else:
 
-                        if not pwt is None:
+                        if pwt is not None:
                             pwt = d_pwt[pwt]
                             string = f"Fleet average {pwt} vehicle in {year}, all sizes considered."
 
                         else:
-                            string = "Fleet average vehicle, all sizes and powertrains considered."
+                            string = f"Fleet average vehicle of {size} in {year}, all powertrains considered."
 
                 # Added transport distances if the inventory
                 # is meant for the UVEK database
@@ -1015,7 +1006,6 @@ class ExportInventory:
                 workbook.close()
 
             if export_format == "string":
-                print("hey")
                 output = io.BytesIO()
                 workbook = xlsxwriter.Workbook(output, {"in_memory": True})
                 bold = workbook.add_format({"bold": True})
@@ -1547,12 +1537,9 @@ class ExportInventory:
 
                                     if e["name"] not in [i["name"] for i in data]:
 
-                                        try:
-                                            name = self.map_36_to_uvek_for_simapro[
-                                                e["name"], e["location"], e["unit"], e["reference product"]
-                                            ]
-                                        except:
-                                            print(e["name"], e["location"], e["unit"], e["reference product"])
+                                        name = self.map_36_to_uvek_for_simapro[
+                                            e["name"], e["location"], e["unit"], e["reference product"]
+                                        ]
 
                                     else:
                                         name = e["name"] + "/" + e["location"] + " U"
@@ -1802,12 +1789,9 @@ class ExportInventory:
 
                                         if e["name"] not in [i["name"] for i in data]:
 
-                                            try:
-                                                name = self.map_36_to_uvek_for_simapro[
-                                                    e["name"], e["location"], e["unit"], e["reference product"]
-                                                ]
-                                            except:
-                                                print(e["name"], e["location"], e["unit"], e["reference product"])
+                                            name = self.map_36_to_uvek_for_simapro[
+                                                e["name"], e["location"], e["unit"], e["reference product"]
+                                            ]
 
 
                                         else:

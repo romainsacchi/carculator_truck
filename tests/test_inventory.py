@@ -193,7 +193,8 @@ def test_endpoint():
 
     """Test if it errors properly if an incorrect method type is give"""
     with pytest.raises(TypeError) as wrapped_error:
-        InventoryCalculation(tm, method="recipe", method_type="endpint")
+        ic = InventoryCalculation(tm, method="recipe", method_type="endpint")
+        ic.calculate_impacts()
     assert wrapped_error.type == TypeError
 
 

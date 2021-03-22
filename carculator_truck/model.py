@@ -322,12 +322,17 @@ class TruckModel:
                     y for y in actual_years if y > list_target_years[-1]
                 ]
 
-                fc = fc.interp(year=actual_years, kwargs={"fill_value": "extrapolate"})
+                list_years = list_target_years + actual_years
+                list_years = list(set(list_years))
+                fc = fc.interp(year=list_years, kwargs={"fill_value": "extrapolate"})
 
-                if len(years_after_last_target) > 0:
+
+                if len(years_after_last_target) > 0 and list_target_years[-1] in fc.year.values:
                     fc.loc[dict(year=years_after_last_target)] = fc.loc[
                         dict(year=list_target_years[-1])
                     ].values[:, :, None, :]
+
+                fc = fc.loc[dict(year=actual_years)]
 
                 arr = (
                     fc.values
