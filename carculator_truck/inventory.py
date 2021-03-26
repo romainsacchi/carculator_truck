@@ -1137,7 +1137,8 @@ class InventoryCalculation:
         f = np.float32(np.zeros((np.shape(self.A)[1])))
 
         # Collect indices of activities contributing to the first level for year `y`
-        ind_trucks = [self.inputs[i] for i in self.inputs if "transport, freight, lorry, " in i[0]]
+        ind_trucks = [self.inputs[i] for i in self.inputs if "transport, freight, lorry, " in i[0]
+                      and "market" not in i[0]]
         arr = self.A[0, : -self.number_of_cars, ind_trucks].sum(axis=0)
         ind = np.nonzero(arr)[0]
 
@@ -4549,7 +4550,7 @@ class InventoryCalculation:
                     "frame, blanks and saddle, for lorry",
                 )
             ],
-            [self.inputs[i] for i in self.inputs if "duty" in i[0] and i[2] == "unit"]
+            [self.inputs[i] for i in self.inputs if "duty" in i[0] and i[2] == "unit" and "market" not in i[0]]
         ] = (array[self.array_inputs["glider base mass"]] * -1)
 
 
@@ -4559,7 +4560,7 @@ class InventoryCalculation:
             self.inputs[
                 ("suspension, for lorry", "RER", "kilogram", "suspension, for lorry")
             ],
-            [self.inputs[i] for i in self.inputs if "duty" in i[0] and i[2] == "unit"]
+            [self.inputs[i] for i in self.inputs if "duty" in i[0] and i[2] == "unit" and "market" not in i[0]]
         ] = array[
                     [
                         self.array_inputs["suspension mass"],
@@ -5199,7 +5200,8 @@ class InventoryCalculation:
         self.A[
         :,
         [self.inputs[c] for c in self.inputs if "duty" in c[0] and c[2] == "unit"],
-        [self.inputs[c] for c in self.inputs if "transport, freight, lorry" in c[0] and "kilometer" in c[2]],
+        [self.inputs[c] for c in self.inputs if "transport, freight, lorry, " in c[0] and "kilometer" in c[2]
+         and "market" not in c[0]],
         ] = (
                 -1
                  / array[self.array_inputs["lifetime kilometers"]]
@@ -5248,6 +5250,7 @@ class InventoryCalculation:
                                 for i in self.inputs
                                 if str(year) in i[0]
                                 and "transport, freight, lorry, " in i[0]
+                                and "market" not in i[0]
                                 and "kilometer" in i[2]
                                 and any(True for x in ["BEV", "PHEV-d"] if x in i[0])
                             ],
@@ -5648,7 +5651,7 @@ class InventoryCalculation:
                 )
             ],
             [self.inputs[i] for i in self.inputs
-             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]]
+             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]]
         ] = (
             array[self.array_inputs["tire wear emissions"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
@@ -5664,7 +5667,7 @@ class InventoryCalculation:
                 )
             ],
         [self.inputs[i] for i in self.inputs
-         if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]]
+         if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]]
         ] = (
             array[self.array_inputs["tire wear emissions"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
@@ -5685,7 +5688,7 @@ class InventoryCalculation:
                 )
             ],
         [self.inputs[i] for i in self.inputs
-         if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]]
+         if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]]
         ] = (
             array[self.array_inputs["brake wear emissions"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
@@ -5717,7 +5720,7 @@ class InventoryCalculation:
             :,
             self.inputs[("market for road", "GLO", "meter-year", "road")],
             [self.inputs[i] for i in self.inputs
-             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]]
+             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]]
         ] = (
             (
                 (array[self.array_inputs["driving mass"], :] / 1000)
@@ -5734,7 +5737,7 @@ class InventoryCalculation:
                 ("market for road maintenance", "RER", "meter-year", "road maintenance")
             ],
             [self.inputs[i] for i in self.inputs
-             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]]
+             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]]
         ] = (1.29e-3 / (array[self.array_inputs["total cargo mass"], :] / 1000) * -1)
 
         # Exhaust emissions
@@ -5747,7 +5750,7 @@ class InventoryCalculation:
                 np.arange(self.iterations),
                 self.index_emissions,
                 [self.inputs[i] for i in self.inputs
-                 if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]],
+                 if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]],
             )
         ] = (
             array[
@@ -5775,7 +5778,7 @@ class InventoryCalculation:
                 np.arange(self.iterations),
                 self.index_noise,
                 [self.inputs[i] for i in self.inputs
-                 if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]]
+                 if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]]
             )
         ] = (
             array[
@@ -5798,7 +5801,7 @@ class InventoryCalculation:
                 ("Ethane, 1,1,1,2-tetrafluoro-, HFC-134a", ("air",), "kilogram")
             ],
             [self.inputs[i] for i in self.inputs
-             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]]
+             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]]
         ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
 
         self.A[
@@ -5807,7 +5810,7 @@ class InventoryCalculation:
                 ("market for refrigerant R134a", "GLO", "kilogram", "refrigerant R134a")
             ],
             [self.inputs[i] for i in self.inputs
-             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2]]
+             if "transport, freight, lorry, " in i[0] and "kilometer" in i[2] and "market" not in i[0]]
         ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
 
         print("*********************************************************************")
