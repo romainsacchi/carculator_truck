@@ -5200,8 +5200,9 @@ class InventoryCalculation:
         self.A[
         :,
         [self.inputs[c] for c in self.inputs if "duty" in c[0] and c[2] == "unit"],
-        [self.inputs[c] for c in self.inputs if "transport, freight, lorry, " in c[0] and "kilometer" in c[2]
-         and "market" not in c[0]],
+        [self.inputs[c] for c in self.inputs if "transport, freight, lorry, " in c[0]
+         and "kilometer" in c[2] and "market" not in c[0]
+         ],
         ] = (
                 -1
                  / array[self.array_inputs["lifetime kilometers"]]
