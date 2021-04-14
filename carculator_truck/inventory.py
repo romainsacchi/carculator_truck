@@ -101,7 +101,7 @@ class InventoryCalculation:
                     },
               'energy storage': {
                   'electric': {
-                      'type':'NMC',
+                      'type':'NMC-111',
                       'origin': 'NO'
                   },
                   'hydrogen': {
@@ -334,12 +334,12 @@ class InventoryCalculation:
 
         if "energy storage" not in self.background_configuration:
             self.background_configuration["energy storage"] = {
-                "electric": {"type": "NMC", "origin": "CN"}
+                "electric": {"type": "NMC-111", "origin": "CN"}
             }
         else:
             if "electric" not in self.background_configuration["energy storage"]:
                 self.background_configuration["energy storage"]["electric"] = {
-                    "type": "NMC",
+                    "type": "NMC-111",
                     "origin": "CN",
                 }
             else:
@@ -356,7 +356,7 @@ class InventoryCalculation:
                 ):
                     self.background_configuration["energy storage"]["electric"][
                         "type"
-                    ] = "NMC"
+                    ] = "NMC-111"
 
         self.inputs = get_dict_input()
         self.bs = BackgroundSystemModel()
@@ -3896,59 +3896,62 @@ class InventoryCalculation:
             * -1
         ).T
 
-        if self.B is not None:
+        try:
             sum_renew, co2_intensity_tech = self.define_renewable_rate_in_mix()
+        except:
+            sum_renew = [0] * len(self.scope["year"])
+            co2_intensity_tech = [0] * len(self.scope["year"])
 
 
-            for y, year in enumerate(self.scope["year"]):
+        for y, year in enumerate(self.scope["year"]):
 
-                if y + 1 == len(self.scope["year"]):
-                    end_str = "\n * "
-                else:
-                    end_str = "\n \t * "
+            if y + 1 == len(self.scope["year"]):
+                end_str = "\n * "
+            else:
+                end_str = "\n \t * "
 
-                print(
-                    "in "
-                    + str(year)
-                    + ", % of renewable: "
-                    + str(np.round(sum_renew[y] * 100, 0))
-                    + "%"
-                    + ", GHG intensity per kWh: "
-                    + str(int(np.sum(co2_intensity_tech[y] * self.mix[y])))
-                    + " g. CO2-eq.",
-                    end=end_str,
+            print(
+                "in "
+                + str(year)
+                + ", % of renewable: "
+                + str(np.round(sum_renew[y] * 100, 0))
+                + "%"
+                + ", GHG intensity per kWh: "
+                + str(int(np.sum(co2_intensity_tech[y] * self.mix[y])))
+                + " g. CO2-eq.",
+                end=end_str,
+            )
+
+            if any(True for x in ["BEV", "PHEV-d"] if x in self.scope["powertrain"]):
+
+                index = self.get_index_vehicle_from_array(
+                    ["BEV", "PHEV-d"], year, method="and"
                 )
 
-                if any(True for x in ["BEV", "PHEV-d"] if x in self.scope["powertrain"]):
-
-                    index = self.get_index_vehicle_from_array(
-                        ["BEV", "PHEV-d"], year, method="and"
+                self.A[
+                    np.ix_(
+                        np.arange(self.iterations),
+                        [
+                            self.inputs[i]
+                            for i in self.inputs
+                            if str(year) in i[0]
+                            and "electricity supply for electric vehicles" in i[0]
+                        ],
+                        [
+                            self.inputs[i]
+                            for i in self.inputs
+                            if str(year) in i[0]
+                            and "transport, freight, lorry, " in i[0]
+                            and any(True for x in ["BEV", "PHEV-d"] if x in i[0])
+                        ],
                     )
-
-                    self.A[
-                        np.ix_(
-                            np.arange(self.iterations),
-                            [
-                                self.inputs[i]
-                                for i in self.inputs
-                                if str(year) in i[0]
-                                and "electricity supply for electric vehicles" in i[0]
-                            ],
-                            [
-                                self.inputs[i]
-                                for i in self.inputs
-                                if str(year) in i[0]
-                                and "transport, freight, lorry, " in i[0]
-                                and any(True for x in ["BEV", "PHEV-d"] if x in i[0])
-                            ],
-                        )
-                    ] = (
-                        array[self.array_inputs["electricity consumption"], :, index]
-                        / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
-                        * -1
-                    ).T.reshape(
-                        self.iterations, 1, -1
-                    )
+                ] = (
+                    array[self.array_inputs["electricity consumption"], :, index]
+                    / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
+                    * -1
+                ).T.reshape(
+                    self.iterations, 1, -1
+                )
 
         if "FCEV" in self.scope["powertrain"]:
 
@@ -5209,60 +5212,63 @@ class InventoryCalculation:
                  / (array[self.array_inputs["total cargo mass"]] / 1000)
             )
 
-        if self.B is not None:
+        try:
             sum_renew, co2_intensity_tech = self.define_renewable_rate_in_mix()
+        except:
+            sum_renew = [0] * len(self.scope["year"])
+            co2_intensity_tech = [0] * len(self.scope["year"])
 
-            for y, year in enumerate(self.scope["year"]):
+        for y, year in enumerate(self.scope["year"]):
 
-                if y + 1 == len(self.scope["year"]):
-                    end_str = "\n * "
-                else:
-                    end_str = "\n \t * "
+            if y + 1 == len(self.scope["year"]):
+                end_str = "\n * "
+            else:
+                end_str = "\n \t * "
 
-                print(
-                    "in "
-                    + str(year)
-                    + ", % of renewable: "
-                    + str(np.round(sum_renew[y] * 100, 0))
-                    + "%"
-                    + ", GHG intensity per kWh: "
-                    + str(int(np.sum(co2_intensity_tech[y] * self.mix[y])))
-                    + " g. CO2-eq.",
-                    end=end_str,
+            print(
+                "in "
+                + str(year)
+                + ", % of renewable: "
+                + str(np.round(sum_renew[y] * 100, 0))
+                + "%"
+                + ", GHG intensity per kWh: "
+                + str(int(np.sum(co2_intensity_tech[y] * self.mix[y])))
+                + " g. CO2-eq.",
+                end=end_str,
+            )
+
+            if any(True for x in ["BEV", "PHEV-d"] if x in self.scope["powertrain"]):
+
+                index = self.get_index_vehicle_from_array(
+                    ["BEV", "PHEV-d"], year, method="and"
                 )
 
-                if any(True for x in ["BEV", "PHEV-d"] if x in self.scope["powertrain"]):
-
-                    index = self.get_index_vehicle_from_array(
-                        ["BEV", "PHEV-d"], year, method="and"
+                self.A[
+                    np.ix_(
+                        np.arange(self.iterations),
+                        [
+                            self.inputs[i]
+                            for i in self.inputs
+                            if str(year) in i[0]
+                            and "electricity supply for electric vehicles" in i[0]
+                        ],
+                        [
+                            self.inputs[i]
+                            for i in self.inputs
+                            if str(year) in i[0]
+                            and "transport, freight, lorry, " in i[0]
+                            and "market" not in i[0]
+                            and "kilometer" in i[2]
+                            and any(True for x in ["BEV", "PHEV-d"] if x in i[0])
+                        ],
                     )
-
-                    self.A[
-                        np.ix_(
-                            np.arange(self.iterations),
-                            [
-                                self.inputs[i]
-                                for i in self.inputs
-                                if str(year) in i[0]
-                                and "electricity supply for electric vehicles" in i[0]
-                            ],
-                            [
-                                self.inputs[i]
-                                for i in self.inputs
-                                if str(year) in i[0]
-                                and "transport, freight, lorry, " in i[0]
-                                and "market" not in i[0]
-                                and "kilometer" in i[2]
-                                and any(True for x in ["BEV", "PHEV-d"] if x in i[0])
-                            ],
-                        )
-                    ] = (
-                        array[self.array_inputs["electricity consumption"], :, index]
-                        / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
-                        * -1
-                    ).T.reshape(
-                        self.iterations, 1, -1
-                    )
+                ] = (
+                    array[self.array_inputs["electricity consumption"], :, index]
+                    / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
+                    * -1
+                ).T.reshape(
+                    self.iterations, 1, -1
+                )
 
         if "FCEV" in self.scope["powertrain"]:
 

@@ -180,6 +180,7 @@ class TruckModel:
 
         while abs(diff) > 0.001 or np.std(arr[-10:]) > 0.05 or len(arr) < 7:
 
+
             old_payload = self["available payload"].sum().values
 
             self.set_car_masses()
@@ -948,7 +949,7 @@ class TruckModel:
                     # Based on manufacturer data
                     cpm["fuel tank mass"] = (
                         (0.018 * np.power(cpm["fuel mass"], 2))
-                        + (0.6011 * cpm["fuel mass"])
+                        - (0.6011 * cpm["fuel mass"])
                         + 52.235
                     )
 
