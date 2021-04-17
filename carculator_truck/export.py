@@ -693,10 +693,15 @@ class ExportInventory:
                 description = self.references[tuple_output[0]]["description"]
                 special_remark = self.references[tuple_output[0]]["special remark"]
             else:
-                key = [k for k in self.references.keys() if k.lower() in tuple_output[0].lower()][0]
-                source = self.references[key]["source"]
-                description = self.references[key]["description"]
-                special_remark = self.references[key]["special remark"]
+                try:
+                    key = [k for k in self.references.keys() if k.lower() in tuple_output[0].lower()][0]
+                    source = self.references[key]["source"]
+                    description = self.references[key]["description"]
+                    special_remark = self.references[key]["special remark"]
+                except IndexError:
+                    print(tuple_output[0].lower())
+                    source, description, special_remark = ["", "", ""]
+
 
             if ecoinvent_compatibility or ecoinvent_compatibility == False and tuple_output[
                 0] not in activities_to_be_removed:
