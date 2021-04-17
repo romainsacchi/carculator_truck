@@ -11,3 +11,4 @@ bw2io
 prettytable
 wurst
 pycountry
+pypardiso
