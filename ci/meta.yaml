@@ -30,7 +30,6 @@ requirements:
     - prettytable
     - wurst
     - pycountry
-    - pypardiso
 
 test:
   imports:
