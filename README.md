@@ -21,8 +21,9 @@ Based on the Life Cycle Assessment tool for passenger vehicles [carculator](http
 See [the documentation](https://carculator_truck.readthedocs.io/en/latest/index.html) for more detail, validation, etc.
 
 The model has been the subject of a submission to the journal <i>Environmental Science and Technology</i>.
-You may find a preprint version <a href="https://www.psi.ch/en/ta/preprint" target="_blank">here<a/>.
 
+[1] Sacchi R, Bauer C, Cox BL. Does Size Matter? The Influence of Size, Load Factor, Range Autonomy, and Application Type on the Life Cycle Assessment of Current and Future Medium and Heavy-Duty Vehicles.
+Environ Sci Technol 2021. https://doi.org/10.1021/acs.est.0c07773.
 
 ## How to install?
 

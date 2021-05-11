@@ -1630,7 +1630,7 @@ class TruckModel:
                     "biodiesel - algae",
                     "biodiesel - palm oil",
                     "biodiesel - rapeseed oil",
-                    "synthetic diesel",
+                    "synthetic diesel - energy allocation",
                 ],
             },
             "cng": {
@@ -1677,7 +1677,12 @@ class TruckModel:
         else:
             primary = default_fuels[fuel_type]["primary"]
             secondary = default_fuels[fuel_type]["secondary"]
-            secondary_share = self.get_share_biofuel()
+
+            if primary == "electrolysis":
+                secondary_share = np.zeros_like(self.array.year.values)
+            else:
+                secondary_share = self.get_share_biofuel()
+
             primary_share = 1 - np.array(secondary_share)
 
         return primary, secondary, primary_share, secondary_share
@@ -1696,8 +1701,8 @@ class TruckModel:
             "biodiesel - palm oil": 31.7,
             "biodiesel - rapeseed oil": 31.7,
             "biodiesel - algae": 31.7,
-            "synthetic diesel": 43.3,
             "synthetic diesel - energy allocation": 43.3,
+            "synthetic diesel - economic allocation": 43.3,
             "cng": 50,
             "lpg": 49.3,
             "biogas - sewage sludge": 50,
@@ -1729,8 +1734,8 @@ class TruckModel:
             "biodiesel - algae": 2.85,
             "biodiesel - palm oil": 2.85,
             "biodiesel - rapeseed oil": 2.85,
-            "synthetic diesel": 3.16,
             "synthetic diesel - energy allocation": 3.16,
+            "synthetic diesel - economic allocation": 3.16,
             "cng": 2.65,
             "lpg": 3.01,
             "biogas - sewage sludge": 2.65,

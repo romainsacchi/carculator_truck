@@ -1461,7 +1461,8 @@ class ExportInventory:
                             if ei_version in ("3.5", "3.6"):
                                 if not any(i.lower() in e["name"].lower()
                                            for i in ("waste", "emissions", "treatment", "scrap",
-                                                     "used powertrain", "disposal", "rainwater", "sludge")
+                                                     "used powertrain", "disposal", "rainwater", "sludge",
+                                                     "used li-ion", "mineral oil storage")
                                            ) \
                                         or any(i in e["name"]
                                                for i in ["from municipal waste incineration",
@@ -1618,6 +1619,10 @@ class ExportInventory:
                                            "Carbon dioxide, to soil or biomass stock"]:
                             if e["name"] not in simapro_biosphere_flows_to_remove:
 
+                                if e["name"].lower() == "water":
+                                    e["unit"] = "kilogram"
+                                    e["amount"] /= 1000
+
                                 if e["name"] in ["Carbon dioxide, to soil or biomass stock"]:
                                     rows.append(
                                         [
@@ -1718,7 +1723,8 @@ class ExportInventory:
                                                  "municipal solid waste",
                                                  "disposal",
                                                  "rainwater mineral oil",
-                                                 "sludge")
+                                                 "sludge",
+                                                 "used li-ion")
                                        ) \
                                         and not any(i.lower() in e["name"].lower()
                                                     for i in ("anaerobic",
