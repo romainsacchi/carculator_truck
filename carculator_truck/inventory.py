@@ -303,7 +303,9 @@ class InventoryCalculation:
             ]
         )
 
-        self.target_range = int(tm.array.sel(parameter="target range", value=0).mean().values)
+        self.target_range = int(tm.array.sel(parameter="target range",
+                                             value="reference" if "reference" in tm.array.coords["value"] else 0,
+                                             ).mean().values)
 
         if self.scope["fu"]["unit"] == "vkm":
             self.compliant_vehicles = array.sel(parameter="is_available")*1
@@ -469,9 +471,6 @@ class InventoryCalculation:
             ('PAH, polycyclic aromatic hydrocarbons', ('air','low population density, long-term'), 'kilogram'): "Hydrocarbons direct emissions, rural",
             ('PAH, polycyclic aromatic hydrocarbons', ('air','non-urban air or from high stacks'), 'kilogram'): "Hydrocarbons direct emissions, suburban",
             ('PAH, polycyclic aromatic hydrocarbons', ('air','urban air close to ground'), 'kilogram'): "Hydrocarbons direct emissions, urban",
-            ("Lead", ('air','low population density, long-term'), 'kilogram'): "Lead direct emissions, rural",
-            ("Lead", ('air','non-urban air or from high stacks'), 'kilogram'): "Lead direct emissions, suburban",
-            ("Lead", ('air','urban air close to ground'), 'kilogram'): "Lead direct emissions, urban",
             ('Mercury', ('air','low population density, long-term'), 'kilogram'): "Mercury direct emissions, rural",
             ('Mercury', ('air','non-urban air or from high stacks'), 'kilogram'): "Mercury direct emissions, suburban",
             ('Mercury', ('air','urban air close to ground'), 'kilogram'): "Mercury direct emissions, urban",
@@ -1046,10 +1045,14 @@ class InventoryCalculation:
         )
         arr = arr[..., self.split_indices].sum(axis=-1)
 
-        results[...] = arr.transpose(0, 2, 3, 4, 5, 1)
-
         if sensitivity:
+
+            results[...] = arr.transpose(0, 2, 3, 4, 5, 1).sum(axis=-2)
             results /= results.sel(parameter="reference")
+
+        else:
+            results[...] = arr.transpose(0, 2, 3, 4, 5, 1)
+
 
         if self.scope["fu"]["unit"] == "tkm":
             load_factor = 1
@@ -1067,7 +1070,10 @@ class InventoryCalculation:
                 ),
             )
 
-        return results.astype("float32") * load_factor * self.compliant_vehicles
+        if sensitivity:
+            return results.astype("float32") * load_factor * self.compliant_vehicles.values[None, ...]
+        else:
+            return results.astype("float32") * load_factor * self.compliant_vehicles
 
     def add_additional_activities(self):
         # Add as many rows and columns as cars to consider

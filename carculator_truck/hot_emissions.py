@@ -86,7 +86,6 @@ class HotEmissionsModel:
                 "CO",
                 "NOx",
                 "PM",
-                "NO2",
                 "CH4",
                 "NMHC",
                 "N2O",
@@ -108,12 +107,12 @@ class HotEmissionsModel:
         a = arr.sel(variable="a").values[:, None, None, :, None, None] * energy_consumption.values
         b = arr.sel(variable="b").values[:, None, None, :, None, None]
 
-        # The receiving array should contain 40 substances, not 10
+        # The receiving array should contain 39 substances, not 10
         arr_shape = list(a.shape)
-        arr_shape[0] = 40
+        arr_shape[0] = 39
         em_arr = np.zeros(tuple(arr_shape))
 
-        em_arr[:10] = a + b
+        em_arr[:9] = a + b
 
         # Ethane, Propane, Butane, Pentane, Hexane, Cyclohexane, Heptane
         # Ethene, Propene, 1-Pentene, Toluene, m-Xylene, o-Xylene
@@ -144,11 +143,10 @@ class HotEmissionsModel:
             5.60E-03
         ])
 
-
-        em_arr[10:30] = (em_arr[6] * ratios_NMHC.reshape(1, 1, 1, -1, 1)).transpose(3, 0, 1, 2, 4)[:, :, :, :, None, :]
+        em_arr[9:29] = (em_arr[6] * ratios_NMHC.reshape(-1, 1, 1, 1, 1, 1)).transpose(0, 1, 2, 3, 4, 5)
 
         # remaining NMVOC
-        em_arr[6] *= (1 - np.sum(ratios_NMHC))
+        em_arr[5] *= (1 - np.sum(ratios_NMHC))
 
         if powertrain_type == "diesel":
             # We also add heavy metals if diesel
@@ -167,7 +165,7 @@ class HotEmissionsModel:
                 2.03E-10
             ])
 
-            em_arr[30:] = heavy_metals.reshape(-1, 1, 1, 1, 1, 1) * energy_consumption.values
+            em_arr[29:] = heavy_metals.reshape(-1, 1, 1, 1, 1, 1) * energy_consumption.values
 
         # In case the fit produces negative numbers (it should not, though)
         em_arr[em_arr < 0] = 0
@@ -185,7 +183,7 @@ class HotEmissionsModel:
             urban /= distance[:, None, None, None]
 
         else:
-            urban = np.zeros((40, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            urban = np.zeros((39, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -195,7 +193,7 @@ class HotEmissionsModel:
             suburban /= distance[:, None, None, None]
 
         else:
-            suburban = np.zeros((40, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            suburban = np.zeros((39, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -206,7 +204,7 @@ class HotEmissionsModel:
 
         else:
 
-            rural = np.zeros((40, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            rural = np.zeros((39, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
 
         res = np.vstack((urban, suburban, rural))
 

@@ -273,7 +273,8 @@ class TruckModel:
                 # indicate vehicles that do not comply with energy target
                 vals = np.where(
                     self.array.sel(
-                        parameter="is_compliant", powertrain=pt, year=y, value=0
+                        parameter="is_compliant", powertrain=pt, year=y,
+                        value="reference" if "reference" in self.array.coords["value"] else 0,
                     ).values,
                     vals,
                     [str(v) + "*" for v in vals],
@@ -282,7 +283,8 @@ class TruckModel:
                 # indicate vehicles that are not commercially available
                 vals = np.where(
                     self.array.sel(
-                        parameter="is_available", powertrain=pt, year=y, value=0
+                        parameter="is_available", powertrain=pt, year=y,
+                        value="reference" if "reference" in self.array.coords["value"] else 0,
                     ).values,
                     vals,
                     "/",
@@ -878,14 +880,17 @@ class TruckModel:
     def set_electric_utility_factor(self):
         """
         From Plotz et al. 2017
-        The electric utility factor is defined by the range
+        The electric utility factor is defined by the range.
+        We limit it so that the battery capacity
+        is not superior to what is commercially available
+        (~400 kWh)
         :return:
         """
         if "PHEV-e" in self.array.coords["powertrain"].values:
             with self("PHEV-e") as cpm:
-                cpm["electric utility factor"] = (
+                cpm["electric utility factor"] = np.clip((
                     1 - np.exp(-0.01147 * cpm["target range"])
-                ) ** 1.186185
+                ) ** 1.186185, 0, 0.2)
 
     def create_PHEV(self):
         """ PHEV-p/d is the range-weighted average between PHEV-c-p/PHEV-c-d and PHEV-e.
@@ -1226,7 +1231,6 @@ class TruckModel:
             "NMVOC direct emissions, urban",
             "Dinitrogen oxide direct emissions, urban",
             "Ammonia direct emissions, urban",
-            "Lead direct emissions, urban",
             "Benzene direct emissions, urban",
             "Ethane direct emissions, urban",
             "Propane direct emissions, urban",
@@ -1266,7 +1270,6 @@ class TruckModel:
             "NMVOC direct emissions, suburban",
             "Dinitrogen oxide direct emissions, suburban",
             "Ammonia direct emissions, suburban",
-            "Lead direct emissions, suburban",
             "Benzene direct emissions, suburban",
             "Ethane direct emissions, suburban",
             "Propane direct emissions, suburban",
@@ -1306,7 +1309,6 @@ class TruckModel:
             "NMVOC direct emissions, rural",
             "Dinitrogen oxide direct emissions, rural",
             "Ammonia direct emissions, rural",
-            "Lead direct emissions, rural",
             "Benzene direct emissions, rural",
             "Ethane direct emissions, rural",
             "Propane direct emissions, rural",

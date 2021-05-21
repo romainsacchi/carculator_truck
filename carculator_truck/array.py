@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import stats_arrays as sa
 import xarray as xr
+import itertools
 
 
 def fill_xarray_from_input_parameters(tip, sensitivity=False, scope=None):
@@ -122,7 +123,7 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False, scope=None):
                     len(params),
                 )
             ),
-            coords=[tip.sizes, tip.powertrains, tip.parameters, tip.years, params, ],
+            coords=[scope["size"], scope["powertrain"], tip.parameters, scope["year"], params, ],
             dims=["size", "powertrain", "parameter", "year", "value"],
         ).astype("float32")
 
@@ -162,17 +163,16 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False, scope=None):
     else:
         # if `sensitivity` == True, the values of each parameter is
         # incremented by 10% when `value` == `parameter`
-        for param in tip.input_parameters:
+        for x, param in enumerate(tip.input_parameters):
             names = [n for n in tip.metadata if tip.metadata[n]['name'] == param]
 
-            pwt = set(tip.metadata[param]["powertrain"]) if isinstance(tip.metadata[param]["powertrain"], list) \
-                else set([tip.metadata[param]["powertrain"]])
+            pwt = list(set(itertools.chain.from_iterable([tip.metadata[name]["powertrain"] for name in names])))
 
-            size = set(tip.metadata[param]["sizes"]) if isinstance(tip.metadata[param]["sizes"], list) \
-                else set([tip.metadata[param]["sizes"]])
+            size = list(set(itertools.chain.from_iterable([tip.metadata[name]["sizes"] for name in names])))
 
-            year = set(tip.metadata[param]["year"]) if isinstance(tip.metadata[param]["year"], list) \
-                else set([tip.metadata[param]["year"]])
+            year = [str(tip.metadata[name]["year"]) for name in names]
+            year = list(set(year))
+            year = [int(y) for y in year]
 
             for name in names:
                 vals = [tip.values[name] for _ in range(0, len(tip.input_parameters) + 1)]
