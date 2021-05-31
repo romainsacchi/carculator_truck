@@ -151,18 +151,18 @@ class HotEmissionsModel:
         if powertrain_type == "diesel":
             # We also add heavy metals if diesel
             # which are initially defined per kg of fuel consumed
-            # here converted to kg emitted/kj
+            # here converted to grams emitted/kj
             heavy_metals = np.array([
-                1.83E-09,
-                2.34E-12,
-                2.34E-12,
-                4.07E-08,
-                4.95E-10,
-                2.06E-10,
-                7.01E-10,
-                1.40E-12,
-                1.24E-10,
-                2.03E-10
+                1.83E-06,
+                2.34E-09,
+                2.34E-09,
+                4.07E-05,
+                4.95E-07,
+                2.06E-07,
+                7.01E-07,
+                1.40E-09,
+                1.24E-07,
+                2.03E-07
             ])
 
             em_arr[29:] = heavy_metals.reshape(-1, 1, 1, 1, 1, 1) * energy_consumption.values

@@ -254,6 +254,122 @@ class ExportInventory:
                 "kilogram",
                 "cement, Portland",
             ),
+            (
+                "market group for electricity, low voltage",
+                "World",
+                "kilowatt hour",
+                "electricity, low voltage",
+            ): (
+                "market group for electricity, low voltage",
+                "GLO",
+                "kilowatt hour",
+                "electricity, low voltage",
+            ),
+            (
+                "transport, freight, lorry, fleet average, 26t",
+                "EUR",
+                "ton kilometer",
+                "transport, freight, lorry, fleet average",
+            ): (
+                "transport, freight, lorry 7.5-16 metric ton, EURO6",
+                "RER",
+                "ton kilometer",
+                "transport, freight, lorry 7.5-16 metric ton, EURO6",
+            ),
+            (
+                "transport, freight, lorry, fleet average, 40t",
+                "EUR",
+                "ton kilometer",
+                "transport, freight, lorry, fleet average",
+            ): (
+                "market for transport, freight, lorry >32 metric ton, EURO6",
+                "RER",
+                "ton kilometer",
+                "transport, freight, lorry >32 metric ton, EURO6",
+            ),
+            (
+                "market for steel, chromium steel 18/8",
+                "World",
+                "kilogram",
+                "steel, chromium steel 18/8",
+            ): (
+                "market for steel, chromium steel 18/8",
+                "GLO",
+                "kilogram",
+                "steel, chromium steel 18/8",
+            ),
+            (
+                "market for steel, low-alloyed",
+                "World",
+                "kilogram",
+                "steel, low-alloyed",
+            ): (
+                "market for steel, low-alloyed",
+                "GLO",
+                "kilogram",
+                "steel, low-alloyed",
+            ),
+            ("market for steel, unalloyed", "World", "kilogram", "steel, unalloyed"): (
+                "market for steel, unalloyed",
+                "GLO",
+                "kilogram",
+                "steel, unalloyed",
+            ),
+            (
+                "steel production, converter, low-alloyed",
+                "EUR",
+                "kilogram",
+                "steel, low-alloyed",
+            ): (
+                "steel production, converter, low-alloyed",
+                "RER",
+                "kilogram",
+                "steel, low-alloyed",
+            ),
+            (
+                "steel production, electric, low-alloyed",
+                "EUR",
+                "kilogram",
+                "steel, low-alloyed",
+            ): (
+                "steel production, electric, low-alloyed",
+                "Europe without Switzerland and Austria",
+                "kilogram",
+                "steel, low-alloyed",
+            ),
+            (
+                "transport, freight, lorry, fleet average",
+                "EUR",
+                "ton kilometer",
+                "transport, freight, lorry, fleet average",
+            ): (
+                "market for transport, freight, lorry, unspecified",
+                "RER",
+                "ton kilometer",
+                "transport, freight, lorry, unspecified",
+            ),
+            (
+                "transport, freight, lorry, fleet average, 26t",
+                "World",
+                "ton kilometer",
+                "transport, freight, lorry, fleet average",
+            ): (
+                "market for transport, freight, lorry 16-32 metric ton, EURO3",
+                "RoW",
+                "ton kilometer",
+                "transport, freight, lorry 16-32 metric ton, EURO3",
+            ),
+            (
+                "transport, freight, lorry, fleet average, 40t",
+                "World",
+                "ton kilometer",
+                "transport, freight, lorry, fleet average",
+            ): (
+                "market for transport, freight, lorry >32 metric ton, EURO3",
+                "RoW",
+                "ton kilometer",
+                "transport, freight, lorry >32 metric ton, EURO3",
+            ),
 
         }
         self.map_ecoinvent_remind= {

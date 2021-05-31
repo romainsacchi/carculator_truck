@@ -4396,8 +4396,8 @@ class InventoryCalculation:
         ).transpose([1, 0, 2])
 
         # Emissions of air conditioner refrigerant r134a
-        # Leakage assumed to amount to 53g according to
-        # https://ec.europa.eu/clima/sites/clima/files/eccp/docs/leakage_rates_final_report_en.pdf
+        # Leakage assumed to amount to 0.94 kg per lifetime according to
+        # https://treeze.ch/fileadmin/user_upload/downloads/Publications/Case_Studies/Mobility/544-LCI-Road-NonRoad-Transport-Services-v2.0.pdf
 
         self.A[
             :,
@@ -4405,7 +4405,7 @@ class InventoryCalculation:
                 ("Ethane, 1,1,1,2-tetrafluoro-, HFC-134a", ("air",), "kilogram")
             ],
             -self.number_of_cars :,
-        ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
+        ] = (0.94 / self.array.values[self.array_inputs["lifetime kilometers"]] * -1)
 
         self.A[
             :,
@@ -4413,7 +4413,7 @@ class InventoryCalculation:
                 ("market for refrigerant R134a", "GLO", "kilogram", "refrigerant R134a")
             ],
             -self.number_of_cars :,
-        ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
+        ] = ((0.94+1.1) / self.array.values[self.array_inputs["lifetime kilometers"]] * -1)
 
         print("*********************************************************************")
 
@@ -5668,8 +5668,8 @@ class InventoryCalculation:
         ).transpose([1, 0, 2])
 
         # Emissions of air conditioner refrigerant r134a
-        # Leakage assumed to amount to 53g according to
-        # https://ec.europa.eu/clima/sites/clima/files/eccp/docs/leakage_rates_final_report_en.pdf
+        # Leakage assumed to amount to 0.94 kg per lifetime according to
+        # https://treeze.ch/fileadmin/user_upload/downloads/Publications/Case_Studies/Mobility/544-LCI-Road-NonRoad-Transport-Services-v2.0.pdf
 
         self.A[
             :,
@@ -5677,7 +5677,7 @@ class InventoryCalculation:
                 ("Ethane, 1,1,1,2-tetrafluoro-, HFC-134a", ("air",), "kilogram")
             ],
             self.car_indices
-        ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
+        ] = (0.94 / self.array.values[self.array_inputs["lifetime kilometers"]] * -1)
 
         self.A[
             :,
@@ -5685,7 +5685,7 @@ class InventoryCalculation:
                 ("market for refrigerant R134a", "GLO", "kilogram", "refrigerant R134a")
             ],
             self.car_indices
-        ] = (0.053 / self.array.values[self.array_inputs["kilometers per year"]] * -1)
+        ] = ((0.94 + 1.1) / self.array.values[self.array_inputs["lifetime kilometers"]] * -1)
 
         print("*********************************************************************")
 

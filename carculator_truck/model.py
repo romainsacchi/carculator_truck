@@ -52,6 +52,7 @@ class TruckModel:
         cycle="Urban delivery",
         country=None,
         fuel_blend=None,
+        energy_storage=None,
         energy_target={2025: 0.85, 2030: 0.7},
     ):
 
@@ -64,6 +65,9 @@ class TruckModel:
         self.cycle = cycle
 
         self.energy_target = energy_target
+
+        self.energy_storage = energy_storage or {
+            "electric": {"BEV": "NMC", "PHEV-e": "NMC"}}
 
         target_ranges = {
             "Urban delivery": 150,
@@ -727,32 +731,40 @@ class TruckModel:
 
     def set_battery_fuel_cell_replacements(self):
         """
-        This methods calculates the fraction of the replacement battery needed to match the vehicle lifetime.
+        This methods calculates the number of replacement batteries needed to match the vehicle lifetime.
+        Given the chemistry used, the cycle life is known. Given the lifetime kilometers and the kilometers per charge,
+        the number of charge cycles can be inferred.
 
-        .. note::
-            if ``lifetime kilometers`` = 1000000 (km) and ``battery lifetime`` = 800000 (km) then ``replacement battery``=0.05
-
-        .. note::
-            It is debatable whether this is realistic or not. Truck owners may not decide to invest in a new
-            battery if the remaining lifetime of the truck is only 200000 km. Also, a battery lifetime may be expressed
-            in other terms, e.g., charging cycles.
-
-            Also, if the battery lifetime surpasses the vehicle lifetime, 100% of the burden of the battery production
-            is allocated to the vehicle.
+        If the battery lifetime surpasses the vehicle lifetime, 100% of the burden of the battery production
+        is allocated to the vehicle. Also, the number of replacement is rounded up. This means that the entirety
+        of the battery replacement is allocated to the vehicle (and not to its potential second life).
 
         """
         # Number of replacement of battery is rounded *up*
 
-        self["battery lifetime replacements"] = finite(
-            np.ceil(
-                np.clip(
-                    (self["lifetime kilometers"] / self["battery lifetime kilometers"])
-                    - 1,
-                    0,
-                    None,
+        for pt in [
+            pwt
+            for pwt in ["BEV", "PHEV-e"]
+            if pwt in self.array.coords["powertrain"].values
+        ]:
+            with self(pt) as cpm:
+                battery_tech_label = "battery cycle life, " + self.energy_storage["electric"][pt]
+                cpm["battery lifetime replacements"] = finite(
+                    np.ceil(
+                        np.clip(
+                            (
+                                # number of charge cycles needed divided by the expected cycle life
+                                    cpm["lifetime kilometers"]
+                                    / cpm["target range"]
+                                    / cpm[battery_tech_label]
+                            )
+                            - 1,
+                            0,
+                            None,
+                        )
+                    )
                 )
-            )
-        )
+
 
         # The number of fuel cell replacements is based on the average distance driven
         # with a set of fuel cells given their lifetime expressed in hours of use.
@@ -990,8 +1002,9 @@ class TruckModel:
                     / 3.6
                 )
 
+                battery_tech_label = "battery cell energy density, " + self.energy_storage["electric"][pt]
                 cpm["battery cell mass"] = (
-                    cpm["electric energy stored"] / cpm["battery cell energy density"]
+                    cpm["electric energy stored"] / cpm[battery_tech_label]
                 )
 
                 cpm["energy battery mass"] = (
@@ -1070,8 +1083,7 @@ class TruckModel:
         )
         self["energy battery cost"] = (
             self["energy battery cost per kWh"]
-            * self["battery cell mass"]
-            * self["battery cell energy density"]
+            * self["electric energy stored"]
         )
         self["fuel tank cost"] = self["fuel tank cost per kg"] * self["fuel mass"]
         # Per ton-km
