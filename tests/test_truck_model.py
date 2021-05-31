@@ -74,7 +74,7 @@ def test_battery_mass():
     with tm("BEV") as cpm:
         assert np.allclose(
             cpm["battery cell mass"],
-            cpm["electric energy stored"] / cpm["battery cell energy density"]
+            cpm["electric energy stored"] / cpm["battery cell energy density, NMC"]
         )
 
 # Long haul efficiencies are superior to Urban delivery efficiencies for combustion vehicles
