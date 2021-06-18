@@ -114,6 +114,29 @@ class HotEmissionsModel:
 
         em_arr[:9] = a + b
 
+        # NH3 and N2O emissions seem to vary with the Euro class
+        # rather than the fuel consumption
+
+        # NH3
+
+        # Euro class --> correction factor
+        correction_map = {
+            3: 0.15,
+            4: 0.15,
+            5: 0.12,
+            6: 0.5
+        }
+        k = np.array(list(correction_map.keys()))
+        v = np.array(list(correction_map.values()))
+
+        correction_factors = np.zeros_like(euro_classes, dtype=np.float64)
+        for key, val in zip(k, v):
+            correction_factors[np.array(euro_classes) == key] = val
+
+        em_arr[7] /= correction_factors[None, None, :, None, None]
+
+
+
         # Ethane, Propane, Butane, Pentane, Hexane, Cyclohexane, Heptane
         # Ethene, Propene, 1-Pentene, Toluene, m-Xylene, o-Xylene
         # Formaldehyde, Acetaldehyde, Benzaldehyde, Acetone
@@ -153,16 +176,16 @@ class HotEmissionsModel:
             # which are initially defined per kg of fuel consumed
             # here converted to grams emitted/kj
             heavy_metals = np.array([
-                1.83E-06,
-                2.34E-09,
-                2.34E-09,
-                4.07E-05,
-                4.95E-07,
-                2.06E-07,
-                7.01E-07,
-                1.40E-09,
-                1.24E-07,
-                2.03E-07
+                1.82E-09,
+                2.33E-12,
+                2.33E-12,
+                4.05E-08,
+                4.93E-10,
+                2.05E-10,
+                6.98E-10,
+                1.40E-12,
+                1.23E-10,
+                2.02E-10
             ])
 
             em_arr[29:] = heavy_metals.reshape(-1, 1, 1, 1, 1, 1) * energy_consumption.values

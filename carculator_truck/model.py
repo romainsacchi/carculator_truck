@@ -67,7 +67,12 @@ class TruckModel:
         self.energy_target = energy_target
 
         self.energy_storage = energy_storage or {
-            "electric": {"BEV": "NMC", "PHEV-e": "NMC"}}
+            "electric": {"BEV": "NMC-111",
+                         "PHEV-e": "NMC-111",
+                         "PHEV-d": "NMC-111",
+                         "FCEV": "NMC-111",
+                         "HEV-d": "NMC-111"
+                         }}
 
         target_ranges = {
             "Urban delivery": 150,
@@ -613,9 +618,10 @@ class TruckModel:
         if "FCEV" in self.array.powertrain.values:
             self.energy.loc[
                 dict(parameter="engine efficiency", powertrain=["FCEV"])
-            ] = self.array.sel(
+            ] = (self.array.sel(
                 parameter="fuel cell system efficiency", powertrain=["FCEV"]
-            ).expand_dims(
+            )* self.array.sel(
+                parameter="engine efficiency", powertrain=["FCEV"])).expand_dims(
                 dim="x", axis=-1
             )
 
@@ -666,6 +672,17 @@ class TruckModel:
         self["auxiliary energy"] = (
             self.energy.sel(parameter="auxiliary energy").sum(dim="second").T / distance
         ).T
+
+        pwt = [p for p in self.array.powertrain.values
+               if p not in ["BEV", "PHEV-e", "FCEV"]]
+
+        self.array.loc[dict(parameter="engine efficiency", powertrain=pwt)] = np.nanmean(np.where(
+            self.energy.loc[dict(parameter="power load", powertrain=pwt)] == 0,
+            np.nan,
+            self.energy.loc[dict(parameter="engine efficiency", powertrain=pwt)]
+        ), axis=-1)
+
+
 
     def set_fuel_cell_parameters(self):
         """
@@ -894,15 +911,15 @@ class TruckModel:
         From Plotz et al. 2017
         The electric utility factor is defined by the range.
         We limit it so that the battery capacity
-        is not superior to what is commercially available
-        (~400 kWh)
+        is not superior to a range of 60 km
+        Which is what Scania PHEVs can drive.
         :return:
         """
         if "PHEV-e" in self.array.coords["powertrain"].values:
             with self("PHEV-e") as cpm:
                 cpm["electric utility factor"] = np.clip((
                     1 - np.exp(-0.01147 * cpm["target range"])
-                ) ** 1.186185, 0, 0.2)
+                ) ** 1.186185, 0, .3)
 
     def create_PHEV(self):
         """ PHEV-p/d is the range-weighted average between PHEV-c-p/PHEV-c-d and PHEV-e.
@@ -923,6 +940,10 @@ class TruckModel:
                     ]
                 )
             )
+
+            self.array.loc[{"powertrain": "PHEV-d", "parameter": "electric utility factor"}] = \
+                self.array.loc[{"powertrain": "PHEV-e", "parameter": "electric utility factor"}]
+
 
     def set_energy_stored_properties(self):
         """
@@ -964,11 +985,16 @@ class TruckModel:
 
                 if pt == "ICEV-g":
                     # Based on manufacturer data
+                    # We use a four-cyclinder configuration
+                    # Of 320L each
+                    # A cylinder of 320L @ 200 bar can hold 57.6 kg of CNG
+                    nb_cylinder = np.ceil(cpm["fuel mass"] / 57.6)
+
                     cpm["fuel tank mass"] = (
-                        (0.018 * np.power(cpm["fuel mass"], 2))
-                        - (0.6011 * cpm["fuel mass"])
-                        + 52.235
-                    )
+                            (0.018 * np.power(57.6, 2))
+                            - (0.6011 * 57.6)
+                            + 52.235
+                    ) * nb_cylinder
 
                 else:
                     # From Wolff et al. 2020, Sustainability, DOI: 10.3390/su12135396.
@@ -1026,6 +1052,13 @@ class TruckModel:
                     (-0.1916 * np.power(cpm["fuel mass"], 2))
                     + (14.586 * cpm["fuel mass"])
                     + 10.805
+                )
+
+                # Fuel cell buses do also have a battery, which capacity
+                # corresponds roughly to 5% of the capacity contained in the
+                # H2 tank
+                cpm["electric energy stored"] = 20 + (
+                        cpm["fuel mass"] * 120 / 3.6 * 0.05
                 )
 
         # kWh electricity/kg battery cell
@@ -1706,22 +1739,25 @@ class TruckModel:
         This function defines fuel blends from what is passed in `fuel_blend`.
         It populates a dictionary `self.fuel_blends` that contains the respective shares, lower heating values
         and CO2 emission factors of the fuels used.
+
+        Source for LHV: https://www.bafu.admin.ch/bafu/en/home/topics/climate/state/data/climate-reporting/references.html
+
         :return:
         """
         # MJ/kg
         fuels_lhv = {
-            "diesel": 42.8,
-            "biodiesel - cooking oil": 31.7,
-            "biodiesel - palm oil": 31.7,
-            "biodiesel - rapeseed oil": 31.7,
-            "biodiesel - algae": 31.7,
+            "diesel": 43,
+            "biodiesel - cooking oil": 38,
+            "biodiesel - palm oil": 38,
+            "biodiesel - rapeseed oil": 38,
+            "biodiesel - algae": 38,
             "synthetic diesel - energy allocation": 43.3,
             "synthetic diesel - economic allocation": 43.3,
-            "cng": 50,
+            "cng": 47.5,
             "lpg": 49.3,
-            "biogas - sewage sludge": 50,
-            "biogas - biowaste": 50,
-            "syngas": 50,
+            "biogas - sewage sludge": 47.5,
+            "biogas - biowaste": 47.5,
+            "syngas": 47.5,
             "electrolysis": 120,
             "smr - natural gas": 120,
             "smr - natural gas with CCS": 120,
@@ -1743,18 +1779,18 @@ class TruckModel:
         }
 
         fuels_CO2 = {
-            "diesel": 3.14,
+            "diesel": 3.152,
             "biodiesel - cooking oil": 2.85,
             "biodiesel - algae": 2.85,
             "biodiesel - palm oil": 2.85,
             "biodiesel - rapeseed oil": 2.85,
             "synthetic diesel - energy allocation": 3.16,
             "synthetic diesel - economic allocation": 3.16,
-            "cng": 2.65,
+            "cng": 2.115,
             "lpg": 3.01,
-            "biogas - sewage sludge": 2.65,
-            "biogas - biowaste": 2.65,
-            "syngas": 2.65,
+            "biogas - sewage sludge": 2.115,
+            "biogas - biowaste": 2.115,
+            "syngas": 2.115,
             "electrolysis": 0,
             "smr - natural gas": 0,
             "smr - natural gas with CCS": 0,
