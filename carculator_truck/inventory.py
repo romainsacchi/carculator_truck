@@ -3245,6 +3245,17 @@ class InventoryCalculation:
             * -1
         ).T
 
+        list_base_components_mass = [
+            "glider base mass",
+            "suspension mass",
+            "braking system mass",
+            "wheels and tires mass",
+            "cabin mass",
+            "electrical system mass",
+            "other components mass",
+            "transmission mass",
+        ]
+
         self.A[
             :,
             self.inputs[
@@ -3254,7 +3265,7 @@ class InventoryCalculation:
         ] = (
             (
                 array[self.array_inputs["lightweighting"], :]
-                * array[self.array_inputs["glider base mass"], :]
+                * np.sum(array[[self.array_inputs[x] for x in list_base_components_mass], :], 0)
             )
             / array[self.array_inputs["lifetime kilometers"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
@@ -4649,13 +4660,26 @@ class InventoryCalculation:
             ind_A,
         ] = (array[self.array_inputs["other components mass"], :, index] * -1).T
 
+        list_base_components_mass = [
+            "glider base mass",
+            "suspension mass",
+            "braking system mass",
+            "wheels and tires mass",
+            "cabin mass",
+            "electrical system mass",
+            "other components mass",
+            "transmission mass",
+        ]
+
         self.A[
             :,
             self.inputs[
                 ("Glider lightweighting", "GLO", "kilogram", "Glider lightweighting")
             ],
             [self.inputs[i] for i in self.inputs if "duty truck" in i[0] and i[2] == "unit"]
-        ] = (array[self.array_inputs["lightweighting"], :] * array[self.array_inputs["glider base mass"], :] * -1)
+        ] = (array[self.array_inputs["lightweighting"], :]
+             * np.sum(array[[self.array_inputs[x] for x in list_base_components_mass], :], 0)
+             * -1)
 
 
         index_16t = [
