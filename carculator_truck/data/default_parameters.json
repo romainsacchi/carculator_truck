@@ -26216,7 +26216,7 @@
         "maximum": 1995
     },
     "920-2000-suspension mass": {
-        "amount": 1900,
+        "amount": 2000,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -26240,9 +26240,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1900,
-        "minimum": 1425,
-        "maximum": 2375
+        "loc": 2000,
+        "minimum": 1500,
+        "maximum": 2500
     },
     "921-2010-suspension mass": {
         "amount": 1900,
@@ -26274,7 +26274,7 @@
         "maximum": 2375
     },
     "922-2020-suspension mass": {
-        "amount": 1900,
+        "amount": 2000,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -26298,9 +26298,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1900,
-        "minimum": 1425,
-        "maximum": 2375
+        "loc": 2000,
+        "minimum": 1500,
+        "maximum": 2500
     },
     "923-2030-suspension mass": {
         "amount": 1900,
@@ -29209,7 +29209,7 @@
         "maximum": 823.75
     },
     "1035-2010-other components mass": {
-        "amount": 659,
+        "amount": 119,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29233,12 +29233,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 659,
-        "minimum": 494.25,
-        "maximum": 823.75
+        "loc": 119,
+        "minimum": 89.25,
+        "maximum": 148.75
     },
     "1036-2020-other components mass": {
-        "amount": 659,
+        "amount": 119,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29262,12 +29262,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 659,
-        "minimum": 494.25,
-        "maximum": 823.75
+        "loc": 119,
+        "minimum": 89.25,
+        "maximum": 148.75
     },
     "1037-2030-other components mass": {
-        "amount": 659,
+        "amount": 119,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29291,12 +29291,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 659,
-        "minimum": 494.25,
-        "maximum": 823.75
+        "loc": 119,
+        "minimum": 89.25,
+        "maximum": 148.75
     },
     "1038-2040-other components mass": {
-        "amount": 659,
+        "amount": 119,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29320,12 +29320,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 659,
-        "minimum": 494.25,
-        "maximum": 823.75
+        "loc": 119,
+        "minimum": 89.25,
+        "maximum": 148.75
     },
     "1039-2050-other components mass": {
-        "amount": 659,
+        "amount": 119,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29349,9 +29349,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 659,
-        "minimum": 494.25,
-        "maximum": 823.75
+        "loc": 119,
+        "minimum": 89.25,
+        "maximum": 148.75
     },
     "1040-2000-other components mass": {
         "amount": 1413,
@@ -29383,7 +29383,7 @@
         "maximum": 1766.25
     },
     "1041-2010-other components mass": {
-        "amount": 1413,
+        "amount": 256,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29407,12 +29407,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1413,
-        "minimum": 1059.75,
-        "maximum": 1766.25
+        "loc": 256,
+        "minimum": 192,
+        "maximum": 320
     },
     "1042-2020-other components mass": {
-        "amount": 1413,
+        "amount": 256,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29436,12 +29436,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1413,
-        "minimum": 1059.75,
-        "maximum": 1766.25
+        "loc": 256,
+        "minimum": 192,
+        "maximum": 320
     },
     "1043-2030-other components mass": {
-        "amount": 1413,
+        "amount": 256,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29465,12 +29465,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1413,
-        "minimum": 1059.75,
-        "maximum": 1766.25
+        "loc": 256,
+        "minimum": 192,
+        "maximum": 320
     },
     "1044-2040-other components mass": {
-        "amount": 1413,
+        "amount": 256,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29494,12 +29494,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1413,
-        "minimum": 1059.75,
-        "maximum": 1766.25
+        "loc": 256,
+        "minimum": 192,
+        "maximum": 320
     },
     "1045-2050-other components mass": {
-        "amount": 1413,
+        "amount": 256,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29523,12 +29523,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1413,
-        "minimum": 1059.75,
-        "maximum": 1766.25
+        "loc": 256,
+        "minimum": 192,
+        "maximum": 320
     },
     "1046-2000-other components mass": {
-        "amount": 2300,
+        "amount": 614,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29552,12 +29552,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2300,
-        "minimum": 1725,
-        "maximum": 2875
+        "loc": 614,
+        "minimum": 460.5,
+        "maximum": 767.5
     },
     "1047-2010-other components mass": {
-        "amount": 2300,
+        "amount": 614,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29581,12 +29581,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2300,
-        "minimum": 1725,
-        "maximum": 2875
+        "loc": 614,
+        "minimum": 460.5,
+        "maximum": 767.5
     },
     "1048-2020-other components mass": {
-        "amount": 2300,
+        "amount": 614,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29610,12 +29610,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2300,
-        "minimum": 1725,
-        "maximum": 2875
+        "loc": 614,
+        "minimum": 460.5,
+        "maximum": 767.5
     },
     "1049-2030-other components mass": {
-        "amount": 2300,
+        "amount": 614,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29639,12 +29639,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2300,
-        "minimum": 1725,
-        "maximum": 2875
+        "loc": 614,
+        "minimum": 460.5,
+        "maximum": 767.5
     },
     "1050-2040-other components mass": {
-        "amount": 2300,
+        "amount": 614,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29668,12 +29668,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2300,
-        "minimum": 1725,
-        "maximum": 2875
+        "loc": 614,
+        "minimum": 460.5,
+        "maximum": 767.5
     },
     "1051-2050-other components mass": {
-        "amount": 2300,
+        "amount": 614,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29697,12 +29697,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2300,
-        "minimum": 1725,
-        "maximum": 2875
+        "loc": 614,
+        "minimum": 460.5,
+        "maximum": 767.5
     },
     "1052-2000-other components mass": {
-        "amount": 2500,
+        "amount": 886,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29726,9 +29726,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2500,
-        "minimum": 1875,
-        "maximum": 3125
+        "loc": 886,
+        "minimum": 664.5,
+        "maximum": 1107.5
     },
     "1053-2010-other components mass": {
         "amount": 2500,
@@ -29760,7 +29760,7 @@
         "maximum": 3125
     },
     "1054-2020-other components mass": {
-        "amount": 2500,
+        "amount": 886,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29784,9 +29784,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2500,
-        "minimum": 1875,
-        "maximum": 3125
+        "loc": 886,
+        "minimum": 664.5,
+        "maximum": 1107.5
     },
     "1055-2030-other components mass": {
         "amount": 2500,
@@ -29876,7 +29876,7 @@
         "maximum": 3125
     },
     "1058-2000-other components mass": {
-        "amount": 2160,
+        "amount": 847,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29900,12 +29900,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2160,
-        "minimum": 1620,
-        "maximum": 2700
+        "loc": 847,
+        "minimum": 635.25,
+        "maximum": 1058.75
     },
     "1059-2010-other components mass": {
-        "amount": 2160,
+        "amount": 847,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29929,12 +29929,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2160,
-        "minimum": 1620,
-        "maximum": 2700
+        "loc": 847,
+        "minimum": 635.25,
+        "maximum": 1058.75
     },
     "1060-2020-other components mass": {
-        "amount": 2160,
+        "amount": 847,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29958,12 +29958,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2160,
-        "minimum": 1620,
-        "maximum": 2700
+        "loc": 847,
+        "minimum": 635.25,
+        "maximum": 1058.75
     },
     "1061-2030-other components mass": {
-        "amount": 2160,
+        "amount": 847,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29987,12 +29987,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2160,
-        "minimum": 1620,
-        "maximum": 2700
+        "loc": 847,
+        "minimum": 635.25,
+        "maximum": 1058.75
     },
     "1062-2040-other components mass": {
-        "amount": 2160,
+        "amount": 847,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30016,12 +30016,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2160,
-        "minimum": 1620,
-        "maximum": 2700
+        "loc": 847,
+        "minimum": 635.25,
+        "maximum": 1058.75
     },
     "1063-2050-other components mass": {
-        "amount": 2160,
+        "amount": 847,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30045,12 +30045,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2160,
-        "minimum": 1620,
-        "maximum": 2700
+        "loc": 847,
+        "minimum": 635.25,
+        "maximum": 1058.75
     },
     "1064-2000-other components mass": {
-        "amount": 2700,
+        "amount": 1059,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30074,12 +30074,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2700,
-        "minimum": 2025,
-        "maximum": 3375
+        "loc": 1059,
+        "minimum": 794.25,
+        "maximum": 1323.75
     },
     "1065-2010-other components mass": {
-        "amount": 2700,
+        "amount": 1059,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30103,12 +30103,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2700,
-        "minimum": 2025,
-        "maximum": 3375
+        "loc": 1059,
+        "minimum": 794.25,
+        "maximum": 1323.75
     },
     "1066-2020-other components mass": {
-        "amount": 2700,
+        "amount": 1059,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30132,12 +30132,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2700,
-        "minimum": 2025,
-        "maximum": 3375
+        "loc": 1059,
+        "minimum": 794.25,
+        "maximum": 1323.75
     },
     "1067-2030-other components mass": {
-        "amount": 2700,
+        "amount": 1059,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30161,12 +30161,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2700,
-        "minimum": 2025,
-        "maximum": 3375
+        "loc": 1059,
+        "minimum": 794.25,
+        "maximum": 1323.75
     },
     "1068-2040-other components mass": {
-        "amount": 2700,
+        "amount": 1059,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30190,12 +30190,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2700,
-        "minimum": 2025,
-        "maximum": 3375
+        "loc": 1059,
+        "minimum": 794.25,
+        "maximum": 1323.75
     },
     "1069-2050-other components mass": {
-        "amount": 2700,
+        "amount": 1059,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30219,9 +30219,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2700,
-        "minimum": 2025,
-        "maximum": 3375
+        "loc": 1059,
+        "minimum": 794.25,
+        "maximum": 1323.75
     },
     "1070-2000-other components mass": {
         "amount": 4050,
@@ -30282,7 +30282,7 @@
         "maximum": 5062.5
     },
     "1072-2020-other components mass": {
-        "amount": 4050,
+        "amount": 1589,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -30306,9 +30306,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 4050,
-        "minimum": 3037.5,
-        "maximum": 5062.5
+        "loc": 1589,
+        "minimum": 1191.75,
+        "maximum": 1986.25
     },
     "1073-2030-other components mass": {
         "amount": 4050,
@@ -33157,7 +33157,7 @@
         "maximum": 150
     },
     "1173-2010-glider base mass": {
-        "amount": 120,
+        "amount": 703,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33181,12 +33181,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 120,
-        "minimum": 90,
-        "maximum": 150
+        "loc": 703,
+        "minimum": 527.25,
+        "maximum": 878.75
     },
     "1174-2020-glider base mass": {
-        "amount": 120,
+        "amount": 703,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33210,12 +33210,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 120,
-        "minimum": 90,
-        "maximum": 150
+        "loc": 703,
+        "minimum": 527.25,
+        "maximum": 878.75
     },
     "1175-2030-glider base mass": {
-        "amount": 120,
+        "amount": 703,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33239,12 +33239,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 120,
-        "minimum": 90,
-        "maximum": 150
+        "loc": 703,
+        "minimum": 527.25,
+        "maximum": 878.75
     },
     "1176-2040-glider base mass": {
-        "amount": 120,
+        "amount": 703,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33268,12 +33268,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 120,
-        "minimum": 90,
-        "maximum": 150
+        "loc": 703,
+        "minimum": 527.25,
+        "maximum": 878.75
     },
     "1177-2050-glider base mass": {
-        "amount": 120,
+        "amount": 703,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33297,9 +33297,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 120,
-        "minimum": 90,
-        "maximum": 150
+        "loc": 703,
+        "minimum": 527.25,
+        "maximum": 878.75
     },
     "1178-2000-glider base mass": {
         "amount": 256,
@@ -33331,7 +33331,7 @@
         "maximum": 320
     },
     "1179-2010-glider base mass": {
-        "amount": 256,
+        "amount": 1506,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33355,12 +33355,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 256,
-        "minimum": 192,
-        "maximum": 320
+        "loc": 1506,
+        "minimum": 1129.5,
+        "maximum": 1882.5
     },
     "1180-2020-glider base mass": {
-        "amount": 256,
+        "amount": 1506,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33384,12 +33384,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 256,
-        "minimum": 192,
-        "maximum": 320
+        "loc": 1506,
+        "minimum": 1129.5,
+        "maximum": 1882.5
     },
     "1181-2030-glider base mass": {
-        "amount": 256,
+        "amount": 1506,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33413,12 +33413,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 256,
-        "minimum": 192,
-        "maximum": 320
+        "loc": 1506,
+        "minimum": 1129.5,
+        "maximum": 1882.5
     },
     "1182-2040-glider base mass": {
-        "amount": 256,
+        "amount": 1506,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33442,12 +33442,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 256,
-        "minimum": 192,
-        "maximum": 320
+        "loc": 1506,
+        "minimum": 1129.5,
+        "maximum": 1882.5
     },
     "1183-2050-glider base mass": {
-        "amount": 256,
+        "amount": 1506,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33471,12 +33471,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 256,
-        "minimum": 192,
-        "maximum": 320
+        "loc": 1506,
+        "minimum": 1129.5,
+        "maximum": 1882.5
     },
     "1184-2000-glider base mass": {
-        "amount": 615,
+        "amount": 3615,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33500,12 +33500,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 615,
-        "minimum": 461.25,
-        "maximum": 768.75
+        "loc": 3615,
+        "minimum": 2711.25,
+        "maximum": 4518.75
     },
     "1185-2010-glider base mass": {
-        "amount": 615,
+        "amount": 3615,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33529,12 +33529,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 615,
-        "minimum": 461.25,
-        "maximum": 768.75
+        "loc": 3615,
+        "minimum": 2711.25,
+        "maximum": 4518.75
     },
     "1186-2020-glider base mass": {
-        "amount": 615,
+        "amount": 3615,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33558,12 +33558,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 615,
-        "minimum": 461.25,
-        "maximum": 768.75
+        "loc": 3615,
+        "minimum": 2711.25,
+        "maximum": 4518.75
     },
     "1187-2030-glider base mass": {
-        "amount": 615,
+        "amount": 3615,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33587,12 +33587,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 615,
-        "minimum": 461.25,
-        "maximum": 768.75
+        "loc": 3615,
+        "minimum": 2711.25,
+        "maximum": 4518.75
     },
     "1188-2040-glider base mass": {
-        "amount": 615,
+        "amount": 3615,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33616,12 +33616,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 615,
-        "minimum": 461.25,
-        "maximum": 768.75
+        "loc": 3615,
+        "minimum": 2711.25,
+        "maximum": 4518.75
     },
     "1189-2050-glider base mass": {
-        "amount": 615,
+        "amount": 3615,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33645,12 +33645,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 615,
-        "minimum": 461.25,
-        "maximum": 768.75
+        "loc": 3615,
+        "minimum": 2711.25,
+        "maximum": 4518.75
     },
     "1190-2000-glider base mass": {
-        "amount": 888,
+        "amount": 5221,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33674,9 +33674,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 888,
-        "minimum": 666,
-        "maximum": 1110
+        "loc": 5221,
+        "minimum": 3915.75,
+        "maximum": 6526.25
     },
     "1191-2010-glider base mass": {
         "amount": 888,
@@ -33708,7 +33708,7 @@
         "maximum": 1110
     },
     "1192-2020-glider base mass": {
-        "amount": 888,
+        "amount": 5221,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33732,9 +33732,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 888,
-        "minimum": 666,
-        "maximum": 1110
+        "loc": 5221,
+        "minimum": 3915.75,
+        "maximum": 6526.25
     },
     "1193-2030-glider base mass": {
         "amount": 888,
@@ -33824,7 +33824,7 @@
         "maximum": 1110
     },
     "1196-2000-glider base mass": {
-        "amount": 2751,
+        "amount": 4431,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33847,11 +33847,13 @@
         "comment": "EU study, baseline in 2010. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 2751
+        "uncertainty_type": 5,
+        "loc": 4431,
+        "minimum": 3323.25,
+        "maximum": 5538.75
     },
     "1197-2010-glider base mass": {
-        "amount": 2751,
+        "amount": 4431,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33874,11 +33876,13 @@
         "comment": "EU study, baseline in 2010. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 2751
+        "uncertainty_type": 5,
+        "loc": 4431,
+        "minimum": 3323.25,
+        "maximum": 5538.75
     },
     "1198-2020-glider base mass": {
-        "amount": 2751,
+        "amount": 4431,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33901,11 +33905,13 @@
         "comment": "EU study, baseline in 2010. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 2751
+        "uncertainty_type": 5,
+        "loc": 4431,
+        "minimum": 3323.25,
+        "maximum": 5538.75
     },
     "1199-2030-glider base mass": {
-        "amount": 2751,
+        "amount": 4431,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33928,11 +33934,13 @@
         "comment": "EU study, baseline in 2010. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 2751
+        "uncertainty_type": 5,
+        "loc": 4431,
+        "minimum": 3323.25,
+        "maximum": 5538.75
     },
     "1200-2040-glider base mass": {
-        "amount": 2751,
+        "amount": 4431,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33955,11 +33963,13 @@
         "comment": "EU study, baseline in 2010. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 2751
+        "uncertainty_type": 5,
+        "loc": 4431,
+        "minimum": 3323.25,
+        "maximum": 5538.75
     },
     "1201-2050-glider base mass": {
-        "amount": 2751,
+        "amount": 4431,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -33982,11 +33992,13 @@
         "comment": "EU study, baseline in 2010. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 2751
+        "uncertainty_type": 5,
+        "loc": 4431,
+        "minimum": 3323.25,
+        "maximum": 5538.75
     },
     "1202-2000-glider base mass": {
-        "amount": 3439,
+        "amount": 5539,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34010,12 +34022,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3439,
-        "minimum": 2579.25,
-        "maximum": 4298.75
+        "loc": 5539,
+        "minimum": 4154.25,
+        "maximum": 6923.75
     },
     "1203-2010-glider base mass": {
-        "amount": 3439,
+        "amount": 5539,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34039,12 +34051,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3439,
-        "minimum": 2579.25,
-        "maximum": 4298.75
+        "loc": 5539,
+        "minimum": 4154.25,
+        "maximum": 6923.75
     },
     "1204-2020-glider base mass": {
-        "amount": 3439,
+        "amount": 5539,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34068,12 +34080,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3439,
-        "minimum": 2579.25,
-        "maximum": 4298.75
+        "loc": 5539,
+        "minimum": 4154.25,
+        "maximum": 6923.75
     },
     "1205-2030-glider base mass": {
-        "amount": 3439,
+        "amount": 5539,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34097,12 +34109,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3439,
-        "minimum": 2579.25,
-        "maximum": 4298.75
+        "loc": 5539,
+        "minimum": 4154.25,
+        "maximum": 6923.75
     },
     "1206-2040-glider base mass": {
-        "amount": 3439,
+        "amount": 5539,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34126,12 +34138,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3439,
-        "minimum": 2579.25,
-        "maximum": 4298.75
+        "loc": 5539,
+        "minimum": 4154.25,
+        "maximum": 6923.75
     },
     "1207-2050-glider base mass": {
-        "amount": 3439,
+        "amount": 5539,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34155,12 +34167,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3439,
-        "minimum": 2579.25,
-        "maximum": 4298.75
+        "loc": 5539,
+        "minimum": 4154.25,
+        "maximum": 6923.75
     },
     "1208-2000-glider base mass": {
-        "amount": 5159,
+        "amount": 8309,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34184,12 +34196,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5159,
-        "minimum": 3869.25,
-        "maximum": 6448.75
+        "loc": 8309,
+        "minimum": 6231.75,
+        "maximum": 10386.25
     },
     "1209-2010-glider base mass": {
-        "amount": 5159,
+        "amount": 8309,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34213,12 +34225,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5159,
-        "minimum": 3869.25,
-        "maximum": 6448.75
+        "loc": 8309,
+        "minimum": 6231.75,
+        "maximum": 10386.25
     },
     "1210-2020-glider base mass": {
-        "amount": 5159,
+        "amount": 8309,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34242,12 +34254,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5159,
-        "minimum": 3869.25,
-        "maximum": 6448.75
+        "loc": 8309,
+        "minimum": 6231.75,
+        "maximum": 10386.25
     },
     "1211-2030-glider base mass": {
-        "amount": 5159,
+        "amount": 8309,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34271,12 +34283,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5159,
-        "minimum": 3869.25,
-        "maximum": 6448.75
+        "loc": 8309,
+        "minimum": 6231.75,
+        "maximum": 10386.25
     },
     "1212-2040-glider base mass": {
-        "amount": 5159,
+        "amount": 8309,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34300,12 +34312,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5159,
-        "minimum": 3869.25,
-        "maximum": 6448.75
+        "loc": 8309,
+        "minimum": 6231.75,
+        "maximum": 10386.25
     },
     "1213-2050-glider base mass": {
-        "amount": 5159,
+        "amount": 8309,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34329,9 +34341,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5159,
-        "minimum": 3869.25,
-        "maximum": 6448.75
+        "loc": 8309,
+        "minimum": 6231.75,
+        "maximum": 10386.25
     },
     "1214-2000-frontal area": {
         "amount": 4.1,
@@ -36002,7 +36014,7 @@
         "maximum": 281.25
     },
     "1274-2000-exhaust system mass": {
-        "amount": 225,
+        "amount": 325,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -36022,9 +36034,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 225,
-        "minimum": 168.75,
-        "maximum": 281.25
+        "loc": 325,
+        "minimum": 243.75,
+        "maximum": 406.25
     },
     "1275-2010-exhaust system mass": {
         "amount": 225,
@@ -36052,7 +36064,7 @@
         "maximum": 281.25
     },
     "1276-2020-exhaust system mass": {
-        "amount": 225,
+        "amount": 325,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -36072,9 +36084,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 225,
-        "minimum": 168.75,
-        "maximum": 281.25
+        "loc": 325,
+        "minimum": 243.75,
+        "maximum": 406.25
     },
     "1277-2030-exhaust system mass": {
         "amount": 225,
@@ -39560,7 +39572,7 @@
         "maximum": 1125
     },
     "1400-2000-cabin mass": {
-        "amount": 1000,
+        "amount": 1300,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -39584,9 +39596,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1000,
-        "minimum": 750,
-        "maximum": 1250
+        "loc": 1300,
+        "minimum": 975,
+        "maximum": 1625
     },
     "1401-2010-cabin mass": {
         "amount": 1000,
@@ -39618,7 +39630,7 @@
         "maximum": 1250
     },
     "1402-2020-cabin mass": {
-        "amount": 1000,
+        "amount": 1300,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -39642,9 +39654,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1000,
-        "minimum": 750,
-        "maximum": 1250
+        "loc": 1300,
+        "minimum": 975,
+        "maximum": 1625
     },
     "1403-2030-cabin mass": {
         "amount": 1000,
@@ -42092,7 +42104,7 @@
         "maximum": 0.4
     },
     "1484-2000-transmission mass per ton of gross weight": {
-        "amount": 12.4,
+        "amount": 23.6,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42108,10 +42120,7 @@
             "3.5t",
             "7.5t",
             "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "26t"
         ],
         "year": 2000,
         "name": "transmission mass per ton of gross weight",
@@ -42122,12 +42131,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12.4,
-        "minimum": 8,
-        "maximum": 15
+        "loc": 23.6,
+        "minimum": 21.240000000000002,
+        "maximum": 25.960000000000004
     },
     "1485-2010-transmission mass per ton of gross weight": {
-        "amount": 12.4,
+        "amount": 23.6,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42143,10 +42152,7 @@
             "3.5t",
             "7.5t",
             "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "26t"
         ],
         "year": 2010,
         "name": "transmission mass per ton of gross weight",
@@ -42157,12 +42163,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12.4,
-        "minimum": 8,
-        "maximum": 15
+        "loc": 23.6,
+        "minimum": 21.240000000000002,
+        "maximum": 25.960000000000004
     },
     "1486-2020-transmission mass per ton of gross weight": {
-        "amount": 12.4,
+        "amount": 23.6,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42178,10 +42184,7 @@
             "3.5t",
             "7.5t",
             "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "26t"
         ],
         "year": 2020,
         "name": "transmission mass per ton of gross weight",
@@ -42192,12 +42195,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12.4,
-        "minimum": 8,
-        "maximum": 15
+        "loc": 23.6,
+        "minimum": 21.240000000000002,
+        "maximum": 25.960000000000004
     },
     "1487-2030-transmission mass per ton of gross weight": {
-        "amount": 12.4,
+        "amount": 23.6,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42213,10 +42216,7 @@
             "3.5t",
             "7.5t",
             "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "26t"
         ],
         "year": 2030,
         "name": "transmission mass per ton of gross weight",
@@ -42227,12 +42227,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12.4,
-        "minimum": 8,
-        "maximum": 15
+        "loc": 23.6,
+        "minimum": 21.240000000000002,
+        "maximum": 25.960000000000004
     },
     "1488-2040-transmission mass per ton of gross weight": {
-        "amount": 12.4,
+        "amount": 23.6,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42248,10 +42248,7 @@
             "3.5t",
             "7.5t",
             "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "26t"
         ],
         "year": 2040,
         "name": "transmission mass per ton of gross weight",
@@ -42262,12 +42259,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12.4,
-        "minimum": 8,
-        "maximum": 15
+        "loc": 23.6,
+        "minimum": 21.240000000000002,
+        "maximum": 25.960000000000004
     },
     "1489-2050-transmission mass per ton of gross weight": {
-        "amount": 12.4,
+        "amount": 23.6,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42283,10 +42280,7 @@
             "3.5t",
             "7.5t",
             "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "26t"
         ],
         "year": 2050,
         "name": "transmission mass per ton of gross weight",
@@ -42297,12 +42291,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12.4,
-        "minimum": 8,
-        "maximum": 15
+        "loc": 23.6,
+        "minimum": 21.240000000000002,
+        "maximum": 25.960000000000004
     },
-    "1490-2000-transmission fixed mass": {
-        "amount": 129,
+    "1490-2000-transmission mass per ton of gross weight": {
+        "amount": 14,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42315,29 +42309,25 @@
             "PHEV-d"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
             "32t",
             "40t",
             "60t"
         ],
         "year": 2000,
-        "name": "transmission fixed mass",
-        "unit": "kg",
+        "name": "transmission mass per ton of gross weight",
+        "unit": "kg/t",
         "importance": "Moderate",
         "source": "https://ec.europa.eu/clima/sites/clima/files/transport/vehicles/heavy/docs/hdv_lightweighting_en.pdf",
         "comment": "EU study. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 129,
-        "minimum": 96.75,
-        "maximum": 161.25
+        "loc": 14,
+        "minimum": 12.6,
+        "maximum": 15.400000000000002
     },
-    "1491-2010-transmission fixed mass": {
-        "amount": 129,
+    "1491-2010-transmission mass per ton of gross weight": {
+        "amount": 14,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42350,29 +42340,25 @@
             "PHEV-d"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
             "32t",
             "40t",
             "60t"
         ],
         "year": 2010,
-        "name": "transmission fixed mass",
-        "unit": "kg",
+        "name": "transmission mass per ton of gross weight",
+        "unit": "kg/t",
         "importance": "Moderate",
         "source": "https://ec.europa.eu/clima/sites/clima/files/transport/vehicles/heavy/docs/hdv_lightweighting_en.pdf",
         "comment": "EU study. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 129,
-        "minimum": 96.75,
-        "maximum": 161.25
+        "loc": 14,
+        "minimum": 12.6,
+        "maximum": 15.400000000000002
     },
-    "1492-2020-transmission fixed mass": {
-        "amount": 129,
+    "1492-2020-transmission mass per ton of gross weight": {
+        "amount": 14,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42385,29 +42371,25 @@
             "PHEV-d"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
             "32t",
             "40t",
             "60t"
         ],
         "year": 2020,
-        "name": "transmission fixed mass",
-        "unit": "kg",
+        "name": "transmission mass per ton of gross weight",
+        "unit": "kg/t",
         "importance": "Moderate",
         "source": "https://ec.europa.eu/clima/sites/clima/files/transport/vehicles/heavy/docs/hdv_lightweighting_en.pdf",
         "comment": "EU study. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 129,
-        "minimum": 96.75,
-        "maximum": 161.25
+        "loc": 14,
+        "minimum": 12.6,
+        "maximum": 15.400000000000002
     },
-    "1493-2030-transmission fixed mass": {
-        "amount": 129,
+    "1493-2030-transmission mass per ton of gross weight": {
+        "amount": 14,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42420,29 +42402,25 @@
             "PHEV-d"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
             "32t",
             "40t",
             "60t"
         ],
         "year": 2030,
-        "name": "transmission fixed mass",
-        "unit": "kg",
+        "name": "transmission mass per ton of gross weight",
+        "unit": "kg/t",
         "importance": "Moderate",
         "source": "https://ec.europa.eu/clima/sites/clima/files/transport/vehicles/heavy/docs/hdv_lightweighting_en.pdf",
         "comment": "EU study. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 129,
-        "minimum": 96.75,
-        "maximum": 161.25
+        "loc": 14,
+        "minimum": 12.6,
+        "maximum": 15.400000000000002
     },
-    "1494-2040-transmission fixed mass": {
-        "amount": 129,
+    "1494-2040-transmission mass per ton of gross weight": {
+        "amount": 14,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42455,29 +42433,25 @@
             "PHEV-d"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
             "32t",
             "40t",
             "60t"
         ],
         "year": 2040,
-        "name": "transmission fixed mass",
-        "unit": "kg",
+        "name": "transmission mass per ton of gross weight",
+        "unit": "kg/t",
         "importance": "Moderate",
         "source": "https://ec.europa.eu/clima/sites/clima/files/transport/vehicles/heavy/docs/hdv_lightweighting_en.pdf",
         "comment": "EU study. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 129,
-        "minimum": 96.75,
-        "maximum": 161.25
+        "loc": 14,
+        "minimum": 12.6,
+        "maximum": 15.400000000000002
     },
-    "1495-2050-transmission fixed mass": {
-        "amount": 129,
+    "1495-2050-transmission mass per ton of gross weight": {
+        "amount": 14,
         "category": "Powertrain",
         "powertrain": [
             "PHEV-c-d",
@@ -42490,26 +42464,22 @@
             "PHEV-d"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
             "32t",
             "40t",
             "60t"
         ],
         "year": 2050,
-        "name": "transmission fixed mass",
-        "unit": "kg",
+        "name": "transmission mass per ton of gross weight",
+        "unit": "kg/t",
         "importance": "Moderate",
         "source": "https://ec.europa.eu/clima/sites/clima/files/transport/vehicles/heavy/docs/hdv_lightweighting_en.pdf",
         "comment": "EU study. Based on a 12t and 40t truck.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 129,
-        "minimum": 96.75,
-        "maximum": 161.25
+        "loc": 14,
+        "minimum": 12.6,
+        "maximum": 15.400000000000002
     },
     "1496-2000-power distribution unit mass": {
         "amount": 4.41,
@@ -43658,7 +43628,7 @@
         "maximum": 0.25
     },
     "1538-2000-fuel cell power area density": {
-        "amount": 700,
+        "amount": 350,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -43677,16 +43647,16 @@
         "unit": "mW/cm2",
         "importance": "Unknown",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
+        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040. Assumed to be half that of passenger cars.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 700,
-        "minimum": 500,
-        "maximum": 900
+        "loc": 350,
+        "minimum": 250,
+        "maximum": 450
     },
     "1539-2010-fuel cell power area density": {
-        "amount": 800,
+        "amount": 400,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -43705,16 +43675,16 @@
         "unit": "mW/cm2",
         "importance": "Unknown",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
+        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040. Assumed to be half that of passenger cars.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 800,
-        "minimum": 600,
-        "maximum": 1000
+        "loc": 400,
+        "minimum": 300,
+        "maximum": 500
     },
     "1540-2020-fuel cell power area density": {
-        "amount": 900,
+        "amount": 450,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -43733,16 +43703,16 @@
         "unit": "mW/cm2",
         "importance": "Unknown",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
+        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040. Assumed to be half that of passenger cars.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 900,
-        "minimum": 700,
-        "maximum": 1100
+        "loc": 450,
+        "minimum": 350,
+        "maximum": 550
     },
     "1541-2030-fuel cell power area density": {
-        "amount": 900,
+        "amount": 450,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -43761,16 +43731,16 @@
         "unit": "mW/cm2",
         "importance": "Unknown",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
+        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040. Assumed to be half that of passenger cars.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 900,
-        "minimum": 700,
-        "maximum": 1100
+        "loc": 450,
+        "minimum": 350,
+        "maximum": 550
     },
     "1542-2040-fuel cell power area density": {
-        "amount": 1000,
+        "amount": 500,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -43789,16 +43759,16 @@
         "unit": "mW/cm2",
         "importance": "Unknown",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
+        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040. Assumed to be half that of passenger cars.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1000,
-        "minimum": 800,
-        "maximum": 1200
+        "loc": 500,
+        "minimum": 400,
+        "maximum": 600
     },
     "1543-2050-fuel cell power area density": {
-        "amount": 1200,
+        "amount": 600,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -43817,13 +43787,13 @@
         "unit": "mW/cm2",
         "importance": "Unknown",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
+        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040. Assumed to be half that of passenger cars.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1200,
-        "minimum": 1100,
-        "maximum": 1400
+        "loc": 600,
+        "minimum": 550,
+        "maximum": 700
     },
     "1544-2000-fuel cell own consumption": {
         "amount": 1.2,

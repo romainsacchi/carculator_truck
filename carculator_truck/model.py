@@ -72,7 +72,8 @@ class TruckModel:
                          "PHEV-d": "NMC-111",
                          "FCEV": "NMC-111",
                          "HEV-d": "NMC-111"
-                         }}
+                         }
+        }
 
         target_ranges = {
             "Urban delivery": 150,
@@ -895,11 +896,11 @@ class TruckModel:
         )
         self["electric engine mass"] = np.clip(
             (24.56 * np.exp(0.0078 * self["electric power"])), 0, 600
-        )
+        ) * (self["electric power"] > 0)
 
         self["transmission mass"] = (self["gross mass"] / 1000) * self[
             "transmission mass per ton of gross weight"
-        ] + self["transmission fixed mass"]
+        ]
 
         self["inverter mass"] = (
             self["electric power"] * self["inverter mass per power"]

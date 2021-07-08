@@ -356,12 +356,11 @@ class InventoryCalculation:
         else:
             if "electric" not in self.background_configuration["energy storage"]:
                 self.background_configuration["energy storage"]["electric"] = {
-                    "origin": "CN",
-                    "BEV": "NMC-111",
-                    "HEV-d": "NMC-111",
-                    "PHEV-d": "NMC-111",
-                    "FCEV": "NMC-111",
+                    "origin": "CN"
                 }
+                self.background_configuration["energy storage"]["electric"].update(
+                    tm.energy_storage["electric"]
+                )
             else:
                 if (
                         "origin"
@@ -370,6 +369,11 @@ class InventoryCalculation:
                     self.background_configuration["energy storage"]["electric"][
                         "origin"
                     ] = "CN"
+                self.background_configuration["energy storage"]["electric"].update(
+                    {pt: "NMC-111" for pt in ["BEV", "FCEV", "PHEV-d", "HEV-d"]
+                     if pt not in self.background_configuration["energy storage"]["electric"]}
+                )
+
 
         self.inputs = get_dict_input()
         self.bs = BackgroundSystemModel()
@@ -3618,7 +3622,7 @@ class InventoryCalculation:
                 ind_A = [
                     i
                     for i in self.car_indices
-                    if any(x in self.rev_inputs[i][0] for x in [veh])
+                    if any(x in self.rev_inputs[i][0] for x in [" " + veh])
                 ]
 
                 self.A[:, self.inputs[battery_cell_label], ind_A] = (
@@ -3653,7 +3657,7 @@ class InventoryCalculation:
                                 i
                                 for i in self.car_indices
                                 if str(y) in self.rev_inputs[i][0]
-                                   and veh in self.rev_inputs[i][0]
+                                   and " " + veh in self.rev_inputs[i][0]
                             ],
                         )
                     ] = (
@@ -3667,7 +3671,7 @@ class InventoryCalculation:
                                   i
                                   for i in self.car_indices
                                   if str(y) in self.rev_inputs[i][0]
-                                     and veh in self.rev_inputs[i][0]
+                                     and " " + veh in self.rev_inputs[i][0]
                               ],
                               ]
                     ).reshape(
@@ -4875,7 +4879,7 @@ class InventoryCalculation:
         if len(pwt)>0:
             battery_tech=""
             for pt in pwt:
-                battery_tech += self.background_configuration["energy storage"]["electric"][pt] + f"for {pt}, "
+                battery_tech += self.background_configuration["energy storage"]["electric"][pt] + f" for {pt}, "
             battery_origin = self.background_configuration["energy storage"]["electric"][
                 "origin"
             ]
@@ -4957,7 +4961,7 @@ class InventoryCalculation:
                     for i in self.inputs
                     if "duty truck" in i[0]
                     and i[2] == "unit"
-                    and veh in i[0]
+                    and " " + veh in i[0]
                 ]
 
                 self.A[:, self.inputs[battery_cell_label], ind_A] = (
@@ -4990,7 +4994,7 @@ class InventoryCalculation:
                                 self.inputs[i]
                                 for i in self.inputs
                                 if str(y) in i[0] and "duty truck" in i[0]
-                                and i[2] == "unit" and veh in i[0]
+                                and i[2] == "unit" and " " + veh in i[0]
                             ],
                         )
                     ] = (
@@ -5004,7 +5008,7 @@ class InventoryCalculation:
                                   self.inputs[i]
                                   for i in self.inputs
                                   if str(y) in i[0] and "duty truck" in i[0]
-                                  and i[2] == "unit" and veh in i[0]
+                                  and i[2] == "unit" and " " + veh in i[0]
                               ],
                               ]
                     ).reshape(
