@@ -50,7 +50,8 @@ jobs:
 
     - name: Black formatting
       uses: lgeiger/black-action@v1.0.1
-      with: black ". --check"
+      with:
+        args: black
       env:
         DEFAULT_BRANCH: master
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
