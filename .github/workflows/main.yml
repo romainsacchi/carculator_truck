@@ -51,7 +51,7 @@ jobs:
         args: "./"
 
     - uses: actions/checkout@v2
-      run: |
+    - run: |
         date > generated.txt
         git config --global user.email "r_s@me.com"
         git config --global user.name "romainsacchi"
