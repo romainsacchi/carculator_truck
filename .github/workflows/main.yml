@@ -24,7 +24,7 @@ jobs:
 
       - name: Analysing the code with pylint
         run: |
-          find . -name '*.py' -exec pylint {} \
+          python lint.py --path ./src --threshold 2
 
       - name: Test with pytest
         run: |
