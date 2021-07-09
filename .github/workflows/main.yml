@@ -22,6 +22,11 @@ jobs:
         run: pip install -r requirements.txt --upgrade pip
              pip install pylint
 
+      - name: Python Pylin GitHub Action
+          uses: fylein/python-pytest-github-action@v1
+          with:
+            args: pip3 install -r requirements.txt && pytest
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -35,15 +40,3 @@ jobs:
         DEFAULT_BRANCH: master
         VALIDATE_PYTHON_BLACK: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-
-    - name: Checkout source code
-      uses: actions/checkout@v2
-
-    - name: Python Pylin GitHub Action
-      uses: fylein/python-pytest-github-action@v1
-      with:
-        args: pip3 install -r requirements.txt && pytest test/unit
