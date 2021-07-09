@@ -27,7 +27,8 @@ jobs:
         run: |
           coverage run --source=carculator_truck -m pytest
           coveralls
-        env: GITHUB_TOKEN: ${{ secrets.COVERALLS }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.COVERALLS }}
 
   lint:
     runs-on: ubuntu-latest
