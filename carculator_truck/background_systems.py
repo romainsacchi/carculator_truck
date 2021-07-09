@@ -113,6 +113,20 @@ def get_electricity_mix():
 
     return array
 
+def data_to_dict(csv_list):
+    """
+    Returns a dictionary from a sequence of items.
+    :param data: list
+    :return: dict
+    """
+
+    (_, *header), *data = csv_list
+    csv_dict = {}
+    for row in data:
+        key, *values = row
+        csv_dict[key] = {key: value for key, value in zip(header, values)}
+
+    return csv_dict
 
 def get_region_mapping():
     """
@@ -132,12 +146,7 @@ def get_region_mapping():
     with open(filepath) as f:
         csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
 
-    (_, *header), *data = csv_list
-    csv_dict = {}
-    for row in data:
-        key, *values = row
-        csv_dict[key] = {key: value for key, value in zip(header, values)}
-    return csv_dict
+    return data_to_dict(csv_list)
 
 
 def get_electricity_losses():
@@ -158,13 +167,7 @@ def get_electricity_losses():
     with open(filepath) as f:
         csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
 
-    (_, *header), *data = csv_list
-    csv_dict = {}
-    for row in data:
-        key, *values = row
-        csv_dict[key] = {key: value for key, value in zip(header, values)}
-    return csv_dict
-
+    return data_to_dict(csv_list)
 
 class BackgroundSystemModel:
     """
