@@ -33,5 +33,14 @@ jobs:
       uses: github/super-linter@v4
       env:
         DEFAULT_BRANCH: master
+        VALIDATE_PYTHON_BLACK: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Python Pylin GitHub Action
+      uses: fylein/python-pytest-github-action@v1
+      with:
+        args: pip3 install -r requirements.txt && pytest test/unit
