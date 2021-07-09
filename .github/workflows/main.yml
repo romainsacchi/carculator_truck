@@ -22,8 +22,11 @@ jobs:
         run: pip install -r requirements.txt --upgrade pip
              pip install pylint
 
-      - name: Analysing the code with pylint
-        run: find . -type f -name "*.py" | xargs pylint
+      - name: Lint Code Base
+          uses: github/super-linter@v4
+          env:
+            VALIDATE_ALL_CODEBASE: false
+            DEFAULT_BRANCH: master
 
       - name: Test with pytest
         run: |
