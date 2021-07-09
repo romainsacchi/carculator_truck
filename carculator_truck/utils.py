@@ -1,12 +1,15 @@
-import pandas as pd
-from . import DATA_DIR
 import itertools
+
+import pandas as pd
+
+from . import DATA_DIR
 
 pd.options.mode.chained_assignment = None
 
 REGION_MAPPING_FILEPATH = DATA_DIR / "regionmappingH12.csv"
 IAM_ELEC_MARKETS = DATA_DIR / "electricity_markets.csv"
 IEA_DIESEL_SHARE = DATA_DIR / "diesel_share_oecd.csv"
+
 
 def build_fleet_array(fp, scope):
     """

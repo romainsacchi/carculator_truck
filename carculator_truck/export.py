@@ -1,17 +1,15 @@
-from bw2io.export.excel import (
-    safe_filename,
-    xlsxwriter,
-    create_valid_worksheet_name,
-)
+import csv
+import datetime
+import io
+import json
+import os
+import uuid
+
 import bw2io
 import numpy as np
-import os
 import pyprind
-import uuid
-import datetime
-import json
-import csv
-import io
+from bw2io.export.excel import create_valid_worksheet_name, safe_filename, xlsxwriter
+
 from . import DATA_DIR, __version__
 
 
@@ -2280,9 +2278,10 @@ class ExportInventory:
             return i
 
     def best_fit_distribution(self, data, bins=200, ax=None):
-        import scipy.stats as st
         import warnings
+
         import pandas as pd
+        import scipy.stats as st
 
         """
         Model data by finding best fit distribution to data

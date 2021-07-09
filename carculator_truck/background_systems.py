@@ -1,7 +1,8 @@
-from . import DATA_DIR
 import numpy as np
 import pandas as pd
 import xarray as xr
+
+from . import DATA_DIR
 
 
 def get_sulfur_content_in_fuel():

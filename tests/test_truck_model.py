@@ -1,5 +1,6 @@
-from carculator_truck import *
 import numpy as np
+
+from carculator_truck import *
 
 tip = TruckInputParameters()
 tip.static()

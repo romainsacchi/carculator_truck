@@ -1,14 +1,14 @@
-from .energy_consumption import EnergyConsumptionModel
-from .hot_emissions import HotEmissionsModel
-from .noise_emissions import NoiseEmissionsModel
-from .background_systems import BackgroundSystemModel
-from .particulates_emissions import ParticulatesEmissionsModel
-from .driving_cycles import get_standard_driving_cycle
 import numexpr as ne
 import numpy as np
 import xarray as xr
 from prettytable import PrettyTable
 
+from .background_systems import BackgroundSystemModel
+from .driving_cycles import get_standard_driving_cycle
+from .energy_consumption import EnergyConsumptionModel
+from .hot_emissions import HotEmissionsModel
+from .noise_emissions import NoiseEmissionsModel
+from .particulates_emissions import ParticulatesEmissionsModel
 
 DEFAULT_MAPPINGS = {
     "electric": {"BEV", "PHEV-e"},

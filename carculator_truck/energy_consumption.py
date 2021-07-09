@@ -1,6 +1,7 @@
+import numpy as np
+
 from .driving_cycles import get_standard_driving_cycle
 from .gradients import get_gradients
-import numpy as np
 
 np.seterr(divide="ignore", invalid="ignore")
 import xarray as xr

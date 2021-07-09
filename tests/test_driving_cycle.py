@@ -1,7 +1,8 @@
-from carculator_truck.driving_cycles import get_standard_driving_cycle
-from carculator_truck.gradients import get_gradients
 import numpy as np
 import pytest
+
+from carculator_truck.driving_cycles import get_standard_driving_cycle
+from carculator_truck.gradients import get_gradients
 
 
 def test_incorrect_cycle_name():

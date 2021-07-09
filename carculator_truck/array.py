@@ -1,9 +1,11 @@
-from .truck_input_parameters import TruckInputParameters as t_i_p
+import itertools
+
 import numpy as np
 import pandas as pd
 import stats_arrays as sa
 import xarray as xr
-import itertools
+
+from .truck_input_parameters import TruckInputParameters as t_i_p
 
 
 def fill_xarray_from_input_parameters(tip, sensitivity=False, scope=None):

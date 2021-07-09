@@ -1,6 +1,7 @@
-from klausen import NamedParameters
-from pathlib import Path
 import json
+from pathlib import Path
+
+from klausen import NamedParameters
 
 DEFAULT = Path(__file__, "..").resolve() / "data" / "default_parameters.json"
 EXTRA = Path(__file__, "..").resolve() / "data" / "extra_parameters.json"

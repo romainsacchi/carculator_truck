@@ -1,16 +1,18 @@
-from . import DATA_DIR
+import csv
 import glob
-from .background_systems import BackgroundSystemModel
-from .export import ExportInventory
+import itertools
 from inspect import currentframe, getframeinfo
 from pathlib import Path
-from scipy import sparse
-import csv
-from .utils import build_fleet_array
-import itertools
+
 import numpy as np
 import xarray as xr
+from scipy import sparse
+
+from . import DATA_DIR
+from .background_systems import BackgroundSystemModel
+from .export import ExportInventory
 from .geomap import Geomap
+from .utils import build_fleet_array
 
 np.warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 

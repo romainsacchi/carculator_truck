@@ -1,4 +1,5 @@
 from wurst.geo import geomatcher
+
 from . import DATA_DIR
 
 REGION_MAPPING_FILEPATH = DATA_DIR / "regionmappingH12.csv"
@@ -126,4 +127,3 @@ class Geomap:
             print("Can't find location {} using the geomatcher.".format(location))
 
         return ecoinvent_locations
-
