@@ -51,4 +51,4 @@ jobs:
     - name: Black formatting
       uses: lgeiger/black-action@v1.0.1
       with:
-        src: "."
+        args: "carculator_truck/"
