@@ -63,3 +63,4 @@ jobs:
         git checkout $GITHUB_HEAD_REF
         git commit -am "Black reformating"
         git push
+        
