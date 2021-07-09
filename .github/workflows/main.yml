@@ -19,10 +19,10 @@ jobs:
         run: pyenv local 3.8.6 && python -mvenv .venv386
 
       - name: Install dependencies
-        run: pip install -r requirements.txt --upgrade pip
-             pip install pytest
+        run: |
+          pip install -r requirements.txt --upgrade pip
+          pip install pytest
 
-      - uses: actions/checkout@v2
       - name: Run tests
         run: pytest .
 
