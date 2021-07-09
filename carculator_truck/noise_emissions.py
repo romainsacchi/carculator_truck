@@ -1,50 +1,6 @@
 import numpy as np
 import numexpr as ne
 
-
-def pn(cycle, powertrain_type, category):
-    cycle = np.array(cycle)
-
-    # Noise sources are calculated for speeds above 20 km/h.
-    if powertrain_type in ("combustion", "electric"):
-        if category == "medium":
-            array = np.tile((cycle - 70) / 70, 8).reshape((8, -1))
-
-            constants = np.array(
-                (101, 96.5, 98.8, 96.8, 98.6, 95.2, 88.8, 82.7)
-            ).reshape((-1, 1))
-            coefficients = np.array((-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)).reshape(
-                (-1, 1)
-            )
-
-        if category == "heavy":
-            array = np.tile((cycle - 70) / 70, 8).reshape((8, -1))
-            constants = np.array(
-                (104.4, 100.6, 101.7, 101, 100.1, 95.9, 91.3, 85.3)
-            ).reshape((-1, 1))
-            coefficients = np.array((0, 3, 4.6, 5, 5, 5, 5, 5)).reshape((-1, 1))
-
-        array = array * coefficients + constants
-
-        if powertrain_type == "electric":
-            # For electric cars, we add correction factors
-            # We also add a 56 dB loud sound signal when the speed is below 20 km/h.
-            correction = np.array((0, 1.7, 4.2, 15, 15, 15, 13.8, 0)).reshape((-1, 1))
-            array -= correction
-            array[:, cycle.reshape(-1) < 20] = 56
-        else:
-            array[:, cycle.reshape(-1) < 20] = 0
-    else:
-        # For non plugin-hybrids, apply electric engine noise coefficient up to 30 km/h
-        # and combustion engine noise coefficients above 30 km/h
-        electric = pn(cycle, "electric")
-        electric_mask = cycle.reshape(-1) < 30
-
-        array = pn(cycle, "combustion")
-        array[:, electric_mask] = electric[:, electric_mask]
-    return array
-
-
 class NoiseEmissionsModel:
     """
     Calculate propulsion and rolling noise emissions for combustion, hybrid and electric trucks, based on CNOSSOS model.
@@ -84,11 +40,11 @@ class NoiseEmissionsModel:
 
         """
 
-        if category == "medium":
-            array = np.tile(
-                np.log10(cycle / 70, out=np.zeros_like(cycle), where=(cycle != 0)), 8
-            ).reshape((8, -1))
+        array = np.tile(
+            np.log10(cycle / 70, out=np.zeros_like(cycle), where=(cycle != 0)), 8
+        ).reshape((8, -1))
 
+        if category == "medium":
             constants = np.array(
                 (84, 88.7, 91.5, 96.7, 97.4, 90.9, 83.8, 80.5)
             ).reshape((-1, 1))
@@ -97,9 +53,6 @@ class NoiseEmissionsModel:
             ).reshape((-1, 1))
 
         else:
-            array = np.tile(
-                np.log10(cycle / 70, out=np.zeros_like(cycle), where=(cycle != 0)), 8
-            ).reshape((8, -1))
             constants = np.array(
                 (87, 91.7, 94.1, 100.7, 100.8, 94.3, 87.1, 82.5)
             ).reshape((-1, 1))
@@ -130,18 +83,19 @@ class NoiseEmissionsModel:
 
         """
 
+        cycle = np.array(cycle)
+
         # Noise sources are calculated for speeds above 20 km/h.
         if powertrain_type in ("combustion", "electric"):
-
             if category == "medium":
                 array = np.tile((cycle - 70) / 70, 8).reshape((8, -1))
 
                 constants = np.array(
                     (101, 96.5, 98.8, 96.8, 98.6, 95.2, 88.8, 82.7)
                 ).reshape((-1, 1))
-                coefficients = np.array(
-                    (-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)
-                ).reshape((-1, 1))
+                coefficients = np.array((-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)).reshape(
+                    (-1, 1)
+                )
 
             if category == "heavy":
                 array = np.tile((cycle - 70) / 70, 8).reshape((8, -1))
@@ -154,41 +108,20 @@ class NoiseEmissionsModel:
 
             if powertrain_type == "electric":
                 # For electric cars, we add correction factors
-                # We also do so for trucks, as these are correction factors, not absolute values
-                # TODO: find better correction factors for trucks
-
                 # We also add a 56 dB loud sound signal when the speed is below 20 km/h.
-                correction = np.array((0, 1.7, 4.2, 15, 15, 15, 13.8, 0)).reshape(
-                    (-1, 1)
-                )
+                correction = np.array((0, 1.7, 4.2, 15, 15, 15, 13.8, 0)).reshape((-1, 1))
                 array -= correction
-
-                # Warming signal for electric cars of 56 dB at 20 km/h or lower
                 array[:, cycle.reshape(-1) < 20] = 56
-
-        else:
-            if category == "medium":
-                cycle = cycle[:, :4]
-                # For non plugin-hybrids, apply electric engine noise coefficient up to 30 km/h
-                # and combustion engine noise coefficients above 30 km/h
-                electric = pn(cycle, "electric", category)
-                electric_mask = cycle < 30
-
-                array = pn(cycle, "combustion", category)
-                array[:, electric_mask.reshape(-1)] = electric[
-                    :, electric_mask.reshape(-1)
-                ]
             else:
-                cycle = cycle[:, 4:]
-                # For non plugin-hybrids, apply electric engine noise coefficient up to 30 km/h
-                # and combustion engine noise coefficients above 30 km/h
-                electric = pn(cycle, "electric", category)
-                electric_mask = cycle < 30
+                array[:, cycle.reshape(-1) < 20] = 0
+        else:
+            # For non plugin-hybrids, apply electric engine noise coefficient up to 30 km/h
+            # and combustion engine noise coefficients above 30 km/h
+            electric = self.propulsion_noise(powertrain_type="electric", category=category, cycle=cycle)
+            electric_mask = cycle.reshape(-1) < 30
 
-                array = pn(cycle, "combustion", category)
-                array[:, electric_mask.reshape(-1)] = electric[
-                    :, electric_mask.reshape(-1)
-                ]
+            array = self.propulsion_noise(powertrain_type="combustion", category=category, cycle=cycle)
+            array[:, electric_mask] = electric[:, electric_mask]
 
         return array
 
@@ -205,20 +138,14 @@ class NoiseEmissionsModel:
             raise TypeError("The powertrain type is not valid.")
 
         # rolling noise, in dB, for each second of the driving cycle
-        if category == "medium":
+        if category in ("medium", "heavy"):
             rolling = self.rolling_noise(category, cycle).reshape(8, cycle.shape[-1], -1)
             # propulsion noise, in dB, for each second of the driving cycle
             propulsion = self.propulsion_noise(powertrain_type, category, cycle).reshape(
                 8, cycle.shape[-1], -1
             )
             c = cycle.T
-        elif category == "heavy":
-            rolling = self.rolling_noise(category, cycle).reshape(8, cycle.shape[-1], -1)
-            # propulsion noise, in dB, for each second of the driving cycle
-            propulsion = self.propulsion_noise(powertrain_type, category, cycle).reshape(
-                8, cycle.shape[-1], -1
-            )
-            c = cycle.T
+
         else:
             raise TypeError("The category type is not valid.")
 
@@ -226,7 +153,6 @@ class NoiseEmissionsModel:
         total_noise = ne.evaluate(
             "where(c != 0, 10 * log10((10 ** (rolling / 10)) + (10 ** (propulsion / 10))), 0)"
         )
-
 
         # convert dBs to Watts (or J/s)
         sound_power = ne.evaluate("(10 ** -12) * (10 ** (total_noise / 10))")

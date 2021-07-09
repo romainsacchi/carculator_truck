@@ -17,9 +17,7 @@ _all_ = (
     "get_standard_driving_cycle",
     "EnergyConsumptionModel",
     "get_gradients",
-    "HotEmissionsModel",
-    "create_fleet_composition_from_IAM_file",
-    "extract_electricity_mix_from_IAM_file",
+    "HotEmissionsModel"
 )
 
 # library version
