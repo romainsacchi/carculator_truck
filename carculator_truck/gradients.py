@@ -3,7 +3,9 @@ import numpy as np
 import sys
 
 
-def get_gradients(name="Urban delivery", size=["3.5t", "7.5t", "18t", "26t", "32t", "40t", "60t"]):
+def get_gradients(
+    name="Urban delivery", size=["3.5t", "7.5t", "18t", "26t", "32t", "40t", "60t"]
+):
 
     """Get gradient data as a Pandas `Series`.
 
@@ -40,10 +42,10 @@ def get_gradients(name="Urban delivery", size=["3.5t", "7.5t", "18t", "26t", "32
         "60t": [19, 20, 21],
     }
 
-
-
     try:
-        list_col = [c for s in size for c in dict_dc_sizes[s] if c in dict_dc_names[name]]
+        list_col = [
+            c for s in size for c in dict_dc_sizes[s] if c in dict_dc_names[name]
+        ]
         arr = np.genfromtxt(DATA_DIR / "gradients.csv", delimiter=";")
         dc = arr[1:, list_col]
         dc = dc[~np.isnan(dc)]

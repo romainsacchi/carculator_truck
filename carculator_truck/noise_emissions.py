@@ -1,6 +1,7 @@
 import numpy as np
 import numexpr as ne
 
+
 class NoiseEmissionsModel:
     """
     Calculate propulsion and rolling noise emissions for combustion, hybrid and electric trucks, based on CNOSSOS model.
@@ -93,9 +94,9 @@ class NoiseEmissionsModel:
                 constants = np.array(
                     (101, 96.5, 98.8, 96.8, 98.6, 95.2, 88.8, 82.7)
                 ).reshape((-1, 1))
-                coefficients = np.array((-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)).reshape(
-                    (-1, 1)
-                )
+                coefficients = np.array(
+                    (-1.9, 4.7, 6.4, 6.5, 6.5, 6.5, 6.5, 6.5)
+                ).reshape((-1, 1))
 
             if category == "heavy":
                 array = np.tile((cycle - 70) / 70, 8).reshape((8, -1))
@@ -109,7 +110,9 @@ class NoiseEmissionsModel:
             if powertrain_type == "electric":
                 # For electric cars, we add correction factors
                 # We also add a 56 dB loud sound signal when the speed is below 20 km/h.
-                correction = np.array((0, 1.7, 4.2, 15, 15, 15, 13.8, 0)).reshape((-1, 1))
+                correction = np.array((0, 1.7, 4.2, 15, 15, 15, 13.8, 0)).reshape(
+                    (-1, 1)
+                )
                 array -= correction
                 array[:, cycle.reshape(-1) < 20] = 56
             else:
@@ -117,10 +120,14 @@ class NoiseEmissionsModel:
         else:
             # For non plugin-hybrids, apply electric engine noise coefficient up to 30 km/h
             # and combustion engine noise coefficients above 30 km/h
-            electric = self.propulsion_noise(powertrain_type="electric", category=category, cycle=cycle)
+            electric = self.propulsion_noise(
+                powertrain_type="electric", category=category, cycle=cycle
+            )
             electric_mask = cycle.reshape(-1) < 30
 
-            array = self.propulsion_noise(powertrain_type="combustion", category=category, cycle=cycle)
+            array = self.propulsion_noise(
+                powertrain_type="combustion", category=category, cycle=cycle
+            )
             array[:, electric_mask] = electric[:, electric_mask]
 
         return array
@@ -139,11 +146,13 @@ class NoiseEmissionsModel:
 
         # rolling noise, in dB, for each second of the driving cycle
         if category in ("medium", "heavy"):
-            rolling = self.rolling_noise(category, cycle).reshape(8, cycle.shape[-1], -1)
-            # propulsion noise, in dB, for each second of the driving cycle
-            propulsion = self.propulsion_noise(powertrain_type, category, cycle).reshape(
+            rolling = self.rolling_noise(category, cycle).reshape(
                 8, cycle.shape[-1], -1
             )
+            # propulsion noise, in dB, for each second of the driving cycle
+            propulsion = self.propulsion_noise(
+                powertrain_type, category, cycle
+            ).reshape(8, cycle.shape[-1], -1)
             c = cycle.T
 
         else:

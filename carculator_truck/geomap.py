@@ -93,7 +93,6 @@ class Geomap:
 
         return geo
 
-
     def iam_to_ecoinvent_location(self, location, contained=False):
         """
         Find the corresponding ecoinvent region given an IAM region.
@@ -108,8 +107,6 @@ class Geomap:
             return ["GLO"]
 
         ecoinvent_locations = []
-
-
 
         searchfunc = self.geo.contained if contained else self.geo.intersects
 
@@ -200,7 +197,7 @@ class Geomap:
                     "IAI Area, Asia, without China and GCC": "RSAS",
                     "IAI Area, South America": "RSAM",
                     "IAI Area, EU27 & EFTA": "WEU",
-                    "IAI Area, Russia & RER w/o EU27 & EFTA": "RUS"
+                    "IAI Area, Russia & RER w/o EU27 & EFTA": "RUS",
                 }
 
             if self.model == "remind":

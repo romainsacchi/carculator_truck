@@ -71,9 +71,7 @@ def get_biofuel_share():
     )
     for r in country_code:
         for s in scenario:
-            val = df.loc[
-                (df["Region"] == r) & (df["Scenario"] == s), "Biomass fuel":
-            ]
+            val = df.loc[(df["Region"] == r) & (df["Scenario"] == s), "Biomass fuel":]
             array.loc[dict(region=r, scenario=s, value=0)] = val
     return array
 
@@ -113,6 +111,7 @@ def get_electricity_mix():
 
     return array
 
+
 def data_to_dict(csv_list):
     """
     Returns a dictionary from a sequence of items.
@@ -127,6 +126,7 @@ def data_to_dict(csv_list):
         csv_dict[key] = {key: value for key, value in zip(header, values)}
 
     return csv_dict
+
 
 def get_region_mapping():
     """
@@ -168,6 +168,7 @@ def get_electricity_losses():
         csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
 
     return data_to_dict(csv_list)
+
 
 class BackgroundSystemModel:
     """

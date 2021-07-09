@@ -2,7 +2,8 @@ from .driving_cycles import get_standard_driving_cycle
 from .gradients import get_gradients
 import numexpr as ne
 import numpy as np
-np.seterr(divide='ignore', invalid='ignore')
+
+np.seterr(divide="ignore", invalid="ignore")
 import xarray as xr
 
 
@@ -47,7 +48,12 @@ class EnergyConsumptionModel:
 
     """
 
-    def __init__(self, cycle, size=["3.5t", "7.5t", "18t", "26t", "32t", "40t", "60t"], rho_air=1.204):
+    def __init__(
+        self,
+        cycle,
+        size=["3.5t", "7.5t", "18t", "26t", "32t", "40t", "60t"],
+        rho_air=1.204,
+    ):
         # If a string is passed, the corresponding driving cycle is retrieved
         if isinstance(cycle, str):
             try:
@@ -68,7 +74,9 @@ class EnergyConsumptionModel:
 
         self.gradient_name = self.cycle_name
         # retrieve road gradients (in degrees) for each second of the driving cycle selected
-        self.gradient = get_gradients(self.gradient_name, size=size).reshape(-1, 1, 1, 1, len(size))
+        self.gradient = get_gradients(self.gradient_name, size=size).reshape(
+            -1, 1, 1, 1, len(size)
+        )
         # reshape the driving cycle
         self.cycle = cycle.reshape(-1, 1, 1, len(size))
 
@@ -166,7 +174,11 @@ class EnergyConsumptionModel:
             # Recuperation of the braking power within the limit of the electric engine power
             recuperated_power = braking_loss * self.velocity / 1000
 
-            return total_power.astype("float32"), recuperated_power.astype("float32"), distance
+            return (
+                total_power.astype("float32"),
+                recuperated_power.astype("float32"),
+                distance,
+            )
 
         # if `debug_mode` == True, returns instead
         # the power to overcome rolling resistance, air resistance, gradient resistance,
@@ -185,12 +197,8 @@ class EnergyConsumptionModel:
                 + braking_loss
             )
 
-            recuperated_power = (
-                                        braking_loss * recuperation_efficiency.values.T
-                                )
-            recuperated_power = np.clip(
-                recuperated_power, 0, motor_power.values.T
-            )
+            recuperated_power = braking_loss * recuperation_efficiency.values.T
+            recuperated_power = np.clip(recuperated_power, 0, motor_power.values.T)
 
             return (
                 xr.DataArray(
@@ -198,20 +206,26 @@ class EnergyConsumptionModel:
                     dims=["values", "year", "powertrain", "size"],
                 ),
                 xr.DataArray(
-                    np.squeeze(air_resistance), dims=["values", "year", "powertrain", "size"]
+                    np.squeeze(air_resistance),
+                    dims=["values", "year", "powertrain", "size"],
                 ),
                 xr.DataArray(
                     np.squeeze(gradient_resistance),
                     dims=["values", "year", "powertrain", "size"],
                 ),
-                xr.DataArray(np.squeeze(inertia), dims=["values", "year", "powertrain", "size"]),
                 xr.DataArray(
-                    np.squeeze(braking_loss), dims=["values", "year", "powertrain", "size"]
+                    np.squeeze(inertia), dims=["values", "year", "powertrain", "size"]
                 ),
                 xr.DataArray(
-                    np.squeeze(recuperated_power), dims=["values", "year", "powertrain", "size"]
+                    np.squeeze(braking_loss),
+                    dims=["values", "year", "powertrain", "size"],
                 ),
                 xr.DataArray(
-                    np.squeeze(total_resistance), dims=["values", "year", "powertrain", "size"]
-                )
+                    np.squeeze(recuperated_power),
+                    dims=["values", "year", "powertrain", "size"],
+                ),
+                xr.DataArray(
+                    np.squeeze(total_resistance),
+                    dims=["values", "year", "powertrain", "size"],
+                ),
             )
