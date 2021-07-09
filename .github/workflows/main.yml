@@ -8,7 +8,7 @@ jobs:
 
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Install python version
         uses: gabrielfalcao/pyenv-action@v7
         with:
@@ -27,7 +27,7 @@ jobs:
     steps:
 
     - name: Checkout source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Super-Linter
       uses: github/super-linter@v4
