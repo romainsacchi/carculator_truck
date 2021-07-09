@@ -20,12 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt --upgrade pip
+             pip install pytest
 
       - uses: actions/checkout@v2
-      - name: Pytest
-        uses: cclauss/GitHub-Action-for-pytest@0.5.0
-        with:
-          args: pytest "/home/runner/work/carculator_truck"
+      - name: Run tests
+        run: pytest .
 
   lint:
     runs-on: ubuntu-latest
