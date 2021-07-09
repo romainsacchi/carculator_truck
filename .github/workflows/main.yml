@@ -52,7 +52,10 @@ jobs:
 
     - name: Checkout source code
       uses: actions/checkout@v2
+
     - name: Commit changes
       run: |
+        git config --global user.email "r_s@me.com"
+        git config --global user.name "romainsacchi"
         git commit -am "Black reformating"
         git push
