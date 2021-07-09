@@ -21,9 +21,21 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt --upgrade pip
              pip install pylint
+
       - name: Analysing the code with pylint
         run: |
-          pylint `ls -R|grep .py$|xargs`
+          pylint pylint **/*.py
+
+      - name: Test with pytest
+        run: |
+          pip install pytest pytest-cov
+          pytest --cov=./myapp --cov-report xml
+
+      - name: Coveralls
+          uses: coverallsapp/github-action@master
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            path-to-lcov: coverage.xml
 
       - name: setup pyenv
         id: pyenv_installation
