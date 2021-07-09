@@ -52,3 +52,6 @@ jobs:
       uses: lgeiger/black-action@v1.0.1
       with:
         args: "carculator_truck/"
+
+    - name: Checkout source code
+        uses: actions/checkout@v2
