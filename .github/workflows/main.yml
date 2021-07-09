@@ -52,6 +52,7 @@ jobs:
 
     - name: Checkout source code
       uses: actions/checkout@v2
+    - name: Commit changes
       run: |
         git commit -am "Black reformating"
         git push
