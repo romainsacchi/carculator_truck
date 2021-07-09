@@ -47,9 +47,10 @@ jobs:
 
     - name: Checkout source code
       uses: actions/checkout@v2
-  
+
     - name: Black formatting
       uses: lgeiger/black-action@v1.0.1
+      with: black ". --check"
       env:
         DEFAULT_BRANCH: master
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
