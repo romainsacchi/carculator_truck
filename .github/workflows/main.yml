@@ -50,7 +50,7 @@ jobs:
       with:
         args: "./"
 
-    - name: Commit changes
+    - uses: actions/checkout@v2
       run: |
         date > generated.txt
         git config --global user.email "r_s@me.com"
