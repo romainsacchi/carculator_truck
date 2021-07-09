@@ -4,7 +4,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
 
     steps:
       - uses: actions/checkout@v2
@@ -28,6 +27,7 @@ jobs:
         run: |
           coverage run --source=carculator_truck -m pytest
           coveralls
+        env: GITHUB_TOKEN: ${{ secrets.COVERALLS }}
 
   lint:
     runs-on: ubuntu-latest
