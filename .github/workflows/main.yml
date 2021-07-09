@@ -8,7 +8,7 @@ jobs:
 
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install python version
         uses: gabrielfalcao/pyenv-action@v7
         with:
@@ -27,12 +27,11 @@ jobs:
     steps:
 
     - name: Checkout source code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Super-Linter
       uses: github/super-linter@v4
       env:
-        VALIDATE_ALL_CODEBASE: false
         DEFAULT_BRANCH: master
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
