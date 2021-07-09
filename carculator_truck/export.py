@@ -50,6 +50,7 @@ def load_mapping_37_to_36():
 
     return dict_ei36
 
+
 def load_references():
     """Load a dictionary with references of datasets"""
 
@@ -57,10 +58,8 @@ def load_references():
     filename = "references.csv"
     filepath = DATA_DIR / filename
     if not filepath.is_file():
-        raise FileNotFoundError(
-            "The dictionary of references could not be found."
-        )
-    with open(filepath, encoding='latin1') as f:
+        raise FileNotFoundError("The dictionary of references could not be found.")
+    with open(filepath, encoding="latin1") as f:
         csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
     header, *data = csv_list
 
@@ -72,10 +71,11 @@ def load_references():
             "description": description,
             "special remark": special_remark,
             "category 1": category_1,
-            "category 2": category_2
+            "category 2": category_2,
         }
 
     return dict_reference
+
 
 def load_uvek_transport_distances():
     """Load a dictionary with transport distances for inventory export to UVEK database"""
@@ -87,7 +87,7 @@ def load_uvek_transport_distances():
         raise FileNotFoundError(
             "The dictionary with transport distances could not be found."
         )
-    with open(filepath, encoding='latin1') as f:
+    with open(filepath, encoding="latin1") as f:
         csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
     header, *data = csv_list
 
@@ -105,6 +105,7 @@ def load_uvek_transport_distances():
         }
 
     return dict_distance
+
 
 def load_mapping_37_to_35():
     """Load mapping dictionary between ecoinvent 3.7 and 3.5"""
@@ -140,6 +141,7 @@ def load_mapping_37_to_35():
         )
 
     return dict_ei35
+
 
 class ExportInventory:
     """
@@ -243,12 +245,7 @@ class ExportInventory:
                 "kilowatt hour",
                 "electricity, low voltage",
             ),
-            (
-                "cement production, Portland",
-                "EUR",
-                "kilogram",
-                "cement, Portland",
-            ): (
+            ("cement production, Portland", "EUR", "kilogram", "cement, Portland",): (
                 "cement production, Portland",
                 "CH",
                 "kilogram",
@@ -370,9 +367,8 @@ class ExportInventory:
                 "ton kilometer",
                 "transport, freight, lorry >32 metric ton, EURO3",
             ),
-
         }
-        self.map_ecoinvent_remind= {
+        self.map_ecoinvent_remind = {
             (
                 "biogas upgrading - sewage sludge - amine scrubbing - best",
                 "CH",
@@ -384,7 +380,6 @@ class ExportInventory:
                 "kilogram",
                 "biogas upgrading - sewage sludge - amine scrubbing - best",
             ),
-
         }
         self.map_37_to_36 = load_mapping_37_to_36()
         self.map_37_to_35 = load_mapping_37_to_35()
@@ -417,13 +412,9 @@ class ExportInventory:
         filename = "tags.csv"
         filepath = DATA_DIR / filename
         if not filepath.is_file():
-            raise FileNotFoundError(
-                "The dictionary of tags could not be found."
-            )
+            raise FileNotFoundError("The dictionary of tags could not be found.")
         with open(filepath) as f:
-            csv_list = [
-                [val.strip() for val in r.split(";")] for r in f.readlines()
-            ]
+            csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
         data = csv_list
 
         dict_tags = {}
@@ -444,15 +435,28 @@ class ExportInventory:
                 "The dictionary of activities flows match between ecoinvent 3.6 and UVEK could not be found."
             )
         with open(filepath) as f:
-            csv_list = [
-                [val.strip() for val in r.split(";")] for r in f.readlines()
-            ]
+            csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
         (_, _, *header), *data = csv_list
 
         dict_uvek = {}
         for row in data:
-            name, location, unit, ref_prod, uvek_name, uvek_loc, uvek_unit, uvek_ref_prod, simapro_name = row
-            dict_uvek[(name, ref_prod, unit, location)] = (uvek_name, uvek_ref_prod, uvek_unit, uvek_loc)
+            (
+                name,
+                location,
+                unit,
+                ref_prod,
+                uvek_name,
+                uvek_loc,
+                uvek_unit,
+                uvek_ref_prod,
+                simapro_name,
+            ) = row
+            dict_uvek[(name, ref_prod, unit, location)] = (
+                uvek_name,
+                uvek_ref_prod,
+                uvek_unit,
+                uvek_loc,
+            )
 
         return dict_uvek
 
@@ -467,19 +471,34 @@ class ExportInventory:
                 "The dictionary of activities flows match between ecoinvent 3.6 and UVEK could not be found."
             )
         with open(filepath) as f:
-            csv_list = [
-                [val.strip() for val in r.split(";")] for r in f.readlines()
-            ]
+            csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
         (_, _, *header), *data = csv_list
 
         dict_uvek = {}
         for row in data:
-            name, location, unit, ref_prod, uvek_name, uvek_loc, uvek_unit, uvek_ref_prod, simapro_name = row
+            (
+                name,
+                location,
+                unit,
+                ref_prod,
+                uvek_name,
+                uvek_loc,
+                uvek_unit,
+                uvek_ref_prod,
+                simapro_name,
+            ) = row
             dict_uvek[(name, location, unit, ref_prod)] = simapro_name
 
         return dict_uvek
 
-    def write_lci(self, presamples, ecoinvent_compatibility, ecoinvent_version, vehicle_specs, forbidden_activities=None):
+    def write_lci(
+        self,
+        presamples,
+        ecoinvent_compatibility,
+        ecoinvent_version,
+        vehicle_specs,
+        forbidden_activities=None,
+    ):
         """
         Return the inventory as a dictionary
         If if there several values for one exchange, uncertainty information is generated.
@@ -495,133 +514,132 @@ class ExportInventory:
         # List of activities that are already part of the REMIND-ecoinvent database.
         # They should not appear in the exported inventories, otherwise they will be duplicates
         activities_to_be_removed = [
-            'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass, at gasification plant',
-            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station',
-            'hardwood forestry, oak, sustainable forest management_CF = -1',
-            'production of 2 wt-% potassium iodide solution',
-            'Hydrogen, gaseous, 700 bar, from ATR of biogas with CCS, at fuelling station',
-            'transport, pipeline, supercritical CO2, 200km w recompression',
-            'storage module, high pressure, at fuelling station',
-            'market for wood chips, wet, measured as dry mass, CF = -1',
-            'Carbon monoxide, from RWGS',
-            'Biodiesel from palm oil',
-            'Maize cultivation, drying and storage {RER} | Maize production Europe | Alloc Rec, U',
-            'diaphragm compressor module, high pressure',
-            'MTG production facility, construction',
-            'softwood forestry, pine, sustainable forest management_CF = -1',
-            'RWGS tank construction',
-            'Hydrogen, gaseous, 700 bar, from SMR of NG, at fuelling station',
-            'treatment of biowaste by anaerobic digestion, with biogenic carbon uptake, lower bound C sequestration, digestate incineration',
-            'market for wood chips, wet, measured as dry mass, CF = -1',
-            'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at fuelling station',
-            'RWGS catalyst',
-            'Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at gasification plant',
-            'control panel, carbon dioxide capture process',
-            'wiring and tubing, carbon dioxide capture process',
-            'Diesel production, synthetic, Fischer Tropsch process, energy allocation',
-            'diaphragms, for diaphragm compressor',
-            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station',
-            'Ethanol from forest residues',
-            'hardwood forestry, birch, sustainable forest management_CF = -1',
-            'Crude Palm Oil extraction from FFBs {RER} |oil mill|',
-            'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at fuelling station',
-            'Crude vegetable oil | oil mill: extraction of vegetable oil from rapeseed | Alloc Rec, U',
-            'Buffer tank',
-            'ATR NG + CCS (MDEA), 98 (average), 25 bar',
-            'Hydrogen, gaseous, 700 bar, ATR of NG, with CCS, at fuelling station',
-            'Plant oil from crude oil | refining of vegetable oil from oil palm|',
-            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station',
-            'production of nickle-based catalyst for methanation',
-            'Walls and foundations, for hydrogen refuelling station',
-            'CO2 storage/at H2 production plant, pre, pipeline 200km, storage 1000m',
-            'Hydrogen, gaseous, 700 bar, ATR of NG, at fuelling station',
-            'hot water tank, carbon dioxide capture process',
-            'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass, at gasification plant',
-            'algae cultivation | algae broth production',
-            'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at fuelling station',
-            'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass with CCS, at gasification plant',
-            'Hydrogen, gaseous, 700 bar, from electrolysis, at fuelling station',
-            'straw pellets',
-            'Oil Palm Tree Cultivation {RER} | Fresh Fruit Bunches (FFBs) production | Alloc Rec, U',
-            'Gas-to-liquid plant construction',
-            'transformer and rectifier unit, for electrolyzer',
-            'Ethanol from wheat straw pellets',
-            'Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at gasification plant',
-            'woodchips from forestry residues',
-            'SMR NG + CCS (MDEA), 98 (average), 25 bar',
-            'pumps, carbon dioxide capture process',
-            'Hydrogen, gaseous, 30 bar, from hard coal gasification and reforming, at coal gasification plant',
-            'adsorption and desorption unit, carbon dioxide capture process',
-            'softwood forestry, mixed species, sustainable forest management, CF = -1',
-            'Methanol distillation',
-            'Hydrogen, gaseous, 700 bar, from SMR of NG, with CCS, at fuelling station',
-            'Hydrogen refuelling station, SMR',
-            'frequency converter, for diaphragm compressor',
-            'Biodiesel from cooking oil',
-            'transport, pipeline, supercritical CO2, 200km w/o recompression',
-            'Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at fuelling station',
-            'Refined Waste Cooking Oil {RER} | Refining of waste cooking oil Europe | Alloc Rec, U',
-            'ATR BM, with digestate incineration, 25 bar',
-            'PEM electrolyzer, ACDC Converter',
-            'Sabatier reaction methanation unit',
-            'Diesel production, synthetic, Fischer Tropsch process, economic allocation',
-            'SMR BM, HT+LT, + CCS (MDEA), 98 (average), digestate incineration, 26 bar',
-            'Plant oil production | refining of crude vegetable oil from rapeseed| Alloc Rec, U',
-            'ethanol without biogas',
-            'Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station',
-            'Biodiesel from rapeseed oil',
-            'Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at gasification plant',
-            'Wheat grain cultivation, drying and storage {RER} | wheat grain production Europe | Alloc Rec, U',
-            'Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass with CCS, at gasification plant',
-            'Hydrogen, gaseous, 700 bar, from ATR of biogas, at fuelling station',
-            'algae harvesting| dry algae production',
-            'Syngas, RWGS, Production',
-            'market for wood chips, wet, measured as dry mass, CF = -1',
-            'carbon dioxide capture system',
-            'Ethanol from maize starch',
-            'softwood forestry, spruce, sustainable forest management_CF = -1',
-            'SMR NG + CCS (MDEA), 98 (average), 700 bar',
-            'PEM electrolyzer, Balance of Plant',
-            'PEM electrolyzer, Operation and Maintenance',
-            'Hydrogen, gaseous, 25 bar, from electrolysis',
-            'Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at fuelling station',
-            'carbon dioxide, captured from atmosphere',
-            'softwood forestry, pine, sustainable forest management_CF = -1',
-            'SMR NG, 700 bar',
-            'hardwood forestry, beech, sustainable forest management_CF = -1',
-            'Hydrogen, gaseous, 700 bar, from SMR of biogas, at fuelling station',
-            'Gasoline production, synthetic, from methanol',
-            'Ethanol from sugarbeet',
-            'Straw bales | baling of straw',
-            'heat exchanger, carbon dioxide capture process',
-            'PEM electrolyzer, Stack',
-            'Biodiesel from algae',
-            'Ethanol from wheat grains',
-            'SMR BM, HT+LT, with digestate incineration, 26 bar',
-            'container, with pipes and fittings, for diaphragm compressor',
-            'softwood forestry, spruce, sustainable forest management_CF = -1',
-            'Disposal, hydrogen fuelling station',
-            'SMR NG, 25 bar',
-            'Methanol Synthesis',
-            'pipeline, supercritical CO2/km',
-            'cooling unit, carbon dioxide capture process',
-            'market for wood chips, wet, measured as dry mass, CF = -1',
-            'Sugar beet cultivation {RER} | sugar beet production Europe | Alloc Rec, U',
-            'ATR BM + CCS (MDEA), 98 (average), with digestate incineration, 25 bar',
-            'Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at gasification plant',
-            'Rapeseed cultivation {RER} | rapeseed production Europe | Alloc Rec, U',
-            'drilling, deep borehole/m',
-            'hardwood forestry, mixed species, sustainable forest management, CF = -1',
-            'ATR NG, 25 bar',
-            'Fixed bed reactor for RWGS',
-            'Hydrogen dispenser, for gaseous hydrogen',
-            'biogas upgrading - sewage sludge - amine scrubbing - best',
-            'electricity production, at power plant/hard coal, post, pipeline 200km, storage 1000m',
-            'electricity production, at power plant/biogas, post, pipeline 200km, storage 1000m',
-            'electricity production, at wood burning power plant 20 MW, truck 25km, post, pipeline 200km, storage 1000m',
-            'electricity production, at power plant/natural gas, post, pipeline 200km, storage 1000m',
-            'electricity production, at BIGCC power plant 450MW, pre, pipeline 200km, storage 1000m'
-
+            "Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass, at gasification plant",
+            "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
+            "hardwood forestry, oak, sustainable forest management_CF = -1",
+            "production of 2 wt-% potassium iodide solution",
+            "Hydrogen, gaseous, 700 bar, from ATR of biogas with CCS, at fuelling station",
+            "transport, pipeline, supercritical CO2, 200km w recompression",
+            "storage module, high pressure, at fuelling station",
+            "market for wood chips, wet, measured as dry mass, CF = -1",
+            "Carbon monoxide, from RWGS",
+            "Biodiesel from palm oil",
+            "Maize cultivation, drying and storage {RER} | Maize production Europe | Alloc Rec, U",
+            "diaphragm compressor module, high pressure",
+            "MTG production facility, construction",
+            "softwood forestry, pine, sustainable forest management_CF = -1",
+            "RWGS tank construction",
+            "Hydrogen, gaseous, 700 bar, from SMR of NG, at fuelling station",
+            "treatment of biowaste by anaerobic digestion, with biogenic carbon uptake, lower bound C sequestration, digestate incineration",
+            "market for wood chips, wet, measured as dry mass, CF = -1",
+            "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at fuelling station",
+            "RWGS catalyst",
+            "Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at gasification plant",
+            "control panel, carbon dioxide capture process",
+            "wiring and tubing, carbon dioxide capture process",
+            "Diesel production, synthetic, Fischer Tropsch process, energy allocation",
+            "diaphragms, for diaphragm compressor",
+            "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at fuelling station",
+            "Ethanol from forest residues",
+            "hardwood forestry, birch, sustainable forest management_CF = -1",
+            "Crude Palm Oil extraction from FFBs {RER} |oil mill|",
+            "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at fuelling station",
+            "Crude vegetable oil | oil mill: extraction of vegetable oil from rapeseed | Alloc Rec, U",
+            "Buffer tank",
+            "ATR NG + CCS (MDEA), 98 (average), 25 bar",
+            "Hydrogen, gaseous, 700 bar, ATR of NG, with CCS, at fuelling station",
+            "Plant oil from crude oil | refining of vegetable oil from oil palm|",
+            "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
+            "production of nickle-based catalyst for methanation",
+            "Walls and foundations, for hydrogen refuelling station",
+            "CO2 storage/at H2 production plant, pre, pipeline 200km, storage 1000m",
+            "Hydrogen, gaseous, 700 bar, ATR of NG, at fuelling station",
+            "hot water tank, carbon dioxide capture process",
+            "Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass, at gasification plant",
+            "algae cultivation | algae broth production",
+            "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass with CCS, at fuelling station",
+            "Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass with CCS, at gasification plant",
+            "Hydrogen, gaseous, 700 bar, from electrolysis, at fuelling station",
+            "straw pellets",
+            "Oil Palm Tree Cultivation {RER} | Fresh Fruit Bunches (FFBs) production | Alloc Rec, U",
+            "Gas-to-liquid plant construction",
+            "transformer and rectifier unit, for electrolyzer",
+            "Ethanol from wheat straw pellets",
+            "Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at gasification plant",
+            "woodchips from forestry residues",
+            "SMR NG + CCS (MDEA), 98 (average), 25 bar",
+            "pumps, carbon dioxide capture process",
+            "Hydrogen, gaseous, 30 bar, from hard coal gasification and reforming, at coal gasification plant",
+            "adsorption and desorption unit, carbon dioxide capture process",
+            "softwood forestry, mixed species, sustainable forest management, CF = -1",
+            "Methanol distillation",
+            "Hydrogen, gaseous, 700 bar, from SMR of NG, with CCS, at fuelling station",
+            "Hydrogen refuelling station, SMR",
+            "frequency converter, for diaphragm compressor",
+            "Biodiesel from cooking oil",
+            "transport, pipeline, supercritical CO2, 200km w/o recompression",
+            "Hydrogen, gaseous, 700 bar, from dual fluidised bed gasification of woody biomass, at fuelling station",
+            "Refined Waste Cooking Oil {RER} | Refining of waste cooking oil Europe | Alloc Rec, U",
+            "ATR BM, with digestate incineration, 25 bar",
+            "PEM electrolyzer, ACDC Converter",
+            "Sabatier reaction methanation unit",
+            "Diesel production, synthetic, Fischer Tropsch process, economic allocation",
+            "SMR BM, HT+LT, + CCS (MDEA), 98 (average), digestate incineration, 26 bar",
+            "Plant oil production | refining of crude vegetable oil from rapeseed| Alloc Rec, U",
+            "ethanol without biogas",
+            "Hydrogen, gaseous, 700 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at fuelling station",
+            "Biodiesel from rapeseed oil",
+            "Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, with CCS, at gasification plant",
+            "Wheat grain cultivation, drying and storage {RER} | wheat grain production Europe | Alloc Rec, U",
+            "Hydrogen, gaseous, 25 bar, from dual fluidised bed gasification of woody biomass with CCS, at gasification plant",
+            "Hydrogen, gaseous, 700 bar, from ATR of biogas, at fuelling station",
+            "algae harvesting| dry algae production",
+            "Syngas, RWGS, Production",
+            "market for wood chips, wet, measured as dry mass, CF = -1",
+            "carbon dioxide capture system",
+            "Ethanol from maize starch",
+            "softwood forestry, spruce, sustainable forest management_CF = -1",
+            "SMR NG + CCS (MDEA), 98 (average), 700 bar",
+            "PEM electrolyzer, Balance of Plant",
+            "PEM electrolyzer, Operation and Maintenance",
+            "Hydrogen, gaseous, 25 bar, from electrolysis",
+            "Hydrogen, gaseous, 700 bar, from SMR of biogas with CCS, at fuelling station",
+            "carbon dioxide, captured from atmosphere",
+            "softwood forestry, pine, sustainable forest management_CF = -1",
+            "SMR NG, 700 bar",
+            "hardwood forestry, beech, sustainable forest management_CF = -1",
+            "Hydrogen, gaseous, 700 bar, from SMR of biogas, at fuelling station",
+            "Gasoline production, synthetic, from methanol",
+            "Ethanol from sugarbeet",
+            "Straw bales | baling of straw",
+            "heat exchanger, carbon dioxide capture process",
+            "PEM electrolyzer, Stack",
+            "Biodiesel from algae",
+            "Ethanol from wheat grains",
+            "SMR BM, HT+LT, with digestate incineration, 26 bar",
+            "container, with pipes and fittings, for diaphragm compressor",
+            "softwood forestry, spruce, sustainable forest management_CF = -1",
+            "Disposal, hydrogen fuelling station",
+            "SMR NG, 25 bar",
+            "Methanol Synthesis",
+            "pipeline, supercritical CO2/km",
+            "cooling unit, carbon dioxide capture process",
+            "market for wood chips, wet, measured as dry mass, CF = -1",
+            "Sugar beet cultivation {RER} | sugar beet production Europe | Alloc Rec, U",
+            "ATR BM + CCS (MDEA), 98 (average), with digestate incineration, 25 bar",
+            "Hydrogen, gaseous, 25 bar, from gasification of woody biomass in oxy-fired entrained flow gasifier, at gasification plant",
+            "Rapeseed cultivation {RER} | rapeseed production Europe | Alloc Rec, U",
+            "drilling, deep borehole/m",
+            "hardwood forestry, mixed species, sustainable forest management, CF = -1",
+            "ATR NG, 25 bar",
+            "Fixed bed reactor for RWGS",
+            "Hydrogen dispenser, for gaseous hydrogen",
+            "biogas upgrading - sewage sludge - amine scrubbing - best",
+            "electricity production, at power plant/hard coal, post, pipeline 200km, storage 1000m",
+            "electricity production, at power plant/biogas, post, pipeline 200km, storage 1000m",
+            "electricity production, at wood burning power plant 20 MW, truck 25km, post, pipeline 200km, storage 1000m",
+            "electricity production, at power plant/natural gas, post, pipeline 200km, storage 1000m",
+            "electricity production, at BIGCC power plant 450MW, pre, pipeline 200km, storage 1000m",
         ]
 
         if isinstance(forbidden_activities, list):
@@ -634,12 +652,10 @@ class ExportInventory:
             "market for molybdenum trioxide",
             "market for nickel sulfate",
             "market for soda ash, light, crystalline, heptahydrate",
-            'market for fly ash and scrubber sludge',
+            "market for fly ash and scrubber sludge",
         ]
 
-        ei35_activities_to_remove = [
-            "latex production"
-        ]
+        ei35_activities_to_remove = ["latex production"]
 
         list_act = []
 
@@ -696,12 +712,16 @@ class ExportInventory:
 
                     if ecoinvent_version == "uvek":
 
-                        tuple_output = self.map_36_to_uvek.get(tuple_output, tuple_output)
+                        tuple_output = self.map_36_to_uvek.get(
+                            tuple_output, tuple_output
+                        )
 
                         if tuple_input[0] in uvek_activities_to_remove:
                             continue
                         else:
-                            tuple_input = self.map_36_to_uvek.get(tuple_input, tuple_input)
+                            tuple_input = self.map_36_to_uvek.get(
+                                tuple_input, tuple_input
+                            )
 
                 else:
 
@@ -718,7 +738,7 @@ class ExportInventory:
                     uncertainty = [("uncertainty type", 1)]
 
                 elif np.all(
-                        np.isclose(self.array[:, row, col], self.array[0, row, col])
+                    np.isclose(self.array[:, row, col], self.array[0, row, col])
                 ):
                     # Several values, but all the same, so no uncertainty
                     amount = self.array[0, row, col] * mult_factor
@@ -744,7 +764,9 @@ class ExportInventory:
                         )
 
                 # Look for a tag, if any
-                tag = [self.tags[t] for t in list(self.tags.keys()) if t in tuple_input[0]]
+                tag = [
+                    self.tags[t] for t in list(self.tags.keys()) if t in tuple_input[0]
+                ]
                 if len(tag) > 0:
                     tag = tag[0]
                 else:
@@ -761,7 +783,7 @@ class ExportInventory:
                             "type": "production",
                             "location": tuple_output[1],
                             "reference product": tuple_output[3],
-                            "tag": tag
+                            "tag": tag,
                         }
                     )
                     list_exc[-1].update(uncertainty)
@@ -777,7 +799,7 @@ class ExportInventory:
                             "type": "technosphere",
                             "location": tuple_input[1],
                             "reference product": tuple_input[3],
-                            "tag": tag
+                            "tag": tag,
                         }
                     )
                     list_exc[-1].update(uncertainty)
@@ -792,7 +814,7 @@ class ExportInventory:
                             "unit": tuple_input[2],
                             "type": "biosphere",
                             "categories": tuple_input[1],
-                            "tag": tag
+                            "tag": tag,
                         }
                     )
                     list_exc[-1].update(uncertainty)
@@ -810,7 +832,11 @@ class ExportInventory:
                 special_remark = self.references[tuple_output[0]]["special remark"]
             else:
                 try:
-                    key = [k for k in self.references.keys() if k.lower() in tuple_output[0].lower()][0]
+                    key = [
+                        k
+                        for k in self.references.keys()
+                        if k.lower() in tuple_output[0].lower()
+                    ][0]
                     source = self.references[key]["source"]
                     description = self.references[key]["description"]
                     special_remark = self.references[key]["special remark"]
@@ -818,12 +844,16 @@ class ExportInventory:
                     print(tuple_output[0].lower())
                     source, description, special_remark = ["", "", ""]
 
-
-            if ecoinvent_compatibility or ecoinvent_compatibility == False and tuple_output[
-                0] not in activities_to_be_removed:
+            if (
+                ecoinvent_compatibility
+                or ecoinvent_compatibility == False
+                and tuple_output[0] not in activities_to_be_removed
+            ):
 
                 string = ""
-                if any(i in tuple_output[0].lower() for i in ("heavy duty", "medium duty")):
+                if any(
+                    i in tuple_output[0].lower() for i in ("heavy duty", "medium duty")
+                ):
 
                     d_pwt = {
                         "diesel": "ICEV-d",
@@ -831,7 +861,7 @@ class ExportInventory:
                         "diesel hybrid": "HEV-d",
                         "plugin diesel hybrid": "PHEV-d",
                         "battery electric": "BEV",
-                        "fuel cell electric": "FCEV"
+                        "fuel cell electric": "FCEV",
                     }
 
                     d_units = {
@@ -840,19 +870,18 @@ class ExportInventory:
                         "target range": "[km]",
                         "TtW efficiency": "[%]",
                         "TtW energy": "[kj/km]",
-                        'electric energy stored': "[kWh]",
-                        'oxidation energy stored': "[kWh]",
-                        'combustion power share': "[%]",
+                        "electric energy stored": "[kWh]",
+                        "oxidation energy stored": "[kWh]",
+                        "combustion power share": "[%]",
                         "combustion power": "[kW]",
                         "electric power": "[kW]",
-                        'available payload': "[kg]",
-                        'total cargo mass': "[kg]",
-                        'capacity utilization': "[%]",
+                        "available payload": "[kg]",
+                        "total cargo mass": "[kg]",
+                        "capacity utilization": "[%]",
                         "curb mass": "[kg]",
                         "driving mass": "[kg]",
                         "energy battery mass": "[kg]",
-                        'fuel cell system efficiency': "[%]",
-
+                        "fuel cell system efficiency": "[%]",
                     }
 
                     d_names = {
@@ -861,18 +890,18 @@ class ExportInventory:
                         "target range": "Autonomy on a full tank/battery",
                         "TtW efficiency": "Tank-to-wheel efficiency",
                         "TtW energy": "Tank-to-wheel energy consumption",
-                        'electric energy stored': "Battery capacity",
-                        'oxidation energy stored': "Fuel tank capacity",
-                        'combustion power share': "Power share from combustion engine",
+                        "electric energy stored": "Battery capacity",
+                        "oxidation energy stored": "Fuel tank capacity",
+                        "combustion power share": "Power share from combustion engine",
                         "combustion power": "Combustion engine power",
                         "electric power": "Electric motor power",
-                        'available payload': "Available payload",
-                        'total cargo mass': "Payload",
-                        'capacity utilization': "Load factor",
+                        "available payload": "Available payload",
+                        "total cargo mass": "Payload",
+                        "capacity utilization": "Load factor",
                         "curb mass": "Curb mass (excl. driver and cargo)",
                         "driving mass": "Driving mass (incl. driver and cargo)",
                         "energy battery mass": "Mass of battery",
-                        'fuel cell system efficiency': "Fuel cell system efficiency",
+                        "fuel cell system efficiency": "Fuel cell system efficiency",
                     }
 
                     l = [t.strip() for t in tuple_output[0].split(",")]
@@ -881,13 +910,17 @@ class ExportInventory:
                         _, _, pwt, size, year, _, _ = l
                     else:
                         if l[2] == "fleet average":
-                            _, _, _, pwt, year = [t.strip() for t in tuple_output[0].split(",")]
+                            _, _, _, pwt, year = [
+                                t.strip() for t in tuple_output[0].split(",")
+                            ]
                             size = None
                         elif l[3] == "fleet average":
                             _, _, size, _, _, year = l
                             pwt = None
                         else:
-                            _, pwt, size, year, _, _ = [t.strip() for t in tuple_output[0].split(",")]
+                            _, pwt, size, year, _, _ = [
+                                t.strip() for t in tuple_output[0].split(",")
+                            ]
 
                     if size is not None and pwt is not None:
 
@@ -898,17 +931,34 @@ class ExportInventory:
 
                             for p in vehicle_specs.parameter.values:
 
-                                val = vehicle_specs.sel(powertrain=pwt, size=size, year=int(year), value=0, parameter=p).values
+                                val = vehicle_specs.sel(
+                                    powertrain=pwt,
+                                    size=size,
+                                    year=int(year),
+                                    value=0,
+                                    parameter=p,
+                                ).values
 
                                 if val != 0:
 
-                                    if p in ("TtW efficiency", 'combustion power share',
-                                             'capacity utilization', 'fuel cell system efficiency'):
+                                    if p in (
+                                        "TtW efficiency",
+                                        "combustion power share",
+                                        "capacity utilization",
+                                        "fuel cell system efficiency",
+                                    ):
                                         val = int(val * 100)
                                     else:
                                         val = int(val)
 
-                                    string += d_names[p] + ": " + str(val) + " " + d_units[p] + ". "
+                                    string += (
+                                        d_names[p]
+                                        + ": "
+                                        + str(val)
+                                        + " "
+                                        + d_units[p]
+                                        + ". "
+                                    )
 
                     else:
 
@@ -923,16 +973,32 @@ class ExportInventory:
                 # is meant for the UVEK database
                 if ecoinvent_version == "uvek":
                     dist_train, dist_truck, dist_barge = (0, 0, 0)
-                    if tuple_output[1] in ("RER", "Europe without Switzerland", "SE", "GLO",
-                                           "DE", "JP", "CN"):
+                    if tuple_output[1] in (
+                        "RER",
+                        "Europe without Switzerland",
+                        "SE",
+                        "GLO",
+                        "DE",
+                        "JP",
+                        "CN",
+                    ):
                         for exc in list_exc:
                             if exc["name"] in self.uvek_dist:
-                                dist_train += (self.uvek_dist[exc["name"]]["train RER"]
-                                               * float(exc["amount"]) / 1000)
-                                dist_truck += (self.uvek_dist[exc["name"]]["truck RER"]
-                                               * float(exc["amount"]) / 1000)
-                                dist_barge += (self.uvek_dist[exc["name"]]["barge RER"]
-                                               * float(exc["amount"]) / 1000)
+                                dist_train += (
+                                    self.uvek_dist[exc["name"]]["train RER"]
+                                    * float(exc["amount"])
+                                    / 1000
+                                )
+                                dist_truck += (
+                                    self.uvek_dist[exc["name"]]["truck RER"]
+                                    * float(exc["amount"])
+                                    / 1000
+                                )
+                                dist_barge += (
+                                    self.uvek_dist[exc["name"]]["barge RER"]
+                                    * float(exc["amount"])
+                                    / 1000
+                                )
 
                         if dist_train > 0:
                             list_exc.append(
@@ -975,12 +1041,21 @@ class ExportInventory:
 
                         for exc in list_exc:
                             if exc["name"] in self.uvek_dist:
-                                dist_train += (self.uvek_dist[exc["name"]]["train CH"]
-                                               * float(exc["amount"]) / 1000)
-                                dist_truck += (self.uvek_dist[exc["name"]]["truck CH"]
-                                               * float(exc["amount"]) / 1000)
-                                dist_barge += (self.uvek_dist[exc["name"]]["barge CH"]
-                                               * float(exc["amount"]) / 1000)
+                                dist_train += (
+                                    self.uvek_dist[exc["name"]]["train CH"]
+                                    * float(exc["amount"])
+                                    / 1000
+                                )
+                                dist_truck += (
+                                    self.uvek_dist[exc["name"]]["truck CH"]
+                                    * float(exc["amount"])
+                                    / 1000
+                                )
+                                dist_barge += (
+                                    self.uvek_dist[exc["name"]]["barge CH"]
+                                    * float(exc["amount"])
+                                    / 1000
+                                )
 
                         if dist_train > 0:
                             list_exc.append(
@@ -1034,7 +1109,7 @@ class ExportInventory:
                         "source": source,
                         "description": description,
                         "special remark": special_remark,
-                        "comment": string
+                        "comment": string,
                     }
                 )
         if presamples:
@@ -1066,24 +1141,33 @@ class ExportInventory:
 
         if software_compatibility == "brightway2":
             if filename is None:
-                safe_name = safe_filename(
-                    "carculator_inventory_export_{}_brightway2".format(
+                safe_name = (
+                    safe_filename(
+                        "carculator_inventory_export_{}_brightway2".format(
+                            str(datetime.date.today())
+                        ),
+                        False,
+                    )
+                    + ".xlsx"
+                )
+            else:
+                safe_name = (
+                    safe_filename(
+                        filename,
+                        False,
+                    )
+                    + ".xlsx"
+                )
+        else:
+            safe_name = (
+                safe_filename(
+                    "carculator_inventory_export_{}_simapro".format(
                         str(datetime.date.today())
                     ),
                     False,
-                ) + ".xlsx"
-            else:
-                safe_name = safe_filename(
-                    filename,
-                    False,
-                ) + ".xlsx"
-        else:
-            safe_name = safe_filename(
-                "carculator_inventory_export_{}_simapro".format(
-                    str(datetime.date.today())
-                ),
-                False,
-            ) + ".csv"
+                )
+                + ".csv"
+            )
 
         if directory is None:
             filepath_export = safe_name
@@ -1092,10 +1176,13 @@ class ExportInventory:
                 os.makedirs(directory)
             filepath_export = os.path.join(directory, safe_name)
 
-        list_act = self.write_lci(False, ecoinvent_compatibility=ecoinvent_compatibility,
-                                  ecoinvent_version=ecoinvent_version,
-                                  forbidden_activities=forbidden_activities,
-                                  vehicle_specs=vehicle_specs)
+        list_act = self.write_lci(
+            False,
+            ecoinvent_compatibility=ecoinvent_compatibility,
+            ecoinvent_version=ecoinvent_version,
+            forbidden_activities=forbidden_activities,
+            vehicle_specs=vehicle_specs,
+        )
 
         if software_compatibility == "brightway2":
             data = self.format_data_for_lci_for_bw2(list_act)
@@ -1161,7 +1248,9 @@ class ExportInventory:
             if export_format == "file":
                 with open(filepath_export, "w", newline="") as csvFile:
                     writer = csv.writer(csvFile, delimiter=";")
-                    rows = self.format_data_for_lci_for_simapro(list_act, ecoinvent_version)
+                    rows = self.format_data_for_lci_for_simapro(
+                        list_act, ecoinvent_version
+                    )
                     for row in rows:
                         writer.writerow(row)
                 csvFile.close()
@@ -1199,9 +1288,7 @@ class ExportInventory:
         filename = "simapro-technosphere-3.5.csv"
         filepath = DATA_DIR / filename
         with open(filepath) as f:
-            csv_list = [
-                [val.strip() for val in r.split(";")] for r in f.readlines()
-            ]
+            csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
         (_, _, *header), *data = csv_list
 
         dict_tech = {}
@@ -1243,7 +1330,7 @@ class ExportInventory:
                             "categories",
                             "type",
                             "reference product",
-                            "tag"
+                            "tag",
                         ],
                     )
                 )
@@ -1259,7 +1346,7 @@ class ExportInventory:
                             "::".join(e.get("categories", ())),
                             e["type"],
                             e.get("reference product"),
-                            e.get("tag", "other")
+                            e.get("tag", "other"),
                         ]
                     )
             else:
@@ -1279,28 +1366,29 @@ class ExportInventory:
 
         # not all biosphere flows exist in simapro
         simapro_biosphere_flows_to_remove = [
-            'Gangue, in ground',
-            'Water, turbine use, unspecified natural origin',
-            'Oxygen',
-            'Volume occupied, reservoir',
-            'Xenon-135',
-            'Noble gases, radioactive, unspecified',
-            'Radon-222',
-            'Xenon-133',
-            'Hydrogen-3, Tritium',
-            'Radon-222',
-            'Radon-220',
-            'Oxygen',
-            'Occupation, traffic area, road network',
-            'Energy, gross calorific value, in biomass, primary forest',
-            'Carbon-14'
+            "Gangue, in ground",
+            "Water, turbine use, unspecified natural origin",
+            "Oxygen",
+            "Volume occupied, reservoir",
+            "Xenon-135",
+            "Noble gases, radioactive, unspecified",
+            "Radon-222",
+            "Xenon-133",
+            "Hydrogen-3, Tritium",
+            "Radon-222",
+            "Radon-220",
+            "Oxygen",
+            "Occupation, traffic area, road network",
+            "Energy, gross calorific value, in biomass, primary forest",
+            "Carbon-14",
         ]
 
         headers = [
-
             "{SimaPro 9.1.1.1}",
             "{processes}",
-            "{Project: carculator import" + f"{datetime.datetime.today():%d.%m.%Y}" + "}",
+            "{Project: carculator import"
+            + f"{datetime.datetime.today():%d.%m.%Y}"
+            + "}",
             "{CSV Format version: 9.0.0}",
             "{CSV separator: Semicolon}",
             "{Decimal separator: .}",
@@ -1367,7 +1455,7 @@ class ExportInventory:
             "vehicle-kilometer": "vkm",
             "person-kilometer": "personkm",
             "meter-year": "my",
-            "ton-kilometer": "tkm"
+            "ton-kilometer": "tkm",
         }
 
         dict_tech = self.get_simapro_technosphere()
@@ -1383,10 +1471,7 @@ class ExportInventory:
 
         for a in data:
             list_own_datasets.append(
-                a["name"].capitalize()
-                + " {"
-                + a.get("location", "GLO")
-                + "}"
+                a["name"].capitalize() + " {" + a.get("location", "GLO") + "}"
             )
 
         # We loop through the activities
@@ -1425,11 +1510,11 @@ class ExportInventory:
 
                     if ei_version in ("3.5", "3.6"):
                         name = (
-                                a["name"].capitalize()
-                                + " {"
-                                + a.get("location", "GLO")
-                                + "}"
-                                + "| Cut-off, U"
+                            a["name"].capitalize()
+                            + " {"
+                            + a.get("location", "GLO")
+                            + "}"
+                            + "| Cut-off, U"
                         )
 
                     if ei_version == "uvek":
@@ -1442,7 +1527,7 @@ class ExportInventory:
 
                 if item == "Comment":
 
-                    if a["comment"] !="":
+                    if a["comment"] != "":
                         string = a["comment"]
                     else:
                         string = ""
@@ -1477,11 +1562,13 @@ class ExportInventory:
                 if item == "Date":
                     rows.append([f"{datetime.datetime.today():%d.%m.%Y}"])
 
-                if item in ("Cut off rules",
-                            "Capital goods",
-                            "Technology",
-                            "Representativeness",
-                            "Boundary with nature"):
+                if item in (
+                    "Cut off rules",
+                    "Capital goods",
+                    "Technology",
+                    "Representativeness",
+                    "Boundary with nature",
+                ):
                     rows.append(["Unspecified"])
 
                 if item == "Infrastructure":
@@ -1495,8 +1582,11 @@ class ExportInventory:
 
                 if item in ("Allocation rules"):
                     rows.append(
-                        ["In the instance of joint-production, allocation of process burden based on"
-                         "economic relative revenue of each co-product."])
+                        [
+                            "In the instance of joint-production, allocation of process burden based on"
+                            "economic relative revenue of each co-product."
+                        ]
+                    )
 
                 if item == "Literature references":
                     rows.append(["Sacchi et al. 2020"])
@@ -1515,9 +1605,7 @@ class ExportInventory:
                     if ei_version in ("3.5", "3.6"):
                         rows.append(
                             [
-                                dict_tech.get(
-                                    (a["name"], a["location"]), name
-                                ),
+                                dict_tech.get((a["name"], a["location"]), name),
                                 simapro_units[a["unit"]],
                                 1.0,
                                 "not defined",
@@ -1533,25 +1621,24 @@ class ExportInventory:
                                 1.0,
                                 "not defined",
                                 category,
-                            ])
+                            ]
+                        )
 
                 if item == "Products":
                     for e in a["exchanges"]:
                         if e["type"] == "production":
                             name = (
-                                    e["name"].capitalize()
-                                    + " {"
-                                    + e.get("location", "GLO")
-                                    + "}"
-                                    + "| Cut-off, U"
+                                e["name"].capitalize()
+                                + " {"
+                                + e.get("location", "GLO")
+                                + "}"
+                                + "| Cut-off, U"
                             )
 
                             if ei_version in ("3.5", "3.6"):
                                 rows.append(
                                     [
-                                        dict_tech.get(
-                                            (a["name"], a["location"]), name
-                                        ),
+                                        dict_tech.get((a["name"], a["location"]), name),
                                         simapro_units[a["unit"]],
                                         1.0,
                                         "100%",
@@ -1569,69 +1656,137 @@ class ExportInventory:
                                         "100%",
                                         "not defined",
                                         category,
-                                    ])
+                                    ]
+                                )
 
                 if item == "Materials/fuels":
                     for e in a["exchanges"]:
                         if e["type"] == "technosphere":
                             if ei_version in ("3.5", "3.6"):
-                                if not any(i.lower() in e["name"].lower()
-                                           for i in ("waste", "emissions", "treatment", "scrap",
-                                                     "used powertrain", "disposal", "rainwater", "sludge",
-                                                     "used li-ion", "mineral oil storage")
-                                           ) \
-                                        or any(i in e["name"]
-                                               for i in ["from municipal waste incineration",
-                                                            "municipal solid waste, incineration",
-                                                            "Biomethane", "biogas upgrading",
-                                                         "anaerobic digestion, with biogenic carbon uptake"
-                                                         ] if e["unit"] in ["kilowatt hour", "megajoule", "kilogram",
-                                                                            "cubic meter"]):
+                                if not any(
+                                    i.lower() in e["name"].lower()
+                                    for i in (
+                                        "waste",
+                                        "emissions",
+                                        "treatment",
+                                        "scrap",
+                                        "used powertrain",
+                                        "disposal",
+                                        "rainwater",
+                                        "sludge",
+                                        "used li-ion",
+                                        "mineral oil storage",
+                                    )
+                                ) or any(
+                                    i in e["name"]
+                                    for i in [
+                                        "from municipal waste incineration",
+                                        "municipal solid waste, incineration",
+                                        "Biomethane",
+                                        "biogas upgrading",
+                                        "anaerobic digestion, with biogenic carbon uptake",
+                                    ]
+                                    if e["unit"]
+                                    in [
+                                        "kilowatt hour",
+                                        "megajoule",
+                                        "kilogram",
+                                        "cubic meter",
+                                    ]
+                                ):
 
                                     if ei_version == "3.6":
-                                        (e["name"], e["location"], e["unit"],
-                                         e["reference product"]) = self.map_37_to_36.get(
-                                            (e["name"], e["location"], e["unit"], e["reference product"]),
-                                            (e["name"], e["location"], e["unit"], e["reference product"])
+                                        (
+                                            e["name"],
+                                            e["location"],
+                                            e["unit"],
+                                            e["reference product"],
+                                        ) = self.map_37_to_36.get(
+                                            (
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
+                                            ),
+                                            (
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
+                                            ),
                                         )
                                     if ei_version == "3.5":
-                                        (e["name"], e["location"], e["unit"],
-                                         e["reference product"]) = self.map_37_to_35.get(
-                                            (e["name"], e["location"], e["unit"], e["reference product"]),
-                                            (e["name"], e["location"], e["unit"], e["reference product"])
+                                        (
+                                            e["name"],
+                                            e["location"],
+                                            e["unit"],
+                                            e["reference product"],
+                                        ) = self.map_37_to_35.get(
+                                            (
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
+                                            ),
+                                            (
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
+                                            ),
                                         )
 
                                     name = (
-                                            e["name"].capitalize()
-                                            + " {"
-                                            + e.get("location", "GLO")
-                                            + "}"
+                                        e["name"].capitalize()
+                                        + " {"
+                                        + e.get("location", "GLO")
+                                        + "}"
                                     )
 
                                     if name not in list_own_datasets:
                                         name = (
-                                                e["reference product"].capitalize()
-                                                + " {"
-                                                + e.get("location", "GLO")
-                                                + "}"
+                                            e["reference product"].capitalize()
+                                            + " {"
+                                            + e.get("location", "GLO")
+                                            + "}"
                                         )
 
                                         if "market" in e["name"]:
-                                            name += "| market for " + e["reference product"].lower() + " "
+                                            name += (
+                                                "| market for "
+                                                + e["reference product"].lower()
+                                                + " "
+                                            )
                                         if "market group" in e["name"]:
-                                            name += "| market group for " + e["reference product"].lower() + " "
+                                            name += (
+                                                "| market group for "
+                                                + e["reference product"].lower()
+                                                + " "
+                                            )
 
                                         if "production" in e["name"]:
-                                            if len(e["reference product"].split(", ")) > 1:
-                                                name += ("| " + e["reference product"].split(", ")[
-                                                    0] + " production, "
-                                                         + e["reference product"].split(", ")[1] + " ")
+                                            if (
+                                                len(e["reference product"].split(", "))
+                                                > 1
+                                            ):
+                                                name += (
+                                                    "| "
+                                                    + e["reference product"].split(
+                                                        ", "
+                                                    )[0]
+                                                    + " production, "
+                                                    + e["reference product"].split(
+                                                        ", "
+                                                    )[1]
+                                                    + " "
+                                                )
 
                                     rows.append(
                                         [
                                             dict_tech.get(
                                                 (e["name"], e["location"]), name
-                                            ) + "| Cut-off, U",
+                                            )
+                                            + "| Cut-off, U",
                                             simapro_units[e["unit"]],
                                             "{:.3E}".format(e["amount"]),
                                             "undefined",
@@ -1642,38 +1797,62 @@ class ExportInventory:
                                     )
 
                             if ei_version == "uvek":
-                                if not any(i.lower() in e["name"].lower()
-                                           for i in ("waste", "emissions", "treatment", "scrap",
-                                                     "used powertrain", "disposal", "used passenger car",
-                                                     "used electric passenger car", "rainwater")) \
-                                        or any(i in e["name"]
-                                               for i in ["from municipal waste incineration",
-                                                         "aluminium scrap, new",
-                                                         "brake wear emissions",
-                                                         "tyre wear emissions",
-                                                         "road wear emissions",
-                                                         "used powertrain from electric passenger car",
-                                                         "anaerobic digestion, with biogenic carbon uptake"
-                                                         ])\
-                                        or ("municipal solid waste, incineration" in e["name"] and e["unit"]=="kilowatt hour"):
+                                if (
+                                    not any(
+                                        i.lower() in e["name"].lower()
+                                        for i in (
+                                            "waste",
+                                            "emissions",
+                                            "treatment",
+                                            "scrap",
+                                            "used powertrain",
+                                            "disposal",
+                                            "used passenger car",
+                                            "used electric passenger car",
+                                            "rainwater",
+                                        )
+                                    )
+                                    or any(
+                                        i in e["name"]
+                                        for i in [
+                                            "from municipal waste incineration",
+                                            "aluminium scrap, new",
+                                            "brake wear emissions",
+                                            "tyre wear emissions",
+                                            "road wear emissions",
+                                            "used powertrain from electric passenger car",
+                                            "anaerobic digestion, with biogenic carbon uptake",
+                                        ]
+                                    )
+                                    or (
+                                        "municipal solid waste, incineration"
+                                        in e["name"]
+                                        and e["unit"] == "kilowatt hour"
+                                    )
+                                ):
 
                                     if e["name"] not in [i["name"] for i in data]:
 
                                         name = self.map_36_to_uvek_for_simapro[
-                                            e["name"], e["location"], e["unit"], e["reference product"]
+                                            e["name"],
+                                            e["location"],
+                                            e["unit"],
+                                            e["reference product"],
                                         ]
 
                                     else:
                                         name = e["name"] + "/" + e["location"] + " U"
 
                                     uvek_multiplication_factors = {
-                                        "market for heat, from steam, in chemical industry": 1 / 2.257,
-                                        "steam production, as energy carrier, in chemical industry": 1 / 2.257,
+                                        "market for heat, from steam, in chemical industry": 1
+                                        / 2.257,
+                                        "steam production, as energy carrier, in chemical industry": 1
+                                        / 2.257,
                                         "market group for natural gas, high pressure": 0.842,
                                         "market for natural gas, high pressure": 0.842,
                                         "market for natural gas, high pressure, vehicle grade": 0.842,
                                         "market for chemical factory": 1 / 12.6e6,
-                                        "market for used powertrain from electric passenger car, manual dismantling": -1
+                                        "market for used powertrain from electric passenger car, manual dismantling": -1,
                                     }
 
                                     uvek_units = {
@@ -1704,13 +1883,14 @@ class ExportInventory:
                                             0,
                                             0,
                                             0,
-                                        ])
+                                        ]
+                                    )
 
                 if item == "Resources":
                     for e in a["exchanges"]:
                         if (
-                                e["type"] == "biosphere"
-                                and e["categories"][0] == "natural resource"
+                            e["type"] == "biosphere"
+                            and e["categories"][0] == "natural resource"
                         ):
                             if e["name"] not in simapro_biosphere_flows_to_remove:
                                 rows.append(
@@ -1729,17 +1909,20 @@ class ExportInventory:
                 if item == "Emissions to air":
                     for e in a["exchanges"]:
                         if (
-                                e["type"] == "biosphere"
-                                and e["categories"][0] == "air"
-                        ) or e["name"] in ["Carbon dioxide, from soil or biomass stock",
-                                           "Carbon dioxide, to soil or biomass stock"]:
+                            e["type"] == "biosphere" and e["categories"][0] == "air"
+                        ) or e["name"] in [
+                            "Carbon dioxide, from soil or biomass stock",
+                            "Carbon dioxide, to soil or biomass stock",
+                        ]:
                             if e["name"] not in simapro_biosphere_flows_to_remove:
 
                                 if e["name"].lower() == "water":
                                     e["unit"] = "kilogram"
                                     e["amount"] /= 1000
 
-                                if e["name"] in ["Carbon dioxide, to soil or biomass stock"]:
+                                if e["name"] in [
+                                    "Carbon dioxide, to soil or biomass stock"
+                                ]:
                                     rows.append(
                                         [
                                             dict_bio.get(e["name"], e["name"]),
@@ -1769,18 +1952,12 @@ class ExportInventory:
 
                 if item == "Emissions to water":
                     for e in a["exchanges"]:
-                        if (
-                                e["type"] == "biosphere"
-                                and e["categories"][0] == "water"
-                        ):
+                        if e["type"] == "biosphere" and e["categories"][0] == "water":
 
                             if e["name"] not in simapro_biosphere_flows_to_remove:
                                 if e["name"].lower() == "water":
                                     e["unit"] = "kilogram"
                                     e["amount"] /= 1000
-
-
-
 
                                 rows.append(
                                     [
@@ -1798,11 +1975,11 @@ class ExportInventory:
                 if item == "Emissions to soil":
                     for e in a["exchanges"]:
                         if (
-                                e["type"] == "biosphere"
-                                and e["categories"][0] == "soil"
-                        ) and e["name"] not in ["Carbon dioxide, from soil or biomass stock",
-                                                "Carbon dioxide, to soil or biomass stock"]:
-
+                            e["type"] == "biosphere" and e["categories"][0] == "soil"
+                        ) and e["name"] not in [
+                            "Carbon dioxide, from soil or biomass stock",
+                            "Carbon dioxide, to soil or biomass stock",
+                        ]:
 
                             if e["name"] not in simapro_biosphere_flows_to_remove:
                                 rows.append(
@@ -1828,27 +2005,35 @@ class ExportInventory:
                                 if self.references[e["name"]] == "waste treatment":
                                     is_waste = True
                             else:
-                                if any(i.lower() in e["name"].lower()
-                                       for i in (" waste ",
-                                                 "emissions",
-                                                 "treatment",
-                                                 "scrap",
-                                                 "used powertrain",
-                                                 "used passenger car",
-                                                 "used electric passenger car",
-                                                 "municipal solid waste",
-                                                 "disposal",
-                                                 "rainwater mineral oil",
-                                                 "sludge",
-                                                 "used li-ion")
-                                       ) \
-                                        and not any(i.lower() in e["name"].lower()
-                                                    for i in ("anaerobic",
-                                                              "cooking",
-                                                              "heat",
-                                                              "manual dismantling",
-                                                              ))\
-                                        and e["unit"] not in ["kilowatt hour", "megajoule"]:
+                                if (
+                                    any(
+                                        i.lower() in e["name"].lower()
+                                        for i in (
+                                            " waste ",
+                                            "emissions",
+                                            "treatment",
+                                            "scrap",
+                                            "used powertrain",
+                                            "used passenger car",
+                                            "used electric passenger car",
+                                            "municipal solid waste",
+                                            "disposal",
+                                            "rainwater mineral oil",
+                                            "sludge",
+                                            "used li-ion",
+                                        )
+                                    )
+                                    and not any(
+                                        i.lower() in e["name"].lower()
+                                        for i in (
+                                            "anaerobic",
+                                            "cooking",
+                                            "heat",
+                                            "manual dismantling",
+                                        )
+                                    )
+                                    and e["unit"] not in ["kilowatt hour", "megajoule"]
+                                ):
                                     is_waste = True
 
                             # Yes, it is a waste treatment activity
@@ -1863,21 +2048,49 @@ class ExportInventory:
                                 if ei_version in ("3.5", "3.6"):
 
                                     if ei_version == "3.6":
-                                        (e["name"], e["location"], e["unit"],
-                                         e["reference product"]) = self.map_37_to_36.get(
-                                            (e["name"], e["location"], e["unit"], e["reference product"]),
-                                            (e["name"], e["location"], e["unit"], e["reference product"])
+                                        (
+                                            e["name"],
+                                            e["location"],
+                                            e["unit"],
+                                            e["reference product"],
+                                        ) = self.map_37_to_36.get(
+                                            (
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
+                                            ),
+                                            (
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
+                                            ),
                                         )
                                     if ei_version == "3.5":
-                                        (e["name"], e["location"], e["unit"],
-                                         e["reference product"]) = self.map_37_to_35.get(
-                                            (e["name"], e["location"], e["unit"], e["reference product"]),
-                                            (e["name"], e["location"], e["unit"], e["reference product"])
+                                        (
+                                            e["name"],
+                                            e["location"],
+                                            e["unit"],
+                                            e["reference product"],
+                                        ) = self.map_37_to_35.get(
+                                            (
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
+                                            ),
+                                            (
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
+                                            ),
                                         )
 
                                     name = dict_tech.get(
                                         (e["name"], e["location"]),
-                                        e["name"] + " {" + e["location"] + "}"
+                                        e["name"] + " {" + e["location"] + "}",
                                     )
 
                                     rows.append(
@@ -1889,41 +2102,51 @@ class ExportInventory:
                                             0,
                                             0,
                                             0,
-                                        ])
+                                        ]
+                                    )
 
                                 if ei_version == "uvek":
 
-                                    if not any(i in e["name"].lower()
-                                               for i in [
-                                                   "brake wear",
-                                                   "tyre wear",
-                                                   "road wear",
-                                                   "aluminium scrap, new",
-                                                   "used powertrain from electric passenger car",
-                                               ]):
+                                    if not any(
+                                        i in e["name"].lower()
+                                        for i in [
+                                            "brake wear",
+                                            "tyre wear",
+                                            "road wear",
+                                            "aluminium scrap, new",
+                                            "used powertrain from electric passenger car",
+                                        ]
+                                    ):
 
                                         uvek_multiplication_factors = {
-                                            "market for manual dismantling of used electric passenger car": 1 / 1200,
-                                            "manual dismantling of used passenger car with internal combustion engine": 1 / 1200,
-                                            "market for manual dismantling of used passenger car with internal combustion engine": 1 / 1200,
-
+                                            "market for manual dismantling of used electric passenger car": 1
+                                            / 1200,
+                                            "manual dismantling of used passenger car with internal combustion engine": 1
+                                            / 1200,
+                                            "market for manual dismantling of used passenger car with internal combustion engine": 1
+                                            / 1200,
                                         }
 
                                         if e["name"] in uvek_multiplication_factors:
-                                            factor = uvek_multiplication_factors[e["name"]]
+                                            factor = uvek_multiplication_factors[
+                                                e["name"]
+                                            ]
                                         else:
                                             factor = 1
 
                                         if e["name"] not in [i["name"] for i in data]:
 
                                             name = self.map_36_to_uvek_for_simapro[
-                                                e["name"], e["location"], e["unit"], e["reference product"]
+                                                e["name"],
+                                                e["location"],
+                                                e["unit"],
+                                                e["reference product"],
                                             ]
 
-
                                         else:
-                                            name = e["name"] + "/" + e["location"] + " U"
-
+                                            name = (
+                                                e["name"] + "/" + e["location"] + " U"
+                                            )
 
                                         rows.append(
                                             [
@@ -1934,7 +2157,8 @@ class ExportInventory:
                                                 0,
                                                 0,
                                                 0,
-                                            ])
+                                            ]
+                                        )
 
                 rows.append([])
 
@@ -1948,26 +2172,41 @@ class ExportInventory:
         rows.append(["transport"])
         rows.append([])
         rows.append(["Description"])
-        rows.append(["Prospective life cycle assessment model for passenger cars developed by PSI"])
+        rows.append(
+            [
+                "Prospective life cycle assessment model for passenger cars developed by PSI"
+            ]
+        )
         rows.append([])
         rows.append(["Cut-off rules"])
-        rows.append(["All environmentally-relevant flows are included, as far as the authors knowledge permits."
-                         "Also, residual material (e.g., biomass residue) and energy (e.g., waste heat) "
-                         "come free of burden, except for the necessary steps to make it reusable"
-                         " (transport, conditioning, etc.)."
-                         ])
+        rows.append(
+            [
+                "All environmentally-relevant flows are included, as far as the authors knowledge permits."
+                "Also, residual material (e.g., biomass residue) and energy (e.g., waste heat) "
+                "come free of burden, except for the necessary steps to make it reusable"
+                " (transport, conditioning, etc.)."
+            ]
+        )
         rows.append([])
         rows.append(["Energy model"])
-        rows.append(["The energy consumption of vehicles calculated based on a physics model, including "
-                         "inertia, rolling resistance, aerodynamic drag, road gradient, etc."])
+        rows.append(
+            [
+                "The energy consumption of vehicles calculated based on a physics model, including "
+                "inertia, rolling resistance, aerodynamic drag, road gradient, etc."
+            ]
+        )
         rows.append([])
         rows.append(["Transport model"])
         rows.append(["Based on Sacchi et al. 2020 (in review)"])
         rows.append([])
         rows.append(["Allocation rules"])
-        rows.append(["The system modeling is attributional. In the instance of joint-production, the allocation of "
-                         "burden between co-products is generally based on the relative economic revenue of "
-                         "each product, to align with the underlying database ecoinvent cut-off."])
+        rows.append(
+            [
+                "The system modeling is attributional. In the instance of joint-production, the allocation of "
+                "burden between co-products is generally based on the relative economic revenue of "
+                "each product, to align with the underlying database ecoinvent cut-off."
+            ]
+        )
         rows.append(["End"])
         rows.append([])
 
@@ -1981,23 +2220,36 @@ class ExportInventory:
         rows.append(["https://www.psi.ch/en/ta/preprint"])
         rows.append([])
         rows.append(["Comment"])
-        rows.append(["Pre-print available at: https://www.psi.ch/en/media/57994/download"])
+        rows.append(
+            ["Pre-print available at: https://www.psi.ch/en/media/57994/download"]
+        )
         rows.append([])
         rows.append(["Category"])
         rows.append(["carculator"])
         rows.append([])
         rows.append(["Description"])
-        description = "carculator: an open-source tool for prospective environmental and " \
-                      "economic life cycle assessment of vehicles. When, Where and How can battery-electric " \
-                      "vehicles help reduce greenhouse gas emissions?\n"
+        description = (
+            "carculator: an open-source tool for prospective environmental and "
+            "economic life cycle assessment of vehicles. When, Where and How can battery-electric "
+            "vehicles help reduce greenhouse gas emissions?\n"
+        )
         description += "Romain Sacchi, Christian Bauer and Brian L. Cox\n"
-        description += "Submitted to Environmental Science and Technology on November 17th, 2020"
+        description += (
+            "Submitted to Environmental Science and Technology on November 17th, 2020"
+        )
 
         rows.append([description])
 
         return rows
 
-    def write_lci_to_bw(self, presamples, ecoinvent_compatibility, ecoinvent_version, forbidden_activities, vehicle_specs):
+    def write_lci_to_bw(
+        self,
+        presamples,
+        ecoinvent_compatibility,
+        ecoinvent_version,
+        forbidden_activities,
+        vehicle_specs,
+    ):
         """
         Return a LCIImporter object with the inventory as `data` attribute.
 
@@ -2010,7 +2262,7 @@ class ExportInventory:
                 ecoinvent_compatibility=ecoinvent_compatibility,
                 ecoinvent_version=ecoinvent_version,
                 forbidden_activities=forbidden_activities,
-                vehicle_specs=vehicle_specs
+                vehicle_specs=vehicle_specs,
             )
             i = bw2io.importers.base_lci.LCIImporter(self.db_name)
             i.data = data
@@ -2021,7 +2273,7 @@ class ExportInventory:
                 ecoinvent_compatibility=ecoinvent_compatibility,
                 ecoinvent_version=ecoinvent_version,
                 forbidden_activities=forbidden_activities,
-                vehicle_specs=vehicle_specs
+                vehicle_specs=vehicle_specs,
             )
             i = bw2io.importers.base_lci.LCIImporter(self.db_name)
             i.data = data
@@ -2162,7 +2414,7 @@ class ExportInventory:
             ]
 
         def make_pdf(self, dist, params, size=10000):
-            """Generate distributions's Probability Distribution Function """
+            """Generate distributions's Probability Distribution Function"""
             import pandas as pd
 
             # Separate parts of parameters
@@ -2188,4 +2440,3 @@ class ExportInventory:
             pdf = pd.Series(y, x)
 
             return pdf
-

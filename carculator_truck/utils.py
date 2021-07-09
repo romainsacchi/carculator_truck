@@ -29,9 +29,9 @@ def extract_biofuel_shares_from_IAM(
     """
 
     if model == "remind":
-        df = pd.read_csv(fp, delimiter=";", index_col=["Region", "Variable", "Unit"]).drop(
-            columns=["Model", "Scenario"]
-        )
+        df = pd.read_csv(
+            fp, delimiter=";", index_col=["Region", "Variable", "Unit"]
+        ).drop(columns=["Model", "Scenario"])
 
     if model == "image":
         df = pd.read_excel(fp, index_col=[2, 3, 4]).drop(columns=["Model", "Scenario"])
@@ -80,8 +80,6 @@ def extract_biofuel_shares_from_IAM(
             df_liquids = df.loc[df["Variable"].isin(var), :]
             df_liquids.iloc[:, 3:] /= df_liquids.iloc[:, 3:].sum(axis=0)
 
-
-
         var = ["FE-Transport-Gases-Non-Biomass", "FE-Transport-Gases-Biomass"]
 
         df_gas = df.loc[df["Variable"].isin(var), :]
@@ -113,7 +111,6 @@ def extract_biofuel_shares_from_IAM(
             "Final Energy-Transportation-Freight-Liquids-Biomass": "liquid - biomass",
             "Final Energy|Transportation|Freight|Gases": "gas - fossil",
         }
-
 
     new_df = pd.concat([df_liquids, df_gas])
     new_df["Variable"] = new_df["Variable"].map(d_map_fuels)
@@ -151,6 +148,7 @@ def get_iam_electricity_market_labels(model):
             if row[0] == model:
                 d[row[1]] = row[2]
     return d
+
 
 def extract_electricity_mix_from_IAM_file(model, fp, IAM_region, years):
     """
@@ -277,9 +275,8 @@ def extract_electricity_mix_from_IAM_file(model, fp, IAM_region, years):
 
     return arr
 
-def create_fleet_composition_from_IAM_file(
-    fp
-):
+
+def create_fleet_composition_from_IAM_file(fp):
     """
     This function creates a consumable fleet composition array from a CSV file.
     The array returned is consumed by `InventoryCalculation`.
@@ -297,9 +294,20 @@ def create_fleet_composition_from_IAM_file(
     # Read the fleet composition CSV file
     df = pd.read_csv(fp, delimiter=",")
     df = df.fillna(0)
-    df = df[["year","vintage_year","IAM_region","powertrain","size","vintage_demand_tkm"]]
+    df = df[
+        [
+            "year",
+            "vintage_year",
+            "IAM_region",
+            "powertrain",
+            "size",
+            "vintage_demand_tkm",
+        ]
+    ]
 
-    df_gr = df.groupby(["year", "vintage_year", "IAM_region", "powertrain", "size"]).sum()
+    df_gr = df.groupby(
+        ["year", "vintage_year", "IAM_region", "powertrain", "size"]
+    ).sum()
 
     df_gr = df_gr.groupby(level=[0, 2, 3]).apply(lambda x: x / float(x.sum()))
     df = df_gr.reset_index()
@@ -307,11 +315,14 @@ def create_fleet_composition_from_IAM_file(
 
     # Turn the dataframe into a pivot table
     df = df.pivot_table(
-        index=["IAM_region", "powertrain", "size", "vintage_year"], columns=["year"], aggfunc=np.sum
+        index=["IAM_region", "powertrain", "size", "vintage_year"],
+        columns=["year"],
+        aggfunc=np.sum,
     )["vintage_demand_tkm"]
 
     # xarray.DataArray is returned
     return df.to_xarray().fillna(0).to_array().round(3)
+
 
 def build_fleet_array(fp, scope):
     """

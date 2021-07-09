@@ -3,7 +3,9 @@ import numpy as np
 import sys
 
 
-def get_standard_driving_cycle(name="Urban delivery", size=["3.5t", "7.5t", "18t", "26t", "32t", "40t", "60t"]):
+def get_standard_driving_cycle(
+    name="Urban delivery", size=["3.5t", "7.5t", "18t", "26t", "32t", "40t", "60t"]
+):
 
     """Get driving cycle data as a Pandas `Series`.
 
@@ -46,7 +48,9 @@ def get_standard_driving_cycle(name="Urban delivery", size=["3.5t", "7.5t", "18t
     }
 
     try:
-        list_col = [c for s in size for c in dict_dc_sizes[s] if c in dict_dc_names[name]]
+        list_col = [
+            c for s in size for c in dict_dc_sizes[s] if c in dict_dc_names[name]
+        ]
         arr = np.genfromtxt(DATA_DIR / "driving_cycles.csv", delimiter=";")
         # we skip the headers
         dc = arr[1:, list_col]

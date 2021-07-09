@@ -31,7 +31,9 @@ setup(
     packages=packages,
     author="Romain Sacchi <romain.sacchi@psi.ch>",
     license=open("LICENSE").read(),
-    package_data={"carculator_truck": package_files(os.path.join("carculator_truck", "data"))},
+    package_data={
+        "carculator_truck": package_files(os.path.join("carculator_truck", "data"))
+    },
     install_requires=[
         "pandas",
         "xarray<0.18",
@@ -45,7 +47,7 @@ setup(
         "bw2io",
         "prettytable",
         "wurst",
-        "pycountry"
+        "pycountry",
     ],
     url="https://github.com/romainsacchi/carculator_truck",
     description="Prospective environmental and economic life cycle assessment of public transport and heavy goods vehicles",

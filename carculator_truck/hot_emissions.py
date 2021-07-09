@@ -13,15 +13,13 @@ def _(o):
 
 
 def get_emission_factors():
-    """ Emissions factors extracted for trucks from HBEFA 4.1
-        deatiled by size, powertrain and EURO class for each substance.
+    """Emissions factors extracted for trucks from HBEFA 4.1
+    deatiled by size, powertrain and EURO class for each substance.
     """
     fp = DATA_DIR / "hbefa_factors_vs_fc.xls"
     ef = pd.read_excel(fp)
     return (
-        ef.groupby(["powertrain", "euro_class", "component"])
-        .sum()
-        .to_xarray()/1000
+        ef.groupby(["powertrain", "euro_class", "component"]).sum().to_xarray() / 1000
     ).to_array()
 
 
@@ -104,7 +102,10 @@ class HotEmissionsModel:
         # with a, b being a coefficient and an intercept respectively given by fitting HBEFA 4.1 data
         # the fitting of emissions function of energy consumption is described in the notebook
         # `HBEFA trucks.ipynb` in the folder `dev`.
-        a = arr.sel(variable="a").values[:, None, None, :, None, None] * energy_consumption.values
+        a = (
+            arr.sel(variable="a").values[:, None, None, :, None, None]
+            * energy_consumption.values
+        )
         b = arr.sel(variable="b").values[:, None, None, :, None, None]
 
         # The receiving array should contain 39 substances, not 10
@@ -120,12 +121,7 @@ class HotEmissionsModel:
         # NH3
 
         # Euro class --> correction factor
-        correction_map = {
-            3: 0.15,
-            4: 0.15,
-            5: 0.12,
-            6: 0.5
-        }
+        correction_map = {3: 0.15, 4: 0.15, 5: 0.12, 6: 0.5}
         k = np.array(list(correction_map.keys()))
         v = np.array(list(correction_map.values()))
 
@@ -135,60 +131,66 @@ class HotEmissionsModel:
 
         em_arr[7] /= correction_factors[None, None, :, None, None]
 
-
-
         # Ethane, Propane, Butane, Pentane, Hexane, Cyclohexane, Heptane
         # Ethene, Propene, 1-Pentene, Toluene, m-Xylene, o-Xylene
         # Formaldehyde, Acetaldehyde, Benzaldehyde, Acetone
         # Methyl ethyl ketone, Acrolein, Styrene
         # which are calculated as fractions of NMVOC emissions
 
-        ratios_NMHC = np.array([
-            3.00E-04,
-            1.00E-03,
-            1.50E-03,
-            6.00E-04,
-            0.00E+00,
-            0.00E+00,
-            3.00E-03,
-            0.00E+00,
-            0.00E+00,
-            0.00E+00,
-            1.00E-04,
-            9.80E-03,
-            4.00E-03,
-            8.40E-02,
-            4.57E-02,
-            1.37E-02,
-            0.00E+00,
-            0.00E+00,
-            1.77E-02,
-            5.60E-03
-        ])
+        ratios_NMHC = np.array(
+            [
+                3.00e-04,
+                1.00e-03,
+                1.50e-03,
+                6.00e-04,
+                0.00e00,
+                0.00e00,
+                3.00e-03,
+                0.00e00,
+                0.00e00,
+                0.00e00,
+                1.00e-04,
+                9.80e-03,
+                4.00e-03,
+                8.40e-02,
+                4.57e-02,
+                1.37e-02,
+                0.00e00,
+                0.00e00,
+                1.77e-02,
+                5.60e-03,
+            ]
+        )
 
-        em_arr[9:29] = (em_arr[6] * ratios_NMHC.reshape(-1, 1, 1, 1, 1, 1)).transpose(0, 1, 2, 3, 4, 5)
+        em_arr[9:29] = (em_arr[6] * ratios_NMHC.reshape(-1, 1, 1, 1, 1, 1)).transpose(
+            0, 1, 2, 3, 4, 5
+        )
 
         # remaining NMVOC
-        em_arr[5] *= (1 - np.sum(ratios_NMHC))
+        em_arr[5] *= 1 - np.sum(ratios_NMHC)
 
         if powertrain_type == "diesel":
             # We also add heavy metals if diesel
             # which are initially defined per kg of fuel consumed
             # here converted to grams emitted/kj
-            heavy_metals = np.array([
-                1.82E-09,
-                2.33E-12,
-                2.33E-12,
-                4.05E-08,
-                4.93E-10,
-                2.05E-10,
-                6.98E-10,
-                1.40E-12,
-                1.23E-10,
-                2.02E-10
-            ])
+            heavy_metals = np.array(
+                [
+                    1.82e-09,
+                    2.33e-12,
+                    2.33e-12,
+                    4.05e-08,
+                    4.93e-10,
+                    2.05e-10,
+                    6.98e-10,
+                    1.40e-12,
+                    1.23e-10,
+                    2.02e-10,
+                ]
+            )
 
-            em_arr[29:] = heavy_metals.reshape(-1, 1, 1, 1, 1, 1) * energy_consumption.values
+            em_arr[29:] = (
+                heavy_metals.reshape(-1, 1, 1, 1, 1, 1) * energy_consumption.values
+            )
 
         # In case the fit produces negative numbers (it should not, though)
         em_arr[em_arr < 0] = 0
@@ -206,7 +208,15 @@ class HotEmissionsModel:
             urban /= distance[:, None, None, None]
 
         else:
-            urban = np.zeros((39, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            urban = np.zeros(
+                (
+                    39,
+                    self.cycle.shape[-1],
+                    em_arr.shape[2],
+                    em_arr.shape[3],
+                    em_arr.shape[4],
+                )
+            )
 
         if "suburban start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["suburban start"]
@@ -216,7 +226,15 @@ class HotEmissionsModel:
             suburban /= distance[:, None, None, None]
 
         else:
-            suburban = np.zeros((39, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            suburban = np.zeros(
+                (
+                    39,
+                    self.cycle.shape[-1],
+                    em_arr.shape[2],
+                    em_arr.shape[3],
+                    em_arr.shape[4],
+                )
+            )
 
         if "rural start" in self.cycle_environment[self.cycle_name]:
             start = self.cycle_environment[self.cycle_name]["rural start"]
@@ -227,7 +245,15 @@ class HotEmissionsModel:
 
         else:
 
-            rural = np.zeros((39, self.cycle.shape[-1], em_arr.shape[2], em_arr.shape[3], em_arr.shape[4]))
+            rural = np.zeros(
+                (
+                    39,
+                    self.cycle.shape[-1],
+                    em_arr.shape[2],
+                    em_arr.shape[3],
+                    em_arr.shape[4],
+                )
+            )
 
         res = np.vstack((urban, suburban, rural))
 

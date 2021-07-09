@@ -1,13 +1,14 @@
 from carculator_truck import *
 import numpy as np
 
+
 def test_acceleration():
     ecm = EnergyConsumptionModel("Long haul")
     # Sum of acceleration should be close to zero
-    assert np.isclose(ecm.acceleration.sum(),0) == True
+    assert np.isclose(ecm.acceleration.sum(), 0) == True
     # Average speed of Long haul driving cycle should be above 60 and below 80
-    assert (ecm.velocity[..., 0]/1000*3600).mean() > 60
-    assert (ecm.velocity[..., 0]/1000*3600).mean() < 80
+    assert (ecm.velocity[..., 0] / 1000 * 3600).mean() > 60
+    assert (ecm.velocity[..., 0] / 1000 * 3600).mean() < 80
 
 
 def test_motive_energy():
@@ -20,5 +21,19 @@ def test_motive_energy():
     tm = TruckModel(array, cycle="Long haul", country="CH")
     tm.set_all()
 
-    assert (tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], parameter="TtW energy", size="40t")/1000*100/42.4).min() > 14
-    assert (tm.array.sel(powertrain=["ICEV-d", "ICEV-g"], parameter="TtW energy", size="40t")/1000*100/42.4).max() < 45
+    assert (
+        tm.array.sel(
+            powertrain=["ICEV-d", "ICEV-g"], parameter="TtW energy", size="40t"
+        )
+        / 1000
+        * 100
+        / 42.4
+    ).min() > 14
+    assert (
+        tm.array.sel(
+            powertrain=["ICEV-d", "ICEV-g"], parameter="TtW energy", size="40t"
+        )
+        / 1000
+        * 100
+        / 42.4
+    ).max() < 45
