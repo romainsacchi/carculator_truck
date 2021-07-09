@@ -25,7 +25,7 @@ jobs:
       - name: Pytest
         uses: cclauss/GitHub-Action-for-pytest@0.5.0
         with:
-          args: pytest
+          args: pytest "."
 
   lint:
     runs-on: ubuntu-latest
