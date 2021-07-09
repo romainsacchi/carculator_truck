@@ -1,0 +1,33 @@
+name: configuration for python env
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install python version
+        uses: gabrielfalcao/pyenv-action@v7
+        with:
+          default: 3.9
+          command: pip install -U pip  # upgrade pip after installing python
+
+      - name: create environment
+        run: pyenv local 3.9 && python -mvenv .venv386
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt --upgrade pip
+             pip install pylint
+      - name: Analysing the code with pylint
+        run: |
+          pylint `ls -R|grep .py$|xargs`
+
+      - name: setup pyenv
+        id: pyenv_installation
+        uses: "gabrielfalcao/pyenv-action@v7"
+
+      - name: debug pyenv
+        run: echo ${{ steps.pyenv_installation.outputs.pyenv_root }}
