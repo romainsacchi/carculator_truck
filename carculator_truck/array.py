@@ -287,8 +287,7 @@ def modify_xarray_from_custom_parameters(fp, array):
     elif isinstance(fp, dict):
         d = fp
     else:
-        print("The format passed as parameter is not valid.")
-        raise
+        raise ValueError("The format passed as parameter is not valid.")
 
     # Parameters for these categories are ignored and cannot be modified here.
     FORBIDDEN_KEYS = ["Driving cycle", "Background", "Functional unit"]

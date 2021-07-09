@@ -1,18 +1,9 @@
 from .driving_cycles import get_standard_driving_cycle
 from .gradients import get_gradients
-import numexpr as ne
 import numpy as np
 
 np.seterr(divide="ignore", invalid="ignore")
 import xarray as xr
-
-
-def _(o):
-    """Add a trailing dimension to make input arrays broadcast correctly"""
-    if isinstance(o, (np.ndarray, xarray.DataArray)):
-        return np.expand_dims(o, -1)
-    else:
-        return o
 
 
 class EnergyConsumptionModel:

@@ -45,13 +45,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: Black formatting
       uses: lgeiger/black-action@v1.0.1
       with:
         args: "./"
+
+    - name: Run isort
+      uses: olance/isort-action@v1.0.0
+      with:
+        args: .
+
     - name: Check for modified files
       id: git-check
       run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+
     - name: Push changes
       if: steps.git-check.outputs.modified == 'true'
       run: |
@@ -61,3 +69,6 @@ jobs:
         git checkout $GITHUB_HEAD_REF
         git commit -am "Black reformating"
         git push
+
+
+
