@@ -23,7 +23,7 @@ jobs:
              pip install pylint
 
       - name: Analysing the code with pylint
-        run: pylint
+        run: find . -type f -name "*.py" | xargs pylint
 
       - name: Test with pytest
         run: |
