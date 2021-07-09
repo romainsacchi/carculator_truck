@@ -52,8 +52,9 @@ jobs:
 
     - name: Commit changes
       run: |
-        git init
+        date > generated.txt
         git config --global user.email "r_s@me.com"
         git config --global user.name "romainsacchi"
+        git add .
         git commit -am "Black reformating"
         git push
