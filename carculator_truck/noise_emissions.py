@@ -1,5 +1,5 @@
-import numpy as np
 import numexpr as ne
+import numpy as np
 
 
 class NoiseEmissionsModel:

@@ -1,8 +1,9 @@
-from pathlib import Path
-import carculator_truck.truck_input_parameters as tip
 import json
+from pathlib import Path
+
 import pytest
 
+import carculator_truck.truck_input_parameters as tip
 
 DEFAULT = Path(__file__, "..").resolve() / "fixtures" / "default_test.json"
 EXTRA = Path(__file__, "..").resolve() / "fixtures" / "extra_test.json"

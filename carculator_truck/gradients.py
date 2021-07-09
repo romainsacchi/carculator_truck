@@ -1,6 +1,8 @@
-from . import DATA_DIR
-import numpy as np
 import sys
+
+import numpy as np
+
+from . import DATA_DIR
 
 
 def get_gradients(
