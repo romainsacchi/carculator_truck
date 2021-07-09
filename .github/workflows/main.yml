@@ -48,7 +48,7 @@ jobs:
     - name: Black formatting
       uses: lgeiger/black-action@v1.0.1
       with:
-        args: "carculator_truck/"
+        args: "./"
 
     - name: Checkout source code
       uses: actions/checkout@v2
