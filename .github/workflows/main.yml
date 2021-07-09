@@ -42,8 +42,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
   black:
-    # Check if the PR is not from a fork
-    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -63,4 +61,3 @@ jobs:
         git checkout $GITHUB_HEAD_REF
         git commit -am "Black reformating"
         git push
-        
