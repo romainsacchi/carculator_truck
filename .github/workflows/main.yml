@@ -22,25 +22,16 @@ jobs:
         run: pip install -r requirements.txt --upgrade pip
              pip install pylint
 
-      - name: Lint Code Base
-          uses: github/super-linter@v4
-          env:
-            VALIDATE_ALL_CODEBASE: false
-            DEFAULT_BRANCH: master
+  lint:
+    runs-on: ubuntu-latest
+    steps:
 
-      - name: Test with pytest
-        run: |
-          pip install pytest pytest-cov
-          pytest --cov=carculator_truck --cov-report xml
+    - name: actions/checkout@v2
 
-      - name: Publish to coveralls.io
-        uses: coverallsapp/github-action@v1.1.2
-        with:
-          github-token: ${{ github.COVERALLS }}
+    - name: Super-Linter
+      uses: github/super-linter@v4
+      env:
+        VALIDATE_ALL_CODEBASE: false
+        DEFAULT_BRANCH: master
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
-      - name: setup pyenv
-        id: pyenv_installation
-        uses: "gabrielfalcao/pyenv-action@v7"
-
-      - name: debug pyenv
-        run: echo ${{ steps.pyenv_installation.outputs.pyenv_root }}
