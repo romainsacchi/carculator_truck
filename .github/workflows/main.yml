@@ -24,7 +24,7 @@ jobs:
 
       - name: Analysing the code with pylint
         run: |
-          python lint.py --path ./src --threshold 2
+          pylint `ls -R|grep .py$|xargs`
 
       - name: Test with pytest
         run: |
@@ -34,7 +34,7 @@ jobs:
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@v1.1.2
         with:
-          github-token: ${{ github.token }}
+          github-token: ${{ github.COVERALLS }}
 
       - name: setup pyenv
         id: pyenv_installation
