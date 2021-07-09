@@ -38,7 +38,7 @@ jobs:
       uses: github/super-linter@v4
       env:
         DEFAULT_BRANCH: master
-        VALIDATE_PYTHON_BLACK: false
+        IGNORE_GITIGNORED_FILES: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
   black:
