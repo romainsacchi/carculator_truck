@@ -24,7 +24,7 @@ jobs:
 
       - name: Analysing the code with pylint
         run: |
-          pylint pylint **/*.py
+          find . -name '*.py' -exec pylint {} \
 
       - name: Test with pytest
         run: |
