@@ -42,19 +42,24 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
   black:
+    # Check if the PR is not from a fork
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-
+    - uses: actions/checkout@v2
     - name: Black formatting
       uses: lgeiger/black-action@v1.0.1
       with:
         args: "./"
-
-    - uses: actions/checkout@v2
-    - run: |
-        date > generated.txt
+    - name: Check for modified files
+      id: git-check
+      run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+    - name: Push changes
+      if: steps.git-check.outputs.modified == 'true'
+      run: |
         git config --global user.email "r_s@me.com"
         git config --global user.name "romainsacchi"
-        git add .
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+        git checkout $GITHUB_HEAD_REF
         git commit -am "Black reformating"
         git push
