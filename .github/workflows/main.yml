@@ -54,7 +54,7 @@ jobs:
     - name: Run isort
       uses: jamescurtin/isort-action@master
       with:
-        - args: .
+        args: .
 
 
     - name: Check for modified files
