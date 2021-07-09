@@ -22,9 +22,12 @@ jobs:
           pip install -r requirements.txt --upgrade pip
           pip install -e .
           pip install pytest
+          pip install coveralls
 
       - name: Run tests
-        run: pytest
+        run: |
+          coverage run --source=carculator_truck -m pytest
+          coveralls
 
   lint:
     runs-on: ubuntu-latest
