@@ -23,12 +23,12 @@ jobs:
              pip install pylint
 
       - name: Analysing the code with pylint
-        run: pylint src/
+        run: pylint carculator_truck
 
       - name: Test with pytest
         run: |
           pip install pytest pytest-cov
-          pytest --cov=./myapp --cov-report xml
+          pytest --cov=carculator_truck --cov-report xml
 
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@v1.1.2
