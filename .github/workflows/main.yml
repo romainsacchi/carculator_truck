@@ -41,15 +41,15 @@ jobs:
         VALIDATE_PYTHON_BLACK: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
-black:
-  runs-on: ubuntu-latest
-  steps:
+  black:
+    runs-on: ubuntu-latest
+    steps:
 
-  - name: Checkout source code
-    uses: actions/checkout@v2
-
-  - name: Black formatting
-    uses: lgeiger/black-action@v1.0.1
-    env:
-      DEFAULT_BRANCH: master
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+    - name: Checkout source code
+      uses: actions/checkout@v2
+  
+    - name: Black formatting
+      uses: lgeiger/black-action@v1.0.1
+      env:
+        DEFAULT_BRANCH: master
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
