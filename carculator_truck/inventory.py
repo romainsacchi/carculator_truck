@@ -1788,7 +1788,9 @@ class InventoryCalculation:
         A_coords = np.genfromtxt(filepath, delimiter=";")
         indices_i = A_coords[:, 0].astype(int)
         indices_j = A_coords[:, 1].astype(int)
-        initial_A = sparse.csr_matrix((A_coords[:, 2], (indices_i, indices_j))).toarray()
+        initial_A = sparse.csr_matrix(
+            (A_coords[:, 2], (indices_i, indices_j))
+        ).toarray()
 
         new_A = np.identity(len(self.inputs))
 
