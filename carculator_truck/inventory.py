@@ -4394,7 +4394,12 @@ class InventoryCalculation:
             * -1
         ).T
 
-        sum_renew, co2_intensity_tech = self.define_renewable_rate_in_mix()
+        try:
+            sum_renew, co2_intensity_tech = self.define_renewable_rate_in_mix()
+
+        except AttributeError:
+            sum_renew = [0] * len(self.scope["year"])
+            co2_intensity_tech = [0] * len(self.scope["year"])
 
         for y, year in enumerate(self.scope["year"]):
 
@@ -5954,7 +5959,12 @@ class InventoryCalculation:
             / (array[self.array_inputs["total cargo mass"]] / 1000)
         )
 
-        sum_renew, co2_intensity_tech = self.define_renewable_rate_in_mix()
+        try:
+            sum_renew, co2_intensity_tech = self.define_renewable_rate_in_mix()
+
+        except AttributeError:
+            sum_renew = [0] * len(self.scope["year"])
+            co2_intensity_tech = [0] * len(self.scope["year"])
 
         for y, year in enumerate(self.scope["year"]):
 
