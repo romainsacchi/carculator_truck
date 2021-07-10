@@ -1530,7 +1530,7 @@ class InventoryCalculation:
         )
 
         arr = (
-            self.A[:, :, -self.number_of_cars:].transpose(0, 2, 1).reshape(shape)
+            self.A[:, :, -self.number_of_cars :].transpose(0, 2, 1).reshape(shape)
             * new_arr.transpose(1, 2, 0)[:, None, None, None, ...]
             * -1
         )
@@ -1792,7 +1792,7 @@ class InventoryCalculation:
 
         new_A = np.identity(len(self.inputs))
 
-        new_A[0: np.shape(initial_A)[0], 0: np.shape(initial_A)[0]] = initial_A
+        new_A[0 : np.shape(initial_A)[0], 0 : np.shape(initial_A)[0]] = initial_A
 
         # Resize the matrix to fit the number of iterations in `array`
         new_A = np.resize(new_A, (self.array.shape[1], new_A.shape[0], new_A.shape[1]))
@@ -2183,7 +2183,7 @@ class InventoryCalculation:
                 )
             )
 
-            new_B[0: np.shape(initial_B)[0], 0: np.shape(initial_B)[1]] = initial_B
+            new_B[0 : np.shape(initial_B)[0], 0 : np.shape(initial_B)[1]] = initial_B
 
             B[f] = new_B
 
@@ -3634,7 +3634,7 @@ class InventoryCalculation:
                     "frame, blanks and saddle, for lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["glider base mass"], :])
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3648,7 +3648,7 @@ class InventoryCalculation:
             self.inputs[
                 ("suspension, for lorry", "RER", "kilogram", "suspension, for lorry")
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (
                 array[
@@ -3675,7 +3675,7 @@ class InventoryCalculation:
                     "tires and wheels, for lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["wheels and tires mass"], :])
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3687,7 +3687,7 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[("cabin, for lorry", "RER", "kilogram", "cabin, for lorry")],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["cabin mass"], :])
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3706,7 +3706,7 @@ class InventoryCalculation:
                     "exhaust system, for lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["exhaust system mass"], :])
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3725,7 +3725,7 @@ class InventoryCalculation:
                     "power electronics, for lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["electrical system mass"], :])
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3744,7 +3744,7 @@ class InventoryCalculation:
                     "transmission, for lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["transmission mass"], :] * 0.52)
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3756,7 +3756,7 @@ class InventoryCalculation:
             self.inputs[
                 ("gearbox, for lorry", "RER", "kilogram", "gearbox, for lorry")
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["transmission mass"], :] * 0.36)
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3768,7 +3768,7 @@ class InventoryCalculation:
             self.inputs[
                 ("retarder, for lorry", "RER", "kilogram", "retarder, for lorry")
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["transmission mass"], :] * 0.12)
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3848,7 +3848,7 @@ class InventoryCalculation:
             self.inputs[
                 ("Glider lightweighting", "GLO", "kilogram", "Glider lightweighting")
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (
                 array[self.array_inputs["lightweighting"], :]
@@ -3960,7 +3960,7 @@ class InventoryCalculation:
                     "converter, for electric passenger car",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             array[self.array_inputs["converter mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3978,7 +3978,7 @@ class InventoryCalculation:
                     "electric motor, electric passenger car",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             array[self.array_inputs["electric engine mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -3996,7 +3996,7 @@ class InventoryCalculation:
                     "inverter, for electric passenger car",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             array[self.array_inputs["inverter mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -4014,7 +4014,7 @@ class InventoryCalculation:
                     "power distribution unit, for electric passenger car",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             array[self.array_inputs["power distribution unit mass"], :]
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -4032,7 +4032,7 @@ class InventoryCalculation:
                     "internal combustion engine, for lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (
                 array[
@@ -4048,7 +4048,7 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[("Ancillary BoP", "GLO", "kilogram", "Ancillary BoP")],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             array[self.array_inputs["fuel cell ancillary BoP mass"], :]
             * (1 + array[self.array_inputs["fuel cell lifetime replacements"]])
@@ -4060,7 +4060,7 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[("Essential BoP", "GLO", "kilogram", "Essential BoP")],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             array[self.array_inputs["fuel cell essential BoP mass"], :]
             * (1 + array[self.array_inputs["fuel cell lifetime replacements"]])
@@ -4072,7 +4072,7 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[("Stack", "GLO", "kilowatt", "Stack")],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             array[self.array_inputs["fuel cell stack mass"], :]
             * (1 + array[self.array_inputs["fuel cell lifetime replacements"]])
@@ -4858,7 +4858,7 @@ class InventoryCalculation:
                     "road wear emissions, lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = array[self.array_inputs["tire wear emissions"], :] / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
@@ -4872,7 +4872,7 @@ class InventoryCalculation:
                     "tyre wear emissions, lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = array[self.array_inputs["tire wear emissions"], :] / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
@@ -4891,7 +4891,7 @@ class InventoryCalculation:
                     "brake wear emissions, lorry",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = array[self.array_inputs["brake wear emissions"], :] / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
@@ -4921,7 +4921,7 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[("market for road", "GLO", "meter-year", "road")],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (array[self.array_inputs["driving mass"], :] / 1000)
             * 5.37e-4
@@ -4934,14 +4934,14 @@ class InventoryCalculation:
             self.inputs[
                 ("market for road maintenance", "RER", "meter-year", "road maintenance")
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             1.29e-3 / (array[self.array_inputs["total cargo mass"], :] / 1000) * -1
         )
 
         # Exhaust emissions
         # Non-fuel based emissions
-        self.A[:, self.index_emissions, -self.number_of_cars:] = (
+        self.A[:, self.index_emissions, -self.number_of_cars :] = (
             array[
                 [
                     self.array_inputs[self.map_non_fuel_emissions[self.rev_inputs[x]]]
@@ -5031,7 +5031,7 @@ class InventoryCalculation:
                     "used Li-ion battery",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             array[self.array_inputs["energy battery mass"], :]
             / array[self.array_inputs["lifetime kilometers"]]
@@ -5039,7 +5039,7 @@ class InventoryCalculation:
         )
 
         # Noise emissions
-        self.A[:, self.index_noise, -self.number_of_cars:] = (
+        self.A[:, self.index_noise, -self.number_of_cars :] = (
             array[
                 [
                     self.array_inputs[self.map_noise_emissions[self.rev_inputs[x]]]
@@ -5059,7 +5059,7 @@ class InventoryCalculation:
             self.inputs[
                 ("Ethane, 1,1,1,2-tetrafluoro-, HFC-134a", ("air",), "kilogram")
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             0.94
             / self.array.values[self.array_inputs["lifetime kilometers"]]
@@ -5072,7 +5072,7 @@ class InventoryCalculation:
             self.inputs[
                 ("market for refrigerant R134a", "GLO", "kilogram", "refrigerant R134a")
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = (
             (0.94 + 1.1)
             / self.array.values[self.array_inputs["lifetime kilometers"]]
@@ -5952,9 +5952,7 @@ class InventoryCalculation:
             / (array[self.array_inputs["total cargo mass"]] / 1000)
         )
 
-
         sum_renew, co2_intensity_tech = self.define_renewable_rate_in_mix()
-
 
         for y, year in enumerate(self.scope["year"]):
 
@@ -6534,7 +6532,7 @@ class InventoryCalculation:
                     "used Li-ion battery",
                 )
             ],
-            -self.number_of_cars:,
+            -self.number_of_cars :,
         ] = array[self.array_inputs["energy battery mass"], :]
 
         # Noise emissions

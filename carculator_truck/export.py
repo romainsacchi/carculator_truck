@@ -1852,7 +1852,7 @@ class ExportInventory:
                                         "market for natural gas, high pressure": 0.842,
                                         "market for natural gas, high pressure, vehicle grade": 0.842,
                                         "market for chemical factory": 1 / 12.6e6,
-                                        "market for used powertrain from electric passenger car, manual dismantling": -1
+                                        "market for used powertrain from electric passenger car, manual dismantling": -1,
                                     }
 
                                     uvek_units = {

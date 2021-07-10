@@ -1,9 +1,11 @@
 import numpy as np
 import xarray as xr
+
 from .driving_cycles import get_standard_driving_cycle
 from .gradients import get_gradients
 
 np.seterr(divide="ignore", invalid="ignore")
+
 
 class EnergyConsumptionModel:
     """
