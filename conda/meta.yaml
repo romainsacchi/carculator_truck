@@ -40,5 +40,6 @@ test:
 about:
   home: https://github.com/romainsacchi/carculator_truck
   license: BSD License
-  summary: 'A parameterized Python model to calculate the energy consumption and life cycle assessment of cars'
+  summary: 'A parameterized Python model to calculate the energy consumption and life cycle assessment of
+  medium and heavy duty trucks'
 license_family: BSD
