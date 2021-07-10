@@ -18,7 +18,9 @@ def test_motive_energy():
 
     tip = TruckInputParameters()
     tip.static()
-    _, array = fill_xarray_from_input_parameters(tip)
+    _, array = fill_xarray_from_input_parameters(tip,
+                                                 scope={"powertrain": ["ICEV-d", "ICEV-g"],
+                                                        "size": ["40t"]})
     tm = TruckModel(array, cycle="Long haul", country="CH")
     tm.set_all()
 

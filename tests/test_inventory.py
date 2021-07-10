@@ -5,7 +5,10 @@ from carculator_truck import *
 
 tip = TruckInputParameters()
 tip.static()
-_, array = fill_xarray_from_input_parameters(tip)
+_, array = fill_xarray_from_input_parameters(tip, scope={"size": ["40t", "60t"],
+                                                         "powertrain": ["ICEV-d", "BEV"]
+                                                         }
+                                             )
 tm = TruckModel(array, cycle="Long haul", country="CH")
 tm.set_all()
 
@@ -207,36 +210,29 @@ def test_sulfur_concentration():
 def test_custom_electricity_mix():
     """Test if a wrong number of electricity mixes throws an error"""
 
-    bc = {
-        "custom electricity mix": [
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ]
-    }
+    # Passing four mixes instead of 6
+    mix_1 = np.zeros((5, 15))
+    mix_1[:, 0] = 1
+    # Passing a mix inferior to 1
+    mix_2 = np.zeros((6, 15))
+    mix_2[:, 0] = 1
+    mix_2[:, 0] = .9
 
-    with pytest.raises(ValueError) as wrapped_error:
-        InventoryCalculation(
-            tm, method="recipe", method_type="endpoint", background_configuration=bc
-        )
-    assert wrapped_error.type == ValueError
+    # Passing a mix superior to 1
+    mix_3 = np.zeros((6, 15))
+    mix_3[:, 0] = 1
+    mix_3[:, 1] = .1
 
-    """ Test if a sum of share superior to 1 throws an error """
+    mixes = [mix_1, mix_2, mix_3]
 
-    bc = {
-        "custom electricity mix": [
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ]
-    }
-
-    with pytest.raises(ValueError) as wrapped_error:
-        InventoryCalculation(
-            tm, method="recipe", method_type="endpoint", background_configuration=bc
-        )
-    assert wrapped_error.type == ValueError
-
+    for mix in mixes:
+        with pytest.raises(ValueError) as wrapped_error:
+            InventoryCalculation(
+                tm, method="recipe",
+                method_type="endpoint",
+                background_configuration={"custom electricity mix": mix}
+            )
+        assert wrapped_error.type == ValueError
 
 def test_export_to_bw():
     """Test that inventories export successfully"""
