@@ -5,10 +5,9 @@ from carculator_truck import *
 
 tip = TruckInputParameters()
 tip.static()
-_, array = fill_xarray_from_input_parameters(tip, scope={"size": ["40t", "60t"],
-                                                         "powertrain": ["ICEV-d", "BEV"]
-                                                         }
-                                             )
+_, array = fill_xarray_from_input_parameters(
+    tip, scope={"size": ["40t", "60t"], "powertrain": ["ICEV-d", "BEV"]}
+)
 tm = TruckModel(array, cycle="Long haul", country="CH")
 tm.set_all()
 
@@ -216,23 +215,25 @@ def test_custom_electricity_mix():
     # Passing a mix inferior to 1
     mix_2 = np.zeros((6, 15))
     mix_2[:, 0] = 1
-    mix_2[:, 0] = .9
+    mix_2[:, 0] = 0.9
 
     # Passing a mix superior to 1
     mix_3 = np.zeros((6, 15))
     mix_3[:, 0] = 1
-    mix_3[:, 1] = .1
+    mix_3[:, 1] = 0.1
 
     mixes = [mix_1, mix_2, mix_3]
 
     for mix in mixes:
         with pytest.raises(ValueError) as wrapped_error:
             InventoryCalculation(
-                tm, method="recipe",
+                tm,
+                method="recipe",
                 method_type="endpoint",
-                background_configuration={"custom electricity mix": mix}
+                background_configuration={"custom electricity mix": mix},
             )
         assert wrapped_error.type == ValueError
+
 
 def test_export_to_bw():
     """Test that inventories export successfully"""
