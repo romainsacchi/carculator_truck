@@ -1,6 +1,10 @@
 import numpy as np
 
-from carculator_truck import *
+
+from carculator_truck import (TruckInputParameters,
+                              fill_xarray_from_input_parameters,
+                              TruckModel,
+                              )
 
 tip = TruckInputParameters()
 tip.static()

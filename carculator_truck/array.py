@@ -13,13 +13,15 @@ def fill_xarray_from_input_parameters(tip, sensitivity=False, scope=None):
 
 
     This function extracts the parameters' names and values contained in the
-    `parameters` attribute of the :class:`CarInputParameters` class in :mod:`car_input_parameters` and insert them into a
+    `parameters` attribute of the :class:`CarInputParameters` class
+    in :mod:`car_input_parameters` and insert them into a
     multi-dimensional numpy-like array from the *xarray* package
     (http://xarray.pydata.org/en/stable/).
 
 
     :param sensitivity:
-    :param tip: Instance of the :class:`TruckInputParameters` class in :mod:`truck_input_parameters`.
+    :param tip: Instance of the :class:`TruckInputParameters` class
+    in :mod:`truck_input_parameters`.
     :returns: `tuple`, `xarray.DataArray`
     - tuple (`size_dict`, `powertrain_dict`, `parameter_dict`, `year_dict`)
     - array
@@ -284,7 +286,7 @@ def modify_xarray_from_custom_parameters(fp, array):
                 index_col=[0, 1, 2, 3, 4],
                 sheet_name="Custom_parameters",
             ).to_dict(orient="index")
-        except:
+        except FileNotFoundError:
             raise FileNotFoundError("Custom parameters file not found.")
     elif isinstance(fp, dict):
         d = fp
@@ -337,7 +339,7 @@ def modify_xarray_from_custom_parameters(fp, array):
             param = k[3]
 
             # if `parameter` is not among the existing parameters
-            if not param in array.coords["parameter"].values:
+            if param not in array.coords["parameter"].values:
                 print(
                     "{} is not a recognized parameter. It will be skipped.".format(
                         param
@@ -391,7 +393,8 @@ def modify_xarray_from_custom_parameters(fp, array):
                             or np.isnan(val[(y, "maximum")])
                         ):
                             print(
-                                "One or more parameters for the triangular distribution is/are missing for {} in {}.\n The parameter is skipped and default value applies".format(
+                                "One or more parameters for the triangular distribution is/are missing for {} in {}."
+                                "\n The parameter is skipped and default value applies".format(
                                     param, y
                                 )
                             )
@@ -401,7 +404,8 @@ def modify_xarray_from_custom_parameters(fp, array):
                     if distr == 2:
                         if np.isnan(val[(y, "loc")]) or np.isnan(val[(y, "scale")]):
                             print(
-                                "One or more parameters for the lognormal distribution is/are missing for {} in {}.\n The parameter is skipped and default value applies".format(
+                                "One or more parameters for the lognormal distribution is/are missing for {} in {}."
+                                "\n The parameter is skipped and default value applies".format(
                                     param, y
                                 )
                             )
@@ -411,7 +415,8 @@ def modify_xarray_from_custom_parameters(fp, array):
                     if distr == 3:
                         if np.isnan(val[(y, "loc")]) or np.isnan(val[(y, "scale")]):
                             print(
-                                "One or more parameters for the normal distribution is/are missing for {} in {}.\n The parameter is skipped and default value applies".format(
+                                "One or more parameters for the normal distribution is/are missing for {} in {}."
+                                "\n The parameter is skipped and default value applies".format(
                                     param, y
                                 )
                             )
@@ -423,7 +428,8 @@ def modify_xarray_from_custom_parameters(fp, array):
                             val[(y, "maximum")]
                         ):
                             print(
-                                "One or more parameters for the uniform distribution is/are missing for {} in {}.\n The parameter is skipped and default value applies".format(
+                                "One or more parameters for the uniform distribution is/are missing for {} in {}."
+                                "\n The parameter is skipped and default value applies".format(
                                     param, y
                                 )
                             )
@@ -462,7 +468,8 @@ def modify_xarray_from_custom_parameters(fp, array):
 
                 else:
                     print(
-                        "The uncertainty type is not recognized for {} in {}.\n The parameter is skipped and default value applies".format(
+                        "The uncertainty type is not recognized for {} in {}.\n"
+                        "The parameter is skipped and default value applies".format(
                             param, y
                         )
                     )

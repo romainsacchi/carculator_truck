@@ -1,6 +1,8 @@
+{% set data = load_setup_py_data() %}
+
 package:
   name: carculator_truck
-  version: {{ environ['VERSION'] }}
+  version: {{ data['VERSION'] }}
 
 source:
   path: ..
@@ -20,7 +22,7 @@ requirements:
   run:
     - klausen
     - pandas
-    - xarray
+    - xarray<0.18
     - numpy
     - python
     - xarray

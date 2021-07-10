@@ -51,7 +51,8 @@ setup(
         "pycountry",
     ],
     url="https://github.com/romainsacchi/carculator_truck",
-    description="Prospective environmental and economic life cycle assessment of public transport and heavy goods vehicles",
+    description="Prospective environmental and economic life cycle assessment"
+                "of medium and heavy goods vehicles",
     classifiers=[
         "Intended Audience :: End Users/Desktop",
         "Intended Audience :: Developers",

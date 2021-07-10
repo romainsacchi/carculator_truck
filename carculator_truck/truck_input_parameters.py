@@ -27,7 +27,8 @@ class TruckInputParameters(NamedParameters):
 
     :ivar sizes: List of string items e.g., ['Large', 'Lower medium', 'Medium', 'Mini', 'SUV', 'Small', 'Van']
     :vartype sizes: list
-    :ivar powertrains: List of string items e.g., ['BEV', 'FCEV', 'HEV-p', 'ICEV-d', 'ICEV-g', 'ICEV-p', 'PHEV-c', 'PHEV-e']
+    :ivar powertrains: List of string items
+            e.g., ['BEV', 'FCEV', 'HEV-p', 'ICEV-d', 'ICEV-g', 'ICEV-p', 'PHEV-c', 'PHEV-e']
     :vartype powertrains: list
     :ivar parameters: List of string items e.g., ['Benzene', 'CH4', 'CNG tank mass intercept',...]
     :vartype parameters: list
@@ -37,8 +38,9 @@ class TruckInputParameters(NamedParameters):
     :vartype metadata: dict
     :ivar values: Dictionary for storing values, of format {'param':[value]}.
     :vartype values: dict
-    :ivar iterations: Number of iterations executed by the method :func:`~car_input_parameters.CarInputParameters.stochastic`.
-        None if :func:`~car_input_parameters.CarInputParameters.static` used instead.
+    :ivar iterations: Number of iterations executed
+          by the method :func:`~car_input_parameters.CarInputParameters.stochastic`.
+          None if :func:`~car_input_parameters.CarInputParameters.static` used instead.
     :vartype iterations: int
 
 

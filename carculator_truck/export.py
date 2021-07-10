@@ -662,7 +662,8 @@ class ExportInventory:
 
         # List of coordinates for non-zero values
         non_zeroes = np.nonzero(self.array[0, :, :])
-        # List of coordinates where activities present more than once (to filter out "empty" activities, that is,
+        # List of coordinates where activities present more than once
+        # (to filter out "empty" activities, that is,
         # activities with only one reference product exchange)
         u, c = np.unique(non_zeroes[1], return_counts=True)
         dup = u[c > 1]
@@ -744,7 +745,7 @@ class ExportInventory:
 
                 else:
                     # Uncertainty
-                    if presamples == True:
+                    if presamples:
                         # Generate pre-sampled values
                         amount = np.median(self.array[:, row, col]) * mult_factor
                         uncertainty = [("uncertainty type", 1)]
@@ -844,7 +845,7 @@ class ExportInventory:
 
             if (
                 ecoinvent_compatibility
-                or ecoinvent_compatibility == False
+                or ecoinvent_compatibility
                 and tuple_output[0] not in activities_to_be_removed
             ):
 
@@ -902,18 +903,18 @@ class ExportInventory:
                         "fuel cell system efficiency": "Fuel cell system efficiency",
                     }
 
-                    l = [t.strip() for t in tuple_output[0].split(",")]
+                    split_name = [t.strip() for t in tuple_output[0].split(",")]
 
-                    if len(l) == 7:
-                        _, _, pwt, size, year, _, _ = l
+                    if len(split_name) == 7:
+                        _, _, pwt, size, year, _, _ = split_name
                     else:
-                        if l[2] == "fleet average":
+                        if split_name[2] == "fleet average":
                             _, _, _, pwt, year = [
                                 t.strip() for t in tuple_output[0].split(",")
                             ]
                             size = None
-                        elif l[3] == "fleet average":
-                            _, _, size, _, _, year = l
+                        elif split_name[3] == "fleet average":
+                            _, _, size, _, _, year = split_name
                             pwt = None
                         else:
                             _, pwt, size, year, _, _ = [
@@ -925,7 +926,7 @@ class ExportInventory:
                         size = size.split(" ")[0]
                         pwt = d_pwt[pwt]
 
-                        if not vehicle_specs is None:
+                        if vehicle_specs is not None:
 
                             for p in vehicle_specs.parameter.values:
 
@@ -1130,7 +1131,8 @@ class ExportInventory:
         Export an Excel file that can be consumed by the software defined in `software_compatibility`.
 
         :param directory: str. path to export the file to.
-        :param ecoinvent_compatibility: bool. If True, the inventory is compatible with ecoinvent. If False, the inventory is compatible with REMIND-ecoinvent.
+        :param ecoinvent_compatibility: bool. If True, the inventory is compatible with ecoinvent.
+                If False, the inventory is compatible with REMIND-ecoinvent.
         :param ecoinvent_version: str. "3.5", "3.6" or "uvek"
         :param software_compatibility: str. "brightway2" or "simapro"
         :returns: returns the file path of the exported inventory.
@@ -1850,7 +1852,7 @@ class ExportInventory:
                                         "market for natural gas, high pressure": 0.842,
                                         "market for natural gas, high pressure, vehicle grade": 0.842,
                                         "market for chemical factory": 1 / 12.6e6,
-                                        "market for used powertrain from electric passenger car, manual dismantling": -1,
+                                        "market for used powertrain from electric passenger car, manual dismantling": -1
                                     }
 
                                     uvek_units = {
@@ -2254,7 +2256,7 @@ class ExportInventory:
         :return: LCIImporter object to be imported in a Brightway2 project
         :rtype: bw2io.base_lci.LCIImporter
         """
-        if presamples == True:
+        if presamples:
             data, array = self.write_lci(
                 presamples=presamples,
                 ecoinvent_compatibility=ecoinvent_compatibility,

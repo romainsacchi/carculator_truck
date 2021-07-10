@@ -1,7 +1,11 @@
 import numpy as np
 import pytest
 
-from carculator_truck import *
+from carculator_truck import (TruckInputParameters,
+                              fill_xarray_from_input_parameters,
+                              TruckModel,
+                              InventoryCalculation,
+                              )
 
 tip = TruckInputParameters()
 tip.static()

@@ -167,21 +167,21 @@ class TruckModel:
     def __getattr__(self, key):
         if key in self.mappings:
             return self.mappings[key]
-        else:
-            return super().__getattr__(key)
 
     def set_all(self):
         """
-        This method runs a series of other methods to obtain the tank-to-wheel energy requirement, efficiency
-        of the car, costs, etc.
+        This method runs a series of other methods to obtain the tank-to-wheel energy requirement,
+        efficiency of the vehicle, costs, etc.
 
-        :meth:`set_component_masses()`, :meth:`set_car_masses()` and :meth:`set_power_parameters()` and
+        :meth:`set_component_masses()`, :meth:`set_vehicle_masses()` and :meth:`set_power_parameters()` and
          :meth:`set_energy_stored_properties` relate to one another.
         `powertrain_mass` depends on `power`, `curb_mass` is affected by changes in `powertrain_mass`,
-        `combustion engine mass`, `electric engine mass`. `energy battery mass` is influenced by the `curb mass` but also
+        `combustion engine mass`, `electric engine mass`. `energy battery mass` is influenced
+        by the `curb mass` but also
         by the `target range` the truck has. `power` is also varying with `curb_mass`.
 
-        The current solution is to loop through the methods until the change in payload between two iterations is
+        The current solution is to loop through the methods until the change in payload between
+        two iterations is
         inferior to 0.1%. It is then assumed that the trucks are correctly sized.
 
         :returns: Does not return anything. Modifies ``self.array`` in place.
@@ -200,7 +200,7 @@ class TruckModel:
 
             old_payload = self["available payload"].sum().values
 
-            self.set_car_masses()
+            self.set_vehicle_masses()
             self.set_power_parameters()
             self.set_component_masses()
             self.set_auxiliaries()
@@ -218,7 +218,7 @@ class TruckModel:
                 arr = np.append(arr, [0])
                 non_compliant_vehicles = 0
 
-            self.set_car_masses()
+            self.set_vehicle_masses()
 
             diff = (self["available payload"].sum().values - old_payload) / self[
                 "available payload"
@@ -352,7 +352,7 @@ class TruckModel:
 
                 fc[:, :, :, :] = (
                     fc[:, :, 0, :].values
-                    * np.array(list_target_vals).reshape(-1, 1, 1, 1)
+                    * np.array(list_target_vals).reshape((-1, 1, 1, 1))
                 ).transpose(1, 2, 0, 3)
 
                 years_after_last_target = [
@@ -456,7 +456,7 @@ class TruckModel:
         ]
 
         if len(l_pwt) > 0:
-            self.array.loc[:, l_pwt, "energy battery cost per kWh", :, :,] = np.reshape(
+            self.array.loc[:, l_pwt, "energy battery cost per kWh", :, :] = np.reshape(
                 (2.75e86 * np.exp(-9.61e-2 * self.array.year.values) + 5.059e1)
                 * cost_factor,
                 (1, 1, n_year, n_iterations),
@@ -470,7 +470,7 @@ class TruckModel:
         ]
 
         if len(l_pwt) > 0:
-            self.array.loc[:, l_pwt, "power battery cost per kW", :, :,] = np.reshape(
+            self.array.loc[:, l_pwt, "power battery cost per kW", :, :] = np.reshape(
                 (8.337e40 * np.exp(-4.49e-2 * self.array.year.values) + 11.17)
                 * cost_factor,
                 (1, 1, n_year, n_iterations),
@@ -527,7 +527,7 @@ class TruckModel:
     def calculate_ttw_energy(self):
         """
         This method calculates the energy required to operate auxiliary services as well
-        as to move the car. The sum is stored under the parameter label "TtW energy" in :attr:`self.array`.
+        as to move the vehicle. The sum is stored under the parameter label "TtW energy" in :attr:`self.array`.
 
         """
         self.energy = xr.DataArray(
@@ -780,6 +780,9 @@ class TruckModel:
                 )
 
                 # our basic fuel cell mass is based on a car fuel cell with 800 mW/cm2 and 0.51 kg/kW
+                # the cell power density is adapted for truck use
+                # it is decreased comparatively to that of a passenger car
+                # to reflect increased durability
                 self["fuel cell stack mass"] = (
                     0.51
                     * self["fuel cell power"]
@@ -884,7 +887,7 @@ class TruckModel:
                     )
                 )
 
-    def set_car_masses(self):
+    def set_vehicle_masses(self):
         """
         Define ``curb mass``, ``driving mass``, and ``total cargo mass``.
 
@@ -1059,10 +1062,10 @@ class TruckModel:
 
                 cpm["fuel mass"] = (
                     cpm["target range"] * (cpm["TtW energy"] / 1000)
-                ) / blend_lhv.reshape(-1, 1)
+                ) / blend_lhv.reshape((-1, 1))
 
                 cpm["oxidation energy stored"] = (
-                    cpm["fuel mass"] * blend_lhv.reshape(-1, 1)
+                    cpm["fuel mass"] * blend_lhv.reshape((-1, 1))
                 ) / 3.6
 
                 if pt == "ICEV-g":
@@ -1722,7 +1725,7 @@ class TruckModel:
             dims=["size", "powertrain", "cost_type", "year", "value"],
         )
 
-        response.loc[:, :, list_cost_cat, :, :,] = self.array.sel(
+        response.loc[:, :, list_cost_cat, :, :] = self.array.sel(
             powertrain=scope["powertrain"],
             size=scope["size"],
             year=scope["year"],
@@ -1812,7 +1815,7 @@ class TruckModel:
             try:
                 # See of a secondary fuel type has been specified
                 secondary = fuel_blend[fuel_type]["secondary fuel"]["type"]
-            except:
+            except KeyError:
                 # A secondary fuel has not been specified, set one by default
                 # Check first if the default fuel is not similar to the primary fuel
 

@@ -71,7 +71,7 @@ class Geomap:
         with open(REGION_MAPPING_FILEPATH) as f:
             f.readline()
             csv_list = [[val.strip() for val in r.split(";")] for r in f.readlines()]
-            l = [(x[1], x[2]) for x in csv_list]
+            split_row = [(x[1], x[2]) for x in csv_list]
 
         # List of countries not found
         countries_not_found = ["CC", "CX", "GG", "JE", "BL"]
@@ -81,7 +81,7 @@ class Geomap:
 
         # Build a dictionary that maps region names (used by REMIND) to ISO country codes
         # And a reverse dictionary that maps ISO country codes to region names
-        for ISO, region in l:
+        for ISO, region in split_row:
             if ISO not in countries_not_found:
                 try:
                     rmnd_to_iso[region].append(ISO)

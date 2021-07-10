@@ -23,19 +23,19 @@ See [the documentation](https://carculator_truck.readthedocs.io/en/latest/index.
 The model has been the subject of a submission to the journal <i>Environmental Science and Technology</i>.
 
 [1] Sacchi R, Bauer C, Cox BL. Does Size Matter? The Influence of Size, Load Factor, Range Autonomy, and Application Type on the Life Cycle Assessment of Current and Future Medium and Heavy-Duty Vehicles.
-Environ Sci Technol 2021. https://doi.org/10.1021/acs.est.0c07773.
+Environ Sci Technol 2021. [https://doi.org/10.1021/acs.est.0c07773](https://doi.org/10.1021/acs.est.0c07773).
 
 ## How to install?
 
 For the latest version, using conda::
 
     conda install -c romainsacchi carculator_truck
-    
+
 or for a stable release, from Pypi::
 
     pip install carculator_truck
-    
-    
+
+
 ## What does it do?
 
 <i>carculator_truck</i> allows to model vehicles across:
@@ -45,7 +45,7 @@ or for a stable release, from Pypi::
 <li>different fuel pathways: conventional fuels, bio-based fuels (biodiesel, biomethane), synthetic fuels
 (Fischer-Tropsch-based synthetic diesel, synhtetic methane)</li>
 <li>different years: from 2000 to 2050. Technological progress at the vehicle level but also in the rest of the world energy
-system (e.g., power generation) is accounted for, using energy scenario-specific IAM-coupled ecoinvent databases produced by 
+system (e.g., power generation) is accounted for, using energy scenario-specific IAM-coupled ecoinvent databases produced by
 <a href="https://github.com/romainsacchi/premise" target="_blank">premise</a>.</li>
 <li>Inventories can be imported into <a href="https://brightway.dev/" target="_blank">Brightway2</a> and
 <a href="https://www.simapro.com/" target="_blank">SimaPro 9.x.</a>.</li>

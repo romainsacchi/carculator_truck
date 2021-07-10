@@ -1,11 +1,9 @@
 import numpy as np
-
+import xarray as xr
 from .driving_cycles import get_standard_driving_cycle
 from .gradients import get_gradients
 
 np.seterr(divide="ignore", invalid="ignore")
-import xarray as xr
-
 
 class EnergyConsumptionModel:
     """
@@ -14,8 +12,10 @@ class EnergyConsumptionModel:
     Based on a selected driving cycle, this class calculates the acceleration needed and provides
     two methods:
 
-        - :func:`~energy_consumption.EnergyConsumptionModel.aux_energy_per_km` calculates the energy needed to power auxiliary services
-        - :func:`~energy_consumption.EnergyConsumptionModel.motive_energy_per_km` calculates the energy needed to move the vehicle over 1 km
+        - :func:`~energy_consumption.EnergyConsumptionModel.aux_energy_per_km`
+        calculates the energy needed to power auxiliary services
+        - :func:`~energy_consumption.EnergyConsumptionModel.motive_energy_per_km`
+        alculates the energy needed to move the vehicle over 1 km
 
     Acceleration is calculated as the difference between velocity at t_2 and velocity at t_0, divided by 2.
     See for example: http://www.unece.org/fileadmin/DAM/trans/doc/2012/wp29grpe/WLTP-DHC-12-07e.xls
@@ -105,9 +105,11 @@ class EnergyConsumptionModel:
         :type drag_coef: float
         :param frontal_area: Frontal area of vehicle (m2)
         :type frontal_area: float
-        :param ttw_efficiency: Efficiency of translating potential energy into motion (dimensionless, between 0.0 and 1.0)
+        :param ttw_efficiency: Efficiency of translating potential energy into motion
+                (dimensionless, between 0.0 and 1.0)
         :type ttw_efficiency: float
-        :param recuperation_efficiency: Fraction of energy that can be recuperated (dimensionless, between 0.0 and 1.0). Optional.
+        :param recuperation_efficiency: Fraction of energy that can be recuperated
+                (dimensionless, between 0.0 and 1.0). Optional.
         :type recuperation_efficiency: float
         :param motor_power: Electric motor power (watts). Optional.
         :type motor_power: int
@@ -128,8 +130,8 @@ class EnergyConsumptionModel:
             \frac{1}{2} \rho_{air} v^{3} A C_{d}
 
 
-        where :math:`\rho_{air}` is 1.225 (kg/m3), :math:`v` is velocity (m/s), :math:`A` is frontal area (m2), and :math:`C_{d}`
-        is the aerodynamic drag coefficient (dimensionless).
+        where :math:`\rho_{air}` is 1.225 (kg/m3), :math:`v` is velocity (m/s), :math:`A`
+        is frontal area (m2), and :math:`C_{d}` is the aerodynamic drag coefficient (dimensionless).
 
         :returns: net motive energy (in kJ/km)
         :rtype: float
