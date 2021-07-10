@@ -1,12 +1,11 @@
 import numpy as np
 
 from carculator_truck import *
-from carculator_truck.truck_input_parameters import TruckInputParameters
+from carculator_truck.array import fill_xarray_from_input_parameters
 from carculator_truck.energy_consumption import EnergyConsumptionModel
-from carculator_truck.array import (
-    fill_xarray_from_input_parameters,
-)
 from carculator_truck.model import TruckModel
+from carculator_truck.truck_input_parameters import TruckInputParameters
+
 
 def test_acceleration():
     ecm = EnergyConsumptionModel("Long haul")
