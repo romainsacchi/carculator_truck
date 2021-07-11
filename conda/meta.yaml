@@ -1,8 +1,6 @@
-{% set data = load_setup_py_data() %}
-
 package:
   name: carculator_truck
-  version: {{ data['VERSION'] }}
+  version: {{ environ['VERSION'] }}
 
 source:
   path: ..
@@ -10,28 +8,26 @@ source:
 build:
   noarch: python
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: python -m pip install --no-deps --ignore-installed .
   script_env:
-   - VERSION
-   - CONDA_BLD_PATH
+    - VERSION
+    - CONDA_BLD_PATH
 
 requirements:
   build:
     - python
     - setuptools
   run:
-    - klausen
     - pandas
-    - xarray<0.18
+    - xarray <0.18
     - numpy
-    - python
-    - xarray
+    - klausen
     - xlrd
     - numexpr
     - bw2io
     - prettytable
-    - wurst
     - pycountry
+    - pypardiso
 
 test:
   imports:
@@ -40,6 +36,5 @@ test:
 about:
   home: https://github.com/romainsacchi/carculator_truck
   license: BSD License
-  summary: 'A parameterized Python model to calculate the energy consumption and life cycle assessment of
-  medium and heavy duty trucks'
+  summary: 'Life Cycle Assessment model for medium and heavy duty trucks.'
 license_family: BSD

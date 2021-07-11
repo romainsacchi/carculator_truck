@@ -4,9 +4,10 @@
   <img style="height:130px;" src="https://github.com/romainsacchi/coarse/raw/master/docs/mediumsmall.png">
 </p>
 
+
 <p align="center">
   <a href="https://badge.fury.io/py/carculator-truck" target="_blank"><img src="https://badge.fury.io/py/carculator-truck.svg"></a>
-  <a href="https://travis-ci.org/romainsacchi/carculator_truck" target="_blank"><img src="https://travis-ci.org/romainsacchi/carculator_truck.svg?branch=master"></a>
+  <a href="https://github.com/romainsacchi/carculator_truck" target="_blank"><img src="https://github.com/romainsacchi/carculator_truck/actions/workflows/main.yml/badge.svg?branch=master"></a>
   <a href="https://ci.appveyor.com/project/romainsacchi/carculator_truck" target="_blank"><img src="https://ci.appveyor.com/api/projects/status/github/romainsacchi/carculator_truck?svg=true"></a>
   <a href="https://coveralls.io/github/romainsacchi/carculator_truck" target="_blank"><img src="https://coveralls.io/repos/github/romainsacchi/carculator_truck/badge.svg"></a>
   <a href="https://carculator_truck.readthedocs.io/en/latest/" target="_blank"><img src="https://readthedocs.org/projects/carculator_truck/badge/?version=latest"></a>
