@@ -843,10 +843,9 @@ class ExportInventory:
                     print(tuple_output[0].lower())
                     source, description, special_remark = ["", "", ""]
 
-            if (
-                ecoinvent_compatibility
-                or (ecoinvent_compatibility == False
-                and tuple_output[0] not in activities_to_be_removed)
+            if ecoinvent_compatibility or (
+                ecoinvent_compatibility == False
+                and tuple_output[0] not in activities_to_be_removed
             ):
 
                 string = ""
