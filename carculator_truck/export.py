@@ -845,8 +845,8 @@ class ExportInventory:
 
             if (
                 ecoinvent_compatibility
-                or ecoinvent_compatibility
-                and tuple_output[0] not in activities_to_be_removed
+                or (ecoinvent_compatibility == False
+                and tuple_output[0] not in activities_to_be_removed)
             ):
 
                 string = ""
@@ -1300,6 +1300,11 @@ class ExportInventory:
         return dict_tech
 
     def format_data_for_lci_for_bw2(self, data):
+        """
+        Convert inventory data into a dictionary format that can be consumed by `brightway2`.
+        :param data:
+        :return:
+        """
 
         rows = []
         rows.extend((["Database", self.db_name], ("format", "Excel spreadsheet")))
