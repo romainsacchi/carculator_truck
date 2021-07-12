@@ -7,3 +7,4 @@ numexpr
 bw2io
 prettytable
 pycountry
+wurst

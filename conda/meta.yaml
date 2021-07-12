@@ -27,6 +27,7 @@ requirements:
     - bw2io
     - prettytable
     - pycountry
+    - wurst
 
 test:
   imports:
