@@ -27,7 +27,6 @@ requirements:
     - bw2io
     - prettytable
     - pycountry
-    - pypardiso
 
 test:
   imports:
