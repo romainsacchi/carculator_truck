@@ -930,8 +930,8 @@ class TruckModel:
                 self["curb mass"]
                 + (self["average passengers"] * self["average passenger mass"])
             ),
-            1,
-            None,
+            self["total cargo mass"],
+            None
         )
 
         self["capacity utilization"] = np.clip((
