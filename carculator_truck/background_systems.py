@@ -172,6 +172,7 @@ def get_electricity_losses():
 
     return data_to_dict(csv_list)
 
+
 def get_biomethane_share():
     filename = "share_bio_cng.csv"
     filepath = DATA_DIR / filename
@@ -196,7 +197,6 @@ def get_biodiesel_share():
     df = pd.read_csv(filepath, sep=";")
 
     return df.groupby(["country", "year"]).sum().to_xarray().to_array()
-
 
 
 class BackgroundSystemModel:
