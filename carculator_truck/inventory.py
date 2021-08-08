@@ -1670,16 +1670,18 @@ class InventoryCalculation:
                     if pt == "BEV":
 
                         name = (
-                                "transport, freight, lorry, "
-                                + pt
-                                + ", "
-                                + self.background_configuration["energy storage"]["electric"]["BEV"]
-                                + " battery, "
-                                + s
-                                + " gross weight, "
-                                + str(y)
-                                + ", "
-                                + self.cycle.lower()
+                            "transport, freight, lorry, "
+                            + pt
+                            + ", "
+                            + self.background_configuration["energy storage"][
+                                "electric"
+                            ]["BEV"]
+                            + " battery, "
+                            + s
+                            + " gross weight, "
+                            + str(y)
+                            + ", "
+                            + self.cycle.lower()
                         )
 
                         if self.scope["fu"]["unit"] == "tkm":
@@ -1699,14 +1701,14 @@ class InventoryCalculation:
                     elif pt == "FCEV":
 
                         name = (
-                                "transport, freight, lorry, "
-                                + pt
-                                + ", "
-                                + s
-                                + " gross weight, "
-                                + str(y)
-                                + ", "
-                                + self.cycle.lower()
+                            "transport, freight, lorry, "
+                            + pt
+                            + ", "
+                            + s
+                            + " gross weight, "
+                            + str(y)
+                            + ", "
+                            + self.cycle.lower()
                         )
 
                         if self.scope["fu"]["unit"] == "tkm":
@@ -1726,16 +1728,16 @@ class InventoryCalculation:
                     else:
 
                         name = (
-                                "transport, freight, lorry, "
-                                + pt
-                                + ", "
-                                + s
-                                + " gross weight, "
-                                + str(y)
-                                + ", "
-                                + euro_class
-                                + ", "
-                                + self.cycle.lower()
+                            "transport, freight, lorry, "
+                            + pt
+                            + ", "
+                            + s
+                            + " gross weight, "
+                            + str(y)
+                            + ", "
+                            + euro_class
+                            + ", "
+                            + self.cycle.lower()
                         )
 
                         if self.scope["fu"]["unit"] == "tkm":
@@ -1781,49 +1783,55 @@ class InventoryCalculation:
                     if y >= 2012:
                         euro_class = "EURO-VI"
 
-                    if pt=="BEV":
+                    if pt == "BEV":
                         if s in ("3.5t", "7.5t"):
                             name = (
-                                    "Light duty truck, "
-                                    + pt
-                                    + ", "
-                                    + self.background_configuration["energy storage"]["electric"]["BEV"]
-                                    + " battery, "
-                                    + s
-                                    + " gross weight, "
-                                    + str(y)
-                                    + ", "
-                                    + self.cycle.lower()
+                                "Light duty truck, "
+                                + pt
+                                + ", "
+                                + self.background_configuration["energy storage"][
+                                    "electric"
+                                ]["BEV"]
+                                + " battery, "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + self.cycle.lower()
                             )
                             ref = "Light duty truck"
 
                         if s in ("18t", "26t"):
                             name = (
-                                    "Medium duty truck, "
-                                    + pt
-                                    + ", "
-                                    + self.background_configuration["energy storage"]["electric"]["BEV"]
-                                    + " battery, "
-                                    + s
-                                    + " gross weight, "
-                                    + str(y)
-                                    + ", "
-                                    + self.cycle.lower()
+                                "Medium duty truck, "
+                                + pt
+                                + ", "
+                                + self.background_configuration["energy storage"][
+                                    "electric"
+                                ]["BEV"]
+                                + " battery, "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + self.cycle.lower()
                             )
                             ref = "Medium duty truck"
 
                         if s in ("32t", "40t", "60t"):
                             name = (
-                                    "Heavy duty truck, "
-                                    + pt
-                                    + ", "
-                                    + self.background_configuration["energy storage"]["electric"]["BEV"]
-                                    + " battery, "
-                                    + s
-                                    + " gross weight, "
-                                    + str(y)
-                                    + ", "
-                                    + self.cycle.lower()
+                                "Heavy duty truck, "
+                                + pt
+                                + ", "
+                                + self.background_configuration["energy storage"][
+                                    "electric"
+                                ]["BEV"]
+                                + " battery, "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + self.cycle.lower()
                             )
                             ref = "Heavy duty truck"
 
@@ -1836,43 +1844,43 @@ class InventoryCalculation:
                             )
                         ] = maximum
 
-                    elif pt=="FCEV":
+                    elif pt == "FCEV":
                         if s in ("3.5t", "7.5t"):
                             name = (
-                                    "Light duty truck, "
-                                    + pt
-                                    + ", "
-                                    + s
-                                    + " gross weight, "
-                                    + str(y)
-                                    + ", "
-                                    + self.cycle.lower()
+                                "Light duty truck, "
+                                + pt
+                                + ", "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + self.cycle.lower()
                             )
                             ref = "Light duty truck"
 
                         if s in ("18t", "26t"):
                             name = (
-                                    "Medium duty truck, "
-                                    + pt
-                                    + ", "
-                                    + s
-                                    + " gross weight, "
-                                    + str(y)
-                                    + ", "
-                                    + self.cycle.lower()
+                                "Medium duty truck, "
+                                + pt
+                                + ", "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + self.cycle.lower()
                             )
                             ref = "Medium duty truck"
 
                         if s in ("32t", "40t", "60t"):
                             name = (
-                                    "Heavy duty truck, "
-                                    + pt
-                                    + ", "
-                                    + s
-                                    + " gross weight, "
-                                    + str(y)
-                                    + ", "
-                                    + self.cycle.lower()
+                                "Heavy duty truck, "
+                                + pt
+                                + ", "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + self.cycle.lower()
                             )
                             ref = "Heavy duty truck"
 
@@ -2529,7 +2537,6 @@ class InventoryCalculation:
                         _, _, _, pt, size, year, _ = [
                             x.strip() for x in i[0].split(", ")
                         ]
-
 
                     else:
                         _, _, _, pt, size, year, _, _ = [
@@ -5312,10 +5319,7 @@ class InventoryCalculation:
             -1
             / (
                 24
-                * (
-                    2100
-                    / array[self.array_inputs["electric energy stored"], :, index]
-                )
+                * (2100 / array[self.array_inputs["electric energy stored"], :, index])
                 * array[self.array_inputs["kilometers per year"], :, index]
                 * (array[self.array_inputs["total cargo mass"], :, index] / 1000)
             )
@@ -6823,10 +6827,7 @@ class InventoryCalculation:
             -1
             / (
                 24
-                * (
-                    2100
-                    / array[self.array_inputs["electric energy stored"], :, index]
-                )
+                * (2100 / array[self.array_inputs["electric energy stored"], :, index])
                 * array[self.array_inputs["kilometers per year"], :, index]
                 * (array[self.array_inputs["total cargo mass"], :, index] / 1000)
             )

@@ -837,12 +837,12 @@ class TruckModel:
                         np.clip(
                             (
                                 # number of charge cycles needed divided by the expected cycle life
-                                    (
-                                            cpm["lifetime kilometers"]
-                                            * (cpm["TtW energy"] / 3600)
-                                    )
-                                    / cpm["electric energy stored"]
-                                    / cpm[battery_tech_label]
+                                (
+                                    cpm["lifetime kilometers"]
+                                    * (cpm["TtW energy"] / 3600)
+                                )
+                                / cpm["electric energy stored"]
+                                / cpm[battery_tech_label]
                             )
                             - 1,
                             1,
@@ -934,9 +934,9 @@ class TruckModel:
             None,
         )
 
-        self["capacity utilization"] = np.clip((
-            self["total cargo mass"] / self["available payload"]
-        ), 0, 1)
+        self["capacity utilization"] = np.clip(
+            (self["total cargo mass"] / self["available payload"]), 0, 1
+        )
 
         self["driving mass"] = (
             self["curb mass"]
@@ -985,11 +985,14 @@ class TruckModel:
         if "PHEV-e" in self.array.coords["powertrain"].values:
 
             range = (
-                self.array.loc[dict(parameter="electric energy stored", powertrain="PHEV-d")]
+                self.array.loc[
+                    dict(parameter="electric energy stored", powertrain="PHEV-d")
+                ]
                 * self.array.loc[dict(parameter="battery DoD", powertrain="PHEV-e")]
             ) / (
                 self.array.loc[dict(parameter="TtW energy", powertrain="PHEV-e")]
-                / 1000 / 3.6
+                / 1000
+                / 3.6
             )
 
             with self("PHEV-e") as cpm:

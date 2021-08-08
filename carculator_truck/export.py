@@ -849,9 +849,18 @@ class ExportInventory:
             ):
 
                 string = ""
-                if any(
-                    i in tuple_output[0].lower() for i in ("light duty", "heavy duty", "medium duty", "transport, freight, lorry,")
-                ) and "market" not in tuple_output[0].lower():
+                if (
+                    any(
+                        i in tuple_output[0].lower()
+                        for i in (
+                            "light duty",
+                            "heavy duty",
+                            "medium duty",
+                            "transport, freight, lorry,",
+                        )
+                    )
+                    and "market" not in tuple_output[0].lower()
+                ):
 
                     d_pwt = {
                         "diesel": "ICEV-d",
@@ -991,7 +1000,7 @@ class ExportInventory:
                         else:
                             string = f"Fleet average vehicle of {size} in {year}, all powertrains considered."
 
-                #print(string)
+                # print(string)
 
                 # Added transport distances if the inventory
                 # is meant for the UVEK database
