@@ -90,29 +90,12 @@ class TruckModel:
         self["target range"] = target_ranges[self.cycle]
 
         print(
-            "{} driving cycle is selected. Vehicles will be designed to achieve a minimal range of {} km.".format(
+            "{} driving cycle is selected. \nVehicles will be designed to achieve a minimal range of {} km.".format(
                 cycle, target_ranges[cycle]
             )
         )
 
         print("")
-        print("Capacity utilization assumed (share of available payload used)")
-        t = PrettyTable([""] + array.coords["size"].values.tolist())
-        for pt in array.coords["powertrain"].values:
-            for y in array.coords["year"].values:
-                t.add_row(
-                    [pt + ", " + str(y)]
-                    + [
-                        np.round(i, 2)
-                        for i in array.sel(
-                            parameter="capacity utilization", powertrain=pt, year=y
-                        )
-                        .mean(dim="value")
-                        .values.tolist()
-                    ]
-                )
-
-        print(t)
 
         self.ecm = EnergyConsumptionModel(
             cycle=cycle, size=self.array.coords["size"].values
@@ -237,7 +220,7 @@ class TruckModel:
         print("")
         print("Payload (in tons)")
         print("'-' BEV with driving mass superior to the permissible gross weight.")
-        print("'*' ICEV that do not comply wih energy reduction target.")
+        print("'*' ICEV that do not comply with the set energy reduction target.")
         print("'/' vehicles not available for the specified year.")
 
         # If the number of remaining non-compliant vehicles is not zero, then
@@ -779,12 +762,13 @@ class TruckModel:
                     * self["fuel cell own consumption"]
                 )
 
-                # our basic fuel cell mass is based on a car fuel cell with 800 mW/cm2 and 0.51 kg/kW
+                # our basic fuel cell mass is based on a car fuel cell with 800 mW/cm2
+                # and 1.02 kg/kW
                 # the cell power density is adapted for truck use
                 # it is decreased comparatively to that of a passenger car
                 # to reflect increased durability
                 self["fuel cell stack mass"] = (
-                    0.51
+                    1.02
                     * self["fuel cell power"]
                     * (800 / self["fuel cell power area density"])
                 )
@@ -853,12 +837,15 @@ class TruckModel:
                         np.clip(
                             (
                                 # number of charge cycles needed divided by the expected cycle life
-                                cpm["lifetime kilometers"]
-                                / cpm["target range"]
-                                / cpm[battery_tech_label]
+                                    (
+                                            cpm["lifetime kilometers"]
+                                            * (cpm["TtW energy"] / 3600)
+                                    )
+                                    / cpm["electric energy stored"]
+                                    / cpm[battery_tech_label]
                             )
                             - 1,
-                            0,
+                            1,
                             None,
                         )
                     )
@@ -947,9 +934,9 @@ class TruckModel:
             None,
         )
 
-        self["total cargo mass"] = (
-            self["available payload"] * self["capacity utilization"]
-        )
+        self["capacity utilization"] = np.clip((
+            self["total cargo mass"] / self["available payload"]
+        ), 0, 1)
 
         self["driving mass"] = (
             self["curb mass"]
@@ -989,18 +976,24 @@ class TruckModel:
 
     def set_electric_utility_factor(self):
         """
-        From Plotz et al. 2017
-        The electric utility factor is defined by the range.
-        We limit it so that the battery capacity
-        is not superior to a range of 60 km
-        Which is what Scania PHEVs can drive.
+        The electric utility factor
+        is the share of km driven in battery-depleting mode
+        over the required range autonomy.
+        Scania's PHEV tractor can drive 60 km in electric mode
         :return:
         """
         if "PHEV-e" in self.array.coords["powertrain"].values:
+
+            range = (
+                self.array.loc[dict(parameter="electric energy stored", powertrain="PHEV-d")]
+                * self.array.loc[dict(parameter="battery DoD", powertrain="PHEV-e")]
+            ) / (
+                self.array.loc[dict(parameter="TtW energy", powertrain="PHEV-e")]
+                / 1000 / 3.6
+            )
+
             with self("PHEV-e") as cpm:
-                cpm["electric utility factor"] = np.clip(
-                    (1 - np.exp(-0.01147 * cpm["target range"])) ** 1.186185, 0, 0.3
-                )
+                cpm["electric utility factor"] = range / cpm["target range"]
 
     def create_PHEV(self):
         """PHEV-p/d is the range-weighted average between PHEV-c-p/PHEV-c-d and PHEV-e."""
@@ -1509,6 +1502,12 @@ class TruckModel:
             ] = hem.get_emissions_per_powertrain(
                 powertrain_type="diesel",
                 euro_classes=l_y,
+                lifetime_km=self.array.loc[
+                    dict(
+                        powertrain=l_pwt,
+                        parameter="lifetime kilometers",
+                    )
+                ],
                 energy_consumption=self.energy.sel(
                     powertrain=l_pwt,
                     parameter=[
@@ -1527,6 +1526,12 @@ class TruckModel:
                 hem.get_emissions_per_powertrain(
                     powertrain_type="cng",
                     euro_classes=l_y,
+                    lifetime_km=self.array.loc[
+                        dict(
+                            powertrain="ICEV-g",
+                            parameter="lifetime kilometers",
+                        )
+                    ],
                     energy_consumption=self.energy.sel(
                         powertrain=["ICEV-g"],
                         parameter=[

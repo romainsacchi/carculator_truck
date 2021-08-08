@@ -850,8 +850,8 @@ class ExportInventory:
 
                 string = ""
                 if any(
-                    i in tuple_output[0].lower() for i in ("heavy duty", "medium duty")
-                ):
+                    i in tuple_output[0].lower() for i in ("light duty", "heavy duty", "medium duty", "transport, freight, lorry,")
+                ) and "market" not in tuple_output[0].lower():
 
                     d_pwt = {
                         "diesel": "ICEV-d",
@@ -903,9 +903,21 @@ class ExportInventory:
                     }
 
                     split_name = [t.strip() for t in tuple_output[0].split(",")]
-
-                    if len(split_name) == 7:
-                        _, _, pwt, size, year, _, _ = split_name
+                    if "fleet average" not in tuple_output[0]:
+                        if "transport, " in tuple_output[0]:
+                            if "battery electric" in split_name[3]:
+                                _, _, _, pwt, _, size, year, _ = split_name
+                            elif "fuel cell" in split_name[3]:
+                                _, _, _, pwt, size, year, _ = split_name
+                            else:
+                                _, _, _, pwt, size, year, _, _ = split_name
+                        else:
+                            if "battery electric" in split_name[1]:
+                                _, pwt, _, size, year, _ = split_name
+                            elif "fuel cell" in split_name[1]:
+                                _, pwt, size, year, _ = split_name
+                            else:
+                                _, pwt, size, year, _, _ = split_name
                     else:
                         if split_name[2] == "fleet average":
                             _, _, _, pwt, year = [
@@ -916,14 +928,26 @@ class ExportInventory:
                             _, _, size, _, _, year = split_name
                             pwt = None
                         else:
-                            _, pwt, size, year, _, _ = [
-                                t.strip() for t in tuple_output[0].split(",")
-                            ]
+                            if split_name[1] == "battery electric":
+
+                                _, pwt, _, size, year, _ = [
+                                    t.strip() for t in tuple_output[0].split(",")
+                                ]
+                            elif split_name[1] == "fuel cell electric":
+                                _, pwt, size, year, _ = [
+                                    t.strip() for t in tuple_output[0].split(",")
+                                ]
+                            else:
+                                _, pwt, size, year, _, _ = [
+                                    t.strip() for t in tuple_output[0].split(",")
+                                ]
 
                     if size is not None and pwt is not None:
 
                         size = size.split(" ")[0]
                         pwt = d_pwt[pwt]
+
+                        print(tuple_output[0], size, pwt)
 
                         if vehicle_specs is not None:
 
@@ -966,6 +990,8 @@ class ExportInventory:
 
                         else:
                             string = f"Fleet average vehicle of {size} in {year}, all powertrains considered."
+
+                #print(string)
 
                 # Added transport distances if the inventory
                 # is meant for the UVEK database

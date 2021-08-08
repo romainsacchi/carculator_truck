@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import xarray
+import pickle
 
 from . import DATA_DIR
 
@@ -15,14 +16,52 @@ def _(o):
 
 def get_emission_factors():
     """Emissions factors extracted for trucks from HBEFA 4.1
-    deatiled by size, powertrain and EURO class for each substance.
+    detailed by size, powertrain and EURO class for each substance.
     """
-    fp = DATA_DIR / "hbefa_factors_vs_fc.xls"
-    ef = pd.read_excel(fp)
-    return (
-        ef.groupby(["powertrain", "euro_class", "component"]).sum().to_xarray() / 1000
-    ).to_array()
+    fp = DATA_DIR / "hot_trucks.pickle"
 
+    with open(fp, "rb") as f:
+        hot = pickle.load(f)
+
+    return hot
+
+def get_mileage_degradation_factor(powertrain_type, euro_class, lifetime_km):
+    """
+    Catalyst degrade overtime, leading to increased emissions
+    of NOX. We apply a correction factor
+    to reflect this, given by HBEFA.
+    :return:
+    """
+
+    d_corr = {
+        'diesel': {
+            'NOx': {
+                6: 2.6,
+            }
+        },
+    }
+
+    corr = np.ones_like(lifetime_km)
+
+    for p, pt in enumerate([powertrain_type]):
+        for e, ec in enumerate(euro_class):
+            for c, co in enumerate(['NOx']):
+                try:
+                    val = d_corr[pt][co][ec]
+                    y_max = 890000
+
+                    corr[:, :, e, c] = np.clip(
+                        np.interp(
+                            lifetime_km[:, :, e, 0] / 2,
+                            [0, y_max],
+                            [1, val]),
+                        1,
+                        None
+                        )
+
+                except KeyError:
+                   pass
+    return corr
 
 class HotEmissionsModel:
     """
@@ -56,7 +95,7 @@ class HotEmissionsModel:
         self.em = get_emission_factors()
 
     def get_emissions_per_powertrain(
-        self, powertrain_type, euro_classes, energy_consumption, debug_mode=False
+        self, powertrain_type, euro_classes, lifetime_km, energy_consumption, debug_mode=False
     ):
         """
         Calculate hot pollutants emissions given a powertrain type (i.e., diesel, CNG) and a EURO pollution class,
@@ -84,7 +123,7 @@ class HotEmissionsModel:
                 "HC",
                 "CO",
                 "NOx",
-                "PM",
+                "PM2.5",
                 "CH4",
                 "NMHC",
                 "N2O",
@@ -99,30 +138,45 @@ class HotEmissionsModel:
             distance = np.array(distance).reshape(1, 1)
 
         # Emissions for each second of the driving cycle equal:
-        # a * energy consumption + b
-        # with a, b being a coefficient and an intercept respectively given by fitting HBEFA 4.1 data
+        # a * energy consumption
+        # with a being a coefficient and an intercept respectively given by fitting HBEFA 4.1 data
         # the fitting of emissions function of energy consumption is described in the notebook
         # `HBEFA trucks.ipynb` in the folder `dev`.
         a = (
             arr.sel(variable="a").values[:, None, None, :, None, None]
             * energy_consumption.values
         )
-        b = arr.sel(variable="b").values[:, None, None, :, None, None]
 
-        # The receiving array should contain 39 substances, not 10
+        # The receiving array should contain 39 substances, not 9
         arr_shape = list(a.shape)
         arr_shape[0] = 39
         em_arr = np.zeros(tuple(arr_shape))
 
-        em_arr[:9] = a + b
+        em_arr[:9] = a
+
+        # apply a mileage degradation factor for NOx
+        corr = get_mileage_degradation_factor(powertrain_type, euro_classes, lifetime_km)
+        if powertrain_type == "diesel":
+            em_arr[2] *= corr[..., None]
 
         # NH3 and N2O emissions seem to vary with the Euro class
         # rather than the fuel consumption
 
-        # NH3
-
+        # N2O
         # Euro class --> correction factor
-        correction_map = {3: 0.15, 4: 0.15, 5: 0.12, 6: 0.5}
+        correction_map = {3: 9, 4: 9, 5: 10, 6: 10}
+        k = np.array(list(correction_map.keys()))
+        v = np.array(list(correction_map.values()))
+
+        correction_factors = np.zeros_like(euro_classes, dtype=np.float64)
+        for key, val in zip(k, v):
+            correction_factors[np.array(euro_classes) == key] = val
+
+        em_arr[6] /= correction_factors[None, None, :, None, None]
+
+        # NH3
+        # Euro class --> correction factor
+        correction_map = {3: 9, 4: 9, 5: 10, 6: 10}
         k = np.array(list(correction_map.keys()))
         v = np.array(list(correction_map.values()))
 

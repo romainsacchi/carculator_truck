@@ -239,6 +239,7 @@ class InventoryCalculation:
 
         self.scope = scope
         self.scenario = scenario
+        self.cycle = tm.cycle
         self.geo = Geomap()
 
         # Check if a fleet composition is specified
@@ -1659,41 +1660,97 @@ class InventoryCalculation:
                         euro_class = "EURO-II"
                     if 1999 <= y < 2005:
                         euro_class = "EURO-III"
-                    if 2000 <= y < 2008:
+                    if 2005 <= y < 2008:
                         euro_class = "EURO-IV"
                     if 2008 <= y < 2012:
                         euro_class = "EURO-V"
                     if y >= 2012:
                         euro_class = "EURO-VI"
 
-                    name = (
-                        "transport, freight, lorry, "
-                        + pt
-                        + ", "
-                        + s
-                        + " gross weight, "
-                        + str(y)
-                        + ", "
-                        + euro_class
-                        + ", "
-                        + "("
-                        + str(self.target_range)
-                        + " km range autonomy)"
-                    )
+                    if pt == "BEV":
 
-                    if self.scope["fu"]["unit"] == "tkm":
-                        unit = "ton-kilometer"
-                    if self.scope["fu"]["unit"] == "vkm":
-                        unit = "kilometer"
-
-                    self.inputs[
-                        (
-                            name,
-                            self.country,
-                            unit,
-                            "transport, freight, lorry, " + euro_class,
+                        name = (
+                                "transport, freight, lorry, "
+                                + pt
+                                + ", "
+                                + self.background_configuration["energy storage"]["electric"]["BEV"]
+                                + " battery, "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + self.cycle.lower()
                         )
-                    ] = maximum
+
+                        if self.scope["fu"]["unit"] == "tkm":
+                            unit = "ton-kilometer"
+                        if self.scope["fu"]["unit"] == "vkm":
+                            unit = "kilometer"
+
+                        self.inputs[
+                            (
+                                name,
+                                self.country,
+                                unit,
+                                "transport, freight, lorry",
+                            )
+                        ] = maximum
+
+                    elif pt == "FCEV":
+
+                        name = (
+                                "transport, freight, lorry, "
+                                + pt
+                                + ", "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + self.cycle.lower()
+                        )
+
+                        if self.scope["fu"]["unit"] == "tkm":
+                            unit = "ton-kilometer"
+                        if self.scope["fu"]["unit"] == "vkm":
+                            unit = "kilometer"
+
+                        self.inputs[
+                            (
+                                name,
+                                self.country,
+                                unit,
+                                "transport, freight, lorry",
+                            )
+                        ] = maximum
+
+                    else:
+
+                        name = (
+                                "transport, freight, lorry, "
+                                + pt
+                                + ", "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + euro_class
+                                + ", "
+                                + self.cycle.lower()
+                        )
+
+                        if self.scope["fu"]["unit"] == "tkm":
+                            unit = "ton-kilometer"
+                        if self.scope["fu"]["unit"] == "vkm":
+                            unit = "kilometer"
+
+                        self.inputs[
+                            (
+                                name,
+                                self.country,
+                                unit,
+                                "transport, freight, lorry, " + euro_class,
+                            )
+                        ] = maximum
 
                     self.car_indices.append(maximum)
 
@@ -1717,55 +1774,171 @@ class InventoryCalculation:
                         euro_class = "EURO-II"
                     if 1999 <= y < 2005:
                         euro_class = "EURO-III"
-                    if 2000 <= y < 2008:
+                    if 2005 <= y < 2008:
                         euro_class = "EURO-IV"
                     if 2008 <= y < 2012:
                         euro_class = "EURO-V"
                     if y >= 2012:
                         euro_class = "EURO-VI"
 
-                    if s in ("3.5t", "7.5t", "18t", "26t"):
-                        name = (
-                            "Medium duty truck, "
-                            + pt
-                            + ", "
-                            + s
-                            + " gross weight, "
-                            + str(y)
-                            + ", "
-                            + euro_class
-                            + ", "
-                            + "("
-                            + str(self.target_range)
-                            + " km range autonomy)"
-                        )
-                        ref = "Medium duty truck, "
+                    if pt=="BEV":
+                        if s in ("3.5t", "7.5t"):
+                            name = (
+                                    "Light duty truck, "
+                                    + pt
+                                    + ", "
+                                    + self.background_configuration["energy storage"]["electric"]["BEV"]
+                                    + " battery, "
+                                    + s
+                                    + " gross weight, "
+                                    + str(y)
+                                    + ", "
+                                    + self.cycle.lower()
+                            )
+                            ref = "Light duty truck"
 
-                    if s in ("32t", "40t", "60t"):
-                        name = (
-                            "Heavy duty truck, "
-                            + pt
-                            + ", "
-                            + s
-                            + " gross weight, "
-                            + str(y)
-                            + ", "
-                            + euro_class
-                            + ", "
-                            + "("
-                            + str(self.target_range)
-                            + " km range autonomy)"
-                        )
-                        ref = "Heavy duty truck, "
+                        if s in ("18t", "26t"):
+                            name = (
+                                    "Medium duty truck, "
+                                    + pt
+                                    + ", "
+                                    + self.background_configuration["energy storage"]["electric"]["BEV"]
+                                    + " battery, "
+                                    + s
+                                    + " gross weight, "
+                                    + str(y)
+                                    + ", "
+                                    + self.cycle.lower()
+                            )
+                            ref = "Medium duty truck"
 
-                    self.inputs[
-                        (
-                            name,
-                            self.country,
-                            "unit",
-                            ref + euro_class,
-                        )
-                    ] = maximum
+                        if s in ("32t", "40t", "60t"):
+                            name = (
+                                    "Heavy duty truck, "
+                                    + pt
+                                    + ", "
+                                    + self.background_configuration["energy storage"]["electric"]["BEV"]
+                                    + " battery, "
+                                    + s
+                                    + " gross weight, "
+                                    + str(y)
+                                    + ", "
+                                    + self.cycle.lower()
+                            )
+                            ref = "Heavy duty truck"
+
+                        self.inputs[
+                            (
+                                name,
+                                self.country,
+                                "unit",
+                                ref,
+                            )
+                        ] = maximum
+
+                    elif pt=="FCEV":
+                        if s in ("3.5t", "7.5t"):
+                            name = (
+                                    "Light duty truck, "
+                                    + pt
+                                    + ", "
+                                    + s
+                                    + " gross weight, "
+                                    + str(y)
+                                    + ", "
+                                    + self.cycle.lower()
+                            )
+                            ref = "Light duty truck"
+
+                        if s in ("18t", "26t"):
+                            name = (
+                                    "Medium duty truck, "
+                                    + pt
+                                    + ", "
+                                    + s
+                                    + " gross weight, "
+                                    + str(y)
+                                    + ", "
+                                    + self.cycle.lower()
+                            )
+                            ref = "Medium duty truck"
+
+                        if s in ("32t", "40t", "60t"):
+                            name = (
+                                    "Heavy duty truck, "
+                                    + pt
+                                    + ", "
+                                    + s
+                                    + " gross weight, "
+                                    + str(y)
+                                    + ", "
+                                    + self.cycle.lower()
+                            )
+                            ref = "Heavy duty truck"
+
+                        self.inputs[
+                            (
+                                name,
+                                self.country,
+                                "unit",
+                                ref,
+                            )
+                        ] = maximum
+
+                    else:
+                        if s in ("3.5t", "7.5t"):
+                            name = (
+                                "Light duty truck, "
+                                + pt
+                                + ", "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + euro_class
+                                + ", "
+                                + self.cycle.lower()
+                            )
+                            ref = "Light duty truck, "
+
+                        if s in ("18t", "26t"):
+                            name = (
+                                "Medium duty truck, "
+                                + pt
+                                + ", "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + euro_class
+                                + ", "
+                                + self.cycle.lower()
+                            )
+                            ref = "Medium duty truck, "
+
+                        if s in ("32t", "40t", "60t"):
+                            name = (
+                                "Heavy duty truck, "
+                                + pt
+                                + ", "
+                                + s
+                                + " gross weight, "
+                                + str(y)
+                                + ", "
+                                + euro_class
+                                + ", "
+                                + self.cycle.lower()
+                            )
+                            ref = "Heavy duty truck, "
+
+                        self.inputs[
+                            (
+                                name,
+                                self.country,
+                                "unit",
+                                ref + euro_class,
+                            )
+                        ] = maximum
 
     def get_A_matrix(self):
         """
@@ -2339,18 +2512,40 @@ class InventoryCalculation:
 
         for i in self.inputs:
             if (
-                "transport, freight, lorry, " in i[0]
+                "duty truck, " in i[0]
+                or "freight, lorry, " in i[0]
                 and "fleet average" not in i[0]
                 and "market" not in i[0]
             ):
 
                 if "transport" in i[0]:
-                    _, _, _, pt, size, year, _, _ = [
-                        x.strip() for x in i[0].split(", ")
-                    ]
+
+                    if "BEV" in i[0]:
+                        _, _, _, pt, _, size, year, _ = [
+                            x.strip() for x in i[0].split(", ")
+                        ]
+
+                    elif "FCEV" in i[0]:
+                        _, _, _, pt, size, year, _ = [
+                            x.strip() for x in i[0].split(", ")
+                        ]
+
+
+                    else:
+                        _, _, _, pt, size, year, _, _ = [
+                            x.strip() for x in i[0].split(", ")
+                        ]
                     size = size.replace(" gross weight", "")
                 else:
-                    _, pt, size, year, _, _ = i[0].split(", ")
+
+                    if "EURO" in i[0]:
+                        _, pt, size, year, _, _ = i[0].split(", ")
+                    else:
+                        if "BEV" in i[0]:
+                            _, pt, _, size, year, _ = i[0].split(", ")
+                        else:
+                            _, pt, size, year, _ = i[0].split(", ")
+
                     size = size.replace(" gross weight", "")
 
                 if (
@@ -4078,7 +4273,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["fuel cell stack mass"], :]
             * (1 + array[self.array_inputs["fuel cell lifetime replacements"]])
-            / 0.51
+            / 1.02
             / array[self.array_inputs["lifetime kilometers"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
@@ -4885,8 +5080,8 @@ class InventoryCalculation:
         )
 
         # Brake wear emissions
-        # BEVs only emit 10% of what a combustion engine vehicle emits according to
-        # https://www.nrel.gov/docs/fy17osti/67209.pdf
+        # BEVs only emit 20% of what a combustion engine vehicle emit according to
+        # https://link.springer.com/article/10.1007/s11367-014-0792-4
 
         self.A[
             :,
@@ -4922,7 +5117,7 @@ class InventoryCalculation:
                 )
             ],
             ind_A,
-        ] *= 0.1
+        ] *= 0.2
 
         # Infrastructure: 5.37e-4 per gross tkm
         self.A[
@@ -5116,10 +5311,13 @@ class InventoryCalculation:
         ] = (
             -1
             / (
-                array[self.array_inputs["kilometers per year"], :, index]
+                24
+                * (
+                    2100
+                    / array[self.array_inputs["electric energy stored"], :, index]
+                )
+                * array[self.array_inputs["kilometers per year"], :, index]
                 * (array[self.array_inputs["total cargo mass"], :, index] / 1000)
-                * 2
-                * 24
             )
         ).T.reshape(
             (self.iterations, 1, -1)
@@ -5136,6 +5334,7 @@ class InventoryCalculation:
         """
 
         # Glider/Frame
+
         self.A[
             :,
             self.inputs[
@@ -5584,7 +5783,7 @@ class InventoryCalculation:
         ] = (
             array[self.array_inputs["fuel cell stack mass"], :]
             * (1 + array[self.array_inputs["fuel cell lifetime replacements"]])
-            / 0.51
+            / 1.02
             * -1
         )
 
@@ -6450,8 +6649,9 @@ class InventoryCalculation:
         )
 
         # Brake wear emissions
-        # BEVs only emit 10% of what a combustion engine vehicle emits according to
-        # https://www.nrel.gov/docs/fy17osti/67209.pdf
+        # BEVs and other hybrid vehicles only emit 20%
+        # of what a combustion engine vehicle emit according to
+        # https://link.springer.com/article/10.1007/s11367-014-0792-4
 
         self.A[
             :,
@@ -6487,7 +6687,7 @@ class InventoryCalculation:
                 )
             ],
             ind_A,
-        ] *= 0.1
+        ] *= 0.2
 
         # Infrastructure: 5.37e-4 per gross tkm
         self.A[
@@ -6622,10 +6822,13 @@ class InventoryCalculation:
         ] = (
             -1
             / (
-                array[self.array_inputs["kilometers per year"], :, index]
+                24
+                * (
+                    2100
+                    / array[self.array_inputs["electric energy stored"], :, index]
+                )
+                * array[self.array_inputs["kilometers per year"], :, index]
                 * (array[self.array_inputs["total cargo mass"], :, index] / 1000)
-                * 2
-                * 24
             )
         ).T.reshape(
             (self.iterations, 1, -1)

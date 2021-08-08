@@ -1,7 +1,6 @@
 [
   "electric utility factor",
   "noise, octave 6, night time, rural",
-  "total cargo mass",
   "battery lifetime replacements",
   "noise, octave 1, evening time, suburban",
   "electric power",
@@ -87,7 +86,6 @@
   "noise, octave 7, evening time, suburban",
   "component replacement cost",
   "purchase cost",
-  "electric energy stored",
   "fuel cell ancillary BoP mass",
   "noise, octave 6, evening time, rural",
   "electricity consumption",
@@ -260,5 +258,6 @@
   "Chromium VI direct emissions, rural",
   "Mercury direct emissions, rural",
   "Cadmium direct emissions, rural",
-  "battery lifetime kilometers"
+  "battery lifetime kilometers",
+  "capacity utilization"
 ]
