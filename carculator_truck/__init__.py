@@ -18,6 +18,7 @@ _all_ = (
     "EnergyConsumptionModel",
     "get_gradients",
     "HotEmissionsModel",
+    "create_fleet_composition_from_IAM_file"
 )
 
 # library version
@@ -38,3 +39,4 @@ from .hot_emissions import HotEmissionsModel
 from .inventory import InventoryCalculation
 from .model import TruckModel
 from .truck_input_parameters import TruckInputParameters
+from .utils import create_fleet_composition_from_IAM_file

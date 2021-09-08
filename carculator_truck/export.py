@@ -840,7 +840,6 @@ class ExportInventory:
                     description = self.references[key]["description"]
                     special_remark = self.references[key]["special remark"]
                 except IndexError:
-                    print(tuple_output[0].lower())
                     source, description, special_remark = ["", "", ""]
 
             if ecoinvent_compatibility or (
@@ -928,14 +927,29 @@ class ExportInventory:
                             else:
                                 _, pwt, size, year, _, _ = split_name
                     else:
-                        if split_name[2] == "fleet average":
-                            _, _, _, pwt, year = [
-                                t.strip() for t in tuple_output[0].split(",")
-                            ]
-                            size = None
-                        elif split_name[3] == "fleet average":
-                            _, _, size, _, _, year = split_name
-                            pwt = None
+                        if split_name[3] == "fleet average":
+
+                            if len(split_name) == 6:
+
+                                if split_name[4] in ["3.5t", "7.5t", "18t", "26t",
+                                                     "32t", "40t", "60t"]:
+                                    _, _, _, _, size, year = [
+                                        t.strip() for t in tuple_output[0].split(",")
+                                    ]
+                                    pwt = None
+                                else:
+                                    _, _, _, _, pwt, year = [
+                                        t.strip() for t in tuple_output[0].split(",")
+                                    ]
+                                    size = None
+
+                            if len(split_name) == 5:
+                                _, _, _, _, year = [
+                                    t.strip() for t in tuple_output[0].split(",")
+                                ]
+                                size = None
+                                pwt = None
+
                         else:
                             if split_name[1] == "battery electric":
 
@@ -955,8 +969,6 @@ class ExportInventory:
 
                         size = size.split(" ")[0]
                         pwt = d_pwt[pwt]
-
-                        print(tuple_output[0], size, pwt)
 
                         if vehicle_specs is not None:
 
@@ -997,10 +1009,10 @@ class ExportInventory:
                             pwt = d_pwt[pwt]
                             string = f"Fleet average {pwt} vehicle in {year}, all sizes considered."
 
-                        else:
+                        elif size is not None:
                             string = f"Fleet average vehicle of {size} in {year}, all powertrains considered."
-
-                # print(string)
+                        else:
+                            string = f"Fleet average vehicle of all sizes and powertrains, in {year}."
 
                 # Added transport distances if the inventory
                 # is meant for the UVEK database

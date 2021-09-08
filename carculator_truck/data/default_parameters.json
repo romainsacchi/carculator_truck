@@ -43471,7 +43471,7 @@
         "maximum": 5
     },
     "1541-2030-power distribution unit mass": {
-        "amount": 36,
+        "amount": 4,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -43497,9 +43497,9 @@
         "status": "",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 36,
-        "minimum": 30,
-        "maximum": 40
+        "loc": 4,
+        "minimum": 3,
+        "maximum": 5
     },
     "1542-2040-power distribution unit mass": {
         "amount": 3.8,
