@@ -1,4 +1,5 @@
 import itertools
+
 import numpy as np
 import pandas as pd
 
@@ -66,9 +67,7 @@ def build_fleet_array(fp, scope):
     return array.to_array().fillna(0)
 
 
-def create_fleet_composition_from_IAM_file(
-    fp
-):
+def create_fleet_composition_from_IAM_file(fp):
     """
     This function creates a consumable fleet composition array from a CSV file.
     The array returned is consumed by `InventoryCalculation`.
@@ -85,9 +84,20 @@ def create_fleet_composition_from_IAM_file(
     # Read the fleet composition CSV file
     df = pd.read_csv(fp, delimiter=",")
     df = df.fillna(0)
-    df = df[["year","vintage_year","IAM_region","powertrain","size","vintage_demand_tkm"]]
+    df = df[
+        [
+            "year",
+            "vintage_year",
+            "IAM_region",
+            "powertrain",
+            "size",
+            "vintage_demand_tkm",
+        ]
+    ]
 
-    df_gr = df.groupby(["year", "vintage_year", "IAM_region", "powertrain", "size"]).sum()
+    df_gr = df.groupby(
+        ["year", "vintage_year", "IAM_region", "powertrain", "size"]
+    ).sum()
 
     df_gr = df_gr.groupby(level=[0, 2, 3]).apply(lambda x: x / float(x.sum()))
     df = df_gr.reset_index()
@@ -95,7 +105,9 @@ def create_fleet_composition_from_IAM_file(
 
     # Turn the dataframe into a pivot table
     df = df.pivot_table(
-        index=["IAM_region", "powertrain", "size", "vintage_year"], columns=["year"], aggfunc=np.sum
+        index=["IAM_region", "powertrain", "size", "vintage_year"],
+        columns=["year"],
+        aggfunc=np.sum,
     )["vintage_demand_tkm"]
 
     # xarray.DataArray is returned
