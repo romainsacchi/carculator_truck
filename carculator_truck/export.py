@@ -931,8 +931,15 @@ class ExportInventory:
 
                             if len(split_name) == 6:
 
-                                if split_name[4] in ["3.5t", "7.5t", "18t", "26t",
-                                                     "32t", "40t", "60t"]:
+                                if split_name[4] in [
+                                    "3.5t",
+                                    "7.5t",
+                                    "18t",
+                                    "26t",
+                                    "32t",
+                                    "40t",
+                                    "60t",
+                                ]:
                                     _, _, _, _, size, year = [
                                         t.strip() for t in tuple_output[0].split(",")
                                     ]

@@ -18,7 +18,7 @@ _all_ = (
     "EnergyConsumptionModel",
     "get_gradients",
     "HotEmissionsModel",
-    "create_fleet_composition_from_IAM_file"
+    "create_fleet_composition_from_IAM_file",
 )
 
 # library version

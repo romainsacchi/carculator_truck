@@ -59,7 +59,7 @@ class TruckModel:
         fuel_blend=None,
         energy_storage=None,
         energy_target={2025: 0.85, 2030: 0.7},
-        target_range = None
+        target_range=None,
     ):
 
         self.array = array
