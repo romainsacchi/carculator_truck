@@ -1529,10 +1529,8 @@
         "comment": "Same as for passenger vehicles.",
         "status": "Acceptable",
         "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.8,
-        "minimum": 0.3,
-        "maximum": 1
+        "uncertainty_type": 1,
+        "loc": 0.8
     },
     "53-2050-heating energy consumption": {
         "amount": 0.8,
@@ -1558,10 +1556,8 @@
         "comment": "Same as for passenger vehicles.",
         "status": "Acceptable",
         "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.8,
-        "minimum": 0.3,
-        "maximum": 1
+        "uncertainty_type": 1,
+        "loc": 0.8
     },
     "54-2000-cooling thermal demand": {
         "amount": 43.75,
@@ -18944,7 +18940,7 @@
         "maximum": 0.08
     },
     "680-2000-fuel cell lifetime hours": {
-        "amount": 80000,
+        "amount": 8000,
         "category": "Energy Storage",
         "powertrain": [
             "FCEV"
@@ -18967,7 +18963,7 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 80000,
+        "loc": 8000,
         "minimum": 5000,
         "maximum": 10000
     },
@@ -29386,7 +29382,7 @@
         "maximum": 34.4
     },
     "1046-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 28,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29404,12 +29400,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 28,
         "minimum": 21.6,
         "maximum": 35.2
     },
     "1047-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 28,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29427,12 +29423,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 28,
         "minimum": 21.6,
         "maximum": 35.2
     },
     "1048-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 28,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29450,12 +29446,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 28,
         "minimum": 21.6,
         "maximum": 35.2
     },
     "1049-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 28,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29473,12 +29469,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 28,
         "minimum": 21.6,
         "maximum": 35.2
     },
     "1050-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 28,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29496,12 +29492,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 28,
         "minimum": 21.6,
         "maximum": 35.2
     },
     "1051-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 28,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29519,12 +29515,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 28,
         "minimum": 21.6,
         "maximum": 35.2
     },
     "1052-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 23.200000000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29542,12 +29538,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 23.200000000000003,
         "minimum": 20.8,
         "maximum": 31.200000000000003
     },
     "1053-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 23.200000000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29565,12 +29561,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 23.200000000000003,
         "minimum": 20.8,
         "maximum": 31.200000000000003
     },
     "1054-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 23.200000000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29588,12 +29584,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 23.200000000000003,
         "minimum": 20.8,
         "maximum": 31.200000000000003
     },
     "1055-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 23.200000000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29611,12 +29607,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 23.200000000000003,
         "minimum": 20.8,
         "maximum": 31.200000000000003
     },
     "1056-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 23.200000000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29634,12 +29630,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 23.200000000000003,
         "minimum": 20.8,
         "maximum": 31.200000000000003
     },
     "1057-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 23.200000000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29657,12 +29653,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 23.200000000000003,
         "minimum": 20.8,
         "maximum": 31.200000000000003
     },
     "1058-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.8,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29680,12 +29676,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.8,
         "minimum": 20,
         "maximum": 24
     },
     "1059-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.8,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29703,12 +29699,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.8,
         "minimum": 20,
         "maximum": 24
     },
     "1060-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.8,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29726,12 +29722,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.8,
         "minimum": 20,
         "maximum": 24
     },
     "1061-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.8,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29749,12 +29745,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.8,
         "minimum": 20,
         "maximum": 24
     },
     "1062-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.8,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29772,12 +29768,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.8,
         "minimum": 20,
         "maximum": 24
     },
     "1063-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.8,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29795,12 +29791,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.8,
         "minimum": 20,
         "maximum": 24
     },
     "1064-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.400000000000002,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29818,12 +29814,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.400000000000002,
         "minimum": 20,
         "maximum": 26.400000000000002
     },
     "1065-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.400000000000002,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29841,12 +29837,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.400000000000002,
         "minimum": 20,
         "maximum": 26.400000000000002
     },
     "1066-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.400000000000002,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29864,12 +29860,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.400000000000002,
         "minimum": 20,
         "maximum": 26.400000000000002
     },
     "1067-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.400000000000002,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29887,12 +29883,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.400000000000002,
         "minimum": 20,
         "maximum": 26.400000000000002
     },
     "1068-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.400000000000002,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29910,12 +29906,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.400000000000002,
         "minimum": 20,
         "maximum": 26.400000000000002
     },
     "1069-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 22.400000000000002,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29933,12 +29929,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
+        "loc": 22.400000000000002,
         "minimum": 20,
         "maximum": 26.400000000000002
     },
     "1070-2000-power to mass ratio": {
-        "amount": 25,
+        "amount": 17.6,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29956,12 +29952,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 25,
+        "loc": 17.6,
         "minimum": 16,
         "maximum": 19.200000000000003
     },
     "1071-2010-power to mass ratio": {
-        "amount": 25,
+        "amount": 17.6,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29979,12 +29975,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 25,
+        "loc": 17.6,
         "minimum": 16,
         "maximum": 19.200000000000003
     },
     "1072-2020-power to mass ratio": {
-        "amount": 25,
+        "amount": 17.6,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30002,12 +29998,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 25,
+        "loc": 17.6,
         "minimum": 16,
         "maximum": 19.200000000000003
     },
     "1073-2030-power to mass ratio": {
-        "amount": 25,
+        "amount": 17.6,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30025,12 +30021,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 25,
+        "loc": 17.6,
         "minimum": 16,
         "maximum": 19.200000000000003
     },
     "1074-2040-power to mass ratio": {
-        "amount": 25,
+        "amount": 17.6,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30048,12 +30044,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 25,
+        "loc": 17.6,
         "minimum": 16,
         "maximum": 19.200000000000003
     },
     "1075-2050-power to mass ratio": {
-        "amount": 25,
+        "amount": 17.6,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30071,7 +30067,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 25,
+        "loc": 17.6,
         "minimum": 16,
         "maximum": 19.200000000000003
     },
@@ -43999,7 +43995,7 @@
         "uncertainty_type": 5,
         "loc": 0.55,
         "minimum": 0.49500000000000005,
-        "maximum": 0.05500000000000001
+        "maximum": 0.6050000000000001
     },
     "1559-2030-fuel cell stack efficiency": {
         "amount": 0.55,
@@ -44021,7 +44017,7 @@
         "uncertainty_type": 5,
         "loc": 0.55,
         "minimum": 0.49500000000000005,
-        "maximum": 0.05500000000000001
+        "maximum": 0.6050000000000001
     },
     "1560-2040-fuel cell stack efficiency": {
         "amount": 0.55,
@@ -44043,7 +44039,7 @@
         "uncertainty_type": 5,
         "loc": 0.55,
         "minimum": 0.49500000000000005,
-        "maximum": 0.05500000000000001
+        "maximum": 0.6050000000000001
     },
     "1561-2050-fuel cell stack efficiency": {
         "amount": 0.55,
@@ -44065,7 +44061,7 @@
         "uncertainty_type": 5,
         "loc": 0.55,
         "minimum": 0.49500000000000005,
-        "maximum": 0.05500000000000001
+        "maximum": 0.6050000000000001
     },
     "1562-2000-fuel cell stack efficiency": {
         "amount": 0.35000000000000003,
@@ -44146,7 +44142,7 @@
         "uncertainty_type": 5,
         "loc": 0.55,
         "minimum": 0.49500000000000005,
-        "maximum": 0.05500000000000001
+        "maximum": 0.6050000000000001
     },
     "1565-2030-fuel cell stack efficiency": {
         "amount": 0.55,
@@ -44173,7 +44169,7 @@
         "uncertainty_type": 5,
         "loc": 0.55,
         "minimum": 0.49500000000000005,
-        "maximum": 0.05500000000000001
+        "maximum": 0.6050000000000001
     },
     "1566-2040-fuel cell stack efficiency": {
         "amount": 0.55,
@@ -44200,7 +44196,7 @@
         "uncertainty_type": 5,
         "loc": 0.55,
         "minimum": 0.49500000000000005,
-        "maximum": 0.05500000000000001
+        "maximum": 0.6050000000000001
     },
     "1567-2050-fuel cell stack efficiency": {
         "amount": 0.55,
@@ -44227,7 +44223,7 @@
         "uncertainty_type": 5,
         "loc": 0.55,
         "minimum": 0.49500000000000005,
-        "maximum": 0.05500000000000001
+        "maximum": 0.6050000000000001
     },
     "1568-2000-fuel cell power share": {
         "amount": 0.25,

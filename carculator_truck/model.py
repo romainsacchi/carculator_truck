@@ -59,6 +59,7 @@ class TruckModel:
         fuel_blend=None,
         energy_storage=None,
         energy_target={2025: 0.85, 2030: 0.7},
+        target_range = None
     ):
 
         self.array = array
@@ -87,11 +88,11 @@ class TruckModel:
             "Long haul": 800,
         }
 
-        self["target range"] = target_ranges[self.cycle]
+        self["target range"] = target_range or target_ranges[self.cycle]
 
         print(
             "{} driving cycle is selected. \nVehicles will be designed to achieve a minimal range of {} km.".format(
-                cycle, target_ranges[cycle]
+                cycle, target_range or target_ranges[self.cycle]
             )
         )
 
