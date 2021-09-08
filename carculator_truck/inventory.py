@@ -5242,14 +5242,10 @@ class InventoryCalculation:
             ],
             -self.number_of_cars :,
         ] = (
-                        (
-                                array[self.array_inputs["energy battery mass"], :]
-                                * (
-                                        1
-                                        + array[
-                                            self.array_inputs["battery lifetime replacements"]]
-                                )
-                        )
+            (
+                array[self.array_inputs["energy battery mass"], :]
+                * (1 + array[self.array_inputs["battery lifetime replacements"]])
+            )
             / array[self.array_inputs["lifetime kilometers"]]
             / (array[self.array_inputs["total cargo mass"]] / 1000)
         )
@@ -6756,13 +6752,8 @@ class InventoryCalculation:
                 )
             ],
             -self.number_of_cars :,
-        ] = (
-            array[self.array_inputs["energy battery mass"], :]
-            * (
-                    1
-                    + array[
-                      self.array_inputs["battery lifetime replacements"]]
-            )
+        ] = array[self.array_inputs["energy battery mass"], :] * (
+            1 + array[self.array_inputs["battery lifetime replacements"]]
         )
 
         # Noise emissions
