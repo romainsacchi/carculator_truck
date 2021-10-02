@@ -3858,7 +3858,7 @@
         "maximum": 4115.4
     },
     "132-2000-auxilliary power base demand": {
-        "amount": 4961.25,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3877,17 +3877,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 4961.25,
-        "minimum": 4630.5,
-        "maximum": 5292
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "133-2010-auxilliary power base demand": {
-        "amount": 4725,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3906,17 +3906,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 4725,
-        "minimum": 4410,
-        "maximum": 5040
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "134-2020-auxilliary power base demand": {
-        "amount": 4500,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3935,17 +3935,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 4500,
-        "minimum": 4200,
-        "maximum": 4800
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "135-2030-auxilliary power base demand": {
-        "amount": 4275,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3964,17 +3964,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 4275,
-        "minimum": 3990,
-        "maximum": 4560
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "136-2040-auxilliary power base demand": {
-        "amount": 4061.25,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3993,17 +3993,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 4061.25,
-        "minimum": 3790.5,
-        "maximum": 4332
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "137-2050-auxilliary power base demand": {
-        "amount": 3858.1875,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4022,17 +4022,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3858.1875,
-        "minimum": 3600.975,
-        "maximum": 4115.4
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "138-2000-auxilliary power base demand": {
-        "amount": 6835.5,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4051,17 +4051,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 6835.5,
-        "minimum": 6394.5,
-        "maximum": 7276.5
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "139-2010-auxilliary power base demand": {
-        "amount": 6510,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4080,17 +4080,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 6510,
-        "minimum": 6090,
-        "maximum": 6930
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "140-2020-auxilliary power base demand": {
-        "amount": 6200,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4109,17 +4109,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 6200,
-        "minimum": 5800,
-        "maximum": 6600
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "141-2030-auxilliary power base demand": {
-        "amount": 5890,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4138,17 +4138,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5890,
-        "minimum": 5510,
-        "maximum": 6270
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "142-2040-auxilliary power base demand": {
-        "amount": 5595.5,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4167,17 +4167,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5595.5,
-        "minimum": 5234.5,
-        "maximum": 5956.5
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "143-2050-auxilliary power base demand": {
-        "amount": 5315.724999999999,
+        "amount": 5600,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4196,14 +4196,14 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5315.724999999999,
-        "minimum": 4972.775,
-        "maximum": 5658.675
+        "loc": 5600,
+        "minimum": 4480,
+        "maximum": 6720
     },
     "144-2000-toll cost per km": {
         "amount": 0.005,
@@ -14956,7 +14956,7 @@
         "maximum": 1.2
     },
     "542-2000-lifetime kilometers": {
-        "amount": 180000,
+        "amount": 980000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -14975,17 +14975,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 180000,
-        "minimum": 135000,
-        "maximum": 225000
+        "loc": 980000,
+        "minimum": 735000,
+        "maximum": 1225000
     },
     "543-2010-lifetime kilometers": {
-        "amount": 180000,
+        "amount": 980000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15004,17 +15004,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 180000,
-        "minimum": 135000,
-        "maximum": 225000
+        "loc": 980000,
+        "minimum": 735000,
+        "maximum": 1225000
     },
     "544-2020-lifetime kilometers": {
-        "amount": 180000,
+        "amount": 980000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15033,17 +15033,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 180000,
-        "minimum": 135000,
-        "maximum": 225000
+        "loc": 980000,
+        "minimum": 735000,
+        "maximum": 1225000
     },
     "545-2030-lifetime kilometers": {
-        "amount": 180000,
+        "amount": 980000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15062,17 +15062,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 180000,
-        "minimum": 135000,
-        "maximum": 225000
+        "loc": 980000,
+        "minimum": 735000,
+        "maximum": 1225000
     },
     "546-2040-lifetime kilometers": {
-        "amount": 180000,
+        "amount": 980000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15091,17 +15091,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 180000,
-        "minimum": 135000,
-        "maximum": 225000
+        "loc": 980000,
+        "minimum": 735000,
+        "maximum": 1225000
     },
     "547-2050-lifetime kilometers": {
-        "amount": 180000,
+        "amount": 980000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15120,17 +15120,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 180000,
-        "minimum": 135000,
-        "maximum": 225000
+        "loc": 980000,
+        "minimum": 735000,
+        "maximum": 1225000
     },
     "548-2000-lifetime kilometers": {
-        "amount": 165000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15149,17 +15149,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 165000,
-        "minimum": 123750,
-        "maximum": 206250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "549-2010-lifetime kilometers": {
-        "amount": 165000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15178,17 +15178,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 165000,
-        "minimum": 123750,
-        "maximum": 206250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "550-2020-lifetime kilometers": {
-        "amount": 165000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15207,17 +15207,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 165000,
-        "minimum": 123750,
-        "maximum": 206250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "551-2030-lifetime kilometers": {
-        "amount": 165000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15236,17 +15236,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 165000,
-        "minimum": 123750,
-        "maximum": 206250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "552-2040-lifetime kilometers": {
-        "amount": 165000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15265,17 +15265,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 165000,
-        "minimum": 123750,
-        "maximum": 206250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "553-2050-lifetime kilometers": {
-        "amount": 165000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15294,17 +15294,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 165000,
-        "minimum": 123750,
-        "maximum": 206250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "554-2000-lifetime kilometers": {
-        "amount": 693000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15323,17 +15323,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 693000,
-        "minimum": 519750,
-        "maximum": 866250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "555-2010-lifetime kilometers": {
-        "amount": 693000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15352,17 +15352,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 693000,
-        "minimum": 519750,
-        "maximum": 866250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "556-2020-lifetime kilometers": {
-        "amount": 693000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15381,17 +15381,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 693000,
-        "minimum": 519750,
-        "maximum": 866250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "557-2030-lifetime kilometers": {
-        "amount": 693000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15410,17 +15410,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 693000,
-        "minimum": 519750,
-        "maximum": 866250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "558-2040-lifetime kilometers": {
-        "amount": 693000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15439,17 +15439,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 693000,
-        "minimum": 519750,
-        "maximum": 866250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "559-2050-lifetime kilometers": {
-        "amount": 693000,
+        "amount": 1176000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15468,17 +15468,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 693000,
-        "minimum": 519750,
-        "maximum": 866250
+        "loc": 1176000,
+        "minimum": 882000,
+        "maximum": 1470000
     },
     "560-2000-lifetime kilometers": {
-        "amount": 700000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15497,17 +15497,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 700000,
-        "minimum": 525000,
-        "maximum": 875000
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "561-2010-lifetime kilometers": {
-        "amount": 700000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15526,17 +15526,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 700000,
-        "minimum": 525000,
-        "maximum": 875000
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "562-2020-lifetime kilometers": {
-        "amount": 700000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15555,17 +15555,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 700000,
-        "minimum": 525000,
-        "maximum": 875000
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "563-2030-lifetime kilometers": {
-        "amount": 700000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15584,17 +15584,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 700000,
-        "minimum": 525000,
-        "maximum": 875000
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "564-2040-lifetime kilometers": {
-        "amount": 700000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15613,17 +15613,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 700000,
-        "minimum": 525000,
-        "maximum": 875000
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "565-2050-lifetime kilometers": {
-        "amount": 700000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15642,17 +15642,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 700000,
-        "minimum": 525000,
-        "maximum": 875000
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "566-2000-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15671,17 +15671,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "567-2010-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15700,17 +15700,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "568-2020-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15729,17 +15729,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "569-2030-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15758,17 +15758,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "570-2040-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15787,17 +15787,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "571-2050-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15816,17 +15816,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "572-2000-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15845,17 +15845,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "573-2010-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15874,17 +15874,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "574-2020-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15903,17 +15903,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "575-2030-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15932,17 +15932,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "576-2040-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15961,17 +15961,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "577-2050-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -15990,17 +15990,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "578-2000-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16019,17 +16019,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "579-2010-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16048,17 +16048,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "580-2020-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16077,17 +16077,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "581-2030-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16106,17 +16106,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "582-2040-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16135,17 +16135,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "583-2050-lifetime kilometers": {
-        "amount": 350000,
+        "amount": 1296000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16164,17 +16164,17 @@
         "name": "lifetime kilometers",
         "unit": "km",
         "importance": "Critical",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Assumes 12 years X annual kilometers.",
+        "comment": "Critical parameter. Should be fitted to country.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350000,
-        "minimum": 262500,
-        "maximum": 437500
+        "loc": 1296000,
+        "minimum": 972000,
+        "maximum": 1620000
     },
     "584-2000-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16193,17 +16193,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "585-2010-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16222,17 +16222,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "586-2020-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16251,17 +16251,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "587-2030-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16280,17 +16280,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "588-2040-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16309,17 +16309,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "589-2050-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16338,17 +16338,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "590-2000-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16367,17 +16367,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "591-2010-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16396,17 +16396,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "592-2020-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16425,17 +16425,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "593-2030-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16454,17 +16454,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "594-2040-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16483,17 +16483,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "595-2050-kilometers per year": {
-        "amount": 12000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16512,17 +16512,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 12000,
-        "minimum": 9000,
-        "maximum": 15000
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "596-2000-kilometers per year": {
-        "amount": 42000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16541,17 +16541,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 42000,
-        "minimum": 31500,
-        "maximum": 52500
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "597-2010-kilometers per year": {
-        "amount": 42000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16570,17 +16570,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 42000,
-        "minimum": 31500,
-        "maximum": 52500
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "598-2020-kilometers per year": {
-        "amount": 42000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16599,17 +16599,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 42000,
-        "minimum": 31500,
-        "maximum": 52500
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "599-2030-kilometers per year": {
-        "amount": 42000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16628,17 +16628,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 42000,
-        "minimum": 31500,
-        "maximum": 52500
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "600-2040-kilometers per year": {
-        "amount": 42000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16657,17 +16657,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 42000,
-        "minimum": 31500,
-        "maximum": 52500
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "601-2050-kilometers per year": {
-        "amount": 42000,
+        "amount": 98000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16686,17 +16686,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 42000,
-        "minimum": 31500,
-        "maximum": 52500
+        "loc": 98000,
+        "minimum": 73500,
+        "maximum": 122500
     },
     "602-2000-kilometers per year": {
-        "amount": 35000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16715,17 +16715,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35000,
-        "minimum": 26250,
-        "maximum": 43750
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "603-2010-kilometers per year": {
-        "amount": 35000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16744,17 +16744,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35000,
-        "minimum": 26250,
-        "maximum": 43750
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "604-2020-kilometers per year": {
-        "amount": 35000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16773,17 +16773,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35000,
-        "minimum": 26250,
-        "maximum": 43750
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "605-2030-kilometers per year": {
-        "amount": 35000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16802,17 +16802,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35000,
-        "minimum": 26250,
-        "maximum": 43750
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "606-2040-kilometers per year": {
-        "amount": 35000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16831,17 +16831,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35000,
-        "minimum": 26250,
-        "maximum": 43750
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "607-2050-kilometers per year": {
-        "amount": 35000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16860,17 +16860,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35000,
-        "minimum": 26250,
-        "maximum": 43750
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "608-2000-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16889,17 +16889,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "609-2010-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16918,17 +16918,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "610-2020-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16947,17 +16947,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "611-2030-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16976,17 +16976,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "612-2040-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17005,17 +17005,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "613-2050-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17034,17 +17034,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "614-2000-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17063,17 +17063,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "615-2010-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17092,17 +17092,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "616-2020-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17121,17 +17121,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "617-2030-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17150,17 +17150,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "618-2040-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17179,17 +17179,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "619-2050-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17208,17 +17208,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "620-2000-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17237,17 +17237,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "621-2010-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17266,17 +17266,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "622-2020-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17295,17 +17295,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "623-2030-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17324,17 +17324,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "624-2040-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17353,17 +17353,17 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "625-2050-kilometers per year": {
-        "amount": 28000,
+        "amount": 108000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17382,14 +17382,14 @@
         "name": "kilometers per year",
         "unit": "km",
         "importance": "Limited",
-        "source": "Swiss Federal Statistical Office + personal communications",
-        "comment": "Representative of Switzerland. May not apply to other countries.",
+        "source": "Values from EU's CO2 monitoring procedure https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1",
+        "comment": "Default values for long haul driving used. If another cycle is used, we apply a reduction factor.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28000,
-        "minimum": 21000,
-        "maximum": 35000
+        "loc": 108000,
+        "minimum": 81000,
+        "maximum": 135000
     },
     "626-2000-emission factor": {
         "amount": 1,
@@ -27829,8 +27829,8 @@
         "name": "rolling resistance coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
-        "comment": "",
+        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf\nhttps://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "From the latest ICCT report. All size are between o.005 and 0.006.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -27864,8 +27864,8 @@
         "name": "rolling resistance coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
-        "comment": "",
+        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf\nhttps://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "From the latest ICCT report. All size are between o.005 and 0.006.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -27899,8 +27899,8 @@
         "name": "rolling resistance coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
-        "comment": "",
+        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf\nhttps://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "From the latest ICCT report. All size are between o.005 and 0.006.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -27934,8 +27934,8 @@
         "name": "rolling resistance coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
-        "comment": "",
+        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf\nhttps://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "From the latest ICCT report. All size are between o.005 and 0.006.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -27969,8 +27969,8 @@
         "name": "rolling resistance coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
-        "comment": "",
+        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf\nhttps://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "From the latest ICCT report. All size are between o.005 and 0.006.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -28004,8 +28004,8 @@
         "name": "rolling resistance coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
-        "comment": "",
+        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf\nhttps://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "From the latest ICCT report. All size are between o.005 and 0.006.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -34020,7 +34020,7 @@
         "loc": 60000
     },
     "1214-2000-total cargo mass": {
-        "amount": 350,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34039,17 +34039,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350,
-        "minimum": 280,
-        "maximum": 420
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1215-2010-total cargo mass": {
-        "amount": 350,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34068,17 +34068,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350,
-        "minimum": 280,
-        "maximum": 420
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1216-2020-total cargo mass": {
-        "amount": 350,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34097,17 +34097,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350,
-        "minimum": 280,
-        "maximum": 420
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1217-2030-total cargo mass": {
-        "amount": 350,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34126,17 +34126,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350,
-        "minimum": 280,
-        "maximum": 420
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1218-2040-total cargo mass": {
-        "amount": 350,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34155,17 +34155,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350,
-        "minimum": 280,
-        "maximum": 420
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1219-2050-total cargo mass": {
-        "amount": 350,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34184,17 +34184,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 350,
-        "minimum": 280,
-        "maximum": 420
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1220-2000-total cargo mass": {
-        "amount": 640,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34213,17 +34213,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 640,
-        "minimum": 512,
-        "maximum": 768
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1221-2010-total cargo mass": {
-        "amount": 640,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34242,17 +34242,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 640,
-        "minimum": 512,
-        "maximum": 768
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1222-2020-total cargo mass": {
-        "amount": 640,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34271,17 +34271,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 640,
-        "minimum": 512,
-        "maximum": 768
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1223-2030-total cargo mass": {
-        "amount": 640,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34300,17 +34300,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 640,
-        "minimum": 512,
-        "maximum": 768
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1224-2040-total cargo mass": {
-        "amount": 640,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34329,17 +34329,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 640,
-        "minimum": 512,
-        "maximum": 768
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1225-2050-total cargo mass": {
-        "amount": 640,
+        "amount": 800,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34358,17 +34358,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid <= 7.5t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 640,
-        "minimum": 512,
-        "maximum": 768
+        "loc": 800,
+        "minimum": 640,
+        "maximum": 960
     },
     "1226-2000-total cargo mass": {
-        "amount": 3050,
+        "amount": 4100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34387,17 +34387,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 14-20t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3050,
-        "minimum": 2440,
-        "maximum": 3660
+        "loc": 4100,
+        "minimum": 3280,
+        "maximum": 4920
     },
     "1227-2010-total cargo mass": {
-        "amount": 3050,
+        "amount": 4100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34416,17 +34416,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 14-20t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3050,
-        "minimum": 2440,
-        "maximum": 3660
+        "loc": 4100,
+        "minimum": 3280,
+        "maximum": 4920
     },
     "1228-2020-total cargo mass": {
-        "amount": 3050,
+        "amount": 4100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34445,17 +34445,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 14-20t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3050,
-        "minimum": 2440,
-        "maximum": 3660
+        "loc": 4100,
+        "minimum": 3280,
+        "maximum": 4920
     },
     "1229-2030-total cargo mass": {
-        "amount": 3050,
+        "amount": 4100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34474,17 +34474,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 14-20t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3050,
-        "minimum": 2440,
-        "maximum": 3660
+        "loc": 4100,
+        "minimum": 3280,
+        "maximum": 4920
     },
     "1230-2040-total cargo mass": {
-        "amount": 3050,
+        "amount": 4100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34503,17 +34503,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 14-20t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3050,
-        "minimum": 2440,
-        "maximum": 3660
+        "loc": 4100,
+        "minimum": 3280,
+        "maximum": 4920
     },
     "1231-2050-total cargo mass": {
-        "amount": 3050,
+        "amount": 4100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34532,17 +34532,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 14-20t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 3050,
-        "minimum": 2440,
-        "maximum": 3660
+        "loc": 4100,
+        "minimum": 3280,
+        "maximum": 4920
     },
     "1232-2000-total cargo mass": {
-        "amount": 7660,
+        "amount": 6200,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34561,17 +34561,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 26-28t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7660,
-        "minimum": 6128,
-        "maximum": 9192
+        "loc": 6200,
+        "minimum": 4960,
+        "maximum": 7440
     },
     "1233-2010-total cargo mass": {
-        "amount": 7660,
+        "amount": 6200,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34590,17 +34590,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 26-28t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7660,
-        "minimum": 6128,
-        "maximum": 9192
+        "loc": 6200,
+        "minimum": 4960,
+        "maximum": 7440
     },
     "1234-2020-total cargo mass": {
-        "amount": 7660,
+        "amount": 6200,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34619,17 +34619,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 26-28t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7660,
-        "minimum": 6128,
-        "maximum": 9192
+        "loc": 6200,
+        "minimum": 4960,
+        "maximum": 7440
     },
     "1235-2030-total cargo mass": {
-        "amount": 7660,
+        "amount": 6200,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34648,17 +34648,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 26-28t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7660,
-        "minimum": 6128,
-        "maximum": 9192
+        "loc": 6200,
+        "minimum": 4960,
+        "maximum": 7440
     },
     "1236-2040-total cargo mass": {
-        "amount": 7660,
+        "amount": 6200,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34677,17 +34677,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 26-28t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7660,
-        "minimum": 6128,
-        "maximum": 9192
+        "loc": 6200,
+        "minimum": 4960,
+        "maximum": 7440
     },
     "1237-2050-total cargo mass": {
-        "amount": 7660,
+        "amount": 6200,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34706,17 +34706,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Rigid 26-28t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7660,
-        "minimum": 6128,
-        "maximum": 9192
+        "loc": 6200,
+        "minimum": 4960,
+        "maximum": 7440
     },
     "1238-2000-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34735,17 +34735,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 28-34t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1239-2010-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34764,17 +34764,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 28-34t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1240-2020-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34793,17 +34793,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 28-34t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1241-2030-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34822,17 +34822,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 28-34t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1242-2040-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34851,17 +34851,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 28-34t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1243-2050-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34880,17 +34880,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 28-34t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1244-2000-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34909,17 +34909,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 34-40t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1245-2010-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34938,17 +34938,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 34-40t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1246-2020-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34967,17 +34967,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 34-40t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1247-2030-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -34996,17 +34996,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 34-40t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1248-2040-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -35025,17 +35025,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 34-40t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1249-2050-total cargo mass": {
-        "amount": 8830,
+        "amount": 9100,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -35054,17 +35054,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 34-40t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8830,
-        "minimum": 7064,
-        "maximum": 10596
+        "loc": 9100,
+        "minimum": 7280,
+        "maximum": 10920
     },
     "1250-2000-total cargo mass": {
-        "amount": 10000,
+        "amount": 22300,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -35083,17 +35083,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 50-60t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 10000,
-        "minimum": 8000,
-        "maximum": 12000
+        "loc": 22300,
+        "minimum": 17840,
+        "maximum": 26760
     },
     "1251-2010-total cargo mass": {
-        "amount": 10000,
+        "amount": 22300,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -35112,17 +35112,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 50-60t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 10000,
-        "minimum": 8000,
-        "maximum": 12000
+        "loc": 22300,
+        "minimum": 17840,
+        "maximum": 26760
     },
     "1252-2020-total cargo mass": {
-        "amount": 10000,
+        "amount": 22300,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -35141,17 +35141,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 50-60t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 10000,
-        "minimum": 8000,
-        "maximum": 12000
+        "loc": 22300,
+        "minimum": 17840,
+        "maximum": 26760
     },
     "1253-2030-total cargo mass": {
-        "amount": 10000,
+        "amount": 22300,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -35170,17 +35170,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 50-60t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 10000,
-        "minimum": 8000,
-        "maximum": 12000
+        "loc": 22300,
+        "minimum": 17840,
+        "maximum": 26760
     },
     "1254-2040-total cargo mass": {
-        "amount": 10000,
+        "amount": 22300,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -35199,17 +35199,17 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 50-60t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 10000,
-        "minimum": 8000,
-        "maximum": 12000
+        "loc": 22300,
+        "minimum": 17840,
+        "maximum": 26760
     },
     "1255-2050-total cargo mass": {
-        "amount": 10000,
+        "amount": 22300,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -35228,14 +35228,14 @@
         "name": "total cargo mass",
         "unit": "kg",
         "importance": "Critical",
-        "source": "",
-        "comment": "Average load transported by the truck. Calculated from Swiss statistics.",
+        "source": "TRACCS 2010 road survey data.",
+        "comment": "Average load transported by the truck: default values for the ong haul driving cycle. A reduction factor is applied for other cycles. Corresponds to \"Articulated 50-60t\" in TRACCS.",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 10000,
-        "minimum": 8000,
-        "maximum": 12000
+        "loc": 22300,
+        "minimum": 17840,
+        "maximum": 26760
     },
     "1256-2000-glider base mass": {
         "amount": 120,
@@ -37152,7 +37152,7 @@
         "maximum": 6.687524999999998
     },
     "1322-2000-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37172,16 +37172,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1323-2010-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37201,16 +37201,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1324-2020-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37230,16 +37230,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1325-2030-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37259,16 +37259,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1326-2040-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37288,16 +37288,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1327-2050-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37317,16 +37317,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1328-2000-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37346,16 +37346,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1329-2010-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37375,16 +37375,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1330-2020-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37404,16 +37404,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1331-2030-frontal area": {
-        "amount": 7.6,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37433,16 +37433,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7.6,
-        "minimum": 7.505,
-        "maximum": 7.9799999999999995
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1332-2040-frontal area": {
-        "amount": 7.22,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37462,16 +37462,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7.22,
-        "minimum": 7.12975,
-        "maximum": 7.5809999999999995
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1333-2050-frontal area": {
-        "amount": 6.858999999999999,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37491,16 +37491,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 6.858999999999999,
-        "minimum": 6.7732624999999995,
-        "maximum": 7.201949999999999
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1334-2000-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37520,16 +37520,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height, assumed same as 40t truck",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1335-2010-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37549,16 +37549,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height, assumed same as 40t truck",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1336-2020-frontal area": {
-        "amount": 8,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37578,16 +37578,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height, assumed same as 40t truck",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 8,
-        "minimum": 7.9,
-        "maximum": 8.4
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1337-2030-frontal area": {
-        "amount": 7.6,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37607,16 +37607,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height, assumed same as 40t truck",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7.6,
-        "minimum": 7.505,
-        "maximum": 7.9799999999999995
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1338-2040-frontal area": {
-        "amount": 7.22,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37636,16 +37636,16 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height, assumed same as 40t truck",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 7.22,
-        "minimum": 7.12975,
-        "maximum": 7.5809999999999995
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1339-2050-frontal area": {
-        "amount": 6.858999999999999,
+        "amount": 10,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -37665,13 +37665,13 @@
         "unit": "m2",
         "importance": "Critical",
         "source": "car2db - truck",
-        "comment": "assumed to be width * height, assumed same as 40t truck",
+        "comment": "assumed to be width (2.55m) * height (4m), assumed same as 40t truck",
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 6.858999999999999,
-        "minimum": 6.7732624999999995,
-        "maximum": 7.201949999999999
+        "loc": 10,
+        "minimum": 9,
+        "maximum": 11
     },
     "1340-2000-exhaust system mass": {
         "amount": 44,
@@ -45864,7 +45864,7 @@
         "loc": 157
     },
     "1628-2000-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -45876,17 +45876,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1629-2010-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -45898,17 +45898,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1630-2020-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -45920,17 +45920,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1631-2030-CNG engine efficiency correction factor": {
-        "amount": 0.14,
+        "amount": 0.05,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -45942,17 +45942,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.14,
-        "minimum": 0.1,
-        "maximum": 0.19
+        "loc": 0.05,
+        "minimum": 0.04000000000000001,
+        "maximum": 0.06
     },
     "1632-2040-CNG engine efficiency correction factor": {
-        "amount": 0.1,
+        "amount": 0.025,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -45964,14 +45964,14 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.05,
-        "maximum": 0.14
+        "loc": 0.025,
+        "minimum": 0.020000000000000004,
+        "maximum": 0.03
     },
     "1633-2050-CNG engine efficiency correction factor": {
         "amount": 0,
@@ -45986,8 +45986,8 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -45996,7 +45996,7 @@
         "maximum": 0.05
     },
     "1634-2000-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46008,17 +46008,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1635-2010-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46030,17 +46030,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1636-2020-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46052,17 +46052,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1637-2030-CNG engine efficiency correction factor": {
-        "amount": 0.14,
+        "amount": 0.05,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46074,17 +46074,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.14,
-        "minimum": 0.1,
-        "maximum": 0.19
+        "loc": 0.05,
+        "minimum": 0.04000000000000001,
+        "maximum": 0.06
     },
     "1638-2040-CNG engine efficiency correction factor": {
-        "amount": 0.1,
+        "amount": 0.025,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46096,14 +46096,14 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.05,
-        "maximum": 0.14
+        "loc": 0.025,
+        "minimum": 0.020000000000000004,
+        "maximum": 0.03
     },
     "1639-2050-CNG engine efficiency correction factor": {
         "amount": 0,
@@ -46118,8 +46118,8 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -46128,7 +46128,7 @@
         "maximum": 0.05
     },
     "1640-2000-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46140,17 +46140,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1641-2010-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46162,17 +46162,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1642-2020-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46184,17 +46184,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1643-2030-CNG engine efficiency correction factor": {
-        "amount": 0.14,
+        "amount": 0.05,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46206,17 +46206,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.14,
-        "minimum": 0.1,
-        "maximum": 0.19
+        "loc": 0.05,
+        "minimum": 0.04000000000000001,
+        "maximum": 0.06
     },
     "1644-2040-CNG engine efficiency correction factor": {
-        "amount": 0.1,
+        "amount": 0.025,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46228,14 +46228,14 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.05,
-        "maximum": 0.14
+        "loc": 0.025,
+        "minimum": 0.020000000000000004,
+        "maximum": 0.03
     },
     "1645-2050-CNG engine efficiency correction factor": {
         "amount": 0,
@@ -46250,8 +46250,8 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -46260,7 +46260,7 @@
         "maximum": 0.05
     },
     "1646-2000-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46272,17 +46272,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1647-2010-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46294,17 +46294,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1648-2020-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46316,17 +46316,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1649-2030-CNG engine efficiency correction factor": {
-        "amount": 0.14,
+        "amount": 0.05,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46338,17 +46338,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.14,
-        "minimum": 0.1,
-        "maximum": 0.19
+        "loc": 0.05,
+        "minimum": 0.04000000000000001,
+        "maximum": 0.06
     },
     "1650-2040-CNG engine efficiency correction factor": {
-        "amount": 0.1,
+        "amount": 0.025,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46360,14 +46360,14 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.05,
-        "maximum": 0.14
+        "loc": 0.025,
+        "minimum": 0.020000000000000004,
+        "maximum": 0.03
     },
     "1651-2050-CNG engine efficiency correction factor": {
         "amount": 0,
@@ -46382,8 +46382,8 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -46392,7 +46392,7 @@
         "maximum": 0.05
     },
     "1652-2000-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46404,17 +46404,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1653-2010-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46426,17 +46426,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1654-2020-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46448,17 +46448,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1655-2030-CNG engine efficiency correction factor": {
-        "amount": 0.14,
+        "amount": 0.05,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46470,17 +46470,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.14,
-        "minimum": 0.1,
-        "maximum": 0.19
+        "loc": 0.05,
+        "minimum": 0.04000000000000001,
+        "maximum": 0.06
     },
     "1656-2040-CNG engine efficiency correction factor": {
-        "amount": 0.1,
+        "amount": 0.025,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46492,14 +46492,14 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.05,
-        "maximum": 0.14
+        "loc": 0.025,
+        "minimum": 0.020000000000000004,
+        "maximum": 0.03
     },
     "1657-2050-CNG engine efficiency correction factor": {
         "amount": 0,
@@ -46514,8 +46514,8 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -46524,7 +46524,7 @@
         "maximum": 0.05
     },
     "1658-2000-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46536,17 +46536,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1659-2010-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46558,17 +46558,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1660-2020-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46580,17 +46580,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1661-2030-CNG engine efficiency correction factor": {
-        "amount": 0.14,
+        "amount": 0.05,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46602,17 +46602,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.14,
-        "minimum": 0.1,
-        "maximum": 0.19
+        "loc": 0.05,
+        "minimum": 0.04000000000000001,
+        "maximum": 0.06
     },
     "1662-2040-CNG engine efficiency correction factor": {
-        "amount": 0.1,
+        "amount": 0.025,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46624,14 +46624,14 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.05,
-        "maximum": 0.14
+        "loc": 0.025,
+        "minimum": 0.020000000000000004,
+        "maximum": 0.03
     },
     "1663-2050-CNG engine efficiency correction factor": {
         "amount": 0,
@@ -46646,8 +46646,8 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -46656,7 +46656,7 @@
         "maximum": 0.05
     },
     "1664-2000-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46668,17 +46668,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1665-2010-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46690,17 +46690,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1666-2020-CNG engine efficiency correction factor": {
-        "amount": 0.19,
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46712,17 +46712,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.19,
-        "minimum": 0.14,
-        "maximum": 0.25
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
     "1667-2030-CNG engine efficiency correction factor": {
-        "amount": 0.14,
+        "amount": 0.05,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46734,17 +46734,17 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.14,
-        "minimum": 0.1,
-        "maximum": 0.19
+        "loc": 0.05,
+        "minimum": 0.04000000000000001,
+        "maximum": 0.06
     },
     "1668-2040-CNG engine efficiency correction factor": {
-        "amount": 0.1,
+        "amount": 0.025,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -46756,14 +46756,14 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.05,
-        "maximum": 0.14
+        "loc": 0.025,
+        "minimum": 0.020000000000000004,
+        "maximum": 0.03
     },
     "1669-2050-CNG engine efficiency correction factor": {
         "amount": 0,
@@ -46778,8 +46778,8 @@
         "name": "CNG engine efficiency correction factor",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "VECTO 3.3.7 for efficiencies of diesel trucks.\nCorrection factor for CNG from https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf\n",
-        "comment": "Scaled on diesel efficiency + 17%, as reported by https://iopscience.iop.org/article/10.1088/2516-1083/ab56af/pdf",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
