@@ -119,40 +119,68 @@ class TruckModel:
         # applied on default values (which are representative of LH and taken from TRACCS for EU28).
 
         if self.cycle == "Regional delivery":
-            self.array.loc[dict(parameter="kilometers per year")] *= (1 - .32)
+            self.array.loc[dict(parameter="kilometers per year")] *= 1 - 0.32
 
-            if any(s in self.array.coords["size"].values for s in ["3.5t", "7.5t", "18t", "26t"]):
-                self.array.loc[dict(parameter="total cargo mass",
-                                    size=[s for s in ["3.5t", "7.5t", "18t", "26t"]
-                                          if s in self.array.coords["size"].values]
-                                    )
-                ] *= (1 - .67)
+            if any(
+                s in self.array.coords["size"].values
+                for s in ["3.5t", "7.5t", "18t", "26t"]
+            ):
+                self.array.loc[
+                    dict(
+                        parameter="total cargo mass",
+                        size=[
+                            s
+                            for s in ["3.5t", "7.5t", "18t", "26t"]
+                            if s in self.array.coords["size"].values
+                        ],
+                    )
+                ] *= (1 - 0.67)
 
-            if any(s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]):
-                self.array.loc[dict(parameter="total cargo mass",
-                                    size=[s for s in ["32t", "40t", "60t"]
-                                          if s in self.array.coords["size"].values]
-                                    )
-                ] *= (1 - .33)
+            if any(
+                s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]
+            ):
+                self.array.loc[
+                    dict(
+                        parameter="total cargo mass",
+                        size=[
+                            s
+                            for s in ["32t", "40t", "60t"]
+                            if s in self.array.coords["size"].values
+                        ],
+                    )
+                ] *= (1 - 0.33)
 
         if self.cycle == "Urban delivery":
-            self.array.loc[dict(parameter="kilometers per year")] *= (1 - .39)
+            self.array.loc[dict(parameter="kilometers per year")] *= 1 - 0.39
 
-            if any(s in self.array.coords["size"].values for s in ["3.5t", "7.5t", "18t", "26t"]):
-                self.array.loc[dict(parameter="total cargo mass",
-                                    size=[s for s in ["3.5t", "7.5t", "18t", "26t"]
-                                          if s in self.array.coords["size"].values]
-                                    )
-                ] *= (1 - .67)
+            if any(
+                s in self.array.coords["size"].values
+                for s in ["3.5t", "7.5t", "18t", "26t"]
+            ):
+                self.array.loc[
+                    dict(
+                        parameter="total cargo mass",
+                        size=[
+                            s
+                            for s in ["3.5t", "7.5t", "18t", "26t"]
+                            if s in self.array.coords["size"].values
+                        ],
+                    )
+                ] *= (1 - 0.67)
 
-            if any(s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]):
-                self.array.loc[dict(parameter="total cargo mass",
-                                    size=[s for s in ["32t", "40t", "60t"]
-                                          if s in self.array.coords["size"].values]
-                                    )
-                ] *= (1 - .33)
-
-
+            if any(
+                s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]
+            ):
+                self.array.loc[
+                    dict(
+                        parameter="total cargo mass",
+                        size=[
+                            s
+                            for s in ["32t", "40t", "60t"]
+                            if s in self.array.coords["size"].values
+                        ],
+                    )
+                ] *= (1 - 0.33)
 
     def __call__(self, key):
         """
@@ -309,7 +337,9 @@ class TruckModel:
                 )
             ] = 0
 
-        t = PrettyTable(["Payload (in tons)"] + self.array.coords["size"].values.tolist())
+        t = PrettyTable(
+            ["Payload (in tons)"] + self.array.coords["size"].values.tolist()
+        )
 
         for pt in self.array.coords["powertrain"].values:
             for y in self.array.coords["year"].values:
