@@ -46,7 +46,7 @@ setup(
         "prettytable",
         "wurst",
         "pycountry",
-        "pypardiso"
+        "pypardiso",
     ],
     url="https://github.com/romainsacchi/carculator_truck",
     description="Prospective environmental and economic life cycle assessment"

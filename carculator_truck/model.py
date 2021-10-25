@@ -134,7 +134,9 @@ class TruckModel:
                             if s in self.array.coords["size"].values
                         ],
                     )
-                ] *= (1 - 0.67)
+                ] *= (
+                    1 - 0.67
+                )
 
             if any(
                 s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]
@@ -148,7 +150,9 @@ class TruckModel:
                             if s in self.array.coords["size"].values
                         ],
                     )
-                ] *= (1 - 0.33)
+                ] *= (
+                    1 - 0.33
+                )
 
         if self.cycle == "Urban delivery":
             self.array.loc[dict(parameter="kilometers per year")] *= 1 - 0.39
@@ -166,7 +170,9 @@ class TruckModel:
                             if s in self.array.coords["size"].values
                         ],
                     )
-                ] *= (1 - 0.67)
+                ] *= (
+                    1 - 0.67
+                )
 
             if any(
                 s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]
@@ -180,7 +186,9 @@ class TruckModel:
                             if s in self.array.coords["size"].values
                         ],
                     )
-                ] *= (1 - 0.33)
+                ] *= (
+                    1 - 0.33
+                )
 
     def __call__(self, key):
         """
