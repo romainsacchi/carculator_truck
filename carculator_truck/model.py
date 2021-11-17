@@ -74,13 +74,32 @@ class TruckModel:
 
         self.energy_storage = energy_storage or {
             "electric": {
-                "BEV": "NMC-111",
-                "PHEV-e": "NMC-111",
-                "PHEV-d": "NMC-111",
-                "FCEV": "NMC-111",
-                "HEV-d": "NMC-111",
+                "BEV": "NMC-622",
+                "PHEV-e": "NMC-622",
+                "PHEV-d": "NMC-622",
+                "FCEV": "NMC-622",
+                "HEV-d": "NMC-622",
             }
         }
+
+        l_pwt = [
+            pt for pt in ("BEV", "FCEV", "HEV-d", "PHEV-e") if pt in self.array.powertrain.values
+        ]
+
+        for pt in l_pwt:
+            with self(pt) as cpm:
+                if pt in self.energy_storage["electric"]:
+                    cpm["battery cell energy density"] = cpm[
+                        f"battery cell energy density, {self.energy_storage['electric'][pt].split('-')[0].strip()}"
+                    ]
+                    cpm["battery cell mass share"] = cpm[
+                        f"battery cell mass share, {self.energy_storage['electric'][pt].split('-')[0].strip()}"
+                    ]
+                else:
+                    cpm["battery cell energy density"] = cpm[
+                        "battery cell energy density, NMC"
+                    ]
+                    cpm["battery cell mass share"] = cpm["battery cell mass share, NMC"]
 
         target_ranges = {
             "Urban delivery": 150,
@@ -696,6 +715,12 @@ class TruckModel:
             1,
         )
 
+        # dirty correction for BEVs and FCEVs
+        # to reach 90-93% efficiency
+        # as documented in
+        # https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/121450/1/2539-07.pdf
+
+
         l_pwt = [
             p
             for p in self.array.powertrain.values
@@ -741,14 +766,15 @@ class TruckModel:
                 powertrain="ICEV-g",
             )
 
+        # correction for BEVs and FCEVs
         l_pwt = [
             p for p in self.array.powertrain.values if p in ["BEV", "FCEV", "PHEV-e"]
         ]
         if len(l_pwt) > 0:
             self.energy.loc[
-                dict(parameter="engine efficiency", powertrain=l_pwt)
+                dict(parameter=["engine efficiency", "transmission efficiency"], powertrain=l_pwt)
             ] = self.array.loc[
-                dict(parameter="engine efficiency", powertrain=l_pwt)
+                dict(parameter=["engine efficiency", "transmission efficiency"], powertrain=l_pwt)
             ].values[
                 ..., None
             ]
@@ -814,12 +840,24 @@ class TruckModel:
             ] *= self.array.sel(
                 parameter="battery discharge efficiency", powertrain=l_pwt
             )
+            self.array.loc[
+                dict(parameter="TtW energy", powertrain=l_pwt)
+            ] /= self.array.sel(
+                parameter="battery discharge efficiency", powertrain=l_pwt
+            )
 
         # Correction for fuel cell stack efficiency
         if "FCEV" in self.array.powertrain.values:
             self.array.loc[
                 dict(parameter="TtW efficiency", powertrain=["FCEV"])
             ] *= self.array.sel(
+                parameter="fuel cell system efficiency", powertrain=["FCEV"]
+            ) * self.array.sel(
+                parameter="battery discharge efficiency", powertrain=["FCEV"]
+            )
+            self.array.loc[
+                dict(parameter="TtW energy", powertrain=["FCEV"])
+            ] /= self.array.sel(
                 parameter="fuel cell system efficiency", powertrain=["FCEV"]
             ) * self.array.sel(
                 parameter="battery discharge efficiency", powertrain=["FCEV"]
@@ -846,11 +884,11 @@ class TruckModel:
             axis=-1,
         )
 
-        self.array.loc[dict(parameter="transmission efficiency")] = np.nanmean(
+        self.array.loc[dict(parameter="transmission efficiency", powertrain=pwt)] = np.nanmean(
             np.where(
-                self.energy.loc[dict(parameter="power load")] == 0,
+                self.energy.loc[dict(parameter="power load", powertrain=pwt)] == 0,
                 np.nan,
-                self.energy.loc[dict(parameter="transmission efficiency")],
+                self.energy.loc[dict(parameter="transmission efficiency", powertrain=pwt)],
             ),
             axis=-1,
         )
@@ -944,7 +982,7 @@ class TruckModel:
         ]:
             with self(pt) as cpm:
                 battery_tech_label = (
-                    "battery cycle life, " + self.energy_storage["electric"][pt]
+                    "battery cycle life, " + self.energy_storage["electric"][pt].split("-")[0]
                 )
                 cpm["battery lifetime replacements"] = finite(
                     np.ceil(
@@ -1320,7 +1358,7 @@ class TruckModel:
 
                 battery_tech_label = (
                     "battery cell energy density, "
-                    + self.energy_storage["electric"][pt]
+                    + self.energy_storage["electric"][pt].split("-")[0]
                 )
                 cpm["battery cell mass"] = (
                     cpm["electric energy stored"] / cpm[battery_tech_label]
@@ -1348,10 +1386,22 @@ class TruckModel:
                 )
 
                 # Fuel cell buses do also have a battery, which capacity
-                # corresponds roughly to 5% of the capacity contained in the
+                # corresponds roughly to 6% of the capacity contained in the
                 # H2 tank
                 cpm["electric energy stored"] = 20 + (
-                    cpm["fuel mass"] * 120 / 3.6 * 0.05
+                    cpm["fuel mass"] * 120 / 3.6 * 0.06
+                )
+
+                cpm["battery cell mass"] = (
+                        cpm["electric energy stored"] / cpm[battery_tech_label]
+                )
+
+                cpm["energy battery mass"] = (
+                        cpm["battery cell mass"] / cpm["battery cell mass share"]
+                )
+
+                cpm["battery BoP mass"] = (
+                        cpm["energy battery mass"] - cpm["battery cell mass"]
                 )
 
         # kWh electricity/kg battery cell

@@ -262,5 +262,6 @@
   "capacity utilization",
   "share recuperated energy",
   "road dust emissions",
-  "transmission efficiency"
+  "battery cell energy density",
+  "battery cell mass share"
 ]
