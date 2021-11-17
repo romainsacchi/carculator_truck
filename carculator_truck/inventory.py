@@ -1671,12 +1671,10 @@ class InventoryCalculation:
                     if pt == "BEV":
 
                         chemistry = self.background_configuration["energy storage"][
-                                "electric"
-                            ]["BEV"]
+                            "electric"
+                        ]["BEV"]
 
-                        name = (
-                            f"transport, freight, lorry, {pt}, {chemistry} battery, {s} gross weight, {y}, {self.cycle.lower()}"
-                        )
+                        name = f"transport, freight, lorry, {pt}, {chemistry} battery, {s} gross weight, {y}, {self.cycle.lower()}"
 
                         if self.scope["fu"]["unit"] == "tkm":
                             unit = "ton-kilometer"
@@ -1694,9 +1692,7 @@ class InventoryCalculation:
 
                     elif pt == "FCEV":
 
-                        name = (
-                            f"transport, freight, lorry, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
-                        )
+                        name = f"transport, freight, lorry, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
 
                         name = (
                             "transport, freight, lorry, "
@@ -1725,9 +1721,7 @@ class InventoryCalculation:
 
                     else:
 
-                        name = (
-                            f"transport, freight, lorry, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
-                        )
+                        name = f"transport, freight, lorry, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
 
                         if self.scope["fu"]["unit"] == "tkm":
                             unit = "ton-kilometer"
