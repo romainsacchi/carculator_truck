@@ -83,7 +83,9 @@ class TruckModel:
         }
 
         l_pwt = [
-            pt for pt in ("BEV", "FCEV", "HEV-d", "PHEV-e") if pt in self.array.powertrain.values
+            pt
+            for pt in ("BEV", "FCEV", "HEV-d", "PHEV-e")
+            if pt in self.array.powertrain.values
         ]
 
         for pt in l_pwt:
@@ -720,7 +722,6 @@ class TruckModel:
         # as documented in
         # https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/121450/1/2539-07.pdf
 
-
         l_pwt = [
             p
             for p in self.array.powertrain.values
@@ -772,9 +773,15 @@ class TruckModel:
         ]
         if len(l_pwt) > 0:
             self.energy.loc[
-                dict(parameter=["engine efficiency", "transmission efficiency"], powertrain=l_pwt)
+                dict(
+                    parameter=["engine efficiency", "transmission efficiency"],
+                    powertrain=l_pwt,
+                )
             ] = self.array.loc[
-                dict(parameter=["engine efficiency", "transmission efficiency"], powertrain=l_pwt)
+                dict(
+                    parameter=["engine efficiency", "transmission efficiency"],
+                    powertrain=l_pwt,
+                )
             ].values[
                 ..., None
             ]
@@ -884,11 +891,15 @@ class TruckModel:
             axis=-1,
         )
 
-        self.array.loc[dict(parameter="transmission efficiency", powertrain=pwt)] = np.nanmean(
+        self.array.loc[
+            dict(parameter="transmission efficiency", powertrain=pwt)
+        ] = np.nanmean(
             np.where(
                 self.energy.loc[dict(parameter="power load", powertrain=pwt)] == 0,
                 np.nan,
-                self.energy.loc[dict(parameter="transmission efficiency", powertrain=pwt)],
+                self.energy.loc[
+                    dict(parameter="transmission efficiency", powertrain=pwt)
+                ],
             ),
             axis=-1,
         )
@@ -982,7 +993,8 @@ class TruckModel:
         ]:
             with self(pt) as cpm:
                 battery_tech_label = (
-                    "battery cycle life, " + self.energy_storage["electric"][pt].split("-")[0]
+                    "battery cycle life, "
+                    + self.energy_storage["electric"][pt].split("-")[0]
                 )
                 cpm["battery lifetime replacements"] = finite(
                     np.ceil(
@@ -1393,15 +1405,15 @@ class TruckModel:
                 )
 
                 cpm["battery cell mass"] = (
-                        cpm["electric energy stored"] / cpm[battery_tech_label]
+                    cpm["electric energy stored"] / cpm[battery_tech_label]
                 )
 
                 cpm["energy battery mass"] = (
-                        cpm["battery cell mass"] / cpm["battery cell mass share"]
+                    cpm["battery cell mass"] / cpm["battery cell mass share"]
                 )
 
                 cpm["battery BoP mass"] = (
-                        cpm["energy battery mass"] - cpm["battery cell mass"]
+                    cpm["energy battery mass"] - cpm["battery cell mass"]
                 )
 
         # kWh electricity/kg battery cell
