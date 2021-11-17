@@ -1670,19 +1670,12 @@ class InventoryCalculation:
 
                     if pt == "BEV":
 
-                        name = (
-                            "transport, freight, lorry, "
-                            + pt
-                            + ", "
-                            + self.background_configuration["energy storage"][
+                        chemistry = self.background_configuration["energy storage"][
                                 "electric"
                             ]["BEV"]
-                            + " battery, "
-                            + s
-                            + " gross weight, "
-                            + str(y)
-                            + ", "
-                            + self.cycle.lower()
+
+                        name = (
+                            f"transport, freight, lorry, {pt}, {chemistry} battery, {s} gross weight, {y}, {self.cycle.lower()}"
                         )
 
                         if self.scope["fu"]["unit"] == "tkm":
@@ -1700,6 +1693,10 @@ class InventoryCalculation:
                         ] = maximum
 
                     elif pt == "FCEV":
+
+                        name = (
+                            f"transport, freight, lorry, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
+                        )
 
                         name = (
                             "transport, freight, lorry, "
@@ -1729,16 +1726,7 @@ class InventoryCalculation:
                     else:
 
                         name = (
-                            "transport, freight, lorry, "
-                            + pt
-                            + ", "
-                            + s
-                            + " gross weight, "
-                            + str(y)
-                            + ", "
-                            + euro_class
-                            + ", "
-                            + self.cycle.lower()
+                            f"transport, freight, lorry, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
                         )
 
                         if self.scope["fu"]["unit"] == "tkm":
@@ -1751,7 +1739,7 @@ class InventoryCalculation:
                                 name,
                                 self.country,
                                 unit,
-                                "transport, freight, lorry, " + euro_class,
+                                f"transport, freight, lorry, {euro_class}",
                             )
                         ] = maximum
 
@@ -5088,9 +5076,6 @@ class InventoryCalculation:
         )
 
         # Brake wear emissions
-        # BEVs only emit 20% of what a combustion engine vehicle emit according to
-        # https://link.springer.com/article/10.1007/s11367-014-0792-4
-
         self.A[
             :,
             self.inputs[
@@ -5105,27 +5090,6 @@ class InventoryCalculation:
         ] = array[self.array_inputs["brake wear emissions"], :] / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
-
-        ind_A = [
-            i
-            for i in self.car_indices
-            if any(
-                x in self.rev_inputs[i][0] for x in ["BEV", "FCEV", "HEV-d", "PHEV-d"]
-            )
-        ]
-
-        self.A[
-            :,
-            self.inputs[
-                (
-                    "treatment of brake wear emissions, lorry",
-                    "RER",
-                    "kilogram",
-                    "brake wear emissions, lorry",
-                )
-            ],
-            ind_A,
-        ] *= 0.2
 
         # Infrastructure: 5.37e-4 per gross tkm
         self.A[
@@ -6657,10 +6621,6 @@ class InventoryCalculation:
         )
 
         # Brake wear emissions
-        # BEVs and other hybrid vehicles only emit 20%
-        # of what a combustion engine vehicle emit according to
-        # https://link.springer.com/article/10.1007/s11367-014-0792-4
-
         self.A[
             :,
             self.inputs[
@@ -6675,27 +6635,6 @@ class InventoryCalculation:
         ] = array[self.array_inputs["brake wear emissions"], :] / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
-
-        ind_A = [
-            i
-            for i in self.car_indices
-            if any(
-                x in self.rev_inputs[i][0] for x in ["BEV", "FCEV", "HEV-d", "PHEV-d"]
-            )
-        ]
-
-        self.A[
-            :,
-            self.inputs[
-                (
-                    "treatment of brake wear emissions, lorry",
-                    "RER",
-                    "kilogram",
-                    "brake wear emissions, lorry",
-                )
-            ],
-            ind_A,
-        ] *= 0.2
 
         # Infrastructure: 5.37e-4 per gross tkm
         self.A[

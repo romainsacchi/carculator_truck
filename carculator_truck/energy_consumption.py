@@ -155,12 +155,13 @@ class EnergyConsumptionModel:
         gradient_resistance = (driving_mass * 9.81).T.values * np.sin(self.gradient)
         # Inertia: driving mass * acceleration
         inertia = self.acceleration * driving_mass.values.T
-        # Braking loss: when inertia is negative
-        braking_loss = np.where(inertia < 0, inertia * -1, 0)
 
         total_resistance = (
             rolling_resistance + air_resistance + gradient_resistance + inertia
         )
+
+        # Braking loss: when inertia is negative
+        braking_loss = np.where(total_resistance < 0, total_resistance * -1, 0)
 
         if not debug_mode:
 

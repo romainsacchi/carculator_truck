@@ -259,5 +259,8 @@
   "Mercury direct emissions, rural",
   "Cadmium direct emissions, rural",
   "battery lifetime kilometers",
-  "capacity utilization"
+  "capacity utilization",
+  "share recuperated energy",
+  "road dust emissions",
+  "transmission efficiency"
 ]
