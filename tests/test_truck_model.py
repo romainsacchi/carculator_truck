@@ -100,7 +100,7 @@ def test_battery_mass():
     with tm("BEV") as cpm:
         assert np.allclose(
             cpm["battery cell mass"],
-            cpm["electric energy stored"] / cpm["battery cell energy density, NMC-111"],
+            cpm["electric energy stored"] / cpm["battery cell energy density"],
         )
 
 
