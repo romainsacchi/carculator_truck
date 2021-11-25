@@ -16174,7 +16174,7 @@
         "maximum": 887500
     },
     "584-2000-kilometers per year": {
-        "amount": 98000,
+        "amount": 22660,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16198,12 +16198,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 22660,
+        "minimum": 16995,
+        "maximum": 28325
     },
     "585-2010-kilometers per year": {
-        "amount": 98000,
+        "amount": 22660,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16227,12 +16227,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 22660,
+        "minimum": 16995,
+        "maximum": 28325
     },
     "586-2020-kilometers per year": {
-        "amount": 98000,
+        "amount": 22660,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16256,12 +16256,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 22660,
+        "minimum": 16995,
+        "maximum": 28325
     },
     "587-2030-kilometers per year": {
-        "amount": 98000,
+        "amount": 22660,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16285,12 +16285,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 22660,
+        "minimum": 16995,
+        "maximum": 28325
     },
     "588-2040-kilometers per year": {
-        "amount": 98000,
+        "amount": 22660,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16314,12 +16314,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 22660,
+        "minimum": 16995,
+        "maximum": 28325
     },
     "589-2050-kilometers per year": {
-        "amount": 98000,
+        "amount": 22660,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16343,12 +16343,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 22660,
+        "minimum": 16995,
+        "maximum": 28325
     },
     "590-2000-kilometers per year": {
-        "amount": 98000,
+        "amount": 33000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16372,12 +16372,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 33000,
+        "minimum": 24750,
+        "maximum": 41250
     },
     "591-2010-kilometers per year": {
-        "amount": 98000,
+        "amount": 33000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16401,12 +16401,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 33000,
+        "minimum": 24750,
+        "maximum": 41250
     },
     "592-2020-kilometers per year": {
-        "amount": 98000,
+        "amount": 33000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16430,12 +16430,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 33000,
+        "minimum": 24750,
+        "maximum": 41250
     },
     "593-2030-kilometers per year": {
-        "amount": 98000,
+        "amount": 33000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16459,12 +16459,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 33000,
+        "minimum": 24750,
+        "maximum": 41250
     },
     "594-2040-kilometers per year": {
-        "amount": 98000,
+        "amount": 33000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16488,12 +16488,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 33000,
+        "minimum": 24750,
+        "maximum": 41250
     },
     "595-2050-kilometers per year": {
-        "amount": 98000,
+        "amount": 33000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16517,12 +16517,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 33000,
+        "minimum": 24750,
+        "maximum": 41250
     },
     "596-2000-kilometers per year": {
-        "amount": 98000,
+        "amount": 26250,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16546,12 +16546,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 26250,
+        "minimum": 19687.5,
+        "maximum": 32812.5
     },
     "597-2010-kilometers per year": {
-        "amount": 98000,
+        "amount": 26250,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16575,12 +16575,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 26250,
+        "minimum": 19687.5,
+        "maximum": 32812.5
     },
     "598-2020-kilometers per year": {
-        "amount": 98000,
+        "amount": 26250,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16604,12 +16604,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 26250,
+        "minimum": 19687.5,
+        "maximum": 32812.5
     },
     "599-2030-kilometers per year": {
-        "amount": 98000,
+        "amount": 26250,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16633,12 +16633,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 26250,
+        "minimum": 19687.5,
+        "maximum": 32812.5
     },
     "600-2040-kilometers per year": {
-        "amount": 98000,
+        "amount": 26250,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16662,12 +16662,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 26250,
+        "minimum": 19687.5,
+        "maximum": 32812.5
     },
     "601-2050-kilometers per year": {
-        "amount": 98000,
+        "amount": 26250,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16691,12 +16691,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 98000,
-        "minimum": 73500,
-        "maximum": 122500
+        "loc": 26250,
+        "minimum": 19687.5,
+        "maximum": 32812.5
     },
     "602-2000-kilometers per year": {
-        "amount": 108000,
+        "amount": 48000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16720,12 +16720,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 48000,
+        "minimum": 36000,
+        "maximum": 60000
     },
     "603-2010-kilometers per year": {
-        "amount": 108000,
+        "amount": 48000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16749,12 +16749,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 48000,
+        "minimum": 36000,
+        "maximum": 60000
     },
     "604-2020-kilometers per year": {
-        "amount": 108000,
+        "amount": 48000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16778,12 +16778,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 48000,
+        "minimum": 36000,
+        "maximum": 60000
     },
     "605-2030-kilometers per year": {
-        "amount": 108000,
+        "amount": 48000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16807,12 +16807,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 48000,
+        "minimum": 36000,
+        "maximum": 60000
     },
     "606-2040-kilometers per year": {
-        "amount": 108000,
+        "amount": 48000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16836,12 +16836,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 48000,
+        "minimum": 36000,
+        "maximum": 60000
     },
     "607-2050-kilometers per year": {
-        "amount": 108000,
+        "amount": 48000,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16865,12 +16865,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 48000,
+        "minimum": 36000,
+        "maximum": 60000
     },
     "608-2000-kilometers per year": {
-        "amount": 108000,
+        "amount": 18900,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16894,12 +16894,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 18900,
+        "minimum": 14175,
+        "maximum": 23625
     },
     "609-2010-kilometers per year": {
-        "amount": 108000,
+        "amount": 18900,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16923,12 +16923,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 18900,
+        "minimum": 14175,
+        "maximum": 23625
     },
     "610-2020-kilometers per year": {
-        "amount": 108000,
+        "amount": 18900,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16952,12 +16952,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 18900,
+        "minimum": 14175,
+        "maximum": 23625
     },
     "611-2030-kilometers per year": {
-        "amount": 108000,
+        "amount": 18900,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -16981,12 +16981,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 18900,
+        "minimum": 14175,
+        "maximum": 23625
     },
     "612-2040-kilometers per year": {
-        "amount": 108000,
+        "amount": 18900,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17010,12 +17010,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 18900,
+        "minimum": 14175,
+        "maximum": 23625
     },
     "613-2050-kilometers per year": {
-        "amount": 108000,
+        "amount": 18900,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17039,12 +17039,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 18900,
+        "minimum": 14175,
+        "maximum": 23625
     },
     "614-2000-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17068,12 +17068,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "615-2010-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17097,12 +17097,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "616-2020-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17126,12 +17126,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "617-2030-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17155,12 +17155,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "618-2040-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17184,12 +17184,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "619-2050-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17213,12 +17213,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "620-2000-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17242,12 +17242,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "621-2010-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17271,12 +17271,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "622-2020-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17300,12 +17300,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "623-2030-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17329,12 +17329,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "624-2040-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17358,12 +17358,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "625-2050-kilometers per year": {
-        "amount": 108000,
+        "amount": 88750,
         "category": "Driving",
         "powertrain": [
             "PHEV-c-d",
@@ -17387,9 +17387,9 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 108000,
-        "minimum": 81000,
-        "maximum": 135000
+        "loc": 88750,
+        "minimum": 66562.5,
+        "maximum": 110937.5
     },
     "626-2000-emission factor": {
         "amount": 1,
@@ -36660,7 +36660,7 @@
         "maximum": 960
     },
     "1316-2000-total cargo mass": {
-        "amount": 800,
+        "amount": 1600,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -36684,12 +36684,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 800,
-        "minimum": 640,
-        "maximum": 960
+        "loc": 1600,
+        "minimum": 1280,
+        "maximum": 1920
     },
     "1317-2010-total cargo mass": {
-        "amount": 800,
+        "amount": 1600,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -36713,12 +36713,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 800,
-        "minimum": 640,
-        "maximum": 960
+        "loc": 1600,
+        "minimum": 1280,
+        "maximum": 1920
     },
     "1318-2020-total cargo mass": {
-        "amount": 800,
+        "amount": 1600,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -36742,12 +36742,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 800,
-        "minimum": 640,
-        "maximum": 960
+        "loc": 1600,
+        "minimum": 1280,
+        "maximum": 1920
     },
     "1319-2030-total cargo mass": {
-        "amount": 800,
+        "amount": 1600,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -36771,12 +36771,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 800,
-        "minimum": 640,
-        "maximum": 960
+        "loc": 1600,
+        "minimum": 1280,
+        "maximum": 1920
     },
     "1320-2040-total cargo mass": {
-        "amount": 800,
+        "amount": 1600,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -36800,12 +36800,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 800,
-        "minimum": 640,
-        "maximum": 960
+        "loc": 1600,
+        "minimum": 1280,
+        "maximum": 1920
     },
     "1321-2050-total cargo mass": {
-        "amount": 800,
+        "amount": 1600,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -36829,9 +36829,9 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 800,
-        "minimum": 640,
-        "maximum": 960
+        "loc": 1600,
+        "minimum": 1280,
+        "maximum": 1920
     },
     "1322-2000-total cargo mass": {
         "amount": 4100,

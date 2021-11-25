@@ -6,6 +6,7 @@ components;direct - non-exhaust;name;ethane, 1,1,1,2
 components;energy chain;name;fuel supply
 components;energy chain;name;electricity supply
 components;maintenance;name;maintenance, lorry
+components;maintenance;name;market for refrigerant R134a
 components;glider;name;market for glider
 components;glider;name;glider lightweighting
 components;glider;name;other components

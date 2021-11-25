@@ -509,3 +509,6 @@ market for concrete, for de-icing salt contact;CH;cubic meter;concrete, for de-i
 heat and power co-generation, biogas, gas engine;CH;megajoule;heat, central or small-scale, other than natural gas;Heat, at cogen with biogas engine, allocation exergy/CH U;CH;megajoule;Heat, at cogen with biogas engine, allocation exergy/CH U;Heat, at cogen with biogas engine, allocation exergy/CH U
 maintenance, bus;CH;unit;maintenance, bus;Maintenance, bus/CH/I U;CH;unit;Maintenance, bus/CH/I U;Maintenance, bus/CH/I U
 treatment of used bus;CH;unit;used bus;Disposal, bus/CH/I U;CH;unit;Disposal, bus/CH/I U;Disposal, bus/CH/I U
+market for soda ash, light, crystalline, heptahydrate;GLO;kilogram;soda ash, light, crystalline, heptahydrate;Sodium carbonate from ammonium chloride production, at plant/GLO U;GLO;kilogram;Sodium carbonate from ammonium chloride production, at plant/GLO U;Sodium carbonate from ammonium chloride production, at plant/GLO U
+market for manganese sulfate;GLO;kilogram;manganese sulfate;Manganese, at regional storage/RER U;RER;kilogram;Manganese, at regional storage/RER U;Manganese, at regional storage/RER U
+market for nickel sulfate;GLO;kilogram;nickel sulfate;Nickel, 99.5%, at plant/GLO U;GLO;kilogram;Nickel, 99.5%, at plant/GLO U;Nickel, 99.5%, at plant/GLO U

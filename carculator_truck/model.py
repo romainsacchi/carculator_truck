@@ -135,7 +135,6 @@ class TruckModel:
         # applied on default values (which are representative of LH and taken from TRACCS for EU28).
 
         if self.cycle == "Regional delivery":
-            self.array.loc[dict(parameter="kilometers per year")] *= 1 - 0.32
 
             if any(
                 s in self.array.coords["size"].values
@@ -167,7 +166,6 @@ class TruckModel:
                 ] *= (1 - 0.33)
 
         if self.cycle == "Urban delivery":
-            self.array.loc[dict(parameter="kilometers per year")] *= 1 - 0.39
 
             if any(
                 s in self.array.coords["size"].values
@@ -309,11 +307,11 @@ class TruckModel:
         self.set_electric_utility_factor()
         self.set_electricity_consumption()
         self.set_costs()
-        self.create_PHEV()
-        self.drop_hybrid()
-        self.set_hot_emissions()
         self.set_particulates_emission()
         self.set_noise_emissions()
+        self.set_hot_emissions()
+        self.create_PHEV()
+        self.drop_hybrid()
 
         self.array.values = np.clip(self.array.values, 0, None)
 
@@ -591,7 +589,7 @@ class TruckModel:
         l_pwt = [
             p
             for p in self.array.powertrain.values
-            if p in ["ICEV-d", "ICEV-g", "PHEV-d", "FCEV", "BEV", "HEV-d",]
+            if p not in ["PHEV-c-d", "PHEV-e"]
         ]
         self.array = self.array.sel(powertrain=l_pwt)
 
@@ -1388,6 +1386,12 @@ class TruckModel:
                 # Fuel cell buses do also have a battery, which capacity
                 # corresponds roughly to 6% of the capacity contained in the
                 # H2 tank
+
+                battery_tech_label = (
+                        "battery cell energy density, "
+                        + self.energy_storage["electric"]["BEV"].split("-")[0]
+                )
+
                 cpm["electric energy stored"] = 20 + (
                     cpm["fuel mass"] * 120 / 3.6 * 0.06
                 )

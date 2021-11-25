@@ -104,7 +104,7 @@ class InventoryCalculation:
                     },
               'energy storage': {
                   'electric': {
-                      'type':'NMC-111',
+                      'type':'NMC-622',
                       'origin': 'NO'
                   },
                   'hydrogen': {
@@ -380,7 +380,7 @@ class InventoryCalculation:
                     ] = "CN"
                 self.background_configuration["energy storage"]["electric"].update(
                     {
-                        pt: "NMC-111"
+                        pt: "NMC-622"
                         for pt in ["BEV", "FCEV", "PHEV-d", "HEV-d"]
                         if pt
                         not in self.background_configuration["energy storage"][
@@ -1648,6 +1648,8 @@ class InventoryCalculation:
                 )
             ] = maximum
 
+
+
         for s in self.scope["size"]:
             for pt in self.scope["powertrain"]:
                 for y in self.scope["year"]:
@@ -1745,6 +1747,7 @@ class InventoryCalculation:
         # for fuel preparation and energy battery production
 
         maximum = max(self.inputs.values())
+
 
         for s in self.scope["size"]:
             for pt in self.scope["powertrain"]:
@@ -4333,7 +4336,7 @@ class InventoryCalculation:
 
         # Zero out electricity requirement for battery cell manufacture
         for battery_tech in [
-            "NMC-111",
+            "NMC-622",
             "NCA",
             "LFP",
         ]:
@@ -5051,7 +5054,10 @@ class InventoryCalculation:
                 )
             ],
             -self.number_of_cars :,
-        ] = array[self.array_inputs["tire wear emissions"], :] / (
+        ] = (
+            array[self.array_inputs["road wear emissions"], :]
+            + (0.333 * array[self.array_inputs["road dust emissions"], :])
+        ) / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
         self.A[
@@ -5065,7 +5071,10 @@ class InventoryCalculation:
                 )
             ],
             -self.number_of_cars :,
-        ] = array[self.array_inputs["tire wear emissions"], :] / (
+        ] = (
+            array[self.array_inputs["tire wear emissions"], :]
+            + (0.333 * array[self.array_inputs["road dust emissions"], :])
+        ) / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
 
@@ -5081,7 +5090,10 @@ class InventoryCalculation:
                 )
             ],
             -self.number_of_cars :,
-        ] = array[self.array_inputs["brake wear emissions"], :] / (
+        ] = (
+            array[self.array_inputs["brake wear emissions"], :]
+            + (0.333 * array[self.array_inputs["road dust emissions"], :])
+        ) / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
 
@@ -5814,7 +5826,7 @@ class InventoryCalculation:
         ).T
 
         # Zero out electricity requirement for battery cell manufacture
-        for battery_tech in ["NMC-111", "NCA", "LFP"]:
+        for battery_tech in ["NMC-622", "NCA", "LFP"]:
             battery_cell_label = (
                 "Battery cell, " + battery_tech,
                 "GLO",
@@ -6596,7 +6608,10 @@ class InventoryCalculation:
                 )
             ],
             self.car_indices,
-        ] = array[self.array_inputs["tire wear emissions"], :] / (
+        ] = (
+            array[self.array_inputs["road wear emissions"], :]
+            + (0.333 * array[self.array_inputs["road dust emissions"], :])
+        ) / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
         self.A[
@@ -6610,7 +6625,10 @@ class InventoryCalculation:
                 )
             ],
             self.car_indices,
-        ] = array[self.array_inputs["tire wear emissions"], :] / (
+        ] = (
+            array[self.array_inputs["tire wear emissions"], :]
+            + (0.333 * array[self.array_inputs["road dust emissions"], :])
+        ) / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
 
@@ -6626,7 +6644,10 @@ class InventoryCalculation:
                 )
             ],
             self.car_indices,
-        ] = array[self.array_inputs["brake wear emissions"], :] / (
+        ] = (
+            array[self.array_inputs["brake wear emissions"], :]
+            + (0.333 * array[self.array_inputs["road dust emissions"], :])
+        ) / (
             array[self.array_inputs["total cargo mass"], :] / 1000
         )
 
