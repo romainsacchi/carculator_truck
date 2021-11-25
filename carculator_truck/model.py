@@ -12,7 +12,12 @@ from .particulates_emissions import ParticulatesEmissionsModel
 
 DEFAULT_MAPPINGS = {
     "electric": {"BEV", "PHEV-e"},
-    "combustion": {"HEV-d", "ICEV-g", "ICEV-d", "PHEV-c-d",},
+    "combustion": {
+        "HEV-d",
+        "ICEV-g",
+        "ICEV-d",
+        "PHEV-c-d",
+    },
     "combustion_wo_cng": {"HEV-d", "ICEV-d", "PHEV-c-d"},
     "pure_combustion": {"ICEV-g", "ICEV-d"},
     "petrol": {"PHEV-c-p"},
@@ -149,7 +154,9 @@ class TruckModel:
                             if s in self.array.coords["size"].values
                         ],
                     )
-                ] *= (1 - 0.67)
+                ] *= (
+                    1 - 0.67
+                )
 
             if any(
                 s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]
@@ -163,7 +170,9 @@ class TruckModel:
                             if s in self.array.coords["size"].values
                         ],
                     )
-                ] *= (1 - 0.33)
+                ] *= (
+                    1 - 0.33
+                )
 
         if self.cycle == "Urban delivery":
 
@@ -180,7 +189,9 @@ class TruckModel:
                             if s in self.array.coords["size"].values
                         ],
                     )
-                ] *= (1 - 0.67)
+                ] *= (
+                    1 - 0.67
+                )
 
             if any(
                 s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]
@@ -194,7 +205,9 @@ class TruckModel:
                             if s in self.array.coords["size"].values
                         ],
                     )
-                ] *= (1 - 0.33)
+                ] *= (
+                    1 - 0.33
+                )
 
     def __call__(self, key):
         """
@@ -320,7 +333,7 @@ class TruckModel:
         print("'*' ICEV that do not comply with the set energy reduction target.")
         print("'/' vehicles not available for the specified year.")
 
-        self["is_compliant"] *= (self["driving mass"] < self["gross mass"])
+        self["is_compliant"] *= self["driving mass"] < self["gross mass"]
 
         # If the number of remaining non-compliant vehicles is not zero, then
         if len([y for y in self.array.year.values if y > 2020]) > 0:
@@ -384,7 +397,9 @@ class TruckModel:
                         self.array.sel(
                             parameter="driving mass", powertrain=pt, year=y, value=0
                         ).values
-                        < self.array.sel(parameter="gross mass", powertrain=pt, year=y, value=0)
+                        < self.array.sel(
+                            parameter="gross mass", powertrain=pt, year=y, value=0
+                        )
                     ),
                     vals,
                     "-",
@@ -479,13 +494,16 @@ class TruckModel:
                 )
 
                 if arr.sum() > 0:
-                    new_shares = self.array.loc[
-                        dict(
-                            powertrain=l_pwt,
-                            parameter="combustion power share",
-                            year=actual_years,
-                        )
-                    ] - (arr * 0.02)
+                    new_shares = (
+                        self.array.loc[
+                            dict(
+                                powertrain=l_pwt,
+                                parameter="combustion power share",
+                                year=actual_years,
+                            )
+                        ]
+                        - (arr * 0.02)
+                    )
                     self.array.loc[
                         dict(
                             powertrain=l_pwt,
@@ -573,7 +591,11 @@ class TruckModel:
         # Correction of combustion powertrain cost for ICEV-g
         if "ICEV-g" in self.array.powertrain.values:
             self.array.loc[
-                :, ["ICEV-g"], "combustion powertrain cost per kW", :, :,
+                :,
+                ["ICEV-g"],
+                "combustion powertrain cost per kW",
+                :,
+                :,
             ] = np.reshape(
                 (5.92e160 * np.exp(-0.1819 * self.array.year.values) + 26.76)
                 * cost_factor,
@@ -589,6 +611,7 @@ class TruckModel:
         l_pwt = [
             p
             for p in self.array.powertrain.values
+
             if p not in ["PHEV-c-d", "PHEV-e"]
         ]
         self.array = self.array.sel(powertrain=l_pwt)
@@ -683,11 +706,10 @@ class TruckModel:
         if len(l_pwt) > 0:
 
             self.energy.loc[dict(parameter="power load", powertrain=l_pwt)] = (
-                (motive_power.T[:, idx, ...] + recuperated_power.T[:, idx, ...])
-                / self.array.sel(parameter="electric power", powertrain=l_pwt).values[
-                    ..., None
-                ]
-            )
+                motive_power.T[:, idx, ...] + recuperated_power.T[:, idx, ...]
+            ) / self.array.sel(parameter="electric power", powertrain=l_pwt).values[
+                ..., None
+            ]
 
         self.energy.loc[dict(parameter="power load")] = np.clip(
             self.energy.loc[dict(parameter="power load")], 0, 1
@@ -717,7 +739,10 @@ class TruckModel:
         if len(l_pwt) > 0:
 
             self.energy.loc[
-                dict(parameter="engine efficiency", powertrain=l_pwt,)
+                dict(
+                    parameter="engine efficiency",
+                    powertrain=l_pwt,
+                )
             ] = np.clip(
                 np.interp(
                     self.energy.loc[dict(parameter="power load", powertrain=l_pwt)],
@@ -745,12 +770,9 @@ class TruckModel:
         if "ICEV-g" in self.array.powertrain.values:
             self.energy.loc[
                 dict(parameter="engine efficiency", powertrain="ICEV-g")
-            ] *= (
-                1
-                - self.array.sel(
-                    parameter="CNG engine efficiency correction factor",
-                    powertrain="ICEV-g",
-                )
+            ] *= 1 - self.array.sel(
+                parameter="CNG engine efficiency correction factor",
+                powertrain="ICEV-g",
             )
 
         # correction for BEVs and FCEVs
@@ -1762,12 +1784,18 @@ class TruckModel:
 
         if len(l_pwt) > 0:
             self.array.loc[
-                dict(powertrain=l_pwt, parameter=list_direct_emissions,)
+                dict(
+                    powertrain=l_pwt,
+                    parameter=list_direct_emissions,
+                )
             ] = hem.get_emissions_per_powertrain(
                 powertrain_type="diesel",
                 euro_classes=l_y,
                 lifetime_km=self.array.loc[
-                    dict(powertrain=l_pwt, parameter="lifetime kilometers",)
+                    dict(
+                        powertrain=l_pwt,
+                        parameter="lifetime kilometers",
+                    )
                 ],
                 energy_consumption=self.energy.sel(
                     powertrain=l_pwt,
@@ -1788,7 +1816,10 @@ class TruckModel:
                     powertrain_type="cng",
                     euro_classes=l_y,
                     lifetime_km=self.array.loc[
-                        dict(powertrain="ICEV-g", parameter="lifetime kilometers",)
+                        dict(
+                            powertrain="ICEV-g",
+                            parameter="lifetime kilometers",
+                        )
                     ],
                     energy_consumption=self.energy.sel(
                         powertrain=["ICEV-g"],
@@ -2023,7 +2054,10 @@ class TruckModel:
 
         share_biofuel = (
             self.bs.biofuel.sel(
-                region=region, value=0, fuel_type="Biomass fuel", scenario=scenario,
+                region=region,
+                value=0,
+                fuel_type="Biomass fuel",
+                scenario=scenario,
             )
             .interp(
                 year=self.array.coords["year"].values,
