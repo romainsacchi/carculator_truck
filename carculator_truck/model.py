@@ -609,10 +609,7 @@ class TruckModel:
         :returns: Does not return anything. Modifies ``self.array`` in place.
         """
         l_pwt = [
-            p
-            for p in self.array.powertrain.values
-
-            if p not in ["PHEV-c-d", "PHEV-e"]
+            p for p in self.array.powertrain.values if p not in ["PHEV-c-d", "PHEV-e"]
         ]
         self.array = self.array.sel(powertrain=l_pwt)
 
@@ -1410,8 +1407,8 @@ class TruckModel:
                 # H2 tank
 
                 battery_tech_label = (
-                        "battery cell energy density, "
-                        + self.energy_storage["electric"]["BEV"].split("-")[0]
+                    "battery cell energy density, "
+                    + self.energy_storage["electric"]["BEV"].split("-")[0]
                 )
 
                 cpm["electric energy stored"] = 20 + (
