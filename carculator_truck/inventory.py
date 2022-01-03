@@ -1437,9 +1437,7 @@ class InventoryCalculation:
             self.inputs[("Carbon dioxide, fossil", ("air",), "kilogram")]
         )
         d["direct - exhaust"].append(
-            self.inputs[
-                ("Carbon dioxide, non-fossil", ("air",), "kilogram")
-            ]
+            self.inputs[("Carbon dioxide, non-fossil", ("air",), "kilogram")]
         )
         d["direct - exhaust"].append(
             self.inputs[("Methane, fossil", ("air",), "kilogram")]
@@ -2630,7 +2628,6 @@ class InventoryCalculation:
                 self.scope["powertrain"]
             )
 
-
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
 
@@ -2800,7 +2797,6 @@ class InventoryCalculation:
                 )
                 return
 
-
         self.car_indices = []
         self.inputs = get_dict_input()
         self.bs = BackgroundSystemModel()
@@ -2856,7 +2852,6 @@ class InventoryCalculation:
             self.number_of_cars += len(self.scope["year"]) * len(
                 self.scope["powertrain"]
             )
-
 
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
