@@ -1648,8 +1648,6 @@ class InventoryCalculation:
                 )
             ] = maximum
 
-
-
         for s in self.scope["size"]:
             for pt in self.scope["powertrain"]:
                 for y in self.scope["year"]:
@@ -1747,7 +1745,6 @@ class InventoryCalculation:
         # for fuel preparation and energy battery production
 
         maximum = max(self.inputs.values())
-
 
         for s in self.scope["size"]:
             for pt in self.scope["powertrain"]:
