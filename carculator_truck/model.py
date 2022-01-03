@@ -1427,7 +1427,6 @@ class TruckModel:
                     cpm["energy battery mass"] - cpm["battery cell mass"]
                 )
 
-
     def set_costs(self):
 
         glider_components = [
