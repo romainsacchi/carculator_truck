@@ -1372,11 +1372,7 @@ class InventoryCalculation:
             if len(list_countries) > 0:
 
                 sulfur_concentration = (
-                    self.bs.sulfur.sel(
-                        country=list_countries,
-                        year=year,
-                        fuel=fuel,
-                    )
+                    self.bs.sulfur.sel(country=list_countries, year=year, fuel=fuel,)
                     .mean()
                     .values
                 )
@@ -1680,12 +1676,7 @@ class InventoryCalculation:
                             unit = "kilometer"
 
                         self.inputs[
-                            (
-                                name,
-                                self.country,
-                                unit,
-                                "transport, freight, lorry",
-                            )
+                            (name, self.country, unit, "transport, freight, lorry",)
                         ] = maximum
 
                     elif pt == "FCEV":
@@ -1709,12 +1700,7 @@ class InventoryCalculation:
                             unit = "kilometer"
 
                         self.inputs[
-                            (
-                                name,
-                                self.country,
-                                unit,
-                                "transport, freight, lorry",
-                            )
+                            (name, self.country, unit, "transport, freight, lorry",)
                         ] = maximum
 
                     else:
@@ -1816,14 +1802,7 @@ class InventoryCalculation:
                             )
                             ref = "Heavy duty truck"
 
-                        self.inputs[
-                            (
-                                name,
-                                self.country,
-                                "unit",
-                                ref,
-                            )
-                        ] = maximum
+                        self.inputs[(name, self.country, "unit", ref,)] = maximum
 
                     elif pt == "FCEV":
                         if s in ("3.5t", "7.5t"):
@@ -1865,14 +1844,7 @@ class InventoryCalculation:
                             )
                             ref = "Heavy duty truck"
 
-                        self.inputs[
-                            (
-                                name,
-                                self.country,
-                                "unit",
-                                ref,
-                            )
-                        ] = maximum
+                        self.inputs[(name, self.country, "unit", ref,)] = maximum
 
                     else:
                         if s in ("3.5t", "7.5t"):
@@ -1921,12 +1893,7 @@ class InventoryCalculation:
                             ref = "Heavy duty truck, "
 
                         self.inputs[
-                            (
-                                name,
-                                self.country,
-                                "unit",
-                                ref + euro_class,
-                            )
+                            (name, self.country, "unit", ref + euro_class,)
                         ] = maximum
 
     def get_A_matrix(self):
@@ -2112,12 +2079,7 @@ class InventoryCalculation:
                     unit = "kilometer"
 
                 self.inputs[
-                    (
-                        name,
-                        self.background_configuration["country"],
-                        unit,
-                        ref,
-                    )
+                    (name, self.background_configuration["country"], unit, ref,)
                 ] = maximum
 
                 self.car_indices.append(maximum)
@@ -2214,12 +2176,7 @@ class InventoryCalculation:
             unit = "kilometer"
 
         self.inputs[
-            (
-                name,
-                self.background_configuration["country"],
-                unit,
-                ref,
-            )
+            (name, self.background_configuration["country"], unit, ref,)
         ] = maximum
 
         self.car_indices.append(maximum)
@@ -2340,12 +2297,7 @@ class InventoryCalculation:
         for f, fp in enumerate(list_file_names):
             initial_B = np.genfromtxt(fp, delimiter=";")
 
-            new_B = np.zeros(
-                (
-                    np.shape(initial_B)[0],
-                    len(self.inputs),
-                )
-            )
+            new_B = np.zeros((np.shape(initial_B)[0], len(self.inputs),))
 
             new_B[0 : np.shape(initial_B)[0], 0 : np.shape(initial_B)[1]] = initial_B
 
@@ -3024,8 +2976,7 @@ class InventoryCalculation:
                 year = self.scope["year"]
                 co2_intensity_tech = (
                     self.B.sel(
-                        category=category_name,
-                        activity=list(self.elec_map.values()),
+                        category=category_name, activity=list(self.elec_map.values()),
                     )
                     .interp(year=year, kwargs={"fill_value": "extrapolate"})
                     .values
@@ -3082,9 +3033,7 @@ class InventoryCalculation:
                     [self.inputs[self.elec_map[t]] for t in self.elec_map],
                     col_num,
                 )
-            ] = (
-                m * -1 * losses_to_low
-            )
+            ] = (m * -1 * losses_to_low)
 
             # Add transmission network for high and medium voltage
             self.A[
@@ -3098,9 +3047,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                6.58e-9 * -1 * losses_to_low
-            )
+            ] = (6.58e-9 * -1 * losses_to_low)
 
             self.A[
                 :,
@@ -3113,9 +3060,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                1.86e-8 * -1 * losses_to_low
-            )
+            ] = (1.86e-8 * -1 * losses_to_low)
 
             self.A[
                 :,
@@ -3128,9 +3073,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                3.17e-10 * -1 * losses_to_low
-            )
+            ] = (3.17e-10 * -1 * losses_to_low)
 
             # Add distribution network, low voltage
             self.A[
@@ -3144,9 +3087,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                8.74e-8 * -1 * losses_to_low
-            )
+            ] = (8.74e-8 * -1 * losses_to_low)
 
             # Add supply of sulfur hexafluoride for transformers
             self.A[
@@ -3160,9 +3101,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                (5.4e-8 + 2.99e-9) * -1 * losses_to_low
-            )
+            ] = ((5.4e-8 + 2.99e-9) * -1 * losses_to_low)
 
             # Add SF_6 leakage
 
@@ -3241,9 +3180,7 @@ class InventoryCalculation:
                     [self.inputs[self.elec_map[t]] for t in self.elec_map],
                     col_num,
                 )
-            ] = (
-                m * losses_to_low * -1
-            )
+            ] = (m * losses_to_low * -1)
 
             # Add transmission network for high and medium voltage
             self.A[
@@ -3257,9 +3194,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                6.58e-9 * -1 * losses_to_low
-            )
+            ] = (6.58e-9 * -1 * losses_to_low)
 
             self.A[
                 :,
@@ -3272,9 +3207,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                1.86e-8 * -1 * losses_to_low
-            )
+            ] = (1.86e-8 * -1 * losses_to_low)
 
             self.A[
                 :,
@@ -3287,9 +3220,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                3.17e-10 * -1 * losses_to_low
-            )
+            ] = (3.17e-10 * -1 * losses_to_low)
 
             # Add distribution network, low voltage
             self.A[
@@ -3303,9 +3234,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                8.74e-8 * -1 * losses_to_low
-            )
+            ] = (8.74e-8 * -1 * losses_to_low)
 
             # Add supply of sulfur hexafluoride for transformers
             self.A[
@@ -3319,9 +3248,7 @@ class InventoryCalculation:
                     )
                 ],
                 col_num,
-            ] = (
-                (5.4e-8 + 2.99e-9) * -1 * losses_to_low
-            )
+            ] = ((5.4e-8 + 2.99e-9) * -1 * losses_to_low)
 
             # Add SF_6 leakage
 
@@ -4028,14 +3955,21 @@ class InventoryCalculation:
                 ],
                 index_16t,
             ] = (
-                1
-                / array[self.array_inputs["lifetime kilometers"], :, index_arr_16t]
-                / (
-                    array[self.array_inputs["total cargo mass"], :, index_arr_16t]
-                    / 1000
-                )
-                * (array[self.array_inputs["gross mass"], :, index_arr_16t] / 1000 / 16)
-            ).T * -1
+                (
+                    1
+                    / array[self.array_inputs["lifetime kilometers"], :, index_arr_16t]
+                    / (
+                        array[self.array_inputs["total cargo mass"], :, index_arr_16t]
+                        / 1000
+                    )
+                    * (
+                        array[self.array_inputs["gross mass"], :, index_arr_16t]
+                        / 1000
+                        / 16
+                    )
+                ).T
+                * -1
+            )
 
         if len(index_28t) > 0:
             self.A[
@@ -4050,14 +3984,21 @@ class InventoryCalculation:
                 ],
                 index_28t,
             ] = (
-                1
-                / array[self.array_inputs["lifetime kilometers"], :, index_arr_28t]
-                / (
-                    array[self.array_inputs["total cargo mass"], :, index_arr_28t]
-                    / 1000
-                )
-                * (array[self.array_inputs["gross mass"], :, index_arr_28t] / 1000 / 28)
-            ).T * -1
+                (
+                    1
+                    / array[self.array_inputs["lifetime kilometers"], :, index_arr_28t]
+                    / (
+                        array[self.array_inputs["total cargo mass"], :, index_arr_28t]
+                        / 1000
+                    )
+                    * (
+                        array[self.array_inputs["gross mass"], :, index_arr_28t]
+                        / 1000
+                        / 28
+                    )
+                ).T
+                * -1
+            )
 
         if len(index_40t) > 0:
             self.A[
@@ -4072,14 +4013,21 @@ class InventoryCalculation:
                 ],
                 index_40t,
             ] = (
-                1
-                / array[self.array_inputs["lifetime kilometers"], :, index_arr_40t]
-                / (
-                    array[self.array_inputs["total cargo mass"], :, index_arr_40t]
-                    / 1000
-                )
-                * (array[self.array_inputs["gross mass"], :, index_arr_40t] / 1000 / 40)
-            ).T * -1
+                (
+                    1
+                    / array[self.array_inputs["lifetime kilometers"], :, index_arr_40t]
+                    / (
+                        array[self.array_inputs["total cargo mass"], :, index_arr_40t]
+                        / 1000
+                    )
+                    * (
+                        array[self.array_inputs["gross mass"], :, index_arr_40t]
+                        / 1000
+                        / 40
+                    )
+                ).T
+                * -1
+            )
 
         # Powertrain components
 
@@ -4169,8 +4117,7 @@ class InventoryCalculation:
         ] = (
             (
                 array[
-                    [self.array_inputs[l] for l in ["combustion engine mass"]],
-                    :,
+                    [self.array_inputs[l] for l in ["combustion engine mass"]], :,
                 ].sum(axis=0)
             )
             / array[self.array_inputs["lifetime kilometers"], :]
@@ -4225,8 +4172,7 @@ class InventoryCalculation:
         # Energy storage for electric trucks
 
         print(
-            "The country of use is " + self.country,
-            end="\n * ",
+            "The country of use is " + self.country, end="\n * ",
         )
 
         pwt = [pt for pt in self.array_powertrains if pt in ["BEV", "PHEV-d", "FCEV"]]
@@ -4234,19 +4180,12 @@ class InventoryCalculation:
         if len(pwt) > 0:
             battery_tech = ""
             for pt in pwt:
-                battery_tech += (
-                    self.background_configuration["energy storage"]["electric"][pt]
-                    + f"for {pt}, "
-                )
+                battery_tech += f"{self.background_configuration['energy storage']['electric'][pt]} for {pt}."
             battery_origin = self.background_configuration["energy storage"][
                 "electric"
             ]["origin"]
             print(
-                "Energy batteries produced in "
-                + battery_origin
-                + " using "
-                + battery_tech
-                + ".",
+                f"Energy batteries produced in {battery_origin} using {battery_tech}.",
                 end="\n * ",
             )
 
@@ -4277,40 +4216,11 @@ class InventoryCalculation:
             * -1
         ).T
 
-        # Zero out electricity requirement for battery cell manufacture
-        for battery_tech in [
-            "NMC-622",
-            "NCA",
-            "LFP",
-        ]:
-            battery_cell_label = (
-                "Battery cell, " + battery_tech,
-                "GLO",
-                "kilogram",
-                "Battery cell",
-            )
-
-            # Set an input of electricity, given the country of manufacture
-            self.A[
-                :,
-                self.inputs[
-                    (
-                        "market group for electricity, medium voltage",
-                        "GLO",
-                        "kilowatt hour",
-                        "electricity, medium voltage",
-                    )
-                ],
-                self.inputs[battery_cell_label],
-            ] = 0
-
         # We look into `background_configuration` to see what battery chemistry to
         # use for each bus
-        for veh in self.background_configuration["energy storage"]["electric"]:
-            if veh != "origin" and veh in self.scope["powertrain"]:
-                battery_tech = self.background_configuration["energy storage"][
-                    "electric"
-                ][veh]
+        for veh, battery_tech in self.background_configuration["energy storage"]["electric"].items():
+            if veh in self.scope["powertrain"]:
+
                 battery_cell_label = (
                     "Battery cell, " + battery_tech,
                     "GLO",
@@ -4343,6 +4253,11 @@ class InventoryCalculation:
                     * -1
                 ).T
 
+                # Fetch the overall input of electricity per kg of battery cell
+                electricity_batt = self.find_inputs(
+                    "kilowatt hour", f"Battery cell, {battery_tech}", "unit"
+                )
+
                 for y in self.scope["year"]:
                     idx = self.get_index_vehicle_from_array(y, veh, method="and")
 
@@ -4364,24 +4279,36 @@ class InventoryCalculation:
                             ],
                         )
                     ] = (
-                        array[
-                            self.array_inputs["battery cell production electricity"],
-                            :,
-                            idx,
-                        ].T
-                        * self.A[
-                            :,
-                            self.inputs[battery_cell_label],
-                            [
-                                i
-                                for i in self.car_indices
-                                if str(y) in self.rev_inputs[i][0]
-                                and " " + veh in self.rev_inputs[i][0]
-                            ],
-                        ]
-                    ).reshape(
-                        (self.iterations, 1, -1)
-                    )
+                        (
+                            electricity_batt
+                            * array[self.array_inputs["battery cell mass"], :, idx]
+                            * (
+                                1
+                                + array[
+                                    self.array_inputs["battery lifetime replacements"],
+                                    :,
+                                    idx,
+                                ]
+                            )
+                        )
+                        / array[self.array_inputs["lifetime kilometers"], :, idx]
+                        / (array[self.array_inputs["total cargo mass"], :, idx] / 1000)
+                        * -1
+                    ).T[
+                        :, None, :
+                    ]
+
+        # zero out initial electricity input
+        for battery_tech in self.background_configuration["energy storage"]["electric"].values():
+            try:
+                self.find_inputs(
+                    "kilowatt hour",
+                    f"Battery cell, {battery_tech}",
+                    "unit",
+                    zero_out_input=True,
+                )
+            except:
+                pass
 
         # Use the inventory of Wolff et al. 2020 for lead acid battery for non-electric and non-hybrid trucks
 
@@ -4515,9 +4442,7 @@ class InventoryCalculation:
 
         index = self.get_index_vehicle_from_array("FCEV")
         self.A[
-            :,
-            self.inputs[dict_tank_map[hydro_tank_technology]],
-            self.index_fuel_cell,
+            :, self.inputs[dict_tank_map[hydro_tank_technology]], self.index_fuel_cell,
         ] = (
             array[self.array_inputs["fuel tank mass"], :, index]
             / array[self.array_inputs["lifetime kilometers"], :, index]
@@ -4668,8 +4593,7 @@ class InventoryCalculation:
                     + " _________________________________________ "
                     + str(
                         np.round(
-                            self.fuel_blends["cng"]["secondary"]["share"][y] * 100,
-                            0,
+                            self.fuel_blends["cng"]["secondary"]["share"][y] * 100, 0,
                         )
                     )
                     + "%",
@@ -4715,15 +4639,7 @@ class InventoryCalculation:
 
                 # Gas leakage emission as methane
                 self.A[
-                    :,
-                    self.inputs[
-                        (
-                            "Methane, fossil",
-                            ("air",),
-                            "kilogram",
-                        )
-                    ],
-                    ind_A,
+                    :, self.inputs[("Methane, fossil", ("air",), "kilogram",)], ind_A,
                 ] = (
                     (array[self.array_inputs["fuel mass"], :, ind_array])
                     / array[self.array_inputs["target range"], :, ind_array]
@@ -4791,13 +4707,7 @@ class InventoryCalculation:
 
                 self.A[
                     :,
-                    self.inputs[
-                        (
-                            "Carbon dioxide, non-fossil",
-                            ("air",),
-                            "kilogram",
-                        )
-                    ],
+                    self.inputs[("Carbon dioxide, non-fossil", ("air",), "kilogram",)],
                     ind_A,
                 ] = (
                     (
@@ -4917,9 +4827,7 @@ class InventoryCalculation:
                 )
 
                 self.A[
-                    :,
-                    self.inputs[("Sulfur dioxide", ("air",), "kilogram")],
-                    ind_A,
+                    :, self.inputs[("Sulfur dioxide", ("air",), "kilogram")], ind_A,
                 ] = (
                     (
                         (
@@ -4962,13 +4870,7 @@ class InventoryCalculation:
 
                 self.A[
                     :,
-                    self.inputs[
-                        (
-                            "Carbon dioxide, non-fossil",
-                            ("air",),
-                            "kilogram",
-                        )
-                    ],
+                    self.inputs[("Carbon dioxide, non-fossil", ("air",), "kilogram",)],
                     ind_A,
                 ] = (
                     (
@@ -5046,10 +4948,13 @@ class InventoryCalculation:
             self.inputs[("market for road", "GLO", "meter-year", "road")],
             -self.number_of_cars :,
         ] = (
-            (array[self.array_inputs["driving mass"], :] / 1000)
-            * 5.37e-4
-            / (array[self.array_inputs["total cargo mass"], :] / 1000)
-        ) * -1
+            (
+                (array[self.array_inputs["driving mass"], :] / 1000)
+                * 5.37e-4
+                / (array[self.array_inputs["total cargo mass"], :] / 1000)
+            )
+            * -1
+        )
 
         # Infrastructure maintenance
         self.A[
@@ -5058,9 +4963,7 @@ class InventoryCalculation:
                 ("market for road maintenance", "RER", "meter-year", "road maintenance")
             ],
             -self.number_of_cars :,
-        ] = (
-            1.29e-3 / (array[self.array_inputs["total cargo mass"], :] / 1000) * -1
-        )
+        ] = (1.29e-3 / (array[self.array_inputs["total cargo mass"], :] / 1000) * -1)
 
         # Exhaust emissions
         # Non-fuel based emissions
@@ -5212,9 +5115,7 @@ class InventoryCalculation:
         # Hence, we calculate the lifetime of the bus
         # We assume two trucks per charging station
 
-        index = self.get_index_vehicle_from_array(
-            ["BEV", "PHEV-d"],
-        )
+        index = self.get_index_vehicle_from_array(["BEV", "PHEV-d"],)
 
         self.A[
             np.ix_(
@@ -5271,9 +5172,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit" and "market" not in i[0]
             ],
-        ] = (
-            array[self.array_inputs["glider base mass"]] * -1
-        )
+        ] = (array[self.array_inputs["glider base mass"]] * -1)
 
         # Suspension + Brakes
         self.A[
@@ -5313,9 +5212,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["wheels and tires mass"], :] * -1
-        )
+        ] = (array[self.array_inputs["wheels and tires mass"], :] * -1)
 
         # Cabin
         self.A[
@@ -5326,9 +5223,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["cabin mass"], :] * -1
-        )
+        ] = (array[self.array_inputs["cabin mass"], :] * -1)
 
         # Exhaust
         self.A[
@@ -5346,9 +5241,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["exhaust system mass"], :] * -1
-        )
+        ] = (array[self.array_inputs["exhaust system mass"], :] * -1)
 
         # Electrical system
         self.A[
@@ -5366,9 +5259,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["electrical system mass"], :] * -1
-        )
+        ] = (array[self.array_inputs["electrical system mass"], :] * -1)
 
         # Transmission (52% transmission shaft, 36% gearbox + 12% retarder)
         self.A[
@@ -5386,9 +5277,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["transmission mass"], :] * 0.52 * -1
-        )
+        ] = (array[self.array_inputs["transmission mass"], :] * 0.52 * -1)
 
         self.A[
             :,
@@ -5400,9 +5289,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["transmission mass"], :] * 0.36 * -1
-        )
+        ] = (array[self.array_inputs["transmission mass"], :] * 0.36 * -1)
 
         self.A[
             :,
@@ -5414,9 +5301,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["transmission mass"], :] * 0.12 * -1
-        )
+        ] = (array[self.array_inputs["transmission mass"], :] * 0.12 * -1)
 
         # Other components, for non-electric and hybrid trucks
         index = self.get_index_vehicle_from_array(
@@ -5581,9 +5466,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["converter mass"], :] * -1
-        )
+        ] = (array[self.array_inputs["converter mass"], :] * -1)
 
         self.A[
             :,
@@ -5600,9 +5483,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["electric engine mass"], :] * -1
-        )
+        ] = (array[self.array_inputs["electric engine mass"], :] * -1)
 
         self.A[
             :,
@@ -5619,9 +5500,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["inverter mass"], :] * -1
-        )
+        ] = (array[self.array_inputs["inverter mass"], :] * -1)
 
         self.A[
             :,
@@ -5638,9 +5517,7 @@ class InventoryCalculation:
                 for i in self.inputs
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
-        ] = (
-            array[self.array_inputs["power distribution unit mass"], :] * -1
-        )
+        ] = (array[self.array_inputs["power distribution unit mass"], :] * -1)
 
         self.A[
             :,
@@ -5658,10 +5535,9 @@ class InventoryCalculation:
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
         ] = (
-            array[
-                [self.array_inputs[l] for l in ["combustion engine mass"]],
-                :,
-            ].sum(axis=0)
+            array[[self.array_inputs[l] for l in ["combustion engine mass"]], :,].sum(
+                axis=0
+            )
             * -1
         )
 
@@ -5718,8 +5594,7 @@ class InventoryCalculation:
         # Energy storage for electric trucks
 
         print(
-            "The country of use is " + self.country,
-            end="\n * ",
+            "The country of use is " + self.country, end="\n * ",
         )
 
         pwt = [pt for pt in self.array_powertrains if pt in ["BEV", "PHEV-d", "FCEV"]]
@@ -5727,19 +5602,12 @@ class InventoryCalculation:
         if len(pwt) > 0:
             battery_tech = ""
             for pt in pwt:
-                battery_tech += (
-                    self.background_configuration["energy storage"]["electric"][pt]
-                    + f" for {pt}, "
-                )
+                battery_tech += f"{self.background_configuration['energy storage']['electric'][pt]} for {pt}, "
             battery_origin = self.background_configuration["energy storage"][
                 "electric"
             ]["origin"]
             print(
-                "Energy batteries produced in "
-                + battery_origin
-                + " using "
-                + battery_tech
-                + ".",
+                f"Energy batteries produced in {battery_origin} using {battery_tech}.",
                 end="\n * ",
             )
 
@@ -5768,36 +5636,11 @@ class InventoryCalculation:
             * -1
         ).T
 
-        # Zero out electricity requirement for battery cell manufacture
-        for battery_tech in ["NMC-622", "NCA", "LFP"]:
-            battery_cell_label = (
-                "Battery cell, " + battery_tech,
-                "GLO",
-                "kilogram",
-                "Battery cell",
-            )
-
-            # Set an input of electricity, given the country of manufacture
-            self.A[
-                :,
-                self.inputs[
-                    (
-                        "market group for electricity, medium voltage",
-                        "GLO",
-                        "kilowatt hour",
-                        "electricity, medium voltage",
-                    )
-                ],
-                self.inputs[battery_cell_label],
-            ] = 0
-
         # We look into `background_configuration` to see what battery chemistry to
         # use for each bus
-        for veh in self.background_configuration["energy storage"]["electric"]:
-            if veh != "origin" and veh in self.scope["powertrain"]:
-                battery_tech = self.background_configuration["energy storage"][
-                    "electric"
-                ][veh]
+        for veh, battery_tech in self.background_configuration["energy storage"]["electric"].items():
+            if veh in self.scope["powertrain"]:
+
                 battery_cell_label = (
                     "Battery cell, " + battery_tech,
                     "GLO",
@@ -5828,6 +5671,11 @@ class InventoryCalculation:
                     * -1
                 ).T
 
+                # Fetch the overall input of electricity per kg of battery cell
+                electricity_batt = self.find_inputs(
+                    "kilowatt hour", f"Battery cell, {battery_tech}", "unit"
+                )
+
                 for y in self.scope["year"]:
                     idx = self.get_index_vehicle_from_array(y, veh, method="and")
 
@@ -5851,26 +5699,34 @@ class InventoryCalculation:
                             ],
                         )
                     ] = (
-                        array[
-                            self.array_inputs["battery cell production electricity"],
-                            :,
-                            idx,
-                        ].T
-                        * self.A[
-                            :,
-                            self.inputs[battery_cell_label],
-                            [
-                                self.inputs[i]
-                                for i in self.inputs
-                                if str(y) in i[0]
-                                and "duty truck" in i[0]
-                                and i[2] == "unit"
-                                and " " + veh in i[0]
-                            ],
-                        ]
-                    ).reshape(
-                        (self.iterations, 1, -1)
-                    )
+                        (
+                            electricity_batt
+                            * array[self.array_inputs["battery cell mass"], :, idx]
+                            * (
+                                1
+                                + array[
+                                    self.array_inputs["battery lifetime replacements"],
+                                    :,
+                                    idx,
+                                ]
+                            )
+                        )
+                        * -1
+                    ).T[
+                        :, None, :
+                    ]
+
+        # zero out initial electricity input
+        for battery_tech in self.background_configuration["energy storage"]["electric"].values():
+            try:
+                self.find_inputs(
+                    "kilowatt hour",
+                    f"Battery cell, {battery_tech}",
+                    "unit",
+                    zero_out_input=True,
+                )
+            except:
+                pass
 
         # Use the inventory of Wolff et al. 2020 for lead acid battery for non-electric and non-hybrid trucks
 
@@ -6004,11 +5860,9 @@ class InventoryCalculation:
         ]
 
         index = self.get_index_vehicle_from_array("FCEV")
-        self.A[
-            :,
-            self.inputs[dict_tank_map[hydro_tank_technology]],
-            index_A,
-        ] = (array[self.array_inputs["fuel tank mass"], :, index] * -1).T
+        self.A[:, self.inputs[dict_tank_map[hydro_tank_technology]], index_A,] = (
+            array[self.array_inputs["fuel tank mass"], :, index] * -1
+        ).T
 
         # End-of-life disposal and treatment
 
@@ -6222,8 +6076,7 @@ class InventoryCalculation:
                     + " _________________________________________ "
                     + str(
                         np.round(
-                            self.fuel_blends["cng"]["secondary"]["share"][y] * 100,
-                            0,
+                            self.fuel_blends["cng"]["secondary"]["share"][y] * 100, 0,
                         )
                     )
                     + "%",
@@ -6269,15 +6122,7 @@ class InventoryCalculation:
 
                 # Gas leakage emission as methane
                 self.A[
-                    :,
-                    self.inputs[
-                        (
-                            "Methane, fossil",
-                            ("air",),
-                            "kilogram",
-                        )
-                    ],
-                    ind_A,
+                    :, self.inputs[("Methane, fossil", ("air",), "kilogram",)], ind_A,
                 ] = (
                     (array[self.array_inputs["fuel mass"], :, ind_array])
                     / array[self.array_inputs["target range"], :, ind_array]
@@ -6345,13 +6190,7 @@ class InventoryCalculation:
 
                 self.A[
                     :,
-                    self.inputs[
-                        (
-                            "Carbon dioxide, non-fossil",
-                            ("air",),
-                            "kilogram",
-                        )
-                    ],
+                    self.inputs[("Carbon dioxide, non-fossil", ("air",), "kilogram",)],
                     ind_A,
                 ] = (
                     (
@@ -6471,9 +6310,7 @@ class InventoryCalculation:
                 )
 
                 self.A[
-                    :,
-                    self.inputs[("Sulfur dioxide", ("air",), "kilogram")],
-                    ind_A,
+                    :, self.inputs[("Sulfur dioxide", ("air",), "kilogram")], ind_A,
                 ] = (
                     (
                         (
@@ -6516,13 +6353,7 @@ class InventoryCalculation:
 
                 self.A[
                     :,
-                    self.inputs[
-                        (
-                            "Carbon dioxide, non-fossil",
-                            ("air",),
-                            "kilogram",
-                        )
-                    ],
+                    self.inputs[("Carbon dioxide, non-fossil", ("air",), "kilogram",)],
                     ind_A,
                 ] = (
                     (
@@ -6600,10 +6431,13 @@ class InventoryCalculation:
             self.inputs[("market for road", "GLO", "meter-year", "road")],
             self.car_indices,
         ] = (
-            (array[self.array_inputs["driving mass"], :] / 1000)
-            * 5.37e-4
-            / (array[self.array_inputs["total cargo mass"], :] / 1000)
-        ) * -1
+            (
+                (array[self.array_inputs["driving mass"], :] / 1000)
+                * 5.37e-4
+                / (array[self.array_inputs["total cargo mass"], :] / 1000)
+            )
+            * -1
+        )
 
         # Infrastructure maintenance
         self.A[
@@ -6612,19 +6446,13 @@ class InventoryCalculation:
                 ("market for road maintenance", "RER", "meter-year", "road maintenance")
             ],
             self.car_indices,
-        ] = (
-            1.29e-3 / (array[self.array_inputs["total cargo mass"], :] / 1000) * -1
-        )
+        ] = (1.29e-3 / (array[self.array_inputs["total cargo mass"], :] / 1000) * -1)
 
         # Exhaust emissions
         # Non-fuel based emissions
 
         self.A[
-            np.ix_(
-                np.arange(self.iterations),
-                self.index_emissions,
-                self.car_indices,
-            )
+            np.ix_(np.arange(self.iterations), self.index_emissions, self.car_indices,)
         ] = (
             array[
                 [
@@ -6706,9 +6534,7 @@ class InventoryCalculation:
         # Hence, we calculate the lifetime of the bus
         # We assume two trucks per charging station
 
-        index = self.get_index_vehicle_from_array(
-            ["BEV", "PHEV-d"],
-        )
+        index = self.get_index_vehicle_from_array(["BEV", "PHEV-d"],)
 
         self.A[
             np.ix_(

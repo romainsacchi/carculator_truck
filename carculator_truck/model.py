@@ -1427,19 +1427,6 @@ class TruckModel:
                     cpm["energy battery mass"] - cpm["battery cell mass"]
                 )
 
-        # kWh electricity/kg battery cell
-        self["battery cell production energy electricity share"] = self[
-            "battery cell production energy electricity share"
-        ].clip(min=0, max=1)
-        self["battery cell production electricity"] = (
-            self["battery cell production energy"]
-            * self["battery cell production energy electricity share"]
-        )
-        # MJ heat/kg battery cell
-        self["battery cell production heat"] = (
-            self["battery cell production energy"]
-            - self["battery cell production electricity"]
-        ) * 3.6
 
     def set_costs(self):
 
