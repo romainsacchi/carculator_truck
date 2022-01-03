@@ -243,30 +243,27 @@ def test_custom_electricity_mix():
 def test_export_to_bw():
     """Test that inventories export successfully"""
     ic = InventoryCalculation(tm, method="recipe", method_type="midpoint")
-    for a in (True, False):
-        for b in ("3.5", "3.6", "3.7", "uvek"):
-            for c in (True, False):
-                ic.export_lci(
-                    ecoinvent_compatibility=a,
-                    ecoinvent_version=b,
-                    create_vehicle_datasets=c,
-                )
+    for b in ("3.5", "3.6", "3.7", "uvek"):
+        for c in (True, False):
+            ic.export_lci(
+                ecoinvent_version=b,
+                create_vehicle_datasets=c,
+            )
 
 
 def test_export_to_excel():
     """Test that inventories export successfully to Excel/CSV"""
     ic = InventoryCalculation(tm)
-    for a in (True, False):
-        for b in ("3.5", "3.6", "3.7", "uvek"):
-            for c in (True, False):
-                for d in ("file", "string"):
-                    i = ic.export_lci_to_excel(
-                        ecoinvent_compatibility=a,
-                        ecoinvent_version=b,
-                        create_vehicle_datasets=c,
-                        export_format=d,
-                        directory="directory",
-                    )
+
+    for b in ("3.5", "3.6", "3.7", "uvek"):
+        for c in (True, False):
+            for d in ("file", "string"):
+                ic.export_lci_to_excel(
+                    ecoinvent_version=b,
+                    create_vehicle_datasets=c,
+                    export_format=d,
+                    directory="directory",
+                )
 
 
 # # GHG of 40t diesel truck must be between 80 and 110 g/ton-km in 2020

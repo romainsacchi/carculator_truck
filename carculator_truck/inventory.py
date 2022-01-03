@@ -1438,7 +1438,7 @@ class InventoryCalculation:
         )
         d["direct - exhaust"].append(
             self.inputs[
-                ("Carbon dioxide, from soil or biomass stock", ("air",), "kilogram")
+                ("Carbon dioxide, non-fossil", ("air",), "kilogram")
             ]
         )
         d["direct - exhaust"].append(
@@ -2323,7 +2323,7 @@ class InventoryCalculation:
                     + "/*recipe_midpoint*{}*.csv".format(self.scenario)
                 )
                 list_file_names = sorted(list_file_names)
-                B = np.zeros((len(list_file_names), 21, len(self.inputs)))
+                B = np.zeros((len(list_file_names), 22, len(self.inputs)))
             elif self.method_type == "endpoint":
                 list_file_names = glob.glob(
                     str(REMIND_FILES_DIR)
@@ -2562,10 +2562,9 @@ class InventoryCalculation:
 
     def export_lci(
         self,
-        presamples=True,
-        ecoinvent_compatibility=True,
-        ecoinvent_version="3.7",
-        db_name="carculator db",
+        presamples=False,
+        ecoinvent_version="3.8",
+        db_name="carculator_truck db",
         create_vehicle_datasets=True,
     ):
         """
@@ -2574,7 +2573,6 @@ class InventoryCalculation:
         :meth:`stochastic` of :class:`CarModel` class has been called.
 
         :param presamples: boolean.
-        :param ecoinvent_compatibility: bool. If True, compatible with ecoinvent. If False, compatible with REMIND-ecoinvent.
         :param ecoinvent_version: str. "3.5", "3.6" or "uvek"
         :return: inventory, and optionally, list of arrays containing pre-sampled values.
         :rtype: list
@@ -2635,17 +2633,6 @@ class InventoryCalculation:
                 self.scope["powertrain"]
             )
 
-        # if the inventories are meant to link to `premise` databases
-        # we need to remove the additional electricity input
-        # in the fuel market datasets
-        if not ecoinvent_compatibility:
-            fuel_markets = [
-                self.inputs[a] for a in self.inputs if "fuel market for" in a[0]
-            ]
-            electricity_inputs = [
-                self.inputs[a] for a in self.inputs if "electricity market for" in a[0]
-            ]
-            self.A[np.ix_(range(self.A.shape[0]), electricity_inputs, fuel_markets)] = 0
 
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
@@ -2655,7 +2642,6 @@ class InventoryCalculation:
                 self.A, self.rev_inputs, db_name=db_name
             ).write_lci(
                 presamples=presamples,
-                ecoinvent_compatibility=ecoinvent_compatibility,
                 ecoinvent_version=ecoinvent_version,
                 vehicle_specs=self.specs,
             )
@@ -2663,7 +2649,6 @@ class InventoryCalculation:
         else:
             lci = ExportInventory(self.A, self.rev_inputs, db_name=db_name).write_lci(
                 presamples=presamples,
-                ecoinvent_compatibility=ecoinvent_compatibility,
                 ecoinvent_version=ecoinvent_version,
                 vehicle_specs=self.specs,
             )
@@ -2671,12 +2656,10 @@ class InventoryCalculation:
 
     def export_lci_to_bw(
         self,
-        presamples=True,
-        ecoinvent_compatibility=True,
-        ecoinvent_version="3.7",
-        db_name="carculator db",
+        presamples=False,
+        ecoinvent_version="3.8",
+        db_name="carculator_truck db",
         create_vehicle_datasets=True,
-        forbidden_activities=None,
     ):
         """
         Export the inventory as a `brightway2` bw2io.importers.base_lci.LCIImporter object
@@ -2763,18 +2746,6 @@ class InventoryCalculation:
                 self.scope["powertrain"]
             )
 
-        # if the inventories are meant to link to `premise` databases
-        # we need to remove the additional electricity input
-        # in the fuel market datasets
-        if not ecoinvent_compatibility:
-            fuel_markets = [
-                self.inputs[a] for a in self.inputs if "fuel market for" in a[0]
-            ]
-            electricity_inputs = [
-                self.inputs[a] for a in self.inputs if "electricity market for" in a[0]
-            ]
-            self.A[np.ix_(range(self.A.shape[0]), electricity_inputs, fuel_markets)] = 0
-
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
 
@@ -2783,9 +2754,7 @@ class InventoryCalculation:
                 self.A, self.rev_inputs, db_name=db_name
             ).write_lci_to_bw(
                 presamples=presamples,
-                ecoinvent_compatibility=ecoinvent_compatibility,
                 ecoinvent_version=ecoinvent_version,
-                forbidden_activities=forbidden_activities,
                 vehicle_specs=self.specs,
             )
             return lci, array
@@ -2794,9 +2763,7 @@ class InventoryCalculation:
                 self.A, self.rev_inputs, db_name=db_name
             ).write_lci_to_bw(
                 presamples=presamples,
-                ecoinvent_compatibility=ecoinvent_compatibility,
                 ecoinvent_version=ecoinvent_version,
-                forbidden_activities=forbidden_activities,
                 vehicle_specs=self.specs,
             )
             return lci
@@ -2804,12 +2771,10 @@ class InventoryCalculation:
     def export_lci_to_excel(
         self,
         directory=None,
-        ecoinvent_compatibility=True,
-        ecoinvent_version="3.7",
+        ecoinvent_version="3.8",
         software_compatibility="brightway2",
         filename=None,
         create_vehicle_datasets=True,
-        forbidden_activities=None,
         export_format="file",
     ):
         """
@@ -2819,7 +2784,6 @@ class InventoryCalculation:
         :param filename:
         :param directory: directory where to save the file.
         :type directory: str
-        :param ecoinvent_compatibility: If True, compatible with ecoinvent. If False, compatible with REMIND-ecoinvent.
         :param ecoinvent_version: "3.6", "3.5" or "uvek"
         :param software_compatibility: "brightway2" or "simapro"
         :return: file path where the file is stored.
@@ -2838,7 +2802,7 @@ class InventoryCalculation:
                     "Simapro-compatible inventory export is only available for ecoinvent 3.6 or UVEK."
                 )
                 return
-            ecoinvent_compatibility = True
+
 
         self.car_indices = []
         self.inputs = get_dict_input()
@@ -2896,17 +2860,6 @@ class InventoryCalculation:
                 self.scope["powertrain"]
             )
 
-        # if the inventories are meant to link to `premise` databases
-        # we need to remove the additional electricity input
-        # in the fuel market datasets
-        if not ecoinvent_compatibility:
-            fuel_markets = [
-                self.inputs[a] for a in self.inputs if "fuel market for" in a[0]
-            ]
-            electricity_inputs = [
-                self.inputs[a] for a in self.inputs if "electricity market for" in a[0]
-            ]
-            self.A[np.ix_(range(self.A.shape[0]), electricity_inputs, fuel_markets)] = 0
 
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
@@ -2915,11 +2868,9 @@ class InventoryCalculation:
             self.A, self.rev_inputs, db_name=filename or "carculator db"
         ).write_lci_to_excel(
             directory=directory,
-            ecoinvent_compatibility=ecoinvent_compatibility,
             ecoinvent_version=ecoinvent_version,
             software_compatibility=software_compatibility,
             filename=filename,
-            forbidden_activities=forbidden_activities,
             export_format=export_format,
             vehicle_specs=self.specs,
         )
@@ -4036,7 +3987,7 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[
-                ("Glider lightweighting", "GLO", "kilogram", "Glider lightweighting")
+                ("Glider lightweighting", "GLO", "kilogram", "glider lightweighting")
             ],
             -self.number_of_cars :,
         ] = (
@@ -4353,7 +4304,7 @@ class InventoryCalculation:
                 self.inputs[
                     (
                         "market group for electricity, medium voltage",
-                        "World",
+                        "GLO",
                         "kilowatt hour",
                         "electricity, medium voltage",
                     )
@@ -4850,7 +4801,7 @@ class InventoryCalculation:
                     :,
                     self.inputs[
                         (
-                            "Carbon dioxide, from soil or biomass stock",
+                            "Carbon dioxide, non-fossil",
                             ("air",),
                             "kilogram",
                         )
@@ -5021,7 +4972,7 @@ class InventoryCalculation:
                     :,
                     self.inputs[
                         (
-                            "Carbon dioxide, from soil or biomass stock",
+                            "Carbon dioxide, non-fossil",
                             ("air",),
                             "kilogram",
                         )
@@ -5535,7 +5486,7 @@ class InventoryCalculation:
         self.A[
             :,
             self.inputs[
-                ("Glider lightweighting", "GLO", "kilogram", "Glider lightweighting")
+                ("Glider lightweighting", "GLO", "kilogram", "glider lightweighting")
             ],
             [
                 self.inputs[i]
@@ -5840,7 +5791,7 @@ class InventoryCalculation:
                 self.inputs[
                     (
                         "market group for electricity, medium voltage",
-                        "World",
+                        "GLO",
                         "kilowatt hour",
                         "electricity, medium voltage",
                     )
@@ -6404,7 +6355,7 @@ class InventoryCalculation:
                     :,
                     self.inputs[
                         (
-                            "Carbon dioxide, from soil or biomass stock",
+                            "Carbon dioxide, non-fossil",
                             ("air",),
                             "kilogram",
                         )
@@ -6575,7 +6526,7 @@ class InventoryCalculation:
                     :,
                     self.inputs[
                         (
-                            "Carbon dioxide, from soil or biomass stock",
+                            "Carbon dioxide, non-fossil",
                             ("air",),
                             "kilogram",
                         )
