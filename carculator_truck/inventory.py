@@ -15,7 +15,6 @@ from .export import ExportInventory
 from .geomap import Geomap
 from .utils import build_fleet_array
 
-
 np.warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 
 REMIND_FILES_DIR = DATA_DIR / "IAM"

@@ -494,16 +494,13 @@ class TruckModel:
                 )
 
                 if arr.sum() > 0:
-                    new_shares = (
-                        self.array.loc[
-                            dict(
-                                powertrain=l_pwt,
-                                parameter="combustion power share",
-                                year=actual_years,
-                            )
-                        ]
-                        - (arr * 0.02)
-                    )
+                    new_shares = self.array.loc[
+                        dict(
+                            powertrain=l_pwt,
+                            parameter="combustion power share",
+                            year=actual_years,
+                        )
+                    ] - (arr * 0.02)
                     self.array.loc[
                         dict(
                             powertrain=l_pwt,
