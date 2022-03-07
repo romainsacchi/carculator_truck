@@ -81,13 +81,12 @@ jobs:
 
   conda:
     name: (${{ matrix.python-version }}, ${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     needs: build
 
     strategy:
       fail-fast: false
       matrix:
-        os: ubuntu-latest
         python-version: ["3.9"]
     steps:
       - uses: actions/checkout@v2
