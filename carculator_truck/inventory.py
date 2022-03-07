@@ -6,14 +6,15 @@ from pathlib import Path
 
 import numpy as np
 import xarray as xr
-from pypardiso import spsolve
 from scipy import sparse
+from scipy.sparse.linalg import spsolve
 
 from . import DATA_DIR
 from .background_systems import BackgroundSystemModel
 from .export import ExportInventory
 from .geomap import Geomap
 from .utils import build_fleet_array
+
 
 np.warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 

@@ -13,7 +13,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
+venv/lib/python3.8/site-packages/pip/_internal/operations/build/
 develop-eggs/
 dist/
 downloads/
