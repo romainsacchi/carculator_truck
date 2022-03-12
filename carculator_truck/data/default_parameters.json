@@ -29673,7 +29673,7 @@
         "maximum": 70
     },
     "1049-2030-power to mass ratio": {
-        "amount": 66,
+        "amount": 64.67999999999999,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29693,12 +29693,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 66,
+        "loc": 64.67999999999999,
         "minimum": 50,
         "maximum": 70
     },
     "1050-2040-power to mass ratio": {
-        "amount": 66,
+        "amount": 63.386399999999995,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29718,12 +29718,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 66,
+        "loc": 63.386399999999995,
         "minimum": 50,
         "maximum": 70
     },
     "1051-2050-power to mass ratio": {
-        "amount": 66,
+        "amount": 61.484807999999994,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29743,7 +29743,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 66,
+        "loc": 61.484807999999994,
         "minimum": 50,
         "maximum": 70
     },
@@ -29823,7 +29823,7 @@
         "maximum": 43
     },
     "1055-2030-power to mass ratio": {
-        "amount": 38,
+        "amount": 37.24,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29843,12 +29843,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 38,
+        "loc": 37.24,
         "minimum": 30,
         "maximum": 43
     },
     "1056-2040-power to mass ratio": {
-        "amount": 38,
+        "amount": 36.495200000000004,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29868,12 +29868,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 38,
+        "loc": 36.495200000000004,
         "minimum": 30,
         "maximum": 43
     },
     "1057-2050-power to mass ratio": {
-        "amount": 38,
+        "amount": 35.400344000000004,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29893,7 +29893,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 38,
+        "loc": 35.400344000000004,
         "minimum": 30,
         "maximum": 43
     },
@@ -29973,7 +29973,7 @@
         "maximum": 44
     },
     "1061-2030-power to mass ratio": {
-        "amount": 35,
+        "amount": 34.3,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29993,12 +29993,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35,
+        "loc": 34.3,
         "minimum": 27,
         "maximum": 44
     },
     "1062-2040-power to mass ratio": {
-        "amount": 35,
+        "amount": 33.614,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30018,12 +30018,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35,
+        "loc": 33.614,
         "minimum": 27,
         "maximum": 44
     },
     "1063-2050-power to mass ratio": {
-        "amount": 35,
+        "amount": 32.605579999999996,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30043,7 +30043,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35,
+        "loc": 32.605579999999996,
         "minimum": 27,
         "maximum": 44
     },
@@ -30123,7 +30123,7 @@
         "maximum": 39
     },
     "1067-2030-power to mass ratio": {
-        "amount": 29,
+        "amount": 28.419999999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30143,12 +30143,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 29,
+        "loc": 28.419999999999998,
         "minimum": 26,
         "maximum": 39
     },
     "1068-2040-power to mass ratio": {
-        "amount": 29,
+        "amount": 27.851599999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30168,12 +30168,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 29,
+        "loc": 27.851599999999998,
         "minimum": 26,
         "maximum": 39
     },
     "1069-2050-power to mass ratio": {
-        "amount": 29,
+        "amount": 27.016052,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30193,7 +30193,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 29,
+        "loc": 27.016052,
         "minimum": 26,
         "maximum": 39
     },
@@ -30273,7 +30273,7 @@
         "maximum": 30
     },
     "1073-2030-power to mass ratio": {
-        "amount": 28.5,
+        "amount": 27.93,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30293,12 +30293,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28.5,
+        "loc": 27.93,
         "minimum": 25,
         "maximum": 30
     },
     "1074-2040-power to mass ratio": {
-        "amount": 28.5,
+        "amount": 27.371399999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30318,12 +30318,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28.5,
+        "loc": 27.371399999999998,
         "minimum": 25,
         "maximum": 30
     },
     "1075-2050-power to mass ratio": {
-        "amount": 28.5,
+        "amount": 26.550257999999996,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30343,7 +30343,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28.5,
+        "loc": 26.550257999999996,
         "minimum": 25,
         "maximum": 30
     },
@@ -30423,7 +30423,7 @@
         "maximum": 33
     },
     "1079-2030-power to mass ratio": {
-        "amount": 28,
+        "amount": 27.439999999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30443,12 +30443,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28,
+        "loc": 27.439999999999998,
         "minimum": 25,
         "maximum": 33
     },
     "1080-2040-power to mass ratio": {
-        "amount": 28,
+        "amount": 26.891199999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30468,12 +30468,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28,
+        "loc": 26.891199999999998,
         "minimum": 25,
         "maximum": 33
     },
     "1081-2050-power to mass ratio": {
-        "amount": 28,
+        "amount": 26.084463999999997,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30493,7 +30493,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28,
+        "loc": 26.084463999999997,
         "minimum": 25,
         "maximum": 33
     },
@@ -30573,7 +30573,7 @@
         "maximum": 24
     },
     "1085-2030-power to mass ratio": {
-        "amount": 22,
+        "amount": 21.56,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30593,12 +30593,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 22,
+        "loc": 21.56,
         "minimum": 20,
         "maximum": 24
     },
     "1086-2040-power to mass ratio": {
-        "amount": 22,
+        "amount": 21.1288,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30618,12 +30618,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 22,
+        "loc": 21.1288,
         "minimum": 20,
         "maximum": 24
     },
     "1087-2050-power to mass ratio": {
-        "amount": 22,
+        "amount": 20.494936,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -30643,7 +30643,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 22,
+        "loc": 20.494936,
         "minimum": 20,
         "maximum": 24
     },
@@ -46584,7 +46584,7 @@
         "maximum": 0.5
     },
     "1660-2020-fuel cell stack efficiency": {
-        "amount": 0.52,
+        "amount": 0.54,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -46606,12 +46606,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.52,
-        "minimum": 0.468,
-        "maximum": 0.5720000000000001
+        "loc": 0.54,
+        "minimum": 0.48600000000000004,
+        "maximum": 0.5940000000000001
     },
     "1661-2030-fuel cell stack efficiency": {
-        "amount": 0.52,
+        "amount": 0.55,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -46633,12 +46633,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.52,
-        "minimum": 0.468,
-        "maximum": 0.5720000000000001
+        "loc": 0.55,
+        "minimum": 0.49500000000000005,
+        "maximum": 0.6050000000000001
     },
     "1662-2040-fuel cell stack efficiency": {
-        "amount": 0.52,
+        "amount": 0.56,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -46660,12 +46660,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.52,
-        "minimum": 0.468,
-        "maximum": 0.5720000000000001
+        "loc": 0.56,
+        "minimum": 0.5040000000000001,
+        "maximum": 0.6160000000000001
     },
     "1663-2050-fuel cell stack efficiency": {
-        "amount": 0.52,
+        "amount": 0.57,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -46687,9 +46687,9 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.52,
-        "minimum": 0.468,
-        "maximum": 0.5720000000000001
+        "loc": 0.57,
+        "minimum": 0.513,
+        "maximum": 0.627
     },
     "1664-2000-fuel cell power share": {
         "amount": 0.25,
@@ -47238,7 +47238,7 @@
         "maximum": 1.175
     },
     "1685-2030-fuel cell own consumption": {
-        "amount": 1.15,
+        "amount": 1.125,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -47261,12 +47261,12 @@
         "status": "",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1.15,
-        "minimum": 1.125,
-        "maximum": 1.175
+        "loc": 1.125,
+        "minimum": 1.1025,
+        "maximum": 1.1475
     },
     "1686-2040-fuel cell own consumption": {
-        "amount": 1.125,
+        "amount": 1.1,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -47289,12 +47289,12 @@
         "status": "",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1.125,
-        "minimum": 1.1,
-        "maximum": 1.15
+        "loc": 1.1,
+        "minimum": 1.078,
+        "maximum": 1.122
     },
     "1687-2050-fuel cell own consumption": {
-        "amount": 1.125,
+        "amount": 1.075,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
@@ -47317,9 +47317,9 @@
         "status": "",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1.125,
-        "minimum": 1.1,
-        "maximum": 1.15
+        "loc": 1.075,
+        "minimum": 1.0534999999999999,
+        "maximum": 1.0965
     },
     "1688-2000-fuel cell essential BoP mass per power": {
         "amount": 1.1025,
@@ -47748,7 +47748,7 @@
         "maximum": 3.5
     },
     "1703-2030-engine mass per power": {
-        "amount": 2.6599999999999997,
+        "amount": 2.8,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -47773,12 +47773,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2.6599999999999997,
+        "loc": 2.8,
         "minimum": 2.375,
         "maximum": 3.3249999999999997
     },
     "1704-2040-engine mass per power": {
-        "amount": 2.5269999999999997,
+        "amount": 2.8,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -47803,12 +47803,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2.5269999999999997,
+        "loc": 2.8,
         "minimum": 2.25625,
         "maximum": 3.1587499999999995
     },
     "1705-2050-engine mass per power": {
-        "amount": 2.4006499999999997,
+        "amount": 2.8,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-d",
@@ -47833,7 +47833,7 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2.4006499999999997,
+        "loc": 2.8,
         "minimum": 2.1434375,
         "maximum": 3.0008124999999994
     },
@@ -47922,7 +47922,7 @@
         "maximum": 3.5
     },
     "1709-2030-engine mass per power": {
-        "amount": 2.755,
+        "amount": 2.9,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -47945,12 +47945,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2.755,
+        "loc": 2.9,
         "minimum": 2.375,
         "maximum": 3.3249999999999997
     },
     "1710-2040-engine mass per power": {
-        "amount": 2.61725,
+        "amount": 2.9,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -47973,12 +47973,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2.61725,
+        "loc": 2.9,
         "minimum": 2.25625,
         "maximum": 3.1587499999999995
     },
     "1711-2050-engine mass per power": {
-        "amount": 2.4863874999999998,
+        "amount": 2.9,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
@@ -48001,7 +48001,7 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2.4863874999999998,
+        "loc": 2.9,
         "minimum": 2.1434375,
         "maximum": 3.0008124999999994
     },
@@ -49326,7 +49326,7 @@
         "maximum": 0.95
     },
     "1769-2030-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.935,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49345,12 +49345,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
+        "loc": 0.935,
+        "minimum": 0.8415,
         "maximum": 0.95
     },
     "1770-2040-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.94,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49369,12 +49369,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.94,
+        "minimum": 0.846,
+        "maximum": 0.96
     },
     "1771-2050-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.945,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49393,9 +49393,9 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.945,
+        "minimum": 0.8504999999999999,
+        "maximum": 0.96
     },
     "1772-2000-engine efficiency": {
         "amount": 0.93,
@@ -49470,7 +49470,7 @@
         "maximum": 0.95
     },
     "1775-2030-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.935,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49489,12 +49489,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
+        "loc": 0.935,
+        "minimum": 0.8415,
         "maximum": 0.95
     },
     "1776-2040-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.94,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49513,12 +49513,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.94,
+        "minimum": 0.846,
+        "maximum": 0.96
     },
     "1777-2050-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.945,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49537,9 +49537,9 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.945,
+        "minimum": 0.8504999999999999,
+        "maximum": 0.96
     },
     "1778-2000-engine efficiency": {
         "amount": 0.93,
@@ -49614,7 +49614,7 @@
         "maximum": 0.95
     },
     "1781-2030-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.935,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49633,12 +49633,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
+        "loc": 0.935,
+        "minimum": 0.8415,
         "maximum": 0.95
     },
     "1782-2040-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.94,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49657,12 +49657,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.94,
+        "minimum": 0.846,
+        "maximum": 0.96
     },
     "1783-2050-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.945,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49681,9 +49681,9 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.945,
+        "minimum": 0.8504999999999999,
+        "maximum": 0.96
     },
     "1784-2000-engine efficiency": {
         "amount": 0.93,
@@ -49758,7 +49758,7 @@
         "maximum": 0.95
     },
     "1787-2030-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.935,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49777,12 +49777,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
+        "loc": 0.935,
+        "minimum": 0.8415,
         "maximum": 0.95
     },
     "1788-2040-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.94,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49801,12 +49801,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.94,
+        "minimum": 0.846,
+        "maximum": 0.96
     },
     "1789-2050-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.945,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49825,9 +49825,9 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.945,
+        "minimum": 0.8504999999999999,
+        "maximum": 0.96
     },
     "1790-2000-engine efficiency": {
         "amount": 0.93,
@@ -49902,7 +49902,7 @@
         "maximum": 0.95
     },
     "1793-2030-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.935,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49921,12 +49921,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
+        "loc": 0.935,
+        "minimum": 0.8415,
         "maximum": 0.95
     },
     "1794-2040-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.94,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49945,12 +49945,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.94,
+        "minimum": 0.846,
+        "maximum": 0.96
     },
     "1795-2050-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.945,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -49969,9 +49969,9 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.945,
+        "minimum": 0.8504999999999999,
+        "maximum": 0.96
     },
     "1796-2000-engine efficiency": {
         "amount": 0.93,
@@ -50046,7 +50046,7 @@
         "maximum": 0.95
     },
     "1799-2030-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.935,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50065,12 +50065,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
+        "loc": 0.935,
+        "minimum": 0.8415,
         "maximum": 0.95
     },
     "1800-2040-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.94,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50089,12 +50089,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.94,
+        "minimum": 0.846,
+        "maximum": 0.96
     },
     "1801-2050-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.945,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50113,9 +50113,9 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.945,
+        "minimum": 0.8504999999999999,
+        "maximum": 0.96
     },
     "1802-2000-engine efficiency": {
         "amount": 0.93,
@@ -50190,7 +50190,7 @@
         "maximum": 0.95
     },
     "1805-2030-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.935,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50209,12 +50209,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
+        "loc": 0.935,
+        "minimum": 0.8415,
         "maximum": 0.95
     },
     "1806-2040-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.94,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50233,12 +50233,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.94,
+        "minimum": 0.846,
+        "maximum": 0.96
     },
     "1807-2050-engine efficiency": {
-        "amount": 0.93,
+        "amount": 0.945,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50257,9 +50257,9 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
+        "loc": 0.945,
+        "minimum": 0.8504999999999999,
+        "maximum": 0.96
     },
     "1808-2000-transmission efficiency": {
         "amount": 0.89,
@@ -50349,10 +50349,10 @@
         "uncertainty_type": 5,
         "loc": 0.89,
         "minimum": 0.801,
-        "maximum": 0.95
+        "maximum": 0.9790000000000001
     },
     "1811-2030-transmission efficiency": {
-        "amount": 0.89,
+        "amount": 0.9,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50377,12 +50377,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.89,
-        "minimum": 0.801,
-        "maximum": 0.95
+        "loc": 0.9,
+        "minimum": 0.81,
+        "maximum": 0.9900000000000001
     },
     "1812-2040-transmission efficiency": {
-        "amount": 0.89,
+        "amount": 0.91,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50407,12 +50407,12 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.89,
-        "minimum": 0.801,
-        "maximum": 0.95
+        "loc": 0.91,
+        "minimum": 0.8190000000000001,
+        "maximum": 0.96
     },
     "1813-2050-transmission efficiency": {
-        "amount": 0.89,
+        "amount": 0.92,
         "category": "Powertrain",
         "powertrain": [
             "BEV",
@@ -50437,9 +50437,9 @@
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.89,
-        "minimum": 0.801,
-        "maximum": 0.95
+        "loc": 0.92,
+        "minimum": 0.8280000000000001,
+        "maximum": 0.97
     },
     "1814-2000-emotor mass per power": {
         "amount": 1.46,

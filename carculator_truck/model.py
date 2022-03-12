@@ -58,7 +58,7 @@ class TruckModel:
         country=None,
         fuel_blend=None,
         energy_storage=None,
-        energy_target={2025: 0.85, 2030: 0.7},
+        energy_target={2025: 0.85, 2030: 0.7, 2050: 0.6},
         target_range=None,
     ):
 
