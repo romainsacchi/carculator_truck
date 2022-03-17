@@ -4,11 +4,11 @@ import io
 import json
 import os
 import uuid
+from typing import Dict, Tuple
 
 import bw2io
 import numpy as np
 import pyprind
-from typing import Dict, Tuple
 from bw2io.export.excel import create_valid_worksheet_name, safe_filename, xlsxwriter
 
 from . import DATA_DIR, __version__
