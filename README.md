@@ -8,7 +8,6 @@
 <p align="center">
   <a href="https://badge.fury.io/py/carculator-truck" target="_blank"><img src="https://badge.fury.io/py/carculator-truck.svg"></a>
   <a href="https://github.com/romainsacchi/carculator_truck" target="_blank"><img src="https://github.com/romainsacchi/carculator_truck/actions/workflows/main.yml/badge.svg?branch=master"></a>
-  <a href="https://ci.appveyor.com/project/romainsacchi/carculator_truck" target="_blank"><img src="https://ci.appveyor.com/api/projects/status/github/romainsacchi/carculator_truck?svg=true"></a>
   <a href="https://coveralls.io/github/romainsacchi/carculator_truck" target="_blank"><img src="https://coveralls.io/repos/github/romainsacchi/carculator_truck/badge.svg"></a>
   <a href="https://carculator_truck.readthedocs.io/en/latest/" target="_blank"><img src="https://readthedocs.org/projects/carculator_truck/badge/?version=latest"></a>
  </p>
@@ -21,7 +20,7 @@ Based on the Life Cycle Assessment tool for passenger vehicles [carculator](http
 
 See [the documentation](https://carculator_truck.readthedocs.io/en/latest/index.html) for more detail, validation, etc.
 
-The model has been the subject of a submission to the journal <i>Environmental Science and Technology</i>.
+The model has been introduced and detailed in a publication to the journal <i>Environmental Science and Technology</i>.
 
 [1] Sacchi R, Bauer C, Cox BL. Does Size Matter? The Influence of Size, Load Factor, Range Autonomy, and Application Type on the Life Cycle Assessment of Current and Future Medium and Heavy-Duty Vehicles.
 Environ Sci Technol 2021. [https://doi.org/10.1021/acs.est.0c07773](https://doi.org/10.1021/acs.est.0c07773).
