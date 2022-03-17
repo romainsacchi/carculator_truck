@@ -122,8 +122,6 @@ class ParticulatesEmissionsModel:
             )
         )
 
-        print(res.shape)
-
         return res.transpose(1, 2, 0, 3)[..., None, :]
 
     def get_tire_wear_emissions(self):
