@@ -395,10 +395,14 @@ class TruckModel:
                 vals = np.where(
                     (
                         self.array.sel(
-                            parameter="driving mass", powertrain=pt, year=y, value=0
+                            parameter="driving mass", powertrain=pt, year=y,value="reference"
+                            if "reference" in self.array.coords["value"]
+                            else 0
                         ).values
                         < self.array.sel(
-                            parameter="gross mass", powertrain=pt, year=y, value=0
+                            parameter="gross mass", powertrain=pt, year=y, value="reference"
+                        if "reference" in self.array.coords["value"]
+                        else 0
                         )
                     ),
                     vals,
@@ -1611,6 +1615,7 @@ class TruckModel:
         )
 
         res = pem.get_abrasion_emissions()
+
         self[list_param] = res
 
         # brake emissions are discounted by the use of regenerative braking
