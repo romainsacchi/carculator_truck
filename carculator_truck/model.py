@@ -395,14 +395,20 @@ class TruckModel:
                 vals = np.where(
                     (
                         self.array.sel(
-                            parameter="driving mass", powertrain=pt, year=y,value="reference"
+                            parameter="driving mass",
+                            powertrain=pt,
+                            year=y,
+                            value="reference"
                             if "reference" in self.array.coords["value"]
-                            else 0
+                            else 0,
                         ).values
                         < self.array.sel(
-                            parameter="gross mass", powertrain=pt, year=y, value="reference"
-                        if "reference" in self.array.coords["value"]
-                        else 0
+                            parameter="gross mass",
+                            powertrain=pt,
+                            year=y,
+                            value="reference"
+                            if "reference" in self.array.coords["value"]
+                            else 0,
                         )
                     ),
                     vals,
