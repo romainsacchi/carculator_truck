@@ -21,7 +21,12 @@ def get_emission_factors():
     """
     filepath = DATA_DIR / "hot_trucks.csv"
 
-    hot = pd.read_csv(filepath).groupby(["variable", "powertrain", "euro_class", "component"])["hot"].mean().to_xarray()
+    hot = (
+        pd.read_csv(filepath)
+        .groupby(["variable", "powertrain", "euro_class", "component"])["hot"]
+        .mean()
+        .to_xarray()
+    )
 
     return hot
 
