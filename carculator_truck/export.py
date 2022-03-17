@@ -12,6 +12,7 @@ from bw2io.export.excel import create_valid_worksheet_name, safe_filename, xlsxw
 
 from . import DATA_DIR, __version__
 
+
 def load_mapping_38_to_37() -> Dict[
     Tuple[str, str, str, str], Tuple[str, str, str, str]
 ]:
@@ -48,6 +49,7 @@ def load_mapping_38_to_37() -> Dict[
         )
 
     return dict_ei38
+
 
 def load_mapping_37_to_36():
     """Load mapping dictionary between ecoinvent 3.7 and 3.6"""
