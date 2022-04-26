@@ -89,19 +89,27 @@ class TruckModel:
         ]
 
         for pt in l_pwt:
-            with self(pt) as cpm:
-                if pt in self.energy_storage["electric"]:
-                    cpm["battery cell energy density"] = cpm[
-                        f"battery cell energy density, {self.energy_storage['electric'][pt].split('-')[0].strip()}"
-                    ]
-                    cpm["battery cell mass share"] = cpm[
-                        f"battery cell mass share, {self.energy_storage['electric'][pt].split('-')[0].strip()}"
-                    ]
-                else:
-                    cpm["battery cell energy density"] = cpm[
-                        "battery cell energy density, NMC"
-                    ]
-                    cpm["battery cell mass share"] = cpm["battery cell mass share, NMC"]
+
+            if pt in self.energy_storage["electric"]:
+                self.array.loc[dict(powertrain=pt, parameter="battery cell energy density")] = (
+                    self.array.loc[dict(powertrain=pt, parameter=f"battery cell energy density, {self.energy_storage['electric'][pt].split('-')[0].strip()}")]
+                )
+
+                self.array.loc[dict(powertrain=pt, parameter="battery cell mass share")] = (
+                    self.array.loc[dict(powertrain=pt,
+                                        parameter=f"battery cell mass share, {self.energy_storage['electric'][pt].split('-')[0].strip()}")]
+                )
+
+            else:
+                self.array.loc[dict(powertrain=pt, parameter="battery cell energy density")] = (
+                    self.array.loc[dict(powertrain=pt,
+                                        parameter="battery cell energy density, NMC")]
+                )
+
+                self.array.loc[dict(powertrain=pt, parameter="battery cell mass share")] = (
+                    self.array.loc[dict(powertrain=pt,
+                                        parameter="battery cell mass share, NMC")]
+                )
 
         target_ranges = {
             "Urban delivery": 150,
@@ -324,6 +332,7 @@ class TruckModel:
         self.set_noise_emissions()
         self.set_hot_emissions()
         self.create_PHEV()
+        self.drop_hybrid()
         self.drop_hybrid()
 
         self.array.values = np.clip(self.array.values, 0, None)
@@ -628,10 +637,11 @@ class TruckModel:
         l_pwt = [p for p in self.array.powertrain.values if p in ["BEV", "PHEV-e"]]
 
         for pt in l_pwt:
-            with self(pt) as cpm:
-                cpm["electricity consumption"] = (
-                    cpm["TtW energy"] / cpm["battery charge efficiency"]
-                ) / 3600
+            self.array.loc[dict(powertrain=pt, parameter="electricity consumption")] = (
+                self.array.loc[dict(powertrain=pt, parameter="TtW energy")]
+                / self.array.loc[dict(powertrain=pt, parameter="battery charge efficiency")]
+            ) / 3600
+
 
     def calculate_ttw_energy(self):
         """
@@ -1003,29 +1013,29 @@ class TruckModel:
             for pwt in ["BEV", "PHEV-e"]
             if pwt in self.array.coords["powertrain"].values
         ]:
-            with self(pt) as cpm:
-                battery_tech_label = (
+            battery_tech_label = (
                     "battery cycle life, "
                     + self.energy_storage["electric"][pt].split("-")[0]
-                )
-                cpm["battery lifetime replacements"] = finite(
-                    np.ceil(
-                        np.clip(
-                            (
-                                # number of charge cycles needed divided by the expected cycle life
+            )
+
+            self.array.loc[dict(powertrain=pt, parameter="battery lifetime replacements")] = finite(
+                np.ceil(
+                    np.clip(
+                        (
+                            # number of charge cycles needed divided by the expected cycle life
                                 (
-                                    cpm["lifetime kilometers"]
-                                    * (cpm["TtW energy"] / 3600)
+                                        self.array.loc[dict(powertrain=pt, parameter="lifetime kilometers")]
+                                        * (self.array.loc[dict(powertrain=pt, parameter="TtW energy")] / 3600)
                                 )
-                                / cpm["electric energy stored"]
-                                / cpm[battery_tech_label]
-                            )
-                            - 1,
-                            1,
-                            None,
+                                / self.array.loc[dict(powertrain=pt, parameter="electric energy stored")]
+                                / self.array.loc[dict(powertrain=pt, parameter=battery_tech_label)]
                         )
+                        - 1,
+                        1,
+                        None,
                     )
                 )
+            )
 
         # The number of fuel cell replacements is based on the average distance driven
         # with a set of fuel cells given their lifetime expressed in hours of use.
@@ -1192,8 +1202,9 @@ class TruckModel:
                 / 3.6
             )
 
-            with self("PHEV-e") as cpm:
-                cpm["electric utility factor"] = range / cpm["target range"]
+            self.array.loc[dict(powertrain="PHEV-e", parameter="electric utility factor")] = (
+                range / self.array.loc[dict(powertrain="PHEV-e", parameter="target range")]
+            )
 
     def create_PHEV(self):
         """PHEV-p/d is the range-weighted average between PHEV-c-p/PHEV-c-d and PHEV-e."""
@@ -1310,129 +1321,194 @@ class TruckModel:
             if pwt in self.array.coords["powertrain"].values
         ]:
 
-            with self(pt) as cpm:
+            # calculate the average LHV based on fuel blend
+            fuel_type = d_map_fuel[pt]
+            primary_fuel_share = self.fuel_blend[fuel_type]["primary"]["share"]
+            primary_fuel_lhv = self.fuel_blend[fuel_type]["primary"]["lhv"]
+            secondary_fuel_share = self.fuel_blend[fuel_type]["secondary"]["share"]
+            secondary_fuel_lhv = self.fuel_blend[fuel_type]["secondary"]["lhv"]
 
-                # calculate the average LHV based on fuel blend
-                fuel_type = d_map_fuel[pt]
-                primary_fuel_share = self.fuel_blend[fuel_type]["primary"]["share"]
-                primary_fuel_lhv = self.fuel_blend[fuel_type]["primary"]["lhv"]
-                secondary_fuel_share = self.fuel_blend[fuel_type]["secondary"]["share"]
-                secondary_fuel_lhv = self.fuel_blend[fuel_type]["secondary"]["lhv"]
+            blend_lhv = (np.array(primary_fuel_share) * primary_fuel_lhv) + (
+                np.array(secondary_fuel_share) * secondary_fuel_lhv
+            )
 
-                blend_lhv = (np.array(primary_fuel_share) * primary_fuel_lhv) + (
-                    np.array(secondary_fuel_share) * secondary_fuel_lhv
+            self.array.loc[dict(powertrain=pt, parameter="fuel mass")] = (
+                self.array.loc[dict(powertrain=pt, parameter="target range")]
+                * (self.array.loc[dict(powertrain=pt, parameter="TtW energy")] / 1000)
+            ) / blend_lhv.reshape((-1, 1))
+
+            self.array.loc[dict(powertrain=pt, parameter="oxidation energy stored")] = (
+                self.array.loc[dict(powertrain=pt, parameter="fuel mass")]
+                * blend_lhv.reshape((-1, 1))
+            ) / 3.6
+
+            if pt == "ICEV-g":
+                # Based on manufacturer data
+                # We use a four-cylinder configuration
+                # Of 320L each
+                # A cylinder of 320L @ 200 bar can hold 57.6 kg of CNG
+                nb_cylinder = np.ceil(
+                    self.array.loc[dict(powertrain=pt, parameter="fuel mass")] / 57.6
                 )
 
-                cpm["fuel mass"] = (
-                    cpm["target range"] * (cpm["TtW energy"] / 1000)
-                ) / blend_lhv.reshape((-1, 1))
+                self.array.loc[dict(powertrain=pt, parameter="fuel tank mass")] = (
+                    (0.018 * np.power(57.6, 2)) - (0.6011 * 57.6) + 52.235
+                ) * nb_cylinder
 
-                cpm["oxidation energy stored"] = (
-                    cpm["fuel mass"] * blend_lhv.reshape((-1, 1))
-                ) / 3.6
-
-                if pt == "ICEV-g":
-                    # Based on manufacturer data
-                    # We use a four-cyclinder configuration
-                    # Of 320L each
-                    # A cylinder of 320L @ 200 bar can hold 57.6 kg of CNG
-                    nb_cylinder = np.ceil(cpm["fuel mass"] / 57.6)
-
-                    cpm["fuel tank mass"] = (
-                        (0.018 * np.power(57.6, 2)) - (0.6011 * 57.6) + 52.235
-                    ) * nb_cylinder
-
-                else:
-                    # From Wolff et al. 2020, Sustainability, DOI: 10.3390/su12135396.
-                    # We adjusted though the intercept from the original function (-54)
-                    # because we size here trucks based on the range autonomy
-                    # a low range autonomy would produce a negative fuel tank mass
-                    cpm["fuel tank mass"] = (
-                        17.159 * np.log(cpm["fuel mass"] * (1 / 0.832)) - 30
+            else:
+                # From Wolff et al. 2020, Sustainability, DOI: 10.3390/su12135396.
+                # We adjusted though the intercept from the original function (-54)
+                # because we size here trucks based on the range autonomy
+                # a low range autonomy would produce a negative fuel tank mass
+                self.array.loc[dict(powertrain=pt, parameter="fuel tank mass")] = (
+                    17.159
+                    * np.log(
+                        self.array.loc[dict(powertrain=pt, parameter="fuel mass")]
+                        * (1 / 0.832)
                     )
+                    - 30
+                )
 
         for pt in [
             pwt
             for pwt in ["ICEV-d", "HEV-d", "PHEV-c-d", "ICEV-g"]
             if pwt in self.array.coords["powertrain"].values
         ]:
-            with self(pt) as cpm:
-                cpm["battery power"] = cpm["electric power"]
-                cpm["battery cell mass"] = (
-                    cpm["battery power"] / cpm["battery cell power density"]
-                )
-                cpm["battery cell mass share"] = cpm["battery cell mass share"].clip(
-                    min=0, max=1
-                )
-                cpm["battery BoP mass"] = cpm["battery cell mass"] * (
-                    1 - cpm["battery cell mass share"]
-                )
+            self.array.loc[
+                dict(powertrain=pt, parameter="battery power")
+            ] = self.array.loc[dict(powertrain=pt, parameter="electric power")]
+            self.array.loc[dict(powertrain=pt, parameter="battery cell mass")] = (
+                self.array.loc[dict(powertrain=pt, parameter="battery power")]
+                / self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell power density")
+                ]
+            )
+            self.array.loc[
+                dict(powertrain=pt, parameter="battery cell mass share")
+            ] = np.clip(
+                self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell mass share")
+                ],
+                0,
+                1,
+            )
+
+            self.array.loc[
+                dict(powertrain=pt, parameter="battery BoP mass")
+            ] = self.array.loc[dict(powertrain=pt, parameter="battery cell mass")] * (
+                1
+                - self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell mass share")
+                ]
+            )
 
         for pt in [
             pwt
             for pwt in ["BEV", "PHEV-e"]
             if pwt in self.array.coords["powertrain"].values
         ]:
-            with self(pt) as cpm:
-                cpm["electric energy stored"] = (
-                    (cpm["target range"] * (cpm["TtW energy"] / 1000))
-                    / cpm["battery DoD"]
-                    / 3.6
+            self.array.loc[dict(powertrain=pt, parameter="electric energy stored")] = (
+                (
+                    self.array.loc[dict(powertrain=pt, parameter="target range")]
+                    * (
+                        self.array.loc[dict(powertrain=pt, parameter="TtW energy")]
+                        / 1000
+                    )
                 )
+                / self.array.loc[dict(powertrain=pt, parameter="battery DoD")]
+                / 3.6
+            )
 
-                battery_tech_label = (
-                    "battery cell energy density, "
-                    + self.energy_storage["electric"][pt].split("-")[0]
-                )
-                cpm["battery cell mass"] = (
-                    cpm["electric energy stored"] / cpm[battery_tech_label]
-                )
+            battery_tech_label = (
+                "battery cell energy density, "
+                + self.energy_storage["electric"][pt].split("-")[0]
+            )
+            self.array.loc[dict(powertrain=pt, parameter="battery cell mass")] = (
+                self.array.loc[dict(powertrain=pt, parameter="electric energy stored")]
+                / self.array.loc[dict(powertrain=pt, parameter=battery_tech_label)]
+            )
 
-                cpm["energy battery mass"] = (
-                    cpm["battery cell mass"] / cpm["battery cell mass share"]
-                )
+            self.array.loc[dict(powertrain=pt, parameter="energy battery mass")] = (
+                self.array.loc[dict(powertrain=pt, parameter="battery cell mass")]
+                / self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell mass share")
+                ]
+            )
 
-                cpm["battery BoP mass"] = (
-                    cpm["energy battery mass"] - cpm["battery cell mass"]
-                )
+            self.array.loc[dict(powertrain=pt, parameter="battery BoP mass")] = (
+                self.array.loc[dict(powertrain=pt, parameter="energy battery mass")]
+                - self.array.loc[dict(powertrain=pt, parameter="battery cell mass")]
+            )
 
         if "FCEV" in self.array.coords["powertrain"].values:
-            with self("FCEV") as cpm:
-                cpm["fuel mass"] = (
-                    cpm["target range"] * (cpm["TtW energy"] / 1000)
-                ) / cpm["LHV fuel MJ per kg"]
-                cpm["oxidation energy stored"] = cpm["fuel mass"] * 120 / 3.6  # kWh
 
-                cpm["fuel tank mass"] = (
-                    (-0.1916 * np.power(cpm["fuel mass"], 2))
-                    + (14.586 * cpm["fuel mass"])
-                    + 10.805
+            self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")] = (
+                self.array.loc[dict(powertrain="FCEV", parameter="target range")]
+                * (
+                    self.array.loc[dict(powertrain="FCEV", parameter="TtW energy")]
+                    / 1000
                 )
+            ) / self.array.loc[dict(powertrain="FCEV", parameter="LHV fuel MJ per kg")]
 
-                # Fuel cell buses do also have a battery, which capacity
-                # corresponds roughly to 6% of the capacity contained in the
-                # H2 tank
+            self.array.loc[
+                dict(powertrain="FCEV", parameter="oxidation energy stored")
+            ] = (
+                self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")]
+                * 120
+                / 3.6
+            )
 
-                battery_tech_label = (
-                    "battery cell energy density, "
-                    + self.energy_storage["electric"]["BEV"].split("-")[0]
+            self.array.loc[dict(powertrain="FCEV", parameter="fuel tank mass")] = (
+                (
+                    -0.1916
+                    * np.power(
+                        self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")],
+                        2,
+                    )
                 )
-
-                cpm["electric energy stored"] = 20 + (
-                    cpm["fuel mass"] * 120 / 3.6 * 0.06
+                + (
+                    14.586
+                    * self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")]
                 )
+                + 10.805
+            )
 
-                cpm["battery cell mass"] = (
-                    cpm["electric energy stored"] / cpm[battery_tech_label]
-                )
+            # Fuel cell buses do also have a battery, which capacity
+            # corresponds roughly to 6% of the capacity contained in the
+            # H2 tank
 
-                cpm["energy battery mass"] = (
-                    cpm["battery cell mass"] / cpm["battery cell mass share"]
-                )
+            battery_tech_label = (
+                "battery cell energy density, "
+                + self.energy_storage["electric"]["BEV"].split("-")[0]
+            )
 
-                cpm["battery BoP mass"] = (
-                    cpm["energy battery mass"] - cpm["battery cell mass"]
-                )
+            self.array.loc[
+                dict(powertrain="FCEV", parameter="electric energy stored")
+            ] = 20 + (
+                self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")]
+                * 120
+                / 3.6
+                * 0.06
+            )
+
+            self.array.loc[dict(powertrain="FCEV", parameter="battery cell mass")] = (
+                self.array.loc[
+                    dict(powertrain="FCEV", parameter="electric energy stored")
+                ]
+                / self.array.loc[dict(powertrain="FCEV", parameter=battery_tech_label)]
+            )
+
+            self.array.loc[dict(powertrain="FCEV", parameter="energy battery mass")] = (
+                self.array.loc[dict(powertrain="FCEV", parameter="battery cell mass")]
+                / self.array.loc[
+                    dict(powertrain="FCEV", parameter="battery cell mass share")
+                ]
+            )
+
+            self.array.loc[dict(powertrain="FCEV", parameter="battery BoP mass")] = (
+                self.array.loc[dict(powertrain="FCEV", parameter="energy battery mass")]
+                - self.array.loc[dict(powertrain="FCEV", parameter="battery cell mass")]
+            )
 
     def set_costs(self):
 
@@ -1492,8 +1568,11 @@ class TruckModel:
             for pwt in ["BEV", "PHEV-e"]
             if pwt in self.array.coords["powertrain"].values
         ]:
-            with self(pt) as cpm:
-                cpm["energy cost"] /= cpm["battery charge efficiency"]
+            self.array.loc[
+                dict(powertrain=pt, parameter="energy cost")
+            ] /= self.array.loc[
+                dict(powertrain=pt, parameter="battery charge efficiency")
+            ]
 
         self["component replacement cost"] = (
             self["energy battery cost"] * self["battery lifetime replacements"]
@@ -2030,6 +2109,38 @@ class TruckModel:
         else:
             return response / response.sel(value="reference")
 
+    def get_share_biodiesel(self):
+        """Returns average share of biodiesel according to historical IEA stats"""
+        share_biofuel = np.squeeze(
+            np.clip(
+                self.bs.biodiesel.sel(country=self.country)
+                .interp(
+                    year=self.array.coords["year"].values,
+                    kwargs={"fill_value": "extrapolate"},
+                )
+                .values,
+                0,
+                0.2,
+            )
+        )
+        return share_biofuel
+
+    def get_share_biomethane(self):
+        """Returns average share of biomethane according to historical IEA stats"""
+        share_biofuel = np.squeeze(
+            np.clip(
+                self.bs.biomethane.sel(country=self.country)
+                .interp(
+                    year=self.array.coords["year"].values,
+                    kwargs={"fill_value": "extrapolate"},
+                )
+                .values,
+                0,
+                1,
+            )
+        )
+        return share_biofuel
+
     def get_share_biofuel(self):
 
         try:
@@ -2121,7 +2232,18 @@ class TruckModel:
             if primary == "electrolysis":
                 secondary_share = np.zeros_like(self.array.year.values)
             else:
-                secondary_share = self.get_share_biofuel()
+                if fuel_type == "diesel":
+                    if self.country in self.bs.biodiesel.country.values:
+                        secondary_share = self.get_share_biodiesel()
+                    else:
+                        secondary_share = self.get_share_biofuel()
+                elif fuel_type == "cng":
+                    if self.country in self.bs.biomethane.country.values:
+                        secondary_share = self.get_share_biomethane()
+                    else:
+                        secondary_share = self.get_share_biofuel()
+                else:
+                    secondary_share = self.get_share_biofuel()
 
             primary_share = 1 - np.array(secondary_share)
 
