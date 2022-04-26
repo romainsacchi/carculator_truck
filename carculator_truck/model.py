@@ -1470,7 +1470,6 @@ class TruckModel:
 
         if "FCEV" in self.array.coords["powertrain"].values:
 
-
             self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")] = (
                 self.array.loc[dict(powertrain="FCEV", parameter="target range")]
                 * (
@@ -1496,19 +1495,16 @@ class TruckModel:
             )
 
             self.array.loc[dict(powertrain="FCEV", parameter="fuel tank mass")] = (
-              (
-                      -0.1916
-                      * np.power(
-                  14.4,
-                  2,
-              )
-              )
-              + (
-                      14.586
-                      * 14.4
-              )
-              + 10.805
-              ) * nb_cylinder
+                (
+                    -0.1916
+                    * np.power(
+                        14.4,
+                        2,
+                    )
+                )
+                + (14.586 * 14.4)
+                + 10.805
+            ) * nb_cylinder
 
             # Fuel cell buses do also have a battery, which capacity
             # corresponds roughly to 6% of the capacity contained in the
