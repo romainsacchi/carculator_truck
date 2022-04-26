@@ -1442,6 +1442,7 @@ class TruckModel:
 
         if "FCEV" in self.array.coords["powertrain"].values:
 
+
             self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")] = (
                 self.array.loc[dict(powertrain="FCEV", parameter="target range")]
                 * (
@@ -1458,20 +1459,28 @@ class TruckModel:
                 / 3.6
             )
 
-            self.array.loc[dict(powertrain="FCEV", parameter="fuel tank mass")] = (
-                (
-                    -0.1916
-                    * np.power(
-                        self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")],
-                        2,
-                    )
-                )
-                + (
-                    14.586
-                    * self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")]
-                )
-                + 10.805
+            # Based on manufacturer data
+            # We use a four-cylinder configuration
+            # Of 650L each
+            # A cylinder of 650L @ 700 bar can hold 14.4 kg of H2
+            nb_cylinder = np.ceil(
+                self.array.loc[dict(powertrain="FCEV", parameter="fuel mass")] / 14.4
             )
+
+            self.array.loc[dict(powertrain="FCEV", parameter="fuel tank mass")] = (
+              (
+                      -0.1916
+                      * np.power(
+                  14.4,
+                  2,
+              )
+              )
+              + (
+                      14.586
+                      * 14.4
+              )
+              + 10.805
+              ) * nb_cylinder
 
             # Fuel cell buses do also have a battery, which capacity
             # corresponds roughly to 6% of the capacity contained in the
