@@ -91,25 +91,36 @@ class TruckModel:
         for pt in l_pwt:
 
             if pt in self.energy_storage["electric"]:
-                self.array.loc[dict(powertrain=pt, parameter="battery cell energy density")] = (
-                    self.array.loc[dict(powertrain=pt, parameter=f"battery cell energy density, {self.energy_storage['electric'][pt].split('-')[0].strip()}")]
-                )
+                self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell energy density")
+                ] = self.array.loc[
+                    dict(
+                        powertrain=pt,
+                        parameter=f"battery cell energy density, {self.energy_storage['electric'][pt].split('-')[0].strip()}",
+                    )
+                ]
 
-                self.array.loc[dict(powertrain=pt, parameter="battery cell mass share")] = (
-                    self.array.loc[dict(powertrain=pt,
-                                        parameter=f"battery cell mass share, {self.energy_storage['electric'][pt].split('-')[0].strip()}")]
-                )
+                self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell mass share")
+                ] = self.array.loc[
+                    dict(
+                        powertrain=pt,
+                        parameter=f"battery cell mass share, {self.energy_storage['electric'][pt].split('-')[0].strip()}",
+                    )
+                ]
 
             else:
-                self.array.loc[dict(powertrain=pt, parameter="battery cell energy density")] = (
-                    self.array.loc[dict(powertrain=pt,
-                                        parameter="battery cell energy density, NMC")]
-                )
+                self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell energy density")
+                ] = self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell energy density, NMC")
+                ]
 
-                self.array.loc[dict(powertrain=pt, parameter="battery cell mass share")] = (
-                    self.array.loc[dict(powertrain=pt,
-                                        parameter="battery cell mass share, NMC")]
-                )
+                self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell mass share")
+                ] = self.array.loc[
+                    dict(powertrain=pt, parameter="battery cell mass share, NMC")
+                ]
 
         target_ranges = {
             "Urban delivery": 150,
@@ -639,9 +650,10 @@ class TruckModel:
         for pt in l_pwt:
             self.array.loc[dict(powertrain=pt, parameter="electricity consumption")] = (
                 self.array.loc[dict(powertrain=pt, parameter="TtW energy")]
-                / self.array.loc[dict(powertrain=pt, parameter="battery charge efficiency")]
+                / self.array.loc[
+                    dict(powertrain=pt, parameter="battery charge efficiency")
+                ]
             ) / 3600
-
 
     def calculate_ttw_energy(self):
         """
@@ -1014,21 +1026,34 @@ class TruckModel:
             if pwt in self.array.coords["powertrain"].values
         ]:
             battery_tech_label = (
-                    "battery cycle life, "
-                    + self.energy_storage["electric"][pt].split("-")[0]
+                "battery cycle life, "
+                + self.energy_storage["electric"][pt].split("-")[0]
             )
 
-            self.array.loc[dict(powertrain=pt, parameter="battery lifetime replacements")] = finite(
+            self.array.loc[
+                dict(powertrain=pt, parameter="battery lifetime replacements")
+            ] = finite(
                 np.ceil(
                     np.clip(
                         (
                             # number of charge cycles needed divided by the expected cycle life
-                                (
-                                        self.array.loc[dict(powertrain=pt, parameter="lifetime kilometers")]
-                                        * (self.array.loc[dict(powertrain=pt, parameter="TtW energy")] / 3600)
+                            (
+                                self.array.loc[
+                                    dict(powertrain=pt, parameter="lifetime kilometers")
+                                ]
+                                * (
+                                    self.array.loc[
+                                        dict(powertrain=pt, parameter="TtW energy")
+                                    ]
+                                    / 3600
                                 )
-                                / self.array.loc[dict(powertrain=pt, parameter="electric energy stored")]
-                                / self.array.loc[dict(powertrain=pt, parameter=battery_tech_label)]
+                            )
+                            / self.array.loc[
+                                dict(powertrain=pt, parameter="electric energy stored")
+                            ]
+                            / self.array.loc[
+                                dict(powertrain=pt, parameter=battery_tech_label)
+                            ]
                         )
                         - 1,
                         1,
@@ -1202,8 +1227,11 @@ class TruckModel:
                 / 3.6
             )
 
-            self.array.loc[dict(powertrain="PHEV-e", parameter="electric utility factor")] = (
-                range / self.array.loc[dict(powertrain="PHEV-e", parameter="target range")]
+            self.array.loc[
+                dict(powertrain="PHEV-e", parameter="electric utility factor")
+            ] = (
+                range
+                / self.array.loc[dict(powertrain="PHEV-e", parameter="target range")]
             )
 
     def create_PHEV(self):
