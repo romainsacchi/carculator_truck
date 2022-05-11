@@ -19,7 +19,7 @@ requirements:
     - setuptools
   run:
     - pandas
-    - xarray==0.17
+    - xarray
     - numpy
     - klausen
     - xlrd
