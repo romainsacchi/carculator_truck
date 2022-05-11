@@ -28,6 +28,7 @@ requirements:
     - prettytable
     - pycountry
     - wurst
+    - pyyaml
 
 test:
   imports:

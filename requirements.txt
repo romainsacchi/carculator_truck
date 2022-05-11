@@ -8,3 +8,4 @@ bw2io
 prettytable
 pycountry
 wurst
+pyyaml
