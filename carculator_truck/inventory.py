@@ -3756,6 +3756,29 @@ class InventoryCalculation:
         :param array: :attr:`array` from :class:`TruckModel` class
         """
 
+        # assembly operations
+        self.A[
+        :,
+        self.inputs[
+            (
+                "assembly operation, for lorry",
+                "RER",
+                "kilogram",
+                "assembly operation, for lorry",
+            )
+        ],
+        [
+            self.inputs[i]
+            for i in self.inputs
+            if "duty truck" in i[0] and i[2] == "unit" and "market" not in i[0]
+        ],
+        ] = (
+                array[self.array_inputs["curb mass"]]
+                / array[self.array_inputs["lifetime kilometers"], :]
+                / (array[self.array_inputs["total cargo mass"], :] / 1000)
+                * -1
+        )
+
         # Glider/Frame
         self.A[
             :,
@@ -4455,10 +4478,10 @@ class InventoryCalculation:
             :,
             self.inputs[
                 (
-                    "Fuel tank, compressed hydrogen gas, 700bar, with aluminium liner",
+                    "Fuel tank, compressed natural gas, 200 bar",
                     "RER",
                     "kilogram",
-                    "Hydrogen tank",
+                    "Fuel tank, compressed natural gas, 200 bar",
                 )
             ],
             self.index_cng,
@@ -4475,7 +4498,7 @@ class InventoryCalculation:
                 "hydrogen"
             ]["type"]
         else:
-            hydro_tank_technology = "carbon fiber"
+            hydro_tank_technology = "aluminium"
 
         dict_tank_map = {
             "carbon fiber": (
@@ -5239,6 +5262,28 @@ class InventoryCalculation:
         :param array: :attr:`array` from :class:`TruckModel` class
         """
 
+        # assembly operation
+
+        self.A[
+        :,
+        self.inputs[
+            (
+                "assembly operation, for lorry",
+                "RER",
+                "kilogram",
+                "assembly operation, for lorry",
+            )
+        ],
+        [
+            self.inputs[i]
+            for i in self.inputs
+            if "duty truck" in i[0] and i[2] == "unit" and "market" not in i[0]
+        ],
+        ] = (
+                array[self.array_inputs["curb mass"]] * -1
+        )
+
+
         # Glider/Frame
 
         self.A[
@@ -5929,10 +5974,10 @@ class InventoryCalculation:
             :,
             self.inputs[
                 (
-                    "Fuel tank, compressed hydrogen gas, 700bar, with aluminium liner",
+                    "Fuel tank, compressed natural gas, 200 bar",
                     "RER",
                     "kilogram",
-                    "Hydrogen tank",
+                    "Fuel tank, compressed natural gas, 200 bar",
                 )
             ],
             index_A,
@@ -5944,7 +5989,7 @@ class InventoryCalculation:
                 "hydrogen"
             ]["type"]
         else:
-            hydro_tank_technology = "carbon fiber"
+            hydro_tank_technology = "aluminium"
 
         dict_tank_map = {
             "carbon fiber": (
