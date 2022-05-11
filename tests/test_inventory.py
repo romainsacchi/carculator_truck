@@ -215,15 +215,15 @@ def test_custom_electricity_mix():
     """Test if a wrong number of electricity mixes throws an error"""
 
     # Passing four mixes instead of 6
-    mix_1 = np.zeros((5, 15))
+    mix_1 = np.zeros((5, 21))
     mix_1[:, 0] = 1
     # Passing a mix inferior to 1
-    mix_2 = np.zeros((6, 15))
+    mix_2 = np.zeros((6, 21))
     mix_2[:, 0] = 1
     mix_2[:, 0] = 0.9
 
     # Passing a mix superior to 1
-    mix_3 = np.zeros((6, 15))
+    mix_3 = np.zeros((6, 21))
     mix_3[:, 0] = 1
     mix_3[:, 1] = 0.1
 
