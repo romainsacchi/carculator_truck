@@ -3758,25 +3758,25 @@ class InventoryCalculation:
 
         # assembly operations
         self.A[
-        :,
-        self.inputs[
-            (
-                "assembly operation, for lorry",
-                "RER",
-                "kilogram",
-                "assembly operation, for lorry",
-            )
-        ],
-        [
-            self.inputs[i]
-            for i in self.inputs
-            if "duty truck" in i[0] and i[2] == "unit" and "market" not in i[0]
-        ],
+            :,
+            self.inputs[
+                (
+                    "assembly operation, for lorry",
+                    "RER",
+                    "kilogram",
+                    "assembly operation, for lorry",
+                )
+            ],
+            [
+                self.inputs[i]
+                for i in self.inputs
+                if "duty truck" in i[0] and i[2] == "unit" and "market" not in i[0]
+            ],
         ] = (
-                array[self.array_inputs["curb mass"]]
-                / array[self.array_inputs["lifetime kilometers"], :]
-                / (array[self.array_inputs["total cargo mass"], :] / 1000)
-                * -1
+            array[self.array_inputs["curb mass"]]
+            / array[self.array_inputs["lifetime kilometers"], :]
+            / (array[self.array_inputs["total cargo mass"], :] / 1000)
+            * -1
         )
 
         # Glider/Frame
@@ -5265,24 +5265,23 @@ class InventoryCalculation:
         # assembly operation
 
         self.A[
-        :,
-        self.inputs[
-            (
-                "assembly operation, for lorry",
-                "RER",
-                "kilogram",
-                "assembly operation, for lorry",
-            )
-        ],
-        [
-            self.inputs[i]
-            for i in self.inputs
-            if "duty truck" in i[0] and i[2] == "unit" and "market" not in i[0]
-        ],
+            :,
+            self.inputs[
+                (
+                    "assembly operation, for lorry",
+                    "RER",
+                    "kilogram",
+                    "assembly operation, for lorry",
+                )
+            ],
+            [
+                self.inputs[i]
+                for i in self.inputs
+                if "duty truck" in i[0] and i[2] == "unit" and "market" not in i[0]
+            ],
         ] = (
-                array[self.array_inputs["curb mass"]] * -1
+            array[self.array_inputs["curb mass"]] * -1
         )
-
 
         # Glider/Frame
 
