@@ -3758,15 +3758,15 @@ class InventoryCalculation:
 
         # assembly operations
         self.A[
-        :,
-        self.inputs[
-            (
-                "assembly operation, for lorry",
-                "RER",
-                "kilogram",
-                "assembly operation, for lorry",
-            )
-        ],
+            :,
+            self.inputs[
+                (
+                    "assembly operation, for lorry",
+                    "RER",
+                    "kilogram",
+                    "assembly operation, for lorry",
+                )
+            ],
             -self.number_of_cars :,
         ] = (
             array[self.array_inputs["curb mass"]]
