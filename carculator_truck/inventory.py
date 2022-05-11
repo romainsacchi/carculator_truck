@@ -3767,11 +3767,7 @@ class InventoryCalculation:
                 "assembly operation, for lorry",
             )
         ],
-        [
-            self.inputs[i]
-            for i in self.inputs
-            if "duty truck" in i[0] and i[2] == "unit" and "market" not in i[0]
-        ],
+            -self.number_of_cars :,
         ] = (
                 array[self.array_inputs["curb mass"]]
                 / array[self.array_inputs["lifetime kilometers"], :]
