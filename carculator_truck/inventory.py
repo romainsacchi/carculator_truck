@@ -6,9 +6,9 @@ from pathlib import Path
 
 import numpy as np
 import xarray as xr
+import yaml
 from scipy import sparse
 from scipy.sparse.linalg import spsolve
-import yaml
 
 from . import DATA_DIR
 from .background_systems import BackgroundSystemModel
@@ -455,7 +455,6 @@ class InventoryCalculation:
 
         self.index_emissions = [self.inputs[i] for i in self.map_fuel_emissions.keys()]
 
-
         self.map_noise_emissions = {
             (
                 f"noise, octave {i}, day time, {comp}",
@@ -465,7 +464,6 @@ class InventoryCalculation:
             for i in range(1, 9)
             for comp in ["urban", "suburban", "rural"]
         }
-
 
         with open(DATA_DIR / "elec_tech_map.yaml", "r", encoding="utf-8") as stream:
             self.elec_map = yaml.safe_load(stream)
