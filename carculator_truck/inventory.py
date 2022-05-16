@@ -1544,7 +1544,7 @@ class InventoryCalculation:
                     + "/*recipe_midpoint*{}*.csv".format(self.scenario)
                 )
                 list_file_names = sorted(list_file_names)
-                B = np.zeros((len(list_file_names), 22, len(self.inputs)))
+                B = np.zeros((len(list_file_names), 23, len(self.inputs)))
             elif self.method_type == "endpoint":
                 list_file_names = glob.glob(
                     str(REMIND_FILES_DIR)
@@ -1573,7 +1573,7 @@ class InventoryCalculation:
                 )
             )
 
-            new_B[0 : np.shape(initial_B)[0], 0 : np.shape(initial_B)[1]] = initial_B
+            new_B[0: np.shape(initial_B)[0], 0: np.shape(initial_B)[1]] = initial_B
 
             B[f] = new_B
 
@@ -2914,10 +2914,10 @@ class InventoryCalculation:
             },
             "diesel": {
                 "name": (
-                    "market group for diesel, low-sulfur",
-                    "RER",
+                    "market for diesel",
+                    "Europe without Switzerland",
                     "kilogram",
-                    "diesel, low-sulfur",
+                    "diesel",
                 )
             },
             "biodiesel - algae": {
@@ -4315,7 +4315,7 @@ class InventoryCalculation:
         self.A[:, self.index_emissions, -self.number_of_cars :] = (
             array[
                 [
-                    self.array_inputs[self.map_non_fuel_emissions[self.rev_inputs[x]]]
+                    self.array_inputs[self.map_fuel_emissions[self.rev_inputs[x]]]
                     for x in self.index_emissions
                 ]
             ]
@@ -5882,7 +5882,7 @@ class InventoryCalculation:
         ] = (
             array[
                 [
-                    self.array_inputs[self.map_non_fuel_emissions[self.rev_inputs[x]]]
+                    self.array_inputs[self.map_fuel_emissions[self.rev_inputs[x]]]
                     for x in self.index_emissions
                 ]
             ]

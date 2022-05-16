@@ -14,6 +14,7 @@ components;glider;name;frame, blanks and saddle, for lorry
 components;glider;name;suspension, for lorry
 components;glider;name;cabin, for lorry
 components;glider;name;tires and wheels, for lorry
+components;glider;name;assembly operation
 components;powertrain;name;market for charger, electric passenger car
 components;powertrain;name;market for inverter, for electric passenger car
 components;powertrain;name;market for converter, for electric passenger car
