@@ -1573,7 +1573,7 @@ class InventoryCalculation:
                 )
             )
 
-            new_B[0: np.shape(initial_B)[0], 0: np.shape(initial_B)[1]] = initial_B
+            new_B[0 : np.shape(initial_B)[0], 0 : np.shape(initial_B)[1]] = initial_B
 
             B[f] = new_B
 
