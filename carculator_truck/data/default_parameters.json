@@ -24527,7 +24527,7 @@
         "name": "battery cell energy density, LFP",
         "unit": "kWh/kg",
         "importance": "Critical",
-        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432",
+        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432\nhttps://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
@@ -24562,7 +24562,7 @@
         "name": "battery cell energy density, LFP",
         "unit": "kWh/kg",
         "importance": "Critical",
-        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432",
+        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432\nhttps://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
@@ -24572,7 +24572,7 @@
         "maximum": 0.09375
     },
     "862-2020-battery cell energy density, LFP": {
-        "amount": 0.15,
+        "amount": 0.19999999999999998,
         "category": "Energy Storage",
         "powertrain": [
             "PHEV-c-d",
@@ -24597,17 +24597,17 @@
         "name": "battery cell energy density, LFP",
         "unit": "kWh/kg",
         "importance": "Critical",
-        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432",
+        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432\nhttps://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.15,
-        "minimum": 0.11249999999999999,
-        "maximum": 0.1875
+        "loc": 0.19999999999999998,
+        "minimum": 0.15,
+        "maximum": 0.24999999999999997
     },
     "863-2030-battery cell energy density, LFP": {
-        "amount": 0.15,
+        "amount": 0.26,
         "category": "Energy Storage",
         "powertrain": [
             "PHEV-c-d",
@@ -24632,17 +24632,17 @@
         "name": "battery cell energy density, LFP",
         "unit": "kWh/kg",
         "importance": "Critical",
-        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432",
+        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432\nhttps://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.15,
-        "minimum": 0.11249999999999999,
-        "maximum": 0.1875
+        "loc": 0.26,
+        "minimum": 0.195,
+        "maximum": 0.325
     },
     "864-2040-battery cell energy density, LFP": {
-        "amount": 0.15,
+        "amount": 0.3,
         "category": "Energy Storage",
         "powertrain": [
             "PHEV-c-d",
@@ -24667,17 +24667,17 @@
         "name": "battery cell energy density, LFP",
         "unit": "kWh/kg",
         "importance": "Critical",
-        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432",
+        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432\nhttps://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.15,
-        "minimum": 0.11249999999999999,
-        "maximum": 0.1875
+        "loc": 0.3,
+        "minimum": 0.22499999999999998,
+        "maximum": 0.375
     },
     "865-2050-battery cell energy density, LFP": {
-        "amount": 0.18,
+        "amount": 0.3,
         "category": "Energy Storage",
         "powertrain": [
             "PHEV-c-d",
@@ -24702,14 +24702,14 @@
         "name": "battery cell energy density, LFP",
         "unit": "kWh/kg",
         "importance": "Critical",
-        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432",
+        "source": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b00432\nhttps://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.18,
-        "minimum": 0.135,
-        "maximum": 0.22499999999999998
+        "loc": 0.3,
+        "minimum": 0.22499999999999998,
+        "maximum": 0.375
     },
     "866-2000-battery cell energy density, LTO": {
         "amount": 0.04,
@@ -29493,7 +29493,7 @@
         "maximum": 0.006
     },
     "1043-2030-rolling resistance coefficient": {
-        "amount": 0.005,
+        "amount": 0.004,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29523,12 +29523,12 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.005,
-        "minimum": 0.0045,
-        "maximum": 0.0055
+        "loc": 0.004,
+        "minimum": 0.003,
+        "maximum": 0.005
     },
     "1044-2040-rolling resistance coefficient": {
-        "amount": 0.0045,
+        "amount": 0.004,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -29558,8 +29558,8 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.0045,
-        "minimum": 0.004,
+        "loc": 0.004,
+        "minimum": 0.003,
         "maximum": 0.005
     },
     "1045-2050-rolling resistance coefficient": {
@@ -29594,8 +29594,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.004,
-        "minimum": 0.0035,
-        "maximum": 0.0045
+        "minimum": 0.003,
+        "maximum": 0.005
     },
     "1046-2000-power to mass ratio": {
         "amount": 66,
@@ -45277,7 +45277,7 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
@@ -45312,7 +45312,7 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
@@ -45322,7 +45322,7 @@
         "maximum": 0.65
     },
     "1618-2020-aerodynamic drag coefficient": {
-        "amount": 0.6,
+        "amount": 0.5,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -45347,17 +45347,17 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.6,
-        "minimum": 0.55,
-        "maximum": 0.65
+        "loc": 0.5,
+        "minimum": 0.45,
+        "maximum": 0.55
     },
     "1619-2030-aerodynamic drag coefficient": {
-        "amount": 0.5,
+        "amount": 0.35,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -45382,17 +45382,17 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.5,
-        "minimum": 0.45,
-        "maximum": 0.55
+        "loc": 0.35,
+        "minimum": 0.33,
+        "maximum": 0.4
     },
     "1620-2040-aerodynamic drag coefficient": {
-        "amount": 0.46,
+        "amount": 0.35,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -45417,17 +45417,17 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.46,
-        "minimum": 0.4,
-        "maximum": 0.5
+        "loc": 0.35,
+        "minimum": 0.3,
+        "maximum": 0.4
     },
     "1621-2050-aerodynamic drag coefficient": {
-        "amount": 0.35,
+        "amount": 0.3,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -45452,14 +45452,14 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35,
-        "minimum": 0.3,
-        "maximum": 0.4
+        "loc": 0.3,
+        "minimum": 0.28,
+        "maximum": 0.35
     },
     "1622-2000-transmission mass per ton of gross weight": {
         "amount": 23.6,
