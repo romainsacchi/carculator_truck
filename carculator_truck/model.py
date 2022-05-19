@@ -1,16 +1,16 @@
 import numexpr as ne
 import numpy as np
 import xarray as xr
-from prettytable import PrettyTable
 import yaml
+from prettytable import PrettyTable
 
+from . import DATA_DIR
 from .background_systems import BackgroundSystemModel
 from .driving_cycles import get_standard_driving_cycle
 from .energy_consumption import EnergyConsumptionModel
 from .hot_emissions import HotEmissionsModel
 from .noise_emissions import NoiseEmissionsModel
 from .particulates_emissions import ParticulatesEmissionsModel
-from . import DATA_DIR
 
 CARGO_MASSES = DATA_DIR / "payloads.yaml"
 
@@ -349,15 +349,16 @@ class TruckModel:
 
     def set_cargo_mass_and_annual_mileage(self):
 
-        with open(
-            CARGO_MASSES, "r", encoding="utf-8"
-        ) as stream:
+        with open(CARGO_MASSES, "r", encoding="utf-8") as stream:
             payload = yaml.safe_load(stream)
 
         for s in self.array.coords["size"].values:
-            self.array.loc[dict(size=s, parameter="total cargo mass")] = payload["payload"][self.cycle][s]
-            self.array.loc[dict(size=s, parameter="kilometers per year")] = payload["annual mileage"][self.cycle][s]
-
+            self.array.loc[dict(size=s, parameter="total cargo mass")] = payload[
+                "payload"
+            ][self.cycle][s]
+            self.array.loc[dict(size=s, parameter="kilometers per year")] = payload[
+                "annual mileage"
+            ][self.cycle][s]
 
     def set_battery_size(self):
 
@@ -372,7 +373,7 @@ class TruckModel:
             chemistry = "NMC"
 
             if pt in self.energy_storage["electric"]:
-                chemistry = self.energy_storage['electric'][pt].split('-')[0].strip()
+                chemistry = self.energy_storage["electric"][pt].split("-")[0].strip()
 
             self.array.loc[
                 dict(powertrain=pt, parameter="battery cell energy density")
