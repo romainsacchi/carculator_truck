@@ -1,0 +1,65 @@
+# payloads and annual mileage values
+# most values from
+# https://www.acea.auto/files/ACEA_preliminary_CO2_baseline_heavy-duty_vehicles.pdf
+# but some are from https://ec.europa.eu/clima/system/files/2017-12/sr7_lot4_final_report_en.pdf
+# and some are plain interpolations
+# there is no single source agreeing or giving a complete set of data for
+# all truck sizes, so we have to do some guessing
+---
+
+payload:
+  Urban delivery:
+    3.5t: 750
+    7.5t: 1750
+    18t: 2700
+    26t: 6300
+    32t: 8755
+    40t: 8755
+    60t: 16400
+
+  Regional delivery:
+    3.5t: 750
+    7.5t: 1750
+    18t: 3200
+    26t: 6300
+    32t: 10300
+    40t: 10300
+    60t: 19300
+
+  Long haul:
+    3.5t: 1125
+    7.5t: 2625
+    18t: 7400
+    26t: 13400
+    32t: 13800
+    40t: 13800
+    60t: 19300
+
+annual mileage:
+  Urban delivery:
+    3.5t: 22660
+    7.5t: 33000
+    18t: 60000
+    26t: 60000
+    32t: 60000
+    40t: 60000
+    60t: 60000
+
+  Regional delivery:
+    3.5t: 22660
+    7.5t: 33000
+    18t: 78000
+    26t: 73000
+    32t: 68000
+    40t: 68000
+    60t: 68000
+
+  Long haul:
+    3.5t: 22660
+    7.5t: 33000
+    18t: 98000
+    26t: 108000
+    32t: 107000
+    40t: 107000
+    60t: 107000
+

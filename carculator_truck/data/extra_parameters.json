@@ -263,5 +263,7 @@
   "share recuperated energy",
   "road dust emissions",
   "battery cell energy density",
-  "battery cell mass share"
+  "battery cell mass share",
+  "total cargo mass",
+  "kilometers per year"
 ]

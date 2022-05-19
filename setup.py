@@ -33,7 +33,7 @@ def package_files(directory):
 
 setup(
     name="carculator_truck",
-    version="0.3.4",
+    version="0.3.5",
     packages=packages,
     author="Romain Sacchi <romain.sacchi@psi.ch>",
     license=open("LICENSE").read(),

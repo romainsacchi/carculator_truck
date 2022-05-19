@@ -2,6 +2,7 @@ import numexpr as ne
 import numpy as np
 import xarray as xr
 from prettytable import PrettyTable
+import yaml
 
 from .background_systems import BackgroundSystemModel
 from .driving_cycles import get_standard_driving_cycle
@@ -9,6 +10,9 @@ from .energy_consumption import EnergyConsumptionModel
 from .hot_emissions import HotEmissionsModel
 from .noise_emissions import NoiseEmissionsModel
 from .particulates_emissions import ParticulatesEmissionsModel
+from . import DATA_DIR
+
+CARGO_MASSES = DATA_DIR / "payloads.yaml"
 
 DEFAULT_MAPPINGS = {
     "electric": {"BEV", "PHEV-e"},
@@ -82,45 +86,7 @@ class TruckModel:
             }
         }
 
-        l_pwt = [
-            pt
-            for pt in ("BEV", "FCEV", "HEV-d", "PHEV-e")
-            if pt in self.array.powertrain.values
-        ]
-
-        for pt in l_pwt:
-
-            if pt in self.energy_storage["electric"]:
-                self.array.loc[
-                    dict(powertrain=pt, parameter="battery cell energy density")
-                ] = self.array.loc[
-                    dict(
-                        powertrain=pt,
-                        parameter=f"battery cell energy density, {self.energy_storage['electric'][pt].split('-')[0].strip()}",
-                    )
-                ]
-
-                self.array.loc[
-                    dict(powertrain=pt, parameter="battery cell mass share")
-                ] = self.array.loc[
-                    dict(
-                        powertrain=pt,
-                        parameter=f"battery cell mass share, {self.energy_storage['electric'][pt].split('-')[0].strip()}",
-                    )
-                ]
-
-            else:
-                self.array.loc[
-                    dict(powertrain=pt, parameter="battery cell energy density")
-                ] = self.array.loc[
-                    dict(powertrain=pt, parameter="battery cell energy density, NMC")
-                ]
-
-                self.array.loc[
-                    dict(powertrain=pt, parameter="battery cell mass share")
-                ] = self.array.loc[
-                    dict(powertrain=pt, parameter="battery cell mass share, NMC")
-                ]
+        self.set_battery_size()
 
         target_ranges = {
             "Urban delivery": 150,
@@ -142,91 +108,7 @@ class TruckModel:
             cycle=cycle, size=self.array.coords["size"].values
         )
 
-        # default values for annual mileage correspond to a long haul use
-        # default values used are from Annex I, pt 2.6 of
-        # https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1
-        # if a driving cycle other than "Long haul" is selected, we apply
-        # a reduction factor on annual mileage (from the same EU report)
-        # to reflect the fact that trucks used for regional or urban delivery
-        # drive less annually
-
-        # we also change the payload across driving cycles
-        # Annex I, pt 2.6 of https://eur-lex.europa.eu/eli/reg/2019/1242/oj#d1e32-227-1
-        # shows that the payload changes (decreases) from long haul (LH) use,
-        # to regional delivery (RD) and urban delivery (UD).
-        # We use such relative change (-67% for rigid trucks going from LH to RD and UD,
-        # and -33% for articulate trucks, going from LH to RD and UD) as correction factors
-        # applied on default values (which are representative of LH and taken from TRACCS for EU28).
-
-        if self.cycle == "Regional delivery":
-
-            if any(
-                s in self.array.coords["size"].values
-                for s in ["3.5t", "7.5t", "18t", "26t"]
-            ):
-                self.array.loc[
-                    dict(
-                        parameter="total cargo mass",
-                        size=[
-                            s
-                            for s in ["3.5t", "7.5t", "18t", "26t"]
-                            if s in self.array.coords["size"].values
-                        ],
-                    )
-                ] *= (
-                    1 - 0.67
-                )
-
-            if any(
-                s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]
-            ):
-                self.array.loc[
-                    dict(
-                        parameter="total cargo mass",
-                        size=[
-                            s
-                            for s in ["32t", "40t", "60t"]
-                            if s in self.array.coords["size"].values
-                        ],
-                    )
-                ] *= (
-                    1 - 0.33
-                )
-
-        if self.cycle == "Urban delivery":
-
-            if any(
-                s in self.array.coords["size"].values
-                for s in ["3.5t", "7.5t", "18t", "26t"]
-            ):
-                self.array.loc[
-                    dict(
-                        parameter="total cargo mass",
-                        size=[
-                            s
-                            for s in ["3.5t", "7.5t", "18t", "26t"]
-                            if s in self.array.coords["size"].values
-                        ],
-                    )
-                ] *= (
-                    1 - 0.67
-                )
-
-            if any(
-                s in self.array.coords["size"].values for s in ["32t", "40t", "60t"]
-            ):
-                self.array.loc[
-                    dict(
-                        parameter="total cargo mass",
-                        size=[
-                            s
-                            for s in ["32t", "40t", "60t"]
-                            if s in self.array.coords["size"].values
-                        ],
-                    )
-                ] *= (
-                    1 - 0.33
-                )
+        self.set_cargo_mass_and_annual_mileage()
 
     def __call__(self, key):
         """
@@ -343,7 +225,6 @@ class TruckModel:
         self.set_noise_emissions()
         self.set_hot_emissions()
         self.create_PHEV()
-        self.drop_hybrid()
         self.drop_hybrid()
 
         self.array.values = np.clip(self.array.values, 0, None)
@@ -465,6 +346,51 @@ class TruckModel:
 
                 t.add_row(row + vals.tolist())
         print(t)
+
+    def set_cargo_mass_and_annual_mileage(self):
+
+        with open(
+            CARGO_MASSES, "r", encoding="utf-8"
+        ) as stream:
+            payload = yaml.safe_load(stream)
+
+        for s in self.array.coords["size"].values:
+            self.array.loc[dict(size=s, parameter="total cargo mass")] = payload["payload"][self.cycle][s]
+            self.array.loc[dict(size=s, parameter="kilometers per year")] = payload["annual mileage"][self.cycle][s]
+
+
+    def set_battery_size(self):
+
+        l_pwt = [
+            pt
+            for pt in ("BEV", "FCEV", "HEV-d", "PHEV-e")
+            if pt in self.array.powertrain.values
+        ]
+
+        for pt in l_pwt:
+
+            chemistry = "NMC"
+
+            if pt in self.energy_storage["electric"]:
+                chemistry = self.energy_storage['electric'][pt].split('-')[0].strip()
+
+            self.array.loc[
+                dict(powertrain=pt, parameter="battery cell energy density")
+            ] = self.array.loc[
+                dict(
+                    powertrain=pt,
+                    parameter=f"battery cell energy density, {chemistry}",
+                )
+            ]
+
+            self.array.loc[
+                dict(powertrain=pt, parameter="battery cell mass share")
+            ] = self.array.loc[
+                dict(
+                    powertrain=pt,
+                    parameter=f"battery cell mass share, {chemistry}",
+                )
+            ]
 
     def adjust_combustion_power_share(self):
         """
