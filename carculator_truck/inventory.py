@@ -3470,9 +3470,8 @@ class InventoryCalculation:
             self.inputs[("Stack", "GLO", "kilowatt", "Stack")],
             -self.number_of_cars :,
         ] = (
-            array[self.array_inputs["fuel cell stack mass"], :]
+            array[self.array_inputs["fuel cell power"], :]
             * (1 + array[self.array_inputs["fuel cell lifetime replacements"]])
-            / 1.02
             / array[self.array_inputs["lifetime kilometers"], :]
             / (array[self.array_inputs["total cargo mass"], :] / 1000)
             * -1
@@ -4971,9 +4970,8 @@ class InventoryCalculation:
                 if "duty truck" in i[0] and i[2] == "unit"
             ],
         ] = (
-            array[self.array_inputs["fuel cell stack mass"], :]
+            array[self.array_inputs["fuel cell power"], :]
             * (1 + array[self.array_inputs["fuel cell lifetime replacements"]])
-            / 1.02
             * -1
         )
 
