@@ -65,7 +65,8 @@ def test_cargo_mass():
         assert np.allclose(
             (cpm["available payload"] * cpm["capacity utilization"]),
             cpm["cargo mass"],
-            rtol=1e-3)
+            rtol=1e-3,
+        )
 
 
 def test_electric_utility_factor():
