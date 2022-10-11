@@ -238,7 +238,6 @@ class InventoryCalculation:
         with open(DATA_DIR / "fuel_specs.yaml", "r", encoding="utf-8") as stream:
             self.fuel_specs = yaml.safe_load(stream)
 
-
         array = tm.array.sel(
             powertrain=self.scope["powertrain"],
             year=self.scope["year"],
@@ -328,13 +327,13 @@ class InventoryCalculation:
                 self.background_configuration["country"] = tm.country
 
             if "custom electricity mix" in background_configuration:
-                self.background_configuration["custom electricity mix"] = background_configuration[
+                self.background_configuration[
                     "custom electricity mix"
-                ]
+                ] = background_configuration["custom electricity mix"]
             if "direct air capture" in background_configuration:
-                self.background_configuration["direct air capture"] = background_configuration[
+                self.background_configuration[
                     "direct air capture"
-                ]
+                ] = background_configuration["direct air capture"]
 
         self.inputs = get_dict_input()
         self.bs = BackgroundSystemModel()
@@ -806,9 +805,7 @@ class InventoryCalculation:
             self.inputs[
                 (
                     "electricity market for energy storage production, " + str(y),
-                    self.background_configuration["energy storage"][
-                        "origin"
-                    ],
+                    self.background_configuration["energy storage"]["origin"],
                     "kilowatt hour",
                     "electricity, low voltage, for energy storage production",
                 )
@@ -934,24 +931,24 @@ class InventoryCalculation:
 
                     if pt == "BEV":
                         if s in ("3.5t", "7.5t"):
-                            battery = self.background_configuration["energy storage"]["electric"][(pt, s, y)]
-                            name = (
-                                f"Light duty truck, {pt}, {battery} battery, {s} gross weight, {y}, {self.cycle.lower()}"
-                            )
+                            battery = self.background_configuration["energy storage"][
+                                "electric"
+                            ][(pt, s, y)]
+                            name = f"Light duty truck, {pt}, {battery} battery, {s} gross weight, {y}, {self.cycle.lower()}"
                             ref = "Light duty truck"
 
                         if s in ("18t", "26t"):
-                            battery = self.background_configuration["energy storage"]["electric"][(pt, s, y)]
-                            name = (
-                                f"Medium duty truck, {pt}, {battery} battery, {s} gross weight, {y}, {self.cycle.lower()}"
-                            )
+                            battery = self.background_configuration["energy storage"][
+                                "electric"
+                            ][(pt, s, y)]
+                            name = f"Medium duty truck, {pt}, {battery} battery, {s} gross weight, {y}, {self.cycle.lower()}"
                             ref = "Medium duty truck"
 
                         if s in ("32t", "40t", "60t"):
-                            battery = self.background_configuration["energy storage"]["electric"][(pt, s, y)]
-                            name = (
-                                f"Heavy duty truck, {pt}, {battery} battery, {s} gross weight, {y}, {self.cycle.lower()}"
-                            )
+                            battery = self.background_configuration["energy storage"][
+                                "electric"
+                            ][(pt, s, y)]
+                            name = f"Heavy duty truck, {pt}, {battery} battery, {s} gross weight, {y}, {self.cycle.lower()}"
                             ref = "Heavy duty truck"
 
                         self.inputs[
@@ -965,21 +962,15 @@ class InventoryCalculation:
 
                     elif pt == "FCEV":
                         if s in ("3.5t", "7.5t"):
-                            name = (
-                                f"Light duty truck, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
-                            )
+                            name = f"Light duty truck, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
                             ref = "Light duty truck"
 
                         if s in ("18t", "26t"):
-                            name = (
-                                f"Medium duty truck, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
-                            )
+                            name = f"Medium duty truck, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
                             ref = "Medium duty truck"
 
                         if s in ("32t", "40t", "60t"):
-                            name = (
-                                f"Heavy duty truck, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
-                            )
+                            name = f"Heavy duty truck, {pt}, {s} gross weight, {y}, {self.cycle.lower()}"
                             ref = "Heavy duty truck"
 
                         self.inputs[
@@ -993,21 +984,15 @@ class InventoryCalculation:
 
                     else:
                         if s in ("3.5t", "7.5t"):
-                            name = (
-                                f"Light duty truck, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
-                            )
+                            name = f"Light duty truck, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
                             ref = "Light duty truck, "
 
                         if s in ("18t", "26t"):
-                            name = (
-                                f"Medium duty truck, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
-                            )
+                            name = f"Medium duty truck, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
                             ref = "Medium duty truck, "
 
                         if s in ("32t", "40t", "60t"):
-                            name = (
-                                f"Heavy duty truck, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
-                            )
+                            name = f"Heavy duty truck, {pt}, {s} gross weight, {y}, {euro_class}, {self.cycle.lower()}"
                             ref = "Heavy duty truck, "
 
                         self.inputs[
@@ -1052,7 +1037,6 @@ class InventoryCalculation:
         new_A = np.resize(new_A, (self.array.shape[1], new_A.shape[0], new_A.shape[1]))
         return new_A
 
-
     def get_B_matrix(self):
         """
         Load the B matrix. The B matrix contains impact assessment figures for a give impact assessment method,
@@ -1071,7 +1055,7 @@ class InventoryCalculation:
                     + "/*recipe_midpoint*{}*.csv".format(self.scenario)
                 )
                 list_file_names = sorted(
-                    list_file_names, key=lambda x: int(re.findall("\d+", fr"{x}")[1])
+                    list_file_names, key=lambda x: int(re.findall("\d+", rf"{x}")[1])
                 )
                 B = np.zeros((len(list_file_names), 23, len(self.inputs)))
             elif self.method_type == "endpoint":
@@ -1080,7 +1064,7 @@ class InventoryCalculation:
                     + "/*recipe_endpoint*{}*.csv".format(self.scenario)
                 )
                 list_file_names = sorted(
-                    list_file_names, key=lambda x: int(re.findall("\d+", fr"{x}")[1])
+                    list_file_names, key=lambda x: int(re.findall("\d+", rf"{x}")[1])
                 )
                 B = np.zeros((len(list_file_names), 4, len(self.inputs)))
             else:
@@ -1093,7 +1077,7 @@ class InventoryCalculation:
                 str(REMIND_FILES_DIR) + "/*ilcd*{}*.csv".format(self.scenario)
             )
             list_file_names = sorted(
-                list_file_names, key=lambda x: int(re.findall("\d+", fr"{x}")[1])
+                list_file_names, key=lambda x: int(re.findall("\d+", rf"{x}")[1])
             )
             B = np.zeros((len(list_file_names), 19, len(self.inputs)))
 
@@ -1107,7 +1091,7 @@ class InventoryCalculation:
                 )
             )
 
-            new_B[0: initial_B.shape[0], 0 : np.shape(initial_B)[1]] = initial_B
+            new_B[0 : initial_B.shape[0], 0 : np.shape(initial_B)[1]] = initial_B
 
             B[f] = new_B
 
@@ -1199,11 +1183,7 @@ class InventoryCalculation:
         return {v: k for k, v in self.inputs.items()}
 
     def get_index_vehicle_from_array(
-        self,
-        powertrain=[],
-        size=[],
-        year=[],
-        method="or"
+        self, powertrain=[], size=[], year=[], method="or"
     ):
         """
         Return list of row/column indices of tm.array of labels
@@ -1222,7 +1202,6 @@ class InventoryCalculation:
 
         if not isinstance(year, list):
             year = [year]
-
 
         list_vehicles = self.array.desired.values
 
@@ -1401,7 +1380,6 @@ class InventoryCalculation:
             self.fuel_dictionary = self.create_fuel_dictionary()
 
             self.set_inputs_in_A_matrix(self.array.values)
-
 
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
@@ -1635,8 +1613,6 @@ class InventoryCalculation:
             self.fuel_dictionary = self.create_fuel_dictionary()
 
             self.set_inputs_in_A_matrix(self.array.values)
-
-
 
         # Remove vehicles not compliant or available
         self.resize_A_matrix_for_export()
@@ -1973,9 +1949,7 @@ class InventoryCalculation:
         :return:
         """
 
-        battery_origin = self.background_configuration["energy storage"][
-            "origin"
-        ]
+        battery_origin = self.background_configuration["energy storage"]["origin"]
 
         if battery_origin != "custom electricity mix":
 
@@ -2153,8 +2127,6 @@ class InventoryCalculation:
             electricity += electrolysis * h2
             electricity *= share
 
-
-
         elif fuel == "synthetic diesel - energy allocation":
             # apply some learning rate for electrolysis
             h2 = 0.42
@@ -2176,14 +2148,14 @@ class InventoryCalculation:
         return electricity
 
     def create_fuel_markets(
-            self,
-            fuel_type,
-            primary=None,
-            secondary=None,
-            tertiary=None,
-            primary_share=None,
-            secondary_share=None,
-            tertiary_share=None,
+        self,
+        fuel_type,
+        primary=None,
+        secondary=None,
+        tertiary=None,
+        primary_share=None,
+        secondary_share=None,
+        tertiary_share=None,
     ):
         """
         This function creates markets for fuel, considering a given blend, a given fuel type and a given year.
@@ -2215,15 +2187,24 @@ class InventoryCalculation:
 
                 for fuel, share in [
                     (primary, primary_share),
-                    (secondary, secondary_share)
+                    (secondary, secondary_share),
                 ]:
                     if fuel:
                         dataset_name = f"{d_dataset_name[fuel_type]}, {year}"
-                        if len([
-                                self.inputs[i] for i in self.inputs if i[0] == dataset_name
-                            ]) > 0:
+                        if (
+                            len(
+                                [
+                                    self.inputs[i]
+                                    for i in self.inputs
+                                    if i[0] == dataset_name
+                                ]
+                            )
+                            > 0
+                        ):
                             fuel_market_index = [
-                                self.inputs[i] for i in self.inputs if i[0] == dataset_name
+                                self.inputs[i]
+                                for i in self.inputs
+                                if i[0] == dataset_name
                             ][0]
 
                             try:
@@ -2233,11 +2214,13 @@ class InventoryCalculation:
                             except KeyError:
                                 raise KeyError(
                                     "One of the primary or secondary fuels specified in "
-                                    "the fuel blend for {} is not valid.".format(fuel_type)
+                                    "the fuel blend for {} is not valid.".format(
+                                        fuel_type
+                                    )
                                 )
 
                             self.A[:, fuel_activity_index, fuel_market_index] = (
-                                    -1 * share[y]
+                                -1 * share[y]
                             )
 
                             additional_electricity = self.learning_rate_fuel(
@@ -2252,10 +2235,11 @@ class InventoryCalculation:
                                     self.inputs[i]
                                     for i in self.inputs
                                     if i[0]
-                                       == "electricity market for fuel preparation, " + str(year)
+                                    == "electricity market for fuel preparation, "
+                                    + str(year)
                                 ][0]
                                 self.A[:, electricity_mix_index, fuel_market_index] += (
-                                        -1 * additional_electricity
+                                    -1 * additional_electricity
                                 )
         else:
             for year in self.scope["year"]:
@@ -2272,12 +2256,12 @@ class InventoryCalculation:
                 self.A[:, electricity_mix_index, electricity_market_index] = -1
 
     def find_inputs(
-            self,
-            value_in,
-            value_out,
-            find_input_by="name",
-            zero_out_input=False,
-            filter_activities=None,
+        self,
+        value_in,
+        value_out,
+        find_input_by="name",
+        zero_out_input=False,
+        filter_activities=None,
     ):
         """
         Finds the exchange inputs to a specified functional unit
@@ -2350,8 +2334,8 @@ class InventoryCalculation:
 
         for val in self.fuel_specs.values():
             if any(
-                    i in val["name"][0].lower()
-                    for i in ("synthetic", "hydrogen", "ethanol", "biodiesel")
+                i in val["name"][0].lower()
+                for i in ("synthetic", "hydrogen", "ethanol", "biodiesel")
             ):
                 val["additional electricity"] = self.find_inputs(
                     "kilowatt hour", val["name"][0], "unit"
@@ -2361,7 +2345,7 @@ class InventoryCalculation:
 
         for val in self.fuel_specs.values():
             if any(
-                    i in val["name"][0].lower() for i in ("synthetic", "hydrogen", "bio")
+                i in val["name"][0].lower() for i in ("synthetic", "hydrogen", "bio")
             ):
                 self.find_inputs(
                     "kilowatt hour", val["name"][0], "unit", zero_out_input=True
@@ -2555,10 +2539,7 @@ class InventoryCalculation:
         ind_A = [
             v
             for i, v in self.inputs.items()
-            if any(
-                x in i[0]
-                for x in ["ICEV-d", "PHEV-d", "HEV-d", "ICEV-g"]
-            )
+            if any(x in i[0] for x in ["ICEV-d", "PHEV-d", "HEV-d", "ICEV-g"])
         ]
 
         self.A[
@@ -2868,7 +2849,13 @@ class InventoryCalculation:
             end="\n * ",
         )
 
-        battery_tech = list(set(list(self.background_configuration["energy storage"]["electric"].values())))
+        battery_tech = list(
+            set(
+                list(
+                    self.background_configuration["energy storage"]["electric"].values()
+                )
+            )
+        )
         battery_origin = self.background_configuration["energy storage"]["origin"]
         print(
             f"Energy batteries produced in {battery_origin} using {battery_tech}.",
@@ -2876,7 +2863,9 @@ class InventoryCalculation:
         )
 
         # Use the NMC inventory of Schmidt et al. 2019 for electric and hybrid trucks
-        index = self.get_index_vehicle_from_array(powertrain=["BEV", "FCEV", "PHEV-d", "HEV-d"])
+        index = self.get_index_vehicle_from_array(
+            powertrain=["BEV", "FCEV", "PHEV-d", "HEV-d"]
+        )
         ind_A = [
             i
             for i in self.car_indices
@@ -2921,7 +2910,9 @@ class InventoryCalculation:
                     "Battery cell",
                 )
 
-                idx = self.get_index_vehicle_from_array(powertrain=pwt, size=s, year=y, method="and")
+                idx = self.get_index_vehicle_from_array(
+                    powertrain=pwt, size=s, year=y, method="and"
+                )
 
                 ind_A = [
                     self.inputs[i]
@@ -2953,7 +2944,6 @@ class InventoryCalculation:
                     "unit",
                     filter_activities=["NMC", "LFP", "LTO", "NCA"],
                 )
-
 
                 self.A[
                     np.ix_(
@@ -3070,7 +3060,9 @@ class InventoryCalculation:
             for c in self.inputs
             if any(ele in c[0] for ele in ["ICEV-d", "PHEV-d", "HEV-d"])
         ]
-        index = self.get_index_vehicle_from_array(powertrain=["ICEV-d", "PHEV-d", "HEV-d"])
+        index = self.get_index_vehicle_from_array(
+            powertrain=["ICEV-d", "PHEV-d", "HEV-d"]
+        )
 
         self.A[
             :,
@@ -3244,7 +3236,9 @@ class InventoryCalculation:
                     and "FCEV" in self.rev_inputs[i][0]
                 ]
                 ind_array = [
-                    x for x in self.get_index_vehicle_from_array(year=year) if x in index
+                    x
+                    for x in self.get_index_vehicle_from_array(year=year)
+                    if x in index
                 ]
 
                 self.A[
@@ -3305,7 +3299,9 @@ class InventoryCalculation:
                     and "ICEV-g" in self.rev_inputs[i][0]
                 ]
                 ind_array = [
-                    x for x in self.get_index_vehicle_from_array(year=year) if x in index
+                    x
+                    for x in self.get_index_vehicle_from_array(year=year)
+                    if x in index
                 ]
 
                 # Includes pump-to-tank gas leakage, as a fraction of gas input
@@ -3435,7 +3431,9 @@ class InventoryCalculation:
                 ).T
 
         if [i for i in self.scope["powertrain"] if i in ["ICEV-d", "PHEV-d", "HEV-d"]]:
-            index = self.get_index_vehicle_from_array(powertrain=["ICEV-d", "PHEV-d", "HEV-d"])
+            index = self.get_index_vehicle_from_array(
+                powertrain=["ICEV-d", "PHEV-d", "HEV-d"]
+            )
 
             print(
                 "{} is completed by {}.".format(
@@ -3475,7 +3473,9 @@ class InventoryCalculation:
                 ]
 
                 ind_array = [
-                    x for x in self.get_index_vehicle_from_array(year=year) if x in index
+                    x
+                    for x in self.get_index_vehicle_from_array(year=year)
+                    if x in index
                 ]
 
                 # Fuel supply
@@ -3805,13 +3805,12 @@ class InventoryCalculation:
                 self.inputs[i]
                 for i in self.inputs
                 if i[0].startswith("transport, freight, lorry")
-                   and "metric" not in i[0]
-                   and int(re.findall("([, ]+[0-9]+)", i[0])[-1].replace(", ", "")) < 2022
+                and "metric" not in i[0]
+                and int(re.findall("([, ]+[0-9]+)", i[0])[-1].replace(", ", "")) < 2022
             ]
             index = self.get_index_vehicle_from_array(
                 year=[i for i in self.scope["year"] if i < 2022]
             )
-
 
             self.A[
                 :,
@@ -3824,7 +3823,7 @@ class InventoryCalculation:
                 / self.array.values[self.array_inputs["lifetime kilometers"], :, index]
                 / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
                 * -1
-             * self.array.values[
+                * self.array.values[
                     self.array_inputs["cooling energy consumption"], :, index
                 ]
             ).T
@@ -3832,7 +3831,12 @@ class InventoryCalculation:
             self.A[
                 :,
                 self.inputs[
-                    ("market for refrigerant R134a", "GLO", "kilogram", "refrigerant R134a")
+                    (
+                        "market for refrigerant R134a",
+                        "GLO",
+                        "kilogram",
+                        "refrigerant R134a",
+                    )
                 ],
                 idx_cars_before_2022,
             ] = (
@@ -3840,7 +3844,7 @@ class InventoryCalculation:
                 / self.array.values[self.array_inputs["lifetime kilometers"], :, index]
                 / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
                 * -1
-             * self.array.values[
+                * self.array.values[
                     self.array_inputs["cooling energy consumption"], :, index
                 ]
             ).T
@@ -4381,7 +4385,13 @@ class InventoryCalculation:
             end="\n * ",
         )
 
-        battery_tech = list(set(list(self.background_configuration["energy storage"]["electric"].values())))
+        battery_tech = list(
+            set(
+                list(
+                    self.background_configuration["energy storage"]["electric"].values()
+                )
+            )
+        )
         battery_origin = self.background_configuration["energy storage"]["origin"]
         print(
             f"Energy batteries produced in {battery_origin} using {battery_tech}.",
@@ -4389,7 +4399,9 @@ class InventoryCalculation:
         )
 
         # Use the NMC inventory of Schmidt et al. 2019 for electric and hybrid trucks
-        index = self.get_index_vehicle_from_array(powertrain=["BEV", "FCEV", "PHEV-d", "HEV-d"])
+        index = self.get_index_vehicle_from_array(
+            powertrain=["BEV", "FCEV", "PHEV-d", "HEV-d"]
+        )
         ind_A = [
             self.inputs[i]
             for i in self.inputs
@@ -4432,7 +4444,9 @@ class InventoryCalculation:
                     "Battery cell",
                 )
 
-                idx = self.get_index_vehicle_from_array(powertrain=[pwt], size=[s], year=[y], method="and")
+                idx = self.get_index_vehicle_from_array(
+                    powertrain=[pwt], size=[s], year=[y], method="and"
+                )
 
                 ind_A = [
                     self.inputs[i]
@@ -4577,7 +4591,9 @@ class InventoryCalculation:
             if any(ele in c[0] for ele in ["ICEV-d", "PHEV-d", "HEV-d"])
             and c[2] == "unit"
         ]
-        index = self.get_index_vehicle_from_array(powertrain=["ICEV-d", "PHEV-d", "HEV-d"])
+        index = self.get_index_vehicle_from_array(
+            powertrain=["ICEV-d", "PHEV-d", "HEV-d"]
+        )
 
         self.A[
             :,
@@ -4817,7 +4833,9 @@ class InventoryCalculation:
                     and "FCEV" in self.rev_inputs[i][0]
                 ]
                 ind_array = [
-                    x for x in self.get_index_vehicle_from_array(year=year) if x in index
+                    x
+                    for x in self.get_index_vehicle_from_array(year=year)
+                    if x in index
                 ]
 
                 self.A[
@@ -4878,7 +4896,9 @@ class InventoryCalculation:
                     and "ICEV-g" in self.rev_inputs[i][0]
                 ]
                 ind_array = [
-                    x for x in self.get_index_vehicle_from_array(year=year) if x in index
+                    x
+                    for x in self.get_index_vehicle_from_array(year=year)
+                    if x in index
                 ]
 
                 # Includes pump-to-tank gas leakage, as a fraction of gas input
@@ -5008,7 +5028,9 @@ class InventoryCalculation:
                 ).T
 
         if [i for i in self.scope["powertrain"] if i in ["ICEV-d", "PHEV-d", "HEV-d"]]:
-            index = self.get_index_vehicle_from_array(powertrain=["ICEV-d", "PHEV-d", "HEV-d"])
+            index = self.get_index_vehicle_from_array(
+                powertrain=["ICEV-d", "PHEV-d", "HEV-d"]
+            )
 
             print(
                 "{} is completed by {}.".format(
@@ -5048,7 +5070,9 @@ class InventoryCalculation:
                 ]
 
                 ind_array = [
-                    x for x in self.get_index_vehicle_from_array(year=year) if x in index
+                    x
+                    for x in self.get_index_vehicle_from_array(year=year)
+                    if x in index
                 ]
 
                 # Fuel supply
@@ -5319,8 +5343,8 @@ class InventoryCalculation:
                 self.inputs[i]
                 for i in self.inputs
                 if i[0].startswith("transport, freight, lorry")
-               and "metric" not in i[0]
-               and int(re.findall("([, ]+[0-9]+)", i[0])[-1].replace(", ", "")) < 2022
+                and "metric" not in i[0]
+                and int(re.findall("([, ]+[0-9]+)", i[0])[-1].replace(", ", "")) < 2022
             ]
             index = self.get_index_vehicle_from_array(
                 year=[i for i in self.scope["year"] if i < 2022]
@@ -5338,14 +5362,19 @@ class InventoryCalculation:
                 / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
                 * -1
                 * self.array.values[
-                  self.array_inputs["cooling energy consumption"], :, index
-                  ]
+                    self.array_inputs["cooling energy consumption"], :, index
+                ]
             ).T
 
             self.A[
                 :,
                 self.inputs[
-                    ("market for refrigerant R134a", "GLO", "kilogram", "refrigerant R134a")
+                    (
+                        "market for refrigerant R134a",
+                        "GLO",
+                        "kilogram",
+                        "refrigerant R134a",
+                    )
                 ],
                 idx_cars_before_2022,
             ] = (
@@ -5354,8 +5383,8 @@ class InventoryCalculation:
                 / (array[self.array_inputs["total cargo mass"], :, index] / 1000)
                 * -1
                 * self.array.values[
-                  self.array_inputs["cooling energy consumption"], :, index
-                  ]
+                    self.array_inputs["cooling energy consumption"], :, index
+                ]
             ).T
 
         # Charging infrastructure
@@ -5443,7 +5472,6 @@ class InventoryCalculation:
                 "carbon dioxide, captured from the atmosphere",
             )
         ]
-
 
         all_inds = [self.inputs[i] for i in list(d_heat_suppliers.values())]
 
