@@ -59,11 +59,13 @@ def test_battery_replacement():
 
 
 def test_cargo_mass():
-    # Cargo mass cannot be superior to available payload
-    assert np.all(tm["total cargo mass"] <= tm["available payload"])
 
     # Cargo mass must equal the available payload * load factor
-    # assert np.allclose((tm["available payload"] * tm["capacity utilization"]), tm["total cargo mass"])
+    with tm("BEV") as cpm:
+        assert np.allclose(
+            (cpm["available payload"] * cpm["capacity utilization"]),
+            cpm["cargo mass"],
+            rtol=1e-3)
 
 
 def test_electric_utility_factor():

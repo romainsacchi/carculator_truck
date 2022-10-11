@@ -141,7 +141,7 @@ class HotEmissionsModel:
 
         distance = np.squeeze(self.cycle.sum(axis=0)) / 3600
 
-        if isinstance(distance, np.float):
+        if isinstance(distance, float):
             distance = np.array(distance).reshape(1, 1)
 
         # Emissions for each second of the driving cycle equal:

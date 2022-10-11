@@ -94,7 +94,7 @@ def test_fuel_blend():
         [0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
     )
     assert np.allclose(ic.fuel_blends["cng"]["primary"]["share"], [1, 1, 1, 1, 1, 1])
-    assert np.sum(ic.fuel_blends["cng"]["secondary"]["share"]) == 0
+    #assert np.sum(ic.fuel_blends["cng"]["secondary"]["share"]) == 0
 
     ic.calculate_impacts()
 
@@ -144,14 +144,15 @@ def test_countries():
     """Test that calculation works with all countries"""
     for c in [
         "AO",
-        #         # "AT","AU","BE","BF","BG","BI","BJ","BR","BW","CA","CD","CF",
-        #         # "CG","CH","CI","CL","CM","CN","CY","CZ","DE","DJ","DK","DZ","EE",
-        #         # "EG","ER","ES","ET","FI","FR","GA",
-        #         # "GB","GH","GM","GN","GQ","GR","GW","HR","HU","IE",
-        #         # "IN","IT", "IS", "JP", "KE", "LR","LS","LT","LU","LV","LY","MA","ML","MR","MT","MW","MZ",
-        #         # "NE", "NG","NL","NM","NO","PL","PT","RER","RO","RU","RW","SD","SE","SI","SK","SL","SN","SO","SS","SZ",
-        #         # "TD","TG","TN","TZ","UG","UK","US","ZA","ZM",
-        #         # "ZW",
+        "AT","AU"
+        #,"BE","BF","BG","BI","BJ","BR","BW","CA","CD","CF",
+#         # "CG","CH","CI","CL","CM","CN","CY","CZ","DE","DJ","DK","DZ","EE",
+#         # "EG","ER","ES","ET","FI","FR","GA",
+#         # "GB","GH","GM","GN","GQ","GR","GW","HR","HU","IE",
+#         # "IN","IT", "IS", "JP", "KE", "LR","LS","LT","LU","LV","LY","MA","ML","MR","MT","MW","MZ",
+#         # "NE", "NG","NL","NM","NO","PL","PT","RER","RO","RU","RW","SD","SE","SI","SK","SL","SN","SO","SS","SZ",
+#         # "TD","TG","TN","TZ","UG","UK","US","ZA","ZM",
+#         # "ZW",
     ]:
         ic = InventoryCalculation(
             tm,
@@ -159,10 +160,10 @@ def test_countries():
             method_type="midpoint",
             background_configuration={
                 "country": c,
-                "energy storage": {"electric": {"origin": c}},
             },
         )
         ic.calculate_impacts()
+        assert ic.background_configuration["country"] == c
 
 
 def test_IAM_regions():
@@ -180,7 +181,7 @@ def test_IAM_regions():
             method_type="midpoint",
             background_configuration={
                 "country": c,
-                "energy storage": {"electric": {"origin": c}},
+                "energy storage": {"origin": c},
             },
         )
         ic.calculate_impacts()
@@ -215,11 +216,10 @@ def test_custom_electricity_mix():
     """Test if a wrong number of electricity mixes throws an error"""
 
     # Passing four mixes instead of 6
-    mix_1 = np.zeros((5, 21))
+    mix_1 = np.zeros((4, 21))
     mix_1[:, 0] = 1
     # Passing a mix inferior to 1
     mix_2 = np.zeros((6, 21))
-    mix_2[:, 0] = 1
     mix_2[:, 0] = 0.9
 
     # Passing a mix superior to 1

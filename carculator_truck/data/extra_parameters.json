@@ -264,6 +264,10 @@
   "road dust emissions",
   "battery cell energy density",
   "battery cell mass share",
+  "battery cycle life",
   "total cargo mass",
-  "kilometers per year"
+  "cargo mass",
+  "kilometers per year",
+  "TtW energy, combustion mode",
+  "TtW energy, electric mode"
 ]
