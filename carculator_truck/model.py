@@ -243,9 +243,9 @@ class TruckModel:
         self.array.values = np.clip(self.array.values, 0, None)
 
         print("")
-        print("'-' BEV with driving mass superior to the permissible gross weight.")
-        print("'*' ICEV that do not comply with the set energy reduction target.")
-        print("'/' vehicles not available for the specified year.")
+        print("'-' vehicle with driving mass superior to the permissible gross weight.")
+        print("'*' vehicle that does not comply with the set energy reduction target.")
+        print("'/' vehicle not available for the specified year.")
 
         self["is_compliant"] *= self["driving mass"] < self["gross mass"]
 
@@ -296,40 +296,18 @@ class TruckModel:
                 # as a result of curb mass being too large
                 vals = np.asarray(
                     [
-                        np.round(np.mean(v), 1)
-                        if np.mean(v) > 0.1
-                        else f"-{np.round(np.mean(v), 1)}-"
+                        np.round(v[2][0])
+                        if (v[0][0] - v[1][0]) > 0
+                        else f"-{np.round(v[2][0])}-"
                         for v in (
                             self.array.sel(
-                                parameter="cargo mass", powertrain=pt, year=y
+                                parameter=["gross mass", "driving mass", "cargo mass"],
+                                powertrain=pt,
+                                year=y
                             )
                             / 1000
                         ).values.tolist()
                     ]
-                )
-
-                # indicate vehicles that do not comply with energy target
-                vals = np.where(
-                    (
-                        self.array.sel(
-                            parameter="driving mass",
-                            powertrain=pt,
-                            year=y,
-                            value="reference"
-                            if "reference" in self.array.coords["value"]
-                            else 0,
-                        ).values
-                        < self.array.sel(
-                            parameter="gross mass",
-                            powertrain=pt,
-                            year=y,
-                            value="reference"
-                            if "reference" in self.array.coords["value"]
-                            else 0,
-                        )
-                    ),
-                    vals,
-                    f"-{vals[0]}-",
                 )
 
                 # indicate vehicles that do not comply with energy target
@@ -373,12 +351,19 @@ class TruckModel:
         payload = payload or generic_payload
 
         for s in self.array.coords["size"].values:
-            self.array.loc[dict(size=s, parameter="cargo mass")] = payload["payload"][
-                self.cycle
-            ][s]
-            self.array.loc[dict(size=s, parameter="kilometers per year")] = payload[
-                "annual mileage"
-            ][self.cycle][s]
+            if "payload" in payload:
+                if self.cycle in payload["payload"]:
+                    if s in payload["payload"][self.cycle]:
+                        self.array.loc[dict(size=s, parameter="cargo mass")] = payload["payload"][
+                            self.cycle
+                        ][s]
+
+            if "annual mileage" in payload:
+                if self.cycle in payload["annual mileage"]:
+                    if s in payload["annual mileage"][self.cycle]:
+                        self.array.loc[dict(size=s, parameter="kilometers per year")] = payload[
+                            "annual mileage"
+                        ][self.cycle][s]
 
     def set_battery_preferences(self):
 
@@ -1148,7 +1133,7 @@ class TruckModel:
         """Set electric and combustion motor powers based on input parameter ``power to mass ratio``."""
         # Convert from W/kg to kW
         self["power"] = np.clip(
-            self["power to mass ratio"] * self["curb mass"] / 1000, 0, 700
+            self["power to mass ratio"] * self["curb mass"] / 1000, 0, 450
         )
         self["combustion power share"] = self["combustion power share"].clip(
             min=0, max=1

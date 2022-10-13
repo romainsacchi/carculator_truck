@@ -2988,180 +2988,6 @@
         "maximum": 1
     },
     "102-2000-auxilliary power base demand": {
-        "amount": 1102.5,
-        "category": "Auxiliaries",
-        "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
-            "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2000,
-        "name": "auxilliary power base demand",
-        "unit": "W",
-        "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
-        "comment": "",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 1102.5,
-        "minimum": 992.25,
-        "maximum": 1212.75
-    },
-    "103-2010-auxilliary power base demand": {
-        "amount": 1050,
-        "category": "Auxiliaries",
-        "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
-            "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2010,
-        "name": "auxilliary power base demand",
-        "unit": "W",
-        "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
-        "comment": "",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 1050,
-        "minimum": 945,
-        "maximum": 1155
-    },
-    "104-2020-auxilliary power base demand": {
-        "amount": 1000,
-        "category": "Auxiliaries",
-        "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
-            "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2020,
-        "name": "auxilliary power base demand",
-        "unit": "W",
-        "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
-        "comment": "",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 1000,
-        "minimum": 900,
-        "maximum": 1100
-    },
-    "105-2030-auxilliary power base demand": {
-        "amount": 950,
-        "category": "Auxiliaries",
-        "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
-            "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2030,
-        "name": "auxilliary power base demand",
-        "unit": "W",
-        "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
-        "comment": "",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 950,
-        "minimum": 855,
-        "maximum": 1045
-    },
-    "106-2040-auxilliary power base demand": {
-        "amount": 902.5,
-        "category": "Auxiliaries",
-        "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
-            "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2040,
-        "name": "auxilliary power base demand",
-        "unit": "W",
-        "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
-        "comment": "",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 902.5,
-        "minimum": 812.25,
-        "maximum": 992.75
-    },
-    "107-2050-auxilliary power base demand": {
-        "amount": 857.375,
-        "category": "Auxiliaries",
-        "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
-            "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2050,
-        "name": "auxilliary power base demand",
-        "unit": "W",
-        "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
-        "comment": "",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 857.375,
-        "minimum": 771.6374999999999,
-        "maximum": 943.1125
-    },
-    "108-2000-auxilliary power base demand": {
         "amount": 2205,
         "category": "Auxiliaries",
         "powertrain": [
@@ -3175,23 +3001,197 @@
             "PHEV-d"
         ],
         "sizes": [
+            "3.5t"
+        ],
+        "year": 2000,
+        "name": "auxilliary power base demand",
+        "unit": "W",
+        "importance": "Limited",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
+        "comment": "",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 2205,
+        "minimum": 992.25,
+        "maximum": 1212.75
+    },
+    "103-2010-auxilliary power base demand": {
+        "amount": 2100,
+        "category": "Auxiliaries",
+        "powertrain": [
+            "PHEV-c-d",
+            "PHEV-e",
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2010,
+        "name": "auxilliary power base demand",
+        "unit": "W",
+        "importance": "Limited",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
+        "comment": "",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 2100,
+        "minimum": 945,
+        "maximum": 1155
+    },
+    "104-2020-auxilliary power base demand": {
+        "amount": 2000,
+        "category": "Auxiliaries",
+        "powertrain": [
+            "PHEV-c-d",
+            "PHEV-e",
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2020,
+        "name": "auxilliary power base demand",
+        "unit": "W",
+        "importance": "Limited",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
+        "comment": "",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 2000,
+        "minimum": 900,
+        "maximum": 1100
+    },
+    "105-2030-auxilliary power base demand": {
+        "amount": 1900,
+        "category": "Auxiliaries",
+        "powertrain": [
+            "PHEV-c-d",
+            "PHEV-e",
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2030,
+        "name": "auxilliary power base demand",
+        "unit": "W",
+        "importance": "Limited",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
+        "comment": "",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 1900,
+        "minimum": 855,
+        "maximum": 1045
+    },
+    "106-2040-auxilliary power base demand": {
+        "amount": 1805,
+        "category": "Auxiliaries",
+        "powertrain": [
+            "PHEV-c-d",
+            "PHEV-e",
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2040,
+        "name": "auxilliary power base demand",
+        "unit": "W",
+        "importance": "Limited",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
+        "comment": "",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 1805,
+        "minimum": 812.25,
+        "maximum": 992.75
+    },
+    "107-2050-auxilliary power base demand": {
+        "amount": 1714.75,
+        "category": "Auxiliaries",
+        "powertrain": [
+            "PHEV-c-d",
+            "PHEV-e",
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2050,
+        "name": "auxilliary power base demand",
+        "unit": "W",
+        "importance": "Limited",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
+        "comment": "",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 1714.75,
+        "minimum": 771.6374999999999,
+        "maximum": 943.1125
+    },
+    "108-2000-auxilliary power base demand": {
+        "amount": 3307.5,
+        "category": "Auxiliaries",
+        "powertrain": [
+            "PHEV-c-d",
+            "PHEV-e",
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
+        ],
+        "sizes": [
             "7.5t"
         ],
         "year": 2000,
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2205,
+        "loc": 3307.5,
         "minimum": 1984.5,
         "maximum": 2425.5
     },
     "109-2010-auxilliary power base demand": {
-        "amount": 2100,
+        "amount": 3150,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3210,17 +3210,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2100,
+        "loc": 3150,
         "minimum": 1890,
         "maximum": 2310
     },
     "110-2020-auxilliary power base demand": {
-        "amount": 2000,
+        "amount": 3000,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3239,17 +3239,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 2000,
+        "loc": 3000,
         "minimum": 1800,
         "maximum": 2200
     },
     "111-2030-auxilliary power base demand": {
-        "amount": 1900,
+        "amount": 2850,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3268,17 +3268,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1900,
+        "loc": 2850,
         "minimum": 1710,
         "maximum": 2090
     },
     "112-2040-auxilliary power base demand": {
-        "amount": 1805,
+        "amount": 2707.5,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3297,17 +3297,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1805,
+        "loc": 2707.5,
         "minimum": 1624.5,
         "maximum": 1985.5
     },
     "113-2050-auxilliary power base demand": {
-        "amount": 1714.75,
+        "amount": 2572.125,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3326,12 +3326,12 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 1714.75,
+        "loc": 2572.125,
         "minimum": 1543.2749999999999,
         "maximum": 1886.225
     },
@@ -3355,7 +3355,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3384,7 +3384,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3413,7 +3413,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3442,7 +3442,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3471,7 +3471,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3500,7 +3500,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3529,7 +3529,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3558,7 +3558,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3587,7 +3587,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3616,7 +3616,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3645,7 +3645,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3674,7 +3674,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3703,7 +3703,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3732,7 +3732,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3761,7 +3761,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3790,7 +3790,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3819,7 +3819,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3848,7 +3848,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3877,7 +3877,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3906,7 +3906,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -3916,7 +3916,7 @@
         "maximum": 6720
     },
     "134-2020-auxilliary power base demand": {
-        "amount": 5600,
+        "amount": 5000,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3935,17 +3935,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5600,
-        "minimum": 4480,
-        "maximum": 6720
+        "loc": 5000,
+        "minimum": 4000,
+        "maximum": 6000
     },
     "135-2030-auxilliary power base demand": {
-        "amount": 5600,
+        "amount": 4750,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3964,17 +3964,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5600,
-        "minimum": 4480,
-        "maximum": 6720
+        "loc": 4750,
+        "minimum": 3800,
+        "maximum": 5700
     },
     "136-2040-auxilliary power base demand": {
-        "amount": 5600,
+        "amount": 4512.5,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -3993,17 +3993,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5600,
-        "minimum": 4480,
-        "maximum": 6720
+        "loc": 4512.5,
+        "minimum": 3610,
+        "maximum": 5415
     },
     "137-2050-auxilliary power base demand": {
-        "amount": 5600,
+        "amount": 4286.875,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4022,14 +4022,14 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5600,
-        "minimum": 4480,
-        "maximum": 6720
+        "loc": 4286.875,
+        "minimum": 3429.5,
+        "maximum": 5144.25
     },
     "138-2000-auxilliary power base demand": {
         "amount": 5600,
@@ -4051,7 +4051,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -4080,7 +4080,7 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
@@ -4090,7 +4090,7 @@
         "maximum": 6720
     },
     "140-2020-auxilliary power base demand": {
-        "amount": 5600,
+        "amount": 5200,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4109,17 +4109,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5600,
-        "minimum": 4480,
-        "maximum": 6720
+        "loc": 5200,
+        "minimum": 4160,
+        "maximum": 6240
     },
     "141-2030-auxilliary power base demand": {
-        "amount": 5600,
+        "amount": 4940,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4138,17 +4138,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5600,
-        "minimum": 4480,
-        "maximum": 6720
+        "loc": 4940,
+        "minimum": 3952,
+        "maximum": 5928
     },
     "142-2040-auxilliary power base demand": {
-        "amount": 5600,
+        "amount": 4693,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4167,17 +4167,17 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5600,
-        "minimum": 4480,
-        "maximum": 6720
+        "loc": 4693,
+        "minimum": 3754.4,
+        "maximum": 5631.599999999999
     },
     "143-2050-auxilliary power base demand": {
-        "amount": 5600,
+        "amount": 4458.349999999999,
         "category": "Auxiliaries",
         "powertrain": [
             "PHEV-c-d",
@@ -4196,14 +4196,14 @@
         "name": "auxilliary power base demand",
         "unit": "W",
         "importance": "Limited",
-        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017. https://theicct.org/sites/default/files/publications/ICCT_EU-HDV-tech-2025-30_20180116.pdf",
+        "source": "Weller, K., Emission Models for Heavy Duty Vehicles Based on On-road Measurements, 2020\nDelgado, O.; Rodr\u00edguez, F.; Muncrief, R.; Berlin, B. |; Brussels, |; San, |; Washington, F. |; Rexeis, M.; Williams, P.; Dorobantu, M.; Laferriere, M.; Boenning, M. Fuel EFFiciency Technology in European Heavy-DuTy Vehicles: Baseline anD PoTenTial For The 2020-2030 Time Frame; 2017.\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "To be improved",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 5600,
-        "minimum": 4480,
-        "maximum": 6720
+        "loc": 4458.349999999999,
+        "minimum": 3566.68,
+        "maximum": 5350.0199999999995
     },
     "144-2000-toll cost per km": {
         "amount": 0.005,
@@ -28505,7 +28505,7 @@
         "maximum": 70
     },
     "1009-2050-power to mass ratio": {
-        "amount": 61.484807999999994,
+        "amount": 62.118672,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -28525,7 +28525,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 61.484807999999994,
+        "loc": 62.118672,
         "minimum": 50,
         "maximum": 70
     },
@@ -28655,7 +28655,7 @@
         "maximum": 43
     },
     "1015-2050-power to mass ratio": {
-        "amount": 35.400344000000004,
+        "amount": 35.765296000000006,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -28675,7 +28675,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 35.400344000000004,
+        "loc": 35.765296000000006,
         "minimum": 30,
         "maximum": 43
     },
@@ -28805,7 +28805,7 @@
         "maximum": 44
     },
     "1021-2050-power to mass ratio": {
-        "amount": 32.605579999999996,
+        "amount": 32.94172,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -28825,7 +28825,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 32.605579999999996,
+        "loc": 32.94172,
         "minimum": 27,
         "maximum": 44
     },
@@ -28955,7 +28955,7 @@
         "maximum": 39
     },
     "1027-2050-power to mass ratio": {
-        "amount": 27.016052,
+        "amount": 27.294567999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -28975,7 +28975,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 27.016052,
+        "loc": 27.294567999999998,
         "minimum": 26,
         "maximum": 39
     },
@@ -29030,7 +29030,7 @@
         "maximum": 30
     },
     "1030-2020-power to mass ratio": {
-        "amount": 28.5,
+        "amount": 25,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29050,12 +29050,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28.5,
+        "loc": 25,
         "minimum": 25,
         "maximum": 30
     },
     "1031-2030-power to mass ratio": {
-        "amount": 27.93,
+        "amount": 24.5,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29075,12 +29075,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 27.93,
+        "loc": 24.5,
         "minimum": 25,
         "maximum": 30
     },
     "1032-2040-power to mass ratio": {
-        "amount": 27.371399999999998,
+        "amount": 24.009999999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29100,12 +29100,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 27.371399999999998,
+        "loc": 24.009999999999998,
         "minimum": 25,
         "maximum": 30
     },
     "1033-2050-power to mass ratio": {
-        "amount": 26.550257999999996,
+        "amount": 23.529799999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29125,7 +29125,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 26.550257999999996,
+        "loc": 23.529799999999998,
         "minimum": 25,
         "maximum": 30
     },
@@ -29180,7 +29180,7 @@
         "maximum": 33
     },
     "1036-2020-power to mass ratio": {
-        "amount": 28,
+        "amount": 25,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29200,12 +29200,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 28,
+        "loc": 25,
         "minimum": 25,
         "maximum": 33
     },
     "1037-2030-power to mass ratio": {
-        "amount": 27.439999999999998,
+        "amount": 24.5,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29225,12 +29225,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 27.439999999999998,
+        "loc": 24.5,
         "minimum": 25,
         "maximum": 33
     },
     "1038-2040-power to mass ratio": {
-        "amount": 26.891199999999998,
+        "amount": 24.009999999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29250,12 +29250,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 26.891199999999998,
+        "loc": 24.009999999999998,
         "minimum": 25,
         "maximum": 33
     },
     "1039-2050-power to mass ratio": {
-        "amount": 26.084463999999997,
+        "amount": 23.529799999999998,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29275,7 +29275,7 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 26.084463999999997,
+        "loc": 23.529799999999998,
         "minimum": 25,
         "maximum": 33
     },
@@ -29405,7 +29405,7 @@
         "maximum": 24
     },
     "1045-2050-power to mass ratio": {
-        "amount": 20.494936,
+        "amount": 20.706224,
         "category": "Glider",
         "powertrain": [
             "ICEV-d",
@@ -29425,12 +29425,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 20.494936,
+        "loc": 20.706224,
         "minimum": 20,
         "maximum": 24
     },
     "1046-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 27,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29448,12 +29448,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 27,
+        "minimum": 24.3,
+        "maximum": 29.700000000000003
     },
     "1047-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29471,12 +29471,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1048-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29494,12 +29494,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1049-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 25.48,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29517,12 +29517,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 25.48,
+        "minimum": 22.932000000000002,
+        "maximum": 28.028000000000002
     },
     "1050-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.9704,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29540,12 +29540,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.9704,
+        "minimum": 22.473360000000003,
+        "maximum": 70
     },
     "1051-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.470992000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29563,12 +29563,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.470992000000003,
+        "minimum": 22.023892800000002,
+        "maximum": 26.918091200000006
     },
     "1052-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 27,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29586,12 +29586,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 27,
+        "minimum": 24.3,
+        "maximum": 29.700000000000003
     },
     "1053-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29609,12 +29609,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1054-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29632,12 +29632,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1055-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 25.48,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29655,12 +29655,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 25.48,
+        "minimum": 22.932000000000002,
+        "maximum": 28.028000000000002
     },
     "1056-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.9704,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29678,12 +29678,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.9704,
+        "minimum": 22.473360000000003,
+        "maximum": 43
     },
     "1057-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.470992000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29701,12 +29701,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.470992000000003,
+        "minimum": 22.023892800000002,
+        "maximum": 26.918091200000006
     },
     "1058-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 27,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29724,12 +29724,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 27,
+        "minimum": 24.3,
+        "maximum": 29.700000000000003
     },
     "1059-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29747,12 +29747,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1060-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29770,12 +29770,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1061-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 25.48,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29793,12 +29793,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 25.48,
+        "minimum": 22.932000000000002,
+        "maximum": 28.028000000000002
     },
     "1062-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.9704,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29816,12 +29816,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.9704,
+        "minimum": 22.473360000000003,
+        "maximum": 44
     },
     "1063-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.470992000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29839,12 +29839,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.470992000000003,
+        "minimum": 22.023892800000002,
+        "maximum": 26.918091200000006
     },
     "1064-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 27,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29862,12 +29862,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 27,
+        "minimum": 24.3,
+        "maximum": 29.700000000000003
     },
     "1065-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29885,12 +29885,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1066-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29908,12 +29908,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1067-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 25.48,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29931,12 +29931,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 25.48,
+        "minimum": 22.932000000000002,
+        "maximum": 28.028000000000002
     },
     "1068-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.9704,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29954,12 +29954,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.9704,
+        "minimum": 22.473360000000003,
+        "maximum": 39
     },
     "1069-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.470992000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -29977,12 +29977,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.470992000000003,
+        "minimum": 22.023892800000002,
+        "maximum": 26.918091200000006
     },
     "1070-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 27,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30000,12 +30000,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 27,
+        "minimum": 24.3,
+        "maximum": 29.700000000000003
     },
     "1071-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30023,12 +30023,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1072-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30046,12 +30046,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1073-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 25.48,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30069,12 +30069,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 25.48,
+        "minimum": 22.932000000000002,
+        "maximum": 28.028000000000002
     },
     "1074-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.9704,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30092,12 +30092,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.9704,
+        "minimum": 22.473360000000003,
+        "maximum": 30
     },
     "1075-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.470992000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30115,12 +30115,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.470992000000003,
+        "minimum": 22.023892800000002,
+        "maximum": 26.918091200000006
     },
     "1076-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 27,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30138,12 +30138,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 27,
+        "minimum": 24.3,
+        "maximum": 29.700000000000003
     },
     "1077-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30161,12 +30161,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1078-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30184,12 +30184,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1079-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 25.48,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30207,12 +30207,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 25.48,
+        "minimum": 22.932000000000002,
+        "maximum": 28.028000000000002
     },
     "1080-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.9704,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30230,12 +30230,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
+        "loc": 24.9704,
+        "minimum": 22.473360000000003,
         "maximum": 33
     },
     "1081-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.470992000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30253,12 +30253,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.470992000000003,
+        "minimum": 22.023892800000002,
+        "maximum": 26.918091200000006
     },
     "1082-2000-power to mass ratio": {
-        "amount": 30,
+        "amount": 27,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30276,12 +30276,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 27,
+        "minimum": 24.3,
+        "maximum": 29.700000000000003
     },
     "1083-2010-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30299,12 +30299,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1084-2020-power to mass ratio": {
-        "amount": 30,
+        "amount": 26,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30322,12 +30322,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 26,
+        "minimum": 23.400000000000002,
+        "maximum": 28.6
     },
     "1085-2030-power to mass ratio": {
-        "amount": 30,
+        "amount": 25.48,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30345,12 +30345,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 25.48,
+        "minimum": 22.932000000000002,
+        "maximum": 28.028000000000002
     },
     "1086-2040-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.9704,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30368,12 +30368,12 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.9704,
+        "minimum": 22.473360000000003,
+        "maximum": 24
     },
     "1087-2050-power to mass ratio": {
-        "amount": 30,
+        "amount": 24.470992000000003,
         "category": "Glider",
         "powertrain": [
             "BEV",
@@ -30391,9 +30391,9 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 30,
-        "minimum": 27,
-        "maximum": 33
+        "loc": 24.470992000000003,
+        "minimum": 22.023892800000002,
+        "maximum": 26.918091200000006
     },
     "1088-2000-power to mass ratio": {
         "amount": 25,
@@ -30968,7 +30968,7 @@
         "maximum": 23.1
     },
     "1114-2020-power to mass ratio": {
-        "amount": 21,
+        "amount": 20,
         "category": "Glider",
         "powertrain": [
             "FCEV"
@@ -30985,9 +30985,9 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 21,
-        "minimum": 18.900000000000002,
-        "maximum": 23.1
+        "loc": 20,
+        "minimum": 18,
+        "maximum": 22
     },
     "1115-2030-power to mass ratio": {
         "amount": 21,
@@ -42816,7 +42816,7 @@
         "maximum": 90
     },
     "1532-2000-aerodynamic drag coefficient": {
-        "amount": 0.6,
+        "amount": 0.55,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -42841,17 +42841,17 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.6,
-        "minimum": 0.55,
-        "maximum": 0.65
+        "loc": 0.55,
+        "minimum": 0.49500000000000005,
+        "maximum": 0.6050000000000001
     },
     "1533-2010-aerodynamic drag coefficient": {
-        "amount": 0.6,
+        "amount": 0.5,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -42876,17 +42876,17 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.6,
-        "minimum": 0.55,
-        "maximum": 0.65
+        "loc": 0.5,
+        "minimum": 0.45,
+        "maximum": 0.55
     },
     "1534-2020-aerodynamic drag coefficient": {
-        "amount": 0.5,
+        "amount": 0.473,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -42911,17 +42911,17 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.5,
-        "minimum": 0.45,
-        "maximum": 0.55
+        "loc": 0.473,
+        "minimum": 0.42569999999999997,
+        "maximum": 0.5203
     },
     "1535-2030-aerodynamic drag coefficient": {
-        "amount": 0.35,
+        "amount": 0.45,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -42946,17 +42946,17 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35,
-        "minimum": 0.33,
-        "maximum": 0.4
+        "loc": 0.45,
+        "minimum": 0.405,
+        "maximum": 0.49500000000000005
     },
     "1536-2040-aerodynamic drag coefficient": {
-        "amount": 0.35,
+        "amount": 0.43,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -42981,17 +42981,17 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35,
-        "minimum": 0.3,
-        "maximum": 0.4
+        "loc": 0.43,
+        "minimum": 0.387,
+        "maximum": 0.47300000000000003
     },
     "1537-2050-aerodynamic drag coefficient": {
-        "amount": 0.3,
+        "amount": 0.4,
         "category": "Glider",
         "powertrain": [
             "PHEV-c-d",
@@ -43016,14 +43016,14 @@
         "name": "aerodynamic drag coefficient",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf",
+        "source": "https://theicct.org/wp-content/uploads/2021/12/eu-tractor-trailers-analysis-aug21-2.pdf\nhttps://www.transportenvironment.org/wp-content/uploads/2022/10/202210_TNO_-techno_economic_uptake_potential_of_zero_emission_trucks_in_Europe.pdf",
         "comment": "",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.3,
-        "minimum": 0.28,
-        "maximum": 0.35
+        "loc": 0.4,
+        "minimum": 0.36000000000000004,
+        "maximum": 0.44000000000000006
     },
     "1538-2000-transmission mass per ton of gross weight": {
         "amount": 23.6,
