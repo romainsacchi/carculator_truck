@@ -303,7 +303,7 @@ class TruckModel:
                             self.array.sel(
                                 parameter=["gross mass", "driving mass", "cargo mass"],
                                 powertrain=pt,
-                                year=y
+                                year=y,
                             )
                             / 1000
                         ).values.tolist()
@@ -354,16 +354,16 @@ class TruckModel:
             if "payload" in payload:
                 if self.cycle in payload["payload"]:
                     if s in payload["payload"][self.cycle]:
-                        self.array.loc[dict(size=s, parameter="cargo mass")] = payload["payload"][
-                            self.cycle
-                        ][s]
+                        self.array.loc[dict(size=s, parameter="cargo mass")] = payload[
+                            "payload"
+                        ][self.cycle][s]
 
             if "annual mileage" in payload:
                 if self.cycle in payload["annual mileage"]:
                     if s in payload["annual mileage"][self.cycle]:
-                        self.array.loc[dict(size=s, parameter="kilometers per year")] = payload[
-                            "annual mileage"
-                        ][self.cycle][s]
+                        self.array.loc[
+                            dict(size=s, parameter="kilometers per year")
+                        ] = payload["annual mileage"][self.cycle][s]
 
     def set_battery_preferences(self):
 
