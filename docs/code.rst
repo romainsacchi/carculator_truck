@@ -1,59 +1,59 @@
-Car Input Parameter
-===================
+Truck Input Parameter
+=====================
 
-.. autoclass:: carculator.car_input_parameters.CarInputParameters
+.. autoclass:: carculator_truck.truck_input_parameters.TruckInputParameters
     :members:
     
 Array
 =====
 
-.. automodule:: carculator.array
+.. automodule:: carculator_truck.array
     :members:
     
 Driving cycle
 =============
 
-.. automodule:: carculator.driving_cycles
+.. automodule:: carculator_truck.driving_cycles
     :members:
     
 Energy consumption
 ==================
 
-.. automodule:: carculator.energy_consumption
+.. automodule:: carculator_truck.energy_consumption
     :members:
 
 Car Model
 =========
 
-.. automodule:: carculator.model
+.. automodule:: carculator_truck.model
     :members:
 
 Noise Model
 ===========
 
-.. automodule:: carculator.noise_emissions
+.. automodule:: carculator_truck.noise_emissions
     :members:
 
 Hot pollutants emissions
 ========================
 
-.. automodule:: carculator.hot_emissions
+.. automodule:: carculator_truck.hot_emissions
     :members:
 
 Inventory calculation
 =====================
 
-.. automodule:: carculator.inventory
+.. automodule:: carculator_truck.inventory
     :members:
 
 Inventory export
 ================
 
-.. automodule:: carculator.export
+.. automodule:: carculator_truck.export
     :members:
 
 Background systems
 ==================
 
-.. automodule:: carculator.background_systems
+.. automodule:: carculator_truck.background_systems
     :members:

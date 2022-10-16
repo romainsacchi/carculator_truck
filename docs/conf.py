@@ -13,17 +13,18 @@
 import os
 import sys
 
+# sys.path.insert(0, os.path.abspath('C:\Users\sacchi_r\Documents\GitHub\coarse\coarse'))
 sys.path.insert(0, os.path.abspath(".."))
 
 
 # -- Project information -----------------------------------------------------
 
-project = "carculator-truck"
-copyright = "2020, Paul Scherrer Institut"
-author = "Romain Sacchi, Christian Bauer"
+project = "Carculator truck"
+copyright = "2021, Paul Scherrer Institut"
+author = "Romain Sacchi"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.3"
+release = "0.3.8"
 
 
 # -- General configuration ---------------------------------------------------
@@ -34,7 +35,7 @@ release = "0.0.3"
 extensions = ["sphinx.ext.autodoc"]
 
 autoapi_type = "python"
-autoapi_dirs = ["../carculator"]
+autoapi_dirs = ["../carculator_truck"]
 
 master_doc = "index"
 
@@ -58,3 +59,5 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+# html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'] }

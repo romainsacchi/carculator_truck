@@ -1,14 +1,14 @@
 Structure
 =========
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/coarse.png
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/coarse.png
     :width: 900
     :alt: Alternative text
 
 Modules
 -------
 
-Composed of eight modules to build the truck models:
+Composed of eight modules to build the car models:
 
     * Driving cycle module
     * Mass module
