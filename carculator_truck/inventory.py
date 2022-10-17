@@ -178,11 +178,11 @@ class InventoryCalculation:
     :ivar fuel_blend: a dictionary that contains fuel blend shares per type of fuel.
     :ivar scope: dictionary that contains filters for narrowing the analysis
     :ivar background_configuration: dictionary that contains choices for background system
-    :ivar scenario: REMIND energy scenario to use ("SSP2-Baseline": business-as-usual,
+    :ivar scenario: REMIND energy scenario to use ("SSP2-NPi": Nationally Implemented Policies, limits to 3.3°C by 2100,
           "SSP2-PkBudg1150": limits cumulative GHG emissions to 1,100 gigatons by 2100 (+2C),
           "SSP2-PkBudg500": limits cumulative GHG emissions to 500 gigatons by 2100 (+1.5C),
           "static": no forward-looking modification of the background inventories).
-          "SSP2-Baseline" selected by default.
+          "SSP2-NPi" selected by default.
 
 
     .. code-block:: python
@@ -194,7 +194,7 @@ class InventoryCalculation:
         tm,
         scope=None,
         background_configuration=None,
-        scenario="SSP2-Base",
+        scenario="SSP2-NPi",
         method="recipe",
         method_type="midpoint",
     ):
