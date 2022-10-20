@@ -49,7 +49,7 @@ easy and does not require changing extensive parts of the code. In that regard, 
 Finally, beside being more flexible and transparent, ``carculator_truck`` provides interesting features, such as:
 
 * a stochastic mode, that allows fast Monte Carlo analyses, to include uncertainty at the vehicle level
-* possibility to override any or all of the 200+ default input car parameters (e.g., cargo load, drag coefficient) but also calculated parameters (e.g., driving mass).
+* possibility to override any or all of the 200+ default input truck parameters (e.g., cargo load, drag coefficient) but also calculated parameters (e.g., driving mass).
 * hot pollutants emissions as a function of the driving cycle, using `HBEFA <https://www.hbefa.net/e/index.html>`_ 4.1 data, further divided between rural, suburban and urban areas
 * noise emissions, based on `CNOSSOS-EU <https://ec.europa.eu/jrc/en/publication/reference-reports/common-noise-assessment-methods-europe-cnossos-eu>`_ models for noise emissions and `Noise footprint from personal land‐based mobility by Cucurachi, et al (2019) <https://onlinelibrary.wiley.com/doi/full/10.1111/jiec.12837>`_ for inventory modelling and mid- and endpoint characterization of noise emissions, function of driving cycle and further divided between rural, suburban and urban areas
 * export of inventories as an Excel/CSV file, to be used with Brightway2 or Simapro, including uncertainty information. This requires the user to have `ecoinvent` installed on the LCA software the trucks inventories are exported to.
@@ -92,7 +92,7 @@ randomly-generated values based on a probability distribution for those ("stocha
 For example, the aerodynamic drag coefficient of 32t trucks in 2020, across powertrains, is given the most likely value (i.e., the mode) of 0.38,
 but with a triangular probability distribution with a minimum and maximum of 0.3 and 0.4, respectively.
 
-Creating car models in static mode will use the most likely value of the given parameters to dimension the vehicles, etc., such as:
+Creating truck models in static mode will use the most likely value of the given parameters to dimension the vehicles, etc., such as:
 
 .. code-block:: python
 
@@ -304,7 +304,7 @@ Any other attributes of the TruckModel class can be obtained in a similar way.
 Hence, the following code lists all direct exhaust emissions included in the
 inventory of an 32t diesel truck in 2030:
 
-List of all the given and calculated parameters of the car model:
+List of all the given and calculated parameters of the truck model:
 
 .. code-block:: python
 
