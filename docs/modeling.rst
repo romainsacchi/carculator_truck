@@ -122,31 +122,31 @@ to 400 km.
 
 Example of 3.5t truck, rigid, 2 axles, box body and 7.5t truck, rigid, 2 axles, box body
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image68.jpg
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image68.jpg
     :width: 50%
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image69.jpg
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image69.jpg
     :width: 50%
 
 Example of 18t truck, rigid, 2 axles, box body and 26t truck, rigid, 3 axles, box body
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image70.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image70.png
     :width: 50%
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image71.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image71.png
     :width: 50%
 
 Example of 32t truck, semi-trailer, 2+3 axles, curtain-sider and 40t truck, tipper-trailer, 2+4 axles
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image72.jpg
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image72.jpg
     :width: 50%
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image73.jpg
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image73.jpg
     :width: 50%
 
 Example of 60t truck, semi-trailer + trailer, 2+4+2 axles, curtain-sider
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image74.jpg
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image74.jpg
     :width: 50%
 
 Manufacture year and emission standard
@@ -317,7 +317,7 @@ Abrasion emissions
 Figure 1 shows the calculated abrasion emissions for trucks in mg per
 vehicle-kilometer, following the approach presented in Section I.C.5.b.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image75.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image75.png
 
 
 Figure 1 Total particulate matter emissions (<2.5 µm and 2.5-10 µm) in
@@ -344,7 +344,7 @@ driving cycle. It distinguishes the target speed from the actual speed
 managed by the different vehicles. The power-to-mass ratio influences
 the extent to which a vehicle manages to comply with the target speed.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image76.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image76.png
 
 Figure 2 VECTO's "Urban delivery" driving cycle (first two hundred
 seconds)
@@ -352,7 +352,7 @@ seconds)
 Road gradients are also considered. Figure 4 shows the road gradient
 profile of the “Urban delivery” driving cycle.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image77.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image77.png
 
 Figure 3 Road gradients corresponding to VECTO's "Urban delivery"
 driving cycle
@@ -364,7 +364,7 @@ haul” driving cycle has a comparatively higher average speed level and
 lasts much longer. Figure 4 shows the first two hundred seconds of the
 “Long haul” driving cycle.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image78.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image78.png
 
 Figure 4 VECTO's "Long haul" driving cycle (first two hundred seconds)
 
@@ -414,7 +414,7 @@ calibration, the tank-to-wheel energy consumption value obtained from
 VECTO and from *carculator_truck* for diesel-powered trucks differ by
 less than 1 percent over the entire driving cycle.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image78.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image78.png
 
 Figure 5 Calibration of carculator_truck energy model against VECTO
 simulations for a 40t articulated truck diesel truck (first 1’500
@@ -480,7 +480,7 @@ Table 87 Degradation factors at 890'000 km for diesel trucks
 **EURO-6**                           1.3
 ==================================== =========
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image80.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image80.png
    :width: 6.27014in
    :height: 7.84756in
 
@@ -511,7 +511,7 @@ cycles using trucks of different size classes and HBEFA’s emission
 factors for “rural” and “motorway” traffic situations shows a similar
 picture.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image81.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image81.png
    :width: 6.27014in
    :height: 5.70565in
 
@@ -634,7 +634,7 @@ difference across chemistries is not significant. The higher gravimetric
 energy density of NCA batteries slightly increases the available payload
 of the vehicle.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image82.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image82.png
    :width: 4.19231in
    :height: 4.39368in
 
@@ -730,7 +730,7 @@ substantially more carbon fiber (up to 70% by mass): this can
 potentially impact end-results as carbon fiber is very energy-intensive
 to produce.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image61.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image61.png
    :width: 5.01389in
    :height: 3.00694in
 
@@ -840,7 +840,7 @@ modeled by *carculator_truck* with those found in HBEFA and ecoinvent
 v.3.
 
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image83.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image83.png
    :width: 7.51138in
    :height: 3.10833in
 
