@@ -1,7 +1,7 @@
 Sections
 ********
 
-`1 Overview of carculator modules <#overview-of-carculator-modules>`__
+`1 Overview of carculator_truck modules <#overview-of-carculator_truck-modules>`__
 
 `2 Vehicle modelling <#vehicle-modelling>`__
 
@@ -53,18 +53,18 @@ Sections
 
 `References <#references>`__
 
-This document intends to describe the *carculator* model, assumptions
+This document intends to describe the *carculator_truck* model, assumptions
 and inventories as exhaustively as possible.
-*carculator* is an open-source Python library. Its code is publicly
+*carculator_truck* is an open-source Python library. Its code is publicly
 available via its `Github
-repository <https://github.com/romainsacchi/carculator>`__. There is
+repository <https://github.com/romainsacchi/carculator_truck>`__. There is
 also `an examples
-notebook <https://github.com/romainsacchi/carculator/blob/master/examples/Examples.ipynb>`__,
+notebook <https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb>`__,
 to guide new users into performing life cycle analyses. Finally, there
 is also an online graphical user interface available at
-https://carculator.psi.ch.
+https://carculator_truck.psi.ch.
 
-Overview of *carculator* modules
+Overview of *carculator_truck* modules
 ********************************
 
 The main module *model.py* builds
@@ -86,953 +86,1040 @@ modelling.
 Size classes
 ------------
 
-Originally, *carculator* defines nine size classes, namely: Micro, Mini,
-Small, Lower medium, Medium, Large, Medium SUV, Large SUV and Van,
-according to the following criteria, adapted from the work of [1]_ and
-shown in Table 1.
+Inventories for the following powertrain types are provided:
 
-Table 1 Criteria for size classes
+-  Diesel-run internal combustion engine vehicle (ICEV-d)
 
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| EU segment  | EU segment definition          | carculator    | Minimum footprint [m2]                                | Maximum footprint [m2]  | Minimum curb mass [kg]  | Maximum curb mass [kg]  | Examples                                                               |
-+=============+================================+===============+=======================================================+=========================+=========================+=========================+========================================================================+
-| L7e         | Micro cars/Heavy quadricycles  | Micro         |                                                       |                         | 400                     | 600                     | Renault Twizzy, Microlino                                              |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| A           | Mini cars                      | Mini          |                                                       | 3.4                     |                         | 1050                    | Renault Twingo, Smart ForTwo, Toyota Aygo                              |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| B           | Small cars                     | Small         | 3.4                                                   | 3.8                     | 900                     | 1'100                   | Renault Clio, VW Polo, Toyota Yaris                                    |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| C           | Medium cars                    | Lower medium  | 3.8                                                   | 4.3                     | 1'250                   | 1'500                   | VW Golf, Ford Focus, Mercedes Class A                                  |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| C           |                                | Medium        | 3.9                                                   | 4.4                     | 1'500                   | 1'750                   | VW Passat, Audi A4, Mercedes Class C                                   |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| D           | Large/Executive                | Large         | 4.4                                                   |                         | 1'450                   | 2'000                   | Tesla Model 3, BMW 5 Series, Mercedes E series                         |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| J           | Sport Utility                  | Medium SUV    | 4.5                                                   |                         | 1'300                   | 2'000                   | Toyota RAV4, Peugeot 2008, Dacia Duster                                |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| J           | Sport Utility                  | Large SUV     | 6                                                     |                         | 2'000                   | 2'500                   | Audi Q7, BMW X7, Mercedes-Benz GLS, Toyota Landcruiser, Jaguar f-Pace  |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
-| M           | Multi-Purpose Vehicles         | Van           | Defined by body type rather than mass and footprint.  |                         |                         |                         | VW Transporter, Mercedes Sprinter, Ford Transit                        |
-+-------------+--------------------------------+---------------+-------------------------------------------------------+-------------------------+-------------------------+-------------------------+------------------------------------------------------------------------+
+-  Gas-run internal combustion engine vehicle (ICEV-g)
 
-Example of Micro car (Microlino), Mini car (Smart) and Small/Compact car (VW Polo)
+-  Diesel-run hybrid electric vehicle (HEV-d)
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image1.png
-    :width: 30%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image2.jpeg
-    :width: 30%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image3.png
-    :width: 30%
+-  Diesel-run plug-in hybrid electric vehicle (PHEV-d)
 
-Example of Lower medium car (VW Golf), Medium car (Peugeot 408) and Large car (Tesla Model 3)
+-  Battery electric vehicle (BEV)
 
+-  Fuel cell electric vehicle (FCEV)
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image4.png
-    :width: 30%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image5.jpeg
-    :width: 30%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image6.png
-    :width: 30%
+Several size classes are available for each powertrain type. They refer
+to the maximum permissible gross weight of the vehicle (e.g., 32 tons).
+In addition, several application-specific designs are available for each
+powertrain-size class combination, namely: *Urban delivery*, *Regional delivery*
+and *Long haul*. They are associated with a given range
+autonomy: *150* km, *400* km and *800* km, respectively. This is
+particularly relevant for sizing the onboard energy storage unit. Some
+powertrain-size class-application combinations are not commercially
+available or technologically mature and are therefore not considered.
 
-Example of Medium SUV car (Peugeot 2008), Large SUV car (Audi Q7) and Van (Fiat Ducato)
+Battery electric vehicles are not considered for years prior to
+2020. Additionally, *carculator_truck* may not find a solution for
+regional delivery and long haul use in 2020, as the volumetric
+density of batteries does not currently allow a range autonomy superior
+to 400 km.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image7.png
-    :width: 30%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image8.png
-    :width: 30%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image9.png
-    :width: 30%
+*carculator_truck* defines seven size classes, namely:
+* 3.5t
+* 7.5t
+* 18t
+* 26t
+* 32t
+* 40t
+* 60t
 
-**Important remark**: Micro cars are not considered passenger cars in
-the Swiss and European legislation, but heavy quadricycles. We do
-however assimilate them to passenger cars. They are only modelled with a
-battery electric powertrain.
-
-**Important remark**: Sport Utility Vehicles (SUV) are considered more
-as a body type than a size class. These vehicles have distinct
-aerodynamic properties, but their curb mass can be as light as that of a
-VW Polo or a Renault Clio (i.e., the Dacia Duster or Peugeot 2008 have a
-curb mass of 1'150 kg, against 1'100-1'300 kg for a VW Polo) or as heavy
-as a Mercedes Class E (i.e., the Audi Q7 has a minimum curb mass of
-2'000 kg, against 1'900 kg for a Mercedes Class E). To assess the
-impacts of very large SUV, the "Large SUV" category has been added, to
-represent SUV models with a very high curb mass (2'000 kg and above) and
-footprint.
++----------------------------------+----------------------------------+
+| |image96|                        | |image97|                        |
++----------------------------------+----------------------------------+
+| Example of 3.5t truck, rigid, 2  | Example of 7.5t truck, rigid, 2  |
+| axles, box body                  | axles, box body                  |
++----------------------------------+----------------------------------+
+| |image98|                        | |image99|                        |
++----------------------------------+----------------------------------+
+| Example of 18t truck, rigid, 2   | Example of 26t truck, rigid, 3   |
+| axles, box body                  | axles, box body                  |
++----------------------------------+----------------------------------+
+| |image100|                       | |image101|                       |
++----------------------------------+----------------------------------+
+| Example of 32t truck,            | Example of 40t truck,            |
+| semi-trailer, 2+3 axles,         | tipper-trailer, 2+4 axles        |
+| curtain-sider                    |                                  |
++----------------------------------+----------------------------------+
+| |image102|                       |                                  |
++----------------------------------+----------------------------------+
+| Example of 60t truck,            |                                  |
+| semi-trailer + trailer, 2+4+2    |                                  |
+| axles, curtain-sider\*           |                                  |
++----------------------------------+----------------------------------+
 
 Manufacture year and emission standard
 --------------------------------------
 
-Several emission standards are considered. For simplicity, it is assumed
-that the vehicle manufacture year corresponds to the registration year,
-as shown in Table 2.
-
-Table 2 Correspondence between manufacture year and emission standards
-used in *carculator*
-
-+----------------+----------------+----------------+----------------+
-|                | **Start of     | **End of       | **Manufacture  |
-|                | registration** | registration   | year in**      |
-|                |                | (incl.)**      | *carculator*   |
-+================+================+================+================+
-| **EURO-3**     | 2001           | 2005           | **2003**       |
-+----------------+----------------+----------------+----------------+
-| **EURO-4**     | 2006           | 2010           | **2008**       |
-+----------------+----------------+----------------+----------------+
-| **EURO-5**     | 2011           | 2014           | **2013**       |
-+----------------+----------------+----------------+----------------+
-| **EURO-6 a/b** | 2015           | 2017           | **2016**       |
-+----------------+----------------+----------------+----------------+
-| **EURO-6 c**   | 2018           | 2018           | **2018**       |
-+----------------+----------------+----------------+----------------+
-| **EURO-6 d     | 2019           | 2020           | **2019**       |
-| (temp)**       |                |                |                |
-+----------------+----------------+----------------+----------------+
-| **EURO-6 d**   | 2021           | -              | **2021**       |
-+----------------+----------------+----------------+----------------+
-
-Size and mass-related parameters and modeling
----------------------------------------------
-
-The vehicle glider and its components (powertrain, energy storage, etc.)
-are sized according to engine power, which itself is conditioned by the
-curb mass of the vehicle. The curb mass of the vehicle is the sum of
-the vehicle components (excluding the driver and possible cargo) as
-represented in Figure 2.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image10.png
-   :width: 100%
-
-Figure 2 Vehicle mass calculation workflow
-
-This is an iterative process that stops when the curb mass of the
-vehicle converges, as illustrated in Figure 3.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image11.png
-   :width: 6.26667in
-   :height: 3.99167in
-
-Figure 3 Representation of the convergence of the sizing of the
-passenger car model
-
-Curb mass of the vehicle
-________________________
-
-.. math::
-
-    m_{curb} = sum(m_{glider}, m_{charger}, m_{conv},
-            m_{inv}, m_{distr}, m_{comb}, m_{elec},\\
-            m_{pwt}, m_{fcstack}, m_{fcauxbop}, m_{fcessbop},
-            m_{battcell}, m_{battbop}, m_{fueltank}, m_{fuel})
-
-With:
-
--  :math:`m_{curb}` being the vehicle curb mass, in kg
-
--  :math:`m_{fuel}` being the fuel mass, in kg
-
--  :math:`m_{charger}` being the electric onboard charge mass, in kg
-
--  :math:`m_{conv}` being the current converter, in kg
-
--  :math:`m_{inv}` being the current AC/DC inverter, in kg
-
--  :math:`m_{distr}` being the power distribution unit, in kg
-
--  :math:`m_{comb}` being the combustion engine mass, in kg
-
--  :math:`m_{elec}` being the electric motor mass, in kg
-
--  :math:`m_{pwt}` being the powertrain mass, in kg
-
--  :math:`m_{fcstack}` being the fuel cell stack mass, in kg
-
--  :math:`m_{fcauxbop}` being the fuel cell auxiliary components mass, in kg
-
--  :math:`m_{battcell}` being the battery cell mass, in kg
-
--  :math:`m_{battbop}` being the battery auxiliary components mass, in kg
-
--  :math:`m_{fcessbop}` being the fuel cell essential components mass, in kg
-
--  :math:`m_{fueltank}` being the fuel tank mass, in kg
-
-
-For each iteration, the tank-to-wheel energy consumption (i.e., the
-motive energy minus any recuperated braking energy, together with the
-needed auxiliary energy to power onboard electronics) of the vehicle is
-calculated (i.e., to size the energy storage components, calculate the
-fuel consumption, etc.), as described later in this section.
-
-Cargo and driving mass of the vehicle
--------------------------------------
-
-The cargo mass of the vehicle is the sum of the cargo mass and the
-passenger mass.
-
-.. math::
-
-    m_{cargo} = m_{cargo} + m_{passenger}
-
-where :math:`m_{cargo}` is the cargo mass, in kg,
-and :math:`m_{passenger}` is the passenger mass.
-
-The driving mass of the vehicle is the sum of the curb mass and the cargo mass.
-
-.. math::
-
-    m_{driving} = m_{curb} + m_{cargo}
-
-where :math:`m_{curb}` is the curb mass, in kg, and :math:`m_{cargo}` is the
-cargo mass, in kg, and :math:`m_{driving}` is the driving mass, in kg.
-
-Light-weight rates
-------------------
-
-Because the LCI dataset used to represent the glider of the vehicle is
-not representative of todays' use of light-weighting materials, such as
-aluminium (i.e., the dataset "glider for passenger cars" only contains
-0.5% of its mass in aluminium) and advanced high strength steel (AHSS),
-an amount of such light-weighting materials is introduced to substitute
-conventional steel and thereby reduce the mass of the glider.
-
-As further explained in Section 2.6, the mass of the glider is reduced
-by replacing steel with a mix of aluminium and AHSS. Hence, the amounts
-of light weighting materials introduced depend on the rate of glider
-light weighting in 2020 relative to 2000 (approximately 11% for
-combustion engine vehicles). The amount of aluminium introduced is
-further cross-checked with the amounts indicated in [2]_ and listed in
-Table 3, and comes in addition to the aluminium already contained in the
-LCI datasets for the engine and transmission.
-
-**Important remark:** the light-weighting rate is for most vehicles
-approximately 11% in 2020 relative to 2000. However, battery-equipped vehicles
-are an exception to this: Medium, Large and Large SUV vehicles have
-significantly higher light weighting rates to partially compensate for
-the additional mass of their batteries. In order to match the battery
-capacity and the curb mass of their respective size class, their light
-weighting rate is increased to 14, 28 and 30%, respectively. This trend
-is also confirmed by [2]_, showing that battery electric vehicles have
-85% more aluminium than combustion engine vehicles, partly going into
-the battery management system, and partly going into the chassis to
-compensate for the extra mass represented by the battery.
-
-These light-weighting rates have been fine adjusted to match the curb
-mass of a given size class, while preserving the battery capacity. For
-example, in the case of the Large SUV, its curb mass should
-approximately be 2'200 kg, with an 80 kWh battery weighting 660 kg
-(e.g., Jaguar i-Pace). This is possible with a 30% light weighting rate,
-introducing approximately 460 kg of aluminium in the chassis (which
-matches roughly with the value given for an Audi e-Tron in Table 3) and
-1'008 kg of AHSS, in lieu of 2'034 kg of regular steel.
-
-Table 3 Amount of aluminium in European passenger cars. Source: [2]_
-
-+-------------------------------------------------------------------------------+--------+--------------+----------+------+----------+--------+------+------------------+
-| Used in source                                                                | Basic  | Sub-Compact  | Compact  |      | Midsize  | Large  |      | Audi e-Tron      |
-+===============================================================================+========+==============+==========+======+==========+========+======+==================+
-| Used in carculator                                                            | Small  |              |          |      | Medium   | Large  |      | Large SUV (BEV)  |
-+-------------------------------------------------------------------------------+--------+--------------+----------+------+----------+--------+------+------------------+
-| Average aluminium content per vehicle [kg]                                    | 77     | 98           | 152      |      | 266      | 442    |      | 804              |
-+-------------------------------------------------------------------------------+--------+--------------+----------+------+----------+--------+------+------------------+
-| Share of aluminium mass in components other than engine and transmission [%]  | 66%    |              |          |      |          |        |      |                  |
-+-------------------------------------------------------------------------------+--------+--------------+----------+------+----------+--------+------+------------------+
-| Aluminium to be added to the glider [%]                                       | 65     |              |          | 175  |          | 292    | 530  |                  |
-+-------------------------------------------------------------------------------+--------+--------------+----------+------+----------+--------+------+------------------+
-
-Curb mass calibration
----------------------
-
-The final curb mass obtained for each vehicle is calibrated against the
-European Commission's database for CO\ :sub:`2` emission tests for
-passenger cars (hereafter called EC-CO2-PC) using the NEDC/WLTP driving
-cycles [3]_. Each vehicle registered in the European Union is tested and
-several of the vehicle attributes are registered (e.g., dimension, curb
-mass, driving mass, CO\ :sub:`2` emissions, etc.). This has represented
-about 15+ million vehicles per year for the past five years.
-
-The figure below shows such calibration for the years 2010, 2013, 2016,
-2018, 2019 and 2020 -- to be representative of EURO-4, -5, 6 a/b, 6-c
-and 6-d-temp vehicles. No measurements are available for 2003 (EURO-3)
-or 2021 (EURO-6-d). After cleaning the data from the EC-CO2-PC database,
-it represents 27 million points to calibrate the curb mass of the
-vehicles with. Green vertical bars represent the span of 50% of the curb
-mass distribution, and the red dots are the curb mass values modeled by
-*carculator*.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image12.png
-
-Figure 4 Calibration of the curb mass of the passenger car model against
-the EC-CO2-PC database. Red dots: values modeled by carculator. Green
-box-and-whiskers: values distribution from the EC-CO2-PC database (box:
-50% of the distribution, whiskers: 90% of the distribution). Micro cars
-are not represented in the EC-CO2-PC database. Sample size for each size
-class is given above each chart. M = Mini, S = Small, L-M = Lower
-medium, M = Medium, L = Large, L-SUV = Large SUV. Source for vehicle
-tank-to-wheel energy consumption measurements: [4]_.
-
-Table 4 shows the mass distribution for gasoline and battery electric
-passenger cars resulting from the calibration. Mass information on other
-vehicles is available in the vehicles' specifications spreadsheet.
-
-Table 4 Mass distribution for gasoline and battery electric passenger
-cars *in 2021*
-
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Gasoline              |        |         |        | Battery electric  |        |        |         |        |            |
-+=======================+========+=========+========+===================+========+========+=========+========+============+
-| in kilograms          | Small  | Medium  | Large  | Large SUV         | Micro  | Small  | Medium  | Large  | Large SUV  |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Glider base mass      | 998    | 1'170   | 1'550  | 1'900             | 350    | 998    | 1'170   | 1'550  | 1'900      |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Light weighting       | -110   | -129    | -171   | -209              | -35    | -140   | -164    | -434   | -570       |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Glider mass           | 888    | 1'041   | 1'380  | 1'691             | 315    | 858    | 1'006   | 1'116  | 1'330      |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Powertrain mass       | 96     | 106     | 132    | 140               | 42     | 67     | 77      | 94     | 100        |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Engine or motor mass  | 111    | 125     | 157    | 168               | 29     | 61     | 73      | 96     | 102        |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Energy storage mass   | 72     | 85      | 104    | 104               | 120    | 276    | 360     | 580    | 660        |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Electronics mass      | 3      | 4       | 5      | 7                 | 23     | 23     | 23      | 23     | 23         |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Curb mass             | 1'170  | 1'361   | 1'777  | 2'110             | 529    | 1'285  | 1'540   | 1'910  | 2'215      |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Passenger mass        | 120    | 120     | 120    | 120               | 120    | 120    | 120     | 120    | 120        |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Cargo mass            | 20     | 20      | 20     | 20                | 20     | 20     | 20      | 20     | 20         |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-| Driving mass          | 1'310  | 1'501   | 1'917  | 2'250             | 669    | 1'425  | 1'680   | 2'050  | 2'355      |
-+-----------------------+--------+---------+--------+-------------------+--------+--------+---------+--------+------------+
-
-Energy consumption
--------------------
-
-The energy consumption model of *carculator* calculates the energy
-required at the wheels by considering different types of resistance.
-Some of these resistances are related to the vehicle size class. For
-example, the frontal area of the vehicle influences the aerodynamic
-drag. Also, the kinetic energy to overcome the vehicle's inertia is
-influenced by the mass of the vehicle (which partially correlates to
-with the size class or body type), but also by the acceleration required
-by the driving cycle. Other resistances, such as the climbing effort,
-are instead determined by the driving cycle (but the vehicle mass also
-plays a role here). Once the energy required at the wheels is known, the
-model goes on to calculate the energy required at the tank level by
-considering additional losses along the drive train (i.e., axles,
-gearbox, and engine losses). The different types of resistance
-considered are depicted in Figure 5, and the module calculation workflow
-is presented in Figure 6.
-
-Powertrains that are partially or fully electrified have the possibility
-to recuperate a part of the energy spent for propulsion during
-deceleration or braking. The round-trip battery energy loss (which is
-the sum of the charge and discharge battery loss, described in Figure 5)
-is subtracted from the recuperated energy. For hybrid vehicles (i.e.,
-HEV-p, HEV-d), this allows to downsize the combustion engine and improve
-the overall tank-to-wheel efficiency, as explained in [5]_.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image13.png
-   :width: 6.26667in
-   :height: 2.49167in
-
-Figure 5 Representation of the different types of resistance considered.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image15.png
-   :width: 100%
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image14.png
-   :width: 20%
-
-
-Figure 6 Motive energy calculation workflow
-
-
-Finally, for each second of the driving cycle, the auxiliary power load
-is considered. It comprises an auxiliary base power load (i.e., to
-operate onboard electronics), as well as the power load from heating and
-cooling. While electric vehicles provide energy from the battery to
-supply heating and cooling (i.e., thereby decreasing the available
-energy available for traction), combustion vehicles recover enough waste
-engine heat to supply adequate heating. The values considered for the
-auxiliary base power load and for the power load for heating and cooling
-are presented in Table 5. These values are averaged over the whole year,
-based on maximum demand and share of operation.
-
-Table 5 Auxiliary power demand. Source : [6]_
-
-+----------------------------------+---------------------------+--------+---------------------+---------+--------+---------------------------+--------+--------+---------+--------+------------+
-| Auxiliary power base demand [W]  | Heating power demand [W]  |        |                     |         |        | Cooling power demand [W]  |        |        |         |        |            |
-+==================================+===========================+========+=====================+=========+========+===========================+========+========+=========+========+============+
-|                                  |                           | Micro  | Small               | Medium  | Large  | Large SUV                 | Micro  | Small  | Medium  | Large  | Large SUV  |
-+----------------------------------+---------------------------+--------+---------------------+---------+--------+---------------------------+--------+--------+---------+--------+------------+
-| ICEV, HEV, PHEV                  | 94                        |        | Provided by engine  |         |        |                           |        | 250    | 320     | 350    | 350        |
-+----------------------------------+---------------------------+--------+---------------------+---------+--------+---------------------------+--------+--------+---------+--------+------------+
-| BEV, FCEV                        | 75                        | 200    | 250                 | 320     | 350    | 350                       | 0      | 250    | 320     | 350    | 350        |
-+----------------------------------+---------------------------+--------+---------------------+---------+--------+---------------------------+--------+--------+---------+--------+------------+
-
-.. math::
-
-    P_{aux} = P_{base} + (P_{heating} \times D_{heating}) + (P_{cooling} \times D_{cooling})
-
-where :math:`P_{base}` is the auxiliary base power load [W],
-:math:`P_{heating}` is the power load for heating [W],
-:math:`P_{cooling}` is the power load for cooling [W],
-:math:`D_{heating}` is the demand for heating [0-1] (=0 for non-electric vehicles),
-and :math:`D_{cooling}` is the demand for cooling [0-1].
-
-To convert it into an energy consumption :math:`F_{aux}` [kj/km],
-the auxiliary power load is multiplied by the time of the driving cycle
-and divided by the distance driven:
-
-.. math::
-
-    F_{aux} = \frac{P_{aux} \times T}{D}
-
-where :math:`T` is the driving cycle time [seconds] and D is the distance [m].
-
-**Important remark:** Micro cars are not equipped with an air
-conditioning system. Hence, their cooling energy requirement is set to
-zero.
-
-A driving cycle is used to calculate the tank-to-wheel energy required
-by the vehicle to drive over one kilometer. For example, the WLTC
-driving cycle comprises a mix of urban, sub-urban and highway driving.
-It is assumed representative of average Swiss and European driving
-profile - although this would likely differ in the case of intensive
-mountain driving.
-
-Figure 7 exemplifies such calculation for a medium battery electric
-passenger car manufactured in 2020, using the WLTC driving cycle.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image16.png
-   :width: 4.46667in
-   :height: 2.69742in
-
-Figure 7 Cumulated tank-to-wheel energy consumption, along the WLTC
-driving cycle, for a mid-size battery electric vehicle from 2020
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image17.png
-   :width: 3.84722in
-   :height: 1.94653in
-
-Figure 8 Driving cycle and related parameters
-
-So, the tank-to-wheel energy consumption :math:`F_{ttw}` is the sum of the motive energy and the
-energy required to power auxiliary equipment. It is calculated as:
-
-.. math::
-
-    F_{ttw} = F_{motive} + F_{aux}
-
-where :math:`F_{motive}` is the motive energy, and :math:`F_{aux}` is the
-auxiliary energy.
-
-There are no fuel consumption measurements available for fuel cell
-vehicles. Values found in the literature and from manufacturers data are
-used to approximate the engine and transmission efficiency and to
-calibrate the final energy consumption.
-
-For diesel and gasoline hybrid vehicles, which are ICE vehicles equipped
-with a small electric motor to allow for energy recuperation and
-reducing the engine size, the drivetrain and engine efficiency are based
-on [5]_ [7]_. The amount of energy recuperated is determined by the driving
-cycle as well as the round-trip efficiency between the wheels and the
-engine and cannot be superior to the power output of the engine. Further
-on, the share of recuperated energy over the total negative motive
-energy (i.e., the braking or deceleration energy) is used as a
-discounting factor for brake wear particle emissions.
-
-Engine and transmission efficiencies for the different powertrains are
-fine-tuned until it aligns reasonably well with the fuel consumption
-values from the EC-CO2-PC database, as shown in Figure 9.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image18.png
-   :width: 100%
-
-Figure 9 Validation of the tank-to-wheel energy consumption against the
-monitoring program for passenger vehicle emissions database. Sample size
-for each size class is given above each chart. M = Mini, S = Small, L-M
-= Lower medium, M = Medium, L = Large, L-SUV = Large SUV. Horizontal
-lines within the green boxes represent the median value. The green boxes
-represent 50% of the distribution (25\ :sup:`th`-75\ :sup:`th`
-percentiles). The whiskers represent 90% of the distribution
-(5\ :sup:`th`-95\ :sup:`th` percentiles). Outliers are not shown. Source
-for vehicle tank-to-wheel energy consumption measurements: [4]_
-
-Electric energy storage
------------------------
-
-Battery electric vehicles can use different battery chemistries (Li-ion
-NMC, Li-ion LFP, Li-ion NCA and Li-LTO) depending on the manufacturer's
-preference or the location of the battery supplier. Unless specified
-otherwise, all battery types are produced in China, as several sources,
-among which BloombergNEF [8]_, seem to indicate that more than 75% of the
-world's cell capacity is manufactured there.
-
-Accordingly, the electricity mix used for battery cells manufacture and
-drying, as well as the provision of heat are assumed to be
-representative of the country (i.e., the corresponding providers are
-selected from the LCI background database).
-
-The battery-related parameters considered in *carculator* for 2020 are
-shown in Table 6. For LFP batteries, "blade battery" or "cell-to-pack"
-battery configurations are considered, as introduced by CATL [9]_ and BYD
-[10]_, two major LFP battery suppliers in Asia. This greatly increases
-the cell-to-pack ratio and the gravimetric energy density at the pack
-level.
-
-Overall, the gravimetric energy density values at the cell and system
-levels presented in Table 6 are considered conservative: some
-manufacturers perform significantly better than the average, and these
-values tend to change rapidly over time, as it is being the focus of
-much R&D. Hence, by 2050, the gravimetric energy density of NMC and NCA
-cells are expected to reach 0.5 kWh/kg, while that of LFP cells plateaus
-at 0.15 kWh/kg (but benefits from a high cell-to-pack ratio)..
-
-Table 6 Specifications for the different battery types
-
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-|                                                                             | Lithium Nickel Manganese Cobalt Oxide (LiNiMnCoO2) — NMC  | Lithium Iron Phosphate(LiFePO4) — LFP  | Lithium Nickel Cobalt Aluminum Oxide (LiNiCoAlO2) — NCA  | Source                              |
-+=============================================================================+===========================================================+========================================+==========================================================+=====================================+
-| Cell energy density [kWh/kg]                                                | 0.2 (0.5 in 2050)                                         | 0.15                                   | 0.23 (0.5 in 2050)                                       | [11]_                                |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Cell-to-pack ratio                                                          | 0.6 (0.65 in 2050)                                        | 0.8 (0.9 in 2050)                      | 0.5 (0.55 in 2050)                                       | [12]_                                |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Pack-level gravimetric energy density [kWh/kg]                              | 0.12                                                      | 0.12                                   | 0.14                                                     | Calculated from the two rows above  |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Share of cell mass in battery system [%]                                    | 70 to 80% (depending on chemistry, see third row above)   |                                        |                                                          | [5,12]_                              |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Maximum state of charge [%]                                                 | 100%                                                      | 100%                                   | 100%                                                     | [11,13]_                             |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Minimum state of charge [%]                                                 | 20%                                                       | 20%                                    | 20%                                                      |                                     |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Cycle life to reach 20% initial capacity loss  (80%-20% SoC charge cycle)   | 2'000                                                     | 7'000+                                 | 1'000                                                    | [14]_                                |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Corrected cycle life                                                        | 3'000                                                     | 7'000                                  | 1'500                                                    | Assumption                          |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Charge efficiency                                                           | 85% in 2020, 86% in 2050                                  |                                        |                                                          | [5,15]_ for passenger cars.          |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-| Discharge efficiency                                                        | 88% in 2020, 89% in 2050                                  |                                        |                                                          | [5,16]_                              |
-+-----------------------------------------------------------------------------+-----------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-------------------------------------+
-
-Note that the NMC battery cell used by default corresponds to a so-called NMC 6-2-2 chemistry: it exhibits three times the mass amount of *Ni*
-compared to *Mn*, and *Co*, while *Mn* and *Co* are present in equal amount. Development aims at reducing the content of Cobalt and increasing the
-Nickel share. A selection of other chemistry types can be chosen from.
-
-
-On account that:
-
--  the battery cycle life values were obtained in the context of an
-   experiment [14]_,
-
--  with loss of 20% of the initial capacity, the battery may still
-   provide enough energy to complete the intended route,
-
-cycle life values for NMC and NCA battery chemistries are corrected by
-+50%.
-
-**Important assumption**: The environmental burden associated with the
-manufacture of spare batteries is entirely allocated to the vehicle use.
-The number of battery replacements is rounded up.
-
-Table 7 gives an overview of the number of battery replacements assumed
-for the different battery electric vehicles in *carculator*.
-
-Table 7 Number of battery replacements assumed or calculated for each
-vehicle type by default
-
-============================= === === ===
-\                             NMC LFP NCA
-Passenger car, electric, 2020 0   0   0
-Passenger car, electric, 2050 0   0   0
-============================= === === ===
-
-Users are encouraged to test the sensitivity of end-results on the
-number of battery replacements.
-
-The number of battery replacement is calculated as follows:
-
-.. math::
-
-    n_{batt_repl} = \frac{L_{veh}}{L_{batt}} - 1
-
-where :math:`L_{veh}` is the lifetime of the vehicle [km],
-and :math:`L_{batt}` is the lifetime of the battery [km].
-
-
-Liquid and gaseous energy storage
----------------------------------
-
-The oxidation energy stored in liquid fuel tanks is calculated as:
-
-.. math::
-
-    E_{oxid} = m_{fuel} \times E_{lhv}
-
-where :math:`m_{fuel}` is the mass of the fuel [kg], and :math:`E_{lhv}` is the lower heating value of hte fuel [MJ/kg].
-
-The fuel tank mass is calculated as:
-
-.. math::
-
-    m_{tank} = m_{fuel} \times m_{tank unit}
-
-where :math:`m_{tank unit}` being the tank mass per unit of energy [kg/MJ].
-
-Note that the tank mass per unit of energy is different for liquid fuels (gasoline,
-diesel), and for gaseous fuels (compressed gas, hydrogen). Also, compressed gas tanks
-store at 200 bar, while hydrogen tanks store at 700 bar.
-
-Fuel cell stack
----------------
-
-All fuel cell electric vehicles use a proton exchange membrane
-(PEM)-based fuel cell system.
-
-Table 8 lists the specifications of the fuel cell stack and system used
-in *carculator* in 2020. The durability of the fuel cell stack,
-expressed in hours, is used to determine the number of replacements
-needed - the expected kilometric lifetime of the vehicle as well as the
-average speed specified by the driving cycle gives the number of hours
-of operation. The environmental burden associated with the manufacture
-of spare fuel cell systems is entirely allocated to vehicle use as no
-reuse channels seem to be implemented for fuel cell stacks at the
-moment.
-
-Table 8 Specifications for fuel cell stack systems
-
-+-----------------------+----------+--------+-----------------------+
-|                       | 2020     | 2050   | Source                |
-+-----------------------+----------+--------+-----------------------+
-| Power [kW]            | 65 - 140 | 65 140 | Calculated.           |
-+-----------------------+----------+--------+-----------------------+
-| Fuel cell stack       | 55-58%   | 60%    | [5]_                   |
-| efficiency [%]        |          |        |                       |
-+-----------------------+----------+--------+-----------------------+
-| Fuel cell stack own   | 15%      | 12%    |                       |
-| consumption [% of kW  |          |        |                       |
-| output]               |          |        |                       |
-+-----------------------+----------+--------+-----------------------+
-| Fuel cell system      | 45-50%   | 53%    |                       |
-| efficiency [%]        |          |        |                       |
-+-----------------------+----------+--------+-----------------------+
-| Power density [W/cm2  | 0.9      | 1      | For passenger cars,   |
-| cell]                 |          |        | [17]_.                 |
-+-----------------------+----------+--------+-----------------------+
-| Specific mass [kg     | 0.51     |        |                       |
-| cell/W]               |          |        |                       |
-+-----------------------+----------+--------+-----------------------+
-| Platinum loading      | 0.13     |        |                       |
-| [mg/cm2]              |          |        |                       |
-+-----------------------+----------+--------+-----------------------+
-| Fuel cell stack       | 4 000    | 5 625  | [18]_ [19]_           |
-| durability [hours to  |          |        |                       |
-| reach 20% cell        |          |        |                       |
-| voltage degradation]  |          |        |                       |
-+-----------------------+----------+--------+-----------------------+
-| Fuel cell stack       | 1        | 0      | Calculated.           |
-| lifetime replacements |          |        |                       |
-| [unit]                |          |        |                       |
-+-----------------------+----------+--------+-----------------------+
-
-The fuel cell system efficiency :math:`r_{fcsys}` is calculated as:
-
-.. math::
-
-    r_{fcsys} = \frac{r_{fcstack}}{r_{fcown}}
-
-where :math:`r_{fcstack}` is the fuel cell stack efficiency [%], and :math:`r_{fcown}` is the rate of autoconsumption [%].
-For reference, the rate of auto-consumption in 2020 for a fuel cell system is 15% (i.e., 15% of the power produced by
-the fuel cell system is consumed by it).
-
-The fuel cell system power :math:`P_{fcsys}` is calculated as:
-
-.. math::
-
-    P_{fcsys} = P_{veh} \times r_{fcshare} \times r_{fcown}
-
-where :math:`P_{veh}` is the vehicle engine power and :math:`r_{fcshare}` is the fuel cell system power relative
-to the vehicle engine power [%].
-
-Finally, the fuel cell stack mass is calculated as:
-
-.. math::
-
-    m_{fcstack} = 0.51 [kg/kW] \times P_{fcsys} \times \frac{800 [mW/cm^2]}{A_{fc}}
-
-where :math:`P_{fcsys}` is the fuel cell system power [kW],
-:math:`A_{fc}` is the fuel cell fuel cell power area density [kW/cm2],
-and :math:`m_{fcstack}` is the fuel cell stack mass [kg].
-
-**Important remark:** although fuel cell electric vehicles have a small
-battery to enable the recuperation of braking energy, etc., we model
-it as a power battery, not a storage battery.
-For example, the Toyota Mirai is equipped with a 1.6 kWh
-nickel-based battery.
-
-The battery power is calculated as:
-
-.. math::
-
-    P_{batt} = P_{fcsys} \times (1 - r_{fcsys})
-
-
-where :math:`P_{fcsys}` is the fuel cell system power [kW],
-and :math:`r_{fcshare}` is the fuel cell system power share [%].
-
-The number of fuel cell replacements is based on the average distance driven
-with a set of fuel cells given their lifetime expressed in hours of use.
-The number is replacement is rounded *up* as we assume no allocation of burden
-with a second life. It is hence is calculated as:
-
-.. math::
-
-    n_{fcrep} = \frac{L_{veh}}{V_{avg} \times L_{fc}} - 1
-
-where :math:`L_{veh}` is the lifetime of the vehicle [km],
-:math:`V_{avg}` is the average speed of the driving cycle selected [km/h],
-and :math:`L_{fc}` is the fuel cell lifetime in hours [h].
-
-Light-weighting
----------------
-
-The automotive industry has been increasingly using light weighting
-materials to replace steel in engine blocks, chassis, wheels rims and
-powertrain components [2]_. However, vehicles light weighting has not led
-to an overall curb mass reduction for passenger cars and trucks, as
-additional safety equipment compensate for it. According to [20]_,
-passenger cars in the EU in 2016 were on average 10% heavier than in
-2000.
-
-The dataset used to represent the chassis of passenger cars (i.e.,
-"glider, for passenger car") does not reflect today's use of light
-weighting materials, such as aluminium and advanced high strength steel
-(AHSS).
-
-A report from the Steel Recycling Institute [21]_ indicates that every
-kilogram of steel in a car glider can be substituted by 0.75 kilogram of
-AHSS or 0.68 kilogram of aluminium. Looking at the material composition
-of different car models three years apart, [22]_ show that steel is in
-fact increasingly replaced by a combination of both aluminium and AHSS.
-However, they also show that the use of AHSS is generally preferred to
-aluminium as its mass reduction-to-cost ratio is preferable.
-
-Hence, it is considered that, for a given mass reduction to reach,
-two-third of the mass reduction comes from using AHSS, and one third
-comes from using aluminium. This means that one kilogram of mass
-reduction is achieved by replacing 3.57 kilogram of steel by:
-
--  1.76 kilogram of AHSS
-
--  0.8 kilogram of aluminium
-
-Additionally, additional efforts is made to ensure that the final
-aluminium content in the chassis corresponds to what is actually found
-in current passenger car models, according to [2]_.
-
-While ecoinvent v.3.8 has a LCI dataset for the supply of aluminium, it
-is not the case for AHSS. However, an LCA report from the World Steel
-Institute [23]_ indicates that AHSS has a similar carbon footprint than
-conventional primary low-alloyed steel from a basic oxygen furnace route
-(i.e., 2.3 kg CO\ :sub:`2`-eq./kg). We therefore use conventional steel
-to represent the use of AHSS.
-
-The amount of light-weighting obtained from the use of light-weighting
-materials is:
-
-    :math:`\Delta m_{glider} = m_{glider} \times r_{lightweighting}`
-
-where :math:`\Delta m_{steel}` is the mass reduction of the glider [kg],
-and :math:`r_{lightweighting}` is the light-weighting ratio [%].
-
-Sizing of onboard energy storage
---------------------------------
-
-Sizing of battery
-_________________
-
-The sizing of batteries for battery electric vehicles is conditioned by
-the battery mass, which is defined as an input parameter for each size
-class. The battery masses given for the different size classes are
-presented in Figure 10 using the battery chemistry NMC, and is based on
-representative battery storage capacities available today on the market
-- which are represented in relation to the curb mass. The data is
-collected from the vehicle's registry of Touring Club Switzerland.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image19.png
-   :width: 6.24306in
-   :height: 3.25326in
-
-Figure 10 Energy storage capacity for current battery electric cars,
-shown in relation to curb mass. Red dots are the energy storage
-capacities used for Small, Medium and Large battery electric vehicles in
-*carculator*.
-
-Seventy percent of the overall battery mass is assumed to be represented
-by the battery cells in the case of NMC and NCA batteries. Given the
-energy density of the battery cell considered, this yields the storage
-capacity of the battery. A typical depth of discharge of 80% is used to
-calculate the available storage capacity.
-
-Table 9 Parameters for battery sizing for battery electric vehicles
-using NMC battery chemistry
-
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Unit                                                    | Micro     | Small                      | Medium            | Large                                                                         | Large SUV                   |                |
-+=========================================================+===========+============================+===================+===============================================================================+=============================+================+
-| Storage capacity (reference)                            | kWh       | 14                         | 35                | 45                                                                            | 70                          | 80             |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Commercial models with similar energy storage capacity  |           | Microlino, Renault Twizzy  | VW e-Up!, BMW i3  | Citroen e-C4, DS 3 E.Tense, Peugeot 2008, Peugeot 208, Opel Corsa-e, VW ID.3  | Audi e-Tron, Tesla Model 3  | Jaguar i-Pace  |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Battery mass (system)                                   | Kilogram  | 120                        | 291               | 375                                                                           | 583                         | 660            |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Battery cell mass                                       | %         | ~70%                       |                   |                                                                               |                             |                |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Battery cell mass                                       | Kilogram  | 72                         | 175               | 225                                                                           | 330                         | 400            |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Balance of Plant mass                                   | Kilogram  | 48                         | 116               | 150                                                                           | 233                         | 260            |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Energy density                                          | kWh/kg    | 0.2                        |                   |                                                                               |                             |                |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Storage capacity                                        | kWh       |                            | 35                | 45                                                                            | 70                          | 80             |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Depth of discharge                                      | %         | 80%                        |                   |                                                                               |                             |                |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-| Storage capacity (available)                            | kWh       | 14                         | 28                | 36                                                                            | 56                          | 65             |
-+---------------------------------------------------------+-----------+----------------------------+-------------------+-------------------------------------------------------------------------------+-----------------------------+----------------+
-
-Hence, the battery cell mass is calculated as:
-
-.. math::
-
-    m_{cell} = m_{pack} \times s_{cell}
-
-where :math:`m_{pack}` is the mass of the pack, and :math:`s_{cell}` is the cell-to-pack ratio.
-
-And the electricity stored in the battery is calculated as:
-
-.. math::
-
-    E_{battery} = m_{cell} \times C_{cell}
-
-where :math:`E_{battery}` being battery capacity [kWh], :math:`C_{cell}` is the cell energy density [kg/kWh], and :math:`m_{cell}` is the cell mass [kg].
-
-By deduction, the balance of plant mass is:
-
-.. math::
-
-    m_{BoP} = m_{battery} - m_{cell}
-
-where :math:`m_{battery}` is the mass of the battery [kg], and :math:`m_{cell}` is the cell mass [kg].
-
-Finally, the range autonomy is calculated as:
-
-.. math::
-
-    R_{autonomy} = \frac{C_{battery} \times r_{discharge}}{F_{ttw}}
-
-where :math:`C_{battery}` is the battery capacity [kWh], :math:`r_{discharge}` is the discharge depth [%],
-and :math:`F_{ttw}` is the tank-to-wheel energy consumption [kWh/km].
-
-
-Similarly, plug-in hybrid vehicles are dimensioned to obtain an energy
-storage capacity of the battery that corresponds with the capacity of
-models available today. The sizing of the battery is similar to what is
-described above for battery electric vehicles. The energy storage
-capacity of the battery is particularly important for plugin hybrid
-vehicles, as it conditions the electric utility factor (the share of
-kilometers driven in battery-depleting mode) which calculation is
-described in the next section.
-
-Table 10 Parameters for battery sizing for plug-in hybrid vehicles using
-NMC battery chemistry
-
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+---------------+------------+
-|                                                                    | Unit      | Small                | Medium                               | Large         | Large SUV  |
-+====================================================================+===========+======================+======================================+===============+============+
-| Battery storage capacity (reference)                               | kWh       | 9                    | 13                                   | 18                         |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Commercial models with similar electric and fuel storage capacity  |           | Kia Niro, Kia Xceed  | Skoda Octavia, VW Golf, Cupra Leon   | Suzuki Across, VW Touareg  |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Battery mass (system)                                              | Kilogram  | 80                   | 105                                  | 160                        |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Battery cell mass                                                  | %         | 60%                                                                                      |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Battery cell mass                                                  | Kilogram  | 48                   | 63                                   | 96                         |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Balance of Plant mass                                              | Kilogram  | 32                   | 42                                   | 64                         |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Energy density                                                     | kWh/kg    | 0.2                  |                                                                   |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Battery storage capacity                                           | kWh       | 9                    | 13                                   | 19                         |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Depth of discharge                                                 | %         | 80%                  |                                                                   |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Battery storage capacity (available)                               | kWh       | 7.2                  | 10.4                                 | 15.6                       |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-| Fuel tank storage capacity                                         | L         | 45                   | 52                                   | 64                         |
-+--------------------------------------------------------------------+-----------+----------------------+--------------------------------------+----------------------------+
-
-
-Note that carculator only considers NMC batteries for plugin hybrid
-vehicles.
-
-Electric utility factor
------------------------
-
-Diesel and gasoline plugin hybrid vehicles are modeled as a composition
-of an ICE vehicle and a battery electric vehicle to the extent
-determined by the share of km driven in battery-depleting mode (also
-called "electric utility factor"). This electric utility factor is
-calculated based on a report from the ICCT [24]_, which provides measured
-electricity utility factors for 6'000 PHEV *private* owners in Germany
-in relation to the vehicle range in battery-depleting mode.
-
-A first step consists in determining the energy consumption of the PHEV
-in electric mode as well as its battery size, in order to know its range
-autonomy. When the range autonomy is known, the electric utility factor
-is interpolated based on the data presented in Table 11.
-
-Table 11 Data points used to interpolate the electric utility factor
+For ICE vehicles, several emission standards are considered. For
+simplicity, it is assumed that the vehicle manufacture year corresponds
+to the registration year. Those are presented in Table 2.
+
+Table 2 Emission standards and year of manufacture for medium and
+heavy/duty trucks
+
++------------+-----------------+-----------------+-----------------+
+|            | **Start of      | **End of        | **Manufacture   |
+|            | registration**  | registration    | year in this    |
+|            |                 | (incl.)**       | study**         |
++------------+-----------------+-----------------+-----------------+
+| **EURO-3** | 2000            | 2004            | **2002**        |
++------------+-----------------+-----------------+-----------------+
+| **EURO-4** | 2005            | 2007            | **2006**        |
++------------+-----------------+-----------------+-----------------+
+| **EURO-5** | 2008            | 2012            | **2010**        |
++------------+-----------------+-----------------+-----------------+
+| **EURO-6** | 2013            | -               | **2020**        |
++------------+-----------------+-----------------+-----------------+
+
+
+.. _modelling-considerations-applicable-to-all-vehicle-types-1:
+
+Modelling considerations applicable to all vehicle types
+--------------------------------------------------------
+
+.. _sizing-of-the-base-frame-1:
+
+Sizing of the base frame
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The sizing of the base frame is based on p. 17-19 of (Hill et al. 2015).
+Detailed weight composition is obtained for a **12t rigid truck** and a
+**40t articulated truck**. Curb mass and payload are obtained for all
+size classes, the rest being adjusted function of the gross mass. The
+masses of the vehicles and their subsystems are detailed in Table 74.
+These truck models have 2010 as baseline year. A 2% and 5% weight
+reduction factors are applied on on rigid and articulated trucks
+respectively, as indicated in the same report.
+
+The following components are common to all powertrains:
+
+-  Frame
+-  Suspension
+-  Brakes
+-  Wheels and tires,
+-  Electrical system
+-  Transmission
+-  Other components
+
+Table 3 Mass distribution of components for medium- and heavy-duty
+trucks
+
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       |       | **    | **    | **    | **    | **    | **A   | **A   | **A   |
+|       |       | Rigid | Rigid | Rigid | Rigid | Rigid | rticu | rticu | rticu |
+|       |       | t     | t     | t     | t     | t     | lated | lated | lated |
+|       |       | ruck, | ruck, | ruck, | ruck, | ruck, | t     | t     | t     |
+|       |       | 3     | 7     | 12t** | 18t** | 26t** | ruck, | ruck, | ruck, |
+|       |       | .5t** | .5t** |       |       |       | 32t** | 40t** | 60t*  |
+|       |       |       |       |       |       |       |       |       | *\ \* |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | Type  | r     | r     | r     | r     | r     | sem   | sem   | se    |
+|       |       | igid, | igid, | igid, | igid, | igid, | i-tra | i-tra | mi-tr |
+|       |       | 2     | 2     | 2     | 2     | 3     | iler, | iler, | ailer |
+|       |       | a     | a     | a     | a     | a     | 2+3   | 2+4   | +     |
+|       |       | xles, | xles, | xles, | xles, | xles, | a     | a     | tra   |
+|       |       | box   | box   | box   | box   | box   | xles, | xles, | iler, |
+|       |       | body  | body  | body  | body  | body  | cur   | cur   | 2+4+2 |
+|       |       |       |       |       |       |       | tain- | tain- | a     |
+|       |       |       |       |       |       |       | sider | sider | xles, |
+|       |       |       |       |       |       |       |       |       | cur   |
+|       |       |       |       |       |       |       |       |       | tain- |
+|       |       |       |       |       |       |       |       |       | sider |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| in    | Gross | 3500  | 7500  | 12000 | 18000 | 26000 | 32000 | 40000 | 60000 |
+| kilo  | w     |       |       |       |       |       |       |       |       |
+| grams | eight |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Power | E     | 151   | 324   | 518   | 777   | 1122  | 899   | 1124  | 1686  |
+| train | ngine |       |       |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |       |       |
+|       | ystem |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | Co    | 11    | 23    | 37    | 56    | 80    | 112   | 140   | 210   |
+|       | olant |       |       |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |       |       |
+|       | ystem |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | Fuel  | 14    | 29    | 47    | 71    | 102   | 64    | 80    | 120   |
+|       | s     |       |       |       |       |       |       |       |       |
+|       | ystem |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | Ex    | 44    | 94    | 150   | 225   | 325   | 176   | 220   | 330   |
+|       | haust |       |       |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |       |       |
+|       | ystem |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | Tr    | 83    | 177   | 283   | 425   | 613   | 446   | 558   | 837   |
+|       | ansmi |       |       |       |       |       |       |       |       |
+|       | ssion |       |       |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |       |       |
+|       | ystem |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Elect |       | 24    | 52    | 83    | 125   | 180   | 212   | 265   | 398   |
+| rical |       |       |       |       |       |       |       |       |       |
+| s     |       |       |       |       |       |       |       |       |       |
+| ystem |       |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Ch    | Frame | 120   | 256   | 410   | 615   | 888   | 2751  | 3439  | 5159  |
+| assis |       |       |       |       |       |       |       |       |       |
+| s     |       |       |       |       |       |       |       |       |       |
+| ystem |       |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | Suspe | 310   | 665   | 1064  | 1596  | 2000  | 2125  | 2656  | 3984  |
+|       | nsion |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | Br    | 24    | 52    | 83    | 125   | 180   | 627   | 784   | 1176  |
+|       | aking |       |       |       |       |       |       |       |       |
+|       | s     |       |       |       |       |       |       |       |       |
+|       | ystem |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | W     | 194   | 416   | 665   | 998   | 1100  | 1138  | 1422  | 2133  |
+|       | heels |       |       |       |       |       |       |       |       |
+|       | and   |       |       |       |       |       |       |       |       |
+|       | tires |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Cabin | Cabin | 175   | 375   | 600   | 900   | 1300  | 922   | 1153  | 1730  |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+|       | Body  | 583   | 1250  | 2000  | 3000  | 4333  | 1680  | 2100  | 3150  |
+|       | syst  |       |       |       |       |       |       |       |       |
+|       | em/tr |       |       |       |       |       |       |       |       |
+|       | ailer |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Other |       | 119   | 256   | 409   | 614   | 886   | 847   | 1059  | 1589  |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Curb  |       | 1852  | 3968  | 6349  | 9524  | 13110 | 12000 | 15000 | 22500 |
+| mass, |       |       |       |       |       |       |       |       |       |
+| incl. |       |       |       |       |       |       |       |       |       |
+| Tr    |       |       |       |       |       |       |       |       |       |
+| ailer |       |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Pa    |       | 1648  | 3532  | 5651  | 8477  | 12890 | 20000 | 25000 | 37500 |
+| yload |       |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| \*    |       |       |       |       |       |       |       |       |       |
+| Not   |       |       |       |       |       |       |       |       |       |
+| consi |       |       |       |       |       |       |       |       |       |
+| dered |       |       |       |       |       |       |       |       |       |
+| in    |       |       |       |       |       |       |       |       |       |
+| this  |       |       |       |       |       |       |       |       |       |
+| study |       |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+Other use and size-related parameters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HBEFA 4.1 is used as a source to estimate the
+calendar and kilometric lifetime values for European diesel trucks.
+Those are presented in Table 80.
+
+Table 80 Kilometric and calendar lifetimes for European trucks
+
++-------+------+-------+-------+-------+-------+-------+-------+-------+
+| Size  |      | 3.5t  | 7.5t  | 18t   | 26t   | 32t   | 40t   | **Sou |
+| class |      |       |       |       |       |       |       | rce** |
+| in    |      |       |       |       |       |       |       |       |
+| this  |      |       |       |       |       |       |       |       |
+| study |      |       |       |       |       |       |       |       |
++=======+======+=======+=======+=======+=======+=======+=======+=======+
+| HBEFA | Unit | Rigid | Rigid | Rigid | Rigid | TT/AT | TT/AT |       |
+| ve    |      | Truck | Truck | Truck | Truck | >2    | >3    |       |
+| hicle |      | <7,5t | 7,    | >1    | >2    | 8-34t | 4-40t |       |
+| seg   |      |       | 5-12t | 4-20t | 6-28t |       |       |       |
+| ments |      |       |       |       |       |       |       |       |
++-------+------+-------+-------+-------+-------+-------+-------+-------+
+| Y     | Km   | 3     | 4     | 3     | 6     | 3     | 11    | HBEFA |
+| early |      | 2'526 | 7'421 | 7'602 | 9'278 | 1'189 | 8'253 | 4.1   |
+| mi    |      |       |       |       |       |       |       |       |
+| leage |      |       |       |       |       |       |       |       |
+| at    |      |       |       |       |       |       |       |       |
+| Year  |      |       |       |       |       |       |       |       |
+| 1     |      |       |       |       |       |       |       |       |
++-------+------+-------+-------+-------+-------+-------+-------+-------+
+| Rel   |      | 5.5%  | 7%    | Esti  |       |       |       |       |
+| ative |      |       |       | mated |       |       |       |       |
+| a     |      |       |       | from  |       |       |       |       |
+| nnual |      |       |       | HBEFA |       |       |       |       |
+| dec   |      |       |       | 4.1   |       |       |       |       |
+| rease |      |       |       |       |       |       |       |       |
+| in    |      |       |       |       |       |       |       |       |
+| a     |      |       |       |       |       |       |       |       |
+| nnual |      |       |       |       |       |       |       |       |
+| mi    |      |       |       |       |       |       |       |       |
+| leage |      |       |       |       |       |       |       |       |
++-------+------+-------+-------+-------+-------+-------+-------+-------+
+| Cal   | Year | 12    | 12    | 8     | Esti  |       |       |       |
+| endar |      |       |       |       | mated |       |       |       |
+| lif   |      |       |       |       | from  |       |       |       |
+| etime |      |       |       |       | HBEFA |       |       |       |
+|       |      |       |       |       | 4.1   |       |       |       |
++-------+------+-------+-------+-------+-------+-------+-------+-------+
+| Kilom | km   | 27    | 39    | 31    | 58    | 22    | 71    | Calcu |
+| etric |      | 2'000 | 7'000 | 5'000 | 0'000 | 7'000 | 0'000 | lated |
+| lif   |      |       |       |       |       |       |       | from  |
+| etime |      |       |       |       |       |       |       | the   |
+|       |      |       |       |       |       |       |       | rows  |
+|       |      |       |       |       |       |       |       | above |
++-------+------+-------+-------+-------+-------+-------+-------+-------+
+
+Average loads for European trucks for long haul use are from the TRACCS
+road survey data for the EU-28 (Papadimitriou et al. 2013). We
+differentiate loads across driving cycles. To do so, we use correction
+factors based on the representative loads suggested in the Annex I of
+European Commission regulation 2019/1242. Such average loads are
+presented in Table 81.
+
+Table 4 Average loads for European medium- and heavy-duty trucks
+
++-------+------+------+------+-------+-------+-------+-------+-------+
+| Size  |      | 3.5t | 7.5t | 18t   | 26t   | 32t   | 40t   |       |
+| class |      |      |      |       |       |       |       |       |
+| in    |      |      |      |       |       |       |       |       |
+| this  |      |      |      |       |       |       |       |       |
+| study |      |      |      |       |       |       |       |       |
++-------+------+------+------+-------+-------+-------+-------+-------+
+| Cargo | ton  | ~1.3 | ~3.5 | ~10.1 | ~17.0 | ~20.1 | ~25.5 | Manu  |
+| car   |      |      |      |       |       |       |       | factu |
+| rying |      |      |      |       |       |       |       | rers’ |
+| cap   |      |      |      |       |       |       |       | data. |
+| acity |      |      |      |       |       |       |       |       |
++-------+------+------+------+-------+-------+-------+-------+-------+
+| Cargo | tons | 0.26 | 0.52 | 1.35  | 2.05  | 6.1   | 6.1   | Long  |
+| mass  |      |      |      |       |       |       |       | haul  |
+| (     |      |      |      |       |       |       |       | cargo |
+| urban |      |      |      |       |       |       |       | mass, |
+| deli  |      |      |      |       |       |       |       | fu    |
+| very) |      |      |      |       |       |       |       | rther |
+|       |      |      |      |       |       |       |       | corr  |
+|       |      |      |      |       |       |       |       | ected |
+|       |      |      |      |       |       |       |       | based |
+|       |      |      |      |       |       |       |       | on EC |
+|       |      |      |      |       |       |       |       | regul |
+|       |      |      |      |       |       |       |       | ation |
+|       |      |      |      |       |       |       |       | 2019  |
+|       |      |      |      |       |       |       |       | /1242 |
++-------+------+------+------+-------+-------+-------+-------+-------+
+| Cargo | tons | 0.26 | 0.52 | 1.35  | 2.05  | 6.1   | 6.1   | Long  |
+| mass  |      |      |      |       |       |       |       | haul  |
+| (reg  |      |      |      |       |       |       |       | cargo |
+| ional |      |      |      |       |       |       |       | mass, |
+| deli  |      |      |      |       |       |       |       | fu    |
+| very) |      |      |      |       |       |       |       | rther |
+|       |      |      |      |       |       |       |       | corr  |
+|       |      |      |      |       |       |       |       | ected |
+|       |      |      |      |       |       |       |       | based |
+|       |      |      |      |       |       |       |       | on EC |
+|       |      |      |      |       |       |       |       | regul |
+|       |      |      |      |       |       |       |       | ation |
+|       |      |      |      |       |       |       |       | 2019  |
+|       |      |      |      |       |       |       |       | /1242 |
++-------+------+------+------+-------+-------+-------+-------+-------+
+| Cargo | ton  | 0.8  | 1.6  | 4.1   | 6.2   | 9.1   | 9.1   | T     |
+| mass  |      |      |      |       |       |       |       | RACCS |
+| (long |      |      |      |       |       |       |       | (Pap  |
+| haul) |      |      |      |       |       |       |       | adimi |
+|       |      |      |      |       |       |       |       | triou |
+|       |      |      |      |       |       |       |       | et    |
+|       |      |      |      |       |       |       |       | al.   |
+|       |      |      |      |       |       |       |       | 2013) |
+|       |      |      |      |       |       |       |       | for   |
+|       |      |      |      |       |       |       |       | EU28  |
++-------+------+------+------+-------+-------+-------+-------+-------+
+
+Other size-related parameters are listed in Table 82. Some of them have
+been obtained and/or calculated from manufacturers’ data, which is made
+available in the Annex D of this report.
+
+Table 5 Size-related parameters common to Swiss and European trucks
+
++-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Size  |       | 3.5t  | 7.5t  | 18t   | 26t   | 32t   | 40t   | **Sou |
+| class |       |       |       |       |       |       |       | rce** |
+| in    |       |       |       |       |       |       |       |       |
+| this  |       |       |       |       |       |       |       |       |
+| study |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| N     | unit  | 2     | 2     | 2     | 3     | 5     | 6     | Manu  |
+| umber |       |       |       |       |       |       |       | factu |
+| of    |       |       |       |       |       |       |       | rers’ |
+| axles |       |       |       |       |       |       |       | data. |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Ro    | uni   | 0.055 | 0.055 | 0.055 | 0.055 | 0.055 | 0.055 | (Me   |
+| lling | tless |       |       |       |       |       |       | szler |
+| resis |       |       |       |       |       |       |       | et    |
+| tance |       |       |       |       |       |       |       | al.   |
+| c     |       |       |       |       |       |       |       | 2018) |
+| oeffi |       |       |       |       |       |       |       |       |
+| cient |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Fr    | s     | 4.1   | 5.3   | 7.5   | 7.5   | 8     | 8     | Manu  |
+| ontal | quare |       |       |       |       |       |       | factu |
+| area  | meter |       |       |       |       |       |       | rers’ |
+|       |       |       |       |       |       |       |       | data. |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Passe | unit  | 1     | 1     | 1     | 1     | 1     | 1     | Inf   |
+| ngers |       |       |       |       |       |       |       | erred |
+| occu  |       |       |       |       |       |       |       | from  |
+| pancy |       |       |       |       |       |       |       | Mob   |
+|       |       |       |       |       |       |       |       | itool |
+|       |       |       |       |       |       |       |       | fa    |
+|       |       |       |       |       |       |       |       | ctors |
+|       |       |       |       |       |       |       |       | v.2.1 |
+|       |       |       |       |       |       |       |       | v     |
+|       |       |       |       |       |       |       |       | alues |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+
+| Av    | kil   | 75    | Sta   |       |       |       |       |       |
+| erage | ogram |       | ndard |       |       |       |       |       |
+| pass  |       |       | assum |       |       |       |       |       |
+| enger |       |       | ption |       |       |       |       |       |
+| mass  |       |       |       |       |       |       |       |       |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+
+
+Abrasion emissions
+~~~~~~~~~~~~~~~~~~
+
+Figure 33 shows the calculated abrasion emissions for trucks in mg per
+vehicle-kilometer, following the approach presented in Section I.C.5.b.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image75.png
+   :width: 6.23542in
+   :height: 2.34786in
+
+Figure 33 Total particulate matter emissions (<2.5 µm and 2.5-10 µm) in
+mg per vehicle-kilometer for trucks.
+
+.. _modelling-approach-applicable-to-internal-combustion-engine-vehicles-2:
+
+Modelling approach applicable to internal combustion engine vehicles
+--------------------------------------------------------------------
+
+.. _traction-energy-2:
+
+Traction energy
+~~~~~~~~~~~~~~~
+
+The traction energy for medium- and heavy-duty trucks is calculated
+based on the driving cycles for trucks provided by VECTO. Simulations
+are run in VECTO with trucks modeled as closely as possible to those of
+this study, to obtain performance indicators along the driving cycle
+(e.g., speed and fuel consumption, among others).
+
+Figure 34 shows the first two hundred seconds of the “Urban delivery”
+driving cycle. It distinguishes the target speed from the actual speed
+managed by the different vehicles. The power-to-mass ratio influences
+the extent to which a vehicle manages to comply with the target speed.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image76.png
+   :width: 5.91667in
+   :height: 2.32292in
+
+Figure 34 VECTO's "Urban delivery" driving cycle (first two hundred
+seconds)
+
+Road gradients are also considered. Figure 35 shows the road gradient
+profile of the “Urban delivery” driving cycle.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image77.png
+   :width: 6.26772in
+   :height: 1.79167in
+
+Figure 35 Road gradients corresponding to VECTO's "Urban delivery"
+driving cycle
+
+For regional delivery and long haul use, the “Regional delivery” and
+“Long haul” driving cycles of VECTO are used, respectively. They contain
+less stops and fewer fluctuations in terms of speed levels. The “Long
+haul” driving cycle has a comparatively higher average speed level and
+lasts much longer. Figure 36 shows the first two hundred seconds of the
+“Long haul” driving cycle.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image78.png
+   :width: 4.91204in
+   :height: 1.93714in
+
+Figure 36 VECTO's "Long haul" driving cycle (first two hundred seconds)
+
+Table 86 shows a few parameters about the three driving cycles
+considered. Value intervals are shown for some parameters as they vary
+across size classes.
+
+**Important remark**: unlike the modeling of passenger cars, the
+vehicles are designed in order to satisfy a given range autonomy. The
+range autonomy specific to each driving cycle is specified in the last
+column of Table 86. This is particularly relevant for battery electric
+vehicles: their energy storage unit is sized to allow them to drive the
+required distance on a single battery charge. While this also applies
+for other powertrain types (i.e., the diesel fuel tank or compressed gas
+cylinders are sized accordingly), the consequences in terms of vehicle
+design are not as significant. The required range autonomy shown in
+Table 86 is not defined by VECTO, but set as desirable range values by
+the authors of this study.
+
+Table 86 Parameters of driving cycles used for medium- and heavy-duty
+trucks
+
++---------+---------+---------+---------+---------+---------+---------+
+| Driving | Average | D       | Driving | Idling  | Mean    | R       |
+| cycle   | speed   | istance | time    | time    | p       | equired |
+|         | [km/h]  | [km]    | [s]     | [s]     | ositive | range   |
+|         |         |         |         |         | accel   | a       |
+|         |         |         |         |         | eration | utonomy |
+|         |         |         |         |         | [m.s2]  | [km]    |
++---------+---------+---------+---------+---------+---------+---------+
+| Urban   | 9.9 -   | 28      | ~10’000 | 614 -   | 0.26 -  | 150     |
+| d       | 10.7    |         |         | 817     | 0.55    |         |
+| elivery |         |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| R       | 16.5 -  | 26      | ~5’500  | 110 -   | 0.21 -  | 400     |
+| egional | 17.8    |         |         | 220     | 0.52    |         |
+| d       |         |         |         |         |         |         |
+| elivery |         |         |         |         |         |         |
++---------+---------+---------+---------+---------+---------+---------+
+| Long    | 19.4 -  | 108     | ~19’400 | 240 -   | 0.13 -  | 800     |
+| haul    | 21.8    |         |         | 868     | 0.54    |         |
++---------+---------+---------+---------+---------+---------+---------+
+
+The energy consumption model is similar to that of passenger cars:
+different resistances at the wheels are calculated, after which
+friction-induced losses along the drivetrain are considered to obtain
+the energy required at the tank level.
+
+VECTO’s simulations are used to calibrate the engine and transmission
+efficiency of diesel trucks. Similar to the modeling of buses, the
+relation between the efficiency of the drivetrain components (engine,
+gearbox) and the power load-to-peak-power ratio is used.
+
+A calibration exercise with VECTO for the diesel-powered 40t truck is
+shown below, against the “Urban delivery” driving cycle. After
+calibration, the tank-to-wheel energy consumption value obtained from
+VECTO and from *carculator_truck* for diesel-powered trucks differ by
+less than 1 percent over the entire driving cycle.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image79.png
+   :width: 6.26772in
+   :height: 2.59722in
+
+Figure 37 Calibration of carculator_truck energy model against VECTO
+simulations for a 40t articulated truck diesel truck (first 1’500
+seconds shown)
+
+Unfortunately, VECTO does not have a model for compressed gas-powered
+trucks. The calibrated model for diesel-powered buses is used and a
+penalty factor of 10% is applied, based on findings from a working paper
+from the ICCT (Ragon and Rodríguez 2021) showing that compressed
+gas-powered trucks have an engine efficiency between 8 to 13% lower than
+that of diesel-powered trucks.
+
+.. _exhaust-emissions-3:
+
+Exhaust emissions
+~~~~~~~~~~~~~~~~~
+
+Other pollutants
+^^^^^^^^^^^^^^^^
+
+Emission factors for CO\ :sub:`2` and SO\ :sub:`2` are detailed in Table
+8-Table 9. Biofuel shares in the fuel blend are detailed in Table 10.
+
+A number of fuel-related emissions other than CO\ :sub:`2` or
+SO\ :sub:`2` are also considered.
+
+For trucks, two sources source of emissions are considered:
+
+-  Exhaust emissions: emissions from the combustion of fuel during
+   operation. Their concentration relates to the fuel consumption and
+   the emission standard of the vehicle.
+
+-  Non-exhaust emissions: abrasion emissions such as brake, tire and
+   road wear, but also emissions of refrigerant and noise.
+
+For exhaust emissions, factors based on the fuel consumption are derived
+by comparing emission data points for different traffic situations
+(i.e., grams emitted per vehicle-km) in freeflowing driving conditions,
+with the fuel consumption corresponding to each data point (i.e., MJ of
+fuel consumed per km), as illustrated in for a diesel-powered engine.
+The aim is to obtain emission factors expressed as grams of substance
+emitted per MJ of fuel consumed, to be able to model exhaust emissions
+of trucks of different sizes, masses, operating on different driving
+cycles and with different load factors.
+
+**Important remark**: the degradation of anti-pollution systems for
+EURO-6 diesel trucks (i.e., catalytic converters) is accounted for as
+indicated by HBEFA 4.1, by applying a degradation factor on the emission
+factors for NO\ :sub:`x`. These factors are shown in Table 87 Table
+49for trucks with a mileage of 890’000 km. Since the trucks in this
+study have a kilometric lifetime of 180-700’000 km, degradation factors
+are interpolated linearly (with a degradation factor of 1 at Km 0). The
+degradation factor corresponding to half of the vehicle kilometric
+lifetime is used, to obtain a lifetime-weighted average degradation
+factor.
+
+Table 87 Degradation factors at 890'000 km for diesel trucks
+
+==================================== =========
+**Degradation factor at 890’000 km**
+==================================== =========
+\                                    **NO\ x**
+**EURO-6**                           1.3
+==================================== =========
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image80.png
+   :alt: C:\Users\sacchi_r\AppData\Local\Microsoft\Windows\INetCache\Content.MSO\9C49152B.tmp
+   :width: 6.27014in
+   :height: 7.84756in
+
+Figure 38 Relation between emission factors and fuel consumption for a
+diesel-powered truck for a number of “urban” and “rural” traffic
+situations for different emission standards.
+
+Using these fuel-based emission factors, emissions for each second of
+the driving cycle for each substance are calculated.
+
+To confirm that such approach does not yield kilometric emissions too
+different from the emission factors per vehicle-kilometer proposed by
+HBEFA 4.1, Figure 23 compares the emissions obtained by
+*carculator_truck* using VECTO’s “Urban delivery” driving cycle over 1
+vehicle-km (red dots) for a 18t rigid truck with the distribution of the
+emission factors across different “urban” traffic situations (green
+box-and-whiskers) given by HBEFA 4.1, as well as its weighted average
+(yellow dots) for different emission standards for a rigid truck with a
+gross mass of 14-20 tons.
+
+There is some variation across HBEFA’s urban traffic situations, but the
+emissions obtained remain, for most substances, within the 50% of the
+distributed HBEFA values across traffic situations. Special attention
+must be paid to EURO-III vehicles, for which emissions tend to be
+slightly over-estimated by *carculator_truck*. The comparison between
+the model’s emission results for the regional and long-haul driving
+cycles using trucks of different size classes and HBEFA’s emission
+factors for “rural” and “motorway” traffic situations shows a similar
+picture.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image81.png
+   :alt: C:\Users\sacchi_r\AppData\Local\Microsoft\Windows\INetCache\Content.MSO\9C24BDDC.tmp
+   :width: 6.27014in
+   :height: 5.70565in
+
+Figure 39 Validation of the exhaust emissions model with the emission
+factors provided by HBEFA 4.1 for medium-duty trucks in traffic urban
+and rural situations, for different levels of service. Box-and-whiskers:
+distribution of HBEFA’s emission factors (box: 50% of the distribution,
+whiskers: 90% of the distribution). Yellow dots: traffic
+situations-weighted average emission factors. Red dots: modeled
+emissions calculated by *carculator_truck* with the “Urban delivery”
+driving cycle for an 18t rigid truck, using the relation between fuel
+consumption and amounts emitted.
+
+.. _modelling-approach-applicable-to-electric-vehicles-2:
+
+Modelling approach applicable to electric vehicles
+--------------------------------------------------
+
+.. _traction-energy-3:
+
+Traction energy
+~~~~~~~~~~~~~~~
+
+.. _electric-vehicles-1:
+
+Electric vehicles
+^^^^^^^^^^^^^^^^^
+
+VECTO does not have a model for battery or fuel cell electric buses that
+can be used. Therefore, similarly to the modeling of buses, static
+engine and drivetrain efficiency values are used. These values are based
+on (Schwertner and Weidmann 2016) and are presented in Table 88-Table
+89.
+
+Table 88 Efficiency values along the drivetrain of electric trucks in
+driving mode
+
+===================== ================= =========== ==============
+**Eff. of subsystem** **Fuel cell bus** **BEV bus** **Trolleybus**
+Fuel tank             0.98
+Energy storage                          0.92
+Fuel cell stack       0.55
+Converter                               0.98
+Rectifier
+Inverter              0.98              0.98        0.98
+Electric motor        0.93              0.93        0.93
+Reduction gear        0.95              0.95        0.95
+Drive axle            0.94              0.94        0.94
+Total                 0.44              0.73        0.81
+===================== ================= =========== ==============
+
+Table 89 Efficiency values along the drivetrain of electric trucks in
+recuperation mode
+
+===================== ================= =========== ==============
+**Eff. of subsystem** **Fuel cell bus** **BEV bus** **BEV-motion**
+Drive axle            0.94              0.94        0.94
+Reduction gear        0.95              0.95        0.95
+Electric motor        0.93              0.93        0.93
+Rectifier             0.98              0.98        0.98
+Converter             0.98              0.98
+Energy storage        0.85              0.85        0.85
+Converter             0.98              0.98
+Inverter              0.98              0.98        0.98
+Electric motor        0.93              0.93        0.93
+Reduction gear        0.95              0.95        0.95
+Drive axle            0.94              0.94        0.94
+Total                 0.54              0.54        0.56
+===================== ================= =========== ==============
+
+.. _energy-storage-1:
+
+Energy storage
+~~~~~~~~~~~~~~
+
+Battery electric trucks
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The sizing of energy storage for BEV trucks is sensitive to the required
+range autonomy, which is specific to each driving cycle.
+
+**Important remark**: technically speaking *carculator_truck* will model
+all trucks. However, if a vehicle has an energy storage unit mass
+leading to a reduction in the cargo carrying capacity beyond a
+reasonable extent, it will not be processed for LCI quantification. This
+is the reason why battery electric trucks used for long haulage (i.e.,
+with a required range autonomy of 800 km) are not considered.
+
+The expected battery lifetime (and the need for replacement) is based on
+the battery expected cycle life, based on theoretical values given by
+(Göhlich et al. 2018) as well as some experimental ones from (Preger et
+al. 2020). Although the specifications of the different battery
+chemistries are presented in Table 19, they are also repeated in Table
+90.
+
+Table 90 Parameters for different battery chemistries for battery
+electric trucks
+
+======================== ========== ======= =========== ======= =======
+\                        **unit**   **LFP** **LTO**     **NMC** **NCA**
+Cell voltage             V          3.2     2.3         3.6     3.6
+Cell capacity            Ah         1.4-4.5 2.0-6.5     3.7-5.3 4.8
+Energy density           Wh/kg cell 115-146 76-77       175-200 200-230
+Charge rate                         1C      4C-10C      2C-3C   2C-3C
+Cycle life (at 100% DoD) unit       7000+   5’000-7’000 2’000   1’000
+Corrected cycle life     unit       7’000   7’000       3’000   1’500
+======================== ========== ======= =========== ======= =======
+
+Given the energy consumption of the vehicle and the required battery
+capacity, *carculator_truck* calculates the number of charging cycles
+needed and the resulting number of battery replacements, given the cycle
+life of the chemistry used. As discussed at the beginning of this report
+(see Section I.C.6), the expected cycle life is corrected. There is also
+a minimum replacement for all vehicles, to account for the calendric
+aging of the battery.
+
+The effect of changing the battery chemistry, using a required range
+autonomy of 150 km on a 32t articulated truck is shown in Figure 40. The
+difference across chemistries is not significant. The higher gravimetric
+energy density of NCA batteries slightly increases the available payload
+of the vehicle.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image82.png
+   :alt: C:\Users\sacchi_r\AppData\Local\Microsoft\Windows\INetCache\Content.MSO\7ECC480.tmp
+   :width: 4.19231in
+   :height: 4.39368in
+
+Figure 40 Effect of battery chemistry on number of replacements, battery
+capacity and mass, as well as the available payload, for a 32t
+articulated truck, with a required range autonomy of 150 km.
+
+Plugin hybrid trucks
+^^^^^^^^^^^^^^^^^^^^
+
+The number of commercial models of plugin hybrid trucks is limited. In
+this study, plugin hybrid trucks are mostly modeled after Scania’s PHEV
+tractor (Scania 2020). It comes with three 30 kWh battery packs, giving
+it a range autonomy in battery-depleting mode of 60 km, according to the
+manufacturer. These specifications in terms of battery capacity are used
+to model plugin hybrid trucks of different size classes (i.e., roughly
+based on their respective gross mass).
+
+Knowing the vehicle battery storage capacity and its tank-to-wheel
+efficiency when powered on battery, it is possible to calculate its
+resulting range autonomy in battery-depleting mode. Furthermore, it is
+assumed that, in the context of urban delivery, the truck is used in
+battery-depleting mode in priority, resorting the combustion mode to
+complete the driving cycle (i.e., 150 km). This approach is used to
+calculate the *electric utility factor* for these vehicles. Energy
+storage capacities and electric utility factors for plugin hybrid trucks
+are described in Table 91.
+
+Table 91 Energy storage and eletric utility factor of plugin hybrid
+trucks
+
++----------+----------+----------+----------+----------+----------+
+| Size     | Battery  | Range    | Required | Electric | Comment  |
+| class    | capacity | autonomy | range    | utility  |          |
+|          |          | in       | autonomy | factor   |          |
+|          |          | b        |          |          |          |
+|          |          | attery-d |          |          |          |
+|          |          | epleting |          |          |          |
+|          |          | mode     |          |          |          |
++==========+==========+==========+==========+==========+==========+
+|          | kWh      | km       | km       | %        | The km   |
+|          |          |          |          |          | driven   |
+|          |          |          |          |          | in       |
+|          |          |          |          |          | co       |
+|          |          |          |          |          | mbustion |
+|          |          |          |          |          | mode     |
+|          |          |          |          |          | complete |
+|          |          |          |          |          | the      |
+|          |          |          |          |          | distance |
+|          |          |          |          |          | required |
+|          |          |          |          |          | by the   |
+|          |          |          |          |          | range    |
+|          |          |          |          |          | a        |
+|          |          |          |          |          | utonomy. |
++----------+----------+----------+----------+----------+----------+
+| 3.5t     | 20       | 50       | 150      | 35       |          |
++----------+----------+----------+----------+----------+----------+
+| 7.5t     | 30       | 47       |          | 33       |          |
++----------+----------+----------+----------+----------+----------+
+| 18t      | 70       | 50       |          | 35       |          |
++----------+----------+----------+----------+----------+----------+
+| 26t      | 90       | 45       |          | 33       |          |
++----------+----------+----------+----------+----------+----------+
+| 32t      | 95       | 45       |          | 32       |          |
++----------+----------+----------+----------+----------+----------+
+| 40t      | 110      | 48       |          | 33       |          |
++----------+----------+----------+----------+----------+----------+
+
+Fuel cell electric trucks
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The energy storage unit of fuel cell electric trucks is sized based on
+the required amount of hydrogen onboard (defined by the required range
+autonomy). The relation between hydrogen mass and tank mass is derived
+from manufacturers’ specifications, as shown in Figure 41.
+
+We start from the basis that fuel cell electric trucks are equipped with
+650 liters cylinders, which contain 14.4 kg hydrogen at 700 bar, for a
+(empty) mass of 178 kg. Hence, the requirement in term of tank mass for
+a long haul fuel cell electric truck that needs 74 kg of hydrogen is
+0.1916\ :sup:`2` + 14.586*14.4 + 10.8 \* (74/14.4) = 1’068 kg, excluding
+the hydrogen mass.
+
+The hydrogen tank is of type IV, a carbon fiber-resin (CF)
+composite-wrapped single tank system, with an aluminium liner capable of
+storing 5.6 kg usable hydrogen, weighting 119 kg per unit (of which 20
+kg is carbon fiber), which has been scaled up to 178 kg for a storage
+capacity of 14.4 kg to reflect current models on the market (Quantum
+2019). The inventories are originally from (Hua et al. 2010). The
+inventories for the supply of carbon fiber is from (Benitez et al.
+2021). Note that alternative hydrogen tank designs exist, using
+substantially more carbon fiber (up to 70% by mass): this can
+potentially impact end-results as carbon fiber is very energy-intensive
+to produce.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image61.png
+   :width: 5.01389in
+   :height: 3.00694in
+
+Figure 41 Relation between stored hydrogen mass and hydrogen storage
+cylinder mass
+
+**Important remark**: a battery is also added to fuel cell electric
+trucks. Based on manufacturer’s specification, its storage capacity
+represents approximately 6% of the storage capacity of the hydrogen
+cylinders, with a minimum of 20 kWh.
+
+Compressed gas trucks
+^^^^^^^^^^^^^^^^^^^^^
+
+For compressed gas trucks, the energy storage is in a four-cylinder
+configuration, with each cylinder containing up to 57.6 kg of compressed
+gas – 320 liters at 200 bar.
+
+The relation between the mass of compressed gas and the cylinder mass is
+depicted in Figure 26. This relation is based on manufacturers’ data –
+mainly from (Daimler Trucks 2017; QTWW 2021).
+
+[CHART]
+
+Figure 42 Relation between mass of stored compressed gas and cylinder
+mass
+
+Inventories for a Type II 200 bar compressed gas tank, with a steel
+liner, are from (Candelaresi et al. 2021).
+
+.. _charging-stations-1:
+
+Charging stations
+~~~~~~~~~~~~~~~~~
+
+The parameters for the fast charging station used for battery electric
+trucks are presented in Table 92. The number of vehicles serviced by the
+charging station daily is defined by the battery capacity of the
+vehicles it serves. Theoretically, level-3 chargers can fast-charge the
+equivalent of 2’100 kWh daily, if operated within a safe SoC amplitude,
+or about five trucks with a 350 kWh battery pack.
+
+Table 92 Parameters of the charging station for battery electric trucks
 
 +----------------------------------+----------------------------------+
-| **Range in battery-depleting     | **Observed electric utility      |
-| mode [km]**                      | factor [%]**                     |
-+==================================+==================================+
-| 20                               | 30                               |
+|                                  | **EV charger, level 3, plug-in** |
 +----------------------------------+----------------------------------+
-| 30                               | 41                               |
+| Bus type                         | BEV-depot                        |
 +----------------------------------+----------------------------------+
-| 40                               | 50                               |
+| Power [kW]                       | 200                              |
 +----------------------------------+----------------------------------+
-| 50                               | 58                               |
+| Efficiency [%]                   | 95                               |
 +----------------------------------+----------------------------------+
-| 60                               | 65                               |
+| Source for efficiency            | (Chlebis et al. 2014)            |
 +----------------------------------+----------------------------------+
-| 70                               | 71                               |
+| Lifetime [years]                 | 24                               |
 +----------------------------------+----------------------------------+
-| 80                               | 75                               |
+| Number of trucks allocated per   | 2’100 [kWh/day] / energy storage |
+| charging system                  | cap. [kWh]                       |
++----------------------------------+----------------------------------+
+| Share of the charging station    | 1 / (24 [years] \* no. trucks \* |
+| allocated to the vehicle         | annual mileage [km/day] \* cargo |
+|                                  | mass [ton])                      |
++----------------------------------+----------------------------------+
+| Source for inventories           | (ABB 2019; Nansai et al. 2001)   |
++----------------------------------+----------------------------------+
+| Comment                          | Assumed lifetime of 24 years. It |
+|                                  | is upscaled to represent a 200   |
+|                                  | kW Level-3 charger by scaling    |
+|                                  | the charger component up based   |
+|                                  | on a mass of 1’290 kg given by   |
+|                                  | AAB's 200 kW bus charger.        |
 +----------------------------------+----------------------------------+
 
-Once the electric utility factor :math:`U` is known, it is used as a partitioning
-ratio to compose the vehicle between the PHEV in combustion mode, and the PHEV in electric mode,
-where:
+Finding solutions
+-----------------
 
-.. math::
+Very much like *carculator* and *carculator_bus*, *carculator_truck*
+iterates until:
 
-    F_{ttw_phev} = (F_{ttw_phev_e} \times U) + (F_{ttw_phev_c} \times (1 - U))
+-  The change in curb mass of the vehicles between two modeling
+   iterations is below 1%. This indicates that the vehicle model and the
+   size of its components have stabilized, and further iterating will
+   not affect its mass or its fuel consumption.
 
-.. math::
+All while considering the **following constraints**:
 
-    m_{curb_phev} = (m_{curb_phev_e} \times U) + (m_{curb_phev_c} \times (1 - U))
+-  For **all trucks**, the driving mass when fully occupied cannot be
+   superior to the gross mass of the vehicle (this is specifically
+   relevant for battery electric vehicles)
 
-where :math:`F_{ttw_phev_e}` is the tank-to-wheel energy consumption [kWh/km] of the electric PHEV,
-:math:`F_{ttw_phev_c}` is the tank-to-wheel energy consumption [kk/km] of the combustion PHEV,
-:math:`m_{curb_phev_e}` is the curb weight [kg] of the electric PHEV, and :math:`m_{curb_phev_c}` is the
-curb weight [kg] of the combustion PHEV.
+-  Particularly relevant to battery electric vehicles, the curb mass
+   (including the battery mass) should be so low as to allow it to
+   retain at least 10% of the initial cargo carrying capacity, all while
+   staying under the permissible gross weight limit.
 
+.. _validation-2:
 
+Validation
+----------
+
+Diesel trucks
+~~~~~~~~~~~~~
+
+Figure 43 compares the fuel economy of trucks of different size classes
+modeled by *carculator_truck* with those found in HBEFA and ecoinvent
+v.3.
+
+.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image83.png
+   :width: 7.51138in
+   :height: 3.10833in
+
+Figure 43 Fuel consumption for diesel trucks in L diesel per 100 km,
+against literature data. Shaded areas: the upper bound is calculated
+with the “Urban delivery” driving cycle with a load factor of 80%, the
+lower bound is calculated with the “Long haul” driving cycle with a load
+factor of 20%.
+
+.. _battery-electric-trucks-1:
+
+Battery electric trucks
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Figure 44 compares some of the modeled parameters for battery electric
+trucks with the specifications of some commercial models disclosed by
+manufacturers. These manufacturers’ specifications can also be found in
+Annex D.
+
++----------------------------------+----------------------------------+
+| |C:\Users\sacchi_r\App           | |C:\Users\sacchi_r\App           |
+| Data\Local\Microsoft\Windows\INe | Data\Local\Microsoft\Windows\INe |
+| tCache\Content.MSO\3E3144B9.tmp| | tCache\Content.MSO\1DFF859F.tmp| |
++----------------------------------+----------------------------------+
+| a) Maximum payload modeled       | b) Engine peak power output      |
+| (shaded line) versus commercial  | modeled (shaded line) versus     |
+| models, function of gross weight | commercial models, function of   |
+|                                  | gross weight                     |
++----------------------------------+----------------------------------+
+| |C:\Users\sacchi_r\App           | |C:\Users\sacchi_r\App           |
+| Data\Local\Microsoft\Windows\INe | Data\Local\Microsoft\Windows\INe |
+| tCache\Content.MSO\71F6A915.tmp| | tCache\Content.MSO\C04A90EB.tmp| |
++----------------------------------+----------------------------------+
+| c) Battery capacity modeled      | d) Tank-to-wheel energy          |
+| (shared area) versus commercial  | consumption modeled (shaded      |
+| models, function of gross        | line) versus commercial models,  |
+| weight. The lower bound of the   | function of gross weight         |
+| shaded area represents a vehicle |                                  |
+| with a range autonomy of 150 km. |                                  |
+| The upper bound of the shaded    |                                  |
+| area represent a vehicle a range |                                  |
+| autonomy of 400 km.              |                                  |
++----------------------------------+----------------------------------+
+
+Figure 44 Comparison of modeled maximum payload, engine peak power,
+battery capacity and tank-to-wheel fuel consumption with specification
+of commercial models.
+
+.. _fuel-cell-electric-trucks-1:
+
+Fuel cell electric trucks
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
++----------------------------------+----------------------------------+
+| |C:\Users\sacchi_r\App           | |C:\Users\sacchi_r\App           |
+| Data\Local\Microsoft\Windows\INe | Data\Local\Microsoft\Windows\INe |
+| tCache\Content.MSO\8DCF8531.tmp| | tCache\Content.MSO\BBADEF67.tmp| |
++----------------------------------+----------------------------------+
+| a) Engine peak power output      | b) Hydrogen tank capacity        |
+| modeled (shaded line) versus     | modeled (shaded line) versus     |
+| commercial models, function of   | commercial models, function of   |
+| gross weight.                    | gross weight. The lower bound of |
+|                                  | the shaded area represents a     |
+|                                  | vehicle with a range autonomy of |
+|                                  | 150 km. The upper bound of the   |
+|                                  | shaded area represent a vehicle  |
+|                                  | a range autonomy of 800 km.      |
++----------------------------------+----------------------------------+
+| |C:\Users\sacchi_r\Ap            | |C:\Users\sacchi_r\App           |
+| pData\Local\Microsoft\Windows\IN | Data\Local\Microsoft\Windows\INe |
+| etCache\Content.MSO\77D750D.tmp| | tCache\Content.MSO\CDD457A3.tmp| |
++----------------------------------+----------------------------------+
+| c) Fuel cell stack power output  | d) Battery capacity modeled      |
+| modeled (shaded line) versus     | (shaded line) versus commercial  |
+| commercial models, function of   | models, function of gross        |
+| gross weight.                    | weight. The lower bound of the   |
+|                                  | shaded area represents a vehicle |
+|                                  | with a range autonomy of 150 km. |
+|                                  | The upper bound of the shaded    |
+|                                  | area represent a vehicle a range |
+|                                  | autonomy of 800 km.              |
++----------------------------------+----------------------------------+
+| |C:\Users\sacchi_r\Ap            |                                  |
+| pData\Local\Microsoft\Windows\IN |                                  |
+| etCache\Content.MSO\16DD4A9.tmp| |                                  |
++----------------------------------+----------------------------------+
+| e) Tank-to-wheel energy          |                                  |
+| consumption modeled (shaded      |                                  |
+| line) versus commercial models,  |                                  |
+| function of gross weight.        |                                  |
++----------------------------------+----------------------------------+
+
+Figure 45 Comparison of modeled engine peak power, fuel cell stack
 
 Inventory modelling
 *******************
@@ -1085,11 +1172,6 @@ Table 12 Fuels characteristics
 +---------------------------------------+---------------------------------+------------------------------+----------------------------------+----------------------------------+
 |                                       | Volumetric mass density [kg/l]  | Lower heating value [MJ/kg]  | CO2 emission factor [kg CO2/kg]  | SO2 emission factor [kg SO2/kg]  |
 +=======================================+=================================+==============================+==================================+==================================+
-| Gasoline                              | 0.75                            | 42.6                         | 3.14                             | 1.6e-5                           |
-+---------------------------------------+---------------------------------+------------------------------+----------------------------------+----------------------------------+
-| Bioethanol                            | 0.75                            | 26.5                         | 1.96                             | 1.6e-5                           |
-+---------------------------------------+---------------------------------+------------------------------+----------------------------------+----------------------------------+
-| Synthetic gasoline                    | 0.75                            | 43                           | 3.14                             | 0                                |
 +---------------------------------------+---------------------------------+------------------------------+----------------------------------+----------------------------------+
 | Diesel                                | 0.85                            | 43                           | 3.15                             | 8.85e-4                          |
 +---------------------------------------+---------------------------------+------------------------------+----------------------------------+----------------------------------+
@@ -1164,42 +1246,6 @@ Diesel blend              4.8             6
 Compressed gas blend      22              9
 ========================= =============== ==========
 
-A number of fuel-related emissions other than CO\ :sub:`2` and
-SO\ :sub:`2` are considered, using the HBEFA 4.1 database [30]_.
-
-Six sources of emissions are considered:
-
--  Exhaust emissions: emissions from the combustion of fuel during
-   operation. Their concentration relates to the fuel consumption and
-   the emission standard of the vehicle.
-
--  Cold start emissions: emissions when starting the engine. The factor
-   is given in grams per engine start. 2.3 engine starts per day are
-   considered [27]_ and an annual mileage of 12'000 km.
-
--  Diurnal emissions: evaporation of the fuel due to a temperature
-   increase of the vehicle. The factor is given in grams per day.
-   Emissions are distributed evenly along the driving cycle, based on an
-   annual mileage of 12'000 km per year.
-
--  Hot soak emissions: evaporative emissions occurring after the vehicle
-   has been used. The factor is given in grams per trip. The emission is
-   added at the end of the driving cycle.
-
--  In addition, running loss emissions: emissions related to the
-   evaporation of fuel (i.e., not combusted) during operation. The
-   factor is given in grams per km. Emissions are distributed evenly
-   along the driving cycle.
-
--  Other non-exhaust emissions: brake, tire road wear and re-suspended
-   road dust emissions, as well as emissions of refrigerant.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image20.png
-   :width: 4.38333in
-   :height: 2.325in
-
-Figure 11 Representation of the different sources of emission other than
-exhaust emissions
 
 For exhaust emissions, factors based on the fuel consumption are derived
 by comparing emission data points for different traffic situations
@@ -1222,97 +1268,7 @@ where :math:`E(i,s)` is the emission of substance i at second s of the driving c
 :math:`F_ttw(s)` is the fuel consumption of the vehicle at second s,
 and :math:`X(i, e)` is the emission factor of substance i in the given driving conditions.
 
-To that, we add the following terms:
 
-    - Cold start emissions on the first second of the driving cycle
-    - Evaporation emissions: on the last second of the driving cycle
-    - Diurnal and running losses: distributed evenly over the driving cycle
-
-
-**Important remark**: the degradation of anti-pollution systems for
-diesel and gasoline cars (i.e., catalytic converters) is accounted for
-as indicated by HBEFA, by applying a degradation factor on the emission
-factors for CO, HC and NO\ :sub:`x` for gasoline cars, as well as on CO
-and NO\ :sub:`x` for diesel cars. These factors are shown in Table 15
-for passenger cars with a mileage of 200'000 km, which is the default
-lifetime value in *carculator*. The degradation factor corresponding to
-half of the vehicle kilometric lifetime is used, to obtain a
-lifetime-weighted average degradation factor.
-
-Table 15 Degradation factors at 200'000 km for passenger cars
-
-+-----------------------------------+--------------------------+-------+------+------------------------+------+
-| Degradation factor at 200 000 km  | Gasoline passenger cars  |       |      | Diesel passenger cars  |      |
-+===================================+==========================+=======+======+========================+======+
-|                                   | CO                       | HC    | NOx  | CO                     | NOx  |
-+-----------------------------------+--------------------------+-------+------+------------------------+------+
-| EURO-1                            | 1.9                      | 1.59  | 2.5  |                        |      |
-+-----------------------------------+--------------------------+-------+------+------------------------+------+
-| EURO-2                            | 1.6                      | 1.59  | 2.3  |                        | 1.25 |
-+-----------------------------------+--------------------------+-------+------+------------------------+------+
-| EURO-3                            | 1.75                     | 1.02  | 2.9  |                        | 1.2  |
-+-----------------------------------+--------------------------+-------+------+------------------------+------+
-| EURO-4                            | 1.9                      | 1.02  | 2    | 1.3                    | 1.06 |
-+-----------------------------------+--------------------------+-------+------+------------------------+------+
-| EURO-5                            | 2                        |       | 2.5  | 1.3                    | 1.03 |
-+-----------------------------------+--------------------------+-------+------+------------------------+------+
-| EURO-6                            | 1.3                      |       | 1.3  | 1.4                    | 1.15 |
-+-----------------------------------+--------------------------+-------+------+------------------------+------+
-
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image21.png
-   :width: 6.27014in
-   :height: 7.84756in
-
-Figure 12 Relation between emission factor and fuel consumption for a
-diesel-powered passenger car. Dots represent HBEFA 4.1 emission factors
-for different traffic situation for a diesel engine, for different
-emission standards.
-
-However, as Figure 12 shows, the relation between amounts emitted and
-fuel consumption is not always obvious and using a linear relation
-between amounts emitted and fuel consumption can potentially be
-incorrect. In addition, emissions of ammonia (NH\ :sub:`3`) and Nitrous
-oxides (N\ :sub:`2`\ O) seem to be related to the emission standard
-(e.g., use of urea solution) and engine temperature rather than the fuel
-consumption.
-
-To confirm that such approach does not yield kilometric emissions too
-different from the emission factors per vehicle-kilometer proposed by
-HBEFA 4.1, Figure 13 compares the emissions obtained by *carculator*
-using the WLTC driving cycle over 1 vehicle-km (red dots) with the
-distribution of the emission factors for different traffic situations
-(green box-and-whiskers) as well as the traffic situation-weighted
-average emission factor (yellow dots) given by HBEFA 4.1 for different
-emission standards for a medium diesel-powered passenger car.
-
-There is some variation across traffic situations, but the emissions
-obtained remain, for most substances, within the 50% of the distributed
-HBEFA values across traffic situations. Also, the distance between the
-modeled emission and the traffic-situation-weighted average is
-reasonable.
-
-**Important remark**: NO\ :sub:`x` emissions for emission standards
-EURO-4 and 5 tend to be under-estimated compared to HBEFA's values. It
-is also important to highlight that, in some traffic situations, HBEFA's
-values show that emissions of CO, HC, NMHC and PMs for vehicles with
-early emission standards can be much higher that what is assumed in
-*carculator*. There is overall a good agreement between traffic
-situation-weighted average emission factors and those used in
-*carculator*.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image22.png
-   :width: 6.27014in
-   :height: 5.97153in
-
-Figure 13 Validation of the exhaust emissions model with the emission
-factors provided by HBEFA 4.1 for a medium size diesel-powered passenger
-car. Box-and-whiskers: distribution of HBEFA's emission factors for
-different traffic situations (box: 50% of the distribution, whiskers:
-90% of the distribution). Yellow dots: traffic situation-weighted
-average emission factors. Red dots: modeled emissions calculated by
-*carculator* with the WLTC cycle, using the relation between fuel
-consumption and amounts emitted.
 
 NMHC speciation
 _______________
@@ -1454,31 +1410,28 @@ made in that regard instead.
 Table 19 Weighting coefficients to calculate representative abrasion
 emissions given a type of use/driving cycle
 
-============= ============= ===== ===== ========
-\             Driving cycle Urban Rural Motorway
-============= ============= ===== ===== ========
-Passenger car WLTP          0.33  0.24  0.43
-============= ============= ===== ===== ========
++--------------------+--------------------+-------+-------+----------+
+|                    | Driving cycle      | Urban | Rural | Motorway |
++====================+====================+=======+=======+==========+
++--------------------+--------------------+-------+-------+----------+
+| Truck, urban       | Urban delivery     | 1     |       |          |
+| delivery           |                    |       |       |          |
++--------------------+--------------------+-------+-------+----------+
+| Truck, regional    | Regional delivery  | 0.16  | 0.32  | 0.52     |
+| delivery           |                    |       |       |          |
++--------------------+--------------------+-------+-------+----------+
+| Truck, long haul   | Long haul          |       |       | 1        |
++--------------------+--------------------+-------+-------+----------+
 
-Finally, for electric and (plugin) hybrid vehicles, the amount of brake
-wear emissions is reduced. This reduction is calculated as the ratio
-between the sum of energy recuperated by the regenerative braking system
-and the sum of negative resistance along the driving cycle. The logic is
-that the amount of negative resistance that could not be met by the
-regenerative braking system needs to be met with mechanical brakes. This
-is illustrated in Figure 14, where the distance between the recuperated
-energy and the total negative motive energy corresponds to the amount of
-energy that needs to be provided by mechanical brakes. Table 20 lists
-such reduction actors for the different powertrains.
+Finally, for electric and (plugin) hybrid vehicles (with the exception
+of two-wheelers), the amount of brake wear emissions is reduced. This
+reduction is calculated as the ratio between the sum of energy
+recuperated by the regenerative braking system and the sum of negative
+resistance along the driving cycle. The logic is that the amount of
+negative resistance that could not be met by the regenerative braking
+system needs to be met with mechanical brakes.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image23.png
-   :width: 4.1546in
-   :height: 2.85in
-
-Figure 14 Negative motive energy and recuperated energy between second
-300 and 450 of the WLTC driving cycle
-
-Table 20 Approximate reduction factors for brake wear emissions. Values
+Table 15 Approximate reduction factors for brake wear emissions. Values
 differ slightly across size classes.
 
 +-------------+-------------+-------------+-------------+-------------+
@@ -1489,14 +1442,21 @@ differ slightly across size classes.
 |             |             |             | vehicles    | electric    |
 |             |             |             |             | vehicles    |
 +=============+=============+=============+=============+=============+
-| Passenger   | WLTP        | -72%        | -73%        | -76%        |
-| car         |             |             |             |             |
++-------------+-------------+-------------+-------------+-------------+
+| Truck,      | Urban       | -20%        | -82%        | -82%        |
+| urban       | delivery    |             |             |             |
+| delivery    |             |             |             |             |
++-------------+-------------+-------------+-------------+-------------+
+| Truck,      | Regional    | -24%        | -82%        | -83%        |
+| regional    | delivery    |             |             |             |
+| delivery    |             |             |             |             |
 +-------------+-------------+-------------+-------------+-------------+
 
-The sum of PM 2.5 and PM 10 emissions is used as the input for the
-ecoinvent v.3.x LCI datasets indicated in Table 21.
 
-Table 21 LCI datasets used to approximate PM emissions composition and
+The sum of PM 2.5 and PM 10 emissions is used as the input for the
+ecoinvent v.3.x LCI datasets indicated in Table 16.
+
+Table 16 LCI datasets used to approximate PM emissions composition and
 emissions to air, soil and water
 
 +-------------+-------------+-------------+-------------+-------------+
@@ -1504,33 +1464,21 @@ emissions to air, soil and water
 |             |             |             |             | e-suspended |
 |             |             |             |             | road dust   |
 +=============+=============+=============+=============+=============+
-| Passenger   | Tire wear   | Brake wear  | Road wear   |             |
-| car         | emissions,  | emissions,  | emissions,  |             |
-|             | passenger   | passenger   | passenger   |             |
-|             | car         | car         | car         |             |
++-------------+-------------+-------------+-------------+-------------+
+| Truck       | Tyre wear   | Brake wear  | Road wear   |             |
+|             | emissions,  | emissions,  | emissions,  |             |
+|             | lorrry      | lorry       | lorry       |             |
 +-------------+-------------+-------------+-------------+-------------+
 
 Finally, we assume that the composition of the re-suspended road dust is
 evenly distributed between brake, road and tire wear particles.
 
-Figure 15 shows the calculated abrasion emissions for passenger cars in
-mg per vehicle-kilometer, following the approach presented above.
-
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image24.png
-   :width: 6.26667in
-   :height: 3.00136in
-
-Figure 15 Total particulate matter emissions (<2.5 µm and 2.5-10 µm) in
-mg per vehicle-kilometer for passenger cars.
-
-Re-suspended road dust emissions are assumed to be evenly composed of
-brake wear (33.3%), tire wear (33.3%) and road wear (33.3%) particles.
 
 Refrigerant emissions
 _____________________
 
 The use of refrigerant for onboard air conditioning systems is
-considered for passenger cars until 2021. The supply of refrigerant gas R134a is
+considered for trucks until 2021. The supply of refrigerant gas R134a is
 accounted for. Similarly, the leakage of the refrigerant is also
 considered. For this, the calculations from [34]_ are used. Such emission
 is included in the transportation dataset of the corresponding vehicle.
@@ -1543,20 +1491,17 @@ the atmosphere.
 Table 22 Use and loss of refrigerant gas for onboard air conditioning
 systems
 
-======================================== =============================
-\                                        Passenger cars (except Micro)
-Initial charge [kg per vehicle lifetime] 0.55
-Lifetime loss [kg per vehicle lifetime]  0.75
-======================================== =============================
+======================================== =======
+\                                        Trucks
+Initial charge [kg per vehicle lifetime] 1.1
+Lifetime loss [kg per vehicle lifetime]  0.94
+======================================== =======
 
 **Important assumption**: it is assumed that electric and plug-in
 electric vehicles also use a compressor-like belt-driven air
 conditioning system, relying on the refrigerant gas R134a. In practice,
 an increasing, but still minor, share of electric vehicles now use a
 (reversible) heat pump to provide cooling.
-
-**Important remark:** Micro cars do not have an air conditioning system.
-Hence, no supply or leakage of refrigerant is considered for those.
 
 **Important remark:** After 2021, R134a is no longer used.
 
@@ -1570,7 +1515,7 @@ noise emissions are quantified separately.
 
 The sound power level of rolling noise is calculated using:
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image25.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image25.png
    :width: 3.45in
    :height: 0.65in
 
@@ -1584,7 +1529,7 @@ And *A\ R,i,m* and *B\ R,i,m*\ are unitless and given in Table 23.
 
 The propulsion noise level is calculated using:
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image26.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image26.png
    :width: 3.6in
    :height: 0.625in
 
@@ -1649,14 +1594,19 @@ noise emission characterization factors against midpoint and endpoint
 indicators - expressed in Person-Pascal-second and Disability-Adjusted
 Life Year, respectively.
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image27.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image27.png
    :width: 60%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/image28.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image28.png
    :width: 30%
 
 Figure 16 a) Noise emission level comparison between ICEV and BEV, based
 on the driving cycle WLTC. b) Summed sound energy comparison between
 ICEV, BEV and PHEV, over the duration of the WLTC driving cycle.
+
+The mid- and endpoint impact
+assessment methods presented in (Cucurachi et al. 2019) can be used to
+characterize these emissions into Pascal.person per second and DALY,
+respectively.
 
 Electricity mix calculation
 ---------------------------
@@ -1664,10 +1614,10 @@ Electricity mix calculation
 Electricity supply mix are calculated based on the weighting from the
 distribution the lifetime kilometers of the vehicles over the years of
 use. For example, should a BEV enter the fleet in Poland in 2020, most
-LCA models of passenger vehicles would use the electricity mix for
+LCA models of trucks would use the electricity mix for
 Poland corresponding to that year, which corresponds to the row of the
 year 2020 in Table 24, based on ENTSO-E's TYNDP 2020 projections
-(National Trends scenario) [38]_. *carculator* calculates instead the
+(National Trends scenario) [38]_. *carculator_truck* calculates instead the
 average electricity mix obtained from distributing the annual kilometers
 driven along the vehicle lifetime, assuming an equal number of
 kilometers is driven each year. Therefore, with a lifetime of 200,000 km
@@ -1737,7 +1687,7 @@ Inventories for fuel pathways
 -----------------------------
 
 A number of inventories for fuel production and supply are used by
-*carculator*. They represent an update in comparison to the inventories
+*carculator_truck*. They represent an update in comparison to the inventories
 used in the passenger vehicles model initially published by Cox et
 al.[5]_. The fuel pathways presented in Table 25 are from the literature
 and not present as generic ecoinvent datasets.
@@ -1745,42 +1695,6 @@ and not present as generic ecoinvent datasets.
 +-----------+---------------------------+---------------------------+
 | Author(s) | Fuel type                 | Description               |
 +===========+===========================+===========================+
-| [40]_     | Bioethanol from forest    | Biofuels made from        |
-|           | residues                  | biomass residues (e.g.,   |
-|           |                           | wheat straw, corn starch) |
-|           |                           | or energy crops (e.g.,    |
-|           |                           | sugarbeet). For energy    |
-|           |                           | crops biofuels, indirect  |
-|           |                           | land use change is        |
-|           |                           | included.                 |
-+-----------+---------------------------+---------------------------+
-|           | Bioethanol from wheat     |                           |
-|           | straw                     |                           |
-+-----------+---------------------------+---------------------------+
-|           | Bioethanol from corn      |                           |
-|           | starch                    |                           |
-+-----------+---------------------------+---------------------------+
-|           | Bioethanol from sugarbeet |                           |
-+-----------+---------------------------+---------------------------+
-| [41]_     | e-Gasoline                | Gasoline produced from    |
-|           | (Methanol-to-Gasoline)    | methanol, via a           |
-|           |                           | Methanol-to-Gasoline      |
-|           |                           | process. The carbon       |
-|           |                           | monoxide is provided by a |
-|           |                           | reverse water gas shift   |
-|           |                           | process, feeding on       |
-|           |                           | carbon dioxide from       |
-|           |                           | direct air capture. In    |
-|           |                           | carculator, one can       |
-|           |                           | choose the nature of the  |
-|           |                           | heat needed for the       |
-|           |                           | methanol distillation as  |
-|           |                           | well as for regenerating  |
-|           |                           | the DAC sorbent: natural  |
-|           |                           | gas, waste heat, biomass  |
-|           |                           | heat, or market heat      |
-|           |                           | (i.e., a mix of natural   |
-|           |                           | gas and fuel oil).        |
 +-----------+---------------------------+---------------------------+
 | [40]_     | Biodiesel from            | 2\ :sup:`nd` and          |
 |           | micro-algae               | 3\ :sup:`rd` generation   |
@@ -1799,7 +1713,7 @@ and not present as generic ecoinvent datasets.
 |           |                           | electrolysis, while the   |
 |           |                           | CO\ :sub:`2` comes from   |
 |           |                           | direct air capture. Note  |
-|           |                           | that in *carculator*, two |
+|           |                           | that in *carculator_truck*, two |
 |           |                           | allocation approaches at  |
 |           |                           | the crude-to-fuel step    |
 |           |                           | are possible between the  |
@@ -1859,7 +1773,7 @@ are listed in Table 26.
 |           |                           | integrated in ecoinvent   |
 |           |                           | v.3.8 (with some errors), |
 |           |                           | corrected and integrated  |
-|           |                           | in *carculator*.          |
+|           |                           | in *carculator_truck*.          |
 |           |                           | Additionally, these       |
 |           |                           | inventories relied        |
 |           |                           | exclusively on synthetic  |
@@ -1885,7 +1799,7 @@ are listed in Table 26.
 |           |                           | carbon fiber              |
 |           |                           | manufacturing have been   |
 |           |                           | integrated to             |
-|           |                           | *carculator*, from [53]_. |
+|           |                           | *carculator_truck*, from [53]_. |
 +-----------+---------------------------+---------------------------+
 | [54]_     | Type IV hydrogen tank,    |                           |
 |           | LDPE liner                |                           |
@@ -1899,7 +1813,7 @@ Table 26 List of inventories for different energy storage solutions
 Life cycle impact assessment
 ****************************
 
-To build the inventory of every vehicle, *carculator* populates a
+To build the inventory of every vehicle, *carculator_truck* populates a
 three-dimensional array *A* (i.e., a tensor) such as:
 
 .. math:: \ A = \left\lbrack a_{\text{ijk}} \right\rbrack,\ i = 1,\ \ldots,\ L,\ j = 1,\ \ldots,\ M,\ k = 1,\ \ldots,\ N
@@ -1915,7 +1829,7 @@ Given a final demand vector *f* (e.g., 1 kilometer driven with a
 specific vehicle, represented by a vector filled with zeroes and the
 value 1 at the position corresponding to the index *j* of the driving
 activity in dimension M) of length equal to that of the second dimension
-of *A* (i.e., *M*), *carculator* calculates the scaling factor *s* so
+of *A* (i.e., *M*), *carculator_truck* calculates the scaling factor *s* so
 that:
 
 .. math:: s = A^{- 1}f
