@@ -122,27 +122,27 @@ to 400 km.
 
 Example of 3.5t truck, rigid, 2 axles, box body and 7.5t truck, rigid, 2 axles, box body
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image68.png
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image68.jpg
     :width: 50%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image69.jpeg
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image69.jpg
     :width: 50%
 
 Example of 18t truck, rigid, 2 axles, box body and 26t truck, rigid, 3 axles, box body
 
 .. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image70.png
     :width: 50%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image71.jpeg
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image71.png
     :width: 50%
 
 Example of 32t truck, semi-trailer, 2+3 axles, curtain-sider and 40t truck, tipper-trailer, 2+4 axles
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image72.png
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image72.jpg
     :width: 50%
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image73.png
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image73.jpg
     :width: 50%
 
 Example of 60t truck, semi-trailer + trailer, 2+4+2 axles, curtain-sider
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image74.png
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image74.jpg
     :width: 50%
 
 Manufacture year and emission standard
