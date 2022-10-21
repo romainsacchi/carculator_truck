@@ -65,7 +65,7 @@ is also an online graphical user interface available at
 https://carculator_truck.psi.ch.
 
 Overview of *carculator_truck* modules
-********************************
+**************************************
 
 The main module *model.py* builds
 the vehicles and delegates the calculation of motive and auxiliary
@@ -89,15 +89,10 @@ Size classes
 Inventories for the following powertrain types are provided:
 
 -  Diesel-run internal combustion engine vehicle (ICEV-d)
-
 -  Gas-run internal combustion engine vehicle (ICEV-g)
-
 -  Diesel-run hybrid electric vehicle (HEV-d)
-
 -  Diesel-run plug-in hybrid electric vehicle (PHEV-d)
-
 -  Battery electric vehicle (BEV)
-
 -  Fuel cell electric vehicle (FCEV)
 
 Several size classes are available for each powertrain type. They refer
@@ -125,38 +120,39 @@ to 400 km.
 * 40t
 * 60t
 
-+----------------------------------+----------------------------------+
-| |image96|                        | |image97|                        |
-+----------------------------------+----------------------------------+
-| Example of 3.5t truck, rigid, 2  | Example of 7.5t truck, rigid, 2  |
-| axles, box body                  | axles, box body                  |
-+----------------------------------+----------------------------------+
-| |image98|                        | |image99|                        |
-+----------------------------------+----------------------------------+
-| Example of 18t truck, rigid, 2   | Example of 26t truck, rigid, 3   |
-| axles, box body                  | axles, box body                  |
-+----------------------------------+----------------------------------+
-| |image100|                       | |image101|                       |
-+----------------------------------+----------------------------------+
-| Example of 32t truck,            | Example of 40t truck,            |
-| semi-trailer, 2+3 axles,         | tipper-trailer, 2+4 axles        |
-| curtain-sider                    |                                  |
-+----------------------------------+----------------------------------+
-| |image102|                       |                                  |
-+----------------------------------+----------------------------------+
-| Example of 60t truck,            |                                  |
-| semi-trailer + trailer, 2+4+2    |                                  |
-| axles, curtain-sider\*           |                                  |
-+----------------------------------+----------------------------------+
+Example of 3.5t truck, rigid, 2 axles, box body and 7.5t truck, rigid, 2 axles, box body
+
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image68.png
+    :width: 50%
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image69.jpeg
+    :width: 50%
+
+Example of 18t truck, rigid, 2 axles, box body and 26t truck, rigid, 3 axles, box body
+
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image70.png
+    :width: 50%
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image71.jpeg
+    :width: 50%
+
+Example of 32t truck, semi-trailer, 2+3 axles, curtain-sider and 40t truck, tipper-trailer, 2+4 axles
+
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image72.png
+    :width: 50%
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image73.png
+    :width: 50%
+
+Example of 60t truck, semi-trailer + trailer, 2+4+2 axles, curtain-sider
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image74.png
+    :width: 50%
 
 Manufacture year and emission standard
 --------------------------------------
 
 For ICE vehicles, several emission standards are considered. For
 simplicity, it is assumed that the vehicle manufacture year corresponds
-to the registration year. Those are presented in Table 2.
+to the registration year. Those are presented in Table 1.
 
-Table 2 Emission standards and year of manufacture for medium and
+Table 1 Emission standards and year of manufacture for medium and
 heavy/duty trucks
 
 +------------+-----------------+-----------------+-----------------+
@@ -203,290 +199,112 @@ The following components are common to all powertrains:
 -  Transmission
 -  Other components
 
-Table 3 Mass distribution of components for medium- and heavy-duty
+Table 2 Mass distribution of components for medium- and heavy-duty
 trucks
 
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       |       | **    | **    | **    | **    | **    | **A   | **A   | **A   |
-|       |       | Rigid | Rigid | Rigid | Rigid | Rigid | rticu | rticu | rticu |
-|       |       | t     | t     | t     | t     | t     | lated | lated | lated |
-|       |       | ruck, | ruck, | ruck, | ruck, | ruck, | t     | t     | t     |
-|       |       | 3     | 7     | 12t** | 18t** | 26t** | ruck, | ruck, | ruck, |
-|       |       | .5t** | .5t** |       |       |       | 32t** | 40t** | 60t*  |
-|       |       |       |       |       |       |       |       |       | *\ \* |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | Type  | r     | r     | r     | r     | r     | sem   | sem   | se    |
-|       |       | igid, | igid, | igid, | igid, | igid, | i-tra | i-tra | mi-tr |
-|       |       | 2     | 2     | 2     | 2     | 3     | iler, | iler, | ailer |
-|       |       | a     | a     | a     | a     | a     | 2+3   | 2+4   | +     |
-|       |       | xles, | xles, | xles, | xles, | xles, | a     | a     | tra   |
-|       |       | box   | box   | box   | box   | box   | xles, | xles, | iler, |
-|       |       | body  | body  | body  | body  | body  | cur   | cur   | 2+4+2 |
-|       |       |       |       |       |       |       | tain- | tain- | a     |
-|       |       |       |       |       |       |       | sider | sider | xles, |
-|       |       |       |       |       |       |       |       |       | cur   |
-|       |       |       |       |       |       |       |       |       | tain- |
-|       |       |       |       |       |       |       |       |       | sider |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| in    | Gross | 3500  | 7500  | 12000 | 18000 | 26000 | 32000 | 40000 | 60000 |
-| kilo  | w     |       |       |       |       |       |       |       |       |
-| grams | eight |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Power | E     | 151   | 324   | 518   | 777   | 1122  | 899   | 1124  | 1686  |
-| train | ngine |       |       |       |       |       |       |       |       |
-|       | s     |       |       |       |       |       |       |       |       |
-|       | ystem |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | Co    | 11    | 23    | 37    | 56    | 80    | 112   | 140   | 210   |
-|       | olant |       |       |       |       |       |       |       |       |
-|       | s     |       |       |       |       |       |       |       |       |
-|       | ystem |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | Fuel  | 14    | 29    | 47    | 71    | 102   | 64    | 80    | 120   |
-|       | s     |       |       |       |       |       |       |       |       |
-|       | ystem |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | Ex    | 44    | 94    | 150   | 225   | 325   | 176   | 220   | 330   |
-|       | haust |       |       |       |       |       |       |       |       |
-|       | s     |       |       |       |       |       |       |       |       |
-|       | ystem |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | Tr    | 83    | 177   | 283   | 425   | 613   | 446   | 558   | 837   |
-|       | ansmi |       |       |       |       |       |       |       |       |
-|       | ssion |       |       |       |       |       |       |       |       |
-|       | s     |       |       |       |       |       |       |       |       |
-|       | ystem |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Elect |       | 24    | 52    | 83    | 125   | 180   | 212   | 265   | 398   |
-| rical |       |       |       |       |       |       |       |       |       |
-| s     |       |       |       |       |       |       |       |       |       |
-| ystem |       |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Ch    | Frame | 120   | 256   | 410   | 615   | 888   | 2751  | 3439  | 5159  |
-| assis |       |       |       |       |       |       |       |       |       |
-| s     |       |       |       |       |       |       |       |       |       |
-| ystem |       |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | Suspe | 310   | 665   | 1064  | 1596  | 2000  | 2125  | 2656  | 3984  |
-|       | nsion |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | Br    | 24    | 52    | 83    | 125   | 180   | 627   | 784   | 1176  |
-|       | aking |       |       |       |       |       |       |       |       |
-|       | s     |       |       |       |       |       |       |       |       |
-|       | ystem |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | W     | 194   | 416   | 665   | 998   | 1100  | 1138  | 1422  | 2133  |
-|       | heels |       |       |       |       |       |       |       |       |
-|       | and   |       |       |       |       |       |       |       |       |
-|       | tires |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Cabin | Cabin | 175   | 375   | 600   | 900   | 1300  | 922   | 1153  | 1730  |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-|       | Body  | 583   | 1250  | 2000  | 3000  | 4333  | 1680  | 2100  | 3150  |
-|       | syst  |       |       |       |       |       |       |       |       |
-|       | em/tr |       |       |       |       |       |       |       |       |
-|       | ailer |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Other |       | 119   | 256   | 409   | 614   | 886   | 847   | 1059  | 1589  |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Curb  |       | 1852  | 3968  | 6349  | 9524  | 13110 | 12000 | 15000 | 22500 |
-| mass, |       |       |       |       |       |       |       |       |       |
-| incl. |       |       |       |       |       |       |       |       |       |
-| Tr    |       |       |       |       |       |       |       |       |       |
-| ailer |       |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Pa    |       | 1648  | 3532  | 5651  | 8477  | 12890 | 20000 | 25000 | 37500 |
-| yload |       |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| \*    |       |       |       |       |       |       |       |       |       |
-| Not   |       |       |       |       |       |       |       |       |       |
-| consi |       |       |       |       |       |       |       |       |       |
-| dered |       |       |       |       |       |       |       |       |       |
-| in    |       |       |       |       |       |       |       |       |       |
-| this  |       |       |       |       |       |       |       |       |       |
-| study |       |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+
++---------------------------+----------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+-----------------------------------------+-----------------------------------------+-----------------------------------------------------+
+| -                         | -                    | Rigid truck, 3.5t         | Rigid truck, 7.5t         | Rigid truck, 12t          | Rigid truck, 18t          | Rigid truck, 26t          | Articulated truck, 32t                  | Articulated truck, 40t                  | Articulated truck, 60t                              |
++===========================+======================+===========================+===========================+===========================+===========================+===========================+=========================================+=========================================+=====================================================+
+|                           | Type                 | rigid, 2 axles, box body  | rigid, 2 axles, box body  | rigid, 2 axles, box body  | rigid, 2 axles, box body  | rigid, 3 axles, box body  | semi-trailer, 2+3 axles, curtain-sider  | semi-trailer, 2+4 axles, curtain-sider  | semi-trailer + trailer, 2+4+2 axles, curtain-sider  |
+| in kilograms              | Gross weight         | 3500                      | 7500                      | 12000                     | 18000                     | 26000                     | 32000                                   | 40000                                   | 60000                                               |
+| Powertrain                | Engine system        | 151                       | 324                       | 518                       | 777                       | 1122                      | 899                                     | 1124                                    | 1686                                                |
+|                           | Coolant system       | 11                        | 23                        | 37                        | 56                        | 80                        | 112                                     | 140                                     | 210                                                 |
+|                           | Fuel system          | 14                        | 29                        | 47                        | 71                        | 102                       | 64                                      | 80                                      | 120                                                 |
+|                           | Exhaust system       | 44                        | 94                        | 150                       | 225                       | 325                       | 176                                     | 220                                     | 330                                                 |
+|                           | Transmission system  | 83                        | 177                       | 283                       | 425                       | 613                       | 446                                     | 558                                     | 837                                                 |
+| Electrical system         |                      | 24                        | 52                        | 83                        | 125                       | 180                       | 212                                     | 265                                     | 398                                                 |
+| Chassis system            | Frame                | 120                       | 256                       | 410                       | 615                       | 888                       | 2751                                    | 3439                                    | 5159                                                |
+|                           | Suspension           | 310                       | 665                       | 1064                      | 1596                      | 2000                      | 2125                                    | 2656                                    | 3984                                                |
+|                           | Braking system       | 24                        | 52                        | 83                        | 125                       | 180                       | 627                                     | 784                                     | 1176                                                |
+|                           | Wheels and tires     | 194                       | 416                       | 665                       | 998                       | 1100                      | 1138                                    | 1422                                    | 2133                                                |
+| Cabin                     | Cabin                | 175                       | 375                       | 600                       | 900                       | 1300                      | 922                                     | 1153                                    | 1730                                                |
+|                           | Body system/trailer  | 583                       | 1250                      | 2000                      | 3000                      | 4333                      | 1680                                    | 2100                                    | 3150                                                |
+| Other                     |                      | 119                       | 256                       | 409                       | 614                       | 886                       | 847                                     | 1059                                    | 1589                                                |
+| Curb mass, incl. Trailer  |                      | 1852                      | 3968                      | 6349                      | 9524                      | 13110                     | 12000                                   | 15000                                   | 22500                                               |
+| Payload                   |                      | 1648                      | 3532                      | 5651                      | 8477                      | 12890                     | 20000                                   | 25000                                   | 37500                                               |
+|                           | Fuel system          | 14                        | 29                        | 47                        | 71                        | 102                       | 64                                      | 80                                      | 120                                                 |
+|                           | Exhaust system       | 44                        | 94                        | 150                       | 225                       | 325                       | 176                                     | 220                                     | 330                                                 |
+|                           | Transmission system  | 83                        | 177                       | 283                       | 425                       | 613                       | 446                                     | 558                                     | 837                                                 |
+| Electrical system         |                      | 24                        | 52                        | 83                        | 125                       | 180                       | 212                                     | 265                                     | 398                                                 |
+| Chassis system            | Frame                | 120                       | 256                       | 410                       | 615                       | 888                       | 2751                                    | 3439                                    | 5159                                                |
+|                           | Suspension           | 310                       | 665                       | 1064                      | 1596                      | 2000                      | 2125                                    | 2656                                    | 3984                                                |
+|                           | Braking system       | 24                        | 52                        | 83                        | 125                       | 180                       | 627                                     | 784                                     | 1176                                                |
+|                           | Wheels and tires     | 194                       | 416                       | 665                       | 998                       | 1100                      | 1138                                    | 1422                                    | 2133                                                |
+| Cabin                     | Cabin                | 175                       | 375                       | 600                       | 900                       | 1300                      | 922                                     | 1153                                    | 1730                                                |
+|                           | Body system/trailer  | 583                       | 1250                      | 2000                      | 3000                      | 4333                      | 1680                                    | 2100                                    | 3150                                                |
+| Other                     |                      | 119                       | 256                       | 409                       | 614                       | 886                       | 847                                     | 1059                                    | 1589                                                |
+| Curb mass, incl. Trailer  |                      | 1852                      | 3968                      | 6349                      | 9524                      | 13110                     | 12000                                   | 15000                                   | 22500                                               |
+| Payload                   |                      | 1648                      | 3532                      | 5651                      | 8477                      | 12890                     | 20000                                   | 25000                                   | 37500                                               |
++---------------------------+----------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+-----------------------------------------+-----------------------------------------+-----------------------------------------------------+
+
 
 Other use and size-related parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-HBEFA 4.1 is used as a source to estimate the
-calendar and kilometric lifetime values for European diesel trucks.
-Those are presented in Table 80.
+HBEFA 4.1 is used as a source to estimate the calendar and kilometric lifetime
+values for European diesel trucks.
+Those are presented in Table 3.
 
-Table 80 Kilometric and calendar lifetimes for European trucks
+Table 3 Kilometric and calendar lifetimes for European trucks
 
-+-------+------+-------+-------+-------+-------+-------+-------+-------+
-| Size  |      | 3.5t  | 7.5t  | 18t   | 26t   | 32t   | 40t   | **Sou |
-| class |      |       |       |       |       |       |       | rce** |
-| in    |      |       |       |       |       |       |       |       |
-| this  |      |       |       |       |       |       |       |       |
-| study |      |       |       |       |       |       |       |       |
-+=======+======+=======+=======+=======+=======+=======+=======+=======+
-| HBEFA | Unit | Rigid | Rigid | Rigid | Rigid | TT/AT | TT/AT |       |
-| ve    |      | Truck | Truck | Truck | Truck | >2    | >3    |       |
-| hicle |      | <7,5t | 7,    | >1    | >2    | 8-34t | 4-40t |       |
-| seg   |      |       | 5-12t | 4-20t | 6-28t |       |       |       |
-| ments |      |       |       |       |       |       |       |       |
-+-------+------+-------+-------+-------+-------+-------+-------+-------+
-| Y     | Km   | 3     | 4     | 3     | 6     | 3     | 11    | HBEFA |
-| early |      | 2'526 | 7'421 | 7'602 | 9'278 | 1'189 | 8'253 | 4.1   |
-| mi    |      |       |       |       |       |       |       |       |
-| leage |      |       |       |       |       |       |       |       |
-| at    |      |       |       |       |       |       |       |       |
-| Year  |      |       |       |       |       |       |       |       |
-| 1     |      |       |       |       |       |       |       |       |
-+-------+------+-------+-------+-------+-------+-------+-------+-------+
-| Rel   |      | 5.5%  | 7%    | Esti  |       |       |       |       |
-| ative |      |       |       | mated |       |       |       |       |
-| a     |      |       |       | from  |       |       |       |       |
-| nnual |      |       |       | HBEFA |       |       |       |       |
-| dec   |      |       |       | 4.1   |       |       |       |       |
-| rease |      |       |       |       |       |       |       |       |
-| in    |      |       |       |       |       |       |       |       |
-| a     |      |       |       |       |       |       |       |       |
-| nnual |      |       |       |       |       |       |       |       |
-| mi    |      |       |       |       |       |       |       |       |
-| leage |      |       |       |       |       |       |       |       |
-+-------+------+-------+-------+-------+-------+-------+-------+-------+
-| Cal   | Year | 12    | 12    | 8     | Esti  |       |       |       |
-| endar |      |       |       |       | mated |       |       |       |
-| lif   |      |       |       |       | from  |       |       |       |
-| etime |      |       |       |       | HBEFA |       |       |       |
-|       |      |       |       |       | 4.1   |       |       |       |
-+-------+------+-------+-------+-------+-------+-------+-------+-------+
-| Kilom | km   | 27    | 39    | 31    | 58    | 22    | 71    | Calcu |
-| etric |      | 2'000 | 7'000 | 5'000 | 0'000 | 7'000 | 0'000 | lated |
-| lif   |      |       |       |       |       |       |       | from  |
-| etime |      |       |       |       |       |       |       | the   |
-|       |      |       |       |       |       |       |       | rows  |
-|       |      |       |       |       |       |       |       | above |
-+-------+------+-------+-------+-------+-------+-------+-------+-------+
++---------------------------------------------+-------+-------------------+---------------------+---------------------+---------------------+----------------+----------------+---------------------------------+
+| Size class in this study                    |       | 3.5t              | 7.5t                | 18t                 | 26t                 | 32t            | 40t            | Source                          |
++=============================================+=======+===================+=====================+=====================+=====================+================+================+=================================+
+| HBEFA vehicle segments                      | Unit  | RigidTruck <7,5t  | RigidTruck 7,5-12t  | RigidTruck >14-20t  | RigidTruck >26-28t  | TT/AT >28-34t  | TT/AT >34-40t  |                                 |
+| Yearly mileage at Year 1                    | Km    | 32'526            | 47'421              | 37'602              | 69'278              | 31'189         | 118'253        | HBEFA 4.1                       |
+| Relative annual decrease in annual mileage  |       | 5.50%             |                     |                     |                     | 7%             |                | Estimated from HBEFA 4.1        |
+| Calendar lifetime                           | Year  | 12                | 12                  | 12                  | 12                  | 12             | 8              | Estimated from HBEFA 4.1        |
+| Kilometric lifetime                         | km    | 272'000           | 397'000             | 315'000             | 580'000             | 227'000        | 710'000        | Calculated from the rows above  |
++---------------------------------------------+-------+-------------------+---------------------+---------------------+---------------------+----------------+----------------+---------------------------------+
+
 
 Average loads for European trucks for long haul use are from the TRACCS
 road survey data for the EU-28 (Papadimitriou et al. 2013). We
 differentiate loads across driving cycles. To do so, we use correction
 factors based on the representative loads suggested in the Annex I of
 European Commission regulation 2019/1242. Such average loads are
-presented in Table 81.
+presented in Table 4.
 
-Table 4 Average loads for European medium- and heavy-duty trucks
+Table 4 Default load for European medium- and heavy-duty trucks
 
-+-------+------+------+------+-------+-------+-------+-------+-------+
-| Size  |      | 3.5t | 7.5t | 18t   | 26t   | 32t   | 40t   |       |
-| class |      |      |      |       |       |       |       |       |
-| in    |      |      |      |       |       |       |       |       |
-| this  |      |      |      |       |       |       |       |       |
-| study |      |      |      |       |       |       |       |       |
-+-------+------+------+------+-------+-------+-------+-------+-------+
-| Cargo | ton  | ~1.3 | ~3.5 | ~10.1 | ~17.0 | ~20.1 | ~25.5 | Manu  |
-| car   |      |      |      |       |       |       |       | factu |
-| rying |      |      |      |       |       |       |       | rers’ |
-| cap   |      |      |      |       |       |       |       | data. |
-| acity |      |      |      |       |       |       |       |       |
-+-------+------+------+------+-------+-------+-------+-------+-------+
-| Cargo | tons | 0.26 | 0.52 | 1.35  | 2.05  | 6.1   | 6.1   | Long  |
-| mass  |      |      |      |       |       |       |       | haul  |
-| (     |      |      |      |       |       |       |       | cargo |
-| urban |      |      |      |       |       |       |       | mass, |
-| deli  |      |      |      |       |       |       |       | fu    |
-| very) |      |      |      |       |       |       |       | rther |
-|       |      |      |      |       |       |       |       | corr  |
-|       |      |      |      |       |       |       |       | ected |
-|       |      |      |      |       |       |       |       | based |
-|       |      |      |      |       |       |       |       | on EC |
-|       |      |      |      |       |       |       |       | regul |
-|       |      |      |      |       |       |       |       | ation |
-|       |      |      |      |       |       |       |       | 2019  |
-|       |      |      |      |       |       |       |       | /1242 |
-+-------+------+------+------+-------+-------+-------+-------+-------+
-| Cargo | tons | 0.26 | 0.52 | 1.35  | 2.05  | 6.1   | 6.1   | Long  |
-| mass  |      |      |      |       |       |       |       | haul  |
-| (reg  |      |      |      |       |       |       |       | cargo |
-| ional |      |      |      |       |       |       |       | mass, |
-| deli  |      |      |      |       |       |       |       | fu    |
-| very) |      |      |      |       |       |       |       | rther |
-|       |      |      |      |       |       |       |       | corr  |
-|       |      |      |      |       |       |       |       | ected |
-|       |      |      |      |       |       |       |       | based |
-|       |      |      |      |       |       |       |       | on EC |
-|       |      |      |      |       |       |       |       | regul |
-|       |      |      |      |       |       |       |       | ation |
-|       |      |      |      |       |       |       |       | 2019  |
-|       |      |      |      |       |       |       |       | /1242 |
-+-------+------+------+------+-------+-------+-------+-------+-------+
-| Cargo | ton  | 0.8  | 1.6  | 4.1   | 6.2   | 9.1   | 9.1   | T     |
-| mass  |      |      |      |       |       |       |       | RACCS |
-| (long |      |      |      |       |       |       |       | (Pap  |
-| haul) |      |      |      |       |       |       |       | adimi |
-|       |      |      |      |       |       |       |       | triou |
-|       |      |      |      |       |       |       |       | et    |
-|       |      |      |      |       |       |       |       | al.   |
-|       |      |      |      |       |       |       |       | 2013) |
-|       |      |      |      |       |       |       |       | for   |
-|       |      |      |      |       |       |       |       | EU28  |
-+-------+------+------+------+-------+-------+-------+-------+-------+
++---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
+| Size class                      |      | 3.5t  | 7.5t  | 18t    | 26t    | 32t    | 40t    |                                                                           |
++=================================+======+=======+=======+========+========+========+========+===========================================================================+
+| Cargo carrying capacity         | ton  | ~1.3  | ~3.5  | ~10.1  | ~17.0  | ~20.1  | ~25.5  | Manufacturers’ data.                                                      |
+| Cargo mass (urban delivery)     | tons | 0.75  | 1.75  | 2.7    | 6.3    | 8.75   | 8.75   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
+| Cargo mass (regional delivery)  | tons | 0.75  | 1.75  | 3.2    | 6.3    | 10.3   | 19.3   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
+| Cargo mass (long haul)          | ton  | 1.13  | 2.63  | 7.4    | 13.4   | 13.8   | 13.8   | TRACCS (Papadimitriou et al. 2013) for EU28                               |
++---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
 
-Other size-related parameters are listed in Table 82. Some of them have
+The user can however easily change these values.
+
+Other size-related parameters are listed in Table 5. Some of them have
 been obtained and/or calculated from manufacturers’ data, which is made
 available in the Annex D of this report.
 
-Table 5 Size-related parameters common to Swiss and European trucks
+Table 5 Size-related parameters common to European trucks
 
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Size  |       | 3.5t  | 7.5t  | 18t   | 26t   | 32t   | 40t   | **Sou |
-| class |       |       |       |       |       |       |       | rce** |
-| in    |       |       |       |       |       |       |       |       |
-| this  |       |       |       |       |       |       |       |       |
-| study |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| N     | unit  | 2     | 2     | 2     | 3     | 5     | 6     | Manu  |
-| umber |       |       |       |       |       |       |       | factu |
-| of    |       |       |       |       |       |       |       | rers’ |
-| axles |       |       |       |       |       |       |       | data. |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Ro    | uni   | 0.055 | 0.055 | 0.055 | 0.055 | 0.055 | 0.055 | (Me   |
-| lling | tless |       |       |       |       |       |       | szler |
-| resis |       |       |       |       |       |       |       | et    |
-| tance |       |       |       |       |       |       |       | al.   |
-| c     |       |       |       |       |       |       |       | 2018) |
-| oeffi |       |       |       |       |       |       |       |       |
-| cient |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Fr    | s     | 4.1   | 5.3   | 7.5   | 7.5   | 8     | 8     | Manu  |
-| ontal | quare |       |       |       |       |       |       | factu |
-| area  | meter |       |       |       |       |       |       | rers’ |
-|       |       |       |       |       |       |       |       | data. |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Passe | unit  | 1     | 1     | 1     | 1     | 1     | 1     | Inf   |
-| ngers |       |       |       |       |       |       |       | erred |
-| occu  |       |       |       |       |       |       |       | from  |
-| pancy |       |       |       |       |       |       |       | Mob   |
-|       |       |       |       |       |       |       |       | itool |
-|       |       |       |       |       |       |       |       | fa    |
-|       |       |       |       |       |       |       |       | ctors |
-|       |       |       |       |       |       |       |       | v.2.1 |
-|       |       |       |       |       |       |       |       | v     |
-|       |       |       |       |       |       |       |       | alues |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+
-| Av    | kil   | 75    | Sta   |       |       |       |       |       |
-| erage | ogram |       | ndard |       |       |       |       |       |
-| pass  |       |       | assum |       |       |       |       |       |
-| enger |       |       | ption |       |       |       |       |       |
-| mass  |       |       |       |       |       |       |       |       |
-+-------+-------+-------+-------+-------+-------+-------+-------+-------+
++---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
+| Size class in this study        |               | 3.5t  | 7.5t  | 18t    | 26t    | 32t    | 40t    | Source                                       |
++=================================+===============+=======+=======+========+========+========+========+==============================================+
+| Number of axles                 | unit          | 2     | 2     | 2      | 3      | 5      | 6      | Manufacturers’ data.                         |
+| Rolling resistance coefficient  | unitless      | 0.055 | 0.055 | 0.055  | 0.055  | 0.055  | 0.055  | (Meszler et al. 2018)                        |
+| Frontal area                    | square meter  | 4.1   | 5.3   | 7.5    | 7.5    | 8      | 8      | Manufacturers’ data.                         |
+| Passengers occupancy            | unit          | 1     | 1     | 1      | 1      | 1      | 1      | Inferred from Mobitool factors v.2.1 values  |
+| Average passenger mass          | kilogram      | 75    |       |        |        |        |        | Standard assumption                          |
++---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
+
 
 Abrasion emissions
 ~~~~~~~~~~~~~~~~~~
 
-Figure 33 shows the calculated abrasion emissions for trucks in mg per
+Figure 1 shows the calculated abrasion emissions for trucks in mg per
 vehicle-kilometer, following the approach presented in Section I.C.5.b.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image75.png
-   :width: 6.23542in
-   :height: 2.34786in
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image75.png
 
-Figure 33 Total particulate matter emissions (<2.5 µm and 2.5-10 µm) in
+
+Figure 1 Total particulate matter emissions (<2.5 µm and 2.5-10 µm) in
 mg per vehicle-kilometer for trucks.
 
 .. _modelling-approach-applicable-to-internal-combustion-engine-vehicles-2:
@@ -505,80 +323,62 @@ are run in VECTO with trucks modeled as closely as possible to those of
 this study, to obtain performance indicators along the driving cycle
 (e.g., speed and fuel consumption, among others).
 
-Figure 34 shows the first two hundred seconds of the “Urban delivery”
+Figure 2 shows the first two hundred seconds of the “Urban delivery”
 driving cycle. It distinguishes the target speed from the actual speed
 managed by the different vehicles. The power-to-mass ratio influences
 the extent to which a vehicle manages to comply with the target speed.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image76.png
-   :width: 5.91667in
-   :height: 2.32292in
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image76.png
 
-Figure 34 VECTO's "Urban delivery" driving cycle (first two hundred
+Figure 2 VECTO's "Urban delivery" driving cycle (first two hundred
 seconds)
 
-Road gradients are also considered. Figure 35 shows the road gradient
+Road gradients are also considered. Figure 4 shows the road gradient
 profile of the “Urban delivery” driving cycle.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image77.png
-   :width: 6.26772in
-   :height: 1.79167in
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image77.png
 
-Figure 35 Road gradients corresponding to VECTO's "Urban delivery"
+Figure 3 Road gradients corresponding to VECTO's "Urban delivery"
 driving cycle
 
 For regional delivery and long haul use, the “Regional delivery” and
 “Long haul” driving cycles of VECTO are used, respectively. They contain
 less stops and fewer fluctuations in terms of speed levels. The “Long
 haul” driving cycle has a comparatively higher average speed level and
-lasts much longer. Figure 36 shows the first two hundred seconds of the
+lasts much longer. Figure 4 shows the first two hundred seconds of the
 “Long haul” driving cycle.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image78.png
-   :width: 4.91204in
-   :height: 1.93714in
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image78.png
 
-Figure 36 VECTO's "Long haul" driving cycle (first two hundred seconds)
+Figure 4 VECTO's "Long haul" driving cycle (first two hundred seconds)
 
-Table 86 shows a few parameters about the three driving cycles
+Table 6 shows a few parameters about the three driving cycles
 considered. Value intervals are shown for some parameters as they vary
 across size classes.
 
 **Important remark**: unlike the modeling of passenger cars, the
 vehicles are designed in order to satisfy a given range autonomy. The
 range autonomy specific to each driving cycle is specified in the last
-column of Table 86. This is particularly relevant for battery electric
+column of Table 6. This is particularly relevant for battery electric
 vehicles: their energy storage unit is sized to allow them to drive the
 required distance on a single battery charge. While this also applies
 for other powertrain types (i.e., the diesel fuel tank or compressed gas
 cylinders are sized accordingly), the consequences in terms of vehicle
 design are not as significant. The required range autonomy shown in
-Table 86 is not defined by VECTO, but set as desirable range values by
-the authors of this study.
+Table 6 is not defined by VECTO, but set as desirable range values by
+the authors of the software. The target range autonomy can  easily be
+changed by the user.
 
-Table 86 Parameters of driving cycles used for medium- and heavy-duty
+Table 6 Parameters of driving cycles used for medium- and heavy-duty
 trucks
 
-+---------+---------+---------+---------+---------+---------+---------+
-| Driving | Average | D       | Driving | Idling  | Mean    | R       |
-| cycle   | speed   | istance | time    | time    | p       | equired |
-|         | [km/h]  | [km]    | [s]     | [s]     | ositive | range   |
-|         |         |         |         |         | accel   | a       |
-|         |         |         |         |         | eration | utonomy |
-|         |         |         |         |         | [m.s2]  | [km]    |
-+---------+---------+---------+---------+---------+---------+---------+
-| Urban   | 9.9 -   | 28      | ~10’000 | 614 -   | 0.26 -  | 150     |
-| d       | 10.7    |         |         | 817     | 0.55    |         |
-| elivery |         |         |         |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| R       | 16.5 -  | 26      | ~5’500  | 110 -   | 0.21 -  | 400     |
-| egional | 17.8    |         |         | 220     | 0.52    |         |
-| d       |         |         |         |         |         |         |
-| elivery |         |         |         |         |         |         |
-+---------+---------+---------+---------+---------+---------+---------+
-| Long    | 19.4 -  | 108     | ~19’400 | 240 -   | 0.13 -  | 800     |
-| haul    | 21.8    |         |         | 868     | 0.54    |         |
-+---------+---------+---------+---------+---------+---------+---------+
++--------------------+-----------------------+----------------+-------------------+------------------+------------------------------------+-------------------------------+
+| Driving cycle      | Average speed [km/h]  | Distance [km]  | Driving time [s]  | Idling time [s]  | Mean positive acceleration [m.s2]  | Required range autonomy [km]  |
++====================+=======================+================+===================+==================+====================================+===============================+
+| Urban delivery     | 9.9 - 10.7            | 28             | ~10’000           | 614 - 817        | 0.26 - 0.55                        | 150                           |
+| Regional delivery  | 16.5 - 17.8           | 26             | ~5’500            | 110 - 220        | 0.21 - 0.52                        | 400                           |
+| Long haul          | 19.4 - 21.8           | 108            | ~19’400           | 240 - 868        | 0.13 - 0.54                        | 800                           |
++--------------------+-----------------------+----------------+-------------------+------------------+------------------------------------+-------------------------------+
 
 The energy consumption model is similar to that of passenger cars:
 different resistances at the wheels are calculated, after which
@@ -596,11 +396,9 @@ calibration, the tank-to-wheel energy consumption value obtained from
 VECTO and from *carculator_truck* for diesel-powered trucks differ by
 less than 1 percent over the entire driving cycle.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image79.png
-   :width: 6.26772in
-   :height: 2.59722in
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image78.png
 
-Figure 37 Calibration of carculator_truck energy model against VECTO
+Figure 5 Calibration of carculator_truck energy model against VECTO
 simulations for a 40t articulated truck diesel truck (first 1’500
 seconds shown)
 
