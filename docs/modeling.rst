@@ -462,8 +462,7 @@ Table 87 Degradation factors at 890'000 km for diesel trucks
 **EURO-6**                           1.3
 ==================================== =========
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image80.png
-   :alt: C:\Users\sacchi_r\AppData\Local\Microsoft\Windows\INetCache\Content.MSO\9C49152B.tmp
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image80.png
    :width: 6.27014in
    :height: 7.84756in
 
@@ -494,8 +493,7 @@ cycles using trucks of different size classes and HBEFA’s emission
 factors for “rural” and “motorway” traffic situations shows a similar
 picture.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image81.png
-   :alt: C:\Users\sacchi_r\AppData\Local\Microsoft\Windows\INetCache\Content.MSO\9C24BDDC.tmp
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image81.png
    :width: 6.27014in
    :height: 5.70565in
 
@@ -618,8 +616,7 @@ difference across chemistries is not significant. The higher gravimetric
 energy density of NCA batteries slightly increases the available payload
 of the vehicle.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image82.png
-   :alt: C:\Users\sacchi_r\AppData\Local\Microsoft\Windows\INetCache\Content.MSO\7ECC480.tmp
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image82.png
    :width: 4.19231in
    :height: 4.39368in
 
@@ -715,7 +712,7 @@ substantially more carbon fiber (up to 70% by mass): this can
 potentially impact end-results as carbon fiber is very energy-intensive
 to produce.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image61.png
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image61.png
    :width: 5.01389in
    :height: 3.00694in
 
@@ -824,7 +821,8 @@ Figure 43 compares the fuel economy of trucks of different size classes
 modeled by *carculator_truck* with those found in HBEFA and ecoinvent
 v.3.
 
-.. image:: vertopal_e3181a75d33b4afb88b0cb06cd0280a8/media/image83.png
+
+.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/media/image83.png
    :width: 7.51138in
    :height: 3.10833in
 
@@ -1012,7 +1010,6 @@ Switzerland and average Europe
 ========================= =============== ==========
 **Sulfur [ppm/fuel wt.]** **Switzerland** **Europe**
 ========================= =============== ==========
-Gasoline                  8               8
 Diesel                    10              8
 ========================= =============== ==========
 
@@ -1039,7 +1036,6 @@ average Europe
 ========================= =============== ==========
 **Biofuel share [% wt.]** **Switzerland** **Europe**
 ========================= =============== ==========
-Gasoline blend            1.2             4
 Diesel blend              4.8             6
 Compressed gas blend      22              9
 ========================= =============== ==========
@@ -1077,31 +1073,32 @@ them into the substances listed in Table 16.
 
 Table 16 NMVOC sub-species as fractions of the mass emitted
 
-=================== ========================= =======================
-\                   **All gasoline vehicles** **All diesel vehicles**
-\                   *Wt. % of NMVOC*          *Wt. % of NMVOC*
-Ethane              3.2                       0.33
-Propane             0.7                       0.11
-Butane              5.2                       0.11
-Pentane             2.2                       0.04
-Hexane              1.6                       0
-Cyclohexane         1.1                       0.65
-Heptane             0.7                       0.2
-Ethene              7.3                       10.97
-Propene             3.8                       3.6
-1-Pentene           0.1                       0
-Toluene             11                        0.69
-m-Xylene            5.4                       0.61
-o-Xylene            2.3                       0.27
-Formaldehyde        1.7                       12
-Acetaldehyde        0.8                       6.47
-Benzaldehyde        0.2                       0.86
-Acetone             0.6                       2.94
-Methyl ethyl ketone 0.1                       1.2
-Acrolein            0.2                       3.58
-Styrene             1                         0.37
-NMVOC, unspecified  50.8                      55
-=================== ========================= =======================
++----------------------+----------------------------+
+| -                    | Trucks and buses (diesel)  |
++======================+============================+
+| -                    | Wt. % of NMVOC             |
+| Ethane               | 0.03                       |
+| Propane              | 0.1                        |
+| Butane               | 0.15                       |
+| Pentane              | 0.06                       |
+| Hexane               | 0                          |
+| Cyclohexane          | 0                          |
+| Heptane              | 0.3                        |
+| Ethene               | 0                          |
+| Propene              | 0                          |
+| 1-Pentene            | 0                          |
+| Toluene              | 0.01                       |
+| m-Xylene             | 0.98                       |
+| o-Xylene             | 0.4                        |
+| Formaldehyde         | 8.4                        |
+| Acetaldehyde         | 4.57                       |
+| Benzaldehyde         | 1.37                       |
+| Acetone              | 0                          |
+| Methyl ethyl ketone  | 0                          |
+| Acrolein             | 1.77                       |
+| Styrene              | 0.56                       |
+| NMVOC, unspecified   | 81.3                       |
++----------------------+----------------------------+
 
 Non-exhaust emissions
 ---------------------
@@ -1120,20 +1117,22 @@ consumption, using the emission factors listed in Table 17, sourced from
 Table 17 Emission factors for engine wear as fractions of the fuel mass
 combusted
 
-=========== ========================= =======================
-\           **All gasoline vehicles** **All diesel vehicles**
-\           *kg/MJ fuel*              *kg/MJ fuel*
-PAH         8.19E-10                  1.32E-09
-Arsenic     7.06E-12                  2.33E-12
-Selenium    4.71E-12                  2.33E-12
-Zinc        5.08E-08                  4.05E-08
-Copper      9.88E-10                  4.93E-10
-Nickel      3.06E-10                  2.05E-10
-Chromium    3.76E-10                  6.98E-10
-Chromium VI 7.53E-13                  1.40E-12
-Mercury     2.05E-10                  1.23E-10
-Cadmium     2.54E-10                  2.02E-10
-=========== ========================= =======================
++--------------+----------------------------+
+| -            | Trucks and buses (diesel)  |
++==============+============================+
+|              | kg/MJ fuel                 |
+| PAH          | 1.82E-09                   |
+| Arsenic      | 2.33E-12                   |
+| Selenium     | 2.33E-12                   |
+| Zinc         | 4.05E-08                   |
+| Copper       | 4.93E-10                   |
+| Nickel       | 2.05E-10                   |
+| Chromium     | 6.98E-10                   |
+| Chromium VI  | 1.40E-12                   |
+| Mercury      | 1.23E-10                   |
+| Cadmium      | 2.02E-10                   |
++--------------+----------------------------+
+
 
 Abrasion emissions
 __________________
