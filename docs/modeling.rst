@@ -1556,7 +1556,7 @@ With:
 
 And *A\ P,i,m* and *B\ P,i,m*\ are unitless and given in Table 23.
 
-Table 23 Noise level coefficients for passenger cars
+Table 23 Noise level coefficients for medium-duty trucks
 
 ================================= ====== ====== ====== ======
 Octave band center frequency (Hz) *A\ R* *B\ R* *A\ P* *B\ P*
@@ -1569,6 +1569,21 @@ Octave band center frequency (Hz) *A\ R* *B\ R* *A\ P* *B\ P*
 2000                              90.9   36.2   95.2   6.5
 4000                              83.8   38.3   88.8   6.5
 8000                              80.5   40.1   82.7   6.5
+================================= ====== ====== ====== ======
+
+Table 24 Noise level coefficients for heavy-duty trucks
+
+================================= ====== ====== ====== ======
+Octave band center frequency (Hz) *A\ R* *B\ R* *A\ P* *B\ P*
+================================= ====== ====== ====== ======
+63                                87     30     104.4  0
+125                               91.7   33.5   100.6  3
+250                               94.1   31.3   101.7  4.6
+500                               100.7  25.4   101    5
+1000                              100.8  31.8   100.1  5
+2000                              94.3   37.1   95.9   5
+4000                              87.1   38.6   91.3   5
+8000                              82.5   40.6   85.3   5
 ================================= ====== ====== ====== ======
 
 A correction factor for battery electric and fuel cell electric vehicles
