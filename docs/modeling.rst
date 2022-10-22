@@ -1534,7 +1534,7 @@ noise emissions are quantified separately.
 
 The sound power level of rolling noise is calculated using:
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image25.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image_noise_1.png
    :width: 3.45in
    :height: 0.65in
 
@@ -1548,7 +1548,7 @@ And *A\ R,i,m* and *B\ R,i,m*\ are unitless and given in Table 23.
 
 The propulsion noise level is calculated using:
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image26.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image_noise_2.png
    :width: 3.6in
    :height: 0.625in
 
@@ -1591,41 +1591,16 @@ The total sound power, for each second of the driving cycle, is then
 distributed between the urban, suburban and rural inventory emission
 compartments.
 
-Figure 16.a illustrates a comparison of noise levels between an ICEV and
-BEV as calculated by the tool, over the driving cycle WLTC. In this
-figure, the noise levels at different frequency ranges have been summed
-together to obtain a total noise level (in dB), and converted to dB(A)
-using the A-weighting correction factor, to better represent the
-"loudness" or discomfort to the human ear. Typically, propulsion noise
-emissions dominate in urban environments (which corresponds to the
-section 3.1 of the driving cycle), thereby justifying the use of
-electric vehicles in that regard. This is represented by the difference
-between the ICEV and BEV lines in the section 3.1 of the driving cycle
-in Figure 16.a. The difference in noise level between the two
-powertrains diminishes at higher speed levels (see sections 3.2, 3.3 and
-3.4) as rolling noise emissions dominate above a speed level of
-approximately 50 km/h. This can be seen in Figure 16.b, which sums up
-the sound energy produced, in joules, over the course of the driving
-cycle.
+Typically, propulsion noise emissions dominate in urban environments,
+thereby justifying the use of electric vehicles in that regard.
+Rolling noise become dominant above 50 km/h. The sound power [W] over time
+is expressed in joules [or W.s] over the course of the driving cycle.
 
 The study from Cucurachi and Heijungs [37]_ provides compartment-specific
 noise emission characterization factors against midpoint and endpoint
 indicators - expressed in Person-Pascal-second and Disability-Adjusted
 Life Year, respectively.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image27.png
-   :width: 60%
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image28.png
-   :width: 30%
-
-Figure 16 a) Noise emission level comparison between ICEV and BEV, based
-on the driving cycle WLTC. b) Summed sound energy comparison between
-ICEV, BEV and PHEV, over the duration of the WLTC driving cycle.
-
-The mid- and endpoint impact
-assessment methods presented in (Cucurachi et al. 2019) can be used to
-characterize these emissions into Pascal.person per second and DALY,
-respectively.
 
 Electricity mix calculation
 ---------------------------
@@ -2086,6 +2061,6 @@ used to calibrate ``carculator_truck`` are shown in the table below.
 | Class 7 Aero     | DayCab | PHEV-d  | 26         | 480                        | 260                           | 480               | 54%                     |                         |                                      |
 +------------------+--------+---------+------------+----------------------------+-------------------------------+-------------------+-------------------------+-------------------------+--------------------------------------+
 | Class 8 Tractor  | DayCab | HEV-d   | 40         | 90                         | 310                           | 400               | 78%                     | 8                       |                                      |
-+------------------+--------+---------+------------+----------------------------+-------------------------------+-------------------+-------------------------+
-| Class 8 Aero     | DayCab | PHEV-d  | 40         | 510                        | 280                           | 510               | 55%                     |
-+------------------+--------+---------+------------+----------------------------+-------------------------------+-------------------+-------------------------+
++------------------+--------+---------+------------+----------------------------+-------------------------------+-------------------+-------------------------+-------------------------+--------------------------------------+
+| Class 8 Aero     | DayCab | PHEV-d  | 40         | 510                        | 280                           | 510               | 55%                     |                         |                                      |
++------------------+--------+---------+------------+----------------------------+-------------------------------+-------------------+-------------------------+-------------------------+--------------------------------------+
