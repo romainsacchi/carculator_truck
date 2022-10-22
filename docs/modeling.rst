@@ -324,7 +324,7 @@ are time-dependent, and based on various projections found in the literature.
 Table 6 lists some of them.
 
 
-Table 6 Time-dependent parameters common to European trucks
+Table 6 Non-exhaustive list of time-dependent parameters common to European trucks
 
 +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
 | Size class in this study        |               | 2000  | 2010  | 2020   | 2030   | 2040   | 2050   | Source                                       |
@@ -337,9 +337,7 @@ Table 6 Time-dependent parameters common to European trucks
 +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
 | NMC cell energy density         | kWh/kg        | 0.05  | 0.1   | 0.2    | 0.3    | 0.4    | 0.5    | (Qiao et al., 2020, ScienceDaily, 2022)      |
 +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
-| Fuel cell power density         | mW/cm2        | 1     | 1     | 1      | 1      | 1      | 1      | Inferred from Mobitool factors v.2.1 values  |
-+---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
-| Average passenger mass          | kilogram      | 75    |       |        |        |        |        | Standard assumption                          |
+| Fuel cell power density         | mW/cm2        | 350   | 400   | 450    | 450    | 500    | 600    | (Cox et al. 2020)                            |
 +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
 
 
