@@ -53,18 +53,16 @@ Sections
 
 `References <#references>`__
 
-This document intends to describe the *carculator_truck* model, assumptions
+This document intends to describe the ``carculator_truck`` model, assumptions
 and inventories as exhaustively as possible.
-*carculator_truck* is an open-source Python library. Its code is publicly
+``carculator_truck`` is an open-source Python library. Its code is publicly
 available via its `Github
 repository <https://github.com/romainsacchi/carculator_truck>`__. There is
 also `an examples
 notebook <https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb>`__,
-to guide new users into performing life cycle analyses. Finally, there
-is also an online graphical user interface available at
-https://carculator_truck.psi.ch.
+to guide new users into performing life cycle analyses. 
 
-Overview of *carculator_truck* modules
+Overview of ``carculator_truck`` modules
 **************************************
 
 The main module *model.py* builds
@@ -83,17 +81,20 @@ The modelling of vehicles along powertrain types, time and size classes
 is described in this section. It is also referred to as *foreground*
 modelling.
 
-Size classes
-------------
+Powertrain types
+----------------
 
-Inventories for the following powertrain types are provided:
+``carculator_truck`` can model the following powertrain types:
 
 -  Diesel-run internal combustion engine vehicle (ICEV-d)
 -  Gas-run internal combustion engine vehicle (ICEV-g)
 -  Diesel-run hybrid electric vehicle (HEV-d)
 -  Diesel-run plug-in hybrid electric vehicle (PHEV-d)
--  Battery electric vehicle (BEV)
+-  Battery electric vehicle (BEV) with charging at depot
 -  Fuel cell electric vehicle (FCEV)
+
+Size classes
+------------
 
 Several size classes are available for each powertrain type. They refer
 to the maximum permissible gross weight of the vehicle (e.g., 32 tons).
@@ -106,12 +107,12 @@ powertrain-size class-application combinations are not commercially
 available or technologically mature and are therefore not considered.
 
 Battery electric vehicles are not considered for years prior to
-2020. Additionally, *carculator_truck* may not find a solution for
+2020. Additionally, ``carculator_truck`` may not find a solution for
 regional delivery and long haul use in 2020, as the volumetric
 density of batteries does not currently allow a range autonomy superior
 to 400 km without significantly sacrificing the cargo carrying capacity.
 
-*carculator_truck* defines seven size classes, namely:
+``carculator_truck`` defines seven size classes, namely:
 
 *   3.5t
 *   7.5t
@@ -340,7 +341,7 @@ is the sum of the following resistances:
 * As well as the resistance from braking, calculated as the force from the vehicle inertia when negative.
 
 Figure 2 shows the contribution of each type of resistance as calculated by
-*carculator_truck* for the first hundred seconds of the “Urban delivery”
+``carculator_truck`` for the first hundred seconds of the “Urban delivery”
 driving cycle, for an 18t diesel truck.
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_truck_resistance.png
@@ -414,7 +415,7 @@ Indeed, once the power requirement at the wheel level for each second is known
 (and validated), inefficiencies from the transmission line and the engine need
 to be accounted for. Here again, second-by-second data from VECTO simulations are used.
 VECTO uses a complex gearshift model combined with an engine-specific torque map that
-are too complex to be implemented in *carculator_truck*. Instead, the relation between
+are too complex to be implemented in ``carculator_truck``. Instead, the relation between
 transmission and engine efficiency on one end, and the relative power load (i.e.,
 power load over the rated power output of the engine) on the other end, is used.
 Such relations are shown in Figure 4, for a 40t diesel truck, where the efficiency of the
@@ -439,7 +440,7 @@ the efficiency of these drivetrain components.
 Such calibration exercise with VECTO for the diesel-powered 40t truck is
 shown below, against the “Urban delivery” driving cycle. After
 calibration, the tank-to-wheel energy consumption value obtained from
-VECTO and from *carculator_truck* for diesel-powered trucks differ by
+VECTO and from ``carculator_truck`` for diesel-powered trucks differ by
 less than 1 percent over the entire driving cycle.
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image79.png
@@ -476,6 +477,26 @@ will be more pronounced on driving cycles with transient loads.
 
 Figure 6 Engine efficiency comparison between a conventional (ICEV-d)
 and hybrid (HEV-d) 40t diesel truck
+
+Compressed gas trucks
+^^^^^^^^^^^^^^^^^^^^^
+
+For compressed gas trucks, the energy storage is in a four-cylinder
+configuration, with each cylinder containing up to 57.6 kg of compressed
+gas – 320 liters at 200 bar.
+
+The relation between the mass of compressed gas and the cylinder mass is
+depicted in Figure 11. This relation is based on manufacturers’ data –
+mainly from (Daimler Trucks 2017; QTWW 2021).
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_cng_tanks.png
+   :width: 50%
+
+Figure 11 Relation between mass of stored compressed gas and cylinder
+mass
+
+Inventories for a Type II 200 bar compressed gas tank, with a steel
+liner, are from (Candelaresi et al. 2021).
 
 .. _exhaust-emissions-3:
 
@@ -544,7 +565,7 @@ the driving cycle for each substance are calculated.
 To confirm that such approach does not yield kilometric emissions too
 different from the emission factors per vehicle-kilometer proposed by
 HBEFA 4.1, Figure 7 compares the emissions obtained by
-*carculator_truck* using VECTO’s “Urban delivery” driving cycle over 1
+``carculator_truck`` using VECTO’s “Urban delivery” driving cycle over 1
 vehicle-km (red dots) for a 18t rigid truck with the distribution of the
 emission factors across different “urban” traffic situations (green
 box-and-whiskers) given by HBEFA 4.1, as well as its weighted average
@@ -555,7 +576,7 @@ There is some variation across HBEFA’s urban traffic situations, but the
 emissions obtained remain, for most substances, within the 50% of the
 distributed HBEFA values across traffic situations. Special attention
 must be paid to EURO-III vehicles, for which emissions tend to be
-slightly over-estimated by *carculator_truck*. The comparison between
+slightly over-estimated by ``carculator_truck``. The comparison between
 the model’s emission results for the regional and long-haul driving
 cycles using trucks of different size classes and HBEFA’s emission
 factors for “rural” and “motorway” traffic situations shows a similar
@@ -571,7 +592,7 @@ and rural situations, for different levels of service. Box-and-whiskers:
 distribution of HBEFA’s emission factors (box: 50% of the distribution,
 whiskers: 90% of the distribution). Yellow dots: traffic
 situations-weighted average emission factors. Red dots: modeled
-emissions calculated by *carculator_truck* with the “Urban delivery”
+emissions calculated by ``carculator_truck`` with the “Urban delivery”
 driving cycle for an 18t rigid truck, using the relation between fuel
 consumption and amounts emitted.
 
@@ -660,7 +681,7 @@ and these values tend to change rapidly over time, as it is being the focus of m
 The sizing of energy storage for BEV trucks is sensitive to the required
 range autonomy, which is specific to each driving cycle (or defined by the user).
 
-**Important remark**: technically speaking *carculator_truck* will model
+**Important remark**: technically speaking ``carculator_truck`` will model
 all trucks. However, if a vehicle has an energy storage unit mass
 leading to a reduction in the cargo carrying capacity beyond a
 reasonable extent, it will not be processed for LCI quantification. This
@@ -736,7 +757,7 @@ Table 10 Number of battery replacements assumed or calculated
 
 
 Given the energy consumption of the vehicle and the required battery
-capacity, *carculator_truck* calculates the number of charging cycles
+capacity, ``carculator_truck`` calculates the number of charging cycles
 needed and the resulting number of battery replacements, given the cycle
 life of the chemistry used. As discussed at the beginning of this report
 (see Section I.C.6), the expected cycle life is corrected. There is also
@@ -806,7 +827,7 @@ Fuel cell electric trucks
 
 All fuel cell electric vehicles use a proton exchange membrane (PEM)-based fuel cell system.
 
-Table 12 lists the specifications of the fuel cell stack and system used in *carculator_truck*.
+Table 12 lists the specifications of the fuel cell stack and system used in ``carculator_truck``.
 The durability of the fuel cell stack, expressed in hours, is used to determine
 the number of replacements needed – the expected kilometric lifetime of the vehicle
 as well as the average speed specified by the driving cycle gives the number
@@ -874,26 +895,6 @@ trucks. Based on manufacturer’s specification, its storage capacity
 represents approximately 6% of the storage capacity of the hydrogen
 cylinders, with a minimum of 20 kWh.
 
-Compressed gas trucks
-^^^^^^^^^^^^^^^^^^^^^
-
-For compressed gas trucks, the energy storage is in a four-cylinder
-configuration, with each cylinder containing up to 57.6 kg of compressed
-gas – 320 liters at 200 bar.
-
-The relation between the mass of compressed gas and the cylinder mass is
-depicted in Figure 11. This relation is based on manufacturers’ data –
-mainly from (Daimler Trucks 2017; QTWW 2021).
-
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_cng_tanks.png
-   :width: 50%
-
-Figure 11 Relation between mass of stored compressed gas and cylinder
-mass
-
-Inventories for a Type II 200 bar compressed gas tank, with a steel
-liner, are from (Candelaresi et al. 2021).
-
 .. _charging-stations-1:
 
 Charging stations
@@ -941,7 +942,7 @@ Table 13 Parameters of the charging station for battery electric trucks
 Finding solutions
 -----------------
 
-Very much like *carculator* and *carculator_bus*, *carculator_truck*
+Very much like *carculator* and *carculator_bus*, ``carculator_truck``
 iterates until:
 
 -  The change in curb mass of the vehicles between two modeling
@@ -969,7 +970,7 @@ Diesel trucks
 ~~~~~~~~~~~~~
 
 Figure 12 compares the fuel economy of trucks of different size classes
-modeled by *carculator_truck* with those found in HBEFA and ecoinvent
+modeled by ``carculator_truck`` with those found in HBEFA and ecoinvent
 v.3.
 
 
@@ -1148,7 +1149,7 @@ Table 12 Fuels characteristics
 | Synthetic methane                     |                                 | 47.5                         | 2.68                             |                                  |
 +---------------------------------------+---------------------------------+------------------------------+----------------------------------+----------------------------------+
 
-Note that *carculator_truck* will adapt the sulfur concentration of the
+Note that ``carculator_truck`` will adapt the sulfur concentration of the
 fuel (and related SOx emissions) based on the country the user selects (see Figure 15).
 
 
@@ -1635,7 +1636,7 @@ use. For example, should a BEV enter the fleet in Poland in 2020, most
 LCA models of trucks would use the electricity mix for
 Poland corresponding to that year, which corresponds to the row of the
 year 2020 in Table 24, based on ENTSO-E's TYNDP 2020 projections
-(National Trends scenario) [38]_. *carculator_truck* calculates instead the
+(National Trends scenario) [38]_. ``carculator_truck`` calculates instead the
 average electricity mix obtained from distributing the annual kilometers
 driven along the vehicle lifetime, assuming an equal number of
 kilometers is driven each year. Therefore, with a lifetime of 200,000 km
@@ -1705,7 +1706,7 @@ Inventories for fuel pathways
 -----------------------------
 
 A number of inventories for fuel production and supply are used by
-*carculator_truck*. They represent an update in comparison to the inventories
+``carculator_truck``. They represent an update in comparison to the inventories
 used in the passenger vehicles model initially published by Cox et
 al.[5]_. The fuel pathways presented in Table 25 are from the literature
 and not present as generic ecoinvent datasets.
@@ -1817,7 +1818,7 @@ are listed in Table 26.
 |           |                           | carbon fiber              |
 |           |                           | manufacturing have been   |
 |           |                           | integrated to             |
-|           |                           | *carculator_truck*,       |
+|           |                           | ``carculator_truck``,       |
 |           |                           | from [53]_.               |
 +-----------+---------------------------+---------------------------+
 | [54]_     | Type IV hydrogen tank,    |                           |
@@ -1832,7 +1833,7 @@ Table 26 List of inventories for different energy storage solutions
 Life cycle impact assessment
 ****************************
 
-To build the inventory of every vehicle, *carculator_truck* populates a
+To build the inventory of every vehicle, ``carculator_truck`` populates a
 three-dimensional array *A* (i.e., a tensor) such as:
 
 .. math:: \ A = \left\lbrack a_{\text{ijk}} \right\rbrack,\ i = 1,\ \ldots,\ L,\ j = 1,\ \ldots,\ M,\ k = 1,\ \ldots,\ N
@@ -1848,7 +1849,7 @@ Given a final demand vector *f* (e.g., 1 kilometer driven with a
 specific vehicle, represented by a vector filled with zeroes and the
 value 1 at the position corresponding to the index *j* of the driving
 activity in dimension M) of length equal to that of the second dimension
-of *A* (i.e., *M*), *carculator_truck* calculates the scaling factor *s* so
+of *A* (i.e., *M*), ``carculator_truck`` calculates the scaling factor *s* so
 that:
 
 .. math:: s = A^{- 1}f
