@@ -1153,7 +1153,7 @@ fuel (and related SOx emissions) based on the country the user selects (see Figu
 
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_sulfur_countries.png
-   :width: 50%
+   :width: 100%
 
 Figure 15 Region-specific sulfur concentration of diesel fuel. Source:
 Xie, Y.; Posada, F.; Minjares, R. Diesel Sulfur Content Impacts on Euro VI Soot-Free Vehicles:
@@ -1315,18 +1315,28 @@ Table 17 Emission factors for engine wear as fractions of the fuel mass
 combusted
 
 +--------------+----------------------------+
-| -            | Trucks and buses (diesel)  |
+|              | Trucks (diesel)            |
 +==============+============================+
 |              | kg/MJ fuel                 |
++--------------+----------------------------+
 | PAH          | 1.82E-09                   |
++--------------+----------------------------+
 | Arsenic      | 2.33E-12                   |
++--------------+----------------------------+
 | Selenium     | 2.33E-12                   |
++--------------+----------------------------+
 | Zinc         | 4.05E-08                   |
++--------------+----------------------------+
 | Copper       | 4.93E-10                   |
++--------------+----------------------------+
 | Nickel       | 2.05E-10                   |
++--------------+----------------------------+
 | Chromium     | 6.98E-10                   |
++--------------+----------------------------+
 | Chromium VI  | 1.40E-12                   |
++--------------+----------------------------+
 | Mercury      | 1.23E-10                   |
++--------------+----------------------------+
 | Cadmium      | 2.02E-10                   |
 +--------------+----------------------------+
 
