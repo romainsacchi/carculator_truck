@@ -818,7 +818,7 @@ to produce.
    :width: 5.01389in
    :height: 3.00694in
 
-Figure 41 Relation between stored hydrogen mass and hydrogen storage
+Figure 10 Relation between stored hydrogen mass and hydrogen storage
 cylinder mass
 
 **Important remark**: a battery is also added to fuel cell electric
@@ -837,9 +837,10 @@ The relation between the mass of compressed gas and the cylinder mass is
 depicted in Figure 26. This relation is based on manufacturers’ data –
 mainly from (Daimler Trucks 2017; QTWW 2021).
 
-[CHART]
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_cng_tanks.png
+   :width: 50%
 
-Figure 42 Relation between mass of stored compressed gas and cylinder
+Figure 11 Relation between mass of stored compressed gas and cylinder
 mass
 
 Inventories for a Type II 200 bar compressed gas tank, with a steel
@@ -851,18 +852,18 @@ Charging stations
 ~~~~~~~~~~~~~~~~~
 
 The parameters for the fast charging station used for battery electric
-trucks are presented in Table 92. The number of vehicles serviced by the
+trucks are presented in Table 13. The number of vehicles serviced by the
 charging station daily is defined by the battery capacity of the
 vehicles it serves. Theoretically, level-3 chargers can fast-charge the
 equivalent of 2’100 kWh daily, if operated within a safe SoC amplitude,
 or about five trucks with a 350 kWh battery pack.
 
-Table 92 Parameters of the charging station for battery electric trucks
+Table 13 Parameters of the charging station for battery electric trucks
 
 +----------------------------------+----------------------------------+
 |                                  | **EV charger, level 3, plug-in** |
 +----------------------------------+----------------------------------+
-| Bus type                         | BEV-depot                        |
+| Vehicle type                     | BEV-depot                        |
 +----------------------------------+----------------------------------+
 | Power [kW]                       | 200                              |
 +----------------------------------+----------------------------------+
@@ -919,7 +920,7 @@ Validation
 Diesel trucks
 ~~~~~~~~~~~~~
 
-Figure 43 compares the fuel economy of trucks of different size classes
+Figure 12 compares the fuel economy of trucks of different size classes
 modeled by *carculator_truck* with those found in HBEFA and ecoinvent
 v.3.
 
@@ -928,7 +929,7 @@ v.3.
    :width: 7.51138in
    :height: 3.10833in
 
-Figure 43 Fuel consumption for diesel trucks in L diesel per 100 km,
+Figure 12 Fuel consumption for diesel trucks in L diesel per 100 km,
 against literature data. Shaded areas: the upper bound is calculated
 with the “Urban delivery” driving cycle with a load factor of 80%, the
 lower bound is calculated with the “Long haul” driving cycle with a load
@@ -939,24 +940,25 @@ factor of 20%.
 Battery electric trucks
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Figure 44 compares some of the modeled parameters for battery electric
+Figure 13 compares some of the modeled parameters for battery electric
 trucks with the specifications of some commercial models disclosed by
 manufacturers. These manufacturers’ specifications can also be found in
 Annex D.
 
-+----------------------------------+----------------------------------+
-| |C:\Users\sacchi_r\App           | |C:\Users\sacchi_r\App           |
-| Data\Local\Microsoft\Windows\INe | Data\Local\Microsoft\Windows\INe |
-| tCache\Content.MSO\3E3144B9.tmp| | tCache\Content.MSO\1DFF859F.tmp| |
+
 +----------------------------------+----------------------------------+
 | a) Maximum payload modeled       | b) Engine peak power output      |
 | (shaded line) versus commercial  | modeled (shaded line) versus     |
 | models, function of gross weight | commercial models, function of   |
 |                                  | gross weight                     |
 +----------------------------------+----------------------------------+
-| |C:\Users\sacchi_r\App           | |C:\Users\sacchi_r\App           |
-| Data\Local\Microsoft\Windows\INe | Data\Local\Microsoft\Windows\INe |
-| tCache\Content.MSO\71F6A915.tmp| | tCache\Content.MSO\C04A90EB.tmp| |
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image84.png
+   :width: 40%
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image85.png
+   :width: 40%
+
 +----------------------------------+----------------------------------+
 | c) Battery capacity modeled      | d) Tank-to-wheel energy          |
 | (shared area) versus commercial  | consumption modeled (shaded      |
@@ -969,7 +971,13 @@ Annex D.
 | autonomy of 400 km.              |                                  |
 +----------------------------------+----------------------------------+
 
-Figure 44 Comparison of modeled maximum payload, engine peak power,
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image86.png
+   :width: 40%
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image87.png
+   :width: 40%
+
+Figure 13 Comparison of modeled maximum payload, engine peak power,
 battery capacity and tank-to-wheel fuel consumption with specification
 of commercial models.
 
