@@ -360,23 +360,16 @@ driving cycle, for an 18t diesel truck.
 Figure 2 Resistance components at wheels level for the first hundred
 seconds of the “Urban delivery” driving cycle, for an 18t diesel truck.
 
-Figure 2 shows the first two hundred seconds of the “Urban delivery”
+Figure 3 shows the first two hundred seconds of the “Urban delivery”
 driving cycle. It distinguishes the target speed from the actual speed
 managed by the different vehicles. The power-to-mass ratio influences
 the extent to which a vehicle manages to comply with the target speed.
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image76.png
 
-Figure 2 VECTO's "Urban delivery" driving cycle (first two hundred
+Figure 3 VECTO's "Urban delivery" driving cycle (first two hundred
 seconds)
 
-Road gradients are also considered. Figure 4 shows the road gradient
-profile of the “Urban delivery” driving cycle.
-
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image77.png
-
-Figure 3 Road gradients corresponding to VECTO's "Urban delivery"
-driving cycle
 
 For regional delivery and long haul use, the “Regional delivery” and
 “Long haul” driving cycles of VECTO are used, respectively. They contain
@@ -429,7 +422,33 @@ efficiency of diesel trucks. Similar to the modeling of buses, the
 relation between the efficiency of the drivetrain components (engine,
 gearbox) and the power load-to-peak-power ratio is used.
 
-A calibration exercise with VECTO for the diesel-powered 40t truck is
+Indeed, once the power requirement at the wheel level for each second is known
+(and validated), inefficiencies from the transmission line and the engine need
+to be accounted for. Here again, second-by-second data from VECTO simulations are used.
+VECTO uses a complex gearshift model combined with an engine-specific torque map that
+are too complex to be implemented in *carculator_truck*. Instead, the relation between
+transmission and engine efficiency on one end, and the relative power load (i.e.,
+power load over the rated power output of the engine) on the other end, is used.
+Such relations are shown in Figure 4, for a 40t diesel truck, where the efficiency of the
+drivetrain (left) and engine (right) in relation to the power load is plotted for
+each second of the “Urban delivery” driving cycle, with a loading factor of 100%.
+For example, Figure 4.a shows that the transmission efficiency (that is, from the
+wheels to the output shaft of the engine) is close to 85% at a power load of 20%.
+In fact, most of the time when the truck is driving, the transmission operates at above
+80% efficiency. Similarly, Figure 4.b shows that the peak engine efficiency is reached
+at about 40% power load, after which it remains more or less constant.
+A curve is fitted on the data points (red line). Using such fit removes some of
+the complexity considered in VECTO, depicted here by the measurements that deviate
+for the red curve. Nevertheless, it allows obtaining a reasonable estimate of
+the efficiency of these drivetrain components.
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_eff_fitting_1.png
+    :width: 50%
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_eff_fitting_2.png
+    :width: 50%
+
+Such calibration exercise with VECTO for the diesel-powered 40t truck is
 shown below, against the “Urban delivery” driving cycle. After
 calibration, the tank-to-wheel energy consumption value obtained from
 VECTO and from *carculator_truck* for diesel-powered trucks differ by
