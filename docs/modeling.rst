@@ -401,18 +401,20 @@ Table 6 shows a few parameters about the three driving cycles
 considered. Value intervals are shown for some parameters as they vary
 across size classes.
 
-**Important remark**: unlike the modeling of passenger cars, the
-vehicles are designed in order to satisfy a given range autonomy. The
-range autonomy specific to each driving cycle is specified in the last
-column of Table 6. This is particularly relevant for battery electric
-vehicles: their energy storage unit is sized to allow them to drive the
-required distance on a single battery charge. While this also applies
-for other powertrain types (i.e., the diesel fuel tank or compressed gas
-cylinders are sized accordingly), the consequences in terms of vehicle
-design are not as significant. The required range autonomy shown in
-Table 6 is not defined by VECTO, but set as desirable range values by
-the authors of the software. The target range autonomy can  easily be
-changed by the user.
+..note::
+
+    **Important remark**: unlike the modeling of passenger cars, the
+    vehicles are designed in order to satisfy a given range autonomy. The
+    range autonomy specific to each driving cycle is specified in the last
+    column of Table 6. This is particularly relevant for battery electric
+    vehicles: their energy storage unit is sized to allow them to drive the
+    required distance on a single battery charge. While this also applies
+    for other powertrain types (i.e., the diesel fuel tank or compressed gas
+    cylinders are sized accordingly), the consequences in terms of vehicle
+    design are not as significant. The required range autonomy shown in
+    Table 6 is not defined by VECTO, but set as desirable range values by
+    the authors of the software. The target range autonomy can  easily be
+    changed by the user.
 
 Table 6 Parameters of driving cycles used for medium- and heavy-duty
 trucks
@@ -557,16 +559,18 @@ emitted per MJ of fuel consumed, to be able to model exhaust emissions
 of trucks of different sizes, masses, operating on different driving
 cycles and with different load factors.
 
-**Important remark**: the degradation of anti-pollution systems for
-EURO-6 diesel trucks (i.e., catalytic converters) is accounted for as
-indicated by HBEFA 4.1, by applying a degradation factor on the emission
-factors for NO\ :sub:`x`. These factors are shown in Table 87 Table
-49for trucks with a mileage of 890’000 km. Since the trucks in this
-study have a kilometric lifetime of 180-700’000 km, degradation factors
-are interpolated linearly (with a degradation factor of 1 at Km 0). The
-degradation factor corresponding to half of the vehicle kilometric
-lifetime is used, to obtain a lifetime-weighted average degradation
-factor.
+..note::
+
+    **Important remark**: the degradation of anti-pollution systems for
+    EURO-6 diesel trucks (i.e., catalytic converters) is accounted for as
+    indicated by HBEFA 4.1, by applying a degradation factor on the emission
+    factors for NO\ :sub:`x`. These factors are shown in Table 87 Table
+    49for trucks with a mileage of 890’000 km. Since the trucks in this
+    study have a kilometric lifetime of 180-700’000 km, degradation factors
+    are interpolated linearly (with a degradation factor of 1 at Km 0). The
+    degradation factor corresponding to half of the vehicle kilometric
+    lifetime is used, to obtain a lifetime-weighted average degradation
+    factor.
 
 Table 87 Degradation factors at 890'000 km for diesel trucks
 
@@ -707,12 +711,14 @@ and these values tend to change rapidly over time, as it is being the focus of m
 The sizing of energy storage for BEV trucks is sensitive to the required
 range autonomy, which is specific to each driving cycle (or defined by the user).
 
-**Important remark**: technically speaking ``carculator_truck`` will model
-all trucks. However, if a vehicle has an energy storage unit mass
-leading to a reduction in the cargo carrying capacity beyond a
-reasonable extent, it will not be processed for LCI quantification. This
-is the reason why battery electric trucks used for long haulage (i.e.,
-with a required range autonomy of 800 km) are not considered.
+..note::
+
+    **Important remark**: technically speaking ``carculator_truck`` will model
+    all trucks. However, if a vehicle has an energy storage unit mass
+    leading to a reduction in the cargo carrying capacity beyond a
+    reasonable extent, it will not be processed for LCI quantification. This
+    is the reason why battery electric trucks used for long haulage (i.e.,
+    with a required range autonomy of 800 km) are not considered before ~2030.
 
 The expected battery lifetime (and the need for replacement) is based on
 the battery expected cycle life, based on theoretical values given by
@@ -743,7 +749,7 @@ electric trucks
 +-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
 | Corrected cycle life                                                        | 3’000                                                            | 7’000                                  | 1’500                                                    | Assumption                                                                                                                  |
 +-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
-| Charge efficiency                                                           | 88%                                                              |                                        |                                                          | (Schwertner and Weidmann 2016) for buses and trucks. (Rantik 1999) for battery charge efficiency when ultra-fast charging.  |
+| Charge efficiency                                                           | 85%                                                              |                                        |                                                          | (Schwertner and Weidmann 2016) for buses and trucks. (Rantik 1999) for battery charge efficiency when ultra-fast charging.  |
 +-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
 | Discharge efficiency                                                        | 88%                                                              |                                        |                                                          | (Schwertner and Weidmann 2016)                                                                                              |
 +-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
@@ -792,21 +798,21 @@ electric trucks
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 | Corrected cycle life                                                       | 3’000                                                        |        | 7’000                                  |       | 1’500                                                    |       | Assumption                                                                                                                                      |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| Charge efficiency                                                          | 2020                                                         |        |                                        |       |                                                          |       | (B. Cox et al. 2020; Brian Cox et al. 2020) for passenger cars.                                                                                 |
+| Charge efficiency                                                          | 2020                                                         | 85%    |                                        |       |                                                          |       | (B. Cox et al. 2020; Brian Cox et al. 2020) for passenger cars.                                                                                 |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                            | 2030                                                         |        |                                        |       |                                                          |       |                                                                                                                                                 |
+|                                                                            | 2030                                                         | 86%    |                                        |       |                                                          |       |                                                                                                                                                 |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                            | 2040                                                         |        |                                        |       |                                                          |       |                                                                                                                                                 |
+|                                                                            | 2040                                                         | 86%    |                                        |       |                                                          |       |                                                                                                                                                 |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                            | 2050                                                         |        |                                        |       |                                                          |       |                                                                                                                                                 |
+|                                                                            | 2050                                                         | 86%    |                                        |       |                                                          |       |                                                                                                                                                 |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| Discharge efficiency                                                       | 2020                                                         |        |                                        |       |                                                          |       | (B. Cox et al. 2020; Schwertner and Weidmann 2016)                                                                                              |
+| Discharge efficiency                                                       | 2020                                                         | 88%    |                                        |       |                                                          |       | (B. Cox et al. 2020; Schwertner and Weidmann 2016)                                                                                              |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                            | 2030                                                         |        |                                        |       |                                                          |       |                                                                                                                                                 |
+|                                                                            | 2030                                                         | 89%    |                                        |       |                                                          |       |                                                                                                                                                 |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                            | 2040                                                         |        |                                        |       |                                                          |       |                                                                                                                                                 |
+|                                                                            | 2040                                                         | 89%    |                                        |       |                                                          |       |                                                                                                                                                 |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                                            | 2050                                                         |        |                                        |       |                                                          |       |                                                                                                                                                 |
+|                                                                            | 2050                                                         | 89%    |                                        |       |                                                          |       |                                                                                                                                                 |
 +----------------------------------------------------------------------------+--------------------------------------------------------------+--------+----------------------------------------+-------+----------------------------------------------------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -816,9 +822,11 @@ of charge cycles (which is itself conditioned by the battery capacity and the
 total mileage over the lifetime), in relation with the cycle life of the battery
 (which differs across chemistry – see Table 9).
 
-Important assumption: The environmental burden associated with the manufacture
-of spare batteries is entirely allocated to the vehicle use.
-The number of battery replacements is rounded up.
+.. note::
+
+    Important assumption: The environmental burden associated with the manufacture
+    of spare batteries is entirely allocated to the vehicle use.
+    The number of battery replacements is rounded up.
 
 Given the energy consumption of the vehicle and the required battery
 capacity, ``carculator_truck`` calculates the number of charging cycles
@@ -971,10 +979,12 @@ to produce.
 Figure 10 Relation between stored hydrogen mass and hydrogen storage
 cylinder mass
 
-**Important remark**: a battery is also added to fuel cell electric
-trucks. Based on manufacturer’s specification, its storage capacity
-represents approximately 6% of the storage capacity of the hydrogen
-cylinders, with a minimum of 20 kWh.
+.. note::
+
+    **Important remark**: a battery is also added to fuel cell electric
+    trucks. Based on manufacturer’s specification, its storage capacity
+    represents approximately 6% of the storage capacity of the hydrogen
+    cylinders, with a minimum of 20 kWh.
 
 .. _charging-stations-1:
 
@@ -1597,13 +1607,17 @@ Initial charge [kg per vehicle lifetime] 1.1
 Lifetime loss [kg per vehicle lifetime]  0.94
 ======================================== =======
 
-**Important assumption**: it is assumed that electric and plug-in
-electric vehicles also use a compressor-like belt-driven air
-conditioning system, relying on the refrigerant gas R134a. In practice,
-an increasing, but still minor, share of electric vehicles now use a
-(reversible) heat pump to provide cooling.
+.. note::
 
-**Important remark:** After 2021, R134a is no longer used.
+    **Important assumption**: it is assumed that electric and plug-in
+    electric vehicles also use a compressor-like belt-driven air
+    conditioning system, relying on the refrigerant gas R134a. In practice,
+    an increasing, but still minor, share of electric vehicles now use a
+    (reversible) heat pump to provide cooling.
+
+.. note::
+
+    **Important remark:** After 2021, R134a is no longer used.
 
 Noise emissions
 ~~~~~~~~~~~~~~~
