@@ -417,7 +417,7 @@ calibration, the tank-to-wheel energy consumption value obtained from
 VECTO and from *carculator_truck* for diesel-powered trucks differ by
 less than 1 percent over the entire driving cycle.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image78.png
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image79.png
 
 Figure 5 Calibration of carculator_truck energy model against VECTO
 simulations for a 40t articulated truck diesel truck (first 1’500
@@ -624,14 +624,14 @@ The expected battery lifetime (and the need for replacement) is based on
 the battery expected cycle life, based on theoretical values given by
 (Göhlich et al. 2018) as well as some experimental ones from (Preger et
 al. 2020). Although the specifications of the different battery
-chemistries are presented in Table 9, they are also repeated in Table
+chemistry are presented in Table 9, they are also repeated in Table
 90.
 
-Table 9 Parameters for different battery chemistries for battery
+Table 9 Parameters for different battery chemistry for battery
 electric trucks
 
 +-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
-| -                                                                           | Lithium Nickel Manganese Cobalt Oxide (LiNiMnCoO2) — NMC[1]      | Lithium Iron Phosphate(LiFePO4) — LFP  | Lithium Nickel Cobalt Aluminum Oxide (LiNiCoAlO2) — NCA  | Source                                                                                                                      |
+|                                                                             | Lithium Nickel Manganese Cobalt Oxide (LiNiMnCoO2) — NMC[1]      | Lithium Iron Phosphate(LiFePO4) — LFP  | Lithium Nickel Cobalt Aluminum Oxide (LiNiCoAlO2) — NCA  | Source                                                                                                                      |
 +=============================================================================+==================================================================+========================================+==========================================================+=============================================================================================================================+
 | Cell energy density [kWh/kg]                                                | 0.2                                                              | 0.15                                   | 0.23                                                     | (BatteryUniversity 2021)                                                                                                    |
 +-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
@@ -680,7 +680,7 @@ Table 10 gives an overview of the number of battery replacements assumed for the
 Table 10 Number of battery replacements assumed or calculated
 
 +---------------------------------------------+------+------+------+
-| .                                           | NMC  | LFP  | NCA  |
+|                                             | NMC  | LFP  | NCA  |
 +=============================================+======+======+======+
 | Medium/heavy duty truck, urban delivery     | 1    | 1    | 1    |
 +---------------------------------------------+------+------+------+
@@ -769,7 +769,7 @@ seem to be implemented for fuel cell stacks at the moment.
 Table 12 Specifications for fuel cell stack systems
 
 +---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| .                                                                         | Trucks    | Source                                                                                                                                                                  |
+|                                                                           | Trucks    | Source                                                                                                                                                                  |
 +===========================================================================+===========+=========================================================================================================================================================================+
 | Power [kW]                                                                | 30 - 140  | Calculated.                                                                                                                                                             |
 +---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -945,6 +945,11 @@ trucks with the specifications of some commercial models disclosed by
 manufacturers. These manufacturers’ specifications can also be found in
 Annex D.
 
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image84.png
+   :width: 50%
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image85.png
+   :width: 50%
 
 +----------------------------------+----------------------------------+
 | a) Maximum payload modeled       | b) Engine peak power output      |
@@ -953,11 +958,11 @@ Annex D.
 |                                  | gross weight                     |
 +----------------------------------+----------------------------------+
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image84.png
-   :width: 40%
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image86.png
+   :width: 50%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image85.png
-   :width: 40%
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image87.png
+   :width: 50%
 
 +----------------------------------+----------------------------------+
 | c) Battery capacity modeled      | d) Tank-to-wheel energy          |
@@ -971,12 +976,6 @@ Annex D.
 | autonomy of 400 km.              |                                  |
 +----------------------------------+----------------------------------+
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image86.png
-   :width: 40%
-
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image87.png
-   :width: 40%
-
 Figure 13 Comparison of modeled maximum payload, engine peak power,
 battery capacity and tank-to-wheel fuel consumption with specification
 of commercial models.
@@ -986,10 +985,12 @@ of commercial models.
 Fuel cell electric trucks
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+----------------------------------+----------------------------------+
-| |C:\Users\sacchi_r\App           | |C:\Users\sacchi_r\App           |
-| Data\Local\Microsoft\Windows\INe | Data\Local\Microsoft\Windows\INe |
-| tCache\Content.MSO\8DCF8531.tmp| | tCache\Content.MSO\BBADEF67.tmp| |
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image88.png
+   :width: 50%
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image89.png
+   :width: 50%
+
 +----------------------------------+----------------------------------+
 | a) Engine peak power output      | b) Hydrogen tank capacity        |
 | modeled (shaded line) versus     | modeled (shaded line) versus     |
@@ -1001,9 +1002,13 @@ Fuel cell electric trucks
 |                                  | shaded area represent a vehicle  |
 |                                  | a range autonomy of 800 km.      |
 +----------------------------------+----------------------------------+
-| |C:\Users\sacchi_r\Ap            | |C:\Users\sacchi_r\App           |
-| pData\Local\Microsoft\Windows\IN | Data\Local\Microsoft\Windows\INe |
-| etCache\Content.MSO\77D750D.tmp| | tCache\Content.MSO\CDD457A3.tmp| |
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image90.png
+   :width: 50%
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image91.png
+   :width: 50%
+
 +----------------------------------+----------------------------------+
 | c) Fuel cell stack power output  | d) Battery capacity modeled      |
 | modeled (shaded line) versus     | (shaded line) versus commercial  |
@@ -1015,9 +1020,10 @@ Fuel cell electric trucks
 |                                  | area represent a vehicle a range |
 |                                  | autonomy of 800 km.              |
 +----------------------------------+----------------------------------+
-| |C:\Users\sacchi_r\Ap            |                                  |
-| pData\Local\Microsoft\Windows\IN |                                  |
-| etCache\Content.MSO\16DD4A9.tmp| |                                  |
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image92.png
+   :width: 50%
+
 +----------------------------------+----------------------------------+
 | e) Tank-to-wheel energy          |                                  |
 | consumption modeled (shaded      |                                  |
@@ -1175,7 +1181,7 @@ and :math:`X(i, e)` is the emission factor of substance i in the given driving c
 
 
 NMHC speciation
-_______________
+...............
 
 After NMHC emissions are quantified, EEA/EMEP's 2019 Air Pollutant
 Emission Inventory Guidebook provides factors to further specify some of
@@ -1184,29 +1190,50 @@ them into the substances listed in Table 16.
 Table 16 NMVOC sub-species as fractions of the mass emitted
 
 +----------------------+----------------------------+
-| -                    | Trucks and buses (diesel)  |
+|                      | Trucks and buses (diesel)  |
 +======================+============================+
-| -                    | Wt. % of NMVOC             |
+|                      | Wt. % of NMVOC             |
++----------------------+----------------------------+
 | Ethane               | 0.03                       |
++----------------------+----------------------------+
 | Propane              | 0.1                        |
++----------------------+----------------------------+
 | Butane               | 0.15                       |
++----------------------+----------------------------+
 | Pentane              | 0.06                       |
++----------------------+----------------------------+
 | Hexane               | 0                          |
++----------------------+----------------------------+
 | Cyclohexane          | 0                          |
++----------------------+----------------------------+
 | Heptane              | 0.3                        |
++----------------------+----------------------------+
 | Ethene               | 0                          |
++----------------------+----------------------------+
 | Propene              | 0                          |
++----------------------+----------------------------+
 | 1-Pentene            | 0                          |
++----------------------+----------------------------+
 | Toluene              | 0.01                       |
++----------------------+----------------------------+
 | m-Xylene             | 0.98                       |
++----------------------+----------------------------+
 | o-Xylene             | 0.4                        |
++----------------------+----------------------------+
 | Formaldehyde         | 8.4                        |
++----------------------+----------------------------+
 | Acetaldehyde         | 4.57                       |
++----------------------+----------------------------+
 | Benzaldehyde         | 1.37                       |
++----------------------+----------------------------+
 | Acetone              | 0                          |
++----------------------+----------------------------+
 | Methyl ethyl ketone  | 0                          |
++----------------------+----------------------------+
 | Acrolein             | 1.77                       |
++----------------------+----------------------------+
 | Styrene              | 0.56                       |
++----------------------+----------------------------+
 | NMVOC, unspecified   | 81.3                       |
 +----------------------+----------------------------+
 
@@ -1217,7 +1244,7 @@ A number of emission sources besides exhaust emissions are considered.
 They are described in the following sub-sections.
 
 Engine wear emissions
-_____________________
+.....................
 
 Metals and other substances are emitted during the combustion of fuel
 because of engine wear. These emissions are scaled based on the fuel
@@ -1245,7 +1272,7 @@ combusted
 
 
 Abrasion emissions
-__________________
+..................
 
 We distinguish four types of abrasion emissions, besides engine wear
 emissions:
@@ -1382,7 +1409,7 @@ evenly distributed between brake, road and tire wear particles.
 
 
 Refrigerant emissions
-_____________________
+.....................
 
 The use of refrigerant for onboard air conditioning systems is
 considered for trucks until 2021. The supply of refrigerant gas R134a is
@@ -1413,7 +1440,7 @@ an increasing, but still minor, share of electric vehicles now use a
 **Important remark:** After 2021, R134a is no longer used.
 
 Noise emissions
----------------
+...............
 
 Noise emissions along the driving cycle of the vehicle are quantified
 using the method developed within the CNOSSOS project [35]_, which are
@@ -1706,7 +1733,8 @@ are listed in Table 26.
 |           |                           | carbon fiber              |
 |           |                           | manufacturing have been   |
 |           |                           | integrated to             |
-|           |                           | *carculator_truck*, from [53]_. |
+|           |                           | *carculator_truck*,       |
+|           |                           | from [53]_.               |
 +-----------+---------------------------+---------------------------+
 | [54]_     | Type IV hydrogen tank,    |                           |
 |           | LDPE liner                |                           |
