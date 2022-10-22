@@ -1241,7 +1241,7 @@ and :math:`X(i, e)` is the emission factor of substance i in the given driving c
 
 
 NMHC speciation
-...............
+~~~~~~~~~~~~~~~
 
 After NMHC emissions are quantified, EEA/EMEP's 2019 Air Pollutant
 Emission Inventory Guidebook provides factors to further specify some of
@@ -1304,7 +1304,7 @@ A number of emission sources besides exhaust emissions are considered.
 They are described in the following sub-sections.
 
 Engine wear emissions
-.....................
+~~~~~~~~~~~~~~~~~~~~~
 
 Metals and other substances are emitted during the combustion of fuel
 because of engine wear. These emissions are scaled based on the fuel
@@ -1342,7 +1342,7 @@ combusted
 
 
 Abrasion emissions
-..................
+~~~~~~~~~~~~~~~~~~
 
 We distinguish four types of abrasion emissions, besides engine wear
 emissions:
@@ -1493,7 +1493,7 @@ mg per vehicle-kilometer for trucks.
 
 
 Refrigerant emissions
-.....................
+~~~~~~~~~~~~~~~~~~~~~
 
 The use of refrigerant for onboard air conditioning systems is
 considered for trucks until 2021. The supply of refrigerant gas R134a is
@@ -1524,7 +1524,7 @@ an increasing, but still minor, share of electric vehicles now use a
 **Important remark:** After 2021, R134a is no longer used.
 
 Noise emissions
-...............
+~~~~~~~~~~~~~~~
 
 Noise emissions along the driving cycle of the vehicle are quantified
 using the method developed within the CNOSSOS project [35]_, which are
@@ -1731,7 +1731,7 @@ and not present as generic ecoinvent datasets.
 |           |                           | electrolysis, while the   |
 |           |                           | CO\ :sub:`2` comes from   |
 |           |                           | direct air capture. Note  |
-|           |                           | that in *carculator_truck*, two |
+|           |                           | that two                  |
 |           |                           | allocation approaches at  |
 |           |                           | the crude-to-fuel step    |
 |           |                           | are possible between the  |
@@ -1791,7 +1791,7 @@ are listed in Table 26.
 |           |                           | integrated in ecoinvent   |
 |           |                           | v.3.8 (with some errors), |
 |           |                           | corrected and integrated  |
-|           |                           | in *carculator_truck*.          |
+|           |                           | in the library.           |
 |           |                           | Additionally, these       |
 |           |                           | inventories relied        |
 |           |                           | exclusively on synthetic  |
