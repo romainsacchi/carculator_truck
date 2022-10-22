@@ -314,18 +314,6 @@ Table 5 Size-related parameters common to European trucks
 +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
 
 
-Abrasion emissions
-~~~~~~~~~~~~~~~~~~
-
-Figure 1 shows the calculated abrasion emissions for trucks in mg per
-vehicle-kilometer, following the approach presented in Section I.C.5.b.
-
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image75.png
-
-
-Figure 1 Total particulate matter emissions (<2.5 µm and 2.5-10 µm) in
-mg per vehicle-kilometer for trucks.
-
 .. _modelling-approach-applicable-to-internal-combustion-engine-vehicles-2:
 
 Modelling approach applicable to internal combustion engine vehicles
@@ -443,10 +431,10 @@ for the red curve. Nevertheless, it allows obtaining a reasonable estimate of
 the efficiency of these drivetrain components.
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_eff_fitting_1.png
-    :width: 50%
+    :width: 45%
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_eff_fitting_2.png
-    :width: 50%
+    :width: 45%
 
 Such calibration exercise with VECTO for the diesel-powered 40t truck is
 shown below, against the “Urban delivery” driving cycle. After
@@ -466,6 +454,28 @@ penalty factor of 10% is applied, based on findings from a working paper
 from the ICCT (Ragon and Rodríguez 2021) showing that compressed
 gas-powered trucks have an engine efficiency between 8 to 13% lower than
 that of diesel-powered trucks.
+
+.. _engine-downsizing:
+
+Engine downsizing
+~~~~~~~~~~~~~~~~~
+
+Such approach allows also reflecting the effect of engine downsizing.
+As the relative power load observed during the driving cycle is higher
+as the rated maximum power output of the engine is reduced, it operates
+at higher efficiency levels. Figure 6 compares the engine efficiency
+between a conventional 40t diesel truck and a diesel hybrid truck of
+similar size, but where the power of the combustion engine is reduced
+by 25% in favor of an electric motor. This figure confirms that
+the combustion engine of hybrid-diesel truck (HEV-d) reaches higher
+efficiency levels. Of course, the difference in efficiency
+will be more pronounced on driving cycles with transient loads.
+
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_engine_downsizing.png
+
+Figure 6 Engine efficiency comparison between a conventional (ICEV-d)
+and hybrid (HEV-d) 40t diesel truck
 
 .. _exhaust-emissions-3:
 
@@ -984,10 +994,10 @@ manufacturers. These manufacturers’ specifications can also be found in
 Annex D.
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image84.png
-   :width: 50%
+   :width: 40%
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image85.png
-   :width: 50%
+   :width: 40%
 
 +----------------------------------+----------------------------------+
 | a) Maximum payload modeled       | b) Engine peak power output      |
@@ -997,10 +1007,10 @@ Annex D.
 +----------------------------------+----------------------------------+
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image86.png
-   :width: 50%
+   :width: 40%
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image87.png
-   :width: 50%
+   :width: 40%
 
 +----------------------------------+----------------------------------+
 | c) Battery capacity modeled      | d) Tank-to-wheel energy          |
@@ -1024,10 +1034,10 @@ Fuel cell electric trucks
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image88.png
-   :width: 50%
+   :width: 40%
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image89.png
-   :width: 50%
+   :width: 40%
 
 +----------------------------------+----------------------------------+
 | a) Engine peak power output      | b) Hydrogen tank capacity        |
@@ -1042,10 +1052,10 @@ Fuel cell electric trucks
 +----------------------------------+----------------------------------+
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image90.png
-   :width: 50%
+   :width: 40%
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image91.png
-   :width: 50%
+   :width: 40%
 
 +----------------------------------+----------------------------------+
 | c) Fuel cell stack power output  | d) Battery capacity modeled      |
@@ -1060,7 +1070,7 @@ Fuel cell electric trucks
 +----------------------------------+----------------------------------+
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image92.png
-   :width: 50%
+   :width: 40%
 
 +----------------------------------+----------------------------------+
 | e) Tank-to-wheel energy          |                                  |
@@ -1456,6 +1466,20 @@ emissions to air, soil and water
 
 Finally, we assume that the composition of the re-suspended road dust is
 evenly distributed between brake, road and tire wear particles.
+
+
+Figure 16 below shows the calculated abrasion emissions for trucks in mg per
+vehicle-kilometer, following the approach presented above. These amounts
+will differ across driving cycles. For example, the amount of brake wear
+emissions is higher for the urban delivery cycle than for the regional
+delivery cycle, because the urban delivery cycle has a higher share of
+braking events.
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image75.png
+
+
+Figure 16 Total particulate matter emissions (<2.5 µm and 2.5-10 µm) in
+mg per vehicle-kilometer for trucks.
 
 
 Refrigerant emissions
