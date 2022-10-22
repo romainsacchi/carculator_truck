@@ -171,7 +171,7 @@ heavy/duty trucks
 +------------+-----------------+-----------------+-----------------+
 | **EURO-5** | 2008            | 2012            | **2010**        |
 +------------+-----------------+-----------------+-----------------+
-| **EURO-6** | 2013            | -               | **2020**        |
+| **EURO-6** | 2013            |                 | **2020**        |
 +------------+-----------------+-----------------+-----------------+
 
 
@@ -208,7 +208,7 @@ Table 2 Mass distribution of components for medium- and heavy-duty
 trucks
 
 +---------------------------+----------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+-----------------------------------------+-----------------------------------------+-----------------------------------------------------+
-| -                         | -                    | Rigid truck, 3.5t         | Rigid truck, 7.5t         | Rigid truck, 12t          | Rigid truck, 18t          | Rigid truck, 26t          | Articulated truck, 32t                  | Articulated truck, 40t                  | Articulated truck, 60t                              |
+|                           |                      | Rigid truck, 3.5t         | Rigid truck, 7.5t         | Rigid truck, 12t          | Rigid truck, 18t          | Rigid truck, 26t          | Articulated truck, 32t                  | Articulated truck, 40t                  | Articulated truck, 60t                              |
 +===========================+======================+===========================+===========================+===========================+===========================+===========================+=========================================+=========================================+=====================================================+
 |                           | Type                 | rigid, 2 axles, box body  | rigid, 2 axles, box body  | rigid, 2 axles, box body  | rigid, 2 axles, box body  | rigid, 3 axles, box body  | semi-trailer, 2+3 axles, curtain-sider  | semi-trailer, 2+4 axles, curtain-sider  | semi-trailer + trailer, 2+4+2 axles, curtain-sider  |
 +---------------------------+----------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+-----------------------------------------+-----------------------------------------+-----------------------------------------------------+
@@ -284,9 +284,9 @@ Table 4 Default load for European medium- and heavy-duty trucks
 +=================================+======+=======+=======+========+========+========+========+===========================================================================+
 | Cargo carrying capacity         | ton  | ~1.3  | ~3.5  | ~10.1  | ~17.0  | ~20.1  | ~25.5  | Manufacturers’ data.                                                      |
 +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
-| Cargo mass (urban delivery)     | tons | 0.75  | 1.75  | 2.7    | 6.3    | 8.75   | 8.75   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
+| Cargo mass (urban delivery)     | ton  | 0.75  | 1.75  | 2.7    | 6.3    | 8.75   | 8.75   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
 +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
-| Cargo mass (regional delivery)  | tons | 0.75  | 1.75  | 3.2    | 6.3    | 10.3   | 19.3   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
+| Cargo mass (regional delivery)  | ton  | 0.75  | 1.75  | 3.2    | 6.3    | 10.3   | 19.3   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
 +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
 | Cargo mass (long haul)          | ton  | 1.13  | 2.63  | 7.4    | 13.4   | 13.8   | 13.8   | TRACCS (Papadimitriou et al. 2013) for EU28                               |
 +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
@@ -298,6 +298,7 @@ been obtained and/or calculated from manufacturers’ data, which is made
 available in the Annex D of this report.
 
 Table 5 Size-related parameters common to European trucks
+
 +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
 | Size class in this study        |               | 3.5t  | 7.5t  | 18t    | 26t    | 32t    | 40t    | Source                                       |
 +=================================+===============+=======+=======+========+========+========+========+==============================================+
@@ -486,7 +487,7 @@ Table 87 Degradation factors at 890'000 km for diesel trucks
    :width: 6.27014in
    :height: 7.84756in
 
-Figure 38 Relation between emission factors and fuel consumption for a
+Figure 6 Relation between emission factors and fuel consumption for a
 diesel-powered truck for a number of “urban” and “rural” traffic
 situations for different emission standards.
 
@@ -495,7 +496,7 @@ the driving cycle for each substance are calculated.
 
 To confirm that such approach does not yield kilometric emissions too
 different from the emission factors per vehicle-kilometer proposed by
-HBEFA 4.1, Figure 23 compares the emissions obtained by
+HBEFA 4.1, Figure 7 compares the emissions obtained by
 *carculator_truck* using VECTO’s “Urban delivery” driving cycle over 1
 vehicle-km (red dots) for a 18t rigid truck with the distribution of the
 emission factors across different “urban” traffic situations (green
@@ -517,7 +518,7 @@ picture.
    :width: 6.27014in
    :height: 5.70565in
 
-Figure 39 Validation of the exhaust emissions model with the emission
+Figure 7 Validation of the exhaust emissions model with the emission
 factors provided by HBEFA 4.1 for medium-duty trucks in traffic urban
 and rural situations, for different levels of service. Box-and-whiskers:
 distribution of HBEFA’s emission factors (box: 50% of the distribution,
@@ -545,10 +546,10 @@ Electric vehicles
 VECTO does not have a model for battery or fuel cell electric buses that
 can be used. Therefore, similarly to the modeling of buses, static
 engine and drivetrain efficiency values are used. These values are based
-on (Schwertner and Weidmann 2016) and are presented in Table 88-Table
-89.
+on (Schwertner and Weidmann 2016) and are presented in Table 7-Table
+8.
 
-Table 88 Efficiency values along the drivetrain of electric trucks in
+Table 7 Efficiency values along the drivetrain of electric trucks in
 driving mode
 
 ===================== ================= =========== ==============
@@ -565,7 +566,7 @@ Drive axle            0.94              0.94        0.94
 Total                 0.44              0.73        0.81
 ===================== ================= =========== ==============
 
-Table 89 Efficiency values along the drivetrain of electric trucks in
+Table 8 Efficiency values along the drivetrain of electric trucks in
 recuperation mode
 
 ===================== ================= =========== ==============
@@ -592,8 +593,25 @@ Energy storage
 Battery electric trucks
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+Battery electric vehicles can use different battery chemistry (Li-ion NMC, Li-ion LFP, Li-ion NCA and Li-LTO)
+depending on the manufacturer’s preference or the location of the battery supplier.
+Unless specified otherwise, all battery types are produced in China, as several sources,
+among which BloombergNEF (Veronika Henze 2020), seem to indicate that more than 75% of
+the world’s cell capacity is manufactured there.
+Accordingly, the electricity mix used for battery cells manufacture and drying, as well as
+the provision of heat are assumed to be representative of the country (i.e., the corresponding
+providers are selected from the LCI background database).
+The battery-related parameters considered in this study are shown in Table 9.
+For LFP batteries, “blade battery” or “cell-to-pack” battery configurations are considered,
+as introduced by CATL (Xinhua 2019) and BYD (Mark 2020), two major LFP battery suppliers in Asia.
+This greatly increases the cell-to-pack ratio and the gravimetric energy density at the pack level.
+
+Overall, the gravimetric energy density values at the cell and system levels presented in Table 9
+are considered conservative: some manufacturers perform significantly better than the average,
+and these values tend to change rapidly over time, as it is being the focus of much R&D.
+
 The sizing of energy storage for BEV trucks is sensitive to the required
-range autonomy, which is specific to each driving cycle.
+range autonomy, which is specific to each driving cycle (or defined by the user).
 
 **Important remark**: technically speaking *carculator_truck* will model
 all trucks. However, if a vehicle has an energy storage unit mass
@@ -606,21 +624,69 @@ The expected battery lifetime (and the need for replacement) is based on
 the battery expected cycle life, based on theoretical values given by
 (Göhlich et al. 2018) as well as some experimental ones from (Preger et
 al. 2020). Although the specifications of the different battery
-chemistries are presented in Table 19, they are also repeated in Table
+chemistries are presented in Table 9, they are also repeated in Table
 90.
 
-Table 90 Parameters for different battery chemistries for battery
+Table 9 Parameters for different battery chemistries for battery
 electric trucks
 
-======================== ========== ======= =========== ======= =======
-\                        **unit**   **LFP** **LTO**     **NMC** **NCA**
-Cell voltage             V          3.2     2.3         3.6     3.6
-Cell capacity            Ah         1.4-4.5 2.0-6.5     3.7-5.3 4.8
-Energy density           Wh/kg cell 115-146 76-77       175-200 200-230
-Charge rate                         1C      4C-10C      2C-3C   2C-3C
-Cycle life (at 100% DoD) unit       7000+   5’000-7’000 2’000   1’000
-Corrected cycle life     unit       7’000   7’000       3’000   1’500
-======================== ========== ======= =========== ======= =======
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| -                                                                           | Lithium Nickel Manganese Cobalt Oxide (LiNiMnCoO2) — NMC[1]      | Lithium Iron Phosphate(LiFePO4) — LFP  | Lithium Nickel Cobalt Aluminum Oxide (LiNiCoAlO2) — NCA  | Source                                                                                                                      |
++=============================================================================+==================================================================+========================================+==========================================================+=============================================================================================================================+
+| Cell energy density [kWh/kg]                                                | 0.2                                                              | 0.15                                   | 0.23                                                     | (BatteryUniversity 2021)                                                                                                    |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Cell-to-pack ratio                                                          | 0.6                                                              | 0.8                                    | 0.6                                                      | (Yang, Liu, and Wang 2021)                                                                                                  |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Pack-level gravimetric energy density [kWh/kg]                              | 0.12                                                             | 0.12                                   | 0.14                                                     | Calcualted from the two rows above                                                                                          |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Share of cell mass in battery system [%]                                    | 60 to 80% (others, depending on chemistry, see third row above)  |                                        |                                                          | (B. Cox et al. 2020; Yang, Liu, and Wang 2021)                                                                              |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Maximum state of charge [%]                                                 | 100%                                                             | 100%                                   | 100%                                                     | (Göhlich et al. 2018; BatteryUniversity 2021)                                                                               |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Minimum state of charge [%]                                                 | 20%                                                              | 20%                                    | 20%                                                      |                                                                                                                             |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Cycle life to reach 20% initial capacity loss  (80%-20% SoC charge cycle)   | 2’000                                                            | 7’000+                                 | 1’000                                                    | (Preger et al. 2020)                                                                                                        |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Corrected cycle life                                                        | 3’000                                                            | 7’000                                  | 1’500                                                    | Assumption                                                                                                                  |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Charge efficiency                                                           | 88%                                                              |                                        |                                                          | (Schwertner and Weidmann 2016) for buses and trucks. (Rantik 1999) for battery charge efficiency when ultra-fast charging.  |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| Discharge efficiency                                                        | 88%                                                              |                                        |                                                          | (Schwertner and Weidmann 2016)                                                                                              |
++-----------------------------------------------------------------------------+------------------------------------------------------------------+----------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+
+The default NMC battery cell corresponds to a so-called NMC 6-2-2 chemistry:
+it exhibits three times the mass amount of Ni compared to Mn, and Co, while
+Mn and Co are present in equal amount.
+Development aims at reducing the content of Cobalt and increasing the Nickel share.
+The user can also select NMC-111 or NMC-811.
+
+For trucks, for which the mileage varies across size classes and application types,
+the number of battery replacements is calculated based on the required number
+of charge cycles (which is itself conditioned by the battery capacity and the
+total mileage over the lifetime), in relation with the cycle life of the battery
+(which differs across chemistry – see Table 9).
+
+Important assumption: The environmental burden associated with the manufacture
+of spare batteries is entirely allocated to the vehicle use.
+The number of battery replacements is rounded up.
+
+Beyond the chemistry-specific resistance to degradation induced by
+charge-discharge cycles, the calendar aging of the cells for batteries
+that equip trucks is also considered: regardless of the charging type,
+there is a minimum of one replacement of the battery during the vehicle lifetime.
+
+Table 10 gives an overview of the number of battery replacements assumed for the different electric vehicles in this study.
+
+Table 10 Number of battery replacements assumed or calculated
+
++---------------------------------------------+------+------+------+
+| .                                           | NMC  | LFP  | NCA  |
++=============================================+======+======+======+
+| Medium/heavy duty truck, urban delivery     | 1    | 1    | 1    |
++---------------------------------------------+------+------+------+
+| Medium/heavy duty truck, regional delivery  | 1    | 1    | 1    |
++---------------------------------------------+------+------+------+
+
 
 Given the energy consumption of the vehicle and the required battery
 capacity, *carculator_truck* calculates the number of charging cycles
@@ -632,15 +698,16 @@ aging of the battery.
 
 The effect of changing the battery chemistry, using a required range
 autonomy of 150 km on a 32t articulated truck is shown in Figure 40. The
-difference across chemistries is not significant. The higher gravimetric
+difference across chemistry is not significant. The higher gravimetric
 energy density of NCA batteries slightly increases the available payload
-of the vehicle.
+of the vehicle. This difference becomes more significant as the required
+range autonomy increases.
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image82.png
    :width: 4.19231in
    :height: 4.39368in
 
-Figure 40 Effect of battery chemistry on number of replacements, battery
+Figure 9 Effect of battery chemistry on number of replacements, battery
 capacity and mass, as well as the available payload, for a 32t
 articulated truck, with a required range autonomy of 150 km.
 
@@ -665,48 +732,63 @@ calculate the *electric utility factor* for these vehicles. Energy
 storage capacities and electric utility factors for plugin hybrid trucks
 are described in Table 91.
 
-Table 91 Energy storage and eletric utility factor of plugin hybrid
-trucks
+Table 11 Energy storage and eletric utility factor of plugin hybrid trucks
 
-+----------+----------+----------+----------+----------+----------+
-| Size     | Battery  | Range    | Required | Electric | Comment  |
-| class    | capacity | autonomy | range    | utility  |          |
-|          |          | in       | autonomy | factor   |          |
-|          |          | b        |          |          |          |
-|          |          | attery-d |          |          |          |
-|          |          | epleting |          |          |          |
-|          |          | mode     |          |          |          |
-+==========+==========+==========+==========+==========+==========+
-|          | kWh      | km       | km       | %        | The km   |
-|          |          |          |          |          | driven   |
-|          |          |          |          |          | in       |
-|          |          |          |          |          | co       |
-|          |          |          |          |          | mbustion |
-|          |          |          |          |          | mode     |
-|          |          |          |          |          | complete |
-|          |          |          |          |          | the      |
-|          |          |          |          |          | distance |
-|          |          |          |          |          | required |
-|          |          |          |          |          | by the   |
-|          |          |          |          |          | range    |
-|          |          |          |          |          | a        |
-|          |          |          |          |          | utonomy. |
-+----------+----------+----------+----------+----------+----------+
-| 3.5t     | 20       | 50       | 150      | 35       |          |
-+----------+----------+----------+----------+----------+----------+
-| 7.5t     | 30       | 47       |          | 33       |          |
-+----------+----------+----------+----------+----------+----------+
-| 18t      | 70       | 50       |          | 35       |          |
-+----------+----------+----------+----------+----------+----------+
-| 26t      | 90       | 45       |          | 33       |          |
-+----------+----------+----------+----------+----------+----------+
-| 32t      | 95       | 45       |          | 32       |          |
-+----------+----------+----------+----------+----------+----------+
-| 40t      | 110      | 48       |          | 33       |          |
-+----------+----------+----------+----------+----------+----------+
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
+| Size class  | Battery capacity  | Range autonomy in battery-depleting mode  | Required range autonomy  | Electric utility factor  | Comment                                                                                 |
++=============+===================+===========================================+==========================+==========================+=========================================================================================+
+|             | kWh               | km                                        | km                       | %                        | The km driven in combustion mode complete the distance required by the range autonomy.  |
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
+| 3.5t        | 20                | 50                                        | 150                      | 35                       |                                                                                         |
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
+| 7.5t        | 30                | 47                                        |                          | 33                       |                                                                                         |
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
+| 18t         | 70                | 50                                        |                          | 35                       |                                                                                         |
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
+| 26t         | 90                | 45                                        |                          | 33                       |                                                                                         |
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
+| 32t         | 95                | 45                                        |                          | 32                       |                                                                                         |
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+
+| 40t         | 110               | 48                                        |                          | 33                       |
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+
+
 
 Fuel cell electric trucks
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All fuel cell electric vehicles use a proton exchange membrane (PEM)-based fuel cell system.
+
+Table 12 lists the specifications of the fuel cell stack and system used in *carculator_truck*.
+The durability of the fuel cell stack, expressed in hours, is used to determine
+the number of replacements needed – the expected kilometric lifetime of the vehicle
+as well as the average speed specified by the driving cycle gives the number
+of hours of operation. The environmental burden associated with the manufacture of
+spare fuel cell systems is entirely allocated to vehicle use as no reuse channels
+seem to be implemented for fuel cell stacks at the moment.
+
+Table 12 Specifications for fuel cell stack systems
+
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| .                                                                         | Trucks    | Source                                                                                                                                                                  |
++===========================================================================+===========+=========================================================================================================================================================================+
+| Power [kW]                                                                | 30 - 140  | Calculated.                                                                                                                                                             |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Fuel cell stack efficiency [%]                                            | 55-58%    | (B. Cox et al. 2020)                                                                                                                                                    |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Fuel cell stack own consumption [% of kW output]                          | 15%       |                                                                                                                                                                         |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Fuel cell system efficiency [%]                                           | 45-50%    |                                                                                                                                                                         |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Power density [W/cm2 cell]                                                | 0.45      | For passenger cars, (Simons and Bauer 2015). For trucks and buses, the power density is assumed to be half that of passenger cars, to reflect an increased durability.  |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Specific mass [kg cell/W]                                                 | 1.02      |                                                                                                                                                                         |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Platinum loading [mg/cm2]                                                 | 0.13      |                                                                                                                                                                         |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Fuel cell stack durability [hours to reach 20% cell voltage degradation]  | 17’000    | (Eudy and Post 2020; Kurtz et al. 2018)                                                                                                                                 |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Fuel cell stack lifetime replacements [unit]                              | 0 - 2     | Calculated.                                                                                                                                                             |
++---------------------------------------------------------------------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 The energy storage unit of fuel cell electric trucks is sized based on
 the required amount of hydrogen onboard (defined by the required range
