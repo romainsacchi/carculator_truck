@@ -342,6 +342,24 @@ are run in VECTO with trucks modeled as closely as possible to those of
 this study, to obtain performance indicators along the driving cycle
 (e.g., speed and fuel consumption, among others).
 
+The calculation of the total resistance to overcome at the wheel level
+is the sum of the following resistances:
+
+* The vehicle inertia, calculated as acceleration * driving mass
+* The rolling resistance, calculated as driving mass * rolling resistance coefficient * gravity
+* The aerodynamic drag, calculated as frontal area * aerodynamic drag coefficient * air density * speed^2 / 2
+* The gradient resistance, calculated as driving mass * gravity * sin(gradient)
+* As well as the resistance from braking, calculated as the force from the vehicle inertia when negative.
+
+Figure 2 shows the contribution of each type of resistance as calculated by
+*carculator_truck* for the first hundred seconds of the “Urban delivery”
+driving cycle, for an 18t diesel truck.
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_truck_resistance.png
+
+Figure 2 Resistance components at wheels level for the first hundred
+seconds of the “Urban delivery” driving cycle, for an 18t diesel truck.
+
 Figure 2 shows the first two hundred seconds of the “Urban delivery”
 driving cycle. It distinguishes the target speed from the actual speed
 managed by the different vehicles. The power-to-mass ratio influences
@@ -734,6 +752,7 @@ are described in Table 91.
 
 Table 11 Energy storage and eletric utility factor of plugin hybrid trucks
 
+
 +-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
 | Size class  | Battery capacity  | Range autonomy in battery-depleting mode  | Required range autonomy  | Electric utility factor  | Comment                                                                                 |
 +=============+===================+===========================================+==========================+==========================+=========================================================================================+
@@ -748,9 +767,9 @@ Table 11 Energy storage and eletric utility factor of plugin hybrid trucks
 | 26t         | 90                | 45                                        |                          | 33                       |                                                                                         |
 +-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
 | 32t         | 95                | 45                                        |                          | 32                       |                                                                                         |
-+-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+
-| 40t         | 110               | 48                                        |                          | 33                       |
-+-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
+| 40t         | 110               | 48                                        |                          | 33                       |                                                                                         |
++-------------+-------------------+-------------------------------------------+--------------------------+--------------------------+-----------------------------------------------------------------------------------------+
 
 
 Fuel cell electric trucks
@@ -834,7 +853,7 @@ configuration, with each cylinder containing up to 57.6 kg of compressed
 gas – 320 liters at 200 bar.
 
 The relation between the mass of compressed gas and the cylinder mass is
-depicted in Figure 26. This relation is based on manufacturers’ data –
+depicted in Figure 11. This relation is based on manufacturers’ data –
 mainly from (Daimler Trucks 2017; QTWW 2021).
 
 .. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_cng_tanks.png
@@ -1031,7 +1050,7 @@ Fuel cell electric trucks
 | function of gross weight.        |                                  |
 +----------------------------------+----------------------------------+
 
-Figure 45 Comparison of modeled engine peak power, fuel cell stack
+Figure 14 Comparison of modeled engine peak power, fuel cell stack
 
 Inventory modelling
 *******************
@@ -1077,7 +1096,9 @@ and sulfur concentration of the fuel observed in Switzerland and Europe.
 Sulfur concentration values are sourced from HBEFA 4.1 [26]_. Lower
 heating values and CO\ :sub:`2` emission factors for fuels are sourced
 from p.86 and p.103 of [27]_. The fuel properties shown in Table 12 are
-used for fuels purchased in Switzerland.
+used for fuels purchased in Switzerland but should be applicable for other
+areas/countries.
+
 
 Table 12 Fuels characteristics
 
@@ -1098,9 +1119,19 @@ Table 12 Fuels characteristics
 | Synthetic methane                     |                                 | 47.5                         | 2.68                             |                                  |
 +---------------------------------------+---------------------------------+------------------------------+----------------------------------+----------------------------------+
 
+Note that *carculator_truck* will adapt the sulfur concentration of the
+fuel (and related SOx emissions) based on the country the user selects (see Figure 15).
 
-Because large variations are observed in terms of sulfur concentration
-in biofuels, similar values than that of conventional fuels are used.
+
+.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_sulfur_countries.png
+   :width: 50%
+
+Figure 15 Region-specific sulfur concentration of diesel fuel. Source:
+Xie, Y.; Posada, F.; Minjares, R. Diesel Sulfur Content Impacts on Euro VI Soot-Free Vehicles:
+Considerations for Emerging Markets. 2020. https://doi.org/10.1007/s11783-016-0859-5.
+Global progress toward soot-free diesel vehicles in 2019 | International Council on Clean Transportation
+https://theicct.org/publications/global-progress-toward-soot-free-diesel-vehicles-2019 (accessed Jan 21,
+2021).
 
 Exhaust emissions
 -----------------
