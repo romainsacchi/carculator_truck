@@ -73,7 +73,7 @@ html_theme_options = {
     },
     "font": {"text": "Fira Sans", "code": "JetBrains Mono"},
     "site_url": "https://carculator-truck.readthedocs.io",
-    "repo_url": "https://github.com/romainsacchi/carculator_truck",
+    "repo_url": "https://github.com/romainsacchi/carculator_truck/",
     "repo_name": "romainsacchi/carculator_truck",
     "repo_type": "github",
     "edit_uri": "blob/master/docs/",
