@@ -78,7 +78,7 @@ html_theme_options = {
     "repo_type": "github",
     "edit_uri": "blob/master/docs/",
     "globaltoc_collapse": True,
-    "features": ["navigation.top", "search.share", "navigation.tracking"],
+    "features": ["navigation.top", "search.share", "navigation.tracking", "toc.follow"],
     "palette": [
         {
             "media": "(prefers-color-scheme: light)",

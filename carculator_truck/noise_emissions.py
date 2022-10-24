@@ -30,8 +30,8 @@ class NoiseEmissionsModel:
 
     def rolling_noise(self, category, cycle):
         """Calculate noise from rolling friction.
-        Model from CNOSSOS-EU project
-        (http://publications.jrc.ec.europa.eu/repository/bitstream/JRC72550/cnossos-eu%20jrc%20reference%20report_final_on%20line%20version_10%20august%202012.pdf)
+        `Model from CNOSSOS-EU project
+        <http://publications.jrc.ec.europa.eu/repository/bitstream/JRC72550/cnossos-eu%20jrc%20reference%20report_final_on%20line%20version_10%20august%202012.pdf>`_
 
         :param category: "medium" or "heavy" duty vehicles.
         :type category: str.
@@ -66,15 +66,15 @@ class NoiseEmissionsModel:
 
     def propulsion_noise(self, powertrain_type, category, cycle):
         """Calculate noise from propulsion engine and gearbox.
-        Model from CNOSSOS-EU project
-        (http://publications.jrc.ec.europa.eu/repository/bitstream/JRC72550/cnossos-eu%20jrc%20reference%20report_final_on%20line%20version_10%20august%202012.pdf)
+        `Model from CNOSSOS-EU project
+        <http://publications.jrc.ec.europa.eu/repository/bitstream/JRC72550/cnossos-eu%20jrc%20reference%20report_final_on%20line%20version_10%20august%202012.pdf>`_
 
         For electric cars, special coefficients are applied from
         (`Pallas et al. 2016 <https://www.sciencedirect.com/science/article/pii/S0003682X16301608>`_ )
 
         Also, for electric cars, a warning signal of 56 dB is added when the car drives at 20 km/h or lower.
 
-        Although we deal here with trucks, we reuse the coefficeint for electric cars
+        Although we deal here with trucks, we reuse the coefficient for electric cars
 
         :param powertrain_type:
         :param category: "medium" or "heavy" duty vehicles.

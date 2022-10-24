@@ -113,21 +113,21 @@ class InventoryCalculation:
     under the form of one or several array(s), depending on the number of years to analyze,
     that should total 1, of which the indices correspond to:
 
-        - [0]: hydro-power
-        - [1]: nuclear
-        - [2]: natural gas
-        - [3]: solar power
-        - [4]: wind power
-        - [5]: biomass
-        - [6]: coal
-        - [7]: oil
-        - [8]: geothermal
-        - [9]: waste incineration
-        - [10]: biogas with CCS
-        - [11]: biomass with CCS
-        - [12]: coal with CCS
-        - [13]: natural gas with CCS
-        - [14]: wood with CCS
+    - [0]: hydro-power
+    - [1]: nuclear
+    - [2]: natural gas
+    - [3]: solar power
+    - [4]: wind power
+    - [5]: biomass
+    - [6]: coal
+    - [7]: oil
+    - [8]: geothermal
+    - [9]: waste incineration
+    - [10]: biogas with CCS
+    - [11]: biomass with CCS
+    - [12]: coal with CCS
+    - [13]: natural gas with CCS
+    - [14]: wood with CCS
 
     If none is given, the electricity mix corresponding to the country specified in `country`
     will be selected. If no country is specified, Europe applies.
@@ -183,9 +183,6 @@ class InventoryCalculation:
           "SSP2-PkBudg500": limits cumulative GHG emissions to 500 gigatons by 2100 (+1.5C),
           "static": no forward-looking modification of the background inventories).
           "SSP2-NPi" selected by default.
-
-
-    .. code-block:: python
 
     """
 
@@ -439,8 +436,7 @@ class InventoryCalculation:
         self.B = None
 
     def get_results_table(self, split, sensitivity=False):
-        """
-        Format an xarray.DataArray array to receive the results.
+        """ Format a xarray.DataArray array to receive the results.
 
         :param sensitivity:
         :param split: "components" or "impact categories". Split by impact categories only applicable when "endpoint" level is applied.
@@ -518,12 +514,13 @@ class InventoryCalculation:
         return response
 
     def get_sulfur_content(self, location, fuel, year):
-        """
-        Return the sulfur content in the fuel.
+        """ Return the sulfur content in the fuel.
         If a region is passed, the average sulfur content over
         the countries the region contains is returned.
+
         :param location: str. A country or region ISO code
         :param fuel: str. "diesel" or "gasoline"
+
         :return: float. Sulfur content in ppm.
         """
 
@@ -1006,7 +1003,7 @@ class InventoryCalculation:
 
     def get_A_matrix(self):
         """
-        Load the A matrix. The A matrix contains exchanges of products (rows) between activities (columns).
+        Load the 'A' matrix. The 'A' matrix contains exchanges of products (rows) between activities (columns).
 
         :return: A matrix with three dimensions of shape (number of values, number of products, number of activities).
         :rtype: numpy.ndarray
@@ -1120,7 +1117,7 @@ class InventoryCalculation:
         """
         Load a dictionary with available impact assessment methods as keys, and assessment level and categories as values.
 
-        ..code-block:: python
+        .. code-block:: python
 
             {'recipe': {'midpoint': ['freshwater ecotoxicity',
                                    'human toxicity',
@@ -1633,6 +1630,7 @@ class InventoryCalculation:
         """
         This function defines a fuel mix based either on user-defined mix, or on default mixes for a given country.
         The mix is calculated as the average mix, weighted by the distribution of annually driven kilometers.
+
         :return:
         """
 
@@ -1945,7 +1943,8 @@ class InventoryCalculation:
 
     def create_electricity_market_for_battery_production(self):
         """
-        This funciton fills in the dataset that contains the electricity mix used for manufacturing battery cells
+        This function fills in the dataset that contains the electricity mix used for manufacturing battery cells
+
         :return:
         """
 
@@ -2160,6 +2159,7 @@ class InventoryCalculation:
         """
         This function creates markets for fuel, considering a given blend, a given fuel type and a given year.
         It also adds separate electricity input in case hydrogen from electrolysis is needed somewhere in the fuel supply chain.
+
         :return:
         """
 
@@ -2263,12 +2263,13 @@ class InventoryCalculation:
         zero_out_input=False,
         filter_activities=None,
     ):
-        """
-        Finds the exchange inputs to a specified functional unit
+        """ Finds the exchange inputs to a specified functional unit
+
         :param zero_out_input:
         :param find_input_by: can be 'name' or 'unit'
         :param value_in: value to look for
         :param value_out: functional unit output
+
         :return: indices of all inputs to FU, indices of inputs of interest
         :rtype: tuple
         """
@@ -5428,12 +5429,12 @@ class InventoryCalculation:
         print("*********************************************************************")
 
     def select_heat_supplier(self, heat_supplier):
-        """
-        The heat supply is an important aspect of direct air capture.
+        """ The heat supply is an important aspect of direct air capture.
         Here, we can change the supplier of heat.
-        :param heat_supplier: by default "waste heat". Must be one of "waste heat", "biomass heat",
-        "natural gas heat", "market heat".
+
+        :param heat_supplier: by default "waste heat". Must be one of "waste heat", "biomass heat", "natural gas heat", "market heat".
         :type heat_supplier: str
+
         :return:
         """
 
