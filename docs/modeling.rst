@@ -1,57 +1,7 @@
-Sections
-********
+.. _model:
 
-`1 Overview of carculator_truck modules <#overview-of-carculator_truck-modules>`__
-
-`2 Vehicle modelling <#vehicle-modelling>`__
-
-`2.1 Size classes <#size-classes>`__
-
-`2.2 Manufacture year and emission standard <#manufacture-year-and-emission-standard>`__
-
-`2.3 Size and mass-related parameters and modeling <#size-and-mass-related-parameters-and-modeling>`__
-
-`2.4 Electric energy storage <#electric-energy-storage>`__
-
-`2.5 Fuel cell stack <#fuel-cell-stack>`__
-
-`2.6 Light weighting <#light-weighting>`__
-
-`2.7 Sizing of onboard energy storage <#sizing-of-onboard-energy-storage>`__
-
-`2.7.1 Sizing of battery <#sizing-of-battery>`__
-
-`2.8 Electric utility factor <#electric-utility-factor>`__
-
-`3 Inventory modelling <#inventory-modelling>`__
-
-`3.1 Road demand <#road-demand>`__
-
-`3.2 Fuel properties <#fuel-properties>`__
-
-`3.3 Exhaust emissions <#exhaust-emissions>`__
-
-`3.3.1 NMHC speciation <#nmhc-speciation>`__
-
-`3.4 Non-exhaust emissions <#non-exhaust-emissions>`__
-
-`3.4.1 Engine wear emissions <#engine-wear-emissions>`__
-
-`3.4.2 Abrasion emissions <#abrasion-emissions>`__
-
-`3.4.3 Refrigerant emissions <#refrigerant-emissions>`__
-
-`3.5 Noise emissions <#noise-emissions>`__
-
-`3.6 Electricity mix calculation <#electricity-mix-calculation>`__
-
-`3.7 Inventories for fuel pathways <#inventories-for-fuel-pathways>`__
-
-`3.8 Inventories for energy storage components <#inventories-for-energy-storage-components>`__
-
-`4 Life cycle impact assessment <#life-cycle-impact-assessment>`__
-
-`References <#references>`__
+Modelling
+=========
 
 This document intends to describe the ``carculator_truck`` model, assumptions
 and inventories as exhaustively as possible.
@@ -63,7 +13,7 @@ notebook <https://github.com/romainsacchi/carculator_truck/blob/master/examples/
 to guide new users into performing life cycle analyses. 
 
 Overview of ``carculator_truck`` modules
-**************************************
+****************************************
 
 The main module *model.py* builds
 the vehicles and delegates the calculation of motive and auxiliary
@@ -1869,51 +1819,51 @@ Inventories for energy storage components
 The source for the inventories used to model energy storage components
 are listed in Table 26.
 
-+-----------+---------------------------+---------------------------+
-| Author(s) | Energy storage type       | Description               |
-+===========+===========================+===========================+
-| [48,49]_  | NMC-111/622/811 battery   | Originally from [48]_,    |
-|           |                           | then updated and          |
-|           |                           | integrated in ecoinvent   |
-|           |                           | v.3.8 (with some errors), |
-|           |                           | corrected and integrated  |
-|           |                           | in the library.           |
-|           |                           | Additionally, these       |
-|           |                           | inventories relied        |
-|           |                           | exclusively on synthetic  |
-|           |                           | graphite. This is has too |
-|           |                           | been modified: the anode  |
-|           |                           | production relies on a    |
-|           |                           | 50:50 mix of natural and  |
-|           |                           | synthetic graphite, as it |
-|           |                           | seems to be the current   |
-|           |                           | norm in the industry      |
-|           |                           | [50]_. Inventories for    |
-|           |                           | natural graphite are from |
-|           |                           | [51]_.                    |
-+-----------+---------------------------+                           |
-|           | NCA battery               |                           |
-+-----------+---------------------------+                           |
-|           | LFP battery               |                           |
-+-----------+---------------------------+---------------------------+
-| [52]_     | Type IV hydrogen tank,    | Carbon fiber being one of |
-|           | default                   | the main components of    |
-|           |                           | Type IV storage tanks,    |
-|           |                           | new inventories for       |
-|           |                           | carbon fiber              |
-|           |                           | manufacturing have been   |
-|           |                           | integrated to             |
-|           |                           | ``carculator_truck``,       |
-|           |                           | from [53]_.               |
-+-----------+---------------------------+---------------------------+
-| [54]_     | Type IV hydrogen tank,    |                           |
-|           | LDPE liner                |                           |
-+-----------+---------------------------+---------------------------+
-|           | Type IV hydrogen tank,    |                           |
-|           | aluminium liner           |                           |
-+-----------+---------------------------+---------------------------+
+.. table:: Table 26 List of inventories for different energy storage solutions
 
-Table 26 List of inventories for different energy storage solutions
+    +-----------+---------------------------+---------------------------+
+    | Author(s) | Energy storage type       | Description               |
+    +===========+===========================+===========================+
+    | [48,49]_  | NMC-111/622/811 battery   | Originally from [48]_,    |
+    |           |                           | then updated and          |
+    |           |                           | integrated in ecoinvent   |
+    |           |                           | v.3.8 (with some errors), |
+    |           |                           | corrected and integrated  |
+    |           |                           | in the library.           |
+    |           |                           | Additionally, these       |
+    |           |                           | inventories relied        |
+    |           |                           | exclusively on synthetic  |
+    |           |                           | graphite. This is has too |
+    |           |                           | been modified: the anode  |
+    |           |                           | production relies on a    |
+    |           |                           | 50:50 mix of natural and  |
+    |           |                           | synthetic graphite, as it |
+    |           |                           | seems to be the current   |
+    |           |                           | norm in the industry      |
+    |           |                           | [50]_. Inventories for    |
+    |           |                           | natural graphite are from |
+    |           |                           | [51]_.                    |
+    +-----------+---------------------------+                           |
+    |           | NCA battery               |                           |
+    +-----------+---------------------------+                           |
+    |           | LFP battery               |                           |
+    +-----------+---------------------------+---------------------------+
+    | [52]_     | Type IV hydrogen tank,    | Carbon fiber being one of |
+    |           | default                   | the main components of    |
+    |           |                           | Type IV storage tanks,    |
+    |           |                           | new inventories for       |
+    |           |                           | carbon fiber              |
+    |           |                           | manufacturing have been   |
+    |           |                           | integrated to             |
+    |           |                           | ``carculator_truck``,     |
+    |           |                           | from [53]_.               |
+    +-----------+---------------------------+---------------------------+
+    | [54]_     | Type IV hydrogen tank,    |                           |
+    |           | LDPE liner                |                           |
+    +-----------+---------------------------+---------------------------+
+    |           | Type IV hydrogen tank,    |                           |
+    |           | aluminium liner           |                           |
+    +-----------+---------------------------+---------------------------+
 
 Life cycle impact assessment
 ****************************

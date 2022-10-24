@@ -1,90 +1,12 @@
-Introduction
-============
+.. _usage:
 
-``carculator_truck`` is a parameterized model that allows to generate and characterize life cycle inventories for different
-truck configurations, according to selected:
-
-* powertrain technologies (5): diesel engine, hybrid diesel, plugin-hybrid diesel, battery electric and fuel cell electric,
-* year of operation (5): 2000, 2010, 2020, 2040 and 2050,
-* and sizes (9): 3.5t, 7.5t, 18t, 26t, 32t, 40t and 60t.
-
-The methodology used to develop ``carculator_truck`` is explained in:
-
-Does Size Matter? The Influence of Size, Load Factor, Range Autonomy, and Application Type on the Life Cycle Assessment of Current and Future Medium- and Heavy-Duty Vehicles
-Romain Sacchi, Christian Bauer, and Brian L. Cox
-Environmental Science & Technology 2021 55 (8), 5224-5235
-DOI: 10.1021/acs.est.0c07773
-`https://doi.org/10.1021/acs.est.0c07773 <https://doi.org/10.1021/acs.est.0c07773>`_
-
-The tool has a focus on trucks.
-
-More specifically, ``carculator_truck`` generates `Brightway2 <https://brightwaylca.org/>`_ and `SimaPro <https://simapro.com/>`_ inventories, but also directly provides characterized
-results against several midpoint indicators from the impact assessment method ReCiPe, ILCD, as well as life cycle cost indicators.
-
-``carculator_truck`` is a special in the way that it uses time- and energy-scenario-differentiated background inventories for the future,
-resulting from the coupling between the `ecoinvent database <https://ecoinvent.org>`_ and the scenario outputs of PIK's
-integrated assessment model `REMIND <https://www.pik-potsdam.de/research/transformation-pathways/models/remind/remind>`_.
-This allows to perform prospective study and consider future expected changes in regard to the production of electricity,
-cement, steel, heat, etc.
-
-Objective
----------
-
-The objective is to produce life cycle inventories for trucks in a transparent, comprehensive and quick manner,
-to be further used in prospective LCA of transportation technologies.
-
-Why?
-----
-
-Several life cycle assessment (LCA) models of trucks exist. Yet, because LCA of vehicles, particularly for electric battery vehicles,
-are sensitive to assumptions made in regards to electricity mix used for charging, lifetime of the battery, etc., it has led
-to mixed conclusions being published in the scientific literature. Because the underlying calculations are kept undocumented,
-it is not always possible to explain the disparity in the results given by these models, which can contribute to adding confusion among the public.
-
-Because ``carculator_truck`` is kept **as open as possible**, the methods and assumptions behind the generation of results are
-easily identifiable and adjustable.
-Also, there is an effort to keep the different modules (classes) separated, so that improving certain areas of the model is relatively
-easy and does not require changing extensive parts of the code. In that regard, contributions are welcome.
-
-Finally, beside being more flexible and transparent, ``carculator_truck`` provides interesting features, such as:
-
-* a stochastic mode, that allows fast Monte Carlo analyses, to include uncertainty at the vehicle level
-* possibility to override any or all of the 200+ default input truck parameters (e.g., cargo load, drag coefficient) but also calculated parameters (e.g., driving mass).
-* hot pollutants emissions as a function of the driving cycle, using `HBEFA <https://www.hbefa.net/e/index.html>`_ 4.1 data, further divided between rural, suburban and urban areas
-* noise emissions, based on `CNOSSOS-EU <https://ec.europa.eu/jrc/en/publication/reference-reports/common-noise-assessment-methods-europe-cnossos-eu>`_ models for noise emissions and `Noise footprint from personal land‐based mobility by Cucurachi, et al (2019) <https://onlinelibrary.wiley.com/doi/full/10.1111/jiec.12837>`_ for inventory modelling and mid- and endpoint characterization of noise emissions, function of driving cycle and further divided between rural, suburban and urban areas
-* export of inventories as an Excel/CSV file, to be used with Brightway2 or Simapro, including uncertainty information. This requires the user to have `ecoinvent` installed on the LCA software the trucks inventories are exported to.
-* export inventories directly into Brightway2, as a LCIImporter object to be registered. Additionally, when run in stochastic mode, it is possible to export arrays of pre-sampled values using the `presamples <https://pypi.org/project/presamples/>`_ library to be used together with the Monte Carlo function of Brightway2.
-
-How to install this package?
-----------------------------
-
-``carculator_truck`` is a Python package, and is meant to be used from within a Python 3.x environment.
-Because ``carculator_truck`` is still at an early development stage, it is a good idea to install it in a separate environment,
-such as a conda environment::
-
-    conda create -n <name of the environment> python=3.7
-
-Once your environment created, you should activate it::
-
-    conda activate <name of the environment>
-
-And install the ``carculator_truck`` library in your new environment via Conda::
-
-    conda install -c romainsacchi carculator_truck
-
-or via pip::
-
-    pip install carculator_truck
-
-This will install the package and the required dependencies.
-
-How to use it?
---------------
+Using Carculator truck
+======================
 
 Static vs. Stochastic mode
-**************************
+--------------------------
 
-Note: many examples are given in this `notebook <https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb>`_ which you can run directly on your computer.
+.. note:: many examples are given in this `notebook <https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb>`_ which you can run directly on your computer.
 
 The inventories can be calculated using the most likely value of the given input parameters ("static" mode), but also using
 randomly-generated values based on a probability distribution for those ("stochastic" mode).
@@ -147,7 +69,8 @@ In both case, a TruckModel object is returned, with a 4-dimensional array `array
 components mass, as well as exhaust and non-exhaust emissions for all vehicle profiles.
 
 Driving cycles
-**************
+--------------
+
 Three driving cycles, from the European Commission software VECTO, are available:
 
 * Urban delivery
@@ -165,7 +88,7 @@ Hence, to select a driving cycle, you can use the following syntax:
    tm = TruckModel(array, cycle='Urban delivery')
 
 Range
-*****
+-----
 
 ``carculator_truck`` designs the energy storage units (battery, fuel cell, etc.) to cover a given range autonomy of the vehicle.
 By default, the range autonomy of the trucks is set to:
@@ -181,24 +104,24 @@ This range can be changed by the user, using the following syntax:
    tm = TruckModel(array, target_range=200)
 
 Cargo load
-**********
+----------
 
 The cargo load of the trucks is, by default, dependent
 on the driving cycle and size of the truck (in kilograms):
 
+.. table::
 
-+---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
-| Size class                      |      | 3.5t  | 7.5t  | 18t    | 26t    | 32t    | 40t    |                                                                           |
-+=================================+======+=======+=======+========+========+========+========+===========================================================================+
-| Cargo carrying capacity         | ton  | ~1.3  | ~3.5  | ~10.1  | ~17.0  | ~20.1  | ~25.5  | Manufacturers’ data.                                                      |
-+---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
-| Cargo mass (urban delivery)     | ton  | 0.75  | 1.75  | 2.7    | 6.3    | 8.75   | 8.75   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
-+---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
-| Cargo mass (regional delivery)  | ton  | 0.75  | 1.75  | 3.2    | 6.3    | 10.3   | 19.3   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
-+---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
-| Cargo mass (long haul)          | ton  | 1.13  | 2.63  | 7.4    | 13.4   | 13.8   | 13.8   | TRACCS (Papadimitriou et al. 2013) for EU28                               |
-+---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
-
+    +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
+    | Size class                      |      | 3.5t  | 7.5t  | 18t    | 26t    | 32t    | 40t    |                                                                           |
+    +=================================+======+=======+=======+========+========+========+========+===========================================================================+
+    | Cargo carrying capacity         | ton  | ~1.3  | ~3.5  | ~10.1  | ~17.0  | ~20.1  | ~25.5  | Manufacturers’ data.                                                      |
+    +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
+    | Cargo mass (urban delivery)     | ton  | 0.75  | 1.75  | 2.7    | 6.3    | 8.75   | 8.75   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
+    +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
+    | Cargo mass (regional delivery)  | ton  | 0.75  | 1.75  | 3.2    | 6.3    | 10.3   | 19.3   | Long haul cargo mass, further corrected based on EC regulation 2019/1242  |
+    +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
+    | Cargo mass (long haul)          | ton  | 1.13  | 2.63  | 7.4    | 13.4   | 13.8   | 13.8   | TRACCS (Papadimitriou et al. 2013) for EU28                               |
+    +---------------------------------+------+-------+-------+--------+--------+--------+--------+---------------------------------------------------------------------------+
 
 These can be changed by the user, using the following syntax:
 
@@ -213,7 +136,7 @@ These can be changed by the user, using the following syntax:
     tm = TruckModel(array, payload=custom_load)
 
 Energy consumption
-******************
+------------------
 
 The energy consumption of the trucks is calculated using the driving cycle and the cargo load.
 But, it can also be provided directly by the user, using the following syntax,
@@ -231,7 +154,7 @@ in kilojoules per km (kJ/km):
     tm = TruckModel(array, energy_consumption=custom_consumption)
 
 Custom values for given parameters
-**********************************
+----------------------------------
 
 You can pass your own values for the given parameters, effectively overriding the default values.
 
@@ -258,7 +181,7 @@ The following probability distributions are accepted:
 * "none"
 
 Inter and extrapolation of parameters
-*************************************
+-------------------------------------
 
 ``carculator_truck`` creates by default vehicle models for the year 2000, 2010, 2020, 2040 and 2050.
 It is possible to inter and extrapolate all the parameters to other years simply by writing:
@@ -270,7 +193,7 @@ It is possible to inter and extrapolate all the parameters to other years simply
 However, we do not recommend extrapolating for years before 2000 or beyond 2050.
 
 Accessing calculated parameters of the truck model
-**************************************************
+--------------------------------------------------
 
 Hence, the tank-to-wheel energy requirement per km driven per powertrain technology
 for a 7.5t electric truck in 2020 can be obtained from the TruckModel object
@@ -310,8 +233,6 @@ Finally, return their values and display the first 10 in a table:
 
     tm.array.sel(parameter=direct_emissions, year=2030, size='32t', powertrain='ICEV-d').to_dataframe(name='direct emissions')
 
-
-
 Or we could be interested in visualizing the distribution of
 non-characterized noise emissions, in joules:
 
@@ -326,7 +247,7 @@ non-characterized noise emissions, in joules:
 
 
 Characterization of inventories (static)
-****************************************
+----------------------------------------
 
 ``carculator_truck`` makes the characterization of inventories easy. You can characterize the inventories directly from
 ``carculator_truck`` against midpoint impact assessment methods.
@@ -351,8 +272,6 @@ Hence, to plot the carbon footprint for all diesel trucks in 2020:
     plt.ylabel('kg CO2-eq./tkm')
     plt.show()
 
-
-
 Note that, for now, only the ReCiPe 2008 v.1.13 and ILCD 2018 methods
 are available for midpoint characterization.
 Also, once the instance of the :class:`TruckModel`
@@ -362,7 +281,7 @@ change values of certain input or calculated parameters,
 the driving cycle or go from static to stochastic mode).
 
 Characterization of inventories (stochastic)
-********************************************
+--------------------------------------------
 
 In the same manner, you can obtain distributions of results,
 instead of one-point values if you have run the model in
@@ -393,7 +312,7 @@ stochastic mode (with 500 iterations and the driving cycle Long haul).
 Many other examples are described in a Jupyter Notebook in the ``examples`` folder.
 
 Export of inventories (static)
-******************************
+------------------------------
 
 Inventories can be exported as:
     * a Python list of exchanges
@@ -413,9 +332,8 @@ Inventories can be exported as:
     filepath = ic.export_lci_to_excel(software_compatibility="brightway2", ecoinvent_version="3.8")
     filepath = ic.export_lci_to_excel(software_compatibility="simapro", ecoinvent_version="3.6")
 
-
 Import of inventories (static)
-******************************
+------------------------------
 
 The inventories will link to the ecoinvent database.
 
