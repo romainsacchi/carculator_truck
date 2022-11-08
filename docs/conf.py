@@ -34,6 +34,7 @@ release = "0.3.8"
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinxcontrib.bibtex",
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx_immaterial",
@@ -60,8 +61,8 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 #
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_logo = "_static/media/img/mediumsmall.png"
-html_favicon = "_static/media/img/favicon.png"
+html_logo = "_static/img/mediumsmall.png"
+html_favicon = "_static/img/favicon.png"
 html_title = "Carculator truck"
 
 html_theme = "sphinx_immaterial"
@@ -115,3 +116,14 @@ numfig = True
 numfig_secnum_depth = 1
 
 numfig_format = {"figure": "Figure %s: "}
+
+references = []
+bibtex_path = os.path.join(".", "references")
+
+if os.path.exists(bibtex_path):
+    for bib_file in os.listdir(bibtex_path):
+        if bib_file.endswith(".bib"):
+            filename = os.path.basename(bib_file)
+            references.append("./references/{}".format(filename))
+
+bibtex_bibfiles = references

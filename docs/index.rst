@@ -66,14 +66,25 @@ User's Guide
 ------------
 
 .. toctree::
+   :maxdepth: 2
 
-    installation
-    usage
-    modeling
+   installation
+   usage
+   modeling
+   structure
+   validity
 
 API Reference
 -------------
 
 .. toctree::
+   :maxdepth: 2
 
-    api
+   api
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   references
+   annexes
