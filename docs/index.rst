@@ -1,4 +1,4 @@
-.. image:: /_static/media/img/mediumsmall_2.png
+.. image:: /_static/img/mediumsmall_2.png
    :align: center
 
 .. _intro:

@@ -6,7 +6,9 @@ Using Carculator truck
 Static vs. Stochastic mode
 --------------------------
 
-.. note:: many examples are given in this `notebook <https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb>`_ which you can run directly on your computer.
+.. note:: 
+
+   Many examples are given in this `notebook <https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb>`_ which you can run directly on your computer.
 
 The inventories can be calculated using the most likely value of the given input parameters ("static" mode), but also using
 randomly-generated values based on a probability distribution for those ("stochastic" mode).
@@ -171,7 +173,7 @@ and not what is initially defined by the default values. It is easy to change th
     cm.set_all()
 
 Alternatively, instead of a Python dictionary, you can pass a file path pointing to an Excel spreadsheet that contains
-the values to change, following `this template <https://github.com/romainsacchi/carculator_truck/raw/master/docs/template_workbook.xlsx>`_.
+the values to change, following `this template </template_workbook.xlsx>`_.
 
 The following probability distributions are accepted:
 * "triangular"

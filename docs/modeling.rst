@@ -74,31 +74,31 @@ to 400 km without significantly sacrificing the cargo carrying capacity.
 
 Example of 3.5t truck, rigid, 2 axles, box body and 7.5t truck, rigid, 2 axles, box body
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image68.jpg
+.. image:: /media/image68.jpg
     :width: 40%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image69.jpg
+.. image:: /media/image69.jpg
     :width: 40%
 
 Example of 18t truck, rigid, 2 axles, box body and 26t truck, rigid, 3 axles, box body
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image70.png
+.. image:: /media/image70.png
     :width: 40%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image71.png
+.. image:: /media/image71.png
     :width: 40%
 
 Example of 32t truck, semi-trailer, 2+3 axles, curtain-sider and 40t truck, tipper-trailer, 2+4 axles
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image72.jpg
+.. image:: /media/image72.jpg
     :width: 40%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image73.jpg
+.. image:: /media/image73.jpg
     :width: 40%
 
 Example of 60t truck, semi-trailer + trailer, 2+4+2 axles, curtain-sider
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image74.jpg
+.. image:: /media/image74.jpg
     :width: 50%
 
 Manufacture year and emission standard
@@ -320,7 +320,7 @@ Figure 2 shows the contribution of each type of resistance as calculated by
 ``carculator_truck`` for the first hundred seconds of the “Urban delivery”
 driving cycle, for an 18t diesel truck.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_truck_resistance.png
+.. image:: /media/image_truck_resistance.png
 
 Figure 2 Resistance components at wheels level for the first hundred
 seconds of the “Urban delivery” driving cycle, for an 18t diesel truck.
@@ -330,7 +330,7 @@ driving cycle. It distinguishes the target speed from the actual speed
 managed by the different vehicles. The power-to-mass ratio influences
 the extent to which a vehicle manages to comply with the target speed.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image76.png
+.. image:: /media/image76.png
 
 Figure 3 VECTO's "Urban delivery" driving cycle (first two hundred
 seconds)
@@ -343,7 +343,7 @@ haul” driving cycle has a comparatively higher average speed level and
 lasts much longer. Figure 4 shows the first two hundred seconds of the
 “Long haul” driving cycle.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image78.png
+.. image:: /media/image78.png
 
 Figure 4 VECTO's "Long haul" driving cycle (first two hundred seconds)
 
@@ -351,9 +351,9 @@ Table 6 shows a few parameters about the three driving cycles
 considered. Value intervals are shown for some parameters as they vary
 across size classes.
 
-..note::
+.. note::
 
-    **Important remark**: unlike the modeling of passenger cars, the
+    **Important remark**: Unlike the modeling of passenger cars, the
     vehicles are designed in order to satisfy a given range autonomy. The
     range autonomy specific to each driving cycle is specified in the last
     column of Table 6. This is particularly relevant for battery electric
@@ -409,10 +409,10 @@ the complexity considered in VECTO, depicted here by the measurements that devia
 for the red curve. Nevertheless, it allows obtaining a reasonable estimate of
 the efficiency of these drivetrain components.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_eff_fitting_1.png
+.. image:: /media/image_eff_fitting_1.png
     :width: 45%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_eff_fitting_2.png
+.. image:: /media/image_eff_fitting_2.png
     :width: 45%
 
 Such calibration exercise with VECTO for the diesel-powered 40t truck is
@@ -421,7 +421,7 @@ calibration, the tank-to-wheel energy consumption value obtained from
 VECTO and from ``carculator_truck`` for diesel-powered trucks differ by
 less than 1 percent over the entire driving cycle.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image79.png
+.. image:: /media/image79.png
 
 Figure 5 Calibration of carculator_truck energy model against VECTO
 simulations for a 40t articulated truck diesel truck (first 1’500
@@ -451,7 +451,7 @@ efficiency levels. Of course, the difference in efficiency
 will be more pronounced on driving cycles with transient loads.
 
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_engine_downsizing.png
+.. image:: /media/image_engine_downsizing.png
 
 Figure 6 Engine efficiency comparison between a conventional (ICEV-d)
 and hybrid (HEV-d) 40t diesel truck
@@ -467,7 +467,7 @@ The relation between the mass of compressed gas and the cylinder mass is
 depicted in Figure 11. This relation is based on manufacturers’ data –
 mainly from (Daimler Trucks 2017; QTWW 2021).
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_cng_tanks.png
+.. image:: /media/image_cng_tanks.png
    :width: 50%
 
 Figure 11 Relation between mass of stored compressed gas and cylinder
@@ -509,9 +509,9 @@ emitted per MJ of fuel consumed, to be able to model exhaust emissions
 of trucks of different sizes, masses, operating on different driving
 cycles and with different load factors.
 
-..note::
+.. note::
 
-    **Important remark**: the degradation of anti-pollution systems for
+    **Important remark**: The degradation of anti-pollution systems for
     EURO-6 diesel trucks (i.e., catalytic converters) is accounted for as
     indicated by HBEFA 4.1, by applying a degradation factor on the emission
     factors for NO\ :sub:`x`. These factors are shown in Table 87 Table
@@ -531,7 +531,7 @@ Table 87 Degradation factors at 890'000 km for diesel trucks
 **EURO-6**                           1.3
 ==================================== =========
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image80.png
+.. image:: /media/image80.png
    :width: 6.27014in
    :height: 7.84756in
 
@@ -562,7 +562,7 @@ cycles using trucks of different size classes and HBEFA’s emission
 factors for “rural” and “motorway” traffic situations shows a similar
 picture.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image81.png
+.. image:: /media/image81.png
    :width: 6.27014in
    :height: 5.70565in
 
@@ -661,9 +661,9 @@ and these values tend to change rapidly over time, as it is being the focus of m
 The sizing of energy storage for BEV trucks is sensitive to the required
 range autonomy, which is specific to each driving cycle (or defined by the user).
 
-..note::
+.. note::
 
-    **Important remark**: technically speaking ``carculator_truck`` will model
+    **Important remark**: Technically speaking ``carculator_truck`` will model
     all trucks. However, if a vehicle has an energy storage unit mass
     leading to a reduction in the cargo carrying capacity beyond a
     reasonable extent, it will not be processed for LCI quantification. This
@@ -810,7 +810,7 @@ energy density of NCA batteries slightly increases the available payload
 of the vehicle. This difference becomes more significant as the required
 range autonomy increases.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image82.png
+.. image:: /media/image82.png
    :width: 4.19231in
    :height: 4.39368in
 
@@ -922,7 +922,7 @@ substantially more carbon fiber (up to 70% by mass): this can
 potentially impact end-results as carbon fiber is very energy-intensive
 to produce.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image61.png
+.. image:: /media/image61.png
    :width: 5.01389in
    :height: 3.00694in
 
@@ -931,7 +931,7 @@ cylinder mass
 
 .. note::
 
-    **Important remark**: a battery is also added to fuel cell electric
+    **Important remark**: A battery is also added to fuel cell electric
     trucks. Based on manufacturer’s specification, its storage capacity
     represents approximately 6% of the storage capacity of the hydrogen
     cylinders, with a minimum of 20 kWh.
@@ -1015,7 +1015,7 @@ modeled by ``carculator_truck`` with those found in HBEFA and ecoinvent
 v.3.
 
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image83.png
+.. image:: /media/image83.png
    :width: 7.51138in
    :height: 3.10833in
 
@@ -1035,10 +1035,10 @@ trucks with the specifications of some commercial models disclosed by
 manufacturers. These manufacturers’ specifications can also be found in
 Annex D.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image84.png
+.. image:: /media/image84.png
    :width: 40%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image85.png
+.. image:: /media/image85.png
    :width: 40%
 
 +----------------------------------+----------------------------------+
@@ -1048,10 +1048,10 @@ Annex D.
 |                                  | gross weight                     |
 +----------------------------------+----------------------------------+
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image86.png
+.. image:: /media/image86.png
    :width: 40%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image87.png
+.. image:: /media/image87.png
    :width: 40%
 
 +----------------------------------+----------------------------------+
@@ -1075,10 +1075,10 @@ of commercial models.
 Fuel cell electric trucks
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image88.png
+.. image:: /media/image88.png
    :width: 40%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image89.png
+.. image:: /media/image89.png
    :width: 40%
 
 +----------------------------------+----------------------------------+
@@ -1093,10 +1093,10 @@ Fuel cell electric trucks
 |                                  | a range autonomy of 800 km.      |
 +----------------------------------+----------------------------------+
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image90.png
+.. image:: /media/image90.png
    :width: 40%
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image91.png
+.. image:: /media/image91.png
    :width: 40%
 
 +----------------------------------+----------------------------------+
@@ -1111,7 +1111,7 @@ Fuel cell electric trucks
 |                                  | autonomy of 800 km.              |
 +----------------------------------+----------------------------------+
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image92.png
+.. image:: /media/image92.png
    :width: 40%
 
 +----------------------------------+----------------------------------+
@@ -1194,7 +1194,7 @@ Note that ``carculator_truck`` will adapt the sulfur concentration of the
 fuel (and related SOx emissions) based on the country the user selects (see Figure 15).
 
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image_sulfur_countries.png
+.. image:: /media/image_sulfur_countries.png
    :width: 100%
 
 Figure 15 Region-specific sulfur concentration of diesel fuel. Source:
@@ -1527,7 +1527,7 @@ emissions is higher for the urban delivery cycle than for the regional
 delivery cycle, because the urban delivery cycle has a higher share of
 braking events.
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image75.png
+.. image:: /media/image75.png
 
 
 Figure 16 Total particulate matter emissions (<2.5 µm and 2.5-10 µm) in
@@ -1559,7 +1559,7 @@ Lifetime loss [kg per vehicle lifetime]  0.94
 
 .. note::
 
-    **Important assumption**: it is assumed that electric and plug-in
+    **Important assumption**: It is assumed that electric and plug-in
     electric vehicles also use a compressor-like belt-driven air
     conditioning system, relying on the refrigerant gas R134a. In practice,
     an increasing, but still minor, share of electric vehicles now use a
@@ -1579,7 +1579,7 @@ noise emissions are quantified separately.
 
 The sound power level of rolling noise is calculated using:
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image_noise_1.png
+.. image:: /media/image_noise_1.png
    :width: 3.45in
    :height: 0.65in
 
@@ -1593,7 +1593,7 @@ And *A\ R,i,m* and *B\ R,i,m*\ are unitless and given in Table 23.
 
 The propulsion noise level is calculated using:
 
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/image_noise_2.png
+.. image:: /media/image_noise_2.png
    :width: 3.6in
    :height: 0.625in
 
