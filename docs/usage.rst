@@ -13,7 +13,7 @@ Static vs. Stochastic mode
 The inventories can be calculated using the most likely value of the given input parameters ("static" mode), but also using
 randomly-generated values based on a probability distribution for those ("stochastic" mode).
 
-For example, the aerodynamic drag coefficient of 32t trucks in 2020, across powertrains, is given the most likely value (i.e., the mode) of 0.38,
+For example, the aerodynamic drag coefficient of 32t trucks in 2020, across power trains, is given the most likely value (i.e., the mode) of 0.38,
 but with a triangular probability distribution with a minimum and maximum of 0.3 and 0.4, respectively.
 
 Creating truck models in static mode will use the most likely value of the given parameters to dimension the vehicles, etc., such as:
@@ -55,7 +55,7 @@ In both case, a TruckModel object is returned, with a 4-dimensional array `array
     * 40t
     * 60t
 
-1. Powertrains:
+1. Power trains:
     * ICEV-d, ICEV-g: vehicles with internal combustion engines running on diesel and compressed gas, respectively.
     * HEV-d: vehicles with internal combustion engines running on diesel, assisted with an electric engine.
     * PHEV-d: vehicles with internal combustion engines running partly on diesel, and partly on electricity (depending on the electric utility factor selected).
@@ -173,9 +173,10 @@ and not what is initially defined by the default values. It is easy to change th
     cm.set_all()
 
 Alternatively, instead of a Python dictionary, you can pass a file path pointing to an Excel spreadsheet that contains
-the values to change, following `this template </template_workbook.xlsx>`_.
+the values to change, following :download:`this template </_static/resources/template_workbook.zip>`.
 
 The following probability distributions are accepted:
+
 * "triangular"
 * "lognormal"
 * "normal"
@@ -197,7 +198,7 @@ However, we do not recommend extrapolating for years before 2000 or beyond 2050.
 Accessing calculated parameters of the truck model
 --------------------------------------------------
 
-Hence, the tank-to-wheel energy requirement per km driven per powertrain technology
+Hence, the tank-to-wheel energy requirement per km driven per power train technology
 for a 7.5t electric truck in 2020 can be obtained from the TruckModel object
 (only possible after calling :meth:`tm.set_all()`):
 
@@ -206,10 +207,12 @@ for a 7.5t electric truck in 2020 can be obtained from the TruckModel object
     TtW_energy = tm.array.sel(size='7.5t', year=2020, parameter='TtW energy')
 
 
-Note that if you call the :meth:`stochastic` method of the :class:`CarInputParameters`, you would have
-several values stored for a given calculated parameter in the array.
-The number of values correspond to the number of iterations
-you passed to :meth:`stochastic`.
+.. note::
+
+    If you call the :meth:`stochastic` method of the :class:`CarInputParameters`, you would have
+    several values stored for a given calculated parameter in the array.
+    The number of values correspond to the number of iterations
+    you passed to :meth:`stochastic`.
 
 
 Any other attributes of the TruckModel class can be obtained in a similar way.
@@ -274,13 +277,14 @@ Hence, to plot the carbon footprint for all diesel trucks in 2020:
     plt.ylabel('kg CO2-eq./tkm')
     plt.show()
 
-Note that, for now, only the ReCiPe 2008 v.1.13 and ILCD 2018 methods
-are available for midpoint characterization.
-Also, once the instance of the :class:`TruckModel`
-class has been created, there is no need to re-create it
-in order to calculate additional environmental impacts (unless you wish to
-change values of certain input or calculated parameters,
-the driving cycle or go from static to stochastic mode).
+.. note::
+
+    * For now, only the ReCiPe 2008 v.1.13 and ILCD 2018 methods
+      are available for midpoint characterization.
+    * Also, once the instance of the :class:`TruckModel` class has been created,
+      there is no need to re-create it in order to calculate additional environmental impacts
+      (unless you wish to change values of certain input or calculated parameters,
+      the driving cycle or go from static to stochastic mode).
 
 Characterization of inventories (stochastic)
 --------------------------------------------
@@ -311,7 +315,7 @@ stochastic mode (with 500 iterations and the driving cycle Long haul).
     plt.show()
 
 
-Many other examples are described in a Jupyter Notebook in the ``examples`` folder.
+Many other examples are described in a Jupyter Notebook inside the :download:`examples </_static/resources/examples.zip>` zipped file.
 
 Export of inventories (static)
 ------------------------------

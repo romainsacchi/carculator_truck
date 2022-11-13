@@ -127,4 +127,5 @@ if os.path.exists(bibtex_path):
             references.append("./references/{}".format(filename))
 
 bibtex_bibfiles = references
-bibtex_reference_style = "label"
+bibtex_default_style = "unsrt"
+bibtex_reference_style = "author_year"
