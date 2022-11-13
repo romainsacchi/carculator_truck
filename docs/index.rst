@@ -86,5 +86,5 @@ API Reference
    :maxdepth: 2
    :hidden:
 
-   references
+   references/references
    annexes

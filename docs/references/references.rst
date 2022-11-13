@@ -3,8 +3,8 @@
 References
 ==========
 
-.. bibliography:: /references/refs.bib
-   :list: enumerated
+.. bibliography:: refs.bib
    :all:
    :style: plain
    :labelprefix: CT
+   :keyprefix: ct-
