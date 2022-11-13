@@ -115,7 +115,7 @@ html_css_files = ["css/custom.css"]
 numfig = True
 numfig_secnum_depth = 1
 
-numfig_format = {"figure": "Figure %s: "}
+numfig_format = {"figure": None}
 
 references = []
 bibtex_path = os.path.join(".", "references")
@@ -129,3 +129,17 @@ if os.path.exists(bibtex_path):
 bibtex_bibfiles = references
 bibtex_default_style = "unsrt"
 bibtex_reference_style = "author_year"
+
+rst_epilog = """
+.. |br| raw:: html 
+
+   <br>
+   
+.. |s_caption| raw:: html
+
+    <p style="text-align:center;">
+    
+.. |e_caption| raw:: html
+
+    </p>
+"""
