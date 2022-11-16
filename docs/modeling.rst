@@ -110,7 +110,7 @@ to the registration year. Those are presented in :ref:`Table 1 <table-1>`.
 
 .. _table-1:
 
-.. table:: Emission standards and year of manufacture for medium and heavy/duty trucks
+.. table:: Table 1: Emission standards and year of manufacture for medium and heavy/duty trucks
    :align: center
    :widths: auto
 
@@ -160,7 +160,7 @@ The following components are common to all powertrains:
 
 .. _table-2:
 
-.. table:: Mass distribution of components for medium- and heavy-duty trucks
+.. table:: Table 2: Mass distribution of components for medium- and heavy-duty trucks
    :align: center
    :widths: auto
 
@@ -212,7 +212,7 @@ Those are presented in :ref:`Table 3 <table-3>`.
 
 .. _table-3:
 
-.. table:: Kilometric and calendar lifetimes for European trucks
+.. table:: Table 3: Kilometric and calendar lifetimes for European trucks
    :align: center
    :widths: auto
 
@@ -239,7 +239,7 @@ presented in :ref:`Table 4 <table-4>`.
 
 .. _table-4:
 
-.. table:: Default load for European medium- and heavy-duty trucks
+.. table:: Table 4: Default load for European medium- and heavy-duty trucks
    :align: center
    :widths: auto
 
@@ -263,7 +263,7 @@ available in the Annex A-C of this report.
 
 .. _table-5:
 
-.. table:: Size-related parameters common to European trucks (in 2020)
+.. table:: Table 5: Size-related parameters common to European trucks (in 2020)
    :align: center
    :widths: auto
 
@@ -292,7 +292,7 @@ are time-dependent, and based on various projections found in the literature.
 
 .. _table-6:
 
-.. table:: Non-exhaustive list of time-dependent parameters common to European trucks
+.. table:: Table 6: Non-exhaustive list of time-dependent parameters common to European trucks
    :align: center
    :widths: auto
 
@@ -395,7 +395,7 @@ across size classes.
 
 .. _table-7:
 
-.. table:: Parameters of driving cycles used for medium- and heavy-duty trucks
+.. table:: Table 7: Parameters of driving cycles used for medium- and heavy-duty trucks
    :align: center
    :widths: auto
 
@@ -568,7 +568,7 @@ cycles and with different load factors.
 
 .. _table-8:
 
-.. table:: Degradation factors at 890'000 km for diesel trucks
+.. table:: Table 8: Degradation factors at 890'000 km for diesel trucks
    :align: center
    :widths: auto
 
@@ -643,7 +643,7 @@ on :cite:`ct-1080` and are presented in :ref:`Table 9 <table-9>`-:ref:`Table 10 
 
 .. _table-9:
 
-.. table:: Efficiency values along the drivetrain of electric trucks in driving mode
+.. table:: Table 9: Efficiency values along the drivetrain of electric trucks in driving mode
    :align: center
    :widths: auto
 
@@ -675,7 +675,7 @@ on :cite:`ct-1080` and are presented in :ref:`Table 9 <table-9>`-:ref:`Table 10 
 
 .. _table-10:
 
-.. table:: Efficiency values along the drivetrain of electric trucks in recuperation mode
+.. table:: Table 10: Efficiency values along the drivetrain of electric trucks in recuperation mode
    :align: center
    :widths: auto
 
@@ -754,7 +754,7 @@ chemistry are presented in :ref:`Table 11 <table-11>`, they are also repeated in
 
 .. _table-11:
 
-.. table:: Parameters for different battery chemistry for current battery electric trucks
+.. table:: Table 11: Parameters for different battery chemistry for current battery electric trucks
    :align: center
    :widths: auto
 
@@ -790,7 +790,7 @@ The user can also select NMC-1-1-1 or NMC-8-1-1.
 
 .. _table-12:
 
-.. table:: Parameters for different battery chemistry for future battery electric trucks
+.. table:: Table 12: Parameters for different battery chemistry for future battery electric trucks
    :align: center
    :widths: auto
 
@@ -876,7 +876,7 @@ different electric vehicles in this study.
 
 .. _table-13:
 
-.. table:: Number of battery replacements assumed or calculated
+.. table:: Table 13: Number of battery replacements assumed or calculated
    :align: center
    :widths: auto
 
@@ -925,7 +925,7 @@ are described in :ref:`Table 14 <table-14>`.
 
 .. _table-14:
 
-.. table:: Energy storage and electric utility factor of plugin hybrid trucks
+.. table:: Table 14: Energy storage and electric utility factor of plugin hybrid trucks
    :align: center
    :widths: auto
 
@@ -963,7 +963,7 @@ seem to be implemented for fuel cell stacks at the moment.
 
 .. _table-15:
 
-.. table:: Specifications for fuel cell stack systems
+.. table:: Table 15: Specifications for fuel cell stack systems
    :align: center
    :widths: auto
 
@@ -1042,7 +1042,7 @@ or about five trucks with a 350 kWh battery pack.
 
 .. _table-16:
 
-.. table:: Parameters of the charging station for battery electric trucks
+.. table:: Table 16: Parameters of the charging station for battery electric trucks
    :align: center
    :widths: auto
 
