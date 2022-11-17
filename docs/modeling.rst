@@ -272,7 +272,7 @@ available in the Annex A-C of this report.
    +=================================+===============+=======+=======+========+========+========+========+==============================================+
    | Number of axles                 | unit          | 2     | 2     | 2      | 3      | 5      | 6      | Manufacturers’ data.                         |
    +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
-   | Rolling resistance coefficient  | unitless      | .0055 | .0055 | .0055  | .0055  | .0055  | .0055  | (Meszler et al. 2018)                        |
+   | Rolling resistance coefficient  | unit-less     | .0055 | .0055 | .0055  | .0055  | .0055  | .0055  | (Meszler et al. 2018)                        |
    +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
    | Frontal area                    | square meter  | 4.1   | 5.3   | 7.5    | 7.5    | 10     | 10     | Manufacturers’ data.                         |
    +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
@@ -299,9 +299,9 @@ are time-dependent, and based on various projections found in the literature.
    +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
    | Size class in this study        |               | 2000  | 2010  | 2020   | 2030   | 2040   | 2050   | Source                                       |
    +=================================+===============+=======+=======+========+========+========+========+==============================================+
-   | Aerodynamic drag                | unitless      | 0.55  | 0.5   | 0.47   | 0.45   | 0.43   | 0.4    | ICCT, 2021                                   |
+   | Aerodynamic drag                | unit-less     | 0.55  | 0.5   | 0.47   | 0.45   | 0.43   | 0.4    | ICCT, 2021                                   |
    +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
-   | Rolling resistance coefficient  | unitless      | .0055 | .0055 | .0055  | .004   | .004   | .004   | ICCT, white paper, 2018, assumption          |
+   | Rolling resistance coefficient  | unit-less     | .0055 | .0055 | .0055  | .004   | .004   | .004   | ICCT, white paper, 2018, assumption          |
    +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
    | NMC battery cycling life        | unit          | 3000  | 3000  | 3000   | 4000   | 4000   | 4000   | (Preger et al. 2020), assumption             |
    +---------------------------------+---------------+-------+-------+--------+--------+--------+--------+----------------------------------------------+
@@ -545,7 +545,7 @@ For trucks, two sources source of emissions are considered:
 
 For exhaust emissions, factors based on the fuel consumption are derived
 by comparing emission data points for different traffic situations
-(i.e., grams emitted per vehicle-km) in freeflowing driving conditions,
+(i.e., grams emitted per vehicle-km) in free-flowing driving conditions,
 with the fuel consumption corresponding to each data point (i.e., MJ of
 fuel consumed per km), as illustrated in for a diesel-powered engine.
 The aim is to obtain emission factors expressed as grams of substance
@@ -2051,8 +2051,8 @@ endpoint (i.e., human health, ecosystem impacts and resources use)
 indicators include those of the ReCiPe 2008 v.1.13 impact assessment
 method, as well as those of ILCD 2018. Additionally, it is possible to
 export the inventories in a format compatible with the LCA framework
-Brightway2 or Simapro, thereby allowing the characterization
-of the results against a larger number of impact assessment methods.
+`Brightway2 <https://brightway.dev/>`_ or `SimaPro <https://simapro.com/>`_,
+thereby allowing the characterization of the results against a larger number of impact assessment methods.
 
 .. footbibliography::
 

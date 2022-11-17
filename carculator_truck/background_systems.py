@@ -82,7 +82,7 @@ def get_electricity_mix():
     Source:
 
     * for European countries (`EU Reference Scenario 2016
-      <https://ec.europa.eu/energy/en/data-analysis/energy-modelling/eu-reference-scenario-2016>`_),
+      <https://op.europa.eu/en/publication-detail/-/publication/aed45f8e-63e3-47fb-9440-a0a14370f243/language-en/format-PDF/source-106883045>`_),
     * for African countries (`TEMBA <http://www.osemosys.org/temba.html>`_ model)
     * and for other countries (`IEA World Energy outlook 2017
       <https://www.iea.org/reports/world-energy-outlook-2017>`_)

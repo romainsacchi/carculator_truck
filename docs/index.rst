@@ -16,7 +16,7 @@ truck configurations, according to selected:
 The methodology used to develop ``carculator_truck`` is explained in an article :cite:`ct-1074`.
 The tool has a focus on trucks.
 
-More specifically, ``carculator_truck`` generates `Brightway2 <https://brightwaylca.org/>`_ and `SimaPro <https://simapro.com/>`_ inventories, but also directly provides characterized
+More specifically, ``carculator_truck`` generates `Brightway2 <https://brightway.dev/>`_ and `SimaPro <https://simapro.com/>`_ inventories, but also directly provides characterized
 results against several midpoint indicators from the impact assessment method ReCiPe, ILCD, as well as life cycle cost indicators.
 
 ``carculator_truck`` is special in the way that it uses time- and energy-scenario-differentiated background inventories for the future,
