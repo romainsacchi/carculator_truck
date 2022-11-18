@@ -7,9 +7,12 @@ input {
 
 .md-typeset, .md-nav, .md-typeset table:not([class]) {
     font-size: 16px !important;
-    line-height: 1.5 !important;
+    line-height: 1.4 !important;
 }
 
+.md-typeset table.data:not(.plain) td {
+	padding: .7031em 1.15em!important;
+}
 
 h1, h2, h3 {
     font-weight: 500 !important;

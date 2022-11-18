@@ -855,7 +855,7 @@ total mileage over the lifetime), in relation with the cycle life of the battery
 
 .. note::
 
-    Important assumption: The environmental burden associated with the manufacture
+    **Important assumption:**: The environmental burden associated with the manufacture
     of spare batteries is entirely allocated to the vehicle use.
     The number of battery replacements is rounded up.
 
@@ -1246,7 +1246,7 @@ and the average occupancy is 1.6 persons per vehicle.
 
 The demand rates used to calculate the amounts required for road
 construction and maintenance (based on vehicle mass per km and per km,
-respectively) are taken from :footcite:`1091`.
+respectively) are taken from :cite:`ct-1091`.
 
 Because roads are maintained by removing surface layers older than those
 that are actually discarded, road infrastructure disposal is modeled in
@@ -1260,9 +1260,9 @@ For all vehicles with an internal combustion engine, carbon dioxide
 (CO\ :sub:`2`) and sulfur dioxide (SO\ :sub:`2`) emissions are
 calculated based on the fuel consumption of the vehicle and the carbon
 and sulfur concentration of the fuel observed in Switzerland and Europe.
-Sulfur concentration values are sourced from HBEFA 4.1 :footcite:`1058`. Lower
+Sulfur concentration values are sourced from HBEFA 4.1 :cite:`ct-1058`. Lower
 heating values and CO\ :sub:`2` emission factors for fuels are sourced
-from p.86 and p.103 of :footcite:`1096`. The fuel properties shown in :ref:`Table 17 <table-17>` are
+from p.86 and p.103 of :cite:`ct-1096`. The fuel properties shown in :ref:`Table 17 <table-17>` are
 used for fuels purchased in Switzerland but should be applicable for other
 areas/countries.
 
@@ -1305,18 +1305,18 @@ Exhaust emissions
 -----------------
 
 Emissions of regulated and non-regulated substances during driving are
-approximated using emission factors from HBEFA 4.1 :footcite:`1058`. Emission
+approximated using emission factors from HBEFA 4.1 :cite:`ct-1058`. Emission
 factors are typically given in gram per km. Emission factors
 representing free flowing driving conditions and urban and rural traffic
 situations are used. Additionally, cold start emissions as well as
 running, evaporation and diurnal losses are accounted for, also sourced
-from HBEFA 4.1 :footcite:`1058`.
+from HBEFA 4.1 :cite:`ct-1058`.
 
 For vehicles with an internal combustion engine, the sulfur
 concentration values in the fuel can slightly differ across regions -
 although this remains rather limited within Europe. The values provided
 by HBEFA 4.1 are used for Switzerland, France, Germany, Austria and
-Sweden. For other countries, values from :footcite:`1118` are used.
+Sweden. For other countries, values from :cite:`ct-1118` are used.
 
 .. _table-18:
 
@@ -1343,7 +1343,7 @@ The amount of sulfur dioxide released by the vehicle over one km [kg/km] is calc
 - and :math:`64/32` is the ratio between the molar mass of SO2 and the molar mass of O2.
 
 Country-specific fuel blends are sourced from the IEA's Extended World
-Energy Balances database :footcite:`1045`. By default, the biofuel used is assumed
+Energy Balances database :cite:`ct-1045`. By default, the biofuel used is assumed
 to be produced from biomass residues (i.e., second-generation fuel):
 fermentation of crop residues for bioethanol, esterification of used
 vegetable oil for biodiesel and anaerobic digestion of sewage sludge for
@@ -1460,7 +1460,7 @@ Engine wear emissions
 Metals and other substances are emitted during the combustion of fuel
 because of engine wear. These emissions are scaled based on the fuel
 consumption, using the emission factors listed in :ref:`Table 21 <table-21>`,
-sourced from :footcite:`1028`.
+sourced from :cite:`ct-1028`.
 
 .. _table-21:
 
@@ -1509,16 +1509,16 @@ emissions:
 and re-suspended road dust: dust on the road surface that is
 re-suspended as a result of passing traffic, "due either to shear forces
 at the tire/road surface interface, or air turbulence in the wake of a
-moving vehicle" :footcite:`1007`.
+moving vehicle" :cite:`ct-1007`.
 
-:footcite:`1007` provides an approach for estimating the mass and extent of these
+:cite:`ct-1007` provides an approach for estimating the mass and extent of these
 abrasion emissions. They propose to disaggregate the abrasion emission
-factors presented in the EMEP's 2019 Emission inventory guidebook :footcite:`1028`
+factors presented in the EMEP's 2019 Emission inventory guidebook :cite:`ct-1028`
 for two-wheelers, passenger cars, buses and heavy good vehicles, to
 re-quantify them as a function of vehicle mass, but also traffic
 situations (urban, rural and motorway). Additionally, they present an
 approach to calculate re-suspended road dust according to the method
-presented in :footcite:`1103` - such factors are not present in the EMEP's 2019
+presented in :cite:`ct-1103` - such factors are not present in the EMEP's 2019
 Emission inventory guidebook - using representative values for dust load
 on European roads.
 
@@ -1654,7 +1654,7 @@ Refrigerant emissions
 The use of refrigerant for onboard air conditioning systems is
 considered for trucks until 2021. The supply of refrigerant gas R134a is
 accounted for. Similarly, the leakage of the refrigerant is also
-considered. For this, the calculations from :footcite:`1093` are used. Such emission
+considered. For this, the calculations from :cite:`ct-1093` are used. Such emission
 is included in the transportation dataset of the corresponding vehicle.
 The overall supply of refrigerant amounts to the initial charge plus the
 amount leaked throughout the lifetime of the vehicle, both listed in
@@ -1692,7 +1692,7 @@ Noise emissions
 ~~~~~~~~~~~~~~~
 
 Noise emissions along the driving cycle of the vehicle are quantified
-using the method developed within the CNOSSOS project :footcite:`1094`, which are
+using the method developed within the CNOSSOS project :cite:`ct-1094`, which are
 expressed in joules, for each of the 8 octaves. Rolling and propulsion
 noise emissions are quantified separately.
 
@@ -1773,7 +1773,7 @@ The propulsion noise level is calculated using:
    +-----------------------------------------+-------------+--------------+---------------+---------------+
 
 A correction factor for battery electric and fuel cell electric vehicles
-is applied, and is sourced from :footcite:`1119`. Also, electric vehicles are added
+is applied, and is sourced from :cite:`ct-1119`. Also, electric vehicles are added
 a warning signal of 56 dB at speed levels below 20 km/h. Finally, hybrid
 vehicles are assumed to use an electric engine up to a speed level of 30
 km/h, beyond which the combustion engine is used.
@@ -1797,7 +1797,7 @@ thereby justifying the use of electric vehicles in that regard.
 Rolling noise become dominant above 50 km/h. The sound power [W] over time
 is expressed in joules [or W.s] over the course of the driving cycle.
 
-The study from Cucurachi and Heijungs :footcite:`1015` provides compartment-specific
+The study from Cucurachi and Heijungs :cite:`ct-1015` provides compartment-specific
 noise emission characterization factors against midpoint and endpoint
 indicators - expressed in Person-Pascal-second and Disability-Adjusted
 Life Year, respectively.
@@ -1811,7 +1811,7 @@ use. For example, should a BEV enter the fleet in Poland in 2020, most
 LCA models of trucks would use the electricity mix for
 Poland corresponding to that year, which corresponds to the row of the
 year 2020 in :ref:`Table 29 <table-29>`, based on ENTSO-E's TYNDP 2020 projections
-(National Trends scenario) :footcite:`1120`. |br|
+(National Trends scenario) :cite:`ct-1120`. |br|
 ``carculator_truck`` calculates instead the
 average electricity mix obtained from distributing the annual kilometers
 driven along the vehicle lifetime, assuming an equal number of
@@ -1828,11 +1828,11 @@ whether the projections will be realized or not.
 
 It is also important to remember that the unitary GHG emissions of each
 electricity-producing technology changes over time, as the background
-database ecoinvent has been transformed by premise :footcite:`1121`: for example,
+database ecoinvent has been transformed by premise :cite:`ct-1121`: for example,
 photovoltaic panels become more efficient, as well as some of the
 combustion-based technologies (e.g., natural gas). For more information
 about the transformation performed on the background life cycle
-database, refer to :footcite:`1121`.
+database, refer to :cite:`ct-1121`.
 
 .. _table-29:
 
@@ -1883,8 +1883,8 @@ Inventories for fuel pathways
 
 A number of inventories for fuel production and supply are used by
 ``carculator_truck``. They represent an update in comparison to the inventories
-used in the passenger vehicles model initially published by Cox et
-al.[5]_. The fuel pathways presented in :ref:`Table 30 <table-30>` are from the literature
+used in the passenger vehicles model initially published by :cite:`ct-1012`.
+The fuel pathways presented in :ref:`Table 30 <table-30>` are from the literature
 and not present as generic ecoinvent datasets.
 
 .. _table-30:
@@ -1896,7 +1896,7 @@ and not present as generic ecoinvent datasets.
    +-----------------------------+---------------------------+-----------------------------------------------+
    | Author(s)                   | Fuel type                 | Description                                   |
    +=============================+===========================+===============================================+
-   | :footcite:`1122`            | Biodiesel from            | 2\ :sup:`nd` and                              |
+   | :cite:`ct-1122`             | Biodiesel from            | 2\ :sup:`nd` and                              |
    |                             | micro-algae               | 3\ :sup:`rd` generation                       |
    |                             |                           | biofuels made from                            |
    |                             |                           | biomass residues or                           |
@@ -1905,7 +1905,7 @@ and not present as generic ecoinvent datasets.
    |                             | Biodiesel from used       |                                               |
    |                             | cooking oil               |                                               |
    +-----------------------------+---------------------------+-----------------------------------------------+
-   | :footcite:`1035`            | e-Diesel                  | Diesel produced from                          |
+   | :cite:`ct-1035`             | e-Diesel                  | Diesel produced from                          |
    |                             | (Fischer-Tropsch)         | "blue crude" via a                            |
    |                             |                           | Fischer-Tropsch process.                      |
    |                             |                           | The H\ :sub:`2` is                            |
@@ -1922,7 +1922,7 @@ and not present as generic ecoinvent datasets.
    |                             |                           | wax oil, kerosene):                           |
    |                             |                           | energy or economic.                           |
    +-----------------------------+---------------------------+-----------------------------------------------+
-   | :footcite:`1125`            | Biomethane from sewage    | Methane produced from the                     |
+   | :cite:`ct-1125`             | Biomethane from sewage    | Methane produced from the                     |
    |                             | sludge                    | anaerobic digestion of                        |
    |                             |                           | sewage sludge. The biogas                     |
    |                             |                           | is upgraded to bio methane                    |
@@ -1939,20 +1939,20 @@ and not present as generic ecoinvent datasets.
    |                             |                           | CO\ :sub:`2` from direct                      |
    |                             |                           | air capture.                                  |
    +-----------------------------+---------------------------+-----------------------------------------------+
-   | :footcite:`1123,1124`       | Hydrogen from             | The electricity                               |
+   | :cite:`ct-1123,ct-1124`     | Hydrogen from             | The electricity                               |
    |                             | electrolysis              | requirement to operate                        |
    |                             |                           | the electrolyzer changes                      |
    |                             |                           | over time: from 58 kWh                        |
    |                             |                           | per kg of H\ :sub:`2` in                      |
    |                             |                           | 2010, down to 44 kWh in                       |
-   |                             |                           | 2050, according to :footcite:`1006`.          |
+   |                             |                           | 2050, according to :cite:`ct-1006`.           |
    +-----------------------------+---------------------------+-----------------------------------------------+
-   | :footcite:`1124,1115`       | Hydrogen from Steam       | Available for natural gas                     |
+   | :cite:`ct-1124,ct-1115`     | Hydrogen from Steam       | Available for natural gas                     |
    |                             | Methane Reforming         | and bio methane, with and                     |
    |                             |                           | without Carbon Capture                        |
    |                             |                           | and Storage (CCS).                            |
    +-----------------------------+---------------------------+-----------------------------------------------+
-   | :footcite:`1123`            | Hydrogen from woody       | Available with and                            |
+   | :cite:`ct-1123`             | Hydrogen from woody       | Available with and                            |
    |                             | biomass gasification      | without Carbon Capture                        |
    |                             |                           | and Storage (CCS).                            |
    +-----------------------------+---------------------------+-----------------------------------------------+
@@ -1972,7 +1972,7 @@ are listed in :ref:`Table 31 <table-31>`.
    +-------------------------------+---------------------------+--------------------------------------+
    | Author(s)                     | Energy storage type       | Description                          |
    +===============================+===========================+======================================+
-   | :footcite:`1016,1107`         | NMC-111/622/811 battery   | Originally from :footcite:`1016`,    |
+   | :cite:`ct-1016,ct-1107`       | NMC-111/622/811 battery   | Originally from :cite:`ct-1016`,     |
    |                               |                           | then updated and                     |
    |                               |                           | integrated in ecoinvent              |
    |                               |                           | v.3.8 (with some errors),            |
@@ -1988,15 +1988,15 @@ are listed in :ref:`Table 31 <table-31>`.
    |                               |                           | synthetic graphite, as it            |
    |                               |                           | seems to be the current              |
    |                               |                           | norm in the industry                 |
-   |                               |                           | :footcite:`1126`. Inventories for    |
+   |                               |                           | :cite:`ct-1126`. Inventories for     |
    |                               |                           | natural graphite are from            |
-   |                               |                           | :footcite:`1127`.                    |
+   |                               |                           | :cite:`ct-1127`.                     |
    +-------------------------------+---------------------------+                                      |
    |                               | NCA battery               |                                      |
    +-------------------------------+---------------------------+                                      |
    |                               | LFP battery               |                                      |
    +-------------------------------+---------------------------+--------------------------------------+
-   | :footcite:`1089`              | Type IV hydrogen tank,    | Carbon fiber being one of            |
+   | :cite:`ct-1089`               | Type IV hydrogen tank,    | Carbon fiber being one of            |
    |                               | default                   | the main components of               |
    |                               |                           | Type IV storage tanks,               |
    |                               |                           | new inventories for                  |
@@ -2004,9 +2004,9 @@ are listed in :ref:`Table 31 <table-31>`.
    |                               |                           | manufacturing have been              |
    |                               |                           | integrated to                        |
    |                               |                           | ``carculator_truck``,                |
-   |                               |                           | from :footcite:`1008`.               |
+   |                               |                           | from :cite:`ct-1008`.                |
    +-------------------------------+---------------------------+--------------------------------------+
-   | :footcite:`1128`              | Type IV hydrogen tank,    |                                      |
+   | :cite:`ct-1128`               | Type IV hydrogen tank,    |                                      |
    |                               | LDPE liner                |                                      |
    +-------------------------------+---------------------------+--------------------------------------+
    |                               | Type IV hydrogen tank,    |                                      |
@@ -2053,6 +2053,4 @@ method, as well as those of ILCD 2018. Additionally, it is possible to
 export the inventories in a format compatible with the LCA framework
 `Brightway2 <https://brightway.dev/>`_ or `SimaPro <https://simapro.com/>`_,
 thereby allowing the characterization of the results against a larger number of impact assessment methods.
-
-.. footbibliography::
 
