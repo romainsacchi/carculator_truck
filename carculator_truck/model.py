@@ -1060,7 +1060,7 @@ class TruckModel:
                 )
 
     def set_vehicle_masses(self):
-        """ Define ``curb mass``, ``driving mass``, and ``cargo mass``.
+        """Define ``curb mass``, ``driving mass``, and ``cargo mass``.
 
         * `curb mass <https://en.wikipedia.org/wiki/Curb_weight>`__ is the mass of the vehicle and fuel, without people or cargo.
         * ``cargo mass`` is the mass of the cargo and passengers.

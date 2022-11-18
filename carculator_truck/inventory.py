@@ -436,7 +436,7 @@ class InventoryCalculation:
         self.B = None
 
     def get_results_table(self, split, sensitivity=False):
-        """ Format a xarray.DataArray array to receive the results.
+        """Format a xarray.DataArray array to receive the results.
 
         :param sensitivity:
         :param split: "components" or "impact categories". Split by impact categories only applicable when "endpoint" level is applied.
@@ -514,7 +514,7 @@ class InventoryCalculation:
         return response
 
     def get_sulfur_content(self, location, fuel, year):
-        """ Return the sulfur content in the fuel.
+        """Return the sulfur content in the fuel.
         If a region is passed, the average sulfur content over
         the countries the region contains is returned.
 
@@ -2263,7 +2263,7 @@ class InventoryCalculation:
         zero_out_input=False,
         filter_activities=None,
     ):
-        """ Finds the exchange inputs to a specified functional unit
+        """Finds the exchange inputs to a specified functional unit
 
         :param zero_out_input:
         :param find_input_by: can be 'name' or 'unit'
@@ -5429,7 +5429,7 @@ class InventoryCalculation:
         print("*********************************************************************")
 
     def select_heat_supplier(self, heat_supplier):
-        """ The heat supply is an important aspect of direct air capture.
+        """The heat supply is an important aspect of direct air capture.
         Here, we can change the supplier of heat.
 
         :param heat_supplier: by default "waste heat". Must be one of "waste heat", "biomass heat", "natural gas heat", "market heat".

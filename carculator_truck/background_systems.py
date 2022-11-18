@@ -78,7 +78,7 @@ def get_biofuel_share():
 
 
 def get_electricity_mix():
-    """ Retrieve electricity mixes and shape them into a xarray.
+    """Retrieve electricity mixes and shape them into a xarray.
     Source:
 
     * for European countries (`EU Reference Scenario 2016

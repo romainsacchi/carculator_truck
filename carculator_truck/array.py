@@ -9,7 +9,7 @@ from .truck_input_parameters import TruckInputParameters as t_i_p
 
 
 def fill_xarray_from_input_parameters(tip, sensitivity=False, scope=None):
-    """ Create an `xarray` labeled array from the sampled input parameters.
+    """Create an `xarray` labeled array from the sampled input parameters.
 
     This function extracts the parameters' names and values contained in the
     `parameters` attribute of the :class:`CarInputParameters` class
