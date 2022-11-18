@@ -9,29 +9,27 @@ from .truck_input_parameters import TruckInputParameters as t_i_p
 
 
 def fill_xarray_from_input_parameters(tip, sensitivity=False, scope=None):
-    """Create an `xarray` labeled array from the sampled input parameters.
-
+    """ Create an `xarray` labeled array from the sampled input parameters.
 
     This function extracts the parameters' names and values contained in the
     `parameters` attribute of the :class:`CarInputParameters` class
     in :mod:`car_input_parameters` and insert them into a
-    multi-dimensional numpy-like array from the *xarray* package
+    multidimensional numpy-like array from the *xarray* package
     (http://xarray.pydata.org/en/stable/).
 
-
     :param sensitivity:
-    :param tip: Instance of the :class:`TruckInputParameters` class
-    in :mod:`truck_input_parameters`.
+    :param tip: Instance of the :class:`TruckInputParameters` class in :mod:`truck_input_parameters`.
+
     :returns: `tuple`, `xarray.DataArray`
     - tuple (`size_dict`, `powertrain_dict`, `parameter_dict`, `year_dict`)
     - array
 
     Dimensions of `array`:
 
-        0. Vehicle size, e.g. "3.5t", "7.5t", etc. str.
-        1. Powertrain, e.g. "ICE-d", "BEV". str.
-        2. Year. int.
-        3. Samples.
+    0. Vehicle size, e.g. "3.5t", "7.5t", etc. str.
+    1. Powertrain, e.g. "ICE-d", "BEV". str.
+    2. Year. int.
+    3. Samples.
 
     """
 
@@ -218,8 +216,8 @@ def modify_xarray_from_custom_parameters(fp, array):
 
     This function allows to override one or several default parameter values by providing either:
 
-        * a file path to an Excel workbook that contains the new values
-        * or a dictionary
+    * a file path to an Excel workbook that contains the new values
+    * or a dictionary
 
     The dictionary must be of the following format:
 

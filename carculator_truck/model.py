@@ -179,11 +179,11 @@ class TruckModel:
         efficiency of the vehicle, costs, etc.
 
         :meth:`set_component_masses()`, :meth:`set_vehicle_masses()` and :meth:`set_power_parameters()` and
-         :meth:`set_energy_stored_properties` relate to one another.
+        :meth:`set_energy_stored_properties` relate to one another.
+
         `powertrain_mass` depends on `power`, `curb_mass` is affected by changes in `powertrain_mass`,
         `combustion engine mass`, `electric engine mass`. `energy battery mass` is influenced
-        by the `curb mass` but also
-        by the `target range` the truck has. `power` is also varying with `curb_mass`.
+        by the `curb mass` but also by the `target range` the truck has. `power` is also varying with `curb_mass`.
 
         The current solution is to loop through the methods until the change in payload between
         two iterations is
@@ -580,7 +580,9 @@ class TruckModel:
     def set_electricity_consumption(self):
         """
         This method calculates the total electricity consumption for BEV and plugin-hybrid vehicles
+
         :returns: Does not return anything. Modifies ``self.array`` in place.
+
         """
         l_pwt = [p for p in self.array.powertrain.values if p in ["BEV", "PHEV-e"]]
 
@@ -1058,15 +1060,13 @@ class TruckModel:
                 )
 
     def set_vehicle_masses(self):
-        """
-        Define ``curb mass``, ``driving mass``, and ``cargo mass``.
+        """ Define ``curb mass``, ``driving mass``, and ``cargo mass``.
 
-            * `curb mass <https://en.wikipedia.org/wiki/Curb_weight>`__ is the mass of the vehicle and fuel, without people or cargo.
-            * ``cargo mass`` is the mass of the cargo and passengers.
-            * ``driving mass`` is the ``curb mass`` plus ``cargo mass``.
+        * `curb mass <https://en.wikipedia.org/wiki/Curb_weight>`__ is the mass of the vehicle and fuel, without people or cargo.
+        * ``cargo mass`` is the mass of the cargo and passengers.
+        * ``driving mass`` is the ``curb mass`` plus ``cargo mass``.
 
-        .. note::
-            driving mass = cargo mass + driving mass
+        .. note::  driving mass = cargo mass + driving mass
 
         """
 
@@ -1672,13 +1672,8 @@ class TruckModel:
 
     def set_particulates_emission(self):
         """
-        Calculate the emission of particulates according to
-        https://www.eea.europa.eu/ds_resolveuid/6USNA27I4D
-
-        and further disaggregated in:
-        https://doi.org/10.1016/j.atmosenv.2020.117886
-
-        for:
+        Calculate the emission of particulates according to https://www.eea.europa.eu/ds_resolveuid/6USNA27I4D
+        and further disaggregated in: https://doi.org/10.1016/j.atmosenv.2020.117886 for:
 
         - brake wear
         - tire wear
@@ -1724,7 +1719,9 @@ class TruckModel:
         Calculate hot pollutant emissions based on ``driving cycle``.
         The driving cycle is passed to the :class:`HotEmissionsModel` class and :meth:`get_emissions_per_powertrain`
         return emissions per substance per second of driving cycle.
+
         :return: Does not return anything. Modifies ``self.array`` in place.
+
         """
         hem = HotEmissionsModel(self.ecm.cycle_name, self.ecm.cycle)
 
@@ -2049,11 +2046,11 @@ class TruckModel:
         """
         This method returns an array with cost values per vehicle-km, sub-divided into the following groups:
 
-            * Purchase
-            * Maintentance
-            * Component replacement
-            * Energy
-            * Total cost of ownership
+        * Purchase
+        * Maintentance
+        * Component replacement
+        * Energy
+        * Total cost of ownership
 
         :return: A xarray array with cost information per vehicle-km
         :rtype: xarray.core.dataarray.DataArray
