@@ -2,11 +2,12 @@ import numpy as np
 import pytest
 
 from carculator_truck import (
-    InventoryCalculation,
+    InventoryTruck,
     TruckInputParameters,
     TruckModel,
-    fill_xarray_from_input_parameters,
 )
+
+from carculator_utils.array import fill_xarray_from_input_parameters
 
 tip = TruckInputParameters()
 tip.static()
@@ -18,14 +19,14 @@ tm.set_all()
 
 
 def test_check_country():
-    # Ensure that country specified in TruckModel equals country in InventoryCalculation
-    ic = InventoryCalculation(tm)
-    assert tm.country == ic.country
+    # Ensure that country specified in TruckModel equals country in InventoryTruck
+    ic = InventoryTruck(tm)
+    assert tm.country == ic.vm.country
 
 
 def test_electricity_mix():
     # Electricity mix must be equal to 1
-    ic = InventoryCalculation(tm)
+    ic = InventoryTruck(tm)
     assert np.allclose(np.sum(ic.mix, axis=1), [1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
 
     # If we pass a custom electricity mix, check that it is used
@@ -39,23 +40,22 @@ def test_electricity_mix():
     ]
 
     bc = {"custom electricity mix": custom_mix}
-    ic = InventoryCalculation(tm, background_configuration=bc)
+    ic = InventoryTruck(tm, background_configuration=bc)
 
     assert np.allclose(ic.mix, custom_mix)
 
 
 def test_scope():
     """Test if scope works as expected"""
-    ic = InventoryCalculation(
+    ic = InventoryTruck(
         tm,
         method="recipe",
-        method_type="midpoint",
-        scope={"powertrain": ["ICEV-d"], "size": ["40t"]},
+        indicator="midpoint",
     )
     results = ic.calculate_impacts()
 
-    assert "60t" not in results.coords["size"].values
-    assert "BEV" not in results.coords["powertrain"].values
+    assert "32t" not in results.coords["size"].values
+    assert "ICEV-g" not in results.coords["powertrain"].values
 
 
 def test_fuel_blend():
@@ -83,17 +83,17 @@ def test_fuel_blend():
     tm = TruckModel(array, cycle="Long haul", country="CH", fuel_blend=fb)
     tm.set_all()
 
-    ic = InventoryCalculation(tm, method="recipe", method_type="midpoint")
+    ic = InventoryTruck(tm, method="recipe", indicator="midpoint")
 
     assert np.allclose(
-        ic.fuel_blends["diesel"]["primary"]["share"],
+        tm.fuel_blend["diesel"]["primary"]["share"],
         [0.93, 0.93, 0.93, 0.93, 0.93, 0.93],
     )
     assert np.allclose(
-        ic.fuel_blends["diesel"]["secondary"]["share"],
+        tm.fuel_blend["diesel"]["secondary"]["share"],
         [0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
     )
-    assert np.allclose(ic.fuel_blends["cng"]["primary"]["share"], [1, 1, 1, 1, 1, 1])
+    assert np.allclose(tm.fuel_blend["cng"]["primary"]["share"], [1, 1, 1, 1, 1, 1])
     # assert np.sum(ic.fuel_blends["cng"]["secondary"]["share"]) == 0
 
     ic.calculate_impacts()
@@ -136,7 +136,7 @@ def test_fuel_blend():
 
         tm = TruckModel(array, cycle="Long haul", country="CH", fuel_blend=fb)
         tm.set_all()
-        ic = InventoryCalculation(tm, method="recipe", method_type="midpoint")
+        ic = InventoryTruck(tm, method="recipe", indicator="midpoint")
         ic.calculate_impacts()
 
 
@@ -146,44 +146,12 @@ def test_countries():
         "AO",
         "AT",
         "AU"
-        # ,"BE","BF","BG","BI","BJ","BR","BW","CA","CD","CF",
-        #         # "CG","CH","CI","CL","CM","CN","CY","CZ","DE","DJ","DK","DZ","EE",
-        #         # "EG","ER","ES","ET","FI","FR","GA",
-        #         # "GB","GH","GM","GN","GQ","GR","GW","HR","HU","IE",
-        #         # "IN","IT", "IS", "JP", "KE", "LR","LS","LT","LU","LV","LY","MA","ML","MR","MT","MW","MZ",
-        #         # "NE", "NG","NL","NM","NO","PL","PT","RER","RO","RU","RW","SD","SE","SI","SK","SL","SN","SO","SS","SZ",
-        #         # "TD","TG","TN","TZ","UG","UK","US","ZA","ZM",
-        #         # "ZW",
     ]:
-        ic = InventoryCalculation(
+        tm.country = c
+        ic = InventoryTruck(
             tm,
             method="recipe",
-            method_type="midpoint",
-            background_configuration={
-                "country": c,
-            },
-        )
-        ic.calculate_impacts()
-        assert ic.background_configuration["country"] == c
-
-
-def test_IAM_regions():
-    """Test that calculation works with all IAM regions"""
-    for c in [
-        # "BRA","CAN","CEU","CHN","EAF","INDIA","INDO","JAP","KOR","ME","MEX",
-        #         #    "NAF","OCE","RCAM","RSAF","RSAM","RSAS","RUS","SAF","SEAS","STAN",
-        "TUR",
-        #         # "UKR","USA","WAF","WEU",
-        #         #    "LAM","CAZ","EUR","CHA","SSA","IND","OAS","JPN","MEA","REF","USA",
-    ]:
-        ic = InventoryCalculation(
-            tm,
-            method="recipe",
-            method_type="midpoint",
-            background_configuration={
-                "country": c,
-                "energy storage": {"origin": c},
-            },
+            indicator="midpoint",
         )
         ic.calculate_impacts()
 
@@ -191,20 +159,20 @@ def test_IAM_regions():
 def test_endpoint():
 
     """Test if the correct impact categories are considered"""
-    ic = InventoryCalculation(tm, method="recipe", method_type="endpoint")
+    ic = InventoryTruck(tm, method="recipe", indicator="endpoint")
     results = ic.calculate_impacts()
     assert "human health" in [i.lower() for i in results.impact_category.values]
     assert len(results.impact_category.values) == 4
 
     """Test if it errors properly if an incorrect method type is give"""
-    with pytest.raises(TypeError) as wrapped_error:
-        ic = InventoryCalculation(tm, method="recipe", method_type="endpint")
+    with pytest.raises(ValueError) as wrapped_error:
+        ic = InventoryTruck(tm, method="recipe", indicator="endpint")
         ic.calculate_impacts()
-    assert wrapped_error.type == TypeError
+    assert wrapped_error.type == ValueError
 
 
 def test_sulfur_concentration():
-    ic = InventoryCalculation(tm, method="recipe", method_type="endpoint")
+    ic = InventoryTruck(tm, method="recipe", indicator="endpoint")
     ic.get_sulfur_content("RER", "diesel", 2000)
     ic.get_sulfur_content("foo", "diesel", 2000)
 
@@ -230,40 +198,37 @@ def test_custom_electricity_mix():
 
     mixes = [mix_1, mix_2, mix_3]
 
-    for mix in mixes:
-        with pytest.raises(ValueError) as wrapped_error:
-            InventoryCalculation(
+    for i, mix in enumerate(mixes):
+
+        if i == 0:
+            with pytest.raises(ValueError) as wrapped_error:
+                ic = InventoryTruck(
+                    tm,
+                    method="recipe",
+                    indicator="endpoint",
+                    background_configuration={"custom electricity mix": mix},
+                )
+            assert wrapped_error.type == ValueError
+
+        else:
+            InventoryTruck(
                 tm,
                 method="recipe",
-                method_type="endpoint",
+                indicator="endpoint",
                 background_configuration={"custom electricity mix": mix},
             )
-        assert wrapped_error.type == ValueError
 
 
-def test_export_to_bw():
+def test_export_lci():
     """Test that inventories export successfully"""
-    ic = InventoryCalculation(tm, method="recipe", method_type="midpoint")
-    for b in ("3.5", "3.6", "3.7", "uvek"):
-        for c in (True, False):
-            ic.export_lci(
-                ecoinvent_version=b,
-                create_vehicle_datasets=c,
-            )
-
-
-def test_export_to_excel():
-    """Test that inventories export successfully to Excel/CSV"""
-    ic = InventoryCalculation(tm)
-
-    for b in ("3.5", "3.6", "3.7", "3.7.1", "3.8", "uvek"):
-        for c in (True, False):
-            for d in ("file", "string"):
-                ic.export_lci_to_excel(
+    ic = InventoryTruck(tm, method="recipe", indicator="midpoint")
+    for b in ("3.5", "3.6", "3.7", "3.8"):
+        for s in ("brightway2", "simapro"):
+            for f in ("file", "string", "bw2io"):
+                ic.export_lci(
                     ecoinvent_version=b,
-                    create_vehicle_datasets=c,
-                    export_format=d,
-                    directory="directory",
+                    software=s,
+                    format=f,
                 )
 
 

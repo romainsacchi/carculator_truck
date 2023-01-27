@@ -401,7 +401,7 @@ Table 6 shows a few parameters about the three driving cycles
 considered. Value intervals are shown for some parameters as they vary
 across size classes.
 
-..note::
+.. note::
 
     **Important remark**: unlike the modeling of passenger cars, the
     vehicles are designed in order to satisfy a given range autonomy. The
@@ -559,7 +559,7 @@ emitted per MJ of fuel consumed, to be able to model exhaust emissions
 of trucks of different sizes, masses, operating on different driving
 cycles and with different load factors.
 
-..note::
+.. note::
 
     **Important remark**: the degradation of anti-pollution systems for
     EURO-6 diesel trucks (i.e., catalytic converters) is accounted for as
@@ -711,7 +711,7 @@ and these values tend to change rapidly over time, as it is being the focus of m
 The sizing of energy storage for BEV trucks is sensitive to the required
 range autonomy, which is specific to each driving cycle (or defined by the user).
 
-..note::
+.. note::
 
     **Important remark**: technically speaking ``carculator_truck`` will model
     all trucks. However, if a vehicle has an energy storage unit mass
@@ -759,6 +759,18 @@ it exhibits three times the mass amount of Ni compared to Mn, and Co, while
 Mn and Co are present in equal amount.
 Development aims at reducing the content of Cobalt and increasing the Nickel share.
 The user can also select NMC-1-1-1 or NMC-8-1-1.
+
+.. note::
+
+    **Important remark**: the battery cell energy density is not the same
+    as the battery pack energy density. The latter is the product of the
+    cell energy density and the cell-to-pack ratio.
+
+.. note::
+
+    Changing the cell chemistry affects the caurb mass of the vehicle
+    and its cargo carrying capacity (since the range autonomy required
+    remains unchanged).
 
 Table 9 Parameters for different battery chemistry for future battery
 electric trucks
@@ -851,22 +863,6 @@ Table 10 Number of battery replacements assumed or calculated
 +---------------------------------------------+------+------+------+
 | Medium/heavy duty truck, regional delivery  | 1    | 1    | 1    |
 +---------------------------------------------+------+------+------+
-
-
-The effect of changing the battery chemistry, using a required range
-autonomy of 150 km on a 32t articulated truck is shown in Figure 40. The
-difference across chemistry is not significant. The higher gravimetric
-energy density of NCA batteries slightly increases the available payload
-of the vehicle. This difference becomes more significant as the required
-range autonomy increases.
-
-.. image:: https://github.com/romainsacchi/carculator_truck/raw/master/docs/media/image82.png
-   :width: 4.19231in
-   :height: 4.39368in
-
-Figure 9 Effect of battery chemistry on number of replacements, battery
-capacity and mass, as well as the available payload, for a 32t
-articulated truck, with a required range autonomy of 150 km.
 
 Plugin hybrid trucks
 ^^^^^^^^^^^^^^^^^^^^
@@ -1033,8 +1029,8 @@ Table 13 Parameters of the charging station for battery electric trucks
 Finding solutions
 -----------------
 
-Very much like *carculator* and *carculator_bus*, ``carculator_truck``
-iterates until:
+Very much like ``carculator`` and ``carculator_bus``, ``carculator_truck``
+iterates on the sizing procedure until:
 
 -  The change in curb mass of the vehicles between two modeling
    iterations is below 1%. This indicates that the vehicle model and the

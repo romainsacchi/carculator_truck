@@ -3013,8 +3013,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 2205,
-        "minimum": 992.25,
-        "maximum": 1212.75
+        "minimum": 1764,
+        "maximum": 2646
     },
     "103-2010-auxilliary power base demand": {
         "amount": 2100,
@@ -3042,8 +3042,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 2100,
-        "minimum": 945,
-        "maximum": 1155
+        "minimum": 1680,
+        "maximum": 2520
     },
     "104-2020-auxilliary power base demand": {
         "amount": 2000,
@@ -3071,8 +3071,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 2000,
-        "minimum": 900,
-        "maximum": 1100
+        "minimum": 1600,
+        "maximum": 2400
     },
     "105-2030-auxilliary power base demand": {
         "amount": 1900,
@@ -3100,8 +3100,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 1900,
-        "minimum": 855,
-        "maximum": 1045
+        "minimum": 1520,
+        "maximum": 2280
     },
     "106-2040-auxilliary power base demand": {
         "amount": 1805,
@@ -3129,8 +3129,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 1805,
-        "minimum": 812.25,
-        "maximum": 992.75
+        "minimum": 1444,
+        "maximum": 2166
     },
     "107-2050-auxilliary power base demand": {
         "amount": 1714.75,
@@ -3158,8 +3158,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 1714.75,
-        "minimum": 771.6374999999999,
-        "maximum": 943.1125
+        "minimum": 1371.8,
+        "maximum": 2057.7
     },
     "108-2000-auxilliary power base demand": {
         "amount": 3307.5,
@@ -3187,8 +3187,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3307.5,
-        "minimum": 1984.5,
-        "maximum": 2425.5
+        "minimum": 2646,
+        "maximum": 3969
     },
     "109-2010-auxilliary power base demand": {
         "amount": 3150,
@@ -3216,8 +3216,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3150,
-        "minimum": 1890,
-        "maximum": 2310
+        "minimum": 2520,
+        "maximum": 3780
     },
     "110-2020-auxilliary power base demand": {
         "amount": 3000,
@@ -3245,8 +3245,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3000,
-        "minimum": 1800,
-        "maximum": 2200
+        "minimum": 2400,
+        "maximum": 3600
     },
     "111-2030-auxilliary power base demand": {
         "amount": 2850,
@@ -3274,8 +3274,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 2850,
-        "minimum": 1710,
-        "maximum": 2090
+        "minimum": 2280,
+        "maximum": 3420
     },
     "112-2040-auxilliary power base demand": {
         "amount": 2707.5,
@@ -3303,8 +3303,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 2707.5,
-        "minimum": 1624.5,
-        "maximum": 1985.5
+        "minimum": 2166,
+        "maximum": 3249
     },
     "113-2050-auxilliary power base demand": {
         "amount": 2572.125,
@@ -3332,8 +3332,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 2572.125,
-        "minimum": 1543.2749999999999,
-        "maximum": 1886.225
+        "minimum": 2057.7,
+        "maximum": 3086.5499999999997
     },
     "114-2000-auxilliary power base demand": {
         "amount": 4410,
@@ -3361,8 +3361,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4410,
-        "minimum": 4189.5,
-        "maximum": 4630.5
+        "minimum": 3528,
+        "maximum": 5292
     },
     "115-2010-auxilliary power base demand": {
         "amount": 4200,
@@ -3390,8 +3390,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4200,
-        "minimum": 3990,
-        "maximum": 4410
+        "minimum": 3360,
+        "maximum": 5040
     },
     "116-2020-auxilliary power base demand": {
         "amount": 4000,
@@ -3419,8 +3419,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4000,
-        "minimum": 3800,
-        "maximum": 4200
+        "minimum": 3200,
+        "maximum": 4800
     },
     "117-2030-auxilliary power base demand": {
         "amount": 3800,
@@ -3448,8 +3448,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3800,
-        "minimum": 3610,
-        "maximum": 3990
+        "minimum": 3040,
+        "maximum": 4560
     },
     "118-2040-auxilliary power base demand": {
         "amount": 3610,
@@ -3477,8 +3477,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3610,
-        "minimum": 3429.5,
-        "maximum": 3790.5
+        "minimum": 2888,
+        "maximum": 4332
     },
     "119-2050-auxilliary power base demand": {
         "amount": 3429.5,
@@ -3506,8 +3506,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3429.5,
-        "minimum": 3258.0249999999996,
-        "maximum": 3600.975
+        "minimum": 2743.6,
+        "maximum": 4115.4
     },
     "120-2000-auxilliary power base demand": {
         "amount": 4630.5,
@@ -3535,8 +3535,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4630.5,
-        "minimum": 4410,
-        "maximum": 4851
+        "minimum": 3704.4,
+        "maximum": 5556.6
     },
     "121-2010-auxilliary power base demand": {
         "amount": 4410,
@@ -3564,8 +3564,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4410,
-        "minimum": 4200,
-        "maximum": 4620
+        "minimum": 3528,
+        "maximum": 5292
     },
     "122-2020-auxilliary power base demand": {
         "amount": 4200,
@@ -3593,8 +3593,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4200,
-        "minimum": 4000,
-        "maximum": 4400
+        "minimum": 3360,
+        "maximum": 5040
     },
     "123-2030-auxilliary power base demand": {
         "amount": 3990,
@@ -3622,8 +3622,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3990,
-        "minimum": 3800,
-        "maximum": 4180
+        "minimum": 3192,
+        "maximum": 4788
     },
     "124-2040-auxilliary power base demand": {
         "amount": 3790.5,
@@ -3651,8 +3651,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3790.5,
-        "minimum": 3610,
-        "maximum": 3971
+        "minimum": 3032.3999999999996,
+        "maximum": 4548.599999999999
     },
     "125-2050-auxilliary power base demand": {
         "amount": 3600.975,
@@ -3680,8 +3680,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3600.975,
-        "minimum": 3429.5,
-        "maximum": 3772.45
+        "minimum": 2880.7799999999997,
+        "maximum": 4321.169999999999
     },
     "126-2000-auxilliary power base demand": {
         "amount": 4961.25,
@@ -3709,8 +3709,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4961.25,
-        "minimum": 4630.5,
-        "maximum": 5292
+        "minimum": 3969,
+        "maximum": 5953.5
     },
     "127-2010-auxilliary power base demand": {
         "amount": 4725,
@@ -3738,8 +3738,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4725,
-        "minimum": 4410,
-        "maximum": 5040
+        "minimum": 3780,
+        "maximum": 5670
     },
     "128-2020-auxilliary power base demand": {
         "amount": 4500,
@@ -3767,8 +3767,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4500,
-        "minimum": 4200,
-        "maximum": 4800
+        "minimum": 3600,
+        "maximum": 5400
     },
     "129-2030-auxilliary power base demand": {
         "amount": 4275,
@@ -3796,8 +3796,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4275,
-        "minimum": 3990,
-        "maximum": 4560
+        "minimum": 3420,
+        "maximum": 5130
     },
     "130-2040-auxilliary power base demand": {
         "amount": 4061.25,
@@ -3825,8 +3825,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 4061.25,
-        "minimum": 3790.5,
-        "maximum": 4332
+        "minimum": 3249,
+        "maximum": 4873.5
     },
     "131-2050-auxilliary power base demand": {
         "amount": 3858.1875,
@@ -3854,8 +3854,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 3858.1875,
-        "minimum": 3600.975,
-        "maximum": 4115.4
+        "minimum": 3086.5499999999997,
+        "maximum": 4629.825
     },
     "132-2000-auxilliary power base demand": {
         "amount": 5600,
@@ -19621,14 +19621,9 @@
         "amount": 0.85,
         "category": "Energy Storage",
         "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
             "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
+            "PHEV-e",
+            "FCEV"
         ],
         "sizes": [
             "3.5t",
@@ -19656,14 +19651,9 @@
         "amount": 0.85,
         "category": "Energy Storage",
         "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
             "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
+            "PHEV-e",
+            "FCEV"
         ],
         "sizes": [
             "3.5t",
@@ -19691,14 +19681,9 @@
         "amount": 0.85,
         "category": "Energy Storage",
         "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
             "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
+            "PHEV-e",
+            "FCEV"
         ],
         "sizes": [
             "3.5t",
@@ -19726,14 +19711,9 @@
         "amount": 0.85,
         "category": "Energy Storage",
         "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
             "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
+            "PHEV-e",
+            "FCEV"
         ],
         "sizes": [
             "3.5t",
@@ -19761,14 +19741,9 @@
         "amount": 0.8627499999999999,
         "category": "Energy Storage",
         "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
             "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
+            "PHEV-e",
+            "FCEV"
         ],
         "sizes": [
             "3.5t",
@@ -19796,14 +19771,9 @@
         "amount": 0.8627499999999999,
         "category": "Energy Storage",
         "powertrain": [
-            "PHEV-c-d",
-            "PHEV-e",
-            "ICEV-d",
-            "ICEV-g",
             "BEV",
-            "FCEV",
-            "HEV-d",
-            "PHEV-d"
+            "PHEV-e",
+            "FCEV"
         ],
         "sizes": [
             "3.5t",
@@ -28401,8 +28371,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 66,
-        "minimum": 50,
-        "maximum": 70
+        "minimum": 59.4,
+        "maximum": 72.60000000000001
     },
     "1005-2010-power to mass ratio": {
         "amount": 66,
@@ -28426,8 +28396,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 66,
-        "minimum": 50,
-        "maximum": 70
+        "minimum": 59.4,
+        "maximum": 72.60000000000001
     },
     "1006-2020-power to mass ratio": {
         "amount": 66,
@@ -28451,8 +28421,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 66,
-        "minimum": 50,
-        "maximum": 70
+        "minimum": 59.4,
+        "maximum": 72.60000000000001
     },
     "1007-2030-power to mass ratio": {
         "amount": 64.67999999999999,
@@ -28476,8 +28446,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 64.67999999999999,
-        "minimum": 50,
-        "maximum": 70
+        "minimum": 58.211999999999996,
+        "maximum": 71.148
     },
     "1008-2040-power to mass ratio": {
         "amount": 63.386399999999995,
@@ -28501,8 +28471,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 63.386399999999995,
-        "minimum": 50,
-        "maximum": 70
+        "minimum": 57.04776,
+        "maximum": 69.72503999999999
     },
     "1009-2050-power to mass ratio": {
         "amount": 62.118672,
@@ -28526,8 +28496,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 62.118672,
-        "minimum": 50,
-        "maximum": 70
+        "minimum": 55.906804799999996,
+        "maximum": 68.3305392
     },
     "1010-2000-power to mass ratio": {
         "amount": 38,
@@ -28551,8 +28521,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 38,
-        "minimum": 30,
-        "maximum": 43
+        "minimum": 34.2,
+        "maximum": 41.800000000000004
     },
     "1011-2010-power to mass ratio": {
         "amount": 38,
@@ -28576,8 +28546,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 38,
-        "minimum": 30,
-        "maximum": 43
+        "minimum": 34.2,
+        "maximum": 41.800000000000004
     },
     "1012-2020-power to mass ratio": {
         "amount": 38,
@@ -28601,8 +28571,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 38,
-        "minimum": 30,
-        "maximum": 43
+        "minimum": 34.2,
+        "maximum": 41.800000000000004
     },
     "1013-2030-power to mass ratio": {
         "amount": 37.24,
@@ -28626,8 +28596,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 37.24,
-        "minimum": 30,
-        "maximum": 43
+        "minimum": 33.516000000000005,
+        "maximum": 40.964000000000006
     },
     "1014-2040-power to mass ratio": {
         "amount": 36.495200000000004,
@@ -28651,8 +28621,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 36.495200000000004,
-        "minimum": 30,
-        "maximum": 43
+        "minimum": 32.84568,
+        "maximum": 40.14472000000001
     },
     "1015-2050-power to mass ratio": {
         "amount": 35.765296000000006,
@@ -28676,8 +28646,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 35.765296000000006,
-        "minimum": 30,
-        "maximum": 43
+        "minimum": 32.188766400000006,
+        "maximum": 39.34182560000001
     },
     "1016-2000-power to mass ratio": {
         "amount": 35,
@@ -28701,8 +28671,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 35,
-        "minimum": 27,
-        "maximum": 44
+        "minimum": 31.5,
+        "maximum": 38.5
     },
     "1017-2010-power to mass ratio": {
         "amount": 35,
@@ -28726,8 +28696,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 35,
-        "minimum": 27,
-        "maximum": 44
+        "minimum": 31.5,
+        "maximum": 38.5
     },
     "1018-2020-power to mass ratio": {
         "amount": 35,
@@ -28751,8 +28721,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 35,
-        "minimum": 27,
-        "maximum": 44
+        "minimum": 31.5,
+        "maximum": 38.5
     },
     "1019-2030-power to mass ratio": {
         "amount": 34.3,
@@ -28776,8 +28746,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 34.3,
-        "minimum": 27,
-        "maximum": 44
+        "minimum": 30.869999999999997,
+        "maximum": 37.73
     },
     "1020-2040-power to mass ratio": {
         "amount": 33.614,
@@ -28801,8 +28771,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 33.614,
-        "minimum": 27,
-        "maximum": 44
+        "minimum": 30.252599999999997,
+        "maximum": 36.9754
     },
     "1021-2050-power to mass ratio": {
         "amount": 32.94172,
@@ -28826,8 +28796,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 32.94172,
-        "minimum": 27,
-        "maximum": 44
+        "minimum": 29.647547999999997,
+        "maximum": 36.235892
     },
     "1022-2000-power to mass ratio": {
         "amount": 29,
@@ -28851,8 +28821,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 29,
-        "minimum": 26,
-        "maximum": 39
+        "minimum": 26.1,
+        "maximum": 31.900000000000002
     },
     "1023-2010-power to mass ratio": {
         "amount": 29,
@@ -28876,8 +28846,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 29,
-        "minimum": 26,
-        "maximum": 39
+        "minimum": 26.1,
+        "maximum": 31.900000000000002
     },
     "1024-2020-power to mass ratio": {
         "amount": 29,
@@ -28901,8 +28871,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 29,
-        "minimum": 26,
-        "maximum": 39
+        "minimum": 26.1,
+        "maximum": 31.900000000000002
     },
     "1025-2030-power to mass ratio": {
         "amount": 28.419999999999998,
@@ -28926,8 +28896,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 28.419999999999998,
-        "minimum": 26,
-        "maximum": 39
+        "minimum": 25.578,
+        "maximum": 31.262
     },
     "1026-2040-power to mass ratio": {
         "amount": 27.851599999999998,
@@ -28951,8 +28921,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 27.851599999999998,
-        "minimum": 26,
-        "maximum": 39
+        "minimum": 25.06644,
+        "maximum": 30.63676
     },
     "1027-2050-power to mass ratio": {
         "amount": 27.294567999999998,
@@ -28976,8 +28946,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 27.294567999999998,
-        "minimum": 26,
-        "maximum": 39
+        "minimum": 24.5651112,
+        "maximum": 30.0240248
     },
     "1028-2000-power to mass ratio": {
         "amount": 28.5,
@@ -29001,8 +28971,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 28.5,
-        "minimum": 25,
-        "maximum": 30
+        "minimum": 25.650000000000002,
+        "maximum": 31.35
     },
     "1029-2010-power to mass ratio": {
         "amount": 28.5,
@@ -29026,8 +28996,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 28.5,
-        "minimum": 25,
-        "maximum": 30
+        "minimum": 25.650000000000002,
+        "maximum": 31.35
     },
     "1030-2020-power to mass ratio": {
         "amount": 25,
@@ -29051,8 +29021,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 25,
-        "minimum": 25,
-        "maximum": 30
+        "minimum": 22.5,
+        "maximum": 27.500000000000004
     },
     "1031-2030-power to mass ratio": {
         "amount": 24.5,
@@ -29076,8 +29046,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 24.5,
-        "minimum": 25,
-        "maximum": 30
+        "minimum": 22.05,
+        "maximum": 26.950000000000003
     },
     "1032-2040-power to mass ratio": {
         "amount": 24.009999999999998,
@@ -29101,8 +29071,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 24.009999999999998,
-        "minimum": 25,
-        "maximum": 30
+        "minimum": 21.608999999999998,
+        "maximum": 26.411
     },
     "1033-2050-power to mass ratio": {
         "amount": 23.529799999999998,
@@ -29126,8 +29096,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 23.529799999999998,
-        "minimum": 25,
-        "maximum": 30
+        "minimum": 21.17682,
+        "maximum": 25.88278
     },
     "1034-2000-power to mass ratio": {
         "amount": 28,
@@ -29151,8 +29121,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 28,
-        "minimum": 25,
-        "maximum": 33
+        "minimum": 25.2,
+        "maximum": 30.800000000000004
     },
     "1035-2010-power to mass ratio": {
         "amount": 28,
@@ -29176,8 +29146,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 28,
-        "minimum": 25,
-        "maximum": 33
+        "minimum": 25.2,
+        "maximum": 30.800000000000004
     },
     "1036-2020-power to mass ratio": {
         "amount": 25,
@@ -29201,8 +29171,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 25,
-        "minimum": 25,
-        "maximum": 33
+        "minimum": 22.5,
+        "maximum": 27.500000000000004
     },
     "1037-2030-power to mass ratio": {
         "amount": 24.5,
@@ -29226,8 +29196,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 24.5,
-        "minimum": 25,
-        "maximum": 33
+        "minimum": 22.05,
+        "maximum": 26.950000000000003
     },
     "1038-2040-power to mass ratio": {
         "amount": 24.009999999999998,
@@ -29251,8 +29221,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 24.009999999999998,
-        "minimum": 25,
-        "maximum": 33
+        "minimum": 21.608999999999998,
+        "maximum": 26.411
     },
     "1039-2050-power to mass ratio": {
         "amount": 23.529799999999998,
@@ -29276,8 +29246,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 23.529799999999998,
-        "minimum": 25,
-        "maximum": 33
+        "minimum": 21.17682,
+        "maximum": 25.88278
     },
     "1040-2000-power to mass ratio": {
         "amount": 22,
@@ -29301,8 +29271,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 22,
-        "minimum": 20,
-        "maximum": 24
+        "minimum": 19.8,
+        "maximum": 24.200000000000003
     },
     "1041-2010-power to mass ratio": {
         "amount": 22,
@@ -29326,8 +29296,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 22,
-        "minimum": 20,
-        "maximum": 24
+        "minimum": 19.8,
+        "maximum": 24.200000000000003
     },
     "1042-2020-power to mass ratio": {
         "amount": 22,
@@ -29351,8 +29321,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 22,
-        "minimum": 20,
-        "maximum": 24
+        "minimum": 19.8,
+        "maximum": 24.200000000000003
     },
     "1043-2030-power to mass ratio": {
         "amount": 21.56,
@@ -29376,8 +29346,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 21.56,
-        "minimum": 20,
-        "maximum": 24
+        "minimum": 19.404,
+        "maximum": 23.716
     },
     "1044-2040-power to mass ratio": {
         "amount": 21.1288,
@@ -29401,8 +29371,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 21.1288,
-        "minimum": 20,
-        "maximum": 24
+        "minimum": 19.015919999999998,
+        "maximum": 23.24168
     },
     "1045-2050-power to mass ratio": {
         "amount": 20.706224,
@@ -29426,8 +29396,8 @@
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 20.706224,
-        "minimum": 20,
-        "maximum": 24
+        "minimum": 18.6356016,
+        "maximum": 22.7768464
     },
     "1046-2000-power to mass ratio": {
         "amount": 27,
@@ -29542,7 +29512,7 @@
         "uncertainty_type": 5,
         "loc": 24.9704,
         "minimum": 22.473360000000003,
-        "maximum": 70
+        "maximum": 27.467440000000003
     },
     "1051-2050-power to mass ratio": {
         "amount": 24.470992000000003,
@@ -29680,7 +29650,7 @@
         "uncertainty_type": 5,
         "loc": 24.9704,
         "minimum": 22.473360000000003,
-        "maximum": 43
+        "maximum": 27.467440000000003
     },
     "1057-2050-power to mass ratio": {
         "amount": 24.470992000000003,
@@ -29818,7 +29788,7 @@
         "uncertainty_type": 5,
         "loc": 24.9704,
         "minimum": 22.473360000000003,
-        "maximum": 44
+        "maximum": 27.467440000000003
     },
     "1063-2050-power to mass ratio": {
         "amount": 24.470992000000003,
@@ -29956,7 +29926,7 @@
         "uncertainty_type": 5,
         "loc": 24.9704,
         "minimum": 22.473360000000003,
-        "maximum": 39
+        "maximum": 27.467440000000003
     },
     "1069-2050-power to mass ratio": {
         "amount": 24.470992000000003,
@@ -30094,7 +30064,7 @@
         "uncertainty_type": 5,
         "loc": 24.9704,
         "minimum": 22.473360000000003,
-        "maximum": 30
+        "maximum": 27.467440000000003
     },
     "1075-2050-power to mass ratio": {
         "amount": 24.470992000000003,
@@ -30232,7 +30202,7 @@
         "uncertainty_type": 5,
         "loc": 24.9704,
         "minimum": 22.473360000000003,
-        "maximum": 33
+        "maximum": 27.467440000000003
     },
     "1081-2050-power to mass ratio": {
         "amount": 24.470992000000003,
@@ -30370,7 +30340,7 @@
         "uncertainty_type": 5,
         "loc": 24.9704,
         "minimum": 22.473360000000003,
-        "maximum": 24
+        "maximum": 27.467440000000003
     },
     "1087-2050-power to mass ratio": {
         "amount": 24.470992000000003,
@@ -43968,13 +43938,19 @@
             "FCEV"
         ],
         "sizes": [
-            "3.5t"
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
         ],
         "year": 2000,
         "name": "fuel cell stack efficiency",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "Cox et al. 2020",
+        "source": "Cox et al. 2020, https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
         "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
         "status": "Acceptable",
         "kind": "distribution",
@@ -43990,13 +43966,19 @@
             "FCEV"
         ],
         "sizes": [
-            "3.5t"
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
         ],
         "year": 2010,
         "name": "fuel cell stack efficiency",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "Cox et al. 2020",
+        "source": "Cox et al. 2020, https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
         "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
         "status": "Acceptable",
         "kind": "distribution",
@@ -44006,26 +43988,32 @@
         "maximum": 0.55
     },
     "1570-2020-fuel cell stack efficiency": {
-        "amount": 0.6,
+        "amount": 0.55,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "3.5t"
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
         ],
         "year": 2020,
         "name": "fuel cell stack efficiency",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "Cox et al. 2020",
+        "source": "Cox et al. 2020, https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
         "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.6,
-        "minimum": 0.54,
-        "maximum": 0.66
+        "loc": 0.55,
+        "minimum": 0.5,
+        "maximum": 0.6
     },
     "1571-2030-fuel cell stack efficiency": {
         "amount": 0.6,
@@ -44034,73 +44022,90 @@
             "FCEV"
         ],
         "sizes": [
-            "3.5t"
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
         ],
         "year": 2030,
         "name": "fuel cell stack efficiency",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "Cox et al. 2020",
+        "source": "Cox et al. 2020, https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
         "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
         "loc": 0.6,
-        "minimum": 0.54,
-        "maximum": 0.66
+        "minimum": 0.55,
+        "maximum": 0.65
     },
     "1572-2040-fuel cell stack efficiency": {
-        "amount": 0.6,
+        "amount": 0.65,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "3.5t"
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
         ],
         "year": 2040,
         "name": "fuel cell stack efficiency",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "Cox et al. 2020",
+        "source": "Cox et al. 2020, https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
         "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.6,
-        "minimum": 0.54,
-        "maximum": 0.66
+        "loc": 0.65,
+        "minimum": 0.6,
+        "maximum": 0.7
     },
     "1573-2050-fuel cell stack efficiency": {
-        "amount": 0.6,
+        "amount": 0.7,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "3.5t"
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
         ],
         "year": 2050,
         "name": "fuel cell stack efficiency",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "Cox et al. 2020",
+        "source": "Cox et al. 2020, https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
         "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.6,
-        "minimum": 0.54,
-        "maximum": 0.66
+        "loc": 0.7,
+        "minimum": 0.65,
+        "maximum": 0.75
     },
-    "1574-2000-fuel cell stack efficiency": {
-        "amount": 0.35000000000000003,
+    "1574-2000-fuel cell power share": {
+        "amount": 0.25,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "7.5t",
             "18t",
             "26t",
             "32t",
@@ -44108,26 +44113,25 @@
             "60t"
         ],
         "year": 2000,
-        "name": "fuel cell stack efficiency",
+        "name": "fuel cell power share",
         "unit": "unitless",
         "importance": "Critical",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
-        "status": "Acceptable",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35000000000000003,
-        "minimum": 0.3,
-        "maximum": 0.4
+        "loc": 0.25,
+        "minimum": 0.2,
+        "maximum": 0.3
     },
-    "1575-2010-fuel cell stack efficiency": {
-        "amount": 0.45,
+    "1575-2010-fuel cell power share": {
+        "amount": 0.25,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "7.5t",
             "18t",
             "26t",
             "32t",
@@ -44135,26 +44139,25 @@
             "60t"
         ],
         "year": 2010,
-        "name": "fuel cell stack efficiency",
+        "name": "fuel cell power share",
         "unit": "unitless",
         "importance": "Critical",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
-        "status": "Acceptable",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.45,
-        "minimum": 0.4,
-        "maximum": 0.5
+        "loc": 0.25,
+        "minimum": 0.2,
+        "maximum": 0.3
     },
-    "1576-2020-fuel cell stack efficiency": {
-        "amount": 0.54,
+    "1576-2020-fuel cell power share": {
+        "amount": 0.25,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "7.5t",
             "18t",
             "26t",
             "32t",
@@ -44162,26 +44165,25 @@
             "60t"
         ],
         "year": 2020,
-        "name": "fuel cell stack efficiency",
+        "name": "fuel cell power share",
         "unit": "unitless",
         "importance": "Critical",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
-        "status": "Acceptable",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.54,
-        "minimum": 0.48600000000000004,
-        "maximum": 0.5940000000000001
+        "loc": 0.25,
+        "minimum": 0.2,
+        "maximum": 0.3
     },
-    "1577-2030-fuel cell stack efficiency": {
-        "amount": 0.55,
+    "1577-2030-fuel cell power share": {
+        "amount": 0.35,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "7.5t",
             "18t",
             "26t",
             "32t",
@@ -44189,26 +44191,25 @@
             "60t"
         ],
         "year": 2030,
-        "name": "fuel cell stack efficiency",
+        "name": "fuel cell power share",
         "unit": "unitless",
         "importance": "Critical",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
-        "status": "Acceptable",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.55,
-        "minimum": 0.49500000000000005,
-        "maximum": 0.6050000000000001
+        "loc": 0.35,
+        "minimum": 0.3,
+        "maximum": 0.4
     },
-    "1578-2040-fuel cell stack efficiency": {
-        "amount": 0.56,
+    "1578-2040-fuel cell power share": {
+        "amount": 0.35,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "7.5t",
             "18t",
             "26t",
             "32t",
@@ -44216,26 +44217,25 @@
             "60t"
         ],
         "year": 2040,
-        "name": "fuel cell stack efficiency",
+        "name": "fuel cell power share",
         "unit": "unitless",
         "importance": "Critical",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
-        "status": "Acceptable",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.56,
-        "minimum": 0.5040000000000001,
-        "maximum": 0.6160000000000001
+        "loc": 0.35,
+        "minimum": 0.3,
+        "maximum": 0.4
     },
-    "1579-2050-fuel cell stack efficiency": {
-        "amount": 0.57,
+    "1579-2050-fuel cell power share": {
+        "amount": 0.25,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "7.5t",
             "18t",
             "26t",
             "32t",
@@ -44243,30 +44243,27 @@
             "60t"
         ],
         "year": 2050,
-        "name": "fuel cell stack efficiency",
+        "name": "fuel cell power share",
         "unit": "unitless",
         "importance": "Critical",
         "source": "Cox et al. 2020",
-        "comment": "own assumption for 2000, 2010, 2050. Cox et al. 2020 for 2020, 2040.",
-        "status": "Acceptable",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.57,
-        "minimum": 0.513,
-        "maximum": 0.627
+        "loc": 0.25,
+        "minimum": 0.2,
+        "maximum": 0.3
     },
     "1580-2000-fuel cell power share": {
-        "amount": 0.25,
+        "amount": 0.2,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t",
+            "7.5t"
         ],
         "year": 2000,
         "name": "fuel cell power share",
@@ -44277,22 +44274,19 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.25,
-        "minimum": 0.2,
-        "maximum": 0.3
+        "loc": 0.2,
+        "minimum": 0.15000000000000002,
+        "maximum": 0.25
     },
     "1581-2010-fuel cell power share": {
-        "amount": 0.25,
+        "amount": 0.2,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t",
+            "7.5t"
         ],
         "year": 2010,
         "name": "fuel cell power share",
@@ -44303,22 +44297,19 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.25,
-        "minimum": 0.2,
-        "maximum": 0.3
+        "loc": 0.2,
+        "minimum": 0.15000000000000002,
+        "maximum": 0.25
     },
     "1582-2020-fuel cell power share": {
-        "amount": 0.25,
+        "amount": 0.2,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t",
+            "7.5t"
         ],
         "year": 2020,
         "name": "fuel cell power share",
@@ -44329,22 +44320,19 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.25,
-        "minimum": 0.2,
-        "maximum": 0.3
+        "loc": 0.2,
+        "minimum": 0.15000000000000002,
+        "maximum": 0.25
     },
     "1583-2030-fuel cell power share": {
-        "amount": 0.35,
+        "amount": 0.3,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t",
+            "7.5t"
         ],
         "year": 2030,
         "name": "fuel cell power share",
@@ -44355,22 +44343,19 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35,
-        "minimum": 0.3,
-        "maximum": 0.4
+        "loc": 0.3,
+        "minimum": 0.25,
+        "maximum": 0.35000000000000003
     },
     "1584-2040-fuel cell power share": {
-        "amount": 0.35,
+        "amount": 0.3,
         "category": "Powertrain",
         "powertrain": [
             "FCEV"
         ],
         "sizes": [
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t",
+            "7.5t"
         ],
         "year": 2040,
         "name": "fuel cell power share",
@@ -44381,152 +44366,11 @@
         "status": "Good",
         "kind": "distribution",
         "uncertainty_type": 5,
-        "loc": 0.35,
-        "minimum": 0.3,
-        "maximum": 0.4
+        "loc": 0.3,
+        "minimum": 0.25,
+        "maximum": 0.35000000000000003
     },
     "1585-2050-fuel cell power share": {
-        "amount": 0.25,
-        "category": "Powertrain",
-        "powertrain": [
-            "FCEV"
-        ],
-        "sizes": [
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
-        ],
-        "year": 2050,
-        "name": "fuel cell power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.25,
-        "minimum": 0.2,
-        "maximum": 0.3
-    },
-    "1586-2000-fuel cell power share": {
-        "amount": 0.2,
-        "category": "Powertrain",
-        "powertrain": [
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t",
-            "7.5t"
-        ],
-        "year": 2000,
-        "name": "fuel cell power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.2,
-        "minimum": 0.15000000000000002,
-        "maximum": 0.25
-    },
-    "1587-2010-fuel cell power share": {
-        "amount": 0.2,
-        "category": "Powertrain",
-        "powertrain": [
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t",
-            "7.5t"
-        ],
-        "year": 2010,
-        "name": "fuel cell power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.2,
-        "minimum": 0.15000000000000002,
-        "maximum": 0.25
-    },
-    "1588-2020-fuel cell power share": {
-        "amount": 0.2,
-        "category": "Powertrain",
-        "powertrain": [
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t",
-            "7.5t"
-        ],
-        "year": 2020,
-        "name": "fuel cell power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.2,
-        "minimum": 0.15000000000000002,
-        "maximum": 0.25
-    },
-    "1589-2030-fuel cell power share": {
-        "amount": 0.3,
-        "category": "Powertrain",
-        "powertrain": [
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t",
-            "7.5t"
-        ],
-        "year": 2030,
-        "name": "fuel cell power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3,
-        "minimum": 0.25,
-        "maximum": 0.35000000000000003
-    },
-    "1590-2040-fuel cell power share": {
-        "amount": 0.3,
-        "category": "Powertrain",
-        "powertrain": [
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t",
-            "7.5t"
-        ],
-        "year": 2040,
-        "name": "fuel cell power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.3,
-        "minimum": 0.25,
-        "maximum": 0.35000000000000003
-    },
-    "1591-2050-fuel cell power share": {
         "amount": 0.2,
         "category": "Powertrain",
         "powertrain": [
@@ -44549,7 +44393,7 @@
         "minimum": 0.15000000000000002,
         "maximum": 0.25
     },
-    "1592-2000-fuel cell power area density": {
+    "1586-2000-fuel cell power area density": {
         "amount": 350,
         "category": "Powertrain",
         "powertrain": [
@@ -44577,7 +44421,7 @@
         "minimum": 250,
         "maximum": 450
     },
-    "1593-2010-fuel cell power area density": {
+    "1587-2010-fuel cell power area density": {
         "amount": 400,
         "category": "Powertrain",
         "powertrain": [
@@ -44605,7 +44449,7 @@
         "minimum": 300,
         "maximum": 500
     },
-    "1594-2020-fuel cell power area density": {
+    "1588-2020-fuel cell power area density": {
         "amount": 450,
         "category": "Powertrain",
         "powertrain": [
@@ -44633,7 +44477,7 @@
         "minimum": 350,
         "maximum": 550
     },
-    "1595-2030-fuel cell power area density": {
+    "1589-2030-fuel cell power area density": {
         "amount": 450,
         "category": "Powertrain",
         "powertrain": [
@@ -44661,7 +44505,7 @@
         "minimum": 350,
         "maximum": 550
     },
-    "1596-2040-fuel cell power area density": {
+    "1590-2040-fuel cell power area density": {
         "amount": 500,
         "category": "Powertrain",
         "powertrain": [
@@ -44689,7 +44533,7 @@
         "minimum": 400,
         "maximum": 600
     },
-    "1597-2050-fuel cell power area density": {
+    "1591-2050-fuel cell power area density": {
         "amount": 600,
         "category": "Powertrain",
         "powertrain": [
@@ -44717,7 +44561,7 @@
         "minimum": 550,
         "maximum": 700
     },
-    "1598-2000-fuel cell own consumption": {
+    "1592-2000-fuel cell own consumption": {
         "amount": 1.2,
         "category": "Powertrain",
         "powertrain": [
@@ -44745,7 +44589,7 @@
         "minimum": 1.175,
         "maximum": 1.25
     },
-    "1599-2010-fuel cell own consumption": {
+    "1593-2010-fuel cell own consumption": {
         "amount": 1.175,
         "category": "Powertrain",
         "powertrain": [
@@ -44773,7 +44617,7 @@
         "minimum": 1.15,
         "maximum": 1.2
     },
-    "1600-2020-fuel cell own consumption": {
+    "1594-2020-fuel cell own consumption": {
         "amount": 1.15,
         "category": "Powertrain",
         "powertrain": [
@@ -44801,7 +44645,7 @@
         "minimum": 1.125,
         "maximum": 1.175
     },
-    "1601-2030-fuel cell own consumption": {
+    "1595-2030-fuel cell own consumption": {
         "amount": 1.125,
         "category": "Powertrain",
         "powertrain": [
@@ -44829,7 +44673,7 @@
         "minimum": 1.1025,
         "maximum": 1.1475
     },
-    "1602-2040-fuel cell own consumption": {
+    "1596-2040-fuel cell own consumption": {
         "amount": 1.1,
         "category": "Powertrain",
         "powertrain": [
@@ -44857,7 +44701,7 @@
         "minimum": 1.078,
         "maximum": 1.122
     },
-    "1603-2050-fuel cell own consumption": {
+    "1597-2050-fuel cell own consumption": {
         "amount": 1.075,
         "category": "Powertrain",
         "powertrain": [
@@ -44885,7 +44729,7 @@
         "minimum": 1.0534999999999999,
         "maximum": 1.0965
     },
-    "1604-2000-fuel cell essential BoP mass per power": {
+    "1598-2000-fuel cell essential BoP mass per power": {
         "amount": 1.1025,
         "category": "Powertrain",
         "powertrain": [
@@ -44913,7 +44757,7 @@
         "minimum": 0.77175,
         "maximum": 1.4332500000000004
     },
-    "1605-2010-fuel cell essential BoP mass per power": {
+    "1599-2010-fuel cell essential BoP mass per power": {
         "amount": 1.05,
         "category": "Powertrain",
         "powertrain": [
@@ -44941,7 +44785,7 @@
         "minimum": 0.735,
         "maximum": 1.3650000000000002
     },
-    "1606-2020-fuel cell essential BoP mass per power": {
+    "1600-2020-fuel cell essential BoP mass per power": {
         "amount": 1,
         "category": "Powertrain",
         "powertrain": [
@@ -44969,7 +44813,7 @@
         "minimum": 0.7,
         "maximum": 1.3
     },
-    "1607-2030-fuel cell essential BoP mass per power": {
+    "1601-2030-fuel cell essential BoP mass per power": {
         "amount": 0.85,
         "category": "Powertrain",
         "powertrain": [
@@ -44997,7 +44841,7 @@
         "minimum": 0.8,
         "maximum": 0.95
     },
-    "1608-2040-fuel cell essential BoP mass per power": {
+    "1602-2040-fuel cell essential BoP mass per power": {
         "amount": 0.7,
         "category": "Powertrain",
         "powertrain": [
@@ -45025,7 +44869,7 @@
         "minimum": 0.5,
         "maximum": 1
     },
-    "1609-2050-fuel cell essential BoP mass per power": {
+    "1603-2050-fuel cell essential BoP mass per power": {
         "amount": 0.6649999999999999,
         "category": "Powertrain",
         "powertrain": [
@@ -45053,7 +44897,7 @@
         "minimum": 0.475,
         "maximum": 0.95
     },
-    "1610-2000-fuel cell ancillary BoP mass per power": {
+    "1604-2000-fuel cell ancillary BoP mass per power": {
         "amount": 0.44100000000000006,
         "category": "Powertrain",
         "powertrain": [
@@ -45081,7 +44925,7 @@
         "minimum": 0.33075000000000004,
         "maximum": 0.49612500000000004
     },
-    "1611-2010-fuel cell ancillary BoP mass per power": {
+    "1605-2010-fuel cell ancillary BoP mass per power": {
         "amount": 0.42000000000000004,
         "category": "Powertrain",
         "powertrain": [
@@ -45109,7 +44953,7 @@
         "minimum": 0.315,
         "maximum": 0.47250000000000003
     },
-    "1612-2020-fuel cell ancillary BoP mass per power": {
+    "1606-2020-fuel cell ancillary BoP mass per power": {
         "amount": 0.4,
         "category": "Powertrain",
         "powertrain": [
@@ -45137,7 +44981,7 @@
         "minimum": 0.3,
         "maximum": 0.45
     },
-    "1613-2030-fuel cell ancillary BoP mass per power": {
+    "1607-2030-fuel cell ancillary BoP mass per power": {
         "amount": 0.35,
         "category": "Powertrain",
         "powertrain": [
@@ -45165,7 +45009,7 @@
         "minimum": 0.25,
         "maximum": 0.4
     },
-    "1614-2040-fuel cell ancillary BoP mass per power": {
+    "1608-2040-fuel cell ancillary BoP mass per power": {
         "amount": 0.3,
         "category": "Powertrain",
         "powertrain": [
@@ -45193,7 +45037,7 @@
         "minimum": 0.28,
         "maximum": 0.34
     },
-    "1615-2050-fuel cell ancillary BoP mass per power": {
+    "1609-2050-fuel cell ancillary BoP mass per power": {
         "amount": 0.285,
         "category": "Powertrain",
         "powertrain": [
@@ -45221,7 +45065,7 @@
         "minimum": 0.266,
         "maximum": 0.323
     },
-    "1616-2000-engine mass per power": {
+    "1610-2000-engine mass per power": {
         "amount": 3.087,
         "category": "Powertrain",
         "powertrain": [
@@ -45251,7 +45095,7 @@
         "minimum": 2.75625,
         "maximum": 3.8587500000000006
     },
-    "1617-2010-engine mass per power": {
+    "1611-2010-engine mass per power": {
         "amount": 2.94,
         "category": "Powertrain",
         "powertrain": [
@@ -45281,7 +45125,7 @@
         "minimum": 2.625,
         "maximum": 3.6750000000000003
     },
-    "1618-2020-engine mass per power": {
+    "1612-2020-engine mass per power": {
         "amount": 2.8,
         "category": "Powertrain",
         "powertrain": [
@@ -45311,7 +45155,7 @@
         "minimum": 2.5,
         "maximum": 3.5
     },
-    "1619-2030-engine mass per power": {
+    "1613-2030-engine mass per power": {
         "amount": 2.8,
         "category": "Powertrain",
         "powertrain": [
@@ -45341,7 +45185,7 @@
         "minimum": 2.375,
         "maximum": 3.3249999999999997
     },
-    "1620-2040-engine mass per power": {
+    "1614-2040-engine mass per power": {
         "amount": 2.8,
         "category": "Powertrain",
         "powertrain": [
@@ -45371,7 +45215,7 @@
         "minimum": 2.25625,
         "maximum": 3.1587499999999995
     },
-    "1621-2050-engine mass per power": {
+    "1615-2050-engine mass per power": {
         "amount": 2.8,
         "category": "Powertrain",
         "powertrain": [
@@ -45401,7 +45245,7 @@
         "minimum": 2.1434375,
         "maximum": 3.0008124999999994
     },
-    "1622-2000-engine mass per power": {
+    "1616-2000-engine mass per power": {
         "amount": 3.19725,
         "category": "Powertrain",
         "powertrain": [
@@ -45429,7 +45273,7 @@
         "minimum": 2.75625,
         "maximum": 3.8587500000000006
     },
-    "1623-2010-engine mass per power": {
+    "1617-2010-engine mass per power": {
         "amount": 3.045,
         "category": "Powertrain",
         "powertrain": [
@@ -45457,7 +45301,7 @@
         "minimum": 2.625,
         "maximum": 3.6750000000000003
     },
-    "1624-2020-engine mass per power": {
+    "1618-2020-engine mass per power": {
         "amount": 2.9,
         "category": "Powertrain",
         "powertrain": [
@@ -45485,7 +45329,7 @@
         "minimum": 2.5,
         "maximum": 3.5
     },
-    "1625-2030-engine mass per power": {
+    "1619-2030-engine mass per power": {
         "amount": 2.9,
         "category": "Powertrain",
         "powertrain": [
@@ -45513,7 +45357,7 @@
         "minimum": 2.375,
         "maximum": 3.3249999999999997
     },
-    "1626-2040-engine mass per power": {
+    "1620-2040-engine mass per power": {
         "amount": 2.9,
         "category": "Powertrain",
         "powertrain": [
@@ -45541,7 +45385,7 @@
         "minimum": 2.25625,
         "maximum": 3.1587499999999995
     },
-    "1627-2050-engine mass per power": {
+    "1621-2050-engine mass per power": {
         "amount": 2.9,
         "category": "Powertrain",
         "powertrain": [
@@ -45569,7 +45413,7 @@
         "minimum": 2.1434375,
         "maximum": 3.0008124999999994
     },
-    "1628-2000-engine fixed mass": {
+    "1622-2000-engine fixed mass": {
         "amount": 50,
         "category": "Powertrain",
         "powertrain": [
@@ -45596,14 +45440,178 @@
         "kind": "distribution",
         "uncertainty_type": 1,
         "loc": 50
+    },
+    "1623-2010-engine fixed mass": {
+        "amount": 50,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2010,
+        "name": "engine fixed mass",
+        "unit": "kg",
+        "importance": "Moderate",
+        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
+        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 50
+    },
+    "1624-2020-engine fixed mass": {
+        "amount": 50,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2020,
+        "name": "engine fixed mass",
+        "unit": "kg",
+        "importance": "Moderate",
+        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
+        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 50
+    },
+    "1625-2030-engine fixed mass": {
+        "amount": 50,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2030,
+        "name": "engine fixed mass",
+        "unit": "kg",
+        "importance": "Moderate",
+        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
+        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 50
+    },
+    "1626-2040-engine fixed mass": {
+        "amount": 50,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2040,
+        "name": "engine fixed mass",
+        "unit": "kg",
+        "importance": "Moderate",
+        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
+        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 50
+    },
+    "1627-2050-engine fixed mass": {
+        "amount": 50,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "PHEV-c-d",
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2050,
+        "name": "engine fixed mass",
+        "unit": "kg",
+        "importance": "Moderate",
+        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
+        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 50
+    },
+    "1628-2000-engine fixed mass": {
+        "amount": 157,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-g"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2000,
+        "name": "engine fixed mass",
+        "unit": "kg",
+        "importance": "Moderate",
+        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
+        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 157
     },
     "1629-2010-engine fixed mass": {
-        "amount": 50,
+        "amount": 157,
         "category": "Powertrain",
         "powertrain": [
-            "ICEV-d",
-            "PHEV-c-d",
-            "HEV-d"
+            "ICEV-g"
         ],
         "sizes": [
             "3.5t",
@@ -45623,15 +45631,13 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 1,
-        "loc": 50
+        "loc": 157
     },
     "1630-2020-engine fixed mass": {
-        "amount": 50,
+        "amount": 157,
         "category": "Powertrain",
         "powertrain": [
-            "ICEV-d",
-            "PHEV-c-d",
-            "HEV-d"
+            "ICEV-g"
         ],
         "sizes": [
             "3.5t",
@@ -45651,15 +45657,13 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 1,
-        "loc": 50
+        "loc": 157
     },
     "1631-2030-engine fixed mass": {
-        "amount": 50,
+        "amount": 157,
         "category": "Powertrain",
         "powertrain": [
-            "ICEV-d",
-            "PHEV-c-d",
-            "HEV-d"
+            "ICEV-g"
         ],
         "sizes": [
             "3.5t",
@@ -45679,15 +45683,13 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 1,
-        "loc": 50
+        "loc": 157
     },
     "1632-2040-engine fixed mass": {
-        "amount": 50,
+        "amount": 157,
         "category": "Powertrain",
         "powertrain": [
-            "ICEV-d",
-            "PHEV-c-d",
-            "HEV-d"
+            "ICEV-g"
         ],
         "sizes": [
             "3.5t",
@@ -45707,15 +45709,13 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 1,
-        "loc": 50
+        "loc": 157
     },
     "1633-2050-engine fixed mass": {
-        "amount": 50,
+        "amount": 157,
         "category": "Powertrain",
         "powertrain": [
-            "ICEV-d",
-            "PHEV-c-d",
-            "HEV-d"
+            "ICEV-g"
         ],
         "sizes": [
             "3.5t",
@@ -45735,163 +45735,139 @@
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 1,
-        "loc": 50
+        "loc": 157
     },
-    "1634-2000-engine fixed mass": {
-        "amount": 157,
+    "1634-2000-CNG engine efficiency correction factor": {
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t"
         ],
         "year": 2000,
-        "name": "engine fixed mass",
-        "unit": "kg",
-        "importance": "Moderate",
-        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
-        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
-        "status": "Acceptable",
+        "name": "CNG engine efficiency correction factor",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
+        "status": "To be improved",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 157
+        "uncertainty_type": 5,
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
-    "1635-2010-engine fixed mass": {
-        "amount": 157,
+    "1635-2010-CNG engine efficiency correction factor": {
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t"
         ],
         "year": 2010,
-        "name": "engine fixed mass",
-        "unit": "kg",
-        "importance": "Moderate",
-        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
-        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
-        "status": "Acceptable",
+        "name": "CNG engine efficiency correction factor",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
+        "status": "To be improved",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 157
+        "uncertainty_type": 5,
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
-    "1636-2020-engine fixed mass": {
-        "amount": 157,
+    "1636-2020-CNG engine efficiency correction factor": {
+        "amount": 0.1,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t"
         ],
         "year": 2020,
-        "name": "engine fixed mass",
-        "unit": "kg",
-        "importance": "Moderate",
-        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
-        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
-        "status": "Acceptable",
+        "name": "CNG engine efficiency correction factor",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
+        "status": "To be improved",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 157
+        "uncertainty_type": 5,
+        "loc": 0.1,
+        "minimum": 0.08,
+        "maximum": 0.13
     },
-    "1637-2030-engine fixed mass": {
-        "amount": 157,
+    "1637-2030-CNG engine efficiency correction factor": {
+        "amount": 0.05,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t"
         ],
         "year": 2030,
-        "name": "engine fixed mass",
-        "unit": "kg",
-        "importance": "Moderate",
-        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
-        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
-        "status": "Acceptable",
+        "name": "CNG engine efficiency correction factor",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
+        "status": "To be improved",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 157
+        "uncertainty_type": 5,
+        "loc": 0.05,
+        "minimum": 0.04000000000000001,
+        "maximum": 0.06
     },
-    "1638-2040-engine fixed mass": {
-        "amount": 157,
+    "1638-2040-CNG engine efficiency correction factor": {
+        "amount": 0.025,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t"
         ],
         "year": 2040,
-        "name": "engine fixed mass",
-        "unit": "kg",
-        "importance": "Moderate",
-        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
-        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
-        "status": "Acceptable",
+        "name": "CNG engine efficiency correction factor",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
+        "status": "To be improved",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 157
+        "uncertainty_type": 5,
+        "loc": 0.025,
+        "minimum": 0.020000000000000004,
+        "maximum": 0.03
     },
-    "1639-2050-engine fixed mass": {
-        "amount": 157,
+    "1639-2050-CNG engine efficiency correction factor": {
+        "amount": 0,
         "category": "Powertrain",
         "powertrain": [
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
+            "3.5t"
         ],
         "year": 2050,
-        "name": "engine fixed mass",
-        "unit": "kg",
-        "importance": "Moderate",
-        "source": "https://www.cervusequipment.com/peterbilt/new-trucks/engines/",
-        "comment": "Based on seven heavy duty combustion engines (3 Cummins, 1 Isuzu, 3 Peterbilt), from 220 to 400kW",
-        "status": "Acceptable",
+        "name": "CNG engine efficiency correction factor",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
+        "comment": "Based on ICCT analysis on EU trucks",
+        "status": "To be improved",
         "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 157
+        "uncertainty_type": 5,
+        "loc": 0,
+        "minimum": 0,
+        "maximum": 0.05
     },
     "1640-2000-CNG engine efficiency correction factor": {
         "amount": 0.1,
@@ -45900,7 +45876,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t"
+            "7.5t"
         ],
         "year": 2000,
         "name": "CNG engine efficiency correction factor",
@@ -45922,7 +45898,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t"
+            "7.5t"
         ],
         "year": 2010,
         "name": "CNG engine efficiency correction factor",
@@ -45944,7 +45920,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t"
+            "7.5t"
         ],
         "year": 2020,
         "name": "CNG engine efficiency correction factor",
@@ -45966,7 +45942,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t"
+            "7.5t"
         ],
         "year": 2030,
         "name": "CNG engine efficiency correction factor",
@@ -45988,7 +45964,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t"
+            "7.5t"
         ],
         "year": 2040,
         "name": "CNG engine efficiency correction factor",
@@ -46010,7 +45986,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "3.5t"
+            "7.5t"
         ],
         "year": 2050,
         "name": "CNG engine efficiency correction factor",
@@ -46032,7 +46008,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "7.5t"
+            "18t"
         ],
         "year": 2000,
         "name": "CNG engine efficiency correction factor",
@@ -46054,7 +46030,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "7.5t"
+            "18t"
         ],
         "year": 2010,
         "name": "CNG engine efficiency correction factor",
@@ -46076,7 +46052,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "7.5t"
+            "18t"
         ],
         "year": 2020,
         "name": "CNG engine efficiency correction factor",
@@ -46098,7 +46074,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "7.5t"
+            "18t"
         ],
         "year": 2030,
         "name": "CNG engine efficiency correction factor",
@@ -46120,7 +46096,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "7.5t"
+            "18t"
         ],
         "year": 2040,
         "name": "CNG engine efficiency correction factor",
@@ -46142,7 +46118,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "7.5t"
+            "18t"
         ],
         "year": 2050,
         "name": "CNG engine efficiency correction factor",
@@ -46164,7 +46140,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "18t"
+            "26t"
         ],
         "year": 2000,
         "name": "CNG engine efficiency correction factor",
@@ -46186,7 +46162,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "18t"
+            "26t"
         ],
         "year": 2010,
         "name": "CNG engine efficiency correction factor",
@@ -46208,7 +46184,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "18t"
+            "26t"
         ],
         "year": 2020,
         "name": "CNG engine efficiency correction factor",
@@ -46230,7 +46206,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "18t"
+            "26t"
         ],
         "year": 2030,
         "name": "CNG engine efficiency correction factor",
@@ -46252,7 +46228,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "18t"
+            "26t"
         ],
         "year": 2040,
         "name": "CNG engine efficiency correction factor",
@@ -46274,7 +46250,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "18t"
+            "26t"
         ],
         "year": 2050,
         "name": "CNG engine efficiency correction factor",
@@ -46296,7 +46272,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "26t"
+            "32t"
         ],
         "year": 2000,
         "name": "CNG engine efficiency correction factor",
@@ -46318,7 +46294,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "26t"
+            "32t"
         ],
         "year": 2010,
         "name": "CNG engine efficiency correction factor",
@@ -46340,7 +46316,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "26t"
+            "32t"
         ],
         "year": 2020,
         "name": "CNG engine efficiency correction factor",
@@ -46362,7 +46338,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "26t"
+            "32t"
         ],
         "year": 2030,
         "name": "CNG engine efficiency correction factor",
@@ -46384,7 +46360,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "26t"
+            "32t"
         ],
         "year": 2040,
         "name": "CNG engine efficiency correction factor",
@@ -46406,7 +46382,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "26t"
+            "32t"
         ],
         "year": 2050,
         "name": "CNG engine efficiency correction factor",
@@ -46428,7 +46404,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "32t"
+            "40t"
         ],
         "year": 2000,
         "name": "CNG engine efficiency correction factor",
@@ -46450,7 +46426,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "32t"
+            "40t"
         ],
         "year": 2010,
         "name": "CNG engine efficiency correction factor",
@@ -46472,7 +46448,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "32t"
+            "40t"
         ],
         "year": 2020,
         "name": "CNG engine efficiency correction factor",
@@ -46494,7 +46470,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "32t"
+            "40t"
         ],
         "year": 2030,
         "name": "CNG engine efficiency correction factor",
@@ -46516,7 +46492,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "32t"
+            "40t"
         ],
         "year": 2040,
         "name": "CNG engine efficiency correction factor",
@@ -46538,7 +46514,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "32t"
+            "40t"
         ],
         "year": 2050,
         "name": "CNG engine efficiency correction factor",
@@ -46560,7 +46536,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "40t"
+            "60t"
         ],
         "year": 2000,
         "name": "CNG engine efficiency correction factor",
@@ -46582,7 +46558,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "40t"
+            "60t"
         ],
         "year": 2010,
         "name": "CNG engine efficiency correction factor",
@@ -46604,7 +46580,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "40t"
+            "60t"
         ],
         "year": 2020,
         "name": "CNG engine efficiency correction factor",
@@ -46626,7 +46602,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "40t"
+            "60t"
         ],
         "year": 2030,
         "name": "CNG engine efficiency correction factor",
@@ -46648,7 +46624,7 @@
             "ICEV-g"
         ],
         "sizes": [
-            "40t"
+            "60t"
         ],
         "year": 2040,
         "name": "CNG engine efficiency correction factor",
@@ -46670,138 +46646,6 @@
             "ICEV-g"
         ],
         "sizes": [
-            "40t"
-        ],
-        "year": 2050,
-        "name": "CNG engine efficiency correction factor",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
-        "comment": "Based on ICCT analysis on EU trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0,
-        "minimum": 0,
-        "maximum": 0.05
-    },
-    "1676-2000-CNG engine efficiency correction factor": {
-        "amount": 0.1,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-g"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2000,
-        "name": "CNG engine efficiency correction factor",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
-        "comment": "Based on ICCT analysis on EU trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.08,
-        "maximum": 0.13
-    },
-    "1677-2010-CNG engine efficiency correction factor": {
-        "amount": 0.1,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-g"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2010,
-        "name": "CNG engine efficiency correction factor",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
-        "comment": "Based on ICCT analysis on EU trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.08,
-        "maximum": 0.13
-    },
-    "1678-2020-CNG engine efficiency correction factor": {
-        "amount": 0.1,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-g"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2020,
-        "name": "CNG engine efficiency correction factor",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
-        "comment": "Based on ICCT analysis on EU trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.1,
-        "minimum": 0.08,
-        "maximum": 0.13
-    },
-    "1679-2030-CNG engine efficiency correction factor": {
-        "amount": 0.05,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-g"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2030,
-        "name": "CNG engine efficiency correction factor",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
-        "comment": "Based on ICCT analysis on EU trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.05,
-        "minimum": 0.04000000000000001,
-        "maximum": 0.06
-    },
-    "1680-2040-CNG engine efficiency correction factor": {
-        "amount": 0.025,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-g"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2040,
-        "name": "CNG engine efficiency correction factor",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Correction factor for CNG from https://theicct.org/sites/default/files/publications/eu-hdv-co2-standards-baseline-data-sept21.pdf",
-        "comment": "Based on ICCT analysis on EU trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.025,
-        "minimum": 0.020000000000000004,
-        "maximum": 0.03
-    },
-    "1681-2050-CNG engine efficiency correction factor": {
-        "amount": 0,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-g"
-        ],
-        "sizes": [
             "60t"
         ],
         "year": 2050,
@@ -46817,879 +46661,26 @@
         "minimum": 0,
         "maximum": 0.05
     },
-    "1682-2000-engine efficiency": {
+    "1676-2000-engine efficiency": {
         "amount": 0.93,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
-            "3.5t"
-        ],
-        "year": 2000,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1683-2010-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2010,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1684-2020-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2020,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1685-2030-engine efficiency": {
-        "amount": 0.935,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2030,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.935,
-        "minimum": 0.8415,
-        "maximum": 0.95
-    },
-    "1686-2040-engine efficiency": {
-        "amount": 0.94,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2040,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.94,
-        "minimum": 0.846,
-        "maximum": 0.96
-    },
-    "1687-2050-engine efficiency": {
-        "amount": 0.945,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2050,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.945,
-        "minimum": 0.8504999999999999,
-        "maximum": 0.96
-    },
-    "1688-2000-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2000,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1689-2010-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2010,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1690-2020-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2020,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1691-2030-engine efficiency": {
-        "amount": 0.935,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2030,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.935,
-        "minimum": 0.8415,
-        "maximum": 0.95
-    },
-    "1692-2040-engine efficiency": {
-        "amount": 0.94,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2040,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.94,
-        "minimum": 0.846,
-        "maximum": 0.96
-    },
-    "1693-2050-engine efficiency": {
-        "amount": 0.945,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2050,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.945,
-        "minimum": 0.8504999999999999,
-        "maximum": 0.96
-    },
-    "1694-2000-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2000,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1695-2010-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2010,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1696-2020-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2020,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1697-2030-engine efficiency": {
-        "amount": 0.935,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2030,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.935,
-        "minimum": 0.8415,
-        "maximum": 0.95
-    },
-    "1698-2040-engine efficiency": {
-        "amount": 0.94,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2040,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.94,
-        "minimum": 0.846,
-        "maximum": 0.96
-    },
-    "1699-2050-engine efficiency": {
-        "amount": 0.945,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2050,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.945,
-        "minimum": 0.8504999999999999,
-        "maximum": 0.96
-    },
-    "1700-2000-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2000,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1701-2010-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2010,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1702-2020-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2020,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1703-2030-engine efficiency": {
-        "amount": 0.935,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2030,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.935,
-        "minimum": 0.8415,
-        "maximum": 0.95
-    },
-    "1704-2040-engine efficiency": {
-        "amount": 0.94,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2040,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.94,
-        "minimum": 0.846,
-        "maximum": 0.96
-    },
-    "1705-2050-engine efficiency": {
-        "amount": 0.945,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2050,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.945,
-        "minimum": 0.8504999999999999,
-        "maximum": 0.96
-    },
-    "1706-2000-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2000,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1707-2010-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2010,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1708-2020-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2020,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1709-2030-engine efficiency": {
-        "amount": 0.935,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2030,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.935,
-        "minimum": 0.8415,
-        "maximum": 0.95
-    },
-    "1710-2040-engine efficiency": {
-        "amount": 0.94,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2040,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.94,
-        "minimum": 0.846,
-        "maximum": 0.96
-    },
-    "1711-2050-engine efficiency": {
-        "amount": 0.945,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2050,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.945,
-        "minimum": 0.8504999999999999,
-        "maximum": 0.96
-    },
-    "1712-2000-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2000,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1713-2010-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2010,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1714-2020-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2020,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.93,
-        "minimum": 0.8370000000000001,
-        "maximum": 0.95
-    },
-    "1715-2030-engine efficiency": {
-        "amount": 0.935,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2030,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.935,
-        "minimum": 0.8415,
-        "maximum": 0.95
-    },
-    "1716-2040-engine efficiency": {
-        "amount": 0.94,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2040,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.94,
-        "minimum": 0.846,
-        "maximum": 0.96
-    },
-    "1717-2050-engine efficiency": {
-        "amount": 0.945,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2050,
-        "name": "engine efficiency",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://doi.org/10.3141%2F2539-07",
-        "comment": "Based on electric buses",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.945,
-        "minimum": 0.8504999999999999,
-        "maximum": 0.96
-    },
-    "1718-2000-engine efficiency": {
-        "amount": 0.93,
-        "category": "Powertrain",
-        "powertrain": [
-            "BEV",
-            "PHEV-e",
-            "FCEV"
-        ],
-        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
             "60t"
         ],
         "year": 2000,
@@ -47705,15 +46696,26 @@
         "minimum": 0.8370000000000001,
         "maximum": 0.95
     },
-    "1719-2010-engine efficiency": {
+    "1677-2010-engine efficiency": {
         "amount": 0.93,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
             "60t"
         ],
         "year": 2010,
@@ -47729,15 +46731,26 @@
         "minimum": 0.8370000000000001,
         "maximum": 0.95
     },
-    "1720-2020-engine efficiency": {
+    "1678-2020-engine efficiency": {
         "amount": 0.93,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
             "60t"
         ],
         "year": 2020,
@@ -47753,15 +46766,26 @@
         "minimum": 0.8370000000000001,
         "maximum": 0.95
     },
-    "1721-2030-engine efficiency": {
+    "1679-2030-engine efficiency": {
         "amount": 0.935,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
             "60t"
         ],
         "year": 2030,
@@ -47777,15 +46801,26 @@
         "minimum": 0.8415,
         "maximum": 0.95
     },
-    "1722-2040-engine efficiency": {
+    "1680-2040-engine efficiency": {
         "amount": 0.94,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
             "60t"
         ],
         "year": 2040,
@@ -47801,15 +46836,26 @@
         "minimum": 0.846,
         "maximum": 0.96
     },
-    "1723-2050-engine efficiency": {
+    "1681-2050-engine efficiency": {
         "amount": 0.945,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
             "60t"
         ],
         "year": 2050,
@@ -47825,13 +46871,18 @@
         "minimum": 0.8504999999999999,
         "maximum": 0.96
     },
-    "1724-2000-transmission efficiency": {
+    "1682-2000-transmission efficiency": {
         "amount": 0.89,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
             "3.5t",
@@ -47855,13 +46906,18 @@
         "minimum": 0.801,
         "maximum": 0.95
     },
-    "1725-2010-transmission efficiency": {
+    "1683-2010-transmission efficiency": {
         "amount": 0.89,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
             "3.5t",
@@ -47885,13 +46941,18 @@
         "minimum": 0.801,
         "maximum": 0.95
     },
-    "1726-2020-transmission efficiency": {
+    "1684-2020-transmission efficiency": {
         "amount": 0.89,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
             "3.5t",
@@ -47915,13 +46976,18 @@
         "minimum": 0.801,
         "maximum": 0.9790000000000001
     },
-    "1727-2030-transmission efficiency": {
+    "1685-2030-transmission efficiency": {
         "amount": 0.9,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
             "3.5t",
@@ -47945,13 +47011,18 @@
         "minimum": 0.81,
         "maximum": 0.9900000000000001
     },
-    "1728-2040-transmission efficiency": {
+    "1686-2040-transmission efficiency": {
         "amount": 0.91,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
             "3.5t",
@@ -47975,13 +47046,18 @@
         "minimum": 0.8190000000000001,
         "maximum": 0.96
     },
-    "1729-2050-transmission efficiency": {
+    "1687-2050-transmission efficiency": {
         "amount": 0.92,
         "category": "Powertrain",
         "powertrain": [
-            "BEV",
+            "PHEV-c-d",
             "PHEV-e",
-            "FCEV"
+            "ICEV-d",
+            "ICEV-g",
+            "BEV",
+            "FCEV",
+            "HEV-d",
+            "PHEV-d"
         ],
         "sizes": [
             "3.5t",
@@ -48005,7 +47081,7 @@
         "minimum": 0.8280000000000001,
         "maximum": 0.97
     },
-    "1730-2000-emotor mass per power": {
+    "1688-2000-emotor mass per power": {
         "amount": 1.46,
         "category": "Powertrain",
         "powertrain": [
@@ -48040,7 +47116,7 @@
         "minimum": 1.4,
         "maximum": 1.5
     },
-    "1731-2010-emotor mass per power": {
+    "1689-2010-emotor mass per power": {
         "amount": 1.46,
         "category": "Powertrain",
         "powertrain": [
@@ -48075,7 +47151,7 @@
         "minimum": 1.4,
         "maximum": 1.5
     },
-    "1732-2020-emotor mass per power": {
+    "1690-2020-emotor mass per power": {
         "amount": 1.46,
         "category": "Powertrain",
         "powertrain": [
@@ -48110,7 +47186,7 @@
         "minimum": 1.4,
         "maximum": 1.5
     },
-    "1733-2030-emotor mass per power": {
+    "1691-2030-emotor mass per power": {
         "amount": 1.46,
         "category": "Powertrain",
         "powertrain": [
@@ -48145,7 +47221,7 @@
         "minimum": 1.4,
         "maximum": 1.5
     },
-    "1734-2040-emotor mass per power": {
+    "1692-2040-emotor mass per power": {
         "amount": 1.46,
         "category": "Powertrain",
         "powertrain": [
@@ -48180,7 +47256,7 @@
         "minimum": 1.4,
         "maximum": 1.5
     },
-    "1735-2050-emotor mass per power": {
+    "1693-2050-emotor mass per power": {
         "amount": 1.46,
         "category": "Powertrain",
         "powertrain": [
@@ -48215,7 +47291,7 @@
         "minimum": 1.4,
         "maximum": 1.5
     },
-    "1736-2000-emotor fixed mass": {
+    "1694-2000-emotor fixed mass": {
         "amount": -59,
         "category": "Powertrain",
         "powertrain": [
@@ -48248,7 +47324,7 @@
         "uncertainty_type": 1,
         "loc": -59
     },
-    "1737-2010-emotor fixed mass": {
+    "1695-2010-emotor fixed mass": {
         "amount": -59,
         "category": "Powertrain",
         "powertrain": [
@@ -48281,7 +47357,7 @@
         "uncertainty_type": 1,
         "loc": -59
     },
-    "1738-2020-emotor fixed mass": {
+    "1696-2020-emotor fixed mass": {
         "amount": -59,
         "category": "Powertrain",
         "powertrain": [
@@ -48314,7 +47390,7 @@
         "uncertainty_type": 1,
         "loc": -59
     },
-    "1739-2030-emotor fixed mass": {
+    "1697-2030-emotor fixed mass": {
         "amount": -59,
         "category": "Powertrain",
         "powertrain": [
@@ -48347,7 +47423,7 @@
         "uncertainty_type": 1,
         "loc": -59
     },
-    "1740-2040-emotor fixed mass": {
+    "1698-2040-emotor fixed mass": {
         "amount": -59,
         "category": "Powertrain",
         "powertrain": [
@@ -48380,7 +47456,7 @@
         "uncertainty_type": 1,
         "loc": -59
     },
-    "1741-2050-emotor fixed mass": {
+    "1699-2050-emotor fixed mass": {
         "amount": -59,
         "category": "Powertrain",
         "powertrain": [
@@ -48413,7 +47489,7 @@
         "uncertainty_type": 1,
         "loc": -59
     },
-    "1742-2000-converter mass": {
+    "1700-2000-converter mass": {
         "amount": 35,
         "category": "Powertrain",
         "powertrain": [
@@ -48443,7 +47519,7 @@
         "minimum": 30,
         "maximum": 40
     },
-    "1743-2010-converter mass": {
+    "1701-2010-converter mass": {
         "amount": 30,
         "category": "Powertrain",
         "powertrain": [
@@ -48473,7 +47549,7 @@
         "minimum": 25,
         "maximum": 35
     },
-    "1744-2020-converter mass": {
+    "1702-2020-converter mass": {
         "amount": 25,
         "category": "Powertrain",
         "powertrain": [
@@ -48503,7 +47579,7 @@
         "minimum": 20,
         "maximum": 30
     },
-    "1745-2030-converter mass": {
+    "1703-2030-converter mass": {
         "amount": 25,
         "category": "Powertrain",
         "powertrain": [
@@ -48533,7 +47609,7 @@
         "minimum": 20,
         "maximum": 30
     },
-    "1746-2040-converter mass": {
+    "1704-2040-converter mass": {
         "amount": 23.75,
         "category": "Powertrain",
         "powertrain": [
@@ -48563,7 +47639,7 @@
         "minimum": 18,
         "maximum": 30
     },
-    "1747-2050-converter mass": {
+    "1705-2050-converter mass": {
         "amount": 22.5625,
         "category": "Powertrain",
         "powertrain": [
@@ -48593,7 +47669,7 @@
         "minimum": 17.099999999999998,
         "maximum": 28.5
     },
-    "1748-2000-combustion power share": {
+    "1706-2000-combustion power share": {
         "amount": 0.67,
         "category": "Powertrain",
         "powertrain": [
@@ -48614,991 +47690,991 @@
         "loc": 0.67,
         "minimum": 0.65,
         "maximum": 0.75
+    },
+    "1707-2010-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2010,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1708-2020-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2020,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1709-2030-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2030,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1710-2040-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2040,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1711-2050-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2050,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1712-2000-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2000,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1713-2010-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2010,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1714-2020-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2020,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1715-2030-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2030,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1716-2040-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2040,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1717-2050-combustion power share": {
+        "amount": 0.67,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2050,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.67,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1718-2000-combustion power share": {
+        "amount": 0.69,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "year": 2000,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.69,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1719-2010-combustion power share": {
+        "amount": 0.69,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "year": 2010,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.69,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1720-2020-combustion power share": {
+        "amount": 0.69,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "year": 2020,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.69,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1721-2030-combustion power share": {
+        "amount": 0.69,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "year": 2030,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.69,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1722-2040-combustion power share": {
+        "amount": 0.69,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "year": 2040,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.69,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1723-2050-combustion power share": {
+        "amount": 0.69,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "18t"
+        ],
+        "year": 2050,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.69,
+        "minimum": 0.65,
+        "maximum": 0.75
+    },
+    "1724-2000-combustion power share": {
+        "amount": 0.8,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "year": 2000,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.8,
+        "minimum": 0.75,
+        "maximum": 0.85
+    },
+    "1725-2010-combustion power share": {
+        "amount": 0.8,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "year": 2010,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.8,
+        "minimum": 0.75,
+        "maximum": 0.85
+    },
+    "1726-2020-combustion power share": {
+        "amount": 0.8,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "year": 2020,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.8,
+        "minimum": 0.75,
+        "maximum": 0.85
+    },
+    "1727-2030-combustion power share": {
+        "amount": 0.8,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "year": 2030,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.8,
+        "minimum": 0.75,
+        "maximum": 0.85
+    },
+    "1728-2040-combustion power share": {
+        "amount": 0.8,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "year": 2040,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.8,
+        "minimum": 0.75,
+        "maximum": 0.85
+    },
+    "1729-2050-combustion power share": {
+        "amount": 0.8,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "26t"
+        ],
+        "year": 2050,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.8,
+        "minimum": 0.75,
+        "maximum": 0.85
+    },
+    "1730-2000-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "32t"
+        ],
+        "year": 2000,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1731-2010-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "32t"
+        ],
+        "year": 2010,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1732-2020-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "32t"
+        ],
+        "year": 2020,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1733-2030-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "32t"
+        ],
+        "year": 2030,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1734-2040-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "32t"
+        ],
+        "year": 2040,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1735-2050-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "32t"
+        ],
+        "year": 2050,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1736-2000-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "year": 2000,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1737-2010-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "year": 2010,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1738-2020-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "year": 2020,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1739-2030-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "year": 2030,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1740-2040-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "year": 2040,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1741-2050-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "40t"
+        ],
+        "year": 2050,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1742-2000-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "60t"
+        ],
+        "year": 2000,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1743-2010-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "60t"
+        ],
+        "year": 2010,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1744-2020-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "60t"
+        ],
+        "year": 2020,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1745-2030-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "60t"
+        ],
+        "year": 2030,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1746-2040-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "60t"
+        ],
+        "year": 2040,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1747-2050-combustion power share": {
+        "amount": 0.775,
+        "category": "Powertrain",
+        "powertrain": [
+            "HEV-d"
+        ],
+        "sizes": [
+            "60t"
+        ],
+        "year": 2050,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
+        "comment": "Based on US trucks",
+        "status": "To be improved",
+        "kind": "distribution",
+        "uncertainty_type": 5,
+        "loc": 0.775,
+        "minimum": 0.75,
+        "maximum": 0.8
+    },
+    "1748-2000-combustion power share": {
+        "amount": 1,
+        "category": "Powertrain",
+        "powertrain": [
+            "ICEV-d",
+            "ICEV-g"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2000,
+        "name": "combustion power share",
+        "unit": "unitless",
+        "importance": "Critical",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
     },
     "1749-2010-combustion power share": {
-        "amount": 0.67,
+        "amount": 1,
         "category": "Powertrain",
         "powertrain": [
-            "HEV-d"
+            "ICEV-d",
+            "ICEV-g"
         ],
         "sizes": [
-            "3.5t"
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
         ],
         "year": 2010,
         "name": "combustion power share",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
         "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
+        "uncertainty_type": 1,
+        "loc": 1
     },
     "1750-2020-combustion power share": {
-        "amount": 0.67,
+        "amount": 1,
         "category": "Powertrain",
         "powertrain": [
-            "HEV-d"
+            "ICEV-d",
+            "ICEV-g"
         ],
         "sizes": [
-            "3.5t"
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
         ],
         "year": 2020,
         "name": "combustion power share",
         "unit": "unitless",
         "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Good",
         "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
+        "uncertainty_type": 1,
+        "loc": 1
     },
     "1751-2030-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2030,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1752-2040-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2040,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1753-2050-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "3.5t"
-        ],
-        "year": 2050,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1754-2000-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2000,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1755-2010-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2010,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1756-2020-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2020,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1757-2030-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2030,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1758-2040-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2040,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1759-2050-combustion power share": {
-        "amount": 0.67,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "7.5t"
-        ],
-        "year": 2050,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.67,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1760-2000-combustion power share": {
-        "amount": 0.69,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2000,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.69,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1761-2010-combustion power share": {
-        "amount": 0.69,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2010,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.69,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1762-2020-combustion power share": {
-        "amount": 0.69,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2020,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.69,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1763-2030-combustion power share": {
-        "amount": 0.69,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2030,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.69,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1764-2040-combustion power share": {
-        "amount": 0.69,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2040,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.69,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1765-2050-combustion power share": {
-        "amount": 0.69,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "18t"
-        ],
-        "year": 2050,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.69,
-        "minimum": 0.65,
-        "maximum": 0.75
-    },
-    "1766-2000-combustion power share": {
-        "amount": 0.8,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2000,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.8,
-        "minimum": 0.75,
-        "maximum": 0.85
-    },
-    "1767-2010-combustion power share": {
-        "amount": 0.8,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2010,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.8,
-        "minimum": 0.75,
-        "maximum": 0.85
-    },
-    "1768-2020-combustion power share": {
-        "amount": 0.8,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2020,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.8,
-        "minimum": 0.75,
-        "maximum": 0.85
-    },
-    "1769-2030-combustion power share": {
-        "amount": 0.8,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2030,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.8,
-        "minimum": 0.75,
-        "maximum": 0.85
-    },
-    "1770-2040-combustion power share": {
-        "amount": 0.8,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2040,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.8,
-        "minimum": 0.75,
-        "maximum": 0.85
-    },
-    "1771-2050-combustion power share": {
-        "amount": 0.8,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "26t"
-        ],
-        "year": 2050,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.8,
-        "minimum": 0.75,
-        "maximum": 0.85
-    },
-    "1772-2000-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2000,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1773-2010-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2010,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1774-2020-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2020,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1775-2030-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2030,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1776-2040-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2040,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1777-2050-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "32t"
-        ],
-        "year": 2050,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1778-2000-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2000,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1779-2010-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2010,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1780-2020-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2020,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1781-2030-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2030,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1782-2040-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2040,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1783-2050-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "40t"
-        ],
-        "year": 2050,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1784-2000-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2000,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1785-2010-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2010,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1786-2020-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2020,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1787-2030-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2030,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1788-2040-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2040,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1789-2050-combustion power share": {
-        "amount": 0.775,
-        "category": "Powertrain",
-        "powertrain": [
-            "HEV-d"
-        ],
-        "sizes": [
-            "60t"
-        ],
-        "year": 2050,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "https://www.mdpi.com/2032-6653/11/1/12/pdf",
-        "comment": "Based on US trucks",
-        "status": "To be improved",
-        "kind": "distribution",
-        "uncertainty_type": 5,
-        "loc": 0.775,
-        "minimum": 0.75,
-        "maximum": 0.8
-    },
-    "1790-2000-combustion power share": {
-        "amount": 1,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g"
-        ],
-        "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
-        ],
-        "year": 2000,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 1
-    },
-    "1791-2010-combustion power share": {
-        "amount": 1,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g"
-        ],
-        "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
-        ],
-        "year": 2010,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 1
-    },
-    "1792-2020-combustion power share": {
-        "amount": 1,
-        "category": "Powertrain",
-        "powertrain": [
-            "ICEV-d",
-            "ICEV-g"
-        ],
-        "sizes": [
-            "3.5t",
-            "7.5t",
-            "18t",
-            "26t",
-            "32t",
-            "40t",
-            "60t"
-        ],
-        "year": 2020,
-        "name": "combustion power share",
-        "unit": "unitless",
-        "importance": "Critical",
-        "source": "Cox et al. 2020",
-        "comment": "Same as for passenger vehicles.",
-        "status": "Good",
-        "kind": "distribution",
-        "uncertainty_type": 1,
-        "loc": 1
-    },
-    "1793-2030-combustion power share": {
         "amount": 0.95,
         "category": "Powertrain",
         "powertrain": [
@@ -49625,7 +48701,7 @@
         "uncertainty_type": 1,
         "loc": 0.95
     },
-    "1794-2040-combustion power share": {
+    "1752-2040-combustion power share": {
         "amount": 0.9,
         "category": "Powertrain",
         "powertrain": [
@@ -49652,7 +48728,7 @@
         "uncertainty_type": 1,
         "loc": 0.9
     },
-    "1795-2050-combustion power share": {
+    "1753-2050-combustion power share": {
         "amount": 0.85,
         "category": "Powertrain",
         "powertrain": [
@@ -49679,7 +48755,7 @@
         "uncertainty_type": 1,
         "loc": 0.85
     },
-    "1796-2000-combustion power share": {
+    "1754-2000-combustion power share": {
         "amount": 1,
         "category": "Powertrain",
         "powertrain": [
@@ -49705,7 +48781,7 @@
         "uncertainty_type": 1,
         "loc": 1
     },
-    "1797-2010-combustion power share": {
+    "1755-2010-combustion power share": {
         "amount": 1,
         "category": "Powertrain",
         "powertrain": [
@@ -49731,7 +48807,7 @@
         "uncertainty_type": 1,
         "loc": 1
     },
-    "1798-2020-combustion power share": {
+    "1756-2020-combustion power share": {
         "amount": 1,
         "category": "Powertrain",
         "powertrain": [
@@ -49757,7 +48833,7 @@
         "uncertainty_type": 1,
         "loc": 1
     },
-    "1799-2030-combustion power share": {
+    "1757-2030-combustion power share": {
         "amount": 1,
         "category": "Powertrain",
         "powertrain": [
@@ -49783,7 +48859,7 @@
         "uncertainty_type": 1,
         "loc": 1
     },
-    "1800-2040-combustion power share": {
+    "1758-2040-combustion power share": {
         "amount": 1,
         "category": "Powertrain",
         "powertrain": [
@@ -49809,7 +48885,7 @@
         "uncertainty_type": 1,
         "loc": 1
     },
-    "1801-2050-combustion power share": {
+    "1759-2050-combustion power share": {
         "amount": 1,
         "category": "Powertrain",
         "powertrain": [
@@ -49835,7 +48911,7 @@
         "uncertainty_type": 1,
         "loc": 1
     },
-    "1802-2000-combustion power share": {
+    "1760-2000-combustion power share": {
         "amount": 0,
         "category": "Powertrain",
         "powertrain": [
@@ -49863,7 +48939,7 @@
         "uncertainty_type": 1,
         "loc": 0
     },
-    "1803-2010-combustion power share": {
+    "1761-2010-combustion power share": {
         "amount": 0,
         "category": "Powertrain",
         "powertrain": [
@@ -49891,7 +48967,7 @@
         "uncertainty_type": 1,
         "loc": 0
     },
-    "1804-2020-combustion power share": {
+    "1762-2020-combustion power share": {
         "amount": 0,
         "category": "Powertrain",
         "powertrain": [
@@ -49919,7 +48995,7 @@
         "uncertainty_type": 1,
         "loc": 0
     },
-    "1805-2030-combustion power share": {
+    "1763-2030-combustion power share": {
         "amount": 0,
         "category": "Powertrain",
         "powertrain": [
@@ -49947,7 +49023,7 @@
         "uncertainty_type": 1,
         "loc": 0
     },
-    "1806-2040-combustion power share": {
+    "1764-2040-combustion power share": {
         "amount": 0,
         "category": "Powertrain",
         "powertrain": [
@@ -49975,7 +49051,7 @@
         "uncertainty_type": 1,
         "loc": 0
     },
-    "1807-2050-combustion power share": {
+    "1765-2050-combustion power share": {
         "amount": 0,
         "category": "Powertrain",
         "powertrain": [
@@ -50003,7 +49079,7 @@
         "uncertainty_type": 1,
         "loc": 0
     },
-    "1808-2000-charger mass": {
+    "1766-2000-charger mass": {
         "amount": 39.690000000000005,
         "category": "Powertrain",
         "powertrain": [
@@ -50032,7 +49108,7 @@
         "minimum": 33.075,
         "maximum": 44.1
     },
-    "1809-2010-charger mass": {
+    "1767-2010-charger mass": {
         "amount": 37.800000000000004,
         "category": "Powertrain",
         "powertrain": [
@@ -50061,7 +49137,7 @@
         "minimum": 31.5,
         "maximum": 42
     },
-    "1810-2020-charger mass": {
+    "1768-2020-charger mass": {
         "amount": 36,
         "category": "Powertrain",
         "powertrain": [
@@ -50090,7 +49166,7 @@
         "minimum": 30,
         "maximum": 40
     },
-    "1811-2030-charger mass": {
+    "1769-2030-charger mass": {
         "amount": 36,
         "category": "Powertrain",
         "powertrain": [
@@ -50119,7 +49195,7 @@
         "minimum": 30,
         "maximum": 40
     },
-    "1812-2040-charger mass": {
+    "1770-2040-charger mass": {
         "amount": 34.199999999999996,
         "category": "Powertrain",
         "powertrain": [
@@ -50148,7 +49224,7 @@
         "minimum": 27,
         "maximum": 40
     },
-    "1813-2050-charger mass": {
+    "1771-2050-charger mass": {
         "amount": 32.489999999999995,
         "category": "Powertrain",
         "powertrain": [
@@ -50176,5 +49252,497 @@
         "loc": 32.489999999999995,
         "minimum": 25.65,
         "maximum": 38
+    },
+    "1772-2000-battery charge efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "ICEV-d",
+            "HEV-d",
+            "ICEV-g",
+            "PHEV-c-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2000,
+        "name": "battery charge efficiency",
+        "unit": "unitless",
+        "importance": "Moderate",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1773-2010-battery charge efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "ICEV-d",
+            "HEV-d",
+            "ICEV-g",
+            "PHEV-c-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2010,
+        "name": "battery charge efficiency",
+        "unit": "unitless",
+        "importance": "Moderate",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1774-2020-battery charge efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "ICEV-d",
+            "HEV-d",
+            "ICEV-g",
+            "PHEV-c-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2020,
+        "name": "battery charge efficiency",
+        "unit": "unitless",
+        "importance": "Moderate",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1775-2030-battery charge efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "ICEV-d",
+            "HEV-d",
+            "ICEV-g",
+            "PHEV-c-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2030,
+        "name": "battery charge efficiency",
+        "unit": "unitless",
+        "importance": "Moderate",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1776-2040-battery charge efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "ICEV-d",
+            "HEV-d",
+            "ICEV-g",
+            "PHEV-c-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2040,
+        "name": "battery charge efficiency",
+        "unit": "unitless",
+        "importance": "Moderate",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1777-2050-battery charge efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "ICEV-d",
+            "HEV-d",
+            "ICEV-g",
+            "PHEV-c-d"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2050,
+        "name": "battery charge efficiency",
+        "unit": "unitless",
+        "importance": "Moderate",
+        "source": "Cox et al. 2020",
+        "comment": "Same as for passenger vehicles.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1778-2000-charger efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "BEV",
+            "PHEV-e"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2000,
+        "name": "charger efficiency",
+        "unit": "unitless",
+        "importance": "Limited",
+        "source": "",
+        "comment": "Not used.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1779-2010-charger efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "BEV",
+            "PHEV-e"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2010,
+        "name": "charger efficiency",
+        "unit": "unitless",
+        "importance": "Limited",
+        "source": "",
+        "comment": "Not used.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1780-2020-charger efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "BEV",
+            "PHEV-e"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2020,
+        "name": "charger efficiency",
+        "unit": "unitless",
+        "importance": "Limited",
+        "source": "",
+        "comment": "Not used.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1781-2030-charger efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "BEV",
+            "PHEV-e"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2030,
+        "name": "charger efficiency",
+        "unit": "unitless",
+        "importance": "Limited",
+        "source": "",
+        "comment": "Not used.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1782-2040-charger efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "BEV",
+            "PHEV-e"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2040,
+        "name": "charger efficiency",
+        "unit": "unitless",
+        "importance": "Limited",
+        "source": "",
+        "comment": "Not used.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1783-2050-charger efficiency": {
+        "amount": 1,
+        "category": "Energy Storage",
+        "powertrain": [
+            "BEV",
+            "PHEV-e"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2050,
+        "name": "charger efficiency",
+        "unit": "unitless",
+        "importance": "Limited",
+        "source": "",
+        "comment": "Not used.",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1
+    },
+    "1784-2000-fuel cell power density": {
+        "amount": 1.1,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2000,
+        "name": "fuel cell power density",
+        "unit": "kg/kW",
+        "importance": "Critical",
+        "source": "https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
+        "comment": "U.S DoE \"ultimate target\" considered to be 2050. Power density for buses and trucks assumed to be twice as large than for passenger cars (0.51).",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1.1
+    },
+    "1785-2010-fuel cell power density": {
+        "amount": 1.05,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2010,
+        "name": "fuel cell power density",
+        "unit": "kg/kW",
+        "importance": "Critical",
+        "source": "https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
+        "comment": "U.S DoE \"ultimate target\" considered to be 2050. Power density for buses and trucks assumed to be twice as large than for passenger cars (0.51).",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1.05
+    },
+    "1786-2020-fuel cell power density": {
+        "amount": 1.02,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2020,
+        "name": "fuel cell power density",
+        "unit": "kg/kW",
+        "importance": "Critical",
+        "source": "https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
+        "comment": "U.S DoE \"ultimate target\" considered to be 2050. Power density for buses and trucks assumed to be twice as large than for passenger cars (0.51).",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 1.02
+    },
+    "1787-2030-fuel cell power density": {
+        "amount": 0.93,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2030,
+        "name": "fuel cell power density",
+        "unit": "kg/kW",
+        "importance": "Critical",
+        "source": "https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
+        "comment": "U.S DoE \"ultimate target\" considered to be 2050. Power density for buses and trucks assumed to be twice as large than for passenger cars (0.51).",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 0.93
+    },
+    "1788-2040-fuel cell power density": {
+        "amount": 0.8400000000000001,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2040,
+        "name": "fuel cell power density",
+        "unit": "kg/kW",
+        "importance": "Critical",
+        "source": "https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
+        "comment": "U.S DoE \"ultimate target\" considered to be 2050. Power density for buses and trucks assumed to be twice as large than for passenger cars (0.51).",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 0.8400000000000001
+    },
+    "1789-2050-fuel cell power density": {
+        "amount": 0.7407407407407407,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t",
+            "7.5t",
+            "18t",
+            "26t",
+            "32t",
+            "40t",
+            "60t"
+        ],
+        "year": 2050,
+        "name": "fuel cell power density",
+        "unit": "kg/kW",
+        "importance": "Critical",
+        "source": "https://www.hydrogen.energy.gov/pdfs/20005-automotive-fuel-cell-targets-status.pdf",
+        "comment": "U.S DoE \"ultimate target\" considered to be 2050. Power density for buses and trucks assumed to be twice as large than for passenger cars (0.51).",
+        "status": "Acceptable",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 0.7407407407407407
     }
 }

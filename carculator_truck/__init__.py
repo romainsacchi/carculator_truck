@@ -12,13 +12,8 @@ Submodules
 _all_ = (
     "TruckInputParameters",
     "fill_xarray_from_input_parameters",
-    "modify_xarray_from_custom_parameters",
     "TruckModel",
-    "get_standard_driving_cycle",
-    "EnergyConsumptionModel",
-    "get_gradients",
-    "HotEmissionsModel",
-    "create_fleet_composition_from_IAM_file",
+    "InventoryTruck",
 )
 
 # library version
@@ -28,15 +23,7 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 
-from .array import (
-    fill_xarray_from_input_parameters,
-    modify_xarray_from_custom_parameters,
-)
-from .driving_cycles import get_standard_driving_cycle
-from .energy_consumption import EnergyConsumptionModel
-from .gradients import get_gradients
-from .hot_emissions import HotEmissionsModel
-from .inventory import InventoryCalculation
+from carculator_utils.array import fill_xarray_from_input_parameters
+from .inventory import InventoryTruck
 from .model import TruckModel
 from .truck_input_parameters import TruckInputParameters
-from .utils import create_fleet_composition_from_IAM_file
