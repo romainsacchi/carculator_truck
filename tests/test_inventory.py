@@ -1,13 +1,8 @@
 import numpy as np
 import pytest
-
-from carculator_truck import (
-    InventoryTruck,
-    TruckInputParameters,
-    TruckModel,
-)
-
 from carculator_utils.array import fill_xarray_from_input_parameters
+
+from carculator_truck import InventoryTruck, TruckInputParameters, TruckModel
 
 tip = TruckInputParameters()
 tip.static()
@@ -142,11 +137,7 @@ def test_fuel_blend():
 
 def test_countries():
     """Test that calculation works with all countries"""
-    for c in [
-        "AO",
-        "AT",
-        "AU"
-    ]:
+    for c in ["AO", "AT", "AU"]:
         tm.country = c
         ic = InventoryTruck(
             tm,

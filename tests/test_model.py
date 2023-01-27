@@ -1,15 +1,17 @@
-import numpy as np
 from pathlib import Path
-import pandas as pd
 
+import numpy as np
+import pandas as pd
 from carculator_utils.array import fill_xarray_from_input_parameters
-from carculator_truck import TruckModel, TruckInputParameters
+
+from carculator_truck import TruckInputParameters, TruckModel
 
 tip = TruckInputParameters()
 tip.static()
 _, array = fill_xarray_from_input_parameters(tip)
 tm = TruckModel(array, cycle="Long haul", country="CH")
 tm.set_all()
+
 
 def test_presence_PHEVe():
     # PHEV-e should be dropped
@@ -51,15 +53,37 @@ def test_cargo_mass():
 
     # Cargo mass must equal the available payload * load factor
 
-    print(tm.array.sel(parameter="available payload", powertrain="ICEV-d", year=2020, size="40t"))
-    print(tm.array.sel(parameter="capacity utilization", powertrain="ICEV-d", year=2020, size="40t"))
-    print(tm.array.sel(parameter="cargo mass", powertrain="ICEV-d", year=2020, size="40t"))
+    print(
+        tm.array.sel(
+            parameter="available payload", powertrain="ICEV-d", year=2020, size="40t"
+        )
+    )
+    print(
+        tm.array.sel(
+            parameter="capacity utilization", powertrain="ICEV-d", year=2020, size="40t"
+        )
+    )
+    print(
+        tm.array.sel(parameter="cargo mass", powertrain="ICEV-d", year=2020, size="40t")
+    )
     assert np.allclose(
         (
-            tm.array.sel(parameter="available payload", powertrain="ICEV-d", year=2020, size="40t")
-            * tm.array.sel(parameter="capacity utilization", powertrain="ICEV-d", year=2020, size="40t")
+            tm.array.sel(
+                parameter="available payload",
+                powertrain="ICEV-d",
+                year=2020,
+                size="40t",
+            )
+            * tm.array.sel(
+                parameter="capacity utilization",
+                powertrain="ICEV-d",
+                year=2020,
+                size="40t",
+            )
         ),
-        tm.array.sel(parameter="cargo mass", powertrain="ICEV-d", year=2020, size="40t"),
+        tm.array.sel(
+            parameter="cargo mass", powertrain="ICEV-d", year=2020, size="40t"
+        ),
         rtol=1e-3,
     )
 
@@ -92,21 +116,48 @@ def test_fuel_blends():
 def test_battery_mass():
     # Battery mass must equal cell mass and BoP mass
 
-    print(tm.array.sel(parameter="energy battery mass", powertrain="BEV", year=2030, size="40t"))
-    print(tm.array.sel(parameter="battery cell mass", powertrain="BEV", year=2030, size="40t"))
-    print(tm.array.sel(parameter="battery BoP mass", powertrain="BEV", year=2030, size="40t"))
+    print(
+        tm.array.sel(
+            parameter="energy battery mass", powertrain="BEV", year=2030, size="40t"
+        )
+    )
+    print(
+        tm.array.sel(
+            parameter="battery cell mass", powertrain="BEV", year=2030, size="40t"
+        )
+    )
+    print(
+        tm.array.sel(
+            parameter="battery BoP mass", powertrain="BEV", year=2030, size="40t"
+        )
+    )
     assert np.allclose(
-        tm.array.sel(parameter="energy battery mass", powertrain="BEV", year=2030, size="40t"),
-        tm.array.sel(parameter="battery cell mass", powertrain="BEV", year=2030, size="40t")
-        + tm.array.sel(parameter="battery BoP mass", powertrain="BEV", year=2030, size="40t"),
+        tm.array.sel(
+            parameter="energy battery mass", powertrain="BEV", year=2030, size="40t"
+        ),
+        tm.array.sel(
+            parameter="battery cell mass", powertrain="BEV", year=2030, size="40t"
+        )
+        + tm.array.sel(
+            parameter="battery BoP mass", powertrain="BEV", year=2030, size="40t"
+        ),
     )
 
     # Cell mass must equal capacity divided by energy density of cells
 
     assert np.allclose(
-        tm.array.sel(parameter="battery cell mass", powertrain="BEV", year=2030, size="40t"),
-        tm.array.sel(parameter="electric energy stored", powertrain="BEV", year=2030, size="40t")
-        / tm.array.sel(parameter="battery cell energy density", powertrain="BEV", year=2030, size="40t"),
+        tm.array.sel(
+            parameter="battery cell mass", powertrain="BEV", year=2030, size="40t"
+        ),
+        tm.array.sel(
+            parameter="electric energy stored", powertrain="BEV", year=2030, size="40t"
+        )
+        / tm.array.sel(
+            parameter="battery cell energy density",
+            powertrain="BEV",
+            year=2030,
+            size="40t",
+        ),
     )
 
 
