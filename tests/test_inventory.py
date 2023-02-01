@@ -148,7 +148,6 @@ def test_countries():
 
 
 def test_endpoint():
-
     """Test if the correct impact categories are considered"""
     ic = InventoryTruck(tm, method="recipe", indicator="endpoint")
     results = ic.calculate_impacts()
@@ -190,7 +189,6 @@ def test_custom_electricity_mix():
     mixes = [mix_1, mix_2, mix_3]
 
     for i, mix in enumerate(mixes):
-
         if i == 0:
             with pytest.raises(ValueError) as wrapped_error:
                 ic = InventoryTruck(

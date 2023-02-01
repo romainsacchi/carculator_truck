@@ -50,7 +50,6 @@ def test_battery_replacement():
 
 
 def test_cargo_mass():
-
     # Cargo mass must equal the available payload * load factor
 
     print(
@@ -173,7 +172,6 @@ tm.set_all()
 
 
 def test_model_results():
-
     list_powertrains = [
         "ICEV-d",
         "PHEV-d",

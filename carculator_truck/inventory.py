@@ -326,7 +326,6 @@ class InventoryTruck(Inventory):
         self.add_fuel_to_vehicles("cng", ["ICEV-g"], "EV-g")
 
         for year in self.scope["year"]:
-
             cng_idx = self.get_index_vehicle_from_array(
                 ["ICEV-g"], [year], method="and"
             )

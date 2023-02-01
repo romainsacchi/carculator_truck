@@ -78,7 +78,6 @@ class TruckModel(VehicleModel):
         print("Finding solutions for trucks...")
 
         while abs(diff) > 0.01 or np.std(arr[-10:]) > 0.05 or len(arr) < 7:
-
             old_payload = self["available payload"].sum().values
 
             if self.target_mass:
@@ -135,7 +134,6 @@ class TruckModel(VehicleModel):
         self.remove_energy_consumption_from_unavailable_vehicles()
 
     def set_cargo_mass_and_annual_mileage(self):
-
         """Set the cargo mass and annual mileage of the vehicles."""
 
         with open(CARGO_MASSES, "r", encoding="utf-8") as stream:
@@ -173,13 +171,11 @@ class TruckModel(VehicleModel):
         actual_years = [y for y in self.array.year.values if y > 2020]
 
         if len(actual_years) > 0:
-
             l_pwt = [
                 p for p in self.array.powertrain.values if p in ["ICEV-d", "ICEV-g"]
             ]
 
             if len(l_pwt) > 0:
-
                 fc = (
                     self.array.loc[:, l_pwt, "fuel mass", :]
                     / self.array.loc[:, l_pwt, "target range", :]
@@ -324,7 +320,6 @@ class TruckModel(VehicleModel):
             )
 
     def set_battery_chemistry(self):
-
         # override default values for batteries
         # if provided by the user
         self.energy_storage = {
@@ -689,7 +684,6 @@ class TruckModel(VehicleModel):
         :return:
         """
         if "PHEV-e" in self.array.coords["powertrain"].values:
-
             range = (
                 self.array.loc[
                     dict(parameter="electric energy stored", powertrain="PHEV-d")
@@ -773,7 +767,6 @@ class TruckModel(VehicleModel):
             )
 
         if "FCEV" in self.array.coords["powertrain"].values:
-
             # Based on manufacturer data
             # We use a four-cylinder configuration
             # Of 650L each
@@ -834,7 +827,6 @@ class TruckModel(VehicleModel):
         )
 
     def set_costs(self):
-
         _nz = lambda x: np.where(x < 1, 1, x)
 
         glider_components = [
