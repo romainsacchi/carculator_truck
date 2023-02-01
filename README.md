@@ -73,7 +73,7 @@ system (e.g., power generation) is accounted for, using energy scenario-specific
 <p align="center">
     Global warming potential impacts per ton-km for a 40-t truck, across different powertrain technologies,
     using an urban driving cycle.
-  <img style="height:50px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/urban_gwp.png">
+  <img style="height:50px;" src="https://github.com/romainsacchi/carculator_truck/blob/master/docs/_static/img/urban_gwp.png">
 </p>
 
 ## How to use it?
