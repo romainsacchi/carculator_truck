@@ -1,7 +1,7 @@
 # ``carculator_truck``
 
 <p align="center">
-  <img style="height:130px;" src="https://github.com/romainsacchi/coarse/raw/master/docs/mediumsmall.png">
+  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/blob/master/docs/_static/img/mediumsmall.png">
 </p>
 
 
