@@ -3,8 +3,9 @@ inventory.py contains Inventory which provides all methods to solve inventories.
 """
 
 import numpy as np
-from . import DATA_DIR
 from carculator_utils.inventory import Inventory
+
+from . import DATA_DIR
 
 np.warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 
@@ -153,7 +154,6 @@ class InventoryTruck(Inventory):
             self.array[self.array_inputs["gross mass"], :, index_arr_16t] / 1000 / 16
         )
 
-
         self.A[
             :,
             self.find_input_indices(contains=("maintenance, lorry 28 metric ton",)),
@@ -284,13 +284,8 @@ class InventoryTruck(Inventory):
             self.find_input_indices(
                 contains=("Truck, ",), excludes=("26t", "32t", "40t", "60t")
             ),
-        ] = (
-            1
-            * (
-                self.array[self.array_inputs["gross mass"], :, index_arr_16t]
-                / 1000
-                / 16
-            )
+        ] = 1 * (
+            self.array[self.array_inputs["gross mass"], :, index_arr_16t] / 1000 / 16
         )
 
         self.A[
@@ -301,13 +296,8 @@ class InventoryTruck(Inventory):
             self.find_input_indices(
                 contains=("Truck, ",), excludes=("3.5t", "7.5t", "18t", "40t", "60t")
             ),
-        ] = (
-            1
-            * (
-                self.array[self.array_inputs["gross mass"], :, index_arr_28t]
-                / 1000
-                / 28
-            )
+        ] = 1 * (
+            self.array[self.array_inputs["gross mass"], :, index_arr_28t] / 1000 / 28
         )
 
         self.A[
@@ -318,13 +308,8 @@ class InventoryTruck(Inventory):
             self.find_input_indices(
                 contains=("Truck, ",), excludes=("3.5t", "7.5t", "18t", "26t", "32t")
             ),
-        ] = (
-            1
-            * (
-                self.array[self.array_inputs["gross mass"], :, index_arr_40t]
-                / 1000
-                / 40
-            )
+        ] = 1 * (
+            self.array[self.array_inputs["gross mass"], :, index_arr_40t] / 1000 / 40
         )
 
         # END of vehicle building
@@ -341,7 +326,6 @@ class InventoryTruck(Inventory):
         self.add_fuel_to_vehicles("cng", ["ICEV-g"], "EV-g")
 
         for year in self.scope["year"]:
-
             cng_idx = self.get_index_vehicle_from_array(
                 ["ICEV-g"], [year], method="and"
             )
@@ -398,7 +382,9 @@ class InventoryTruck(Inventory):
             np.ix_(
                 np.arange(self.iterations),
                 self.find_input_indices(("EV charger, level 3, plugin, 200 kW",)),
-                self.find_input_indices(contains=("Truck, "), excludes=("ICEV", "FCEV", " HEV")),
+                self.find_input_indices(
+                    contains=("Truck, "), excludes=("ICEV", "FCEV", " HEV")
+                ),
             )
         ] = (
             -1
@@ -410,6 +396,8 @@ class InventoryTruck(Inventory):
                 )
                 * self.array[self.array_inputs["kilometers per year"], :, index]
             )
-        ).values[:, np.newaxis, :]
+        ).values[
+            :, np.newaxis, :
+        ]
 
         print("*********************************************************************")

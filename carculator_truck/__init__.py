@@ -24,6 +24,7 @@ from pathlib import Path
 DATA_DIR = Path(__file__).resolve().parent / "data"
 
 from carculator_utils.array import fill_xarray_from_input_parameters
+
 from .inventory import InventoryTruck
 from .model import TruckModel
 from .truck_input_parameters import TruckInputParameters

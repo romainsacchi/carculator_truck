@@ -1,7 +1,7 @@
 # ``carculator_truck``
 
 <p align="center">
-  <img style="height:130px;" src="https://github.com/romainsacchi/coarse/raw/master/docs/mediumsmall.png">
+  <img style="height:130px;" src="https://github.com/romainsacchi/carculator_truck/blob/master/docs/_static/img/mediumsmall.png">
 </p>
 
 
@@ -55,25 +55,29 @@ system (e.g., power generation) is accounted for, using energy scenario-specific
     The energy model of <i>carculator_truck</i> considers the vehicle aerodynamics, the road gradient and other factors.
     It also considers varying efficiencies of the transmission and engine at various load points for each second
     of the driving cycle.
-  <img style="height:50px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/energy_model.png">
+  
+  <img style="height:150px;" src="https://github.com/romainsacchi/carculator_truck/blob/master/docs/_static/img/energy_model.png">
 </p>
 
 <p align="center">
     The energy model and the calculated tank-to-wheel energy consumption is validated against the simulation software
     <a href="https://ec.europa.eu/clima/policies/transport/vehicles/vecto_en" target="_blank">VECTO</a>.
-  <img style="height:50px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/vecto_validation.png">
+  
+  <img style="height:150px;" src="https://github.com/romainsacchi/carculator_truck/blob/master/docs/_static/img/vecto_validation.png">
 </p>
 
 <p align="center">
     Benefits of hybrid powertrains are fully conidered: the possibility to recuperate braking energy as well as efficiency gains from engine
     downsizing is accounted for.
-  <img style="height:50px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/hybrid_efficiency.png">
+  
+  <img style="height:150px;" src="https://github.com/romainsacchi/carculator_truck/blob/master/docs/_static/img/hybrid_efficiency.png">
 </p>
 
 <p align="center">
     Global warming potential impacts per ton-km for a 40-t truck, across different powertrain technologies,
     using an urban driving cycle.
-  <img style="height:50px;" src="https://github.com/romainsacchi/carculator_truck/raw/master/docs/urban_gwp.png">
+  
+  <img style="height:150px;" src="https://github.com/romainsacchi/carculator_truck/blob/master/docs/_static/img/urban_gwp.png">
 </p>
 
 ## How to use it?

@@ -1,13 +1,8 @@
 import numpy as np
 import pytest
-
-from carculator_truck import (
-    InventoryTruck,
-    TruckInputParameters,
-    TruckModel,
-)
-
 from carculator_utils.array import fill_xarray_from_input_parameters
+
+from carculator_truck import InventoryTruck, TruckInputParameters, TruckModel
 
 tip = TruckInputParameters()
 tip.static()
@@ -142,11 +137,7 @@ def test_fuel_blend():
 
 def test_countries():
     """Test that calculation works with all countries"""
-    for c in [
-        "AO",
-        "AT",
-        "AU"
-    ]:
+    for c in ["AO", "AT", "AU"]:
         tm.country = c
         ic = InventoryTruck(
             tm,
@@ -157,7 +148,6 @@ def test_countries():
 
 
 def test_endpoint():
-
     """Test if the correct impact categories are considered"""
     ic = InventoryTruck(tm, method="recipe", indicator="endpoint")
     results = ic.calculate_impacts()
@@ -199,7 +189,6 @@ def test_custom_electricity_mix():
     mixes = [mix_1, mix_2, mix_3]
 
     for i, mix in enumerate(mixes):
-
         if i == 0:
             with pytest.raises(ValueError) as wrapped_error:
                 ic = InventoryTruck(
