@@ -51,9 +51,6 @@ def test_cargo_mass():
 
     # Cargo mass must equal the available payload * load factor
 
-    print(tm.array.sel(parameter="available payload", powertrain="ICEV-d", year=2020, size="40t"))
-    print(tm.array.sel(parameter="capacity utilization", powertrain="ICEV-d", year=2020, size="40t"))
-    print(tm.array.sel(parameter="cargo mass", powertrain="ICEV-d", year=2020, size="40t"))
     assert np.allclose(
         (
             tm.array.sel(parameter="available payload", powertrain="ICEV-d", year=2020, size="40t")
@@ -92,9 +89,6 @@ def test_fuel_blends():
 def test_battery_mass():
     # Battery mass must equal cell mass and BoP mass
 
-    print(tm.array.sel(parameter="energy battery mass", powertrain="BEV", year=2030, size="40t"))
-    print(tm.array.sel(parameter="battery cell mass", powertrain="BEV", year=2030, size="40t"))
-    print(tm.array.sel(parameter="battery BoP mass", powertrain="BEV", year=2030, size="40t"))
     assert np.allclose(
         tm.array.sel(parameter="energy battery mass", powertrain="BEV", year=2030, size="40t"),
         tm.array.sel(parameter="battery cell mass", powertrain="BEV", year=2030, size="40t")

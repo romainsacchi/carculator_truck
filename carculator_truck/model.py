@@ -8,7 +8,6 @@ from prettytable import PrettyTable
 import warnings
 
 from . import DATA_DIR
-from .background_systems import BackgroundSystemModel
 from carculator_utils.energy_consumption import (
     EnergyConsumptionModel,
     get_default_driving_cycle_name
@@ -37,7 +36,6 @@ class TruckModel(VehicleModel):
     :vartype ecm: coarse.energy_consumption.EnergyConsumptionModel
 
     """
-
 
     def set_all(self, electric_utility_factor: float = None):
         """
@@ -73,7 +71,7 @@ class TruckModel(VehicleModel):
             cycle=self.cycle,
             gradient=self.gradient,
             country=self.country,
-
+            powertrains=self.array.coords["powertrain"].values.tolist(),
         )
 
         print("Finding solutions for trucks...")
@@ -384,10 +382,8 @@ class TruckModel(VehicleModel):
             engine_power=self["power"],
             recuperation_efficiency=self["recuperation efficiency"],
             aux_power=self["auxiliary power demand"],
-            engine_efficiency=self["engine efficiency"],
             battery_charge_eff=self["battery charge efficiency"],
             battery_discharge_eff=self["battery discharge efficiency"],
-            transmission_efficiency=self["transmission efficiency"],
             fuel_cell_system_efficiency=self["fuel cell system efficiency"],
         )
 
@@ -401,56 +397,6 @@ class TruckModel(VehicleModel):
 
         distance = self.energy.sel(parameter="velocity").sum(dim="second") / 1000
 
-        l_pwt = [
-            p for p in self.array.powertrain.values
-            if p not in ["BEV", "FCEV", "PHEV-e"]
-        ]
-
-        if l_pwt:
-            self.energy.loc[dict(
-                parameter="transmission efficiency",
-                powertrain=l_pwt,
-            )] = np.clip(
-                np.interp(
-                    self.energy.loc[dict(
-                        parameter="power load",
-                        powertrain=l_pwt,
-                    )],
-                    [0, 0.025, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
-                    [0, 0.6, 0.75, 0.85, 0.88, 0.91, 0.91, 0.91, 0.91, 0.91, 0.91, 0.91],
-                ),
-                0.2,
-                1,
-            )
-
-            self.energy.loc[dict(
-                parameter="engine efficiency",
-                powertrain=l_pwt,
-            )] = np.clip(
-                    np.interp(
-                        self.energy.loc[dict(
-                            parameter="power load",
-                            powertrain=l_pwt,
-                        )],
-                        [0, 0.025, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
-                        [
-                            0,
-                            0.2,
-                            0.25,
-                            0.32,
-                            0.385,
-                            0.41,
-                            0.42,
-                            0.42,
-                            0.42,
-                            0.42,
-                            0.42,
-                            0.42,
-                        ],
-                    ),
-                    0.2,
-                    1,
-                )
 
         # Correction for CNG trucks
         if "ICEV-g" in self.array.powertrain.values:
@@ -475,12 +421,12 @@ class TruckModel(VehicleModel):
 
         self["engine efficiency"] = np.ma.array(
             self.energy.loc[dict(parameter="engine efficiency")],
-            mask=self.energy.loc[dict(parameter="power load")] <= 0.05
+            mask=self.energy.loc[dict(parameter="power load")] == 0.0
         ).mean(axis=0).T
 
         self["transmission efficiency"] = np.ma.array(
             self.energy.loc[dict(parameter="transmission efficiency")],
-            mask=self.energy.loc[dict(parameter="power load")] <= 0.05
+            mask=self.energy.loc[dict(parameter="power load")] == 0.0
         ).mean(axis=0).T
 
 
