@@ -42,6 +42,7 @@ setup(
     },
     install_requires=[
         "carculator_utils",
+        "prettytable"
     ],
     url="https://github.com/romainsacchi/carculator_truck",
     description="Prospective environmental and economic life cycle assessment"
