@@ -58,7 +58,6 @@ class TruckModel(VehicleModel):
         """
 
         diff = 1.0
-        arr = np.array([])
 
         self["is_compliant"] = True
         self["is_available"] = True
@@ -75,8 +74,9 @@ class TruckModel(VehicleModel):
         )
 
         print("Finding solutions for trucks...")
+        self.override_range()
 
-        while abs(diff) > 0.01 or np.std(arr[-10:]) > 0.05 or len(arr) < 7:
+        while abs(diff) > 0.01:
 
             old_payload = self["available payload"].sum().values
 
@@ -93,23 +93,12 @@ class TruckModel(VehicleModel):
             self.set_auxiliaries()
             self.set_recuperation()
 
-            if self.energy_consumption:
-                self.override_ttw_energy()
-            else:
-                self.set_ttw_efficiency()
-                self.calculate_ttw_energy()
+            self.set_ttw_efficiency()
+            self.calculate_ttw_energy()
+
 
             self.set_share_recuperated_energy()
             self.set_battery_fuel_cell_replacements()
-
-            if len(self.array.year.values) > 1:
-                # if there are vehicles after 2020, we need to ensure CO2 standards compliance
-                # return an array with non-compliant vehicles
-                non_compliant_vehicles = self.adjust_combustion_power_share()
-                arr = np.append(arr, non_compliant_vehicles.sum())
-            else:
-                arr = np.append(arr, [0])
-                non_compliant_vehicles = 0
 
             self.set_energy_stored_properties()
             self.set_power_battery_properties()
@@ -137,101 +126,32 @@ class TruckModel(VehicleModel):
 
         """Set the cargo mass and annual mileage of the vehicles."""
 
-        with open(CARGO_MASSES, "r", encoding="utf-8") as stream:
-            generic_payload = yaml.safe_load(stream)
-
-        payload = self.payload.get("payload", generic_payload["payload"])
-        annual_mileage = self.payload.get("annual mileage", generic_payload["annual mileage"])
-
-        for s in self.array.coords["size"].values:
-            if self.cycle in payload:
-                if s in payload[self.cycle]:
-                    self.array.loc[dict(size=s, parameter="cargo mass")] = payload[self.cycle][s]
-
-            if self.cycle in annual_mileage:
-                if s in annual_mileage[self.cycle]:
-                    self.array.loc[
-                        dict(size=s, parameter="kilometers per year")
-                    ] = annual_mileage[self.cycle][s]
-
-
-    def adjust_combustion_power_share(self):
-        """
-        If the exhaust CO2 emissions exceed the targets defined in `self.emission_target`,
-        compared to 2020, we decrement the power supply share of the combustion engine.
-
-        :returns: `is_compliant`, whether all vehicles are compliant or not.
-        """
-
-        list_target_years = [2020] + list(self.energy_target.keys())
-        list_target_vals = [1] + list(self.energy_target.values())
-        # years under target
-        actual_years = [y for y in self.array.year.values if y > 2020]
-
-        if len(actual_years) > 0:
-
-            l_pwt = [
-                p for p in self.array.powertrain.values if p in ["ICEV-d", "ICEV-g"]
-            ]
-
-            if len(l_pwt) > 0:
-
-                fc = (
-                    self.array.loc[:, l_pwt, "fuel mass", :]
-                    / self.array.loc[:, l_pwt, "target range", :]
-                ).interp(year=list_target_years, kwargs={"fill_value": "extrapolate"})
-
-                fc[:, :, :, :] = (
-                    fc[:, :, 0, :].values
-                    * np.array(list_target_vals).reshape((-1, 1, 1, 1))
-                ).transpose(1, 2, 0, 3)
-
-                years_after_last_target = [
-                    y for y in actual_years if y > list_target_years[-1]
-                ]
-
-                list_years = list_target_years + actual_years
-                list_years = list(set(list_years))
-                fc = fc.interp(year=list_years, kwargs={"fill_value": "extrapolate"})
-
-                if (
-                    len(years_after_last_target) > 0
-                    and list_target_years[-1] in fc.year.values
-                ):
-                    fc.loc[dict(year=years_after_last_target)] = fc.loc[
-                        dict(year=list_target_years[-1])
-                    ].values[:, :, None, :]
-
-                fc = fc.loc[dict(year=actual_years)]
-
-                arr = (
-                    fc.values
-                    < (
-                        self.array.loc[:, l_pwt, "fuel mass", actual_years]
-                        / self.array.loc[:, l_pwt, "target range", actual_years]
-                    ).values
-                )
-
-                if arr.sum() > 0:
-                    new_shares = self.array.loc[
-                        dict(
-                            powertrain=l_pwt,
-                            parameter="combustion power share",
-                            year=actual_years,
-                        )
-                    ] - (arr * 0.02)
-                    self.array.loc[
-                        dict(
-                            powertrain=l_pwt,
-                            parameter="combustion power share",
-                            year=actual_years,
-                        )
-                    ] = np.clip(new_shares, 0.6, 1)
-                return arr
-            else:
-                return np.array([])
+        if self.payload:
+            for s in self.array.coords["size"].values:
+                for p in self.array.coords["powertrain"].values:
+                    for y in self.array.coords["year"].values:
+                        self.array.loc[dict(size=s, powertrain=p, year=y, parameter="cargo mass")] = self.payload[(p, s, y)]
         else:
-            return np.array([])
+            with open(CARGO_MASSES, "r", encoding="utf-8") as stream:
+                generic_payload = yaml.safe_load(stream)["payload"]
+
+            for s in self.array.coords["size"].values:
+                cycle = self.cycle if isinstance(self.cycle, str) else "Urban delivery"
+                self.array.loc[dict(size=s, parameter="cargo mass")] = generic_payload[cycle][s]
+
+        if self.annual_mileage:
+            for s in self.array.coords["size"].values:
+                for p in self.array.coords["powertrain"].values:
+                    for y in self.array.coords["year"].values:
+                        self.array.loc[dict(size=s, powertrain=p, year=y, parameter="kilometers per year")] = self.annual_mileage[(p, s, y)]
+        else:
+            with open(CARGO_MASSES, "r", encoding="utf-8") as stream:
+                annual_mileage = yaml.safe_load(stream)["annual mileage"]
+
+            for s in self.array.coords["size"].values:
+                cycle = self.cycle if isinstance(self.cycle, str) else "Urban delivery"
+                self.array.loc[dict(size=s, parameter="kilometers per year")] = annual_mileage[cycle][s]
+
 
     def adjust_cost(self):
         """
@@ -321,9 +241,7 @@ class TruckModel(VehicleModel):
 
     def set_battery_chemistry(self):
 
-        # override default values for batteries
-        # if provided by the user
-        self.energy_storage = {
+        energy_storage = {
             "electric": {
                 x: "NMC-622"
                 for x in product(
@@ -334,6 +252,14 @@ class TruckModel(VehicleModel):
             },
             "origin": "CN",
         }
+
+        # override default values for batteries
+        # if provided by the user
+
+        if self.energy_storage is not None:
+            energy_storage.update(self.energy_storage)
+
+        self.energy_storage = energy_storage
 
     def override_range(self):
         """
@@ -347,17 +273,28 @@ class TruckModel(VehicleModel):
             "Long haul": 800,
         }
 
-        if self.target_range:
+        if self.target_range is not None:
             target_range = self.target_range
-        else:
-            if not self.cycle:
-                self.cycle = get_default_driving_cycle_name("truck")
+        elif isinstance(self.cycle, str):
             target_range = target_ranges[self.cycle]
+        else:
+            target_range = 800
 
         self["target range"] = target_range
 
+        # exception for PHEVs trucks
+        # which are assumed ot eb able to drive 60 km in battery-depleting mode
+        if "PHEV-e" in self.array.powertrain.values:
+            self.array.loc[
+                {
+                    "powertrain": "PHEV-e",
+                    "parameter": "target range",
+            }
+            ] = 60
+
         print(
-            f"{self.cycle} driving cycle is selected. \n"
+            f"{self.cycle if isinstance(self.cycle, str) else 'A custom'} "
+            f"driving cycle is selected. \n"
             f"Vehicles will be designed to achieve "
             f"a minimal range of {target_range} km."
         )
@@ -395,6 +332,9 @@ class TruckModel(VehicleModel):
             }
         )
 
+        if self.energy_consumption:
+            self.override_ttw_energy()
+
         distance = self.energy.sel(parameter="velocity").sum(dim="second") / 1000
 
 
@@ -402,10 +342,10 @@ class TruckModel(VehicleModel):
         if "ICEV-g" in self.array.powertrain.values:
             self.energy.loc[
                 dict(parameter="engine efficiency", powertrain="ICEV-g")
-            ] *= 1 - self.array.sel(
+            ] *= (1 - self.array.sel(
                 parameter="CNG engine efficiency correction factor",
                 powertrain="ICEV-g",
-            )
+            )).T.values
 
         self["TtW energy"] = (
             self.energy.sel(
@@ -416,7 +356,8 @@ class TruckModel(VehicleModel):
                 ]
             )
             .sum(dim=["second", "parameter"])
-            / distance
+            .values
+            / distance.values
         ).T
 
         self["engine efficiency"] = np.ma.array(
@@ -438,8 +379,8 @@ class TruckModel(VehicleModel):
         )
 
         self["auxiliary energy"] = (
-                self.energy.sel(parameter="auxiliary energy").sum(dim="second")
-                / distance
+                self.energy.sel(parameter="auxiliary energy").sum(dim="second").values
+                / distance.values
         ).T
 
 
@@ -575,17 +516,6 @@ class TruckModel(VehicleModel):
             (self["cargo mass"] / self["available payload"]), 0, 1
         )
 
-    def set_power_parameters(self):
-        """Set electric and combustion motor powers based on input parameter ``power to mass ratio``."""
-        # Convert from W/kg to kW
-        self["power"] = np.clip(
-            self["power to mass ratio"] * self["curb mass"] / 1000, 0, 450
-        )
-        self["combustion power share"] = self["combustion power share"].clip(
-            min=0, max=1
-        )
-        self["combustion power"] = self["power"] * self["combustion power share"]
-        self["electric power"] = self["power"] * (1 - self["combustion power share"])
 
     def set_component_masses(self):
         self["combustion engine mass"] = (
@@ -618,7 +548,7 @@ class TruckModel(VehicleModel):
 
             range = (
                 self.array.loc[
-                    dict(parameter="electric energy stored", powertrain="PHEV-d")
+                    dict(parameter="electric energy stored", powertrain="PHEV-e")
                 ]
                 * self.array.loc[dict(parameter="battery DoD", powertrain="PHEV-e")]
             ) / (
@@ -628,12 +558,13 @@ class TruckModel(VehicleModel):
             )
 
             if uf is None:
+
                 self.array.loc[
                     dict(powertrain="PHEV-e", parameter="electric utility factor")
                 ] = (
                     range
                     / self.array.loc[
-                        dict(powertrain="PHEV-e", parameter="target range")
+                        dict(powertrain="PHEV-c-d", parameter="target range")
                     ]
                 )
             else:
@@ -1044,7 +975,7 @@ class TruckModel(VehicleModel):
                 # as a result of curb mass being too large
                 vals = np.asarray(
                     [
-                        np.round(v[2][0])
+                        np.round(v[2][0], 1)
                         if (v[0][0] - v[1][0]) > 0
                         else f"-{np.round(v[2][0])}-"
                         for v in (
