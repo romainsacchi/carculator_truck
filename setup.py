@@ -40,10 +40,7 @@ setup(
     package_data={
         "carculator_truck": package_files(os.path.join("carculator_truck", "data"))
     },
-    install_requires=[
-        "carculator_utils",
-        "prettytable"
-    ],
+    install_requires=["carculator_utils", "prettytable"],
     url="https://github.com/romainsacchi/carculator_truck",
     description="Prospective environmental and economic life cycle assessment"
     "of medium and heavy goods vehicles",
