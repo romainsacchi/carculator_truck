@@ -41,17 +41,7 @@ setup(
         "carculator_truck": package_files(os.path.join("carculator_truck", "data"))
     },
     install_requires=[
-        "pandas",
-        "xarray",
-        "numpy",
-        "klausen",
-        "xlrd",
-        "numexpr",
-        "bw2io",
-        "prettytable",
-        "wurst",
-        "pycountry",
-        "pyyaml",
+        "carculator_utils",
     ],
     url="https://github.com/romainsacchi/carculator_truck",
     description="Prospective environmental and economic life cycle assessment"
