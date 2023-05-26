@@ -9,7 +9,7 @@ Submodules
 
 """
 
-_all_ = (
+__all__ = (
     "TruckInputParameters",
     "fill_xarray_from_input_parameters",
     "TruckModel",

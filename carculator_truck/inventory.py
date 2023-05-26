@@ -24,7 +24,7 @@ class InventoryTruck(Inventory):
         Fill-in the A matrix. Does not return anything. Modifies in place.
         Shape of the A matrix (values, products, activities).
 
-        :param array: :attr:`array` from :class:`CarModel` class
+        :attr:`array` from :class:`CarModel` class
         """
 
         # Glider/Frame

@@ -24,7 +24,7 @@ copyright = "2021, Paul Scherrer Institut"
 author = "Romain Sacchi"
 
 # The full version, including alpha/beta/rc tags
-release = "0.3.8"
+release = "0.3.9"
 
 
 # -- General configuration ---------------------------------------------------
@@ -36,7 +36,6 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinxcontrib.bibtex",
     "sphinx_copybutton",
-    "sphinx_design",
     "sphinx_immaterial",
 ]
 
