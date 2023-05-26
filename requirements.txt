@@ -1,2 +1,2 @@
-carculator_utils
+carculator-utils
 prettytable

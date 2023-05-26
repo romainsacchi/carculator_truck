@@ -27,8 +27,8 @@ Energy consumption
 .. automodule:: carculator_utils.energy_consumption
     :members:
 
-Car Model
----------
+Truck Model
+-----------
 
 .. automodule:: carculator_truck.model
     :members:
