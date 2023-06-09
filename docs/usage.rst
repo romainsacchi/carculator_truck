@@ -1,6 +1,6 @@
 .. _usage:
 
-Using Carculator truck
+Using Carculator Truck
 ======================
 
 Static vs. Stochastic mode
@@ -8,7 +8,8 @@ Static vs. Stochastic mode
 
 .. note:: 
 
-   Many examples are given in this `notebook <https://github.com/romainsacchi/carculator_truck/blob/master/examples/Examples.ipynb>`_ which you can run directly on your computer.
+   Many examples are given in this :download:`examples.zip file <_static/resources/examples.zip>` which contains a Jupyter notebook
+    you can run directly on your computer.
 
 The inventories can be calculated using the most likely value of the given input parameters ("static" mode), but also using
 randomly-generated values based on a probability distribution for those ("stochastic" mode).

@@ -1,3 +1,5 @@
+.. _validity:
+
 Validity tests
 ==============
 
@@ -46,7 +48,7 @@ Manually, such parameters can be obtained the following way:
     acceleration = np.zeros_like(velocity)
     acceleration[1:-1] = (velocity[2:] - velocity[:-2])/2
 
-Using `carculator`, these parameters can be obtained the following way:
+Using ``carculator``, these parameters can be obtained the following way:
 
 .. code-block:: python
 
@@ -84,7 +86,9 @@ And the acceleration returned by carculator should equal the values given by the
     
     True
     
-Which can be also be verified visually::
+Which can be also be verified visually:
+
+.. code-block:: python
 
     plt.plot(driving_cycle['m/s²'].values, label='UNECE')
     plt.plot(acceleration, label='Manually calculated')
@@ -95,9 +99,10 @@ Which can be also be verified visually::
     plt.savefig('comparison_driving_cycle.png')
     plt.show()
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/comparison_driving_cycle.png
+.. image:: https://github.com/romainsacchi/carculator/blob/master/docs/_static/img/comparison_driving_cycle.png?raw=true
     :width: 400
-    :alt: Alternative text
+    :alt: Comparison driving cycle
+    :align: center
     
 Car and components masses
 -------------------------
@@ -142,9 +147,10 @@ However, most of the driving mass is explained by the curb mass:
         parameter=['total cargo mass', 'curb mass']).values).tolist(), labels=['Total cargo mass', 'Curb mass'])
     plt.show()
 
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/pie_total_mass.png
+.. image:: https://github.com/romainsacchi/carculator/blob/master/docs/_static/img/pie_total_mass.png?raw=true
     :width: 400
-    :alt: Alternative text
+    :alt: Pie Total Mass
+    :align: center
     
 Here is a split between the components making up for the curb mass.
 One can see that, in the case of a battery electric SUV, most of the weight comes from the glider as well as the battery cells.
@@ -204,10 +210,10 @@ On an equivalent diesel powertrain, the mass of the glider base is comparatively
     plt.subplots_adjust(wspace=1)
     plt.show()
   
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/pie_mass_components.png
+.. image:: https://github.com/romainsacchi/carculator/blob/master/docs/_static/img/pie_mass_components.png?raw=true
     :width: 900
-    :alt: Alternative text
-    
+    :alt: Pie Mass Components
+    :align: center
 
 
 The `curb mass` returned by ``carculator`` for the year 2010 and 2020 is further calibrated against manufacturers' data, per vehicle size class and powertrain technology.
@@ -215,6 +221,7 @@ For example, we use the car database `Car2db <https://car2db.com/>`_ and load al
 The same exercise is done with vehicles between 2008 and 2012 to calibrate the curb mass of given by carculator for vehicles in 2010.
 
     
-.. image:: https://github.com/romainsacchi/carculator/raw/master/docs/mass_comparison.png
+.. image:: https://github.com/romainsacchi/carculator/blob/master/docs/_static/img/mass_comparison.png?raw=true
     :width: 900
-    :alt: Alternative text
+    :alt: Mass Comparison
+    :align: center
