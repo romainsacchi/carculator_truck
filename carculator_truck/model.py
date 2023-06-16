@@ -107,6 +107,12 @@ class TruckModel(VehicleModel):
                 "available payload"
             ].sum()
 
+        self["cargo mass"] = np.clip(self["cargo mass"], 0, self["available payload"])
+
+        self["capacity utilization"] = np.clip(
+            (self["cargo mass"] / self["available payload"]), 0, 1
+        )
+
         self.adjust_cost()
 
         self.set_electric_utility_factor(electric_utility_factor)
@@ -518,12 +524,6 @@ class TruckModel(VehicleModel):
             self["gross mass"]
             - self["curb mass"]
             - (self["average passengers"] * self["average passenger mass"])
-        )
-
-        self["cargo mass"] = np.clip(self["cargo mass"], 0, self["available payload"])
-
-        self["capacity utilization"] = np.clip(
-            (self["cargo mass"] / self["available payload"]), 0, 1
         )
 
     def set_component_masses(self):
