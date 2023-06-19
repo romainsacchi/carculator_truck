@@ -14,7 +14,7 @@ import os
 import sys
 
 # sys.path.insert(0, os.path.abspath('C:\Users\sacchi_r\Documents\GitHub\coarse\coarse'))
-sys.path.insert(0, os.path.abspath(".."))
+sys.path.append(os.path.abspath(".."))
 
 
 # -- Project information -----------------------------------------------------
@@ -24,7 +24,7 @@ copyright = "2021, Paul Scherrer Institut"
 author = "Romain Sacchi"
 
 # The full version, including alpha/beta/rc tags
-release = "0.3.8"
+release = "0.3.9"
 
 
 # -- General configuration ---------------------------------------------------
@@ -36,7 +36,6 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinxcontrib.bibtex",
     "sphinx_copybutton",
-    "sphinx_design",
     "sphinx_immaterial",
 ]
 

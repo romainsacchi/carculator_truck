@@ -29,7 +29,7 @@ class TruckModel(VehicleModel):
     This class represents the entirety of the vehicles considered, with useful attributes, such as an array that stores
     all the vehicles parameters.
 
-    :ivar array: multi-dimensional numpy-like array that contains parameters' value(s)
+    :ivar array: multidimensional numpy-like array that contains parameters' value(s)
     :vartype array: xarray.DataArray
     :ivar mappings: Dictionary with names correspondence
     :vartype mappings: dict
@@ -44,18 +44,16 @@ class TruckModel(VehicleModel):
         efficiency of the vehicle, costs, etc.
 
         :meth:`set_component_masses()`, :meth:`set_vehicle_masses()` and :meth:`set_power_parameters()` and
-         :meth:`set_energy_stored_properties` relate to one another.
+        :meth:`set_energy_stored_properties` relate to one another.
         `powertrain_mass` depends on `power`, `curb_mass` is affected by changes in `powertrain_mass`,
-        `combustion engine mass`, `electric engine mass`. `energy battery mass` is influenced
-        by the `curb mass` but also
+        `combustion engine mass`, `electric engine mass`. `energy battery mass` is influencedby the `curb mass` but also
         by the `target range` the truck has. `power` is also varying with `curb_mass`.
 
         The current solution is to loop through the methods until the change in payload between
-        two iterations is
-        inferior to 0.1%. It is then assumed that the trucks are correctly sized.
+        two iterations is inferior to 0.1%. It is then assumed that the trucks are correctly sized.
 
-        :returns: Does not return anything. Modifies ``self.array`` in place.
-
+        :param electric_utility_factor: the share of km driven in battery-depleting mode over the required range autonomy
+        :return: Does not return anything. Modifies ``self.array`` in place.
         """
 
         diff = 1.0
@@ -173,7 +171,6 @@ class TruckModel(VehicleModel):
         """
         This method adjusts costs of energy storage over time, to correct for the overly optimistic linear
         interpolation between years.
-
         """
 
         n_iterations = self.array.shape[-1]
@@ -279,7 +276,6 @@ class TruckModel(VehicleModel):
     def override_range(self):
         """
         Set storage size or range for each powertrain.
-        :return:
         """
 
         target_ranges = {
@@ -322,7 +318,6 @@ class TruckModel(VehicleModel):
         auxiliary services as well as to move the vehicle.
         The sum is stored under the parameter label "TtW energy"
         in :attr:`self.array`.
-
         """
 
         self.energy = self.ecm.motive_energy_per_km(
@@ -405,7 +400,7 @@ class TruckModel(VehicleModel):
 
     def set_battery_fuel_cell_replacements(self):
         """
-        This methods calculates the number of replacement batteries needed
+        These methods calculates the number of replacement batteries needed
         to match the vehicle lifetime. Given the chemistry used,
         the cycle life is known. Given the lifetime kilometers and
         the kilometers per charge, the number of charge cycles can be inferred.
@@ -415,7 +410,6 @@ class TruckModel(VehicleModel):
         Also, the number of replacement is rounded up.
         This means that the entirety of the battery replacement is allocated
         to the vehicle (and not to its potential second life).
-
         """
         # Number of replacement of battery is rounded *up*
 
@@ -464,13 +458,11 @@ class TruckModel(VehicleModel):
         """
         Define ``curb mass``, ``driving mass``, and ``cargo mass``.
 
-            * `curb mass <https://en.wikipedia.org/wiki/Curb_weight>`__ is the mass of the vehicle and fuel, without people or cargo.
-            * ``cargo mass`` is the mass of the cargo and passengers.
-            * ``driving mass`` is the ``curb mass`` plus ``cargo mass``.
+        * `curb mass <https://en.wikipedia.org/wiki/Curb_weight>`__ is the mass of the vehicle and fuel, without people or cargo.
+        * ``cargo mass`` is the mass of the cargo and passengers.
+        * ``driving mass`` is the ``curb mass`` plus ``cargo mass``.
 
-        .. note::
-            driving mass = cargo mass + driving mass
-
+        .. note:: driving mass = cargo mass + driving mass
         """
 
         # Base components, common to all powertrains
@@ -546,11 +538,8 @@ class TruckModel(VehicleModel):
 
     def set_electric_utility_factor(self, uf: float = None) -> None:
         """
-        The electric utility factor
-        is the share of km driven in battery-depleting mode
-        over the required range autonomy.
-        Scania's PHEV tractor can drive 60 km in electric mode
-        :return:
+        The electric utility factor is the share of km driven in battery-depleting mode
+        over the required range autonomy. Scania's PHEV tractor can drive 60 km in electric mode
         """
         if "PHEV-e" in self.array.coords["powertrain"].values:
             range = (
@@ -581,9 +570,7 @@ class TruckModel(VehicleModel):
     def set_energy_stored_properties(self):
         """
         First, fuel mass is defined. It is dependent on the range required.
-        Then batteries are sized, depending on the range
-        required and the energy consumption.
-        :return:
+        Then batteries are sized, depending on the range required and the energy consumption.
         """
 
         _ = lambda x: np.where(x == 0, 1, x)
@@ -848,13 +835,13 @@ class TruckModel(VehicleModel):
 
     def calculate_cost_impacts(self, sensitivity=False, scope=None):
         """
-        This method returns an array with cost values per vehicle-km, sub-divided into the following groups:
+        This method returns an array with cost values per vehicle-km, subdivided into the following groups:
 
-            * Purchase
-            * Maintentance
-            * Component replacement
-            * Energy
-            * Total cost of ownership
+        * Purchase
+        * Maintenance
+        * Component replacement
+        * Energy
+        * Total cost of ownership
 
         :return: A xarray array with cost information per vehicle-km
         :rtype: xarray.core.dataarray.DataArray

@@ -12,7 +12,7 @@ Truck Input Parameter
 Array
 -----
 
-.. automodule:: carculator_truck.array
+.. automodule:: carculator_utils.array
     :members:
     
 Driving cycle
@@ -24,11 +24,11 @@ Driving cycle
 Energy consumption
 ------------------
 
-.. automodule:: carculator_truck.energy_consumption
+.. automodule:: carculator_utils.energy_consumption
     :members:
 
-Car Model
----------
+Truck Model
+-----------
 
 .. automodule:: carculator_truck.model
     :members:
@@ -36,13 +36,13 @@ Car Model
 Noise Model
 -----------
 
-.. automodule:: carculator_truck.noise_emissions
+.. automodule:: carculator_utils.noise_emissions
     :members:
 
 Hot pollutants emissions
 ------------------------
 
-.. automodule:: carculator_truck.hot_emissions
+.. automodule:: carculator_utils.hot_emissions
     :members:
 
 Inventory calculation
@@ -54,7 +54,7 @@ Inventory calculation
 Inventory export
 ----------------
 
-.. automodule:: carculator_truck.export
+.. automodule:: carculator_utils.export
     :members:
 
 Background systems

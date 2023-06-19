@@ -3,8 +3,8 @@
 
 .. _intro:
 
-Welcome to Carculator truck’s documentation
-===========================================
+Carculator Truck
+================
 
 ``carculator_truck`` is a parameterized model that allows to generate and characterize life cycle inventories for different
 truck configurations, according to selected:
