@@ -400,7 +400,7 @@ class TruckModel(VehicleModel):
 
     def set_battery_fuel_cell_replacements(self):
         """
-        These methods calculates the number of replacement batteries needed
+        This method calculates the number of replacement batteries needed
         to match the vehicle lifetime. Given the chemistry used,
         the cycle life is known. Given the lifetime kilometers and
         the kilometers per charge, the number of charge cycles can be inferred.
