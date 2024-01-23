@@ -42,10 +42,12 @@ class InventoryTruck(Inventory):
             self.find_input_indices(("suspension, for lorry",)),
             self.find_input_indices(("Truck, ",)),
         ] = (
-            self.array.sel(parameter=[
+            self.array.sel(
+                parameter=[
                     "suspension mass",
                     "braking system mass",
-                ]).sum(dim="parameter")
+                ]
+            ).sum(dim="parameter")
             * -1
         )
 
@@ -54,46 +56,52 @@ class InventoryTruck(Inventory):
             :,
             self.find_input_indices(("tires and wheels, for lorry",)),
             self.find_input_indices(("Truck, ",)),
-        ] = self.array.sel(parameter="wheels and tires mass") * -1
-
+        ] = (
+            self.array.sel(parameter="wheels and tires mass") * -1
+        )
 
         # Exhaust
         self.A[
             :,
             self.find_input_indices(("exhaust system, for lorry",)),
             self.find_input_indices(("Truck, ",)),
-        ] = self.array.sel(parameter="exhaust system mass") * -1
-
+        ] = (
+            self.array.sel(parameter="exhaust system mass") * -1
+        )
 
         # Electrical system
         self.A[
             :,
             self.find_input_indices(("power electronics, for lorry",)),
             self.find_input_indices(("Truck, ",)),
-        ] = self.array.sel(parameter="electrical system mass") * -1
-
+        ] = (
+            self.array.sel(parameter="electrical system mass") * -1
+        )
 
         # Transmission (52% transmission shaft, 36% gearbox + 12% retarder)
         self.A[
             :,
             self.find_input_indices(("transmission, for lorry",)),
             self.find_input_indices(("Truck, ",)),
-        ] = self.array.sel(parameter="transmission mass") * 0.52 * -1
-
+        ] = (
+            self.array.sel(parameter="transmission mass") * 0.52 * -1
+        )
 
         self.A[
             :,
             self.find_input_indices(("gearbox, for lorry",)),
             self.find_input_indices(("Truck, ",)),
-        ] = self.array.sel(parameter="transmission mass") * 0.36 * -1
-
+        ] = (
+            self.array.sel(parameter="transmission mass") * 0.36 * -1
+        )
 
         self.A[
             :,
             self.find_input_indices(("retarder, for lorry",)),
             self.find_input_indices(("Truck, ",)),
-        ] = self.array.sel(parameter="transmission mass") * 0.12 * -1
-
+        ] = (
+            self.array.sel(parameter="transmission mass") * 0.12 * -1
+        )
 
         # Other components, for non-electric and hybrid trucks
 
@@ -133,38 +141,35 @@ class InventoryTruck(Inventory):
         self.A[
             :,
             self.find_input_indices(contains=("maintenance, lorry 16 metric ton",)),
-            self.find_input_indices(
-                contains=("Truck, ",)
-            ),
+            self.find_input_indices(contains=("Truck, ",)),
         ] = -1 * (
             self.array.sel(parameter="gross mass")
             * (self.array.sel(parameter="gross mass") < 26000)
-            / 1000 / 16
+            / 1000
+            / 16
         )
 
         self.A[
             :,
             self.find_input_indices(contains=("maintenance, lorry 28 metric ton",)),
-            self.find_input_indices(
-                contains=("Truck, ",)
-            ),
+            self.find_input_indices(contains=("Truck, ",)),
         ] = -1 * (
             self.array.sel(parameter="gross mass")
             * np.where(self.array.sel(parameter="gross mass") < 26000, 0, 1)
             * np.where(self.array.sel(parameter="gross mass") >= 40000, 0, 1)
-            / 1000 / 28
+            / 1000
+            / 28
         )
 
         self.A[
             :,
             self.find_input_indices(contains=("maintenance, lorry 40 metric ton",)),
-            self.find_input_indices(
-                contains=("Truck, ",)
-            ),
+            self.find_input_indices(contains=("Truck, ",)),
         ] = -1 * (
             self.array.sel(parameter="gross mass")
             * (self.array.sel(parameter="gross mass") >= 40000)
-            / 1000 / 40
+            / 1000
+            / 40
         )
 
         # Electric powertrain components
@@ -213,8 +218,7 @@ class InventoryTruck(Inventory):
             self.find_input_indices(("internal combustion engine, for lorry",)),
             self.find_input_indices(contains=("Truck, ",)),
         ] = (
-            self.array.sel(parameter="combustion engine mass")
-            * -1
+            self.array.sel(parameter="combustion engine mass") * -1
         )
 
         # Energy storage
@@ -230,11 +234,11 @@ class InventoryTruck(Inventory):
             self.find_input_indices(("lead acid battery, for lorry",)),
             self.find_input_indices(contains=("Truck, ",)),
         ] = (
-            16.0 # kg/battery
+            16.0  # kg/battery
             * (
                 self.array.sel(parameter="lifetime kilometers")
-                        / self.array.sel(parameter="kilometers per year")
-                / 5 # years
+                / self.array.sel(parameter="kilometers per year")
+                / 5  # years
             )
             * (self.array.sel(parameter="combustion power") > 0)
         ) * -1
@@ -250,10 +254,12 @@ class InventoryTruck(Inventory):
             self.array.sel(
                 parameter="fuel tank mass",
                 combined_dim=[
-                    d for d in self.array.coords["combined_dim"].values
+                    d
+                    for d in self.array.coords["combined_dim"].values
                     if any(x in d for x in ["ICEV-d", "HEV-d"])
-                ]
-            ) * -1
+                ],
+            )
+            * -1
         )
 
         self.add_cng_tank()
@@ -271,7 +277,8 @@ class InventoryTruck(Inventory):
         ] = 1 * (
             self.array.sel(parameter="gross mass")
             * (self.array.sel(parameter="gross mass") < 26000)
-            / 1000 / 16
+            / 1000
+            / 16
         )
 
         self.A[
@@ -286,7 +293,8 @@ class InventoryTruck(Inventory):
             self.array.sel(parameter="gross mass")
             * np.where(self.array.sel(parameter="gross mass") < 26000, 0, 1)
             * np.where(self.array.sel(parameter="gross mass") >= 40000, 0, 1)
-            / 1000 / 28
+            / 1000
+            / 28
         )
 
         self.A[
@@ -300,7 +308,8 @@ class InventoryTruck(Inventory):
         ] = -1 * (
             self.array.sel(parameter="gross mass")
             * (self.array.sel(parameter="gross mass") >= 40000)
-            / 1000 / 40
+            / 1000
+            / 40
         )
 
         # END of vehicle building
@@ -316,32 +325,19 @@ class InventoryTruck(Inventory):
 
         self.add_fuel_to_vehicles("methane", ["ICEV-g"], "EV-g")
 
-
         # CNG pump-to-tank leakage
         self.A[
             :,
             self.find_input_indices(("fuel supply for methane vehicles",)),
-            self.find_input_indices(
-                (f"transport, {self.vm.vehicle_type}, ",)
-            ),
-        ] *= (
-        1
-        + self.array.sel(parameter="CNG pump-to-tank leakage")
-    )
+            self.find_input_indices((f"transport, {self.vm.vehicle_type}, ",)),
+        ] *= 1 + self.array.sel(parameter="CNG pump-to-tank leakage")
 
         # Gas leakage to air
         self.A[
-        :,
-        self.inputs[("Methane, fossil", ("air",), "kilogram")],
-        self.find_input_indices(
-            (
-                f"transport, {self.vm.vehicle_type}",
-            )
-        ),
-        ] *= (
-                1
-                + self.array.sel(parameter="CNG pump-to-tank leakage")
-            )
+            :,
+            self.inputs[("Methane, fossil", ("air",), "kilogram")],
+            self.find_input_indices((f"transport, {self.vm.vehicle_type}",)),
+        ] *= 1 + self.array.sel(parameter="CNG pump-to-tank leakage")
 
         self.add_fuel_to_vehicles("diesel", ["ICEV-d", "PHEV-d", "HEV-d"], "EV-d")
 
@@ -366,7 +362,9 @@ class InventoryTruck(Inventory):
         self.A[
             np.ix_(
                 np.arange(self.iterations),
-                self.find_input_indices("charger, for electric vehicles, level 3, plugin, 200 kW",),
+                self.find_input_indices(
+                    "charger, for electric vehicles, level 3, plugin, 200 kW",
+                ),
                 self.find_input_indices(
                     contains=("Truck, ",),
                 ),
@@ -376,8 +374,12 @@ class InventoryTruck(Inventory):
             / (
                 self.array.sel(
                     parameter=["kilometers per year"],
-                ) * 2 * 24
+                )
+                * 2
+                * 24
             )
-        ) * (self.array.sel(parameter="combustion power") == 0)
+        ) * (
+            self.array.sel(parameter="combustion power") == 0
+        )
 
         print("*********************************************************************")
