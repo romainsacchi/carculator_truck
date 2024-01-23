@@ -360,13 +360,13 @@ class InventoryTruck(Inventory):
         # Charging infrastructure
         # Plugin BEV trucks
         # The charging station has a lifetime of 24 years
-        # Hence, we calculate the lifetime of the bus
+        # Hence, we calculate the lifetime of the truck
         # We assume two trucks per charging station
 
         self.A[
             np.ix_(
                 np.arange(self.iterations),
-                self.find_input_indices(("EV charger, level 3, plugin, 200 kW",)),
+                self.find_input_indices("charger, for electric vehicles, level 3, plugin, 200 kW",),
                 self.find_input_indices(
                     contains=("Truck, ",),
                 ),
@@ -374,14 +374,10 @@ class InventoryTruck(Inventory):
         ] = (
             -1
             / (
-                24
-                * (
-                    2100
-                    / self.array.sel(parameter="electric energy stored")
-                )
-                * self.array.sel(parameter="kilometers per year")
+                self.array.sel(
+                    parameter=["kilometers per year"],
+                ) * 2 * 24
             )
-            * (self.array.sel(parameter="electricity consumption") > 0)
-        )
+        ) * (self.array.sel(parameter="combustion power") == 0)
 
         print("*********************************************************************")
