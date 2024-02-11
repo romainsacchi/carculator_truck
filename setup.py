@@ -33,14 +33,14 @@ def package_files(directory):
 
 setup(
     name="carculator_truck",
-    version="0.4.0",
+    version="0.5.0.dev0",
     packages=packages,
     author="Romain Sacchi <romain.sacchi@psi.ch>",
     license=open("LICENSE").read(),
     package_data={
         "carculator_truck": package_files(os.path.join("carculator_truck", "data"))
     },
-    install_requires=["carculator_utils", "prettytable"],
+    install_requires=["carculator_utils==1.2.0.dev0", "prettytable"],
     url="https://github.com/romainsacchi/carculator_truck",
     description="Prospective environmental and economic life cycle assessment"
     "of medium and heavy goods vehicles",
