@@ -63,13 +63,13 @@ def test_fuel_blend():
                 "share": [0.93, 0.93, 0.93, 0.93, 0.93, 0.93],
             },
             "secondary": {
-                "type": "biodiesel - cooking oil",
+                "type": "diesel - biodiesel - cooking oil",
                 "share": [0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
             },
         },
-        "cng": {
+        "methane": {
             "primary": {
-                "type": "biogas - sewage sludge",
+                "type": "methane - biomethane - sewage sludge",
                 "share": [1, 1, 1, 1, 1, 1],
             }
         },
@@ -88,37 +88,36 @@ def test_fuel_blend():
         tm.fuel_blend["diesel"]["secondary"]["share"],
         [0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
     )
-    assert np.allclose(tm.fuel_blend["cng"]["primary"]["share"], [1, 1, 1, 1, 1, 1])
-    # assert np.sum(ic.fuel_blends["cng"]["secondary"]["share"]) == 0
+    assert np.allclose(tm.fuel_blend["methane"]["primary"]["share"], [1, 1, 1, 1, 1, 1])
 
     ic.calculate_impacts()
 
     for fuels in [
-        ("diesel", "electrolysis", "cng"),
+        ("diesel", "hydrogen - electrolysis - PEM", "methane"),
         (
-            "biodiesel - palm oil",
-            "smr - natural gas",
-            "biogas - sewage sludge",
+            "diesel - biodiesel - palm oil",
+            "hydrogen - smr - natural gas",
+            "methane - biomethane - sewage sludge",
         ),
         (
-            "biodiesel - rapeseed oil",
-            "smr - natural gas with CCS",
-            "biogas - biowaste",
+            "diesel - biodiesel - rapeseed oil",
+            "hydrogen - smr - natural gas with CCS",
+            "methane - synthetic - coal",
         ),
         (
-            "biodiesel - cooking oil",
-            "wood gasification with EF with CCS",
-            "biogas - biowaste",
+            "diesel - biodiesel - cooking oil",
+            "hydrogen - wood gasification",
+            "methane - synthetic - biological",
         ),
         (
-            "biodiesel - algae",
-            "atr - biogas",
-            "biogas - biowaste",
+            "diesel - synthetic - FT - coal - economic allocation",
+            "hydrogen - atr - biogas",
+            "methane - synthetic - biological - MSWI",
         ),
         (
-            "synthetic diesel - energy allocation",
-            "wood gasification with EF with CCS",
-            "syngas",
+            "diesel - synthetic - methanol - cement - economic allocation",
+            "hydrogen - wood gasification with CCS",
+            "methane - synthetic - electrochemical - MSWI",
         ),
     ]:
         fb = {
@@ -126,7 +125,7 @@ def test_fuel_blend():
                 "primary": {"type": fuels[0], "share": [1, 1, 1, 1, 1, 1]},
             },
             "hydrogen": {"primary": {"type": fuels[1], "share": [1, 1, 1, 1, 1, 1]}},
-            "cng": {"primary": {"type": fuels[2], "share": [1, 1, 1, 1, 1, 1]}},
+            "methane": {"primary": {"type": fuels[2], "share": [1, 1, 1, 1, 1, 1]}},
         }
 
         tm = TruckModel(array, cycle="Long haul", country="CH", fuel_blend=fb)
@@ -163,12 +162,7 @@ def test_endpoint():
 
 def test_sulfur_concentration():
     ic = InventoryTruck(tm, method="recipe", indicator="endpoint")
-    ic.get_sulfur_content("RER", "diesel", 2000)
-    ic.get_sulfur_content("foo", "diesel", 2000)
-
-    with pytest.raises(ValueError) as wrapped_error:
-        ic.get_sulfur_content("FR", "diesel", "jku")
-    assert wrapped_error.type == ValueError
+    ic.get_sulfur_content("RER", "diesel")
 
 
 def test_custom_electricity_mix():
