@@ -24,7 +24,6 @@ def finite(array, mask_value=0):
 
 
 class TruckModel(VehicleModel):
-
     """
     This class represents the entirety of the vehicles considered, with useful attributes, such as an array that stores
     all the vehicles parameters.
@@ -163,9 +162,9 @@ class TruckModel(VehicleModel):
 
             for s in self.array.coords["size"].values:
                 cycle = self.cycle if isinstance(self.cycle, str) else "Urban delivery"
-                self.array.loc[
-                    dict(size=s, parameter="kilometers per year")
-                ] = annual_mileage[cycle][s]
+                self.array.loc[dict(size=s, parameter="kilometers per year")] = (
+                    annual_mileage[cycle][s]
+                )
 
     def adjust_cost(self):
         """
@@ -400,7 +399,7 @@ class TruckModel(VehicleModel):
 
     def set_battery_fuel_cell_replacements(self):
         """
-        These methods calculates the number of replacement batteries needed
+        This method calculates the number of replacement batteries needed
         to match the vehicle lifetime. Given the chemistry used,
         the cycle life is known. Given the lifetime kilometers and
         the kilometers per charge, the number of charge cycles can be inferred.
@@ -958,9 +957,11 @@ class TruckModel(VehicleModel):
                 # as a result of curb mass being too large
                 vals = np.asarray(
                     [
-                        np.round(v[2][0], 1)
-                        if (v[0][0] - v[1][0]) > 0
-                        else f"-{np.round(v[2][0])}-"
+                        (
+                            np.round(v[2][0], 1)
+                            if (v[0][0] - v[1][0]) > 0
+                            else f"-{np.round(v[2][0])}-"
+                        )
                         for v in (
                             self.array.sel(
                                 parameter=["gross mass", "driving mass", "cargo mass"],
@@ -978,9 +979,11 @@ class TruckModel(VehicleModel):
                         parameter="is_available",
                         powertrain=pt,
                         year=y,
-                        value="reference"
-                        if "reference" in self.array.coords["value"]
-                        else 0,
+                        value=(
+                            "reference"
+                            if "reference" in self.array.coords["value"]
+                            else 0
+                        ),
                     ).values,
                     vals,
                     "/",
