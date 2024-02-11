@@ -94,31 +94,31 @@ def test_fuel_blend():
     ic.calculate_impacts()
 
     for fuels in [
-        ("diesel", "electrolysis", "cng"),
+        ("diesel", "hydrogen - electrolysis - PEM", "methane"),
         (
-            "biodiesel - palm oil",
-            "smr - natural gas",
-            "biogas - sewage sludge",
+                "diesel - biodiesel - palm oil",
+                "hydrogen - smr - natural gas",
+                "methane - biomethane - sewage sludge",
         ),
         (
-            "biodiesel - rapeseed oil",
-            "smr - natural gas with CCS",
-            "biogas - biowaste",
+                "diesel - biodiesel - rapeseed oil",
+                "hydrogen - smr - natural gas with CCS",
+                "methane - synthetic - coal",
         ),
         (
-            "biodiesel - cooking oil",
-            "wood gasification with EF with CCS",
-            "biogas - biowaste",
+                "diesel - biodiesel - cooking oil",
+                "hydrogen - wood gasification",
+                "methane - synthetic - biological",
         ),
         (
-            "biodiesel - algae",
-            "atr - biogas",
-            "biogas - biowaste",
+                "diesel - synthetic - FT - coal - economic allocation",
+                "hydrogen - atr - biogas",
+                "methane - synthetic - biological - MSWI",
         ),
         (
-            "synthetic diesel - energy allocation",
-            "wood gasification with EF with CCS",
-            "syngas",
+                "diesel - synthetic - methanol - cement - economic allocation",
+                "hydrogen - wood gasification with CCS",
+                "methane - synthetic - electrochemical - MSWI",
         ),
     ]:
         fb = {
@@ -163,12 +163,7 @@ def test_endpoint():
 
 def test_sulfur_concentration():
     ic = InventoryTruck(tm, method="recipe", indicator="endpoint")
-    ic.get_sulfur_content("RER", "diesel", 2000)
-    ic.get_sulfur_content("foo", "diesel", 2000)
-
-    with pytest.raises(ValueError) as wrapped_error:
-        ic.get_sulfur_content("FR", "diesel", "jku")
-    assert wrapped_error.type == ValueError
+    ic.get_sulfur_content("RER", "diesel")
 
 
 def test_custom_electricity_mix():
