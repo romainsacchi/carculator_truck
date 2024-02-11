@@ -1,6 +1,7 @@
 """
 inventory.py contains Inventory which provides all methods to solve inventories.
 """
+
 import warnings
 
 import numpy as np
