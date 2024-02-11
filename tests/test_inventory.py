@@ -67,7 +67,7 @@ def test_fuel_blend():
                 "share": [0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
             },
         },
-        "cng": {
+        "methane": {
             "primary": {
                 "type": "methane - biomethane - sewage sludge",
                 "share": [1, 1, 1, 1, 1, 1],
@@ -88,8 +88,7 @@ def test_fuel_blend():
         tm.fuel_blend["diesel"]["secondary"]["share"],
         [0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
     )
-    assert np.allclose(tm.fuel_blend["cng"]["primary"]["share"], [1, 1, 1, 1, 1, 1])
-    # assert np.sum(ic.fuel_blends["cng"]["secondary"]["share"]) == 0
+    assert np.allclose(tm.fuel_blend["methane"]["primary"]["share"], [1, 1, 1, 1, 1, 1])
 
     ic.calculate_impacts()
 
@@ -126,7 +125,7 @@ def test_fuel_blend():
                 "primary": {"type": fuels[0], "share": [1, 1, 1, 1, 1, 1]},
             },
             "hydrogen": {"primary": {"type": fuels[1], "share": [1, 1, 1, 1, 1, 1]}},
-            "cng": {"primary": {"type": fuels[2], "share": [1, 1, 1, 1, 1, 1]}},
+            "methane": {"primary": {"type": fuels[2], "share": [1, 1, 1, 1, 1, 1]}},
         }
 
         tm = TruckModel(array, cycle="Long haul", country="CH", fuel_blend=fb)
