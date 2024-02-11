@@ -96,29 +96,29 @@ def test_fuel_blend():
     for fuels in [
         ("diesel", "hydrogen - electrolysis - PEM", "methane"),
         (
-                "diesel - biodiesel - palm oil",
-                "hydrogen - smr - natural gas",
-                "methane - biomethane - sewage sludge",
+            "diesel - biodiesel - palm oil",
+            "hydrogen - smr - natural gas",
+            "methane - biomethane - sewage sludge",
         ),
         (
-                "diesel - biodiesel - rapeseed oil",
-                "hydrogen - smr - natural gas with CCS",
-                "methane - synthetic - coal",
+            "diesel - biodiesel - rapeseed oil",
+            "hydrogen - smr - natural gas with CCS",
+            "methane - synthetic - coal",
         ),
         (
-                "diesel - biodiesel - cooking oil",
-                "hydrogen - wood gasification",
-                "methane - synthetic - biological",
+            "diesel - biodiesel - cooking oil",
+            "hydrogen - wood gasification",
+            "methane - synthetic - biological",
         ),
         (
-                "diesel - synthetic - FT - coal - economic allocation",
-                "hydrogen - atr - biogas",
-                "methane - synthetic - biological - MSWI",
+            "diesel - synthetic - FT - coal - economic allocation",
+            "hydrogen - atr - biogas",
+            "methane - synthetic - biological - MSWI",
         ),
         (
-                "diesel - synthetic - methanol - cement - economic allocation",
-                "hydrogen - wood gasification with CCS",
-                "methane - synthetic - electrochemical - MSWI",
+            "diesel - synthetic - methanol - cement - economic allocation",
+            "hydrogen - wood gasification with CCS",
+            "methane - synthetic - electrochemical - MSWI",
         ),
     ]:
         fb = {
