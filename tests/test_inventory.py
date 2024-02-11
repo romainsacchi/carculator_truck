@@ -63,13 +63,13 @@ def test_fuel_blend():
                 "share": [0.93, 0.93, 0.93, 0.93, 0.93, 0.93],
             },
             "secondary": {
-                "type": "biodiesel - cooking oil",
+                "type": "diesel - biodiesel - cooking oil",
                 "share": [0.07, 0.07, 0.07, 0.07, 0.07, 0.07],
             },
         },
         "cng": {
             "primary": {
-                "type": "biogas - sewage sludge",
+                "type": "methane - biomethane - sewage sludge",
                 "share": [1, 1, 1, 1, 1, 1],
             }
         },
