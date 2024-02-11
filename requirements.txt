@@ -1,2 +1,2 @@
-carculator-utils
+carculator-utils>=1.2.0.dev5
 prettytable
