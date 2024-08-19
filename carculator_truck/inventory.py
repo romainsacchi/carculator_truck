@@ -31,11 +31,11 @@ class InventoryTruck(Inventory):
 
         # Assembly
         self.A[
-        :,
-        self.find_input_indices(("assembly operation, for lorry",)),
-        self.find_input_indices(("Truck, ",)),
+            :,
+            self.find_input_indices(("assembly operation, for lorry",)),
+            self.find_input_indices(("Truck, ",)),
         ] = (
-                self.array.sel(parameter="curb mass") * -1
+            self.array.sel(parameter="curb mass") * -1
         )
 
         # Glider/Frame
