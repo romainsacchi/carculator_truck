@@ -29,6 +29,15 @@ class InventoryTruck(Inventory):
         :attr:`array` from :class:`CarModel` class
         """
 
+        # Assembly
+        self.A[
+        :,
+        self.find_input_indices(("assembly operation, for lorry",)),
+        self.find_input_indices(("Truck, ",)),
+        ] = (
+                self.array.sel(parameter="curb mass") * -1
+        )
+
         # Glider/Frame
         self.A[
             :,
