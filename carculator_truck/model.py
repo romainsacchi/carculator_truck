@@ -90,8 +90,8 @@ class TruckModel(VehicleModel):
             self.set_auxiliaries()
             self.set_recuperation()
 
-            self.set_ttw_efficiency()
             self.calculate_ttw_energy()
+            self.set_ttw_efficiency()
 
             self.set_share_recuperated_energy()
             self.set_battery_fuel_cell_replacements()
