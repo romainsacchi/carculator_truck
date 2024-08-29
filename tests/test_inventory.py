@@ -152,7 +152,9 @@ def test_endpoint():
     """Test if the correct impact categories are considered"""
     ic = InventoryTruck(tm, method="recipe", indicator="endpoint")
     results = ic.calculate_impacts()
-    assert "climate change: human health" in [i.lower() for i in results.impact_category.values]
+    assert "climate change: human health" in [
+        i.lower() for i in results.impact_category.values
+    ]
     assert len(results.impact_category.values) == 26
 
     """Test if it errors properly if an incorrect method type is give"""

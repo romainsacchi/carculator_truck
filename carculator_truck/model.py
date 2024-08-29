@@ -269,9 +269,9 @@ class TruckModel(VehicleModel):
         }
 
         for x in product(
-                self.array.coords["powertrain"].values,
-                self.array.coords["size"].values,
-                self.array.year.values,
+            self.array.coords["powertrain"].values,
+            self.array.coords["size"].values,
+            self.array.year.values,
         ):
             if x not in self.energy_storage["electric"]:
                 if x[-1] in default_chemistries:
