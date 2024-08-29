@@ -89,6 +89,7 @@ class TruckModel(VehicleModel):
             self.set_component_masses()
             self.set_auxiliaries()
             self.set_recuperation()
+            self.set_battery_preferences()
 
             self.calculate_ttw_energy()
             self.set_ttw_efficiency()
@@ -252,25 +253,36 @@ class TruckModel(VehicleModel):
             )
 
     def set_battery_chemistry(self):
-        energy_storage = {
-            "electric": {
-                x: "NMC-622"
-                for x in product(
-                    ["BEV", "PHEV-e", "HEV-d", "FCEV"],
-                    self.array.coords["size"].values,
-                    self.array.year.values,
-                )
-            },
-            "origin": "CN",
-        }
-
         # override default values for batteries
         # if provided by the user
+        if "electric" not in self.energy_storage:
+            self.energy_storage["electric"] = {}
 
-        if self.energy_storage is not None:
-            energy_storage.update(self.energy_storage)
+        default_chemistries = {
+            2000: "NMC-111",
+            2005: "NMC-111",
+            2010: "NMC-111",
+            2015: "NMC-111",
+            2020: "NMC-622",
+            2025: "NMC-811",
+            2030: "NMC-955",
+        }
 
-        self.energy_storage = energy_storage
+        for x in product(
+                self.array.coords["powertrain"].values,
+                self.array.coords["size"].values,
+                self.array.year.values,
+        ):
+            if x not in self.energy_storage["electric"]:
+                if x[-1] in default_chemistries:
+                    self.energy_storage["electric"][x] = default_chemistries[x[-1]]
+                elif x[-1] < min(default_chemistries.keys()):
+                    self.energy_storage["electric"][x] = "NMC-111"
+                else:
+                    self.energy_storage["electric"][x] = "NMC-955"
+
+        if "origin" not in self.energy_storage:
+            self.energy_storage.update({"origin": "CN"})
 
     def override_range(self):
         """

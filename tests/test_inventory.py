@@ -112,12 +112,12 @@ def test_fuel_blend():
         (
             "diesel - synthetic - FT - coal - economic allocation",
             "hydrogen - atr - biogas",
-            "methane - synthetic - biological - MSWI",
+            "methane - synthetic - biological",
         ),
         (
             "diesel - synthetic - methanol - cement - economic allocation",
             "hydrogen - wood gasification with CCS",
-            "methane - synthetic - electrochemical - MSWI",
+            "methane - synthetic - biological",
         ),
     ]:
         fb = {
@@ -127,6 +127,8 @@ def test_fuel_blend():
             "hydrogen": {"primary": {"type": fuels[1], "share": [1, 1, 1, 1, 1, 1]}},
             "methane": {"primary": {"type": fuels[2], "share": [1, 1, 1, 1, 1, 1]}},
         }
+
+        print(fb)
 
         tm = TruckModel(array, cycle="Long haul", country="CH", fuel_blend=fb)
         tm.set_all()
@@ -150,8 +152,8 @@ def test_endpoint():
     """Test if the correct impact categories are considered"""
     ic = InventoryTruck(tm, method="recipe", indicator="endpoint")
     results = ic.calculate_impacts()
-    assert "human health" in [i.lower() for i in results.impact_category.values]
-    assert len(results.impact_category.values) == 4
+    assert "climate change: human health" in [i.lower() for i in results.impact_category.values]
+    assert len(results.impact_category.values) == 26
 
     """Test if it errors properly if an incorrect method type is give"""
     with pytest.raises(ValueError) as wrapped_error:
