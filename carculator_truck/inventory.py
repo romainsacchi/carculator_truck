@@ -374,7 +374,7 @@ class InventoryTruck(Inventory):
             np.ix_(
                 np.arange(self.iterations),
                 self.find_input_indices(
-                    "charger, for electric vehicles, level 3, plugin, 200 kW",
+                    ("EV charger, level 3, plugin, 200 kW",),
                 ),
                 [j for i, j in self.inputs.items() if i[0].startswith("truck, ")],
             )
