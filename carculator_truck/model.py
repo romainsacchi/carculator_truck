@@ -91,7 +91,10 @@ class TruckModel(VehicleModel):
             self.set_recuperation()
             self.set_battery_preferences()
 
-            self.calculate_ttw_energy()
+            if self.energy_consumption:
+                self.override_ttw_energy()
+            else:
+                self.calculate_ttw_energy()
             self.set_ttw_efficiency()
 
             self.set_share_recuperated_energy()
@@ -370,14 +373,14 @@ class TruckModel(VehicleModel):
                 )
             ).T.values
 
-        self["TtW energy"] = (
-            self.energy.sel(
-                parameter=["motive energy", "auxiliary energy", "recuperated energy"]
+        self["transmission efficiency"] = (
+            np.ma.array(
+                self.energy.loc[dict(parameter="transmission efficiency")],
+                mask=self.energy.loc[dict(parameter="power load")] == 0.0,
             )
-            .sum(dim=["second", "parameter"])
-            .values
-            / distance.values
-        ).T
+            .mean(axis=0)
+            .T
+        )
 
         self["engine efficiency"] = (
             np.ma.array(
@@ -388,13 +391,36 @@ class TruckModel(VehicleModel):
             .T
         )
 
-        self["transmission efficiency"] = (
-            np.ma.array(
-                self.energy.loc[dict(parameter="transmission efficiency")],
-                mask=self.energy.loc[dict(parameter="power load")] == 0.0,
-            )
-            .mean(axis=0)
-            .T
+        self["TtW energy"] = (
+                self.energy.sel(
+                    parameter=[
+                        "motive energy",
+                        "auxiliary energy",
+                    ]
+                ).sum(dim=["second", "parameter"])
+                / distance
+        ).T
+
+        # saved_TtW_energy_by_recuperation = recuperated energy
+        # * electric motor efficiency * electric transmission efficiency
+        # / (engine efficiency * transmission efficiency)
+
+        self["TtW energy"] += (
+                (
+                        self.energy.sel(parameter="recuperated energy").sum(dim="second")
+                        / distance
+                ).T
+                * self.array.sel(parameter="engine efficiency")
+                * self.array.sel(parameter="transmission efficiency")
+                / (
+                        self["engine efficiency"]
+                        * self["transmission efficiency"]
+                        * np.where(
+                    self["fuel cell system efficiency"] == 0,
+                    1,
+                    self["fuel cell system efficiency"],
+                )
+                )
         )
 
         self["TtW energy, combustion mode"] = self["TtW energy"] * (
