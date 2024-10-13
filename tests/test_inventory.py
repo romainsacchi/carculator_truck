@@ -209,7 +209,7 @@ def test_custom_electricity_mix():
 def test_export_lci():
     """Test that inventories export successfully"""
     ic = InventoryTruck(tm, method="recipe", indicator="midpoint")
-    for b in ("3.5", "3.6", "3.7", "3.8"):
+    for b in ("3.9", "3.10"):
         for s in ("brightway2", "simapro"):
             for f in ("file", "string", "bw2io"):
                 ic.export_lci(
