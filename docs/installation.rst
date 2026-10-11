@@ -9,11 +9,11 @@ The shared runtime requires NumPy ``>=1.26.4,<2``.
 Install a release
 -----------------
 
-Install ``carculator_truck 0.5.1`` from PyPI::
+After publication, install ``carculator_truck 0.5.2`` from PyPI::
 
    python3.12 -m venv .venv
    source .venv/bin/activate
-   python -m pip install "carculator_truck==0.5.1"
+   python -m pip install "carculator_truck==0.5.2"
 
 On Windows activate with ``.venv\Scripts\activate``. Alternatively, create a
 conda environment with ``conda create -n carculator-release python=3.12 pip``,
@@ -30,7 +30,7 @@ does not import Brightpath or Brightway.
 The ``excel`` extra remains a compatibility alias; the Excel writer is already
 installed through Brightpath. To select the tested legacy Brightway stack::
 
-   python -m pip install "carculator_truck[brightway]==0.5.1"
+   python -m pip install "carculator_truck[brightway]==0.5.2"
 
 The ``brightway`` extra selects ``bw2io<0.9``, ``bw2data<4`` and ``bw2calc<2``.
 Brightpath also installs ``bw2io`` without this extra. Exports default to ecoinvent

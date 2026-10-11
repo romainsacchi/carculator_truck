@@ -1,13 +1,13 @@
-# Releasing carculator_truck 0.5.1
+# Releasing carculator_truck 0.5.2
 
 Status: prepared, not published. Use Python 3.12 and review the matching family set:
 
 | Package | Prepared version |
 | --- | --- |
-| `carculator_utils` | 1.3.6 |
-| `carculator` | 1.9.6 |
-| `carculator_truck` | 0.5.1 |
-| `carculator_bus` | 0.1.1 |
+| `carculator_utils` | 1.3.7 |
+| `carculator` | 1.9.7 |
+| `carculator_truck` | 0.5.2 |
+| `carculator_bus` | 0.1.2 |
 | `carculator_two_wheeler` | 0.1.1 |
 
 
@@ -15,7 +15,7 @@ Status: prepared, not published. Use Python 3.12 and review the matching family 
    Preserve local notebooks and inventories; commit only the intended release files.
 2. Check `carculator_truck/_version.py`, `conda/meta.yaml` and dependency metadata together.
    Sphinx reads the package version automatically. All vehicle packages require
-   `carculator_utils>=1.3.6`, whose runtime includes Brightpath export writers.
+   `carculator_utils>=1.3.7`, whose runtime includes Brightpath export writers.
    The `excel` extra is a compatibility alias; `brightway` selects the legacy stack.
    Review [export formats and linking requirements](docs/inventory_export.rst).
 3. Build and verify actual artifacts from this checkout (use a new output directory):
@@ -38,19 +38,19 @@ offline core-only model/LCIA runs. Keep `report.json`, test XML, dependency free
 and artifact hashes with the release record. A local pass does not establish
 that Linux, Windows or hosted CI passed. Confirm the release commit's CI separately.
 
-4. Install `.[docs]`, build with `python -m sphinx -b html docs docs/_build/html`,
+4. Install `docs/docs_requirements.txt`, build with `python -m sphinx -b html docs docs/_build/html`,
    and run the README example. Check wheel/sdist metadata before publication:
 
 ```bash
 python -m pip install twine
-python -m twine check --strict /tmp/carculator-family-release-check/wheels/carculator_truck-0.5.1-py3-none-any.whl /tmp/carculator-family-release-check/wheels/carculator_truck-0.5.1.tar.gz
+python -m twine check --strict /tmp/carculator-family-release-check/wheels/carculator_truck-0.5.2-py3-none-any.whl /tmp/carculator-family-release-check/wheels/carculator_truck-0.5.2.tar.gz
 ```
 
-5. Publish `carculator_utils` **first** and confirm that 1.3.6 is available before
+5. Publish `carculator_utils` **first** and confirm that 1.3.7 is available before
    publishing the four vehicle packages. The same ordering applies to conda.
    Replace `Unreleased` with the actual publication date in the changelog, commit
    the final release metadata, and verify the final artifacts. Create an annotated
-   `v.0.5.1` tag on that reviewed commit, following existing tag conventions.
+   `v.0.5.2` tag on that reviewed commit, following existing tag conventions.
    Do not reuse an existing tag or upload a different build under the same version.
 6. Publish the GitHub release for the reviewed tag. The `main.yml` workflow
    verifies installed artifacts on Linux, macOS, and Windows before uploading the
@@ -72,6 +72,27 @@ creating a tag alone does not publish. Publish its GitHub release instead.
 The prepared metadata and README examples target this release; older published
 packages may not provide the documented APIs or 2025 defaults.
 
+
+## Preparation on 2026-10-11
+
+Prepare the versions above together; publish utils before its consumers.
+The previous utils/car/truck/bus versions were published on 2026-10-08
+and must not be reused. Two-wheeler 0.1.1 remains unpublished.
+
+The [candidate record](docs/_static/release_candidate_20261011.json) records
+the source revisions, green GitHub Actions runs and fresh local artifact
+verification. Historical reports below describe their original builds.
+The solar-PV and dry-mass hydrogen-tank updates in the original utils
+working tree are excluded from this release candidate. Preserve them
+for a separate reviewed and CI-tested change.
+
+After committing this preparation, verify all five final commits in CI.
+Downstream verification must use the prepared utils revision via
+`CARCULATOR_UTILS_REF`; the utils family job must use the matching vehicle
+revisions via its `CARCULATOR_*_REF` variables. Record the resolved SHAs.
+Restore temporary CI references after the coordinated release.
+Conda build/publish jobs were skipped by the ordinary verification runs;
+their success must be checked during publication.
 
 ## Historical verification record
 
