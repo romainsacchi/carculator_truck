@@ -895,7 +895,7 @@ class TruckModel(VehicleModel):
             self["battery power"] * self["power battery cost per kW"]
         )
         self["energy battery cost"] = (
-            self["energy battery cost per kWh"] * self["electric energy stored"]
+            self["energy battery cost per kWh"] * self.battery_capacity_for_purchase()
         )
 
         self["fuel tank cost"] = self["fuel tank cost per kg"] * self["fuel mass"]
