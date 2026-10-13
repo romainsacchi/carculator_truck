@@ -8701,6 +8701,7 @@
         "amount": 90,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8719,7 +8720,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8731,6 +8732,7 @@
         "amount": 62.99999999999999,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8749,7 +8751,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8761,6 +8763,7 @@
         "amount": 45.65049915975373,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8779,7 +8782,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8791,6 +8794,7 @@
         "amount": 29.7709724790668,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8809,7 +8813,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8821,6 +8825,7 @@
         "amount": 130,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8839,7 +8844,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8851,6 +8856,7 @@
         "amount": 91,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8869,7 +8875,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8881,6 +8887,7 @@
         "amount": 71.736498679613,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8899,7 +8906,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8911,6 +8918,7 @@
         "amount": 46.78295675281925,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8929,7 +8937,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8941,6 +8949,7 @@
         "amount": 110,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8959,7 +8968,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -8971,6 +8980,7 @@
         "amount": 77,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -8989,7 +8999,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9001,6 +9011,7 @@
         "amount": 58.693498919683364,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9019,7 +9030,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9031,6 +9042,7 @@
         "amount": 38.27696461594303,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9049,7 +9061,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9061,6 +9073,7 @@
         "amount": 170,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9079,7 +9092,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9091,6 +9104,7 @@
         "amount": 118.99999999999999,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9109,7 +9123,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9121,6 +9135,7 @@
         "amount": 97.82249819947228,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9139,7 +9154,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9151,6 +9166,7 @@
         "amount": 63.79494102657171,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9169,7 +9185,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9181,6 +9197,7 @@
         "amount": 105,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9199,7 +9216,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9211,6 +9228,7 @@
         "amount": 73.5,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9229,7 +9247,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9241,6 +9259,7 @@
         "amount": 55.43274897970095,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9259,7 +9278,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9271,6 +9290,7 @@
         "amount": 36.15046658172397,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9289,7 +9309,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9301,6 +9321,7 @@
         "amount": 130,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9319,7 +9340,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9331,6 +9352,7 @@
         "amount": 91,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9349,7 +9371,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9361,6 +9383,7 @@
         "amount": 71.736498679613,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9379,7 +9402,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9391,6 +9414,7 @@
         "amount": 46.78295675281925,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9409,7 +9433,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9421,6 +9445,7 @@
         "amount": 125,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9439,7 +9464,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9451,6 +9476,7 @@
         "amount": 87.5,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9469,7 +9495,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9481,6 +9507,7 @@
         "amount": 68.47574873963059,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9499,7 +9526,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9511,6 +9538,7 @@
         "amount": 44.6564587186002,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9529,7 +9557,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9541,6 +9569,7 @@
         "amount": 120,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9559,7 +9588,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9571,6 +9600,7 @@
         "amount": 84,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9589,7 +9619,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9601,6 +9631,7 @@
         "amount": 65.21499879964819,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9619,7 +9650,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9631,6 +9662,7 @@
         "amount": 42.52996068438114,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9649,7 +9681,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9661,6 +9693,7 @@
         "amount": 110,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9679,7 +9712,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9691,6 +9724,7 @@
         "amount": 77,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9709,7 +9743,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9721,6 +9755,7 @@
         "amount": 58.693498919683364,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9739,7 +9774,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9751,6 +9786,7 @@
         "amount": 38.27696461594303,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9769,7 +9805,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9781,6 +9817,7 @@
         "amount": 100,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9799,7 +9836,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9811,6 +9848,7 @@
         "amount": 70,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9829,7 +9867,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9841,6 +9879,7 @@
         "amount": 52.17199903971854,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9859,7 +9898,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9871,6 +9910,7 @@
         "amount": 34.023968547504914,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9889,7 +9929,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9901,6 +9941,7 @@
         "amount": 100,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9919,7 +9960,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9931,6 +9972,7 @@
         "amount": 70,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9949,7 +9991,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9961,6 +10003,7 @@
         "amount": 52.17199903971854,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -9979,7 +10022,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -9991,6 +10034,7 @@
         "amount": 34.023968547504914,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-e",
             "PHEV-c-d"
@@ -10009,7 +10053,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "",
+        "comment": " Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71029,6 +71073,7 @@
         "amount": 76.5,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71047,7 +71092,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('320-2020-energy battery cost per kWh, LFP', '321-2030-energy battery cost per kWh, LFP'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('320-2020-energy battery cost per kWh, LFP', '321-2030-energy battery cost per kWh, LFP').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71059,6 +71104,7 @@
         "amount": 144.5,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71077,7 +71123,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('332-2020-energy battery cost per kWh, LTO', '333-2030-energy battery cost per kWh, LTO'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('332-2020-energy battery cost per kWh, LTO', '333-2030-energy battery cost per kWh, LTO').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71089,6 +71135,7 @@
         "amount": 110.5,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71107,7 +71154,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('324-2020-energy battery cost per kWh, Li-O2', '325-2030-energy battery cost per kWh, Li-O2'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('324-2020-energy battery cost per kWh, Li-O2', '325-2030-energy battery cost per kWh, Li-O2').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71119,6 +71166,7 @@
         "amount": 93.5,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71137,7 +71185,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('328-2020-energy battery cost per kWh, Li-S', '329-2030-energy battery cost per kWh, Li-S'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('328-2020-energy battery cost per kWh, Li-S', '329-2030-energy battery cost per kWh, Li-S').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71149,6 +71197,7 @@
         "amount": 89.25,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71167,7 +71216,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('336-2020-energy battery cost per kWh, NCA', '337-2030-energy battery cost per kWh, NCA'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('336-2020-energy battery cost per kWh, NCA', '337-2030-energy battery cost per kWh, NCA').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71179,6 +71228,7 @@
         "amount": 110.5,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71197,7 +71247,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('340-2020-energy battery cost per kWh, NMC-111', '341-2030-energy battery cost per kWh, NMC-111'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('340-2020-energy battery cost per kWh, NMC-111', '341-2030-energy battery cost per kWh, NMC-111').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71209,6 +71259,7 @@
         "amount": 106.25,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71227,7 +71278,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('344-2020-energy battery cost per kWh, NMC-532', '345-2030-energy battery cost per kWh, NMC-532'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('344-2020-energy battery cost per kWh, NMC-532', '345-2030-energy battery cost per kWh, NMC-532').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71239,6 +71290,7 @@
         "amount": 102.0,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71257,7 +71309,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('348-2020-energy battery cost per kWh, NMC-622', '349-2030-energy battery cost per kWh, NMC-622'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('348-2020-energy battery cost per kWh, NMC-622', '349-2030-energy battery cost per kWh, NMC-622').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71269,6 +71321,7 @@
         "amount": 93.5,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71287,7 +71340,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('352-2020-energy battery cost per kWh, NMC-811', '353-2030-energy battery cost per kWh, NMC-811'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. An endpoint mode lies outside its published bounds; for this 2025 prior only, its bounds are reconstructed using the other endpoint's relative bounds before interpolation. Endpoint records: ('352-2020-energy battery cost per kWh, NMC-811', '353-2030-energy battery cost per kWh, NMC-811').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71299,6 +71352,7 @@
         "amount": 85.0,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71317,7 +71371,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('356-2020-energy battery cost per kWh, NMC-955', '357-2030-energy battery cost per kWh, NMC-955'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('356-2020-energy battery cost per kWh, NMC-955', '357-2030-energy battery cost per kWh, NMC-955').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,
@@ -71329,6 +71383,7 @@
         "amount": 85.0,
         "category": "Costs",
         "powertrain": [
+            "HEV-d",
             "BEV",
             "PHEV-c-d",
             "PHEV-e"
@@ -71347,7 +71402,7 @@
         "unit": "\u20ac/kWh",
         "importance": "High",
         "source": "Sources: BNEF 2023; https://battery2030.eu/research/roadmap; https://www.iea.org/reports/global-ev-outlook-2024; www.anl.gov/cse/batpac-model-software;\nhttps://ourworldindata.org/grapher/average-battery-cell-price\nhttps://www.spglobal.com/automotive-insights/en/blogs/2025/01/where-are-ev-battery-prices-headed-in-2025-and-beyond\nhttps://patentpc.com/blog/battery-costs-in-2020-2030-how-much-have-prices-dropped-for-evs-and-energy-storage\nhttps://www.batterytechonline.com/ev-batteries/iea-report-lfp-dominates-as-ev-battery-prices-fall ",
-        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('360-2020-energy battery cost per kWh, SiB', '361-2030-energy battery cost per kWh, SiB'). ",
+        "comment": "2025 baseline: linear interpolation of the effective 2020 and 2030 records, before empirical calibration. Triangular modes and bounds are interpolated. Endpoint records: ('360-2020-energy battery cost per kWh, SiB', '361-2030-energy battery cost per kWh, SiB').  Extended to HEV-d as a generic chemistry price proxy; not a high-power pack quotation.",
         "status": "Acceptable",
         "kind": "distribution",
         "uncertainty_type": 5,

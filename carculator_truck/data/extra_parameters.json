@@ -275,5 +275,6 @@
   "energy battery cost per kWh",
   "amortised residual credit",
   "CO2 tax cost",
-  "energy infrastructure cost"
+  "energy infrastructure cost",
+  "starter battery mass"
 ]

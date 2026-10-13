@@ -688,6 +688,60 @@ on :cite:`ct-1080` and are presented in :ref:`Table 9 <table-9>`-:ref:`Table 10 
 Energy storage
 ~~~~~~~~~~~~~~
 
+Non-plug-in hybrid traction buffers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From 2020, ``HEV-d`` has a lithium-ion traction buffer distinct from the
+lead-acid starter. Earlier model versions credited regenerative braking but
+supplied no traction battery. Capacity is now sized inside the mass, power and
+fuel iteration. It must support the existing electric-motor design rating and
+the driving cycle's usable energy requirement. The resulting charging power
+and usable capacity limit regeneration; excess braking energy receives no fuel
+or brake-wear credit. The controller reuses stored energy at the next positive propulsion
+opportunity and reaches a periodic energy balance, without grid or engine
+charging. It is an engineering energy-balance approximation, not a calibrated
+hybrid supervisory controller.
+
+The default is a high-power LFP profile available before 2020: A123 Systems
+AHR32113M1Ultra-B, 3.3 V, 4.5 Ah and 205 g per cell. The manufacturer's 2014
+``Battery Pack Design, Validation, and Assembly Guide``, document
+493005-002 Rev 02, Tables 4 and 30--33, provides the
+`cell specifications and current limits
+<https://ctc.chontech.ac.th/files/220427099180464_24051016164406.pdf>`_.
+Continuous charging/discharging limits at 25 degrees C are 33/200 A. Multiplying
+these by the 2 V discharge cutoff gives conservative cell power limits of
+66/400 W. Short-pulse ratings are not applied continuously. A conditioned pack
+is assumed; low-temperature derating, thermal conditioning demand, ageing of
+resistance and series/parallel electrical layout are not separately modelled.
+
+The engineering assumptions are a 60% usable SOC window and a 70% cell mass
+share, giving about 19.7 kg per nominal kWh. ``hybrid_battery={...}`` overrides
+the cell power, energy, mass and pack-envelope assumptions (see
+``HybridBatteryProfile``). An explicit ``energy_storage['capacity']`` retains
+the requested capacity if it can supply the motor rating; additional braking
+curtailment is permitted. Explicit alternative chemistries retain their
+physical properties, with the high-power electrical envelope disclosed as a
+transfer assumption in ``hybrid_battery_profile_transfers``.
+
+Cycle-life values retain the existing chemistry defaults (2020 LFP: 7000
+nominal-capacity equivalent full cycles). They are not manufacturer guarantees
+for these high-rate conditions. Replacement demand is lifetime distance times
+actual stored-energy discharge per km, divided by nominal capacity and cycle
+life, minus the initial pack, bounded to 0--3. There is no separate calendar-age
+model. Supply, disposal and replacement costs use the same count. The starter
+is separate in vehicle mass and inventory, with the inherited five-year life
+and at least one initial battery. Other truck types retain their existing
+starter-inventory assumptions.
+
+Existing chemistry-specific prices are extended to HEVs as explicit cost
+proxies (2020 LFP: 90 EUR/kWh), not quotations for high-power packs. Users can
+override them through ``battery_costs``, including an explicit zero.
+Future native model years retain this cell envelope; it is not a forecast of
+high-power cell performance. Premise's separately generated scenarios must
+also be distinguished from native future-year runs. The Premise adapter uses
+the user-selected MIX capacity market for nominal kWh and replacements and
+documents its chemistry and mass mismatch with this physical pack.
+
 Battery electric trucks
 ^^^^^^^^^^^^^^^^^^^^^^^
 

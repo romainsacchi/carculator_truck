@@ -240,19 +240,22 @@ class InventoryTruck(Inventory):
         # Use the inventory of Wolff et al. 2020 for
         # lead acid battery for non-electric
         # and non-hybrid trucks
+        starter_packs = (
+            self.array.sel(parameter="lifetime kilometers")
+            / self.array.sel(parameter="kilometers per year")
+            / 5  # years, retained starter-battery lifetime
+        )
+        starter_mass = xr.where(
+            self.array.combined_dim.str.endswith(" - HEV-d"),
+            self.array.sel(parameter="starter battery mass")
+            * starter_packs.clip(min=1),
+            16.0 * starter_packs,
+        ).transpose("value", "combined_dim", "year")
         self.A[
             :,
             self.find_input_indices(("lead acid battery, for lorry",)),
             [j for i, j in self.inputs.items() if i[0].startswith("truck, ")],
-        ] = (
-            16.0  # kg/battery
-            * (
-                self.array.sel(parameter="lifetime kilometers")
-                / self.array.sel(parameter="kilometers per year")
-                / 5  # years
-            )
-            * (self.array.sel(parameter="combustion power") > 0)
-        ) * -1
+        ] = (starter_mass * (self.array.sel(parameter="combustion power") > 0)) * -1
 
         # Fuel tank for diesel trucks
         self.A[

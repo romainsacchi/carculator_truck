@@ -16,6 +16,11 @@ from carculator_utils.numerical import capital_recovery_factor
 from prettytable import PrettyTable
 
 from . import DATA_DIR
+from .hybrid_battery import (
+    HybridBatteryProfile,
+    avoided_propulsion_fuel,
+    size_hybrid_buffer,
+)
 from .infrastructure import annual_charger_throughput
 
 CARGO_MASSES = DATA_DIR / "payloads.yaml"
@@ -42,7 +47,9 @@ class TruckModel(VehicleModel):
 
     """
 
-    def __init__(self, array, *args, cost_overrides=None, **kwargs):
+    def __init__(
+        self, array, *args, cost_overrides=None, hybrid_battery=None, **kwargs
+    ):
         """Initialize a truck model with optional explicit cost overrides.
 
         :param cost_overrides: Cost parameter names mapped to dictionaries of
@@ -50,7 +57,12 @@ class TruckModel(VehicleModel):
             maintenance, insurance, toll and CO2 tax costs are per vehicle-km.
             Explicit zero overrides are retained. Without an explicit override,
             zero array entries continue to request calculated defaults.
+        :param hybrid_battery: Overrides for the high-power HEV cell and pack
+            envelope; see :class:`HybridBatteryProfile` for names and units.
+            Ratings assume a conditioned pack, not ambient-temperature cells.
         """
+        self.hybrid_battery_profile = HybridBatteryProfile(**(hybrid_battery or {}))
+        self.hybrid_battery_profile.validate()
         super().__init__(array, *args, **kwargs)
         self.cost_overrides = deepcopy({} if cost_overrides is None else cost_overrides)
         allowed = {
@@ -316,7 +328,9 @@ class TruckModel(VehicleModel):
             year = x[-1]
 
             if x not in self.energy_storage["electric"]:
-                if year in default_chemistries:
+                if x[0] == "HEV-d":
+                    self.energy_storage["electric"][x] = "LFP"
+                elif year in default_chemistries:
                     # exact match
                     self.energy_storage["electric"][x] = default_chemistries[year]
                 elif year < years_sorted[0]:
@@ -337,6 +351,115 @@ class TruckModel(VehicleModel):
 
         if "origin" not in self.energy_storage:
             self.energy_storage.update({"origin": "CN"})
+
+    def set_battery_preferences(self):
+        """Apply high-power cell density to the default HEV LFP pack.
+
+        Other explicit chemistries retain their density and cycle life; the
+        electrical envelope is a transfer assumption unless the caller also
+        supplies a matching ``hybrid_battery`` profile.
+        """
+        super().set_battery_preferences()
+        profile = self.hybrid_battery_profile
+        self.hybrid_battery_profile_transfers = []
+        for (pt, size, year), chemistry in self.energy_storage.get(
+            "electric", {}
+        ).items():
+            if (
+                pt != "HEV-d"
+                or chemistry is None
+                or any(
+                    label not in self.array[dimension].values
+                    for dimension, label in (
+                        ("powertrain", pt),
+                        ("size", size),
+                        ("year", year),
+                    )
+                )
+            ):
+                continue
+            selection = dict(powertrain=pt, size=size, year=year)
+            if chemistry == "LFP":
+                self.array.loc[
+                    dict(parameter="battery cell energy density", **selection)
+                ] = (profile.cell_energy_kwh / profile.cell_mass_kg)
+                self.array.loc[
+                    dict(parameter="battery cell mass share", **selection)
+                ] = profile.cell_mass_share
+            else:
+                self.hybrid_battery_profile_transfers.append(
+                    (pt, size, year, chemistry)
+                )
+            self.array.loc[dict(parameter="battery DoD", **selection)] = (
+                profile.usable_share
+            )
+
+    def calculate_hybrid_buffer(self):
+        """Size and cycle the HEV pack on the current mass-dependent trace."""
+        self.hybrid_buffer_results = {}
+        if "HEV-d" not in self.array.powertrain.values:
+            return
+        for size, year, sample in product(
+            self.array["size"].values, self.array.year.values, self.array.value.values
+        ):
+            if year < 2020:
+                continue
+            selection = dict(size=size, powertrain="HEV-d", year=year, value=sample)
+            cell = self.array.sel(selection)
+            val = lambda name: float(cell.sel(parameter=name))
+            trace = self.energy.sel(selection)
+            motor_efficiency = float(
+                self.get_electric_motor_efficiency().sel(selection)
+            )
+            eta_charge = val("battery charge efficiency")
+            eta_discharge = val("battery discharge efficiency")
+            if (
+                not 0 < motor_efficiency <= 1
+                or not 0 < eta_charge <= 1
+                or not 0 < eta_discharge <= 1
+            ):
+                raise ValueError(
+                    "Active HEV motor and battery efficiencies must be in (0, 1]."
+                )
+            recovered_dc = -trace.sel(parameter="recuperated energy").values
+            generator_dc = recovered_dc / eta_charge / eta_discharge
+            wheels = trace.sel(parameter="motive energy at wheels").values
+            transmission = trace.sel(parameter="transmission efficiency").values
+            shaft = np.divide(
+                wheels, transmission, out=np.zeros_like(wheels), where=transmission > 0
+            )
+            motor_dc = val("electric power") / motor_efficiency
+            propulsion_dc = np.minimum(shaft / motor_efficiency, motor_dc)
+            override = self.energy_storage.get("capacity", {}).get(
+                ("HEV-d", size, year)
+            )
+            result = size_hybrid_buffer(
+                generator_dc,
+                propulsion_dc,
+                motor_dc,
+                eta_charge,
+                eta_discharge,
+                profile=self.hybrid_battery_profile,
+                capacity_kwh=None if override is None or override == 0 else override,
+            )
+            distance = float(trace.sel(parameter="velocity").sum("second")) / 1000
+            if not np.isfinite(distance) or distance <= 0:
+                raise ValueError(
+                    "Active HEV battery cycling requires a positive cycle distance."
+                )
+            result["discharged_stored_kwh_per_km"] = result["discharged_kwh"] / distance
+            result["unconstrained_reusable_dc_kwh"] = float(recovered_dc.sum()) / 3600
+            self.hybrid_buffer_results[(size, year, sample)] = result
+            # Keep the existing cycle-average fuel-conversion boundary, but
+            # apply the fuel cap only after the finite pack's energy balance.
+            credit = avoided_propulsion_fuel(
+                result["discharged_dc_kwh"],
+                motor_efficiency,
+                wheels,
+                transmission,
+                trace.sel(parameter="motive energy").values,
+            )
+            self.regeneration_credit.loc[selection] = -credit / distance
 
     def override_range(self):
         """
@@ -394,6 +517,24 @@ class TruckModel(VehicleModel):
         )
 
         print("")
+
+    def set_share_recuperated_energy(self):
+        """Apply the finite HEV buffer to the inherited brake-wear credit."""
+        super().set_share_recuperated_energy()
+        for (size, year, sample), balance in getattr(
+            self, "hybrid_buffer_results", {}
+        ).items():
+            potential = balance["unconstrained_reusable_dc_kwh"]
+            fraction = balance["discharged_dc_kwh"] / potential if potential > 0 else 0
+            self.array.loc[
+                dict(
+                    parameter="share recuperated energy",
+                    powertrain="HEV-d",
+                    size=size,
+                    year=year,
+                    value=sample,
+                )
+            ] *= min(fraction, 1)
 
     def calculate_ttw_energy(self):
         """
@@ -470,7 +611,11 @@ class TruckModel(VehicleModel):
             / distance
         ).T
 
-        self["TtW energy"] += self.get_regeneration_credit()
+        self.get_regeneration_credit()
+        self.calculate_hybrid_buffer()
+        self["TtW energy"] += self.regeneration_credit.transpose(
+            "size", "powertrain", "year", "value"
+        )
         self.set_battery_energy_balance()
 
         self["TtW energy, combustion mode"] = self["TtW energy"] * (
@@ -543,6 +688,30 @@ class TruckModel(VehicleModel):
         ) * (self["charger mass"] > 0)
         inputs = supplied("battery lifetime replacements")
         self["battery lifetime replacements"] = inputs.where(inputs != 0, battery)
+        for (size, year, sample), result in getattr(
+            self, "hybrid_buffer_results", {}
+        ).items():
+            selection = dict(size=size, powertrain="HEV-d", year=year, value=sample)
+            life = float(self["lifetime kilometers"].sel(selection))
+            cycles = float(self["battery cycle life"].sel(selection))
+            capacity = float(self["electric energy stored"].sel(selection))
+            if any(not np.isfinite(x) or x <= 0 for x in (life, cycles, capacity)):
+                raise ValueError(
+                    "Active HEV batteries require positive finite lifetime, cycle life and capacity."
+                )
+            count = np.clip(
+                life * result["discharged_stored_kwh_per_km"] / capacity / cycles - 1,
+                0,
+                3,
+            )
+            supplied_count = float(inputs.sel(selection))
+            if not np.isfinite(supplied_count) or supplied_count < 0:
+                raise ValueError(
+                    "HEV battery replacement counts must be finite and nonnegative."
+                )
+            self.array.loc[
+                dict(parameter="battery lifetime replacements", **selection)
+            ] = (supplied_count or count)
         if "PHEV-d" in self.array.powertrain.values:
             explicit = inputs.sel(powertrain=["PHEV-e", "PHEV-c-d", "PHEV-d"])
             if bool((~np.isfinite(explicit) | (explicit < 0)).any()):
@@ -644,6 +813,7 @@ class TruckModel(VehicleModel):
             "fuel cell essential BoP mass",
             "battery cell mass",
             "battery BoP mass",
+            "starter battery mass",
             "fuel tank mass",
         ]
         self["curb mass"] += self[curb_mass_includes].sum(axis=2)
@@ -819,6 +989,19 @@ class TruckModel(VehicleModel):
                 * 0.06
             )
 
+        for (size, year, sample), result in getattr(
+            self, "hybrid_buffer_results", {}
+        ).items():
+            self.array.loc[
+                dict(
+                    parameter="electric energy stored",
+                    powertrain="HEV-d",
+                    size=size,
+                    year=year,
+                    value=sample,
+                )
+            ] = result["nominal_kwh"]
+
         self["battery cell mass"] = self["electric energy stored"] / _(
             self["battery cell energy density"]
         )
@@ -829,6 +1012,29 @@ class TruckModel(VehicleModel):
 
         self["battery BoP mass"] = (
             self["energy battery mass"] - self["battery cell mass"]
+        )
+
+    def set_power_battery_properties(self):
+        """Keep the HEV starter separate from its lithium-ion traction pack."""
+        if "HEV-d" not in self.array.powertrain.values:
+            return super().set_power_battery_properties()
+        components = ["battery cell mass", "battery BoP mass"]
+        traction = self.array.sel(powertrain="HEV-d", parameter=components).copy(
+            deep=True
+        )
+        super().set_power_battery_properties()
+        self.array.loc[dict(powertrain="HEV-d", parameter=components)] = traction
+        power = self["battery power"].sel(powertrain="HEV-d")
+        density = self["battery cell power density"].sel(powertrain="HEV-d")
+        if bool(((power > 0) & (~np.isfinite(density) | (density <= 0))).any()):
+            raise ValueError(
+                "Active HEV starter batteries require positive power density."
+            )
+        cell_mass = power / density.where(power > 0, 1)
+        # Retain the inherited starter-mass heuristic, separately from Li-ion
+        # capacity and manufacture. Traction cell mass must not inflate it.
+        self.array.loc[dict(powertrain="HEV-d", parameter="starter battery mass")] = (
+            cell_mass * (2 - self["battery cell mass share"].sel(powertrain="HEV-d"))
         )
 
     def set_depot_infrastructure_costs(

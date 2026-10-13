@@ -23,13 +23,30 @@ def test_bound_repairs_preserve_all_central_values_and_unaffected_records():
             TruckInputParameters.DEFAULT.parent / "cost_uncertainty_provenance.json"
         ).read_text(encoding="utf-8")
     )
-    restored = deepcopy(current)
+    # Undo the separately documented HEV price-proxy scope extension before
+    # checking the historical uncertainty repair. No price, bound or source
+    # changed: only HEV-d coverage and an explicit proxy comment were added.
+    historical = deepcopy(current)
+    proxy_note = (
+        " Extended to HEV-d as a generic chemistry price proxy; "
+        "not a high-power pack quotation."
+    )
+    extended = 0
+    for record in historical.values():
+        if record["name"].startswith("energy battery cost per kWh,"):
+            assert record["powertrain"][0] == "HEV-d"
+            assert record["comment"].endswith(proxy_note)
+            record["powertrain"] = record["powertrain"][1:]
+            record["comment"] = record["comment"].removesuffix(proxy_note)
+            extended += 1
+    assert extended == 55
+    restored = deepcopy(historical)
     assert provenance["changed_record_count"] == len(provenance["records"]) == 21
     for entry in provenance["records"]:
         key = entry["record_id"]
         original = entry["original_record"]
-        revised = current[key]
-        anchor = current[entry["anchor_record_id"]]
+        revised = historical[key]
+        anchor = historical[entry["anchor_record_id"]]
         assert anchor == entry["anchor_record"]
         assert original["year"] in (2030, 2040, 2050)
         assert not original["minimum"] <= original["loc"] <= original["maximum"]
