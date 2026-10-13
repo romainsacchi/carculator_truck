@@ -208,13 +208,13 @@ class TruckModel(VehicleModel):
         self.calculate_ttw_energy()
         self.set_ttw_efficiency()
         self.set_share_recuperated_energy()
+        self.set_electric_utility_factor(electric_utility_factor)
         self.set_battery_fuel_cell_replacements()
 
         self["capacity utilization"] = np.clip(
             (self["cargo mass"] / self["available payload"]), 0, 1
         )
 
-        self.set_electric_utility_factor(electric_utility_factor)
         self.set_electricity_consumption()
         self.set_costs()
         self.set_particulates_emission()
@@ -237,6 +237,7 @@ class TruckModel(VehicleModel):
                 "depot charger lifetime",
                 "trucks per depot charger",
                 "share depot charging",
+                "battery cycle life",
             ]
             self.array.loc[dict(powertrain="PHEV-d", parameter=parameters)] = (
                 self.array.sel(powertrain="PHEV-e", parameter=parameters, drop=True)
@@ -495,7 +496,15 @@ class TruckModel(VehicleModel):
         is not rounded up and there is no mandatory replacement battery.
         Production is allocated to this vehicle without a second-life credit.
         Fuel cells use a separate lifetime-hours calculation, rounded up.
+
+        PHEV lifetime energy is weighted by electric driving share BEFORE
+        subtracting the initial pack and clipping. The resulting physical count
+        belongs to both modes. Nonzero PHEV count inputs are whole-vehicle counts;
+        conflicting values for the same pack are rejected rather than averaged.
+        This retains the net stored-energy approximation, nominal-capacity EFC
+        convention and absence of a separate truck calendar-age limit.
         """
+
         _ = lambda array: np.where(array == 0, 1, array)
 
         if not hasattr(self, "_replacement_inputs"):
@@ -514,9 +523,17 @@ class TruckModel(VehicleModel):
                 **{dim: current[dim] for dim in current.dims},
             )
 
+        lifetime_energy = self["lifetime kilometers"] * self["TtW energy"] / 3600
+        if "PHEV-d" in self.array.powertrain.values:
+            share = self["electric utility factor"].sel(powertrain="PHEV-e", drop=True)
+            if bool((~np.isfinite(share) | (share < 0) | (share > 1)).any()):
+                raise ValueError(
+                    "PHEV electric utility factor must be finite and in [0, 1]."
+                )
+            lifetime_energy.loc[dict(powertrain="PHEV-e")] *= share
         battery = np.clip(
             (
-                (self["lifetime kilometers"] * self["TtW energy"] / 3600)
+                lifetime_energy
                 / _(self["electric energy stored"])
                 / _(self["battery cycle life"])
                 - 1
@@ -526,6 +543,24 @@ class TruckModel(VehicleModel):
         ) * (self["charger mass"] > 0)
         inputs = supplied("battery lifetime replacements")
         self["battery lifetime replacements"] = inputs.where(inputs != 0, battery)
+        if "PHEV-d" in self.array.powertrain.values:
+            explicit = inputs.sel(powertrain=["PHEV-e", "PHEV-c-d", "PHEV-d"])
+            if bool((~np.isfinite(explicit) | (explicit < 0)).any()):
+                raise ValueError(
+                    "PHEV battery replacement inputs must be finite and nonnegative."
+                )
+            specified = explicit.max("powertrain")
+            if bool(((explicit != 0) & (explicit != specified)).any()):
+                raise ValueError(
+                    "Conflicting PHEV battery replacement counts for one physical pack."
+                )
+            count = specified.where(
+                specified != 0, battery.sel(powertrain="PHEV-e", drop=True)
+            )
+            self.array.loc[
+                dict(powertrain="PHEV-e", parameter="battery lifetime replacements")
+            ] = count
+            self.share_phev_battery_replacements()
 
         # The number of fuel cell replacements is based on the
         # average distance driven with a set of fuel cells given

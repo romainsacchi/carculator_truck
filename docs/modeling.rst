@@ -848,6 +848,26 @@ The battery factor can be fractional and can be zero.
 There is no mandatory one-pack replacement in the truck calculation. Bus defaults
 use a different, explicitly documented assumption.
 
+For plug-in hybrids, the electric driving share multiplies lifetime energy
+**before** subtracting the initial pack and applying the replacement cap:
+
+.. math::
+
+   n_{replacement,PHEV}=\operatorname{clip}\left(
+   \frac{L_{vehicle} u_e F_{ttw,e}}{3600 C_{battery} N_{cycles}}-1,0,3\right).
+
+Here :math:`u_e` is electric driving share and :math:`F_{ttw,e}` is the electric
+mode's net stored-energy use. Both mode costs and the combined PHEV retain this
+one physical pack's count, without a second driving-share weighting. Nonzero
+explicit counts on the PHEV or its intermediates apply to that physical pack;
+conflicting counts are rejected. Cycle life uses nominal-capacity equivalent
+full cycles, without an additional depth-of-discharge divisor.
+
+This calculation retains a net-energy approximation: it does not count the
+extra discharge associated with regenerative cycling, including combustion-mode
+battery use. It also has no separate calendar-age limit. These limitations
+must be considered when interpreting a zero calculated replacement count.
+
 Replacement production is allocated to the vehicle, with no second-life credit.
 The following table preserves the original study's configurations; inspect the
 completed model's ``battery lifetime replacements`` for a current case.
