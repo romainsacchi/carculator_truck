@@ -2,6 +2,27 @@
 
 Notable user-facing changes to `carculator_truck`.
 
+## [Unreleased]
+
+- Supply HEVs with high-power traction buffers sized from motor and cycle-energy
+  requirements, using documented A123 LFP specifications. Couple mass, fuel use,
+  regenerative storage, replacement counting and costs; retain documented
+  chemistry-price and cycle-life proxies.
+- Size FCEV packs with the approved AKASOL energy/mass/charging/discharge envelope.
+  Keep the inherited energy rule as a floor, constrain regenerative charging,
+  and check cycle assistance and ten-second rated buffer demand at final mass.
+  Reject undersized explicit capacities rather than clipping propulsion demand.
+- Use 57/129 kW motor proxies for the 2020 3.5/7.5 t FCEVs. Include auxiliaries
+  before net electrical fuel-cell/buffer allocation and preserve traction-battery
+  power when sizing separate starter batteries.
+- Price the full installed PHEV pack and weight lifetime electric use before
+  counting replacement packs. Retain the documented net-energy cycling
+  approximation; this does not introduce a calendar-age or gross-throughput model.
+- Close the Premise car/truck campaign with Regional-delivery, 400 km templates.
+  Retain MIX capacity-market mass/chemistry mismatches and fixed 2020 FCEV
+  hardware in future Premise scenarios as documented assumptions. Regenerate
+  saved results to apply these changes; no package release is created here.
+
 ## [0.5.2] - 2026-10-11
 
 ### Migration to ecoinvent 3.12

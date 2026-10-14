@@ -424,6 +424,29 @@ vehicles and bounded nonconvergence. Run it with::
 The shared end-to-end audit and Brightway comparisons are recorded in the
 ``carculator_utils`` repository under ``results/pipeline_audit_20261010``.
 
+Hybrid traction storage
+-------------------------
+
+Non-plug-in hybrids use a finite regenerative traction buffer, separate from
+the lead-acid starter. Motor power and cycle-energy demand determine its size
+inside the mass/energy iteration. The 2020 Regional-delivery templates have
+3.75--13.01 kWh; the 40 t pack is about 9.96 kWh and 196 kg. Braking beyond
+the pack's charging capability receives no fuel or brake-wear credit.
+
+The physical reference is the A123 AHR32113M1Ultra-B cell, documented in the
+2014 Battery Pack Design, Validation, and Assembly Guide, revision 02, Tables
+4 and 30--33. ``hybrid_battery.py`` records the source URL, continuous-current
+ratings at 25 degrees C and conservative 2 V cutoff conversion. The 60% usable
+window and 70% cell allocation are engineering assumptions. Generic LFP cycle
+life and chemistry prices are explicit proxies, not qualified high-power pack
+durability or market-price measurements. Premise retains its MIX capacity
+market despite the documented physical mass/chemistry mismatch.
+
+The fixing campaign closed on 14 October 2026. Broader PHEV cycling and future
+FCEV tank resizing were skipped; these remain documented limitations, not
+claims of completed validation. See the shared
+`campaign guide <https://github.com/Laboratory-for-Energy-Systems-Analysis/carculator_utils/blob/master/docs/premise_vehicle_update.rst>`_.
+
 FCEV traction-pack proxy
 ------------------------
 
