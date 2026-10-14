@@ -124,9 +124,89 @@ def test_completed_fcev_retains_complementary_power_and_complete_pack():
         model["battery cell mass"] * model["battery cell energy density"],
         rtol=2e-6,
     )
-    # Heavy vehicles retain their existing energy-sized buffer assumption.
+    # The legacy energy rule is a floor; discharge power can require more.
+    assert bool(
+        (model["electric energy stored"] >= 20 + 2 * model["fuel mass"] - 1e-4).all()
+    )
     np.testing.assert_allclose(
-        model["electric energy stored"],
-        20 + 2 * model["fuel mass"],
+        model["energy battery mass"],
+        model["electric energy stored"] * 238 / 25,
         rtol=2e-6,
     )
+
+
+def test_reference_pack_power_and_mass_are_paired_not_lead_acid_values():
+    from carculator_truck.fuel_cell_battery import FuelCellBatteryProfile
+
+    profile = FuelCellBatteryProfile()
+    # 100 kW continuous needs two 25-kWh packs. A 450-kW short design pulse
+    # instead requires three packs; neither limit uses starter-battery density.
+    assert profile.required_capacity(100, 200) == pytest.approx(50)
+    assert profile.required_capacity(100, 450) == pytest.approx(75)
+    assert profile.cell_energy_density * 238 * 0.7 == pytest.approx(25)
+
+
+def test_all_regional_fcev_buffers_supply_cycle_continuously_and_limit_charging():
+    inputs = TruckInputParameters()
+    inputs.static()
+    _, array = fill_xarray_from_input_parameters(
+        inputs,
+        scope={
+            "size": ["3.5t", "7.5t", "18t", "26t", "32t", "40t", "60t"],
+            "powertrain": ["FCEV"],
+            "year": [2020],
+        },
+    )
+    model = TruckModel(array, country="CH", cycle="Regional delivery")
+    model.set_all()
+    trace = model.energy.sel(parameter="motive energy", drop=True)
+    aux = xr.DataArray(
+        model.ecm.auxiliary_dc_demand_kw, dims=trace.dims, coords=trace.coords
+    )
+    demand = trace * model["fuel cell system efficiency"] + aux
+    net_fc = model["fuel cell power"] / model["fuel cell own consumption"]
+    capacity = model["electric energy stored"]
+    assert bool(((demand - net_fc).max("second") <= capacity * 2 * (1 + 3e-6)).all())
+    assert bool((model["battery power"] <= capacity * 6 * (1 + 3e-6)).all())
+    assert np.all(
+        model.ecm.regenerative_charge_dc_kw <= capacity.values.T * 36 / 25 + 1e-4
+    )
+    assert model.ecm.regenerative_curtailed_dc_kw.max() > 0
+    np.testing.assert_allclose(
+        model.ecm.regenerative_generator_dc_kw,
+        model.ecm.regenerative_auxiliary_dc_kw
+        + model.ecm.regenerative_charge_dc_kw
+        + model.ecm.regenerative_curtailed_dc_kw,
+        atol=1e-5,
+    )
+    assert model.ecm.power_deficit_kw.max() == 0
+    np.testing.assert_allclose(
+        capacity * 238 / 25, model["energy battery mass"], rtol=2e-6
+    )
+    assert bool((model["cargo mass"] <= model["available payload"]).all())
+
+
+def test_explicit_fcev_capacity_is_preserved_and_inadequate_capacity_rejected():
+    source = small_fcev_array().sel(size=["7.5t"], year=[2020])
+    override = {"capacity": {("FCEV", "7.5t", 2020): 80}}
+    model = TruckModel(source, cycle="Regional delivery", energy_storage=override)
+    model.set_all()
+    assert model["electric energy stored"].item() == pytest.approx(80)
+    assert model["energy battery mass"].item() == pytest.approx(761.6, rel=2e-6)
+    first = model.array.copy(deep=True)
+    model.set_all()
+    xr.testing.assert_identical(first, model.array)
+    assert override == {"capacity": {("FCEV", "7.5t", 2020): 80}}
+    too_small = TruckModel(
+        source,
+        cycle="Regional delivery",
+        energy_storage={"capacity": {("FCEV", "7.5t", 2020): 1}},
+    )
+    with pytest.raises(ValueError, match="FCEV battery cannot supply"):
+        too_small.set_all()
+
+
+@pytest.mark.parametrize("invalid", [0, -1, np.nan, np.inf])
+def test_invalid_fcev_pack_profile_is_rejected(invalid):
+    with pytest.raises(ValueError, match="FCEV battery"):
+        TruckModel(small_fcev_array(), fuel_cell_battery={"charge_kw": invalid})

@@ -423,3 +423,43 @@ vehicles and bounded nonconvergence. Run it with::
 
 The shared end-to-end audit and Brightway comparisons are recorded in the
 ``carculator_utils`` repository under ``results/pipeline_audit_20261010``.
+
+FCEV traction-pack proxy
+------------------------
+
+FCEV trucks use the AKASOL AKASYSTEM 15 OEM 37 PRC pack as an explicit 2020
+proxy. The May 2021 manufacturer sheet pairs 25 kWh with 238 kg, 36 kW
+continuous charging, 50 kW continuous RMS discharge, and 150 kW discharge
+for ten seconds. The product is also documented in the earlier brochure.
+Source: https://www.act-news.com/wp-content/uploads/2020/11/210525_LowRes_AK_Datenblatt_AKASystem_15-OEM-37-PRC_2021_2159x2794mm_EN.pdf
+
+The original ``20 kWh + 6% of hydrogen chemical energy`` rule remains an energy
+floor. A larger pack is installed if instantaneous battery assistance on the
+chosen cycle exceeds the reference's continuous discharge rating. Using the
+RMS rating as an instantaneous ceiling is conservative and avoids inventing a
+pulse-recovery interval. The full rated motor's buffer requirement must also
+fit the ten-second rating; this does not establish indefinite full motor power.
+Explicit capacity overrides are retained and rejected when insufficient for
+the final sized vehicle. Propulsion demand is never clipped to hide a deficit.
+
+Regeneration first supplies simultaneous DC auxiliaries, then charges the pack
+up to its continuous terminal-power limit. Battery losses apply only to the
+stored portion; excess braking earns neither fuel nor brake-wear credit.
+The inherited conservative wear conversion discount is retained. Sizing
+converges pack, fuel, vehicle mass and payload together.
+
+The 70% cell/pack mass allocation and chemistry-specific inventory, costs and
+replacement assumptions are retained proxies, not measured AKASOL cell data.
+The effective cell density merely reproduces the documented complete-pack
+mass. ``fuel_cell_battery={...}`` accepts alternate pack specifications using
+the fields in ``FuelCellBatteryProfile``; explicit chemistry choices remain
+inventory proxies and do not replace this physical pack specification.
+
+Ratings assume a conditioned pack. No SOC-window, fuel-cell ramp, electrothermal
+or ageing validation is claimed. The profile is held constant for later model
+years unless overridden. Premise separately retains the regenerated 2020 FCEV
+hardware and buys its approved MIX capacity market per nominal kWh including
+replacements; the market's manufacturing mass may differ from the physical pack.
+
+``tests/test_fuel_cell_battery.py`` covers native Regional-delivery power,
+mass/energy accounting, explicit capacity, repeated runs and invalid profiles.

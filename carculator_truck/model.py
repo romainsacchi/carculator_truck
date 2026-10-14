@@ -16,6 +16,7 @@ from carculator_utils.numerical import capital_recovery_factor
 from prettytable import PrettyTable
 
 from . import DATA_DIR
+from .fuel_cell_battery import FuelCellBatteryProfile
 from .hybrid_battery import (
     HybridBatteryProfile,
     avoided_propulsion_fuel,
@@ -48,7 +49,13 @@ class TruckModel(VehicleModel):
     """
 
     def __init__(
-        self, array, *args, cost_overrides=None, hybrid_battery=None, **kwargs
+        self,
+        array,
+        *args,
+        cost_overrides=None,
+        hybrid_battery=None,
+        fuel_cell_battery=None,
+        **kwargs,
     ):
         """Initialize a truck model with optional explicit cost overrides.
 
@@ -60,9 +67,16 @@ class TruckModel(VehicleModel):
         :param hybrid_battery: Overrides for the high-power HEV cell and pack
             envelope; see :class:`HybridBatteryProfile` for names and units.
             Ratings assume a conditioned pack, not ambient-temperature cells.
+        :param fuel_cell_battery: Overrides for the FCEV pack-level energy,
+            mass and power proxy; see :class:`FuelCellBatteryProfile`. Chemistry
+            remains the inventory/cost proxy; pack specifications are independent.
         """
         self.hybrid_battery_profile = HybridBatteryProfile(**(hybrid_battery or {}))
         self.hybrid_battery_profile.validate()
+        self.fuel_cell_battery_profile = FuelCellBatteryProfile(
+            **(fuel_cell_battery or {})
+        )
+        self.fuel_cell_battery_profile.validate()
         super().__init__(array, *args, **kwargs)
         self.cost_overrides = deepcopy({} if cost_overrides is None else cost_overrides)
         allowed = {
@@ -243,6 +257,7 @@ class TruckModel(VehicleModel):
         # bounded above; refresh energy at the final mass before costs, direct
         # emissions, fuel/grid purchases and inventories consume those outputs.
         self.calculate_ttw_energy()
+        self.check_fuel_cell_battery_power()
         self.set_ttw_efficiency()
         self.set_share_recuperated_energy()
         self.set_electric_utility_factor(electric_utility_factor)
@@ -385,6 +400,16 @@ class TruckModel(VehicleModel):
         supplies a matching ``hybrid_battery`` profile.
         """
         super().set_battery_preferences()
+        if "FCEV" in self.array.powertrain.values:
+            profile = self.fuel_cell_battery_profile
+            for name, value in {
+                "battery cell mass share": profile.cell_mass_share,
+                "battery cell energy density": profile.cell_energy_density,
+                "battery cell power density": profile.discharge_10s_kw
+                / (profile.pack_kg * profile.cell_mass_share),
+            }.items():
+                if name in self.array.parameter.values:
+                    self.array.loc[dict(powertrain="FCEV", parameter=name)] = value
         profile = self.hybrid_battery_profile
         self.hybrid_battery_profile_transfers = []
         for (pt, size, year), chemistry in self.energy_storage.get(
@@ -546,6 +571,32 @@ class TruckModel(VehicleModel):
     def set_share_recuperated_energy(self):
         """Apply the finite HEV buffer to the inherited brake-wear credit."""
         super().set_share_recuperated_energy()
+        if "FCEV" in self.array.powertrain.values:
+            trace = self.energy.sel(parameter="negative motive energy", drop=True)
+            direct = (
+                xr.DataArray(
+                    self.ecm.regenerative_auxiliary_dc_kw,
+                    dims=trace.dims,
+                    coords=trace.coords,
+                )
+                .sel(powertrain="FCEV", drop=True)
+                .sum("second")
+            )
+            # Retain the inherited conservative wear proxy, including its
+            # conversion discount. Direct auxiliary use still avoids braking;
+            # curtailed energy receives no wear credit.
+            accepted = -self.energy.sel(
+                parameter="recuperated energy", powertrain="FCEV", drop=True
+            ).sum("second") + direct * (
+                self["battery charge efficiency"] * self["battery discharge efficiency"]
+            ).sel(
+                powertrain="FCEV", drop=True
+            )
+            braking = -trace.sel(powertrain="FCEV", drop=True).sum("second")
+            ratio = (accepted / xr.where(braking > 0, braking, 1)).clip(0, 1)
+            self.array.loc[
+                dict(parameter="share recuperated energy", powertrain="FCEV")
+            ] = ratio.transpose("size", "year", "value")
         for (size, year, sample), balance in getattr(
             self, "hybrid_buffer_results", {}
         ).items():
@@ -592,6 +643,13 @@ class TruckModel(VehicleModel):
             battery_charge_eff=self["battery charge efficiency"],
             battery_discharge_eff=self["battery discharge efficiency"],
             fuel_cell_system_efficiency=self["fuel cell system efficiency"],
+            battery_charge_power=xr.where(
+                self.array.powertrain == "FCEV",
+                self["electric energy stored"]
+                * self.fuel_cell_battery_profile.charge_kw
+                / self.fuel_cell_battery_profile.nominal_kwh,
+                np.inf,
+            ).transpose("size", "powertrain", "year", "value"),
         )
 
         self.energy = self.energy.assign_coords(
@@ -1013,6 +1071,32 @@ class TruckModel(VehicleModel):
                 / 3.6
                 * 0.06
             )
+            minimum = self.fuel_cell_battery_capacity_requirement()
+            self.array.loc[
+                dict(powertrain="FCEV", parameter="electric energy stored")
+            ] = np.maximum(
+                self["electric energy stored"].sel(powertrain="FCEV"), minimum
+            )
+            # Explicit capacity is authoritative. Validate it at the converged
+            # vehicle mass, rather than silently replacing it by the heuristic.
+            for (pt, size, year), capacity in self.energy_storage.get(
+                "capacity", {}
+            ).items():
+                if pt == "FCEV" and np.any(np.asarray(capacity) != 0):
+                    if np.any(~np.isfinite(capacity)) or np.any(
+                        np.asarray(capacity) <= 0
+                    ):
+                        raise ValueError(
+                            "Explicit FCEV capacity must be finite and positive."
+                        )
+                    self.array.loc[
+                        dict(
+                            powertrain=pt,
+                            size=size,
+                            year=year,
+                            parameter="electric energy stored",
+                        )
+                    ] = capacity
 
         for (size, year, sample), result in getattr(
             self, "hybrid_buffer_results", {}
@@ -1038,6 +1122,53 @@ class TruckModel(VehicleModel):
         self["battery BoP mass"] = (
             self["energy battery mass"] - self["battery cell mass"]
         )
+
+    def set_fuel_cell_mass(self):
+        """Size the stack without replacing the truck's final energy-sized pack."""
+        names = [
+            "battery cell mass",
+            "energy battery mass",
+            "battery BoP mass",
+            "electric energy stored",
+        ]
+        saved = None
+        if "FCEV" in self.array.powertrain.values:
+            saved = self.array.sel(powertrain="FCEV", parameter=names).copy(deep=True)
+        super().set_fuel_cell_mass()
+        if saved is not None:
+            self.array.loc[dict(powertrain="FCEV", parameter=names)] = saved
+
+    def fuel_cell_battery_capacity_requirement(self):
+        """Check cycle discharge at the DC bus, retaining unmet speed-trace demand."""
+        trace = self.energy.sel(parameter="motive energy", drop=True)
+        auxiliary = xr.DataArray(
+            self.ecm.auxiliary_dc_demand_kw, dims=trace.dims, coords=trace.coords
+        )
+        demand = (trace * self["fuel cell system efficiency"] + auxiliary).sel(
+            powertrain="FCEV", drop=True
+        )
+        stack = (self["fuel cell power"] / self["fuel cell own consumption"]).sel(
+            powertrain="FCEV", drop=True
+        )
+        discharge = (demand - stack).clip(min=0).max("second")
+        return self.fuel_cell_battery_profile.required_capacity(
+            discharge, self["battery power"].sel(powertrain="FCEV", drop=True)
+        ).transpose("size", "year", "value")
+
+    def check_fuel_cell_battery_power(self):
+        """Reject an undersized supplied pack after the mass iteration converges."""
+        if "FCEV" not in self.array.powertrain.values:
+            return
+        required = self.fuel_cell_battery_capacity_requirement()
+        capacity = self["electric energy stored"].sel(powertrain="FCEV", drop=True)
+        invalid = ((capacity < required * (1 - 3e-6)) | ~np.isfinite(capacity)) & (
+            capacity.year >= 2020
+        )
+        if bool(invalid.any()):
+            raise ValueError(
+                "FCEV battery cannot supply the requested cycle or rated motor buffer; "
+                "increase explicit capacity or supply a justified fuel_cell_battery profile."
+            )
 
     def set_power_battery_properties(self):
         """Keep the HEV starter separate from its lithium-ion traction pack."""
