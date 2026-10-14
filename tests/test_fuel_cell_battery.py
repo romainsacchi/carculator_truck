@@ -21,8 +21,19 @@ def test_completed_fcev_retains_complementary_power_and_complete_pack():
     model["power battery cost per kW"] = 10
     model.set_all()
     net_stack = model["fuel cell power"] / model["fuel cell own consumption"]
+    auxiliary_fields = ["auxiliary energy"]
+    # Recover delivered auxiliary DC demand from the independently calculated
+    # hydrogen-input trace; it bypasses motor conversion losses.
+    auxiliary = (
+        model.energy.sel(parameter=auxiliary_fields).sum("parameter").max("second")
+        * model["fuel cell system efficiency"]
+    ).transpose(*model["power"].dims)
+    required_dc = model["power"] / model["electric motor efficiency"] + auxiliary
     np.testing.assert_allclose(
-        net_stack + model["battery power"], model["power"], rtol=2e-6
+        net_stack + model["battery power"], required_dc, rtol=2e-6
+    )
+    np.testing.assert_allclose(
+        net_stack / required_dc, model["fuel cell power share"], rtol=2e-6
     )
     assert np.all(model["battery power"] > 0)
     assert np.all(model["power battery cost"] > 0)

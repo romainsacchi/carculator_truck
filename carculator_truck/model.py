@@ -190,11 +190,11 @@ class TruckModel(VehicleModel):
                 self.set_vehicle_masses()
 
             self.set_power_parameters()
+            self.set_auxiliaries()
             self.set_fuel_cell_power()
             self.set_fuel_cell_mass()
 
             self.set_component_masses()
-            self.set_auxiliaries()
             self.set_recuperation()
             self.set_battery_preferences()
 
