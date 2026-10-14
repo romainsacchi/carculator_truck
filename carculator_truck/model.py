@@ -117,6 +117,31 @@ class TruckModel(VehicleModel):
                 dict(parameter=parameter, powertrain=powertrain, size=size, year=year)
             ] = amount
 
+    def set_power_parameters(self):
+        """Use a declared shaft rating where supplied, then caller overrides.
+
+        Zero or absent ``rated power`` retains mass-based sizing. Keeping a
+        documented rating independent of curb mass avoids shrinking a motor
+        when storage or other components become lighter. Values are in kW.
+        """
+        super().set_power_parameters()
+        if "rated power" not in self.array.parameter.values:
+            return
+        rated = self["rated power"]
+        if np.any(~np.isfinite(rated)) or np.any(rated < 0):
+            raise ValueError("Rated power must be finite and nonnegative.")
+        use_rated = rated > 0
+        for key, value in (self.power or {}).items():
+            if value:
+                use_rated.loc[dict(zip(("powertrain", "size", "year"), key))] = False
+        self["power"] = xr.where(use_rated, rated, self["power"])
+        self["combustion power"] = self["power"] * self["combustion power share"]
+        electric_share = 1 - self["combustion power share"]
+        if "electric motor power share" in self.array.parameter.values:
+            share = self["electric motor power share"]
+            electric_share = xr.where(share > 0, share, electric_share)
+        self["electric power"] = self["power"] * electric_share
+
     @repeatable_run
     def set_all(self, electric_utility_factor: float = None):
         """

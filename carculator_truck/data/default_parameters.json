@@ -78800,5 +78800,205 @@
             "PHEV-d",
             "PHEV-e"
         ]
+    },
+    "motor-proxy-3.5t-2020-rated power": {
+        "amount": 57,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2020,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.renaultgroup.com/magazine/energies-et-motorisations/master-z-e/",
+        "comment": "2020 Renault Master Z.E. motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 57
+    },
+    "motor-proxy-3.5t-2025-rated power": {
+        "amount": 57,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2025,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.renaultgroup.com/magazine/energies-et-motorisations/master-z-e/",
+        "comment": "2020 Renault Master Z.E. motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 57
+    },
+    "motor-proxy-3.5t-2030-rated power": {
+        "amount": 57,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2030,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.renaultgroup.com/magazine/energies-et-motorisations/master-z-e/",
+        "comment": "2020 Renault Master Z.E. motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 57
+    },
+    "motor-proxy-3.5t-2040-rated power": {
+        "amount": 57,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2040,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.renaultgroup.com/magazine/energies-et-motorisations/master-z-e/",
+        "comment": "2020 Renault Master Z.E. motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 57
+    },
+    "motor-proxy-3.5t-2050-rated power": {
+        "amount": 57,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "3.5t"
+        ],
+        "year": 2050,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.renaultgroup.com/magazine/energies-et-motorisations/master-z-e/",
+        "comment": "2020 Renault Master Z.E. motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 57
+    },
+    "motor-proxy-7.5t-2020-rated power": {
+        "amount": 129,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2020,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.daimlertruck.com/newsroom/pressemitteilung/hello-dublin-der-fuso-ecanter-liefert-post-in-irland-45975414",
+        "comment": "2020 FUSO eCanter motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 129
+    },
+    "motor-proxy-7.5t-2025-rated power": {
+        "amount": 129,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2025,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.daimlertruck.com/newsroom/pressemitteilung/hello-dublin-der-fuso-ecanter-liefert-post-in-irland-45975414",
+        "comment": "2020 FUSO eCanter motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 129
+    },
+    "motor-proxy-7.5t-2030-rated power": {
+        "amount": 129,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2030,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.daimlertruck.com/newsroom/pressemitteilung/hello-dublin-der-fuso-ecanter-liefert-post-in-irland-45975414",
+        "comment": "2020 FUSO eCanter motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 129
+    },
+    "motor-proxy-7.5t-2040-rated power": {
+        "amount": 129,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2040,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.daimlertruck.com/newsroom/pressemitteilung/hello-dublin-der-fuso-ecanter-liefert-post-in-irland-45975414",
+        "comment": "2020 FUSO eCanter motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 129
+    },
+    "motor-proxy-7.5t-2050-rated power": {
+        "amount": 129,
+        "category": "Powertrain",
+        "powertrain": [
+            "FCEV"
+        ],
+        "sizes": [
+            "7.5t"
+        ],
+        "year": 2050,
+        "name": "rated power",
+        "unit": "kW",
+        "importance": "Moderate",
+        "source": "https://www.daimlertruck.com/newsroom/pressemitteilung/hello-dublin-der-fuso-ecanter-liefert-post-in-irland-45975414",
+        "comment": "2020 FUSO eCanter motor-only proxy, user-approved for the small FCEV. Mechanical shaft rating, not fuel-cell or battery DC power. Not a complete vehicle calibration. Retained after 2020 without an assumed motor-downsizing trend; explicit power overrides take priority. Regional-delivery feasibility checked at default payload; not a guarantee for other loads or cycles.",
+        "status": "Proxy",
+        "kind": "distribution",
+        "uncertainty_type": 1,
+        "loc": 129
     }
 }

@@ -358,6 +358,22 @@ driving cycle. It distinguishes the target speed from the actual speed
 managed by the different vehicles. The power-to-mass ratio influences
 the extent to which a vehicle manages to comply with the target speed.
 
+The optional ``rated power`` input fixes mechanical shaft output in kW;
+zero or an absent parameter retains power-to-curb-mass sizing. Explicit
+``power`` constructor overrides take priority. The small FCEVs use documented
+2020 motor-only proxies: 57 kW for 3.5 t from the
+`Renault Master Z.E. <https://www.renaultgroup.com/magazine/energies-et-motorisations/master-z-e/>`_
+and 129 kW for 7.5 t from the
+`FUSO eCanter <https://www.daimlertruck.com/newsroom/pressemitteilung/hello-dublin-der-fuso-ecanter-liefert-post-in-irland-45975414>`_.
+These electric-commercial-vehicle ratings are transferred to FCEVs; they are
+not complete FCEV calibrations. The default reference ratings are retained
+after 2020 without assuming motor downsizing. Their mass, fuel-cell/buffer
+allocation, storage and consumption are recalculated in the native sizing
+loop. Both complete the Regional-delivery trace at default payload. The
+57 kW design still cannot complete the default 800 km Long-haul configuration;
+different payloads, grades or driving cycles require a separate feasibility
+check. No wheel demand or fuel input is clipped to hide a power shortfall.
+
 .. _figure-2:
 
 .. figure:: _static/img/image8.png
